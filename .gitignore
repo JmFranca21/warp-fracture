@@ -1,0 +1,17 @@
+# Godot
+.godot/
+.import/
+*.translation
+export_credentials.cfg
+# Builds (publique como Releases do GitHub)
+build/
+build_linux/
+*.exe
+*.x86_64
+*.pck
+*.zip
+*.tar.gz
+# Sistema
+.DS_Store
+Thumbs.db
+__pycache__/

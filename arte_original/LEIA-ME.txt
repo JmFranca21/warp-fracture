@@ -1,0 +1,9 @@
+WARP FRACTURE - pacote completo
+
+Inclui todas as 36 pranchas geradas nesta conversa, com e sem braco, tentativas e correcoes, e as 4 referencias oficiais.
+
+As pranchas PNG sao sequencias de quadros, nao GIFs animados. Os arquivos preservam os fundos originais (principalmente verde); a tentativa de transparencia tem fundo escuro. Nao foram removidos os fundos neste pacote.
+
+As pastas com e sem braco indicam a intencao das versoes; existem falhas de geracao, inclusive na visibilidade dos bracos, alinhamento, escala, limites das celulas e vista lateral. As versoes v2 sao as tentativas posteriores, nao garantia de validacao tecnica.
+
+Grade solicitada: 4 colunas x 2 linhas, celulas de 384 x 512 em PNG de 1536 x 1024. Ha pranchas que exigem correcao antes de importar na Godot.
