@@ -21,6 +21,7 @@ Para gerar os executáveis, use **Projeto → Exportar** (presets "Windows Deskt
 | `tools/` | Scripts Python para recortar as spritesheets e gerar áudio, mais o `run.sh` de testes |
 | `arte_original/` | Pranchas originais e referências oficiais de arte (veja `USADAS_NO_JOGO.md`) |
 | `docs/` | Caderno de 10 páginas (documento de design) e `GUIA_PROXIMOS_PASSOS_E_ASSETS.md` (próximas etapas e prompts de arte) |
+| `colaboracao/` | Canal entre o desenvolvimento (Claude) e a arte (ChatGPT): protocolo, quadro de status, pedidos, entregas e revisões |
 | `HANDOFF.md` | Contexto técnico completo para quem for continuar o projeto |
 | `ROTEIRO.md` | Roteiro de melhorias: o que já foi feito e o que falta |
 | `LEIA-ME.md` | Manual do jogador e novidades de cada versão |
