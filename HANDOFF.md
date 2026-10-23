@@ -158,6 +158,7 @@ godot --headless --path . --export-release "Linux" build_linux/WarpFracture.x86_
 - `tools/extract.py` recorta as imagens. `tools/build_sheets.py` gera os `*_frames.tres` (SpriteFrames) e o `scripts/sprite_meta.gd`.
 - No jogo, use `AnimatedSprite2D` com animações nomeadas (idle, walk, attack, hurt, death...), trocadas por código.
 - **Pranchas originais:** estão na pasta `arte_original/` do pacote de handoff. Veja `arte_original/USADAS_NO_JOGO.md` para saber qual arquivo virou cada animação. As referências oficiais de design ficam em `00_Referencias_oficiais`.
+- **Arte nova:** siga `docs/GUIA_PROXIMOS_PASSOS_E_ASSETS.md`, que define os pacotes A–G com prompts e especificações. Os chefes grandes (Rainha e Leviatã) usam uma grade de 2×1, com células de 768×1024. Para eles, o `extract.py` precisa aceitar `CW, CH` por arquivo.
 - **Pendente:** o Lince-Vagalume precisa de spritesheets. Escreva um prompt nos mesmos moldes: idle, run, jump, fall, wall, garras, pogo, clarão, hurt e death.
 
 ## 7. Decisões de design já tomadas
