@@ -5,7 +5,7 @@ Atualizado pelos dois agentes. Leia `PROTOCOLO.md` antes de começar.
 | ID | O que é | Estado | Pedido | Entrega | Revisão |
 |---|---|---|---|---|---|
 | 00_padrao_visual | Diretriz oficial de arte DA-01 | APROVADO (diretriz) | — | [DA-01](entregas/00_padrao_visual/PADRAO_VISUAL_OFICIAL.md) | — |
-| A0_ficha_eco | Ficha de personagem do Eco (referência para A1–A5). Pedido reescrito conforme a DA-01 (revisão 2) | APROVADO PELO USUÁRIO — PNG PENDENTE DE UPLOAD | [pedido](pedidos/A0_ficha_eco.md) | — | — |
+| A0_ficha_eco | Ficha de personagem do Eco (referência para A1–A5). Pedido reescrito conforme a DA-01 (revisão 2) | ENTREGUE | [pedido](pedidos/A0_ficha_eco.md) | — | — |
 | A1_eco_appear | Materialização do Eco, 8 quadros | ABERTO (começar após o upload do PNG da A0) | [pedido](pedidos/A1_eco_appear.md) | — | — |
 | A2_eco_float | Eco pairando (loop), 6 quadros | ABERTO (começar após o upload do PNG da A0) | [pedido](pedidos/A2_eco_float.md) | — | — |
 | A3_eco_avanco | Avanço flutuante agressivo (loop), 6 quadros. Substitui a A3_eco_run, que foi cancelada | ABERTO (começar após o upload do PNG da A0) | [pedido](pedidos/A3_eco_avanco.md) | — | — |
