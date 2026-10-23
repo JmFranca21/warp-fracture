@@ -8,7 +8,7 @@ Atualizado pelos dois agentes. Leia `PROTOCOLO.md` antes de começar.
 | A0_ficha_eco | Ficha de personagem do Eco (referência para A1–A5 e A9) | APROVADO (referência oficial) | [pedido](pedidos/A0_ficha_eco.md) | [entrega](entregas/A0_ficha_eco/) | [revisão](revisoes/A0_ficha_eco.md) |
 | A1_eco_appear | Materialização do Eco, 8 quadros | ABERTO | [pedido](pedidos/A1_eco_appear.md) | — | — |
 | A2_eco_float | Eco pairando (loop), 6 quadros | INTEGRADO (asset importado; entra no gameplay com a Fuga do Eco) | [pedido](pedidos/A2_eco_float.md) | [entrega](entregas/A2_eco_float/) | [revisão](revisoes/A2_eco_float.md) |
-| A3_eco_avanco | Avanço flutuante agressivo (loop), 6 quadros. Substitui a A3_eco_run, que foi cancelada | ABERTO | [pedido](pedidos/A3_eco_avanco.md) | — | — |
+| A3_eco_avanco | Avanço flutuante agressivo (loop), 6 quadros. Substitui a A3_eco_run, que foi cancelada | ENTREGUE | [pedido](pedidos/A3_eco_avanco.md) | — | — |
 | A4_eco_grab | Agarrão no ar, 6 quadros (reescrito conforme a D01) | ABERTO | [pedido](pedidos/A4_eco_grab.md) | — | — |
 | A5_eco_vanish | Eco se desfazendo, 6 quadros | ABERTO | [pedido](pedidos/A5_eco_vanish.md) | — | — |
 | A9_fx_dobra_eco | Fenda da Dobra espectral (o Eco reaparece por ela), 8 quadros | ABERTO | [pedido](pedidos/A9_fx_dobra_eco.md) | — | — |
