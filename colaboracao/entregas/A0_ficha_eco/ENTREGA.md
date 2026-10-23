@@ -3,7 +3,9 @@
 **Decisão do responsável:** APROVADO EM 23/10/2026 (ficha visual exibida no ChatGPT imediatamente antes da confirmação "Sim").  
 **Status de publicação:** PNG PENDENTE DE UPLOAD. **NÃO INTEGRAR AINDA.**  
 **Versão de trabalho:** A0_ficha_eco.png  
-**Formato verificado:** PNG, 1536 × 1024 px.  
+**Formato verificado:** PNG, 1536 × 1024 px.
+**SHA-256 do PNG aprovado (arquivo local, ainda não publicado):** `c3129c4b3d2d82a90a92ddd82ed0a9e4e0eca7c2dbf69ae106519e0ee9dca229`.
+**Nome original do PNG aprovado nesta conversa:** `ficha_de_conceito_do_eco.png`.  
 **Referência artística:** `colaboracao/entregas/00_padrao_visual/PADRAO_VISUAL_OFICIAL.md`.
 
 ## Identidade visual aprovada
