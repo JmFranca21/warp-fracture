@@ -12,7 +12,7 @@ Toca uma vez, quando o Eco surge na frente da porta de saída do laboratório e 
 
 - **Diretriz obrigatória:** `colaboracao/entregas/00_padrao_visual/PADRAO_VISUAL_OFICIAL.md` (DA-01).
 - **Referência principal:** a ficha **A0 aprovada** (`colaboracao/entregas/A0_ficha_eco/A0_ficha_eco.png`). Copie dela o design, a paleta, a aura, os fragmentos, os olhos e a rachadura ciano, **exatamente como na ficha**.
-- **Referência de proporção e de animação:** as spritesheets do Daymon usadas no jogo (veja `arte_original/USADAS_NO_JOGO.md`), por exemplo `arte_original/01_Daymon_sem_braco/run_v2_verde.png`. O Eco tem **a mesma altura e a mesma escala do Daymon nessas sheets**: cerca de 400 px de altura dentro da célula, da cabeça aos pés.
+- **Referência de proporção e de animação:** as spritesheets do Daymon usadas no jogo (veja `arte_original/USADAS_NO_JOGO.md`), por exemplo `arte_original/01_Daymon_sem_braco/run_v2_verde.png`. **Escala de desenho fixa do Eco:** use a **mesma escala da A2 entregue e integrada** (`colaboracao/entregas/A2_eco_float/A2_eco_float.png`). Na pose de pairar, a figura mede **380 px** do topo do cabelo à ponta dos pés. Todas as animações do Eco devem manter esse tamanho de cabeça e de corpo, para encaixar com a mesma escala de importação (a altura final no jogo é ajustada pelo `tools/import_cells.py`).
 - Mesmo traço cartunizado, contornos limpos e sombreamento econômico em **todos os quadros**.
 - **Efeitos contidos:** no máximo 3 a 5 fragmentos soltos por quadro, e a aura não pode cobrir a silhueta. Nenhum quadro pode virar só uma mancha de partículas, exceto onde o pedido disser.
 - Proibido: realismo, chamas, brilho em todos os contornos, anatomia alongada e mudança de estilo entre os quadros.

@@ -159,6 +159,7 @@ godot --headless --path . --export-release "Linux" build_linux/WarpFracture.x86_
 - O usuário gera as pranchas e spritesheets no ChatGPT com `PROMPT_SPRITESHEETS.md`. As regras são: grade 4×2 de células 384×512 px, fundo transparente ou verde #00FF00, pés a 40 px da borda de baixo, olhando para a direita.
 - `tools/extract.py` recorta as imagens. `tools/build_sheets.py` gera os `*_frames.tres` (SpriteFrames) e o `scripts/sprite_meta.gd`.
 - No jogo, use `AnimatedSprite2D` com animações nomeadas (idle, walk, attack, hurt, death...), trocadas por código.
+- **Entregas do diretor de arte:** em grade 4×2 com fundo transparente. Importe com `python tools/import_cells.py .`: os conjuntos ficam em `CELL_SETS`, e o script gera `scripts/sprite_meta_cells.gd`. A escala é calibrada para a altura do Daymon idle no jogo.
 - **Pranchas originais:** estão na pasta `arte_original/` do pacote de handoff. Veja `arte_original/USADAS_NO_JOGO.md` para saber qual arquivo virou cada animação. As referências oficiais de design ficam em `00_Referencias_oficiais`.
 - **Arte nova:** siga `docs/GUIA_PROXIMOS_PASSOS_E_ASSETS.md`, que define os pacotes A–G com prompts e especificações. Os chefes grandes (Rainha e Leviatã) usam uma grade de 2×1, com células de 768×1024. Para eles, o `extract.py` precisa aceitar `CW, CH` por arquivo.
 - **Pendente:** o Lince-Vagalume precisa de spritesheets. Escreva um prompt nos mesmos moldes: idle, run, jump, fall, wall, garras, pogo, clarão, hurt e death.

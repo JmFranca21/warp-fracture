@@ -37,3 +37,13 @@ Para gerar sprites novas, use `projeto_godot/PROMPT_SPRITESHEETS.md`. Depois:
 4. Rode `godot --headless --import`.
 
 O LEIA-ME.txt desta pasta lista os defeitos conhecidos das pranchas.
+
+## Entregas do diretor de arte (pelo canal `colaboracao/`)
+
+Importadas com `tools/import_cells.py` (grade 4×2 transparente, âncora fixa por célula). Os PNGs das entregas não são alterados.
+
+| Animação no jogo | Arquivo de origem | Quadros | fps | Gerado em |
+|---|---|---|---|---|
+| eco/float | colaboracao/entregas/A2_eco_float/A2_eco_float.png | 6 | 8 (loop) | assets/inimigos/eco/eco_frames.tres |
+
+Referências aprovadas: `arte_original/referencias_aprovadas/A0_ficha_eco.png` (ficha do Eco).
