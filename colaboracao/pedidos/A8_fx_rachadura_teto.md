@@ -1,6 +1,7 @@
 # Pedido A8: Rachadura se abrindo no teto
 
 **Etapa do jogo:** 7, Fuga do Eco. Aparece no teto um instante antes de cada pedaço de entulho cair, como aviso visual para o jogador.
+**Diretriz obrigatória:** `colaboracao/entregas/00_padrao_visual/PADRAO_VISUAL_OFICIAL.md` (DA-01). O estilo é 2D cartunizado e simplificado, com sombreamento econômico, no mesmo traço da Prancha de Elementos do Laboratório.
 
 ## Referência
 
@@ -18,7 +19,9 @@
 1. Fissura fina e escura, com uma faísca ciano.
 2. A fissura se ramifica, e uma luz roxa (#7A3CFF) começa a vazar.
 3. A abertura cresce, com poeira fina caindo e faíscas.
-4. Abertura máxima, com brilho roxo intenso e lascas soltando. Este é o momento em que o entulho cai.
+4. Abertura máxima, com brilho roxo contido (sem estourar a imagem) e 2 ou 3 lascas soltando. Este é o momento em que o entulho cai.
+
+Traço limpo e poucas ramificações, igual às rachaduras roxas da prancha de cenário. A rachadura precisa ser lida claramente como aviso em escala de jogo.
 
 ## Entrega
 

@@ -11,6 +11,8 @@ Situação em 21/10/2026, versão **v0.5**. Este arquivo tem o contexto que um n
 - **Documento de design:** `Caderno_de_10_paginas_Warp_Fracture_v2.docx`, já atualizado para refletir o jogo real. É a fonte de verdade do design. Se o jogo mudar, o caderno precisa ser atualizado também, **sem passar de 10 páginas**.
 - **Motor:** Godot **4.3** (stable), GDScript, renderizador **GL Compatibility** (OpenGL 3.3). Exporta para **Windows e Linux**.
 
+> **Arte:** a diretriz oficial é a **DA-01** (`colaboracao/entregas/00_padrao_visual/PADRAO_VISUAL_OFICIAL.md`): 2D cartunizado, simplificado e minimalista, no mesmo traço das referências oficiais. A arte é feita pelo ChatGPT (diretor de arte) pelo canal `colaboracao/` (veja `colaboracao/PROTOCOLO.md`). O desenvolvimento não altera estilo nem gera arte final; só integra assets aprovados.
+
 ## 2. Preferências do usuário (obrigatórias)
 
 1. **Sempre verificar bugs e o posicionamento dos elementos**, inclusive os do cenário de fundo. Nada pode parecer flutuando sem contexto: correntes, suportes, apoio no chão ou no teto. Valide com capturas de tela.

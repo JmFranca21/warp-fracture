@@ -1,6 +1,7 @@
 # Pedido A7: Efeito de poeira de impacto
 
 **Etapa do jogo:** 7, Fuga do Eco. Toca quando o entulho bate no chão.
+**Diretriz obrigatória:** `colaboracao/entregas/00_padrao_visual/PADRAO_VISUAL_OFICIAL.md` (DA-01). O estilo é 2D cartunizado e simplificado, com sombreamento econômico, no mesmo traço da Prancha de Elementos do Laboratório.
 
 ## Formato (animação)
 
@@ -15,6 +16,8 @@
 2. e 3. A nuvem cresce para os lados e para cima, com algumas lascas metálicas pequenas.
 4. e 5. A nuvem se abre e fica mais transparente.
 6. Restos finos quase sumindo.
+
+**Forma:** nuvem em formas arredondadas e definidas, no estilo cartunizado (em vez de fumaça realista), com 2 ou 3 tons.
 
 **Cor:** cinza-azulada (#6E7A8C a #A9B4C2), com 2 ou 3 faíscas ciano pequenas no quadro 1.
 

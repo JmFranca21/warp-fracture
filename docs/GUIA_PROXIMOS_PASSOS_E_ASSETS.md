@@ -56,9 +56,9 @@ São as mesmas regras que já funcionaram no Daymon, no Drone e no Rastejador. S
 
 ### 2.3 Estilo (vale para tudo)
 
-- 2D ilustrado, traço limpo, sombreamento suave e atmosfera escura, inspirada em Hollow Knight. **Sem pixel art e sem 3D.**
+> **A diretriz oficial é a DA-01** (`colaboracao/entregas/00_padrao_visual/PADRAO_VISUAL_OFICIAL.md`). Ela prevalece sobre este guia. Resumo: 2D **cartunizado, simplificado e minimalista**, com o mesmo traço das referências oficiais do projeto (ficha do Daymon e prancha do laboratório), cabeça grande, anatomia compacta, contornos limpos, sombreamento econômico (cel) e efeitos contidos. Hollow Knight é só uma influência de atmosfera. **Sem realismo, sem pixel art e sem 3D.**
 - A **faixa ciano do Traje Âncora** aparece em todas as formas de Daymon. É assim que o jogador o reconhece.
-- O Eco usa as cores **roxo #7A3CFF e ciano #39E6FF**, em energia instável.
+- O Eco segue a DA-01: mesma construção do Daymon em roxo muito escuro, uma rachadura ciano (#39E6FF) no lugar da faixa do traje e uma aura negra contida. O pedido vigente é `colaboracao/pedidos/A0_ficha_eco.md`.
 - Paletas por universo:
   - Laboratório: azul-aço escuro, ciano e vermelho de alarme.
   - Verdâmia: verde-azulado escuro, fungos que brilham em verde-limão e âmbar.
@@ -87,7 +87,7 @@ Se uma imagem falhar em algum item, peça ao ChatGPT para **refazer só ela**, c
 
 ## 3. Prompt-base (cole no início de toda conversa com o ChatGPT)
 
-> Você vai criar arte para o jogo 2D **WARP FRACTURE**, um metroidvania em visão lateral que já está rodando na Godot. Estilo: 2D ilustrado, traço limpo, sombreamento suave, atmosfera escura inspirada em Hollow Knight, SEM pixel art e SEM 3D. Anexei as pranchas de referência oficiais. Mantenha exatamente o mesmo design, as proporções e a paleta.
+> Você vai criar arte para o jogo 2D **WARP FRACTURE**, um metroidvania em visão lateral que já está rodando na Godot. Estilo: siga a diretriz oficial DA-01 (`colaboracao/entregas/00_padrao_visual/PADRAO_VISUAL_OFICIAL.md`): 2D cartunizado, simplificado e minimalista, com o mesmo traço das referências oficiais do projeto, SEM realismo, SEM pixel art e SEM 3D. Anexei as pranchas de referência oficiais. Mantenha exatamente o mesmo design, as proporções e a paleta.
 >
 > **Regras para animações:** uma animação por imagem, de 1536 × 1024 px; grade invisível de 4 colunas × 2 linhas (células de 384 × 512 px) em ordem de leitura; fundo TRANSPARENTE (ou verde chapado #00FF00 sem gradiente); vista lateral olhando para a DIREITA; mesma escala em todos os quadros; pés na mesma linha, a 40 px da borda de baixo da célula (criaturas voadoras ou nadadoras ficam centralizadas); nada além do personagem (sem texto, grade, chão ou sombra); nada sai da célula; só a pose muda entre os quadros; loops emendam o último quadro no primeiro.
 >
@@ -105,7 +105,7 @@ Anexe sempre a ficha de referência do personagem e a prancha do ambiente: as qu
 
 **Referências a anexar:** Ficha de Personagem Daymon Sagan e Prancha de Elementos do Laboratório Hélix.
 
-**A0. Ficha do Eco** (faça primeiro: uma imagem 1536 × 1024 em estilo de ficha de personagem, *com* texto permitido)
+**A0. Ficha do Eco**: o texto abaixo foi **substituído** pelo pedido `colaboracao/pedidos/A0_ficha_eco.md` (revisão 2, conforme a DA-01). Use o pedido, não este trecho. (faça primeiro: uma imagem 1536 × 1024 em estilo de ficha de personagem, *com* texto permitido)
 > Crie a ficha de personagem do **ECO**, o vilão: uma entidade de energia que tem a silhueta exata do Daymon Sagan da ficha anexada, mas sem rosto definido. O corpo é feito de energia roxa (#7A3CFF) com contornos e veias ciano (#39E6FF) e fragmentos de estática que se soltam das bordas. O jaleco aparece como chamas de energia esvoaçando. Os olhos são dois pontos de luz branca. Mostre vista lateral (olhando para a direita), vista frontal e 3 detalhes (mão, fragmentos e olhos).
 
 Depois, as animações (com a ficha do Eco anexada):

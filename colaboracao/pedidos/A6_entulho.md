@@ -1,6 +1,7 @@
 # Pedido A6: Entulho do teto (3 variações)
 
 **Etapa do jogo:** 7, Fuga do Eco. Durante a fuga, pedaços do teto caem com um aviso no chão.
+**Diretriz obrigatória:** `colaboracao/entregas/00_padrao_visual/PADRAO_VISUAL_OFICIAL.md` (DA-01). O estilo é 2D cartunizado e simplificado, com sombreamento econômico, no mesmo traço da Prancha de Elementos do Laboratório.
 
 ## Referência
 
@@ -20,6 +21,7 @@ Três pedaços diferentes de teto metálico do laboratório arrancados pela expl
 - O objeto fica centralizado e ocupa cerca de 60–70% da imagem.
 - **Sem ponto de apoio**, porque o objeto está caindo. Levemente inclinado, sem sombra projetada, sem chão e sem texto.
 - Iluminação igual à da prancha: luz fria vinda de cima e da esquerda.
+- Geometria simples, com volume definido por poucas faces e sombras, como os objetos da prancha. Sem textura realista de ferrugem ou arranhões.
 
 ## Entrega
 

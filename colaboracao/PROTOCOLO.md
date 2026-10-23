@@ -44,10 +44,13 @@ O `<ID>` segue o guia de assets (`docs/GUIA_PROXIMOS_PASSOS_E_ASSETS.md`), por e
 - **Nunca altere** arquivos fora de `colaboracao/entregas/` e da coluna de estado do `STATUS.md`. Código, assets do jogo e documentos são do Claude.
 - Não apague nem sobrescreva entregas anteriores. Versões novas recebem o sufixo `_v2`, `_v3` e assim por diante.
 - Siga as regras técnicas do pedido à risca, porque o recorte é automático. Se não for possível cumprir alguma, escreva isso no `ENTREGA.md` em vez de improvisar.
+- **Diretriz de estilo obrigatória:** `colaboracao/entregas/00_padrao_visual/PADRAO_VISUAL_OFICIAL.md` (DA-01). Ela prevalece sobre qualquer descrição de estilo em pedidos ou guias.
 - As referências oficiais estão em `arte_original/00_Referencias_oficiais/`. Fichas aprovadas viram referência também e são copiadas para `arte_original/referencias_aprovadas/`.
+- Só suba um asset depois da **aprovação explícita do João Marcelo** (passo 6 da DA-01).
 
 ## Regras para o Claude
 
+- Todo pedido deve seguir a DA-01 e citá-la.
 - Todo pedido precisa ser autossuficiente. Ele traz o tamanho, a grade, o fundo, os quadros, o apoio, as referências e o nome dos arquivos.
 - Revisões devem ser objetivas e verificáveis, por exemplo "quadro 5: pé 18 px acima da linha" em vez de "está estranho".
 - Ao integrar um asset, atualize `arte_original/USADAS_NO_JOGO.md` e marque `INTEGRADO`.
