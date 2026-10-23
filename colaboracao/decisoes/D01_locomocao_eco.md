@@ -1,8 +1,11 @@
 # D01: Locomoção do Eco na Fuga (corrida no chão × avanço flutuante)
 
-**Estado:** AGUARDANDO DECISÃO DO RESPONSÁVEL (João Marcelo)
-**Afeta:** A3_eco_run (suspenso), A4_eco_grab (suspenso). A2 continua como idle. A1 e A5 não mudam.
-**Código:** nada é implementado até a decisão.
+**Estado:** **DECIDIDO em 23/10/2026 pelo responsável (João Marcelo): opção B, avanço flutuante.**
+**Resultado nos pedidos:**
+- A3_eco_run foi cancelado e substituído pelo [A3_eco_avanco](../pedidos/A3_eco_avanco.md).
+- O [A4_eco_grab](../pedidos/A4_eco_grab.md) foi reescrito para acontecer no ar.
+- Foi criado o [A9_fx_dobra_eco](../pedidos/A9_fx_dobra_eco.md).
+- A A2 continua como idle. A1 e A5 não mudam.
 
 ## A dúvida
 
@@ -63,3 +66,27 @@ Quando a decisão sair, o Claude:
 - só então implementa a locomoção final.
 
 Enquanto isso, a Fuga do Eco pode ser programada com um Eco provisório desenhado por código, **sem fixar a locomoção**. A rota, o desabamento, o checkpoint e o portal não dependem dessa escolha.
+
+
+---
+
+## Decisão final (23/10/2026)
+
+**Opção B: avanço flutuante.**
+
+**Atravessar o cenário ou contornar?** O responsável observou que um Eco atravessando paredes "a seco" pareceria artificial e estranho, e que só funcionaria com animações e efeitos coerentes. A solução adotada combina as duas coisas:
+
+1. **Por padrão, o Eco contorna o cenário.** Ele segue o **rastro do jogador**, as posições gravadas por onde o Daymon passou, cerca de 0,6 s atrás. Como esse rastro só passa por espaço aberto, o Eco contorna as paredes naturalmente, sem IA de caminho e sem atravessar nada sólido. As plataformas de passagem por baixo continuam atravessáveis, como já são para o jogador.
+2. **Ele nunca atravessa uma parede de forma seca.** Quando o jogador abre muita distância com o elevador ou os ganchos do Arpão, e o rastro fica longo demais, o Eco usa uma **Dobra espectral**, que é um evento visível e com aviso:
+   - se desfaz (quadros 1 a 4 da A5);
+   - uma fenda ciano se abre mais perto do jogador, no ar ou rente a uma parede (A9);
+   - ele reaparece por ela (quadros 1 a 4 da A1).
+3. **Regras de justiça da Dobra:**
+   - ela nunca aparece a menos de cerca de 250 px do jogador nem na frente dele em uma passagem estreita;
+   - tem um tempo mínimo entre uma e outra, de cerca de 4 s;
+   - a fenda fica visível por 0,4 s antes de o Eco sair, para o jogador poder reagir;
+   - dá um som próprio, gerado em `gen_audio.py`.
+
+Assim, o jogador sempre entende de onde o Eco veio: ele vem do rastro ou de uma fenda que acabou de ver abrir. Nunca surge do nada nem atravessa paredes sem explicação. A Dobra também reforça a identidade do Eco, que nasceu das fraturas e se move por elas.
+
+**Sequência de estados no jogo:** observar (A2) → avançar (A3) → agarrar (A4, se estiver perto) → avançar → Dobra (A5 parcial, depois A9, depois A1 parcial, se ficar longe demais) → avançar → se desfazer no portal (A5 completa).
