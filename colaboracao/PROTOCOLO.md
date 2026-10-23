@@ -19,6 +19,7 @@ colaboracao/
   pedidos/<ID>.md         pedidos de arte escritos pelo Claude
   entregas/<ID>/          imagens + ENTREGA.md, colocados pelo ChatGPT
   revisoes/<ID>.md        resultado da verificação feita pelo Claude (aprovado / ajustes)
+  decisoes/Dxx_*.md       questões de design em aberto, com opções e recomendação; só o responsável decide
 ```
 
 O `<ID>` segue o guia de assets (`docs/GUIA_PROXIMOS_PASSOS_E_ASSETS.md`), por exemplo `A0_ficha_eco` ou `A1_eco_appear`.
@@ -37,7 +38,7 @@ O `<ID>` segue o guia de assets (`docs/GUIA_PROXIMOS_PASSOS_E_ASSETS.md`), por e
    - se precisar de correção, marca `AJUSTE`, lista exatamente o que refazer (quadro, problema e como corrigir) e devolve o pedido ao estado `ABERTO`.
 5. Repetir até tudo estar aprovado.
 
-**Estados possíveis:** `ABERTO` → `ENTREGUE` → `APROVADO` (ou `AJUSTE`, que volta para `ABERTO`). Há também `INTEGRADO`, quando a arte já está rodando no jogo.
+**Estados possíveis:** `SUSPENSO` (aguardando uma decisão em `decisoes/`; não comece), `ABERTO` → `ENTREGUE` → `APROVADO` (ou `AJUSTE`, que volta para `ABERTO`). Há também `INTEGRADO`, quando a arte já está rodando no jogo.
 
 ## Regras para o ChatGPT
 

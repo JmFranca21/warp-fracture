@@ -1,5 +1,8 @@
 # Pedido A3_eco_run: Eco correndo (loop)
 
+> **SUSPENSO, aguardando a decisão [D01](../decisoes/D01_locomocao_eco.md).** A locomoção do Eco (correr no chão × avançar flutuando) está em discussão. **Não comece este pedido.** Ele será reescrito ou reaberto depois da decisão.
+
+
 **Etapa do jogo:** 7, Fuga do Eco
 **Formato:** spritesheet com **8 quadros**
 **Depende de:** A0_ficha_eco (direção artística aprovada; PNG precisa estar publicado)

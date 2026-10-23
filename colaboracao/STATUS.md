@@ -8,8 +8,8 @@ Atualizado pelos dois agentes. Leia `PROTOCOLO.md` antes de começar.
 | A0_ficha_eco | Ficha de personagem do Eco (referência para A1–A5). Pedido reescrito conforme a DA-01 (revisão 2) | APROVADO PELO USUÁRIO — PNG PENDENTE DE UPLOAD | [pedido](pedidos/A0_ficha_eco.md) | — | — |
 | A1_eco_appear | Materialização do Eco, 8 quadros | ABERTO (começar após o upload do PNG da A0) | [pedido](pedidos/A1_eco_appear.md) | — | — |
 | A2_eco_float | Eco pairando (loop), 6 quadros | ABERTO (começar após o upload do PNG da A0) | [pedido](pedidos/A2_eco_float.md) | — | — |
-| A3_eco_run | Eco correndo (loop), 8 quadros | ABERTO (começar após o upload do PNG da A0) | [pedido](pedidos/A3_eco_run.md) | — | — |
-| A4_eco_grab | Eco agarrando, 6 quadros | ABERTO (começar após o upload do PNG da A0) | [pedido](pedidos/A4_eco_grab.md) | — | — |
+| A3_eco_run | Locomoção do Eco na perseguição (corrida × avanço flutuante) | SUSPENSO, aguarda a [D01](decisoes/D01_locomocao_eco.md) | [pedido](pedidos/A3_eco_run.md) | — | — |
+| A4_eco_grab | Eco agarrando, 6 quadros (no chão ou no ar, depende da D01) | SUSPENSO, aguarda a [D01](decisoes/D01_locomocao_eco.md) | [pedido](pedidos/A4_eco_grab.md) | — | — |
 | A5_eco_vanish | Eco se desfazendo, 6 quadros | ABERTO (começar após o upload do PNG da A0) | [pedido](pedidos/A5_eco_vanish.md) | — | — |
 | A6_entulho | 3 pedaços de teto do laboratório que caem | ABERTO | [pedido](pedidos/A6_entulho.md) | — | — |
 | A7_fx_poeira | Nuvem de poeira de impacto, 6 quadros | ABERTO | [pedido](pedidos/A7_fx_poeira.md) | — | — |
@@ -19,7 +19,9 @@ Atualizado pelos dois agentes. Leia `PROTOCOLO.md` antes de começar.
 
 **Prioridade:**
 1. Publicar o PNG aprovado da A0. Isso desbloqueia A1–A5.
-2. A3 (run) e A2 (float), que são as mais usadas no jogo; depois A4, A1 e A5.
+2. A2 (float), depois A1 e A5. A3 e A4 só depois da decisão D01.
 3. A6, A7 e A8 não dependem da A0 e podem ser feitos em paralelo.
+
+**Decisões em aberto:** [D01: locomoção do Eco](decisoes/D01_locomocao_eco.md), aguardando o responsável.
 
 **Continuidade entre pedidos:** o quadro 8 da A1 é igual ao quadro 1 da A2, e o quadro 1 da A5 também é igual ao quadro 1 da A2.
