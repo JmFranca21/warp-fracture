@@ -20,3 +20,6 @@ Ordem escolhida: primeiro o que todo jogador sente (som, salvamento, orientaçã
 
 ## Fase 4 — Polimento contínuo
 - Inimigos mais táticos (grupo, reforço, turreta que gira), transições entre áreas e acessibilidade (remapear teclas).
+
+## Correção v0.5.1 — 10/11/2026
+- Corrigida a interação com o portal do laboratório: E abre a calibração, Esc cancela e concluir as ondas leva a Verdâmia. A Etapa 7 continua pendente.

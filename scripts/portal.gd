@@ -20,6 +20,11 @@ func _setup() -> void:
 	add_child(core)
 
 
+func interact() -> void:
+	if not active:
+		main.open_calibration(self)
+
+
 func activate() -> void:
 	active = true
 	prompt = ""

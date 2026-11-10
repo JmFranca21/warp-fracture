@@ -206,3 +206,15 @@ godot --headless --path . --export-release "Linux" build_linux/WarpFracture.x86_
 - A mira 360° no analógico direito foi implementada, mas **não foi testada com um controle físico**.
 - Ao fechar o jogo, aparece o aviso "2 resources still in use at exit". É inofensivo.
 - O usuário relatou que algo não roda no PC dele ("meu pc nao rod..."). A mensagem chegou cortada e o sistema dele não foi confirmado. Se ele voltar ao assunto, peça o sistema operacional e a mensagem de erro. Lembre que o jogo precisa de OpenGL 3.3 e de x86_64.
+
+## 10. Correção v0.5.1 — 10/11/2026
+
+`Portal` herdava o `interact()` vazio de `Interactable`: o aviso aparecia, mas E não iniciava a calibração. `scripts/portal.gd` agora chama `main.open_calibration(self)` quando ainda não está ativo. Sem mudança de design ou de save.
+
+Teste de regressão com Godot 4.3 (entradas reais de teclado, sem a flag que resolve a calibração automaticamente):
+
+```bash
+godot --headless --audio-driver Dummy --path . --script res://tools/test_portal.gd -- level=lab pos=4960,680 terminals god at=30
+```
+
+Verifica proximidade, E, pausa, Esc, reabertura, ajuste das três ondas e chegada a Verdâmia como Lince. Falhava antes da correção e passou depois.

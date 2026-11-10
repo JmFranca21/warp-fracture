@@ -1,4 +1,4 @@
-# Warp Fracture — Protótipo v0.5
+# Warp Fracture — Protótipo v0.5.1
 
 Primeiro protótipo jogável do *Warp Fracture*, feito em **Godot 4.3** a partir do Caderno de 10 páginas.
 
@@ -81,6 +81,10 @@ Para ajustar no editor: dê dois cliques em `rastejador_frames.tres`. O painel *
 
 **Para os próximos inimigos:** gere o GIF ou spritesheet com fundo transparente ou de cor sólida e diga quais quadros são de cada ação.
 
+
+## Correção da v0.5.1
+
+- Corrigida a interação com o portal do laboratório: **E** agora abre a Calibração de Portal. É possível cancelar com Esc, reabrir e completar as três ondas para chegar a Verdâmia.
 
 ## Novidades da v0.5
 
