@@ -28,3 +28,18 @@ Atualizado pelos dois agentes. Leia `PROTOCOLO.md` antes de começar.
 **Escala do Eco:** todas as animações do Eco usam a **mesma escala de desenho da A2** (figura de 380 px na pose de pairar). Veja a [revisão da A2](revisoes/A2_eco_float.md).
 
 **Continuidade entre pedidos:** o quadro 8 da A1 e o quadro 1 da A5 são iguais ao quadro 1 da A2. A A3 sai da pose da A2, e a A4 começa e termina na pose da A3.
+
+## Fase Deserto de Ferrugem (pedido [DF](pedidos/DF_deserto_ferrugem.md))
+
+| ID | O que é | Estado | Pedido | Entrega | Revisão |
+|---|---|---|---|---|---|
+| DF00 | Prancha de referência do Deserto (paleta, materiais, amostras) | ABERTO, **fazer primeiro** | [DF](pedidos/DF_deserto_ferrugem.md) | — | — |
+| DF01 | Ficha do Robô e do Drone do deserto | ABERTO, **fazer primeiro** | [DF](pedidos/DF_deserto_ferrugem.md) | — | — |
+| DF10–DF12 | Fundos em parallax das Dunas (céu, fábricas distantes, dunas) | ABERTO, após aprovação de DF00 | [DF](pedidos/DF_deserto_ferrugem.md) | — | — |
+| DF20–DF28 | Terreno e paredes repetíveis (chão, espinhos, paredes, piso, esteira, trilho, cabo) | ABERTO, após aprovação de DF00 | [DF](pedidos/DF_deserto_ferrugem.md) | — | — |
+| DF30–DF39 | Objetos de cenário (sucata, mastro, chaminé, portas, engrenagem, torre, lâmpadas, painéis) | ABERTO, após aprovação de DF00 | [DF](pedidos/DF_deserto_ferrugem.md) | — | — |
+| DF50–DF57 | Mecanismos e perigos em peças (prensas, serra, plataformas, válvula, ponto de gancho) | ABERTO, após aprovação de DF00 | [DF](pedidos/DF_deserto_ferrugem.md) | — | — |
+| DF60–DF71 | Animações do Robô e do Drone e projéteis | ABERTO, após aprovação de DF01 | [DF](pedidos/DF_deserto_ferrugem.md) | — | — |
+| DF80–DF86 | Efeitos (fumaça, vapor, faíscas, poeira, explosão, impacto, vento) | ABERTO, após aprovação de DF00 | [DF](pedidos/DF_deserto_ferrugem.md) | — | — |
+
+Ordem de produção do Deserto: DF00 e DF01, depois o bloco jogável (DF20, DF21, DF25, DF57, DF53, DF50, DF52, DF26, DF60–DF71), depois fundos e paredes, e por último o restante.
