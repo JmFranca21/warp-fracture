@@ -2,6 +2,7 @@
 from pathlib import Path
 import hashlib
 import json
+import re
 import numpy as np
 from PIL import Image
 
@@ -45,6 +46,18 @@ for task in tasks:
                 row['celulas'].append(cell)
         if im.size != (1536, 1024):
             row['avisos'].append('Dimensao da folha difere de 1536x1024.')
+        expected = 2 if cols == 2 else None
+        if cols == 4:
+            match = re.search(r'(\d+) (?:frames|distinct sequential frames)', task['prompt'])
+            if match:
+                expected = int(match.group(1))
+            if task['id'].startswith('E_mariposa_'):
+                expected = 6
+        row['quadros_previstos'] = expected
+        if expected:
+            for cell in row['celulas'][expected:]:
+                if cell['pixels_alpha_maior_64'] > 64:
+                    row['avisos'].append(f'Celula excedente {cell["quadro"]} contem pixels: verificar vazamento.')
         row['observacao'] = 'Bboxes medidos nao provam continuidade, anatomia, apoio ou quantidade correta de poses. Revisao visual e teste em Godot pendentes.'
     rows.append(row)
 (ROOT / 'MANIFESTO.json').write_text(json.dumps(rows, ensure_ascii=False, indent=2) + '\n')

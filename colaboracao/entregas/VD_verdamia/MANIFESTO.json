@@ -158,6 +158,7 @@
         "pixels_alpha_maior_64": 0
       }
     ],
+    "quadros_previstos": 6,
     "observacao": "Bboxes medidos nao provam continuidade, anatomia, apoio ou quantidade correta de poses. Revisao visual e teste em Godot pendentes."
   },
   {
@@ -273,6 +274,7 @@
         "base_visual_local": 359
       }
     ],
+    "quadros_previstos": 8,
     "observacao": "Bboxes medidos nao provam continuidade, anatomia, apoio ou quantidade correta de poses. Revisao visual e teste em Godot pendentes."
   },
   {
@@ -353,6 +355,7 @@
         "pixels_alpha_maior_64": 0
       }
     ],
+    "quadros_previstos": 3,
     "observacao": "Bboxes medidos nao provam continuidade, anatomia, apoio ou quantidade correta de poses. Revisao visual e teste em Godot pendentes."
   },
   {
@@ -433,6 +436,7 @@
         "pixels_alpha_maior_64": 0
       }
     ],
+    "quadros_previstos": 3,
     "observacao": "Bboxes medidos nao provam continuidade, anatomia, apoio ou quantidade correta de poses. Revisao visual e teste em Godot pendentes."
   },
   {
@@ -520,6 +524,7 @@
         "pixels_alpha_maior_64": 0
       }
     ],
+    "quadros_previstos": 4,
     "observacao": "Bboxes medidos nao provam continuidade, anatomia, apoio ou quantidade correta de poses. Revisao visual e teste em Godot pendentes."
   },
   {
@@ -544,7 +549,8 @@
       "Quadro 1: desenho toca borda; revisar recorte.",
       "Quadro 2: desenho toca borda; revisar recorte.",
       "Quadro 3: desenho toca borda; revisar recorte.",
-      "Quadro 4: desenho toca borda; revisar recorte."
+      "Quadro 4: desenho toca borda; revisar recorte.",
+      "Celula excedente 4 contem pixels: verificar vazamento."
     ],
     "grade": [
       4,
@@ -612,6 +618,7 @@
         "pixels_alpha_maior_64": 0
       }
     ],
+    "quadros_previstos": 3,
     "observacao": "Bboxes medidos nao provam continuidade, anatomia, apoio ou quantidade correta de poses. Revisao visual e teste em Godot pendentes."
   },
   {
@@ -702,6 +709,7 @@
         "pixels_alpha_maior_64": 0
       }
     ],
+    "quadros_previstos": 4,
     "observacao": "Bboxes medidos nao provam continuidade, anatomia, apoio ou quantidade correta de poses. Revisao visual e teste em Godot pendentes."
   },
   {
@@ -789,6 +797,7 @@
         "pixels_alpha_maior_64": 0
       }
     ],
+    "quadros_previstos": 4,
     "observacao": "Bboxes medidos nao provam continuidade, anatomia, apoio ou quantidade correta de poses. Revisao visual e teste em Godot pendentes."
   },
   {
@@ -893,6 +902,7 @@
         "pixels_alpha_maior_64": 0
       }
     ],
+    "quadros_previstos": 6,
     "observacao": "Bboxes medidos nao provam continuidade, anatomia, apoio ou quantidade correta de poses. Revisao visual e teste em Godot pendentes."
   },
   {
@@ -966,6 +976,7 @@
         "pixels_alpha_maior_64": 0
       }
     ],
+    "quadros_previstos": 2,
     "observacao": "Bboxes medidos nao provam continuidade, anatomia, apoio ou quantidade correta de poses. Revisao visual e teste em Godot pendentes."
   },
   {
@@ -1067,6 +1078,7 @@
         "pixels_alpha_maior_64": 0
       }
     ],
+    "quadros_previstos": 6,
     "observacao": "Bboxes medidos nao provam continuidade, anatomia, apoio ou quantidade correta de poses. Revisao visual e teste em Godot pendentes."
   },
   {
@@ -1168,27 +1180,402 @@
         "pixels_alpha_maior_64": 0
       }
     ],
+    "quadros_previstos": 6,
     "observacao": "Bboxes medidos nao provam continuidade, anatomia, apoio ou quantidade correta de poses. Revisao visual e teste em Godot pendentes."
   },
   {
     "id": "E_esporangio_attack",
     "arquivo": "E_esporangio_attack.png",
-    "gerado": false
+    "gerado": true,
+    "tamanho": [
+      1536,
+      1024
+    ],
+    "modo": "RGBA",
+    "bytes": 1053866,
+    "sha256": "2f425e9367f1f2017e2f7d867d0e99bf215fbee06cb9eeaa3a552dc57614303e",
+    "alpha_min_max": [
+      0,
+      254
+    ],
+    "fracao_transparente": 0.89137,
+    "exige_alpha": true,
+    "alpha_presente": true,
+    "avisos": [],
+    "grade": [
+      4,
+      2
+    ],
+    "celulas": [
+      {
+        "quadro": 1,
+        "pixels_alpha_maior_64": 31884,
+        "bbox_local": [
+          50,
+          138,
+          334,
+          420
+        ],
+        "base_visual_local": 420
+      },
+      {
+        "quadro": 2,
+        "pixels_alpha_maior_64": 39783,
+        "bbox_local": [
+          50,
+          117,
+          334,
+          421
+        ],
+        "base_visual_local": 421
+      },
+      {
+        "quadro": 3,
+        "pixels_alpha_maior_64": 31785,
+        "bbox_local": [
+          50,
+          145,
+          349,
+          421
+        ],
+        "base_visual_local": 421
+      },
+      {
+        "quadro": 4,
+        "pixels_alpha_maior_64": 31756,
+        "bbox_local": [
+          50,
+          138,
+          333,
+          421
+        ],
+        "base_visual_local": 421
+      },
+      {
+        "quadro": 5,
+        "pixels_alpha_maior_64": 0
+      },
+      {
+        "quadro": 6,
+        "pixels_alpha_maior_64": 0
+      },
+      {
+        "quadro": 7,
+        "pixels_alpha_maior_64": 0
+      },
+      {
+        "quadro": 8,
+        "pixels_alpha_maior_64": 0
+      }
+    ],
+    "quadros_previstos": 4,
+    "observacao": "Bboxes medidos nao provam continuidade, anatomia, apoio ou quantidade correta de poses. Revisao visual e teste em Godot pendentes."
   },
   {
     "id": "E_esporangio_death",
     "arquivo": "E_esporangio_death.png",
-    "gerado": false
+    "gerado": true,
+    "tamanho": [
+      1536,
+      1024
+    ],
+    "modo": "RGBA",
+    "bytes": 1409127,
+    "sha256": "83bebf65543ada448ff5e6ca7e647f6832a6381e427e72fface8699bb9d1167f",
+    "alpha_min_max": [
+      0,
+      254
+    ],
+    "fracao_transparente": 0.80178,
+    "exige_alpha": true,
+    "alpha_presente": true,
+    "avisos": [],
+    "grade": [
+      4,
+      2
+    ],
+    "celulas": [
+      {
+        "quadro": 1,
+        "pixels_alpha_maior_64": 38895,
+        "bbox_local": [
+          57,
+          102,
+          332,
+          449
+        ],
+        "base_visual_local": 449
+      },
+      {
+        "quadro": 2,
+        "pixels_alpha_maior_64": 37960,
+        "bbox_local": [
+          52,
+          127,
+          332,
+          449
+        ],
+        "base_visual_local": 449
+      },
+      {
+        "quadro": 3,
+        "pixels_alpha_maior_64": 36697,
+        "bbox_local": [
+          52,
+          166,
+          332,
+          449
+        ],
+        "base_visual_local": 449
+      },
+      {
+        "quadro": 4,
+        "pixels_alpha_maior_64": 31976,
+        "bbox_local": [
+          52,
+          218,
+          331,
+          449
+        ],
+        "base_visual_local": 449
+      },
+      {
+        "quadro": 5,
+        "pixels_alpha_maior_64": 28838,
+        "bbox_local": [
+          51,
+          274,
+          330,
+          449
+        ],
+        "base_visual_local": 449
+      },
+      {
+        "quadro": 6,
+        "pixels_alpha_maior_64": 21354,
+        "bbox_local": [
+          52,
+          330,
+          332,
+          450
+        ],
+        "base_visual_local": 450
+      },
+      {
+        "quadro": 7,
+        "pixels_alpha_maior_64": 0
+      },
+      {
+        "quadro": 8,
+        "pixels_alpha_maior_64": 0
+      }
+    ],
+    "quadros_previstos": 6,
+    "observacao": "Bboxes medidos nao provam continuidade, anatomia, apoio ou quantidade correta de poses. Revisao visual e teste em Godot pendentes."
   },
   {
     "id": "E_mariposa_fly",
     "arquivo": "E_mariposa_fly.png",
-    "gerado": false
+    "gerado": true,
+    "tamanho": [
+      1536,
+      1024
+    ],
+    "modo": "RGBA",
+    "bytes": 1377967,
+    "sha256": "9e3ca1f3c4c3b6b619c52343b6158f279da8b8192d730151b6eecfd30b203654",
+    "alpha_min_max": [
+      0,
+      254
+    ],
+    "fracao_transparente": 0.82519,
+    "exige_alpha": true,
+    "alpha_presente": true,
+    "avisos": [],
+    "grade": [
+      4,
+      2
+    ],
+    "celulas": [
+      {
+        "quadro": 1,
+        "pixels_alpha_maior_64": 37338,
+        "bbox_local": [
+          87,
+          90,
+          328,
+          359
+        ],
+        "base_visual_local": 359
+      },
+      {
+        "quadro": 2,
+        "pixels_alpha_maior_64": 35278,
+        "bbox_local": [
+          33,
+          130,
+          329,
+          357
+        ],
+        "base_visual_local": 357
+      },
+      {
+        "quadro": 3,
+        "pixels_alpha_maior_64": 32212,
+        "bbox_local": [
+          10,
+          147,
+          336,
+          380
+        ],
+        "base_visual_local": 380
+      },
+      {
+        "quadro": 4,
+        "pixels_alpha_maior_64": 31361,
+        "bbox_local": [
+          19,
+          144,
+          302,
+          364
+        ],
+        "base_visual_local": 364
+      },
+      {
+        "quadro": 5,
+        "pixels_alpha_maior_64": 34263,
+        "bbox_local": [
+          42,
+          134,
+          331,
+          357
+        ],
+        "base_visual_local": 357
+      },
+      {
+        "quadro": 6,
+        "pixels_alpha_maior_64": 37279,
+        "bbox_local": [
+          77,
+          94,
+          327,
+          356
+        ],
+        "base_visual_local": 356
+      },
+      {
+        "quadro": 7,
+        "pixels_alpha_maior_64": 0
+      },
+      {
+        "quadro": 8,
+        "pixels_alpha_maior_64": 0
+      }
+    ],
+    "quadros_previstos": 6,
+    "observacao": "Bboxes medidos nao provam continuidade, anatomia, apoio ou quantidade correta de poses. Revisao visual e teste em Godot pendentes."
   },
   {
     "id": "E_mariposa_death",
     "arquivo": "E_mariposa_death.png",
-    "gerado": false
+    "gerado": true,
+    "tamanho": [
+      1536,
+      1024
+    ],
+    "modo": "RGBA",
+    "bytes": 1364014,
+    "sha256": "a6869c2fbb1c12227332cf3a4cb63b5d3d027b1e8018ed4722e02cf7051f2cd4",
+    "alpha_min_max": [
+      0,
+      254
+    ],
+    "fracao_transparente": 0.73158,
+    "exige_alpha": true,
+    "alpha_presente": true,
+    "avisos": [],
+    "grade": [
+      4,
+      2
+    ],
+    "celulas": [
+      {
+        "quadro": 1,
+        "pixels_alpha_maior_64": 35667,
+        "bbox_local": [
+          29,
+          131,
+          356,
+          369
+        ],
+        "base_visual_local": 369
+      },
+      {
+        "quadro": 2,
+        "pixels_alpha_maior_64": 24237,
+        "bbox_local": [
+          50,
+          146,
+          300,
+          358
+        ],
+        "base_visual_local": 358
+      },
+      {
+        "quadro": 3,
+        "pixels_alpha_maior_64": 20627,
+        "bbox_local": [
+          72,
+          176,
+          306,
+          372
+        ],
+        "base_visual_local": 372
+      },
+      {
+        "quadro": 4,
+        "pixels_alpha_maior_64": 27921,
+        "bbox_local": [
+          51,
+          175,
+          317,
+          383
+        ],
+        "base_visual_local": 383
+      },
+      {
+        "quadro": 5,
+        "pixels_alpha_maior_64": 21642,
+        "bbox_local": [
+          78,
+          187,
+          294,
+          335
+        ],
+        "base_visual_local": 335
+      },
+      {
+        "quadro": 6,
+        "pixels_alpha_maior_64": 21584,
+        "bbox_local": [
+          79,
+          187,
+          295,
+          335
+        ],
+        "base_visual_local": 335
+      },
+      {
+        "quadro": 7,
+        "pixels_alpha_maior_64": 0
+      },
+      {
+        "quadro": 8,
+        "pixels_alpha_maior_64": 0
+      }
+    ],
+    "quadros_previstos": 6,
+    "observacao": "Bboxes medidos nao provam continuidade, anatomia, apoio ou quantidade correta de poses. Revisao visual e teste em Godot pendentes."
   },
   {
     "id": "E_rainha_idle_1",
