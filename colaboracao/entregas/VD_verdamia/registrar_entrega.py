@@ -2,6 +2,7 @@
 from pathlib import Path
 import json
 import runpy
+import html
 
 ROOT = Path(__file__).resolve().parent
 runpy.run_path(str(ROOT / 'verificar_assets.py'))
@@ -50,4 +51,15 @@ if warnings:
 else:
     text += 'Nenhum alerta automático nos arquivos presentes. Isso não substitui a inspeção visual ou os testes em jogo.\n'
 (ROOT / 'ENTREGA.md').write_text(text)
+cards = []
+for row in present:
+    label = html.escape(row['id'])
+    name = html.escape(row['arquivo'], quote=True)
+    note = ' · revisar enquadramento' if row['avisos'] else ''
+    cards.append(f'<article><a href="{name}" target="_blank"><img src="{name}" alt="{label}" loading="lazy"></a><h2>{label}</h2><p>{row["tamanho"][0]} × {row["tamanho"][1]}{note}</p></article>')
+gallery = '''<!doctype html><html lang="pt-BR"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Verdâmia — galeria de assets</title><style>
+*{box-sizing:border-box}body{margin:0;background:#0a1716;color:#e6eeda;font:16px system-ui,sans-serif}header{padding:40px 5vw 24px;border-bottom:1px solid #29443d}h1{font-size:clamp(28px,5vw,50px);margin:8px 0;color:#c5ed70}header p{max-width:800px;line-height:1.6;color:#b5c9c1}button{background:#1d5248;color:white;border:1px solid #5c8a79;border-radius:8px;padding:10px 16px;cursor:pointer}main{padding:30px 5vw;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:22px}article{border:1px solid #29443d;border-radius:12px;overflow:hidden;background:#10221f}img{width:100%;height:250px;object-fit:contain;display:block;background:var(--preview,#142622)}h2{font-size:15px;margin:16px 16px 4px;overflow-wrap:anywhere}article p{font-size:13px;color:#adc4ba;margin:0 16px 18px}a{color:#39e6ff}.light{--preview:#eee}footer{padding:24px 5vw;color:#adc4ba}
+</style><header><p>WARP FRACTURE · DIREÇÃO DE ARTE</p><h1>Verdâmia</h1><p>Galeria dos PNGs originais selecionados. Clique numa imagem para abrir em tamanho completo. As versões anteriores estão preservadas na pasta. As artes ainda precisam de integração e revisão no jogo.</p><button onclick="document.body.classList.toggle('light')">Alternar fundo claro / escuro</button></header><main>'''
+gallery += '\n'.join(cards) + '</main><footer>Referências, animações, cenário e efeitos · Consulte ENTREGA.md e MANIFESTO.json para especificações e alertas.</footer></html>'
+(ROOT / 'GALERIA.html').write_text(gallery)
 print('ENTREGA.md atualizado')

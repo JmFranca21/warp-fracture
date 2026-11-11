@@ -105,6 +105,11 @@
     "sha256": "9e3ca1f3c4c3b6b619c52343b6158f279da8b8192d730151b6eecfd30b203654"
   },
   {
+    "arquivo": "E_rainha_death_1.png",
+    "bytes": 1482894,
+    "sha256": "9e585f56f7a5a1c34964faa0a2c3da033388648c9e73e26eff1c0c16cd235dda"
+  },
+  {
     "arquivo": "E_rainha_esporos_1.png",
     "bytes": 1499784,
     "sha256": "15c43cdaf69b113637930154f1b513beed0adf2d8d2f83e4b99151ab9649201d"
@@ -113,6 +118,11 @@
     "arquivo": "E_rainha_esporos_2.png",
     "bytes": 1511556,
     "sha256": "2ccef22abda9327a6a54749a625e7c98a4fe64d483e84b682ea96bb97fabf3a1"
+  },
+  {
+    "arquivo": "E_rainha_esporos_3.png",
+    "bytes": 1501639,
+    "sha256": "b81b67449f2d86692b2ade6dc139e3e92169e2f8cebaa0c5759c3e31217e8a72"
   },
   {
     "arquivo": "E_rainha_idle_1.png",
@@ -148,6 +158,11 @@
     "arquivo": "E_rainha_rugido_1.png",
     "bytes": 1495744,
     "sha256": "7f4b577fdb2ea365512a0e013683ccb5a0cb8cbcba597bf1131675538e1a7ff9"
+  },
+  {
+    "arquivo": "E_rainha_rugido_2.png",
+    "bytes": 1574490,
+    "sha256": "f701ead0274f146b21e22ec03b327f83f4673e24ba598dc3b74a28005f8c2566"
   },
   {
     "arquivo": "VD00_ambiente.png",
