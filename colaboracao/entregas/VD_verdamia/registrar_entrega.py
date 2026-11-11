@@ -30,6 +30,8 @@ As três pranchas de referência têm fundo escuro de propósito. Sprites, objet
 
 As dimensões solicitadas não garantem alinhamento exato dos desenhos dentro da grade. Conferir os bboxes e avisos antes de usar o importador automático. É necessário calibrar origem, escala, duração, hitboxes e apoios no motor. Não marcar INTEGRADO nem substituir assets existentes antes dessa revisão. Folhas com vazamento ou células extras precisam de correção ou atlas com recorte específico por quadro; não usar cegamente a grade padrão.
 
+Alguns objetos foram gerados em canvas nativo maior ou mais largo que o 1024×1024 solicitado. As dimensões reais e os bboxes estão no manifesto; preservar estes originais e preparar a escala e a origem a partir dessas medidas. Esses arquivos não devem ser tratados como exports de tamanho padronizado já prontos para um importador que assuma 1024×1024.
+
 A Rainha usa 16 folhas 2×1; raízes, esporos e invocação são peças separadas. A animação de esporos atende chuva e rajada; rugido atende invocação e enfurecimento. Itens de cura, energia, células e tablets mantêm os assets existentes do jogo.
 
 ## Inventário deste commit

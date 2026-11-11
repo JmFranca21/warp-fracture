@@ -17,7 +17,17 @@
     "fracao_transparente": 0.0,
     "exige_alpha": false,
     "alpha_presente": false,
-    "avisos": []
+    "avisos": [],
+    "canvas_solicitado": [
+      1536,
+      1024
+    ],
+    "bbox_visual": [
+      0,
+      0,
+      1536,
+      1024
+    ]
   },
   {
     "id": "E0_inimigos",
@@ -37,7 +47,17 @@
     "fracao_transparente": 0.0,
     "exige_alpha": false,
     "alpha_presente": false,
-    "avisos": []
+    "avisos": [],
+    "canvas_solicitado": [
+      1536,
+      1024
+    ],
+    "bbox_visual": [
+      0,
+      0,
+      1536,
+      1024
+    ]
   },
   {
     "id": "VD00_ambiente",
@@ -57,7 +77,17 @@
     "fracao_transparente": 0.0,
     "exige_alpha": false,
     "alpha_presente": false,
-    "avisos": []
+    "avisos": [],
+    "canvas_solicitado": [
+      1536,
+      1024
+    ],
+    "bbox_visual": [
+      0,
+      0,
+      1536,
+      1024
+    ]
   },
   {
     "id": "D_lince_idle",
@@ -2364,47 +2394,290 @@
   {
     "id": "E1_cogumelo_gigante",
     "arquivo": "E1_cogumelo_gigante.png",
-    "gerado": false
+    "gerado": true,
+    "tamanho": [
+      1254,
+      1254
+    ],
+    "modo": "RGBA",
+    "bytes": 681402,
+    "sha256": "54d5758ce900b75e3bc9bea2ebbeb92190fcdbdb253d9f4a75c007b72c11687a",
+    "alpha_min_max": [
+      0,
+      255
+    ],
+    "fracao_transparente": 0.68045,
+    "exige_alpha": true,
+    "alpha_presente": true,
+    "avisos": [
+      "Canvas nativo difere do solicitado; usar dimensoes reais e calibrar escala na importacao. Original preservado."
+    ],
+    "canvas_solicitado": [
+      1024,
+      1024
+    ],
+    "bbox_visual": [
+      93,
+      173,
+      1155,
+      1100
+    ]
   },
   {
     "id": "E1_grama",
     "arquivo": "E1_grama.png",
-    "gerado": false
+    "gerado": true,
+    "tamanho": [
+      1254,
+      1254
+    ],
+    "modo": "RGBA",
+    "bytes": 461649,
+    "sha256": "6f361362cfa5ee434b9933eb69745e53508527ab3e329f02cb31fcb341728f7c",
+    "alpha_min_max": [
+      0,
+      255
+    ],
+    "fracao_transparente": 0.78967,
+    "exige_alpha": true,
+    "alpha_presente": true,
+    "avisos": [
+      "Canvas nativo difere do solicitado; usar dimensoes reais e calibrar escala na importacao. Original preservado."
+    ],
+    "canvas_solicitado": [
+      1024,
+      1024
+    ],
+    "bbox_visual": [
+      143,
+      325,
+      1098,
+      920
+    ]
   },
   {
     "id": "E1_raiz_pendurada",
     "arquivo": "E1_raiz_pendurada.png",
-    "gerado": false
+    "gerado": true,
+    "tamanho": [
+      1254,
+      1254
+    ],
+    "modo": "RGBA",
+    "bytes": 429783,
+    "sha256": "44669e9d0f59c41572030423a3bc6eca14525b585d3c7081f6a83774c4296dbd",
+    "alpha_min_max": [
+      0,
+      255
+    ],
+    "fracao_transparente": 0.83351,
+    "exige_alpha": true,
+    "alpha_presente": true,
+    "avisos": [
+      "Canvas nativo difere do solicitado; usar dimensoes reais e calibrar escala na importacao. Original preservado."
+    ],
+    "canvas_solicitado": [
+      1024,
+      1024
+    ],
+    "bbox_visual": [
+      194,
+      149,
+      1058,
+      1108
+    ]
   },
   {
     "id": "E1_tronco_plataforma",
     "arquivo": "E1_tronco_plataforma.png",
-    "gerado": false
+    "gerado": true,
+    "tamanho": [
+      1774,
+      887
+    ],
+    "modo": "RGBA",
+    "bytes": 577651,
+    "sha256": "2d06a281e9482889e12e382ebaa26e6085dd510cf2d9dfafe913c85817b5537c",
+    "alpha_min_max": [
+      0,
+      255
+    ],
+    "fracao_transparente": 0.74527,
+    "exige_alpha": true,
+    "alpha_presente": true,
+    "avisos": [
+      "Canvas nativo difere do solicitado; usar dimensoes reais e calibrar escala na importacao. Original preservado."
+    ],
+    "canvas_solicitado": [
+      1024,
+      1024
+    ],
+    "bbox_visual": [
+      52,
+      282,
+      1725,
+      675
+    ]
   },
   {
     "id": "E1_pedra_musgo",
     "arquivo": "E1_pedra_musgo.png",
-    "gerado": false
+    "gerado": true,
+    "tamanho": [
+      1254,
+      1254
+    ],
+    "modo": "RGBA",
+    "bytes": 522104,
+    "sha256": "a4048c908f28a38ee7ce8370612ee92db8d47ae54a811fd43d5aa1a59b7e4a0a",
+    "alpha_min_max": [
+      0,
+      255
+    ],
+    "fracao_transparente": 0.7489,
+    "exige_alpha": true,
+    "alpha_presente": true,
+    "avisos": [
+      "Canvas nativo difere do solicitado; usar dimensoes reais e calibrar escala na importacao. Original preservado."
+    ],
+    "canvas_solicitado": [
+      1024,
+      1024
+    ],
+    "bbox_visual": [
+      105,
+      372,
+      1140,
+      944
+    ]
   },
   {
     "id": "E1_arco_templo",
     "arquivo": "E1_arco_templo.png",
-    "gerado": false
+    "gerado": true,
+    "tamanho": [
+      1254,
+      1254
+    ],
+    "modo": "RGBA",
+    "bytes": 777482,
+    "sha256": "dfbb0e56f17b879942d8d6d6a302c74a44c8dbc1c7e7aecb4504e49e9d626886",
+    "alpha_min_max": [
+      0,
+      255
+    ],
+    "fracao_transparente": 0.68261,
+    "exige_alpha": true,
+    "alpha_presente": true,
+    "avisos": [
+      "Canvas nativo difere do solicitado; usar dimensoes reais e calibrar escala na importacao. Original preservado."
+    ],
+    "canvas_solicitado": [
+      1024,
+      1024
+    ],
+    "bbox_visual": [
+      48,
+      187,
+      1206,
+      1045
+    ]
   },
   {
     "id": "E1_altar",
     "arquivo": "E1_altar.png",
-    "gerado": false
+    "gerado": true,
+    "tamanho": [
+      1254,
+      1254
+    ],
+    "modo": "RGBA",
+    "bytes": 624880,
+    "sha256": "83203d24955cad73a75ae6f71b3b16603b25e97287eff926794d20ab0e7e87fb",
+    "alpha_min_max": [
+      0,
+      255
+    ],
+    "fracao_transparente": 0.73377,
+    "exige_alpha": true,
+    "alpha_presente": true,
+    "avisos": [
+      "Canvas nativo difere do solicitado; usar dimensoes reais e calibrar escala na importacao. Original preservado."
+    ],
+    "canvas_solicitado": [
+      1024,
+      1024
+    ],
+    "bbox_visual": [
+      79,
+      370,
+      1174,
+      964
+    ]
   },
   {
     "id": "VD_checkpoint",
     "arquivo": "VD_checkpoint.png",
-    "gerado": false
+    "gerado": true,
+    "tamanho": [
+      1254,
+      1254
+    ],
+    "modo": "RGBA",
+    "bytes": 819285,
+    "sha256": "989a3cde391ce51493b6aa214411c3701716a60c6a2fcc409c4f4313722f433e",
+    "alpha_min_max": [
+      0,
+      255
+    ],
+    "fracao_transparente": 0.64424,
+    "exige_alpha": true,
+    "alpha_presente": true,
+    "avisos": [
+      "Canvas nativo difere do solicitado; usar dimensoes reais e calibrar escala na importacao. Original preservado."
+    ],
+    "canvas_solicitado": [
+      1024,
+      1024
+    ],
+    "bbox_visual": [
+      46,
+      256,
+      1207,
+      997
+    ]
   },
   {
     "id": "VD_barreira_arena",
     "arquivo": "VD_barreira_arena.png",
-    "gerado": false
+    "gerado": true,
+    "tamanho": [
+      1254,
+      1254
+    ],
+    "modo": "RGBA",
+    "bytes": 633268,
+    "sha256": "31ac5b6adb5802ad397c56c7b1ff9fb52bb5c0950f91aacd9d35b037f870a708",
+    "alpha_min_max": [
+      0,
+      255
+    ],
+    "fracao_transparente": 0.77756,
+    "exige_alpha": true,
+    "alpha_presente": true,
+    "avisos": [
+      "Canvas nativo difere do solicitado; usar dimensoes reais e calibrar escala na importacao. Original preservado."
+    ],
+    "canvas_solicitado": [
+      1024,
+      1024
+    ],
+    "bbox_visual": [
+      319,
+      56,
+      934,
+      1208
+    ]
   },
   {
     "id": "VD_fragmento",

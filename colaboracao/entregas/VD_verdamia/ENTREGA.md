@@ -1,6 +1,6 @@
 # Verdâmia — entrega de arte
 
-**Produção:** 35/64 imagens presentes neste commit.
+**Produção:** 44/64 imagens presentes neste commit.
 **Estado:** assets originais gerados; integração na Godot e revisão final do responsável pendentes.
 
 O responsável solicitou produzir todos os assets, incluindo a elaboração das especificações que faltavam, e manter commits ao longo da produção. A direção segue a DA-01 e os pacotes D/E do guia. As extensões do inventário cobrem elementos já usados pelo mapa e pelo código, sem introduzir novas mecânicas.
@@ -18,6 +18,8 @@ O responsável solicitou produzir todos os assets, incluindo a elaboração das 
 As três pranchas de referência têm fundo escuro de propósito. Sprites, objetos e efeitos são entregues em PNG com alpha; o fundo distante e o preenchimento de subsolo são opacos de propósito. O original não foi recomprimido nem editado por script.
 
 As dimensões solicitadas não garantem alinhamento exato dos desenhos dentro da grade. Conferir os bboxes e avisos antes de usar o importador automático. É necessário calibrar origem, escala, duração, hitboxes e apoios no motor. Não marcar INTEGRADO nem substituir assets existentes antes dessa revisão. Folhas com vazamento ou células extras precisam de correção ou atlas com recorte específico por quadro; não usar cegamente a grade padrão.
+
+Alguns objetos foram gerados em canvas nativo maior ou mais largo que o 1024×1024 solicitado. As dimensões reais e os bboxes estão no manifesto; preservar estes originais e preparar a escala e a origem a partir dessas medidas. Esses arquivos não devem ser tratados como exports de tamanho padronizado já prontos para um importador que assuma 1024×1024.
 
 A Rainha usa 16 folhas 2×1; raízes, esporos e invocação são peças separadas. A animação de esporos atende chuva e rajada; rugido atende invocação e enfurecimento. Itens de cura, energia, células e tablets mantêm os assets existentes do jogo.
 
@@ -60,15 +62,15 @@ A Rainha usa 16 folhas 2×1; raízes, esporos e invocação são peças separada
 | E_rainha_death_2 | [E_rainha_death_2.png](E_rainha_death_2.png) | 1536×1024 | sim | Sem alerta automático; revisão visual necessária |
 | E_rainha_death_3 | [E_rainha_death_3.png](E_rainha_death_3.png) | 1536×1024 | sim | Sem alerta automático; revisão visual necessária |
 | E_rainha_death_4 | [E_rainha_death_4.png](E_rainha_death_4.png) | 1536×1024 | sim | Sem alerta automático; revisão visual necessária |
-| E1_cogumelo_gigante | — | — | — | Ainda em produção |
-| E1_grama | — | — | — | Ainda em produção |
-| E1_raiz_pendurada | — | — | — | Ainda em produção |
-| E1_tronco_plataforma | — | — | — | Ainda em produção |
-| E1_pedra_musgo | — | — | — | Ainda em produção |
-| E1_arco_templo | — | — | — | Ainda em produção |
-| E1_altar | — | — | — | Ainda em produção |
-| VD_checkpoint | — | — | — | Ainda em produção |
-| VD_barreira_arena | — | — | — | Ainda em produção |
+| E1_cogumelo_gigante | [E1_cogumelo_gigante.png](E1_cogumelo_gigante.png) | 1254×1254 | sim | Revisar avisos |
+| E1_grama | [E1_grama.png](E1_grama.png) | 1254×1254 | sim | Revisar avisos |
+| E1_raiz_pendurada | [E1_raiz_pendurada.png](E1_raiz_pendurada.png) | 1254×1254 | sim | Revisar avisos |
+| E1_tronco_plataforma | [E1_tronco_plataforma.png](E1_tronco_plataforma.png) | 1774×887 | sim | Revisar avisos |
+| E1_pedra_musgo | [E1_pedra_musgo.png](E1_pedra_musgo.png) | 1254×1254 | sim | Revisar avisos |
+| E1_arco_templo | [E1_arco_templo.png](E1_arco_templo.png) | 1254×1254 | sim | Revisar avisos |
+| E1_altar | [E1_altar.png](E1_altar.png) | 1254×1254 | sim | Revisar avisos |
+| VD_checkpoint | [VD_checkpoint.png](VD_checkpoint.png) | 1254×1254 | sim | Revisar avisos |
+| VD_barreira_arena | [VD_barreira_arena.png](VD_barreira_arena.png) | 1254×1254 | sim | Revisar avisos |
 | VD_fragmento | — | — | — | Ainda em produção |
 | VD_esporo_verde | — | — | — | Ainda em produção |
 | VD_esporo_violeta | — | — | — | Ainda em produção |
@@ -92,4 +94,12 @@ A Rainha usa 16 folhas 2×1; raízes, esporos e invocação são peças separada
 
 ## Alertas de enquadramento
 
-Nenhum alerta automático nos arquivos presentes. Isso não substitui a inspeção visual ou os testes em jogo.
+- **E1_cogumelo_gigante**: Canvas nativo difere do solicitado; usar dimensoes reais e calibrar escala na importacao. Original preservado.
+- **E1_grama**: Canvas nativo difere do solicitado; usar dimensoes reais e calibrar escala na importacao. Original preservado.
+- **E1_raiz_pendurada**: Canvas nativo difere do solicitado; usar dimensoes reais e calibrar escala na importacao. Original preservado.
+- **E1_tronco_plataforma**: Canvas nativo difere do solicitado; usar dimensoes reais e calibrar escala na importacao. Original preservado.
+- **E1_pedra_musgo**: Canvas nativo difere do solicitado; usar dimensoes reais e calibrar escala na importacao. Original preservado.
+- **E1_arco_templo**: Canvas nativo difere do solicitado; usar dimensoes reais e calibrar escala na importacao. Original preservado.
+- **E1_altar**: Canvas nativo difere do solicitado; usar dimensoes reais e calibrar escala na importacao. Original preservado.
+- **VD_checkpoint**: Canvas nativo difere do solicitado; usar dimensoes reais e calibrar escala na importacao. Original preservado.
+- **VD_barreira_arena**: Canvas nativo difere do solicitado; usar dimensoes reais e calibrar escala na importacao. Original preservado.

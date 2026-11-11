@@ -65,6 +65,14 @@ for task in tasks:
                 if cell['pixels_alpha_maior_64'] > 64:
                     row['avisos'].append(f'Celula excedente {cell["quadro"]} contem pixels: verificar vazamento.')
         row['observacao'] = 'Bboxes medidos nao provam continuidade, anatomia, apoio ou quantidade correta de poses. Revisao visual e teste em Godot pendentes.'
+    else:
+        expected = (1536, 1024) if task['id'] in {'D0_lince', 'E0_inimigos', 'VD00_ambiente', 'VD_bg_distante', 'VD_bg_intermediario', 'VD_fg_vegetacao'} else (1024, 1024)
+        row['canvas_solicitado'] = list(expected)
+        if im.size != expected:
+            row['avisos'].append('Canvas nativo difere do solicitado; usar dimensoes reais e calibrar escala na importacao. Original preservado.')
+        yy, xx = np.where(alpha > 64)
+        if len(xx):
+            row['bbox_visual'] = [int(xx.min()), int(yy.min()), int(xx.max()+1), int(yy.max()+1)]
     rows.append(row)
 (ROOT / 'MANIFESTO.json').write_text(json.dumps(rows, ensure_ascii=False, indent=2) + '\n')
 all_files = []
