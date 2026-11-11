@@ -1,0 +1,337 @@
+[
+  {
+    "arquivo": "D0_lince.png",
+    "bytes": 1446810,
+    "sha256": "6f2aa3771882476ea35bfbf9a29101d5a26a28ba547dc25b103ffa5411ff498c"
+  },
+  {
+    "arquivo": "D_lince_claw.png",
+    "bytes": 1046072,
+    "sha256": "d57b8ed35cb7363c31b5d8325a8d8f4270cc8eb0cb68d0a063414c4b55c2fd6c"
+  },
+  {
+    "arquivo": "D_lince_claw_v2.png",
+    "bytes": 961882,
+    "sha256": "c3dfd0a2c2128e17012233bec881918a9a1ee888e39053d1fb59c428a0da0d2b"
+  },
+  {
+    "arquivo": "D_lince_death.png",
+    "bytes": 1387914,
+    "sha256": "9ef09d5d1f819e3feab5d06ed9f00d7fbf26481034d489477d2d144d6c14ceb4"
+  },
+  {
+    "arquivo": "D_lince_doublejump.png",
+    "bytes": 1170426,
+    "sha256": "8cc218f75cb8c41a0618fd115c0c073d735d88c62a80f34077122e9a4917323f"
+  },
+  {
+    "arquivo": "D_lince_fall.png",
+    "bytes": 1056068,
+    "sha256": "6186c3b5ae95bdbf6ca4a4e4e9136d09cc5a057b78daa3f0e41ba9c06af2f409"
+  },
+  {
+    "arquivo": "D_lince_flash.png",
+    "bytes": 1607901,
+    "sha256": "ea924fcdd14684cd236b11f946d3151b34f72d012c59a5d7062f432da634629b"
+  },
+  {
+    "arquivo": "D_lince_flash_v2.png",
+    "bytes": 1467916,
+    "sha256": "354fc8fc62106734b0b3718e225f3ffd35b849c32715bc9d397873bc5ebc9095"
+  },
+  {
+    "arquivo": "D_lince_hurt.png",
+    "bytes": 957703,
+    "sha256": "d844d0e6bdaa1fa3b0f4fa624c2cd509fb8a165a1850892a65a190b53e83a44e"
+  },
+  {
+    "arquivo": "D_lince_idle.png",
+    "bytes": 1557558,
+    "sha256": "f4a81eea9663a5e960830107d342da761cbb53c97d62f71ce252786951b3f4c2"
+  },
+  {
+    "arquivo": "D_lince_jump.png",
+    "bytes": 1000026,
+    "sha256": "968d901b443858af125f8b3b3acd15281d45377abbdeaff94ea51d48557711c0"
+  },
+  {
+    "arquivo": "D_lince_pogo.png",
+    "bytes": 1248892,
+    "sha256": "5715960f015adf9035fcf910e357fffe637590040058842b377e8ba6c9fea761"
+  },
+  {
+    "arquivo": "D_lince_run.png",
+    "bytes": 1627230,
+    "sha256": "021e4d419e7efe79d5d0d73aff8ab5c18a43b8daefb00ab70d6a3d4f85ba41b0"
+  },
+  {
+    "arquivo": "D_lince_wall.png",
+    "bytes": 1470808,
+    "sha256": "02175cb7b97eda19fada2d4350455c807381fbea356b094c4ff90b6fbb51e808"
+  },
+  {
+    "arquivo": "D_lince_wall_v2.png",
+    "bytes": 1034583,
+    "sha256": "47e6dfaa252ffae9b770803836913eb3b3525abc803b636b2eb474cd6e018573"
+  },
+  {
+    "arquivo": "E0_inimigos.png",
+    "bytes": 1689766,
+    "sha256": "58faf7c2f4e4637c4bcbdbb3e0de8fa6e5ba63375a9db40de8d764c9aa9b7449"
+  },
+  {
+    "arquivo": "E1_altar.png",
+    "bytes": 624880,
+    "sha256": "83203d24955cad73a75ae6f71b3b16603b25e97287eff926794d20ab0e7e87fb"
+  },
+  {
+    "arquivo": "E1_arco_templo.png",
+    "bytes": 777482,
+    "sha256": "dfbb0e56f17b879942d8d6d6a302c74a44c8dbc1c7e7aecb4504e49e9d626886"
+  },
+  {
+    "arquivo": "E1_cogumelo_gigante.png",
+    "bytes": 681402,
+    "sha256": "54d5758ce900b75e3bc9bea2ebbeb92190fcdbdb253d9f4a75c007b72c11687a"
+  },
+  {
+    "arquivo": "E1_grama.png",
+    "bytes": 461649,
+    "sha256": "6f361362cfa5ee434b9933eb69745e53508527ab3e329f02cb31fcb341728f7c"
+  },
+  {
+    "arquivo": "E1_pedra_musgo.png",
+    "bytes": 522104,
+    "sha256": "a4048c908f28a38ee7ce8370612ee92db8d47ae54a811fd43d5aa1a59b7e4a0a"
+  },
+  {
+    "arquivo": "E1_raiz_pendurada.png",
+    "bytes": 429783,
+    "sha256": "44669e9d0f59c41572030423a3bc6eca14525b585d3c7081f6a83774c4296dbd"
+  },
+  {
+    "arquivo": "E1_tronco_plataforma.png",
+    "bytes": 577651,
+    "sha256": "2d06a281e9482889e12e382ebaa26e6085dd510cf2d9dfafe913c85817b5537c"
+  },
+  {
+    "arquivo": "E_esporangio_attack.png",
+    "bytes": 1053866,
+    "sha256": "2f425e9367f1f2017e2f7d867d0e99bf215fbee06cb9eeaa3a552dc57614303e"
+  },
+  {
+    "arquivo": "E_esporangio_death.png",
+    "bytes": 1409127,
+    "sha256": "83bebf65543ada448ff5e6ca7e647f6832a6381e427e72fface8699bb9d1167f"
+  },
+  {
+    "arquivo": "E_esporangio_idle.png",
+    "bytes": 1362454,
+    "sha256": "30daaa76a0cc8ef7f3555704ea3d3f6c8a442110f5f05ce8949af8f587f16b66"
+  },
+  {
+    "arquivo": "E_mariposa_death.png",
+    "bytes": 1364014,
+    "sha256": "a6869c2fbb1c12227332cf3a4cb63b5d3d027b1e8018ed4722e02cf7051f2cd4"
+  },
+  {
+    "arquivo": "E_mariposa_fly.png",
+    "bytes": 1377967,
+    "sha256": "9e3ca1f3c4c3b6b619c52343b6158f279da8b8192d730151b6eecfd30b203654"
+  },
+  {
+    "arquivo": "E_rainha_death_1.png",
+    "bytes": 1482894,
+    "sha256": "9e585f56f7a5a1c34964faa0a2c3da033388648c9e73e26eff1c0c16cd235dda"
+  },
+  {
+    "arquivo": "E_rainha_death_2.png",
+    "bytes": 1499505,
+    "sha256": "cc8846a099a8d17ccdd4454e9870887f4e2ff90763accc1a866456235136e0ca"
+  },
+  {
+    "arquivo": "E_rainha_death_3.png",
+    "bytes": 1424556,
+    "sha256": "22990d3f3bb749b9fe8a8f0dfa3e6a227501a8d9d147dbdacf0b631308b1bc1b"
+  },
+  {
+    "arquivo": "E_rainha_death_4.png",
+    "bytes": 1249127,
+    "sha256": "971f0638571ace48685d6e63598dbae984d333e3680326b48debcb1a51b403cb"
+  },
+  {
+    "arquivo": "E_rainha_esporos_1.png",
+    "bytes": 1499784,
+    "sha256": "15c43cdaf69b113637930154f1b513beed0adf2d8d2f83e4b99151ab9649201d"
+  },
+  {
+    "arquivo": "E_rainha_esporos_2.png",
+    "bytes": 1511556,
+    "sha256": "2ccef22abda9327a6a54749a625e7c98a4fe64d483e84b682ea96bb97fabf3a1"
+  },
+  {
+    "arquivo": "E_rainha_esporos_3.png",
+    "bytes": 1501639,
+    "sha256": "b81b67449f2d86692b2ade6dc139e3e92169e2f8cebaa0c5759c3e31217e8a72"
+  },
+  {
+    "arquivo": "E_rainha_hurt_1.png",
+    "bytes": 1465347,
+    "sha256": "c97d25226c7c1a71f7c2020e23b0cd5b1e93923fdef6d238da75c8913919efc4"
+  },
+  {
+    "arquivo": "E_rainha_idle_1.png",
+    "bytes": 1464142,
+    "sha256": "bf9de349c823e3ab2b7468ee7bae462df6ad1858b8f20209d6ef319bfac9aba8"
+  },
+  {
+    "arquivo": "E_rainha_idle_2.png",
+    "bytes": 1565446,
+    "sha256": "0669a59f43205073d7a542b197c5ea0a1c56b3357033e70ff87c3207c6302113"
+  },
+  {
+    "arquivo": "E_rainha_idle_3.png",
+    "bytes": 1536222,
+    "sha256": "372cc4941e1cc504e4a91aae2e01771bcd4319b44cf952204408ada232545e49"
+  },
+  {
+    "arquivo": "E_rainha_raizes_1.png",
+    "bytes": 1510885,
+    "sha256": "689bb2e541b7f88f6dc0d886a9c6e7b7e8c6c5759c659b20bc4363614a1dfb0a"
+  },
+  {
+    "arquivo": "E_rainha_raizes_2.png",
+    "bytes": 1462758,
+    "sha256": "8ae50fa1d476396b63000566ddb6610021c919e51e842774b593868903abd66e"
+  },
+  {
+    "arquivo": "E_rainha_raizes_3.png",
+    "bytes": 1545033,
+    "sha256": "5164676800b4897757d3ac540a990887a213e6eaf55b39c4f9cf0cfe0dfc469e"
+  },
+  {
+    "arquivo": "E_rainha_rugido_1.png",
+    "bytes": 1495744,
+    "sha256": "7f4b577fdb2ea365512a0e013683ccb5a0cb8cbcba597bf1131675538e1a7ff9"
+  },
+  {
+    "arquivo": "E_rainha_rugido_2.png",
+    "bytes": 1574490,
+    "sha256": "f701ead0274f146b21e22ec03b327f83f4673e24ba598dc3b74a28005f8c2566"
+  },
+  {
+    "arquivo": "VD00_ambiente.png",
+    "bytes": 1688230,
+    "sha256": "7c89fa47ce017a6480ab85767ee6dba5975a3d02cc99f076e245db2160b07665"
+  },
+  {
+    "arquivo": "VD_barreira_arena.png",
+    "bytes": 633268,
+    "sha256": "31ac5b6adb5802ad397c56c7b1ff9fb52bb5c0950f91aacd9d35b037f870a708"
+  },
+  {
+    "arquivo": "VD_bg_distante.png",
+    "bytes": 1481513,
+    "sha256": "7acc13faea61b0153bcd1275daa46b095ed0943676d0db511974a17eae79ec60"
+  },
+  {
+    "arquivo": "VD_bg_intermediario.png",
+    "bytes": 1552241,
+    "sha256": "44cd7f369a1cd37cc51d2cf9f42d7710ec471968c5b1cac23cbf8c309985edf9"
+  },
+  {
+    "arquivo": "VD_canto_direito.png",
+    "bytes": 958854,
+    "sha256": "e068fb726c9fc736663c77379583695495baf8bea9bea22b7af708e4b7d85f2e"
+  },
+  {
+    "arquivo": "VD_canto_esquerdo.png",
+    "bytes": 1128148,
+    "sha256": "4d51d8a021a6eae11df8765bb29f16d2494d586badebacecbff4de77c3a53ed8"
+  },
+  {
+    "arquivo": "VD_chao_musgo.png",
+    "bytes": 1089346,
+    "sha256": "1fd2fe09c6fe764b3b4ba0bce621622cdd1522ae10b37346dba550f7f625a510"
+  },
+  {
+    "arquivo": "VD_checkpoint.png",
+    "bytes": 819285,
+    "sha256": "989a3cde391ce51493b6aa214411c3701716a60c6a2fcc409c4f4313722f433e"
+  },
+  {
+    "arquivo": "VD_espinhos.png",
+    "bytes": 395117,
+    "sha256": "dde4a43eb47d44eb2ee428e63eeea6f8b75888f6e60bef68e1bba1eca434d650"
+  },
+  {
+    "arquivo": "VD_esporo_verde.png",
+    "bytes": 483995,
+    "sha256": "e6680de68ce109cc1e0f08ab26e799d6ca4c51bdb48619da19f854a8d443a21b"
+  },
+  {
+    "arquivo": "VD_esporo_violeta.png",
+    "bytes": 598056,
+    "sha256": "159bb61c0d8af357d1dd39eff6fac9e9d9f8561632b9e3465c8423a2e710acf6"
+  },
+  {
+    "arquivo": "VD_fg_vegetacao.png",
+    "bytes": 802910,
+    "sha256": "918bcdfb4ec343a066054e773142eb8334c6cfcf364a633729d72efb44057a42"
+  },
+  {
+    "arquivo": "VD_fragmento.png",
+    "bytes": 447810,
+    "sha256": "19c39631f4b98119c7f74c6608c7a6356b7d5c5935306f3ded102146b68827cd"
+  },
+  {
+    "arquivo": "VD_fx_aviso_raiz.png",
+    "bytes": 830334,
+    "sha256": "573fadb91d543d124d8296032fbce3a61ca410e2c99ab5bb647871073266e7e3"
+  },
+  {
+    "arquivo": "VD_fx_clarao.png",
+    "bytes": 1331309,
+    "sha256": "6868f28ef4f37b6295dfc1b633037e0ebce171c8ef1d1d2844678cefdcc08469"
+  },
+  {
+    "arquivo": "VD_fx_garras.png",
+    "bytes": 898065,
+    "sha256": "9ecbcdcf16567009c110dd382d4cad32a1b136b5f59d2491066271c7739b68da"
+  },
+  {
+    "arquivo": "VD_fx_impacto_esporo.png",
+    "bytes": 1129892,
+    "sha256": "8b55155c6602d67ac61fd7d2bd386f52f0a2c30d2ba9cc03e4ddcd5a79539613"
+  },
+  {
+    "arquivo": "VD_fx_invocacao.png",
+    "bytes": 1320566,
+    "sha256": "338362692f30a1914e82686fa9e3173fa8e916af440cad7f7f82d6aec4a70284"
+  },
+  {
+    "arquivo": "VD_fx_poeira.png",
+    "bytes": 894816,
+    "sha256": "a03fdacb056d4d2174d840207bef68b4d2d0e6bdaacf7845effc59ba32a5d09f"
+  },
+  {
+    "arquivo": "VD_fx_raiz.png",
+    "bytes": 1422194,
+    "sha256": "50016d3b343b5bf5f03aa90856dc744adc36e3dc5eb6990554248822de1de19d"
+  },
+  {
+    "arquivo": "VD_parede_escalada.png",
+    "bytes": 1413495,
+    "sha256": "bd7e157cb5348f4cea635c060aa7826ab73619fdeb805967e5b511fb72219075"
+  },
+  {
+    "arquivo": "VD_plataforma_raizes.png",
+    "bytes": 545706,
+    "sha256": "2d873f38a9a65d8e73bd5da94e655042769069e8d3d9adf8c7a27c7236da48b6"
+  },
+  {
+    "arquivo": "VD_subsolo.png",
+    "bytes": 1265743,
+    "sha256": "737d807bb3c6e984dc44e3a5c53879a8cabfbc9ca3990b6b7ff27671fa866972"
+  }
+]

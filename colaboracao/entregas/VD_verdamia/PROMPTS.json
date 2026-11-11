@@ -1,0 +1,517 @@
+[
+  {
+    "id": "D0_lince",
+    "prompt": "Reference board 1536x1024. Compact navy quadruped lynx transformation of Daymon, tufted ears, cyan eyes and diagonal cyan chest stripe, small fixed lime spots, long tail with amber lantern. Side, front, three quarter views and details of tail, claws and chest stripe; dark navy background, Portuguese labels and palette. Match official Daymon cel-shaded cartoon style.",
+    "refs": [
+      "/workspace/scratch/c1faa011a060/warp-fracture/arte_original/00_Referencias_oficiais/Ficha de Personagem Daymon Sagan.png",
+      "/workspace/scratch/c1faa011a060/warp-fracture/arte_original/00_Referencias_oficiais/Prancha de Elementos do Laboratório Hélix.png"
+    ],
+    "transparent": false
+  },
+  {
+    "id": "E0_inimigos",
+    "prompt": "Use case: stylized-concept. Production raster game asset for Warp Fracture, Verdâmia eternal-night bioluminescent forest. Match supplied project's official style references: compact clean cartoon 2D, crisp angular silhouettes, two or three economical cel-shaded tones per surface, restrained local glow. No realism, painterly rendering, 3D, pixel art, text, watermark, scenery or cast shadows in sprite sheets. Palette outline #101923, forest #0A1716, moss #1D5248, pale mycelium #C7CEC0, lime #C5ED70, amber #F1BB55, danger violet #8D62BD. CHARACTER REFERENCE BOARD 1536x1024 with dark navy background. Three separate large clear right-facing side-view full-body designs plus small detail views, Portuguese labels. ESPORÂNGIO: rooted stationary moss-teal curving stem with single round lime-spotted fungus bulb, small dark spore-spitting aperture; root base flat on ground, no walking feet. MARIPOSA LANTERNA: small flying moth, four pale cream wings with simple dark eye spots, navy slender thorax, amber glowing abdomen, two antennae, no clothing. RAINHA MICÉLIA: enormous rooted regal mycelium queen with compact stylized face framed by large purple mushroom cap/crown, pale mask face and threatening cyan narrow eyes, dark purple root robe spreading into rooted ground base, two root arms/hands, small turquoise spots under mushroom cap. Economical shapes matching artist of Daymon reference. Not human in ornate dress, not realistic monster. These are three enemy designs, no Lince. Show full designs unclipped. Palette swatches bottom.",
+    "refs": [
+      "/workspace/scratch/c1faa011a060/warp-fracture/arte_original/00_Referencias_oficiais/Ficha de Personagem Daymon Sagan.png",
+      "/workspace/scratch/c1faa011a060/warp-fracture/arte_original/00_Referencias_oficiais/Prancha de Elementos do Laboratório Hélix.png"
+    ],
+    "transparent": false
+  },
+  {
+    "id": "VD00_ambiente",
+    "prompt": "Use case: stylized-concept. Production raster game asset for Warp Fracture, Verdâmia eternal-night bioluminescent forest. Match supplied project's official style references: compact clean cartoon 2D, crisp angular silhouettes, two or three economical cel-shaded tones per surface, restrained local glow. No realism, painterly rendering, 3D, pixel art, text, watermark, scenery or cast shadows in sprite sheets. Palette outline #101923, forest #0A1716, moss #1D5248, pale mycelium #C7CEC0, lime #C5ED70, amber #F1BB55, danger violet #8D62BD. ENVIRONMENT REFERENCE BOARD 1536x1024, dark navy background, Portuguese title 'VERDÂMIA'. Official lab reference is STYLE ONLY, replace industrial materials with organic forms. Palette forest teal, dark navy, lime fungi, amber lanterns, violet thorn hazards. Show separated samples of giant umbrella mushroom, hanging root, luminous grass, moss stone, fallen log platform with flat walkable top, rooted temple arch with both feet on ground, stone altar embraced by roots, ground section with moss top and dark earth. Bottom strip a small side-scrolling forest scene showing clear traversable top silhouette, a climbing wall, thorn pit, distant large mushrooms and rooted temple. Clean simplified modular game art, not cinematic painting. No characters.",
+    "refs": [
+      "/workspace/scratch/c1faa011a060/warp-fracture/arte_original/00_Referencias_oficiais/Ficha de Personagem Daymon Sagan.png",
+      "/workspace/scratch/c1faa011a060/warp-fracture/arte_original/00_Referencias_oficiais/Prancha de Elementos do Laboratório Hélix.png"
+    ],
+    "transparent": false
+  },
+  {
+    "id": "D_lince_idle",
+    "prompt": "Use case: stylized-concept. Production raster game asset for Warp Fracture, Verdâmia eternal-night bioluminescent forest. Match supplied project's official style references: compact clean cartoon 2D, crisp angular silhouettes, two or three economical cel-shaded tones per surface, restrained local glow. No realism, painterly rendering, 3D, pixel art, text, watermark, scenery or cast shadows in sprite sheets. Palette outline #101923, forest #0A1716, moss #1D5248, pale mycelium #C7CEC0, lime #C5ED70, amber #F1BB55, danger violet #8D62BD. ANIMATION idle, 6 frames ONLY. Exactly 1536x1024 transparent PNG, invisible 4 columns x 2 rows, each cell 384x512. Read order left to right, top row then bottom row; remaining 2 cells entirely transparent. Each pose confined to own cell with 12px safe margin. Use provided D0 image ONLY as CHARACTER DESIGN REFERENCE; do not reproduce its layout, labels or background. Same lynx in every frame: navy fur #1B2946, lit #2A3C5D, tufted ears, long tail ending amber leaf-shaped lantern, small lime spots at fixed body locations, cyan eyes and diagonal cyan shoulder/chest band, white claws. Full side view facing RIGHT except rotation in doublejump. Neutral full figure including tail about 300px wide, neutral paws at local y472; fixed anatomical scale across all actions. No costume changes. loop: 1 neutral standing pose, 2 slight inhale, 3 inhale maximum, 4 exhale, 5 tail lantern sways back, 6 returns near neutral. All four feet aligned; last frame blends into first.",
+    "refs": [
+      "/workspace/scratch/c1faa011a060/warp-fracture/colaboracao/entregas/VD_verdamia/D0_lince.png"
+    ],
+    "transparent": true
+  },
+  {
+    "id": "D_lince_run",
+    "prompt": "Use case: stylized-concept. Production raster game asset for Warp Fracture, Verdâmia eternal-night bioluminescent forest. Match supplied project's official style references: compact clean cartoon 2D, crisp angular silhouettes, two or three economical cel-shaded tones per surface, restrained local glow. No realism, painterly rendering, 3D, pixel art, text, watermark, scenery or cast shadows in sprite sheets. Palette outline #101923, forest #0A1716, moss #1D5248, pale mycelium #C7CEC0, lime #C5ED70, amber #F1BB55, danger violet #8D62BD. ANIMATION run, 8 frames ONLY. Exactly 1536x1024 transparent PNG, invisible 4 columns x 2 rows, each cell 384x512. Read order left to right, top row then bottom row; remaining 0 cells entirely transparent. Each pose confined to own cell with 12px safe margin. Use provided D0 image ONLY as CHARACTER DESIGN REFERENCE; do not reproduce its layout, labels or background. Same lynx in every frame: navy fur #1B2946, lit #2A3C5D, tufted ears, long tail ending amber leaf-shaped lantern, small lime spots at fixed body locations, cyan eyes and diagonal cyan shoulder/chest band, white claws. Full side view facing RIGHT except rotation in doublejump. Neutral full figure including tail about 300px wide, neutral paws at local y472; fixed anatomical scale across all actions. No costume changes. complete quadruped gallop loop: gathered hind limbs, hind push, extended flight, front landing, compression, gathered legs, front push, closing flight. Not eight copies; four feline legs with coherent joints.",
+    "refs": [
+      "/workspace/scratch/c1faa011a060/warp-fracture/colaboracao/entregas/VD_verdamia/D0_lince.png"
+    ],
+    "transparent": true
+  },
+  {
+    "id": "D_lince_jump",
+    "prompt": "Use case: stylized-concept. Production raster game asset for Warp Fracture, Verdâmia eternal-night bioluminescent forest. Match supplied project's official style references: compact clean cartoon 2D, crisp angular silhouettes, two or three economical cel-shaded tones per surface, restrained local glow. No realism, painterly rendering, 3D, pixel art, text, watermark, scenery or cast shadows in sprite sheets. Palette outline #101923, forest #0A1716, moss #1D5248, pale mycelium #C7CEC0, lime #C5ED70, amber #F1BB55, danger violet #8D62BD. ANIMATION jump, 3 frames ONLY. Exactly 1536x1024 transparent PNG, invisible 4 columns x 2 rows, each cell 384x512. Read order left to right, top row then bottom row; remaining 5 cells entirely transparent. Each pose confined to own cell with 12px safe margin. Use provided D0 image ONLY as CHARACTER DESIGN REFERENCE; do not reproduce its layout, labels or background. Same lynx in every frame: navy fur #1B2946, lit #2A3C5D, tufted ears, long tail ending amber leaf-shaped lantern, small lime spots at fixed body locations, cyan eyes and diagonal cyan shoulder/chest band, white claws. Full side view facing RIGHT except rotation in doublejump. Neutral full figure including tail about 300px wide, neutral paws at local y472; fixed anatomical scale across all actions. No costume changes. 1 compressed crouch preparing jump on baseline, 2 upward launch legs extending, 3 apex legs tucked. Same body scale.",
+    "refs": [
+      "/workspace/scratch/c1faa011a060/warp-fracture/colaboracao/entregas/VD_verdamia/D0_lince.png"
+    ],
+    "transparent": true
+  },
+  {
+    "id": "D_lince_fall",
+    "prompt": "Use case: stylized-concept. Production raster game asset for Warp Fracture, Verdâmia eternal-night bioluminescent forest. Match supplied project's official style references: compact clean cartoon 2D, crisp angular silhouettes, two or three economical cel-shaded tones per surface, restrained local glow. No realism, painterly rendering, 3D, pixel art, text, watermark, scenery or cast shadows in sprite sheets. Palette outline #101923, forest #0A1716, moss #1D5248, pale mycelium #C7CEC0, lime #C5ED70, amber #F1BB55, danger violet #8D62BD. ANIMATION fall, 3 frames ONLY. Exactly 1536x1024 transparent PNG, invisible 4 columns x 2 rows, each cell 384x512. Read order left to right, top row then bottom row; remaining 5 cells entirely transparent. Each pose confined to own cell with 12px safe margin. Use provided D0 image ONLY as CHARACTER DESIGN REFERENCE; do not reproduce its layout, labels or background. Same lynx in every frame: navy fur #1B2946, lit #2A3C5D, tufted ears, long tail ending amber leaf-shaped lantern, small lime spots at fixed body locations, cyan eyes and diagonal cyan shoulder/chest band, white claws. Full side view facing RIGHT except rotation in doublejump. Neutral full figure including tail about 300px wide, neutral paws at local y472; fixed anatomical scale across all actions. No costume changes. 1 beginning descent legs opening, 2 stretched landing-ready paws, 3 anticipation of landing with paws downward. Airborne poses; no ground.",
+    "refs": [
+      "/workspace/scratch/c1faa011a060/warp-fracture/colaboracao/entregas/VD_verdamia/D0_lince.png"
+    ],
+    "transparent": true
+  },
+  {
+    "id": "D_lince_doublejump",
+    "prompt": "Use case: stylized-concept. Production raster game asset for Warp Fracture, Verdâmia eternal-night bioluminescent forest. Match supplied project's official style references: compact clean cartoon 2D, crisp angular silhouettes, two or three economical cel-shaded tones per surface, restrained local glow. No realism, painterly rendering, 3D, pixel art, text, watermark, scenery or cast shadows in sprite sheets. Palette outline #101923, forest #0A1716, moss #1D5248, pale mycelium #C7CEC0, lime #C5ED70, amber #F1BB55, danger violet #8D62BD. ANIMATION doublejump, 4 frames ONLY. Exactly 1536x1024 transparent PNG, invisible 4 columns x 2 rows, each cell 384x512. Read order left to right, top row then bottom row; remaining 4 cells entirely transparent. Each pose confined to own cell with 12px safe margin. Use provided D0 image ONLY as CHARACTER DESIGN REFERENCE; do not reproduce its layout, labels or background. Same lynx in every frame: navy fur #1B2946, lit #2A3C5D, tufted ears, long tail ending amber leaf-shaped lantern, small lime spots at fixed body locations, cyan eyes and diagonal cyan shoulder/chest band, white claws. Full side view facing RIGHT except rotation in doublejump. Neutral full figure including tail about 300px wide, neutral paws at local y472; fixed anatomical scale across all actions. No costume changes. a readable forward aerial somersault: 1 tucked launch, 2 quarter rotation nose down, 3 upside-down with back below, 4 unroll facing right to resume fall. Small lime paw streak, same anatomy and lantern.",
+    "refs": [
+      "/workspace/scratch/c1faa011a060/warp-fracture/colaboracao/entregas/VD_verdamia/D0_lince.png"
+    ],
+    "transparent": true
+  },
+  {
+    "id": "D_lince_wall",
+    "prompt": "Use case: stylized-concept. Production raster game asset for Warp Fracture, Verdâmia eternal-night bioluminescent forest. Match supplied project's official style references: compact clean cartoon 2D, crisp angular silhouettes, two or three economical cel-shaded tones per surface, restrained local glow. No realism, painterly rendering, 3D, pixel art, text, watermark, scenery or cast shadows in sprite sheets. Palette outline #101923, forest #0A1716, moss #1D5248, pale mycelium #C7CEC0, lime #C5ED70, amber #F1BB55, danger violet #8D62BD. ANIMATION wall, 3 frames ONLY. Exactly 1536x1024 transparent PNG, invisible 4 columns x 2 rows, each cell 384x512. Read order left to right, top row then bottom row; remaining 5 cells entirely transparent. Each pose confined to own cell with 12px safe margin. Use provided D0 image ONLY as CHARACTER DESIGN REFERENCE; do not reproduce its layout, labels or background. Same lynx in every frame: navy fur #1B2946, lit #2A3C5D, tufted ears, long tail ending amber leaf-shaped lantern, small lime spots at fixed body locations, cyan eyes and diagonal cyan shoulder/chest band, white claws. Full side view facing RIGHT except rotation in doublejump. Neutral full figure including tail about 300px wide, neutral paws at local y472; fixed anatomical scale across all actions. No costume changes. side view facing RIGHT, clinging to invisible wall at RIGHT edge of each cell: front claws touch x=372, hind paws brace, body upright, slow slide over three frames. No wall painted.",
+    "refs": [
+      "/workspace/scratch/c1faa011a060/warp-fracture/colaboracao/entregas/VD_verdamia/D0_lince.png"
+    ],
+    "transparent": true
+  },
+  {
+    "id": "D_lince_claw",
+    "prompt": "Use case: stylized-concept. Production raster game asset for Warp Fracture, Verdâmia eternal-night bioluminescent forest. Match supplied project's official style references: compact clean cartoon 2D, crisp angular silhouettes, two or three economical cel-shaded tones per surface, restrained local glow. No realism, painterly rendering, 3D, pixel art, text, watermark, scenery or cast shadows in sprite sheets. Palette outline #101923, forest #0A1716, moss #1D5248, pale mycelium #C7CEC0, lime #C5ED70, amber #F1BB55, danger violet #8D62BD. ANIMATION claw, 4 frames ONLY. Exactly 1536x1024 transparent PNG, invisible 4 columns x 2 rows, each cell 384x512. Read order left to right, top row then bottom row; remaining 4 cells entirely transparent. Each pose confined to own cell with 12px safe margin. Use provided D0 image ONLY as CHARACTER DESIGN REFERENCE; do not reproduce its layout, labels or background. Same lynx in every frame: navy fur #1B2946, lit #2A3C5D, tufted ears, long tail ending amber leaf-shaped lantern, small lime spots at fixed body locations, cyan eyes and diagonal cyan shoulder/chest band, white claws. Full side view facing RIGHT except rotation in doublejump. Neutral full figure including tail about 300px wide, neutral paws at local y472; fixed anatomical scale across all actions. No costume changes. 1 weight shifts backward, 2 near-camera forepaw winds up, 3 forceful forward claw slash right with small pale lime arc, 4 recovery to standing. Far foreleg supports body. Preserve which arm attacks.",
+    "refs": [
+      "/workspace/scratch/c1faa011a060/warp-fracture/colaboracao/entregas/VD_verdamia/D0_lince.png"
+    ],
+    "transparent": true
+  },
+  {
+    "id": "D_lince_pogo",
+    "prompt": "Use case: stylized-concept. Production raster game asset for Warp Fracture, Verdâmia eternal-night bioluminescent forest. Match supplied project's official style references: compact clean cartoon 2D, crisp angular silhouettes, two or three economical cel-shaded tones per surface, restrained local glow. No realism, painterly rendering, 3D, pixel art, text, watermark, scenery or cast shadows in sprite sheets. Palette outline #101923, forest #0A1716, moss #1D5248, pale mycelium #C7CEC0, lime #C5ED70, amber #F1BB55, danger violet #8D62BD. ANIMATION pogo, 4 frames ONLY. Exactly 1536x1024 transparent PNG, invisible 4 columns x 2 rows, each cell 384x512. Read order left to right, top row then bottom row; remaining 4 cells entirely transparent. Each pose confined to own cell with 12px safe margin. Use provided D0 image ONLY as CHARACTER DESIGN REFERENCE; do not reproduce its layout, labels or background. Same lynx in every frame: navy fur #1B2946, lit #2A3C5D, tufted ears, long tail ending amber leaf-shaped lantern, small lime spots at fixed body locations, cyan eyes and diagonal cyan shoulder/chest band, white claws. Full side view facing RIGHT except rotation in doublejump. Neutral full figure including tail about 300px wide, neutral paws at local y472; fixed anatomical scale across all actions. No costume changes. airborne downward claw attack: 1 tucked, 2 both forepaws lower, 3 bright small lime downward slash below claws, 4 upward recoil/bounce with paws withdrawing. Tail never becomes an extra limb.",
+    "refs": [
+      "/workspace/scratch/c1faa011a060/warp-fracture/colaboracao/entregas/VD_verdamia/D0_lince.png"
+    ],
+    "transparent": true
+  },
+  {
+    "id": "D_lince_flash",
+    "prompt": "Use case: stylized-concept. Production raster game asset for Warp Fracture, Verdâmia eternal-night bioluminescent forest. Match supplied project's official style references: compact clean cartoon 2D, crisp angular silhouettes, two or three economical cel-shaded tones per surface, restrained local glow. No realism, painterly rendering, 3D, pixel art, text, watermark, scenery or cast shadows in sprite sheets. Palette outline #101923, forest #0A1716, moss #1D5248, pale mycelium #C7CEC0, lime #C5ED70, amber #F1BB55, danger violet #8D62BD. ANIMATION flash, 6 frames ONLY. Exactly 1536x1024 transparent PNG, invisible 4 columns x 2 rows, each cell 384x512. Read order left to right, top row then bottom row; remaining 2 cells entirely transparent. Each pose confined to own cell with 12px safe margin. Use provided D0 image ONLY as CHARACTER DESIGN REFERENCE; do not reproduce its layout, labels or background. Same lynx in every frame: navy fur #1B2946, lit #2A3C5D, tufted ears, long tail ending amber leaf-shaped lantern, small lime spots at fixed body locations, cyan eyes and diagonal cyan shoulder/chest band, white claws. Full side view facing RIGHT except rotation in doublejump. Neutral full figure including tail about 300px wide, neutral paws at local y472; fixed anatomical scale across all actions. No costume changes. 1 neutral, 2 lantern brightens, 3 brighter amber lantern, 4 contained circular amber-white flash around body keeping outline visible, 5 fading local light, 6 neutral. Keep cyan chest stripe separate from amber.",
+    "refs": [
+      "/workspace/scratch/c1faa011a060/warp-fracture/colaboracao/entregas/VD_verdamia/D0_lince.png"
+    ],
+    "transparent": true
+  },
+  {
+    "id": "D_lince_hurt",
+    "prompt": "Use case: stylized-concept. Production raster game asset for Warp Fracture, Verdâmia eternal-night bioluminescent forest. Match supplied project's official style references: compact clean cartoon 2D, crisp angular silhouettes, two or three economical cel-shaded tones per surface, restrained local glow. No realism, painterly rendering, 3D, pixel art, text, watermark, scenery or cast shadows in sprite sheets. Palette outline #101923, forest #0A1716, moss #1D5248, pale mycelium #C7CEC0, lime #C5ED70, amber #F1BB55, danger violet #8D62BD. ANIMATION hurt, 2 frames ONLY. Exactly 1536x1024 transparent PNG, invisible 4 columns x 2 rows, each cell 384x512. Read order left to right, top row then bottom row; remaining 6 cells entirely transparent. Each pose confined to own cell with 12px safe margin. Use provided D0 image ONLY as CHARACTER DESIGN REFERENCE; do not reproduce its layout, labels or background. Same lynx in every frame: navy fur #1B2946, lit #2A3C5D, tufted ears, long tail ending amber leaf-shaped lantern, small lime spots at fixed body locations, cyan eyes and diagonal cyan shoulder/chest band, white claws. Full side view facing RIGHT except rotation in doublejump. Neutral full figure including tail about 300px wide, neutral paws at local y472; fixed anatomical scale across all actions. No costume changes. 1 clear backward flinch head and shoulder recoil, 2 crouched recovery, same anatomy and size.",
+    "refs": [
+      "/workspace/scratch/c1faa011a060/warp-fracture/colaboracao/entregas/VD_verdamia/D0_lince.png"
+    ],
+    "transparent": true
+  },
+  {
+    "id": "D_lince_death",
+    "prompt": "Use case: stylized-concept. Production raster game asset for Warp Fracture, Verdâmia eternal-night bioluminescent forest. Match supplied project's official style references: compact clean cartoon 2D, crisp angular silhouettes, two or three economical cel-shaded tones per surface, restrained local glow. No realism, painterly rendering, 3D, pixel art, text, watermark, scenery or cast shadows in sprite sheets. Palette outline #101923, forest #0A1716, moss #1D5248, pale mycelium #C7CEC0, lime #C5ED70, amber #F1BB55, danger violet #8D62BD. ANIMATION death, 6 frames ONLY. Exactly 1536x1024 transparent PNG, invisible 4 columns x 2 rows, each cell 384x512. Read order left to right, top row then bottom row; remaining 2 cells entirely transparent. Each pose confined to own cell with 12px safe margin. Use provided D0 image ONLY as CHARACTER DESIGN REFERENCE; do not reproduce its layout, labels or background. Same lynx in every frame: navy fur #1B2946, lit #2A3C5D, tufted ears, long tail ending amber leaf-shaped lantern, small lime spots at fixed body locations, cyan eyes and diagonal cyan shoulder/chest band, white claws. Full side view facing RIGHT except rotation in doublejump. Neutral full figure including tail about 300px wide, neutral paws at local y472; fixed anatomical scale across all actions. No costume changes. 1 hit stagger, 2 forelegs buckle, 3 lower body collapses, 4 lies on side, 5 lime spots and amber lantern extinguish, 6 cyan chest stripe dims last. No gore. Keep same lateral scale.",
+    "refs": [
+      "/workspace/scratch/c1faa011a060/warp-fracture/colaboracao/entregas/VD_verdamia/D0_lince.png"
+    ],
+    "transparent": true
+  },
+  {
+    "id": "E_esporangio_idle",
+    "prompt": "Use case: stylized-concept. Production raster game asset for Warp Fracture, Verdâmia eternal-night bioluminescent forest. Match supplied project's official style references: compact clean cartoon 2D, crisp angular silhouettes, two or three economical cel-shaded tones per surface, restrained local glow. No realism, painterly rendering, 3D, pixel art, text, watermark, scenery or cast shadows in sprite sheets. Palette outline #101923, forest #0A1716, moss #1D5248, pale mycelium #C7CEC0, lime #C5ED70, amber #F1BB55, danger violet #8D62BD. Exactly 1536x1024 transparent PNG. Invisible 4x2 grid, cells 384x512. Read order top left to bottom right. One pose per cell, same scale, contain each drawing within cell with 12px margin. No grid, labels, ground, background or cast shadow. 6 frames; last 2 cells EMPTY alpha. Match ESPORÂNGIO ONLY from supplied E0 character design reference, omit other enemies, no layout copied. Side view right, teal rooted curved stalk and single fungus bulb with dark spitting opening. Base fixed at local y472; figure 260px tall in idle, consistent scale across actions. rooted stationary stem sways gently, single bulb breathes and lime spots pulse; loop closes",
+    "refs": [
+      "/workspace/scratch/c1faa011a060/warp-fracture/colaboracao/entregas/VD_verdamia/E0_inimigos.png"
+    ],
+    "transparent": true
+  },
+  {
+    "id": "E_esporangio_attack",
+    "prompt": "Use case: stylized-concept. Production raster game asset for Warp Fracture, Verdâmia eternal-night bioluminescent forest. Match supplied project's official style references: compact clean cartoon 2D, crisp angular silhouettes, two or three economical cel-shaded tones per surface, restrained local glow. No realism, painterly rendering, 3D, pixel art, text, watermark, scenery or cast shadows in sprite sheets. Palette outline #101923, forest #0A1716, moss #1D5248, pale mycelium #C7CEC0, lime #C5ED70, amber #F1BB55, danger violet #8D62BD. Exactly 1536x1024 transparent PNG. Invisible 4x2 grid, cells 384x512. Read order top left to bottom right. One pose per cell, same scale, contain each drawing within cell with 12px margin. No grid, labels, ground, background or cast shadow. 4 frames; last 4 cells EMPTY alpha. Match ESPORÂNGIO ONLY from supplied E0 character design reference, omit other enemies, no layout copied. Side view right, teal rooted curved stalk and single fungus bulb with dark spitting opening. Base fixed at local y472; figure 260px tall in idle, consistent scale across actions. bulb swells then visibly contracts and expels ONE spore rightward, then recovers",
+    "refs": [
+      "/workspace/scratch/c1faa011a060/warp-fracture/colaboracao/entregas/VD_verdamia/E0_inimigos.png"
+    ],
+    "transparent": true
+  },
+  {
+    "id": "E_esporangio_death",
+    "prompt": "Use case: stylized-concept. Production raster game asset for Warp Fracture, Verdâmia eternal-night bioluminescent forest. Match supplied project's official style references: compact clean cartoon 2D, crisp angular silhouettes, two or three economical cel-shaded tones per surface, restrained local glow. No realism, painterly rendering, 3D, pixel art, text, watermark, scenery or cast shadows in sprite sheets. Palette outline #101923, forest #0A1716, moss #1D5248, pale mycelium #C7CEC0, lime #C5ED70, amber #F1BB55, danger violet #8D62BD. Exactly 1536x1024 transparent PNG. Invisible 4x2 grid, cells 384x512. Read order top left to bottom right. One pose per cell, same scale, contain each drawing within cell with 12px margin. No grid, labels, ground, background or cast shadow. 6 frames; last 2 cells EMPTY alpha. Match ESPORÂNGIO ONLY from supplied E0 character design reference, omit other enemies, no layout copied. Side view right, teal rooted curved stalk and single fungus bulb with dark spitting opening. Base fixed at local y472; figure 260px tall in idle, consistent scale across actions. bulb wilts, stem bends, collapses into low rooted pile and lime spots extinguish, no gore",
+    "refs": [
+      "/workspace/scratch/c1faa011a060/warp-fracture/colaboracao/entregas/VD_verdamia/E0_inimigos.png"
+    ],
+    "transparent": true
+  },
+  {
+    "id": "E_mariposa_fly",
+    "prompt": "Use case: stylized-concept. Production raster game asset for Warp Fracture, Verdâmia eternal-night bioluminescent forest. Match supplied project's official style references: compact clean cartoon 2D, crisp angular silhouettes, two or three economical cel-shaded tones per surface, restrained local glow. No realism, painterly rendering, 3D, pixel art, text, watermark, scenery or cast shadows in sprite sheets. Palette outline #101923, forest #0A1716, moss #1D5248, pale mycelium #C7CEC0, lime #C5ED70, amber #F1BB55, danger violet #8D62BD. Exactly 1536x1024 transparent PNG. Invisible 4x2 grid, cells 384x512. Read order top left to bottom right. One pose per cell, same scale, contain each drawing within cell with 12px margin. No grid, labels, ground, background or cast shadow. 6 frames and 2 EMPTY alpha cells. Match MARIPOSA LANTERNA ONLY in E0 reference, no reference board. Pale cream four wings with simple navy eyespots, two antennae, slender navy thorax, amber abdomen, side-facing RIGHT, fixed approx 240px wingspan anatomical scale. six frame wingbeat loop: raised wings, downstroke, lowest wings, upstroke, open wings, raised wings approaching first. Body position near cell center, not feet baseline.",
+    "refs": [
+      "/workspace/scratch/c1faa011a060/warp-fracture/colaboracao/entregas/VD_verdamia/E0_inimigos.png"
+    ],
+    "transparent": true
+  },
+  {
+    "id": "E_mariposa_death",
+    "prompt": "Use case: stylized-concept. Production raster game asset for Warp Fracture, Verdâmia eternal-night bioluminescent forest. Match supplied project's official style references: compact clean cartoon 2D, crisp angular silhouettes, two or three economical cel-shaded tones per surface, restrained local glow. No realism, painterly rendering, 3D, pixel art, text, watermark, scenery or cast shadows in sprite sheets. Palette outline #101923, forest #0A1716, moss #1D5248, pale mycelium #C7CEC0, lime #C5ED70, amber #F1BB55, danger violet #8D62BD. Exactly 1536x1024 transparent PNG. Invisible 4x2 grid, cells 384x512. Read order top left to bottom right. One pose per cell, same scale, contain each drawing within cell with 12px margin. No grid, labels, ground, background or cast shadow. 6 frames and 2 EMPTY alpha cells. Match MARIPOSA LANTERNA ONLY in E0 reference, no reference board. Pale cream four wings with simple navy eyespots, two antennae, slender navy thorax, amber abdomen, side-facing RIGHT, fixed approx 240px wingspan anatomical scale. six frame collapse: hit, wings fold, descending curled moth, tipped sideways, folded on itself, amber light off. No exploding robot pieces.",
+    "refs": [
+      "/workspace/scratch/c1faa011a060/warp-fracture/colaboracao/entregas/VD_verdamia/E0_inimigos.png"
+    ],
+    "transparent": true
+  },
+  {
+    "id": "E_rainha_idle_1",
+    "prompt": "Use case: stylized-concept. Production raster game asset for Warp Fracture, Verdâmia eternal-night bioluminescent forest. Match supplied project's official style references: compact clean cartoon 2D, crisp angular silhouettes, two or three economical cel-shaded tones per surface, restrained local glow. No realism, painterly rendering, 3D, pixel art, text, watermark, scenery or cast shadows in sprite sheets. Palette outline #101923, forest #0A1716, moss #1D5248, pale mycelium #C7CEC0, lime #C5ED70, amber #F1BB55, danger violet #8D62BD. BOSS ANIMATION idle, sheet 1 of 3. EXACTLY TWO distinct consecutive frames on ONE 1536x1024 transparent PNG, invisible 2 columns x 1 row; cells 768x1024. Do NOT use common 4x2 grid. Frame 1 left and 2 right; neutral grounded queen; slight inhale. Use ONLY RAINHA MICÉLIA design from E0 board: enormous rooted dark-purple root robe, pale compact mask face with threatening cyan eyes, large simple purple mushroom crown with mint glowing spots, two root arms. Never humanoid human legs, never a skeleton or ornate dress. Side view facing RIGHT with face slightly visible. Same anatomical size in ALL sheets: neutral height approx 760px, width 620px, base at y984. Every part inside own cell with 24px margin. No Lince or other enemies. Rooted base cannot translate. Match exact reference colors and crown shape. No text, grid, scenery, cast shadow. For death preserve original scale while collapsing.",
+    "refs": [
+      "/workspace/scratch/c1faa011a060/warp-fracture/colaboracao/entregas/VD_verdamia/E0_inimigos.png"
+    ],
+    "transparent": true
+  },
+  {
+    "id": "E_rainha_idle_2",
+    "prompt": "Use case: stylized-concept. Production raster game asset for Warp Fracture, Verdâmia eternal-night bioluminescent forest. Match supplied project's official style references: compact clean cartoon 2D, crisp angular silhouettes, two or three economical cel-shaded tones per surface, restrained local glow. No realism, painterly rendering, 3D, pixel art, text, watermark, scenery or cast shadows in sprite sheets. Palette outline #101923, forest #0A1716, moss #1D5248, pale mycelium #C7CEC0, lime #C5ED70, amber #F1BB55, danger violet #8D62BD. BOSS ANIMATION idle, sheet 2 of 3. EXACTLY TWO distinct consecutive frames on ONE 1536x1024 transparent PNG, invisible 2 columns x 1 row; cells 768x1024. Do NOT use common 4x2 grid. Frame 3 left and 4 right; upper cap rises subtly; root fingers shift. Use ONLY RAINHA MICÉLIA design from E0 board: enormous rooted dark-purple root robe, pale compact mask face with threatening cyan eyes, large simple purple mushroom crown with mint glowing spots, two root arms. Never humanoid human legs, never a skeleton or ornate dress. Side view facing RIGHT with face slightly visible. Same anatomical size in ALL sheets: neutral height approx 760px, width 620px, base at y984. Every part inside own cell with 24px margin. No Lince or other enemies. Rooted base cannot translate. Match exact reference colors and crown shape. No text, grid, scenery, cast shadow. For death preserve original scale while collapsing.",
+    "refs": [
+      "/workspace/scratch/c1faa011a060/warp-fracture/colaboracao/entregas/VD_verdamia/E0_inimigos.png"
+    ],
+    "transparent": true
+  },
+  {
+    "id": "E_rainha_idle_3",
+    "prompt": "Use case: stylized-concept. Production raster game asset for Warp Fracture, Verdâmia eternal-night bioluminescent forest. Match supplied project's official style references: compact clean cartoon 2D, crisp angular silhouettes, two or three economical cel-shaded tones per surface, restrained local glow. No realism, painterly rendering, 3D, pixel art, text, watermark, scenery or cast shadows in sprite sheets. Palette outline #101923, forest #0A1716, moss #1D5248, pale mycelium #C7CEC0, lime #C5ED70, amber #F1BB55, danger violet #8D62BD. BOSS ANIMATION idle, sheet 3 of 3. EXACTLY TWO distinct consecutive frames on ONE 1536x1024 transparent PNG, invisible 2 columns x 1 row; cells 768x1024. Do NOT use common 4x2 grid. Frame 5 left and 6 right; exhale; cap and fingers settle to neutral. Use ONLY RAINHA MICÉLIA design from E0 board: enormous rooted dark-purple root robe, pale compact mask face with threatening cyan eyes, large simple purple mushroom crown with mint glowing spots, two root arms. Never humanoid human legs, never a skeleton or ornate dress. Side view facing RIGHT with face slightly visible. Same anatomical size in ALL sheets: neutral height approx 760px, width 620px, base at y984. Every part inside own cell with 24px margin. No Lince or other enemies. Rooted base cannot translate. Match exact reference colors and crown shape. No text, grid, scenery, cast shadow. For death preserve original scale while collapsing.",
+    "refs": [
+      "/workspace/scratch/c1faa011a060/warp-fracture/colaboracao/entregas/VD_verdamia/E0_inimigos.png"
+    ],
+    "transparent": true
+  },
+  {
+    "id": "E_rainha_raizes_1",
+    "prompt": "Use case: stylized-concept. Production raster game asset for Warp Fracture, Verdâmia eternal-night bioluminescent forest. Match supplied project's official style references: compact clean cartoon 2D, crisp angular silhouettes, two or three economical cel-shaded tones per surface, restrained local glow. No realism, painterly rendering, 3D, pixel art, text, watermark, scenery or cast shadows in sprite sheets. Palette outline #101923, forest #0A1716, moss #1D5248, pale mycelium #C7CEC0, lime #C5ED70, amber #F1BB55, danger violet #8D62BD. BOSS ANIMATION raizes, sheet 1 of 3. EXACTLY TWO distinct consecutive frames on ONE 1536x1024 transparent PNG, invisible 2 columns x 1 row; cells 768x1024. Do NOT use common 4x2 grid. Frame 1 left and 2 right; neutral then shoulders draw arms up. Use ONLY RAINHA MICÉLIA design from E0 board: enormous rooted dark-purple root robe, pale compact mask face with threatening cyan eyes, large simple purple mushroom crown with mint glowing spots, two root arms. Never humanoid human legs, never a skeleton or ornate dress. Side view facing RIGHT with face slightly visible. Same anatomical size in ALL sheets: neutral height approx 760px, width 620px, base at y984. Every part inside own cell with 24px margin. No Lince or other enemies. Rooted base cannot translate. Match exact reference colors and crown shape. No text, grid, scenery, cast shadow. For death preserve original scale while collapsing.",
+    "refs": [
+      "/workspace/scratch/c1faa011a060/warp-fracture/colaboracao/entregas/VD_verdamia/E0_inimigos.png"
+    ],
+    "transparent": true
+  },
+  {
+    "id": "E_rainha_raizes_2",
+    "prompt": "Use case: stylized-concept. Production raster game asset for Warp Fracture, Verdâmia eternal-night bioluminescent forest. Match supplied project's official style references: compact clean cartoon 2D, crisp angular silhouettes, two or three economical cel-shaded tones per surface, restrained local glow. No realism, painterly rendering, 3D, pixel art, text, watermark, scenery or cast shadows in sprite sheets. Palette outline #101923, forest #0A1716, moss #1D5248, pale mycelium #C7CEC0, lime #C5ED70, amber #F1BB55, danger violet #8D62BD. BOSS ANIMATION raizes, sheet 2 of 3. EXACTLY TWO distinct consecutive frames on ONE 1536x1024 transparent PNG, invisible 2 columns x 1 row; cells 768x1024. Do NOT use common 4x2 grid. Frame 3 left and 4 right; both root hands drive into ground; forceful planted pose. Use ONLY RAINHA MICÉLIA design from E0 board: enormous rooted dark-purple root robe, pale compact mask face with threatening cyan eyes, large simple purple mushroom crown with mint glowing spots, two root arms. Never humanoid human legs, never a skeleton or ornate dress. Side view facing RIGHT with face slightly visible. Same anatomical size in ALL sheets: neutral height approx 760px, width 620px, base at y984. Every part inside own cell with 24px margin. No Lince or other enemies. Rooted base cannot translate. Match exact reference colors and crown shape. No text, grid, scenery, cast shadow. For death preserve original scale while collapsing.",
+    "refs": [
+      "/workspace/scratch/c1faa011a060/warp-fracture/colaboracao/entregas/VD_verdamia/E0_inimigos.png"
+    ],
+    "transparent": true
+  },
+  {
+    "id": "E_rainha_raizes_3",
+    "prompt": "Use case: stylized-concept. Production raster game asset for Warp Fracture, Verdâmia eternal-night bioluminescent forest. Match supplied project's official style references: compact clean cartoon 2D, crisp angular silhouettes, two or three economical cel-shaded tones per surface, restrained local glow. No realism, painterly rendering, 3D, pixel art, text, watermark, scenery or cast shadows in sprite sheets. Palette outline #101923, forest #0A1716, moss #1D5248, pale mycelium #C7CEC0, lime #C5ED70, amber #F1BB55, danger violet #8D62BD. BOSS ANIMATION raizes, sheet 3 of 3. EXACTLY TWO distinct consecutive frames on ONE 1536x1024 transparent PNG, invisible 2 columns x 1 row; cells 768x1024. Do NOT use common 4x2 grid. Frame 5 left and 6 right; energy travels into root base; hands release and recover. Use ONLY RAINHA MICÉLIA design from E0 board: enormous rooted dark-purple root robe, pale compact mask face with threatening cyan eyes, large simple purple mushroom crown with mint glowing spots, two root arms. Never humanoid human legs, never a skeleton or ornate dress. Side view facing RIGHT with face slightly visible. Same anatomical size in ALL sheets: neutral height approx 760px, width 620px, base at y984. Every part inside own cell with 24px margin. No Lince or other enemies. Rooted base cannot translate. Match exact reference colors and crown shape. No text, grid, scenery, cast shadow. For death preserve original scale while collapsing.",
+    "refs": [
+      "/workspace/scratch/c1faa011a060/warp-fracture/colaboracao/entregas/VD_verdamia/E0_inimigos.png"
+    ],
+    "transparent": true
+  },
+  {
+    "id": "E_rainha_esporos_1",
+    "prompt": "Use case: stylized-concept. Production raster game asset for Warp Fracture, Verdâmia eternal-night bioluminescent forest. Match supplied project's official style references: compact clean cartoon 2D, crisp angular silhouettes, two or three economical cel-shaded tones per surface, restrained local glow. No realism, painterly rendering, 3D, pixel art, text, watermark, scenery or cast shadows in sprite sheets. Palette outline #101923, forest #0A1716, moss #1D5248, pale mycelium #C7CEC0, lime #C5ED70, amber #F1BB55, danger violet #8D62BD. BOSS ANIMATION esporos, sheet 1 of 3. EXACTLY TWO distinct consecutive frames on ONE 1536x1024 transparent PNG, invisible 2 columns x 1 row; cells 768x1024. Do NOT use common 4x2 grid. Frame 1 left and 2 right; neutral; crown cap begins lifting. Use ONLY RAINHA MICÉLIA design from E0 board: enormous rooted dark-purple root robe, pale compact mask face with threatening cyan eyes, large simple purple mushroom crown with mint glowing spots, two root arms. Never humanoid human legs, never a skeleton or ornate dress. Side view facing RIGHT with face slightly visible. Same anatomical size in ALL sheets: neutral height approx 760px, width 620px, base at y984. Every part inside own cell with 24px margin. No Lince or other enemies. Rooted base cannot translate. Match exact reference colors and crown shape. No text, grid, scenery, cast shadow. For death preserve original scale while collapsing.",
+    "refs": [
+      "/workspace/scratch/c1faa011a060/warp-fracture/colaboracao/entregas/VD_verdamia/E0_inimigos.png"
+    ],
+    "transparent": true
+  },
+  {
+    "id": "E_rainha_esporos_2",
+    "prompt": "Use case: stylized-concept. Production raster game asset for Warp Fracture, Verdâmia eternal-night bioluminescent forest. Match supplied project's official style references: compact clean cartoon 2D, crisp angular silhouettes, two or three economical cel-shaded tones per surface, restrained local glow. No realism, painterly rendering, 3D, pixel art, text, watermark, scenery or cast shadows in sprite sheets. Palette outline #101923, forest #0A1716, moss #1D5248, pale mycelium #C7CEC0, lime #C5ED70, amber #F1BB55, danger violet #8D62BD. BOSS ANIMATION esporos, sheet 2 of 3. EXACTLY TWO distinct consecutive frames on ONE 1536x1024 transparent PNG, invisible 2 columns x 1 row; cells 768x1024. Do NOT use common 4x2 grid. Frame 3 left and 4 right; mushroom crown opens, spore pores glow; expels a few violet and teal spores. Use ONLY RAINHA MICÉLIA design from E0 board: enormous rooted dark-purple root robe, pale compact mask face with threatening cyan eyes, large simple purple mushroom crown with mint glowing spots, two root arms. Never humanoid human legs, never a skeleton or ornate dress. Side view facing RIGHT with face slightly visible. Same anatomical size in ALL sheets: neutral height approx 760px, width 620px, base at y984. Every part inside own cell with 24px margin. No Lince or other enemies. Rooted base cannot translate. Match exact reference colors and crown shape. No text, grid, scenery, cast shadow. For death preserve original scale while collapsing.",
+    "refs": [
+      "/workspace/scratch/c1faa011a060/warp-fracture/colaboracao/entregas/VD_verdamia/E0_inimigos.png"
+    ],
+    "transparent": true
+  },
+  {
+    "id": "E_rainha_esporos_3",
+    "prompt": "Use case: stylized-concept. Production raster game asset for Warp Fracture, Verdâmia eternal-night bioluminescent forest. Match supplied project's official style references: compact clean cartoon 2D, crisp angular silhouettes, two or three economical cel-shaded tones per surface, restrained local glow. No realism, painterly rendering, 3D, pixel art, text, watermark, scenery or cast shadows in sprite sheets. Palette outline #101923, forest #0A1716, moss #1D5248, pale mycelium #C7CEC0, lime #C5ED70, amber #F1BB55, danger violet #8D62BD. BOSS ANIMATION esporos, sheet 3 of 3. EXACTLY TWO distinct consecutive frames on ONE 1536x1024 transparent PNG, invisible 2 columns x 1 row; cells 768x1024. Do NOT use common 4x2 grid. Frame 5 left and 6 right; crown closes; exhaust fades and returns to neutral. Use ONLY RAINHA MICÉLIA design from E0 board: enormous rooted dark-purple root robe, pale compact mask face with threatening cyan eyes, large simple purple mushroom crown with mint glowing spots, two root arms. Never humanoid human legs, never a skeleton or ornate dress. Side view facing RIGHT with face slightly visible. Same anatomical size in ALL sheets: neutral height approx 760px, width 620px, base at y984. Every part inside own cell with 24px margin. No Lince or other enemies. Rooted base cannot translate. Match exact reference colors and crown shape. No text, grid, scenery, cast shadow. For death preserve original scale while collapsing.",
+    "refs": [
+      "/workspace/scratch/c1faa011a060/warp-fracture/colaboracao/entregas/VD_verdamia/E0_inimigos.png"
+    ],
+    "transparent": true
+  },
+  {
+    "id": "E_rainha_rugido_1",
+    "prompt": "Use case: stylized-concept. Production raster game asset for Warp Fracture, Verdâmia eternal-night bioluminescent forest. Match supplied project's official style references: compact clean cartoon 2D, crisp angular silhouettes, two or three economical cel-shaded tones per surface, restrained local glow. No realism, painterly rendering, 3D, pixel art, text, watermark, scenery or cast shadows in sprite sheets. Palette outline #101923, forest #0A1716, moss #1D5248, pale mycelium #C7CEC0, lime #C5ED70, amber #F1BB55, danger violet #8D62BD. BOSS ANIMATION rugido, sheet 1 of 2. EXACTLY TWO distinct consecutive frames on ONE 1536x1024 transparent PNG, invisible 2 columns x 1 row; cells 768x1024. Do NOT use common 4x2 grid. Frame 1 left and 2 right; closed mouth anticipates; shoulders rise. Use ONLY RAINHA MICÉLIA design from E0 board: enormous rooted dark-purple root robe, pale compact mask face with threatening cyan eyes, large simple purple mushroom crown with mint glowing spots, two root arms. Never humanoid human legs, never a skeleton or ornate dress. Side view facing RIGHT with face slightly visible. Same anatomical size in ALL sheets: neutral height approx 760px, width 620px, base at y984. Every part inside own cell with 24px margin. No Lince or other enemies. Rooted base cannot translate. Match exact reference colors and crown shape. No text, grid, scenery, cast shadow. For death preserve original scale while collapsing.",
+    "refs": [
+      "/workspace/scratch/c1faa011a060/warp-fracture/colaboracao/entregas/VD_verdamia/E0_inimigos.png"
+    ],
+    "transparent": true
+  },
+  {
+    "id": "E_rainha_rugido_2",
+    "prompt": "Use case: stylized-concept. Production raster game asset for Warp Fracture, Verdâmia eternal-night bioluminescent forest. Match supplied project's official style references: compact clean cartoon 2D, crisp angular silhouettes, two or three economical cel-shaded tones per surface, restrained local glow. No realism, painterly rendering, 3D, pixel art, text, watermark, scenery or cast shadows in sprite sheets. Palette outline #101923, forest #0A1716, moss #1D5248, pale mycelium #C7CEC0, lime #C5ED70, amber #F1BB55, danger violet #8D62BD. BOSS ANIMATION rugido, sheet 2 of 2. EXACTLY TWO distinct consecutive frames on ONE 1536x1024 transparent PNG, invisible 2 columns x 1 row; cells 768x1024. Do NOT use common 4x2 grid. Frame 3 left and 4 right; mouth open powerful roar and cap flare; closing recovery. Use ONLY RAINHA MICÉLIA design from E0 board: enormous rooted dark-purple root robe, pale compact mask face with threatening cyan eyes, large simple purple mushroom crown with mint glowing spots, two root arms. Never humanoid human legs, never a skeleton or ornate dress. Side view facing RIGHT with face slightly visible. Same anatomical size in ALL sheets: neutral height approx 760px, width 620px, base at y984. Every part inside own cell with 24px margin. No Lince or other enemies. Rooted base cannot translate. Match exact reference colors and crown shape. No text, grid, scenery, cast shadow. For death preserve original scale while collapsing.",
+    "refs": [
+      "/workspace/scratch/c1faa011a060/warp-fracture/colaboracao/entregas/VD_verdamia/E0_inimigos.png"
+    ],
+    "transparent": true
+  },
+  {
+    "id": "E_rainha_hurt_1",
+    "prompt": "Use case: stylized-concept. Production raster game asset for Warp Fracture, Verdâmia eternal-night bioluminescent forest. Match supplied project's official style references: compact clean cartoon 2D, crisp angular silhouettes, two or three economical cel-shaded tones per surface, restrained local glow. No realism, painterly rendering, 3D, pixel art, text, watermark, scenery or cast shadows in sprite sheets. Palette outline #101923, forest #0A1716, moss #1D5248, pale mycelium #C7CEC0, lime #C5ED70, amber #F1BB55, danger violet #8D62BD. BOSS ANIMATION hurt, sheet 1 of 1. EXACTLY TWO distinct consecutive frames on ONE 1536x1024 transparent PNG, invisible 2 columns x 1 row; cells 768x1024. Do NOT use common 4x2 grid. Frame 1 left and 2 right; left pose sharp head recoil with closed crown; right pose root arms brace and recover toward idle. Use ONLY RAINHA MICÉLIA design from E0 board: enormous rooted dark-purple root robe, pale compact mask face with threatening cyan eyes, large simple purple mushroom crown with mint glowing spots, two root arms. Never humanoid human legs, never a skeleton or ornate dress. Side view facing RIGHT with face slightly visible. Same anatomical size in ALL sheets: neutral height approx 760px, width 620px, base at y984. Every part inside own cell with 24px margin. No Lince or other enemies. Rooted base cannot translate. Match exact reference colors and crown shape. No text, grid, scenery, cast shadow. For death preserve original scale while collapsing.",
+    "refs": [
+      "/workspace/scratch/c1faa011a060/warp-fracture/colaboracao/entregas/VD_verdamia/E0_inimigos.png"
+    ],
+    "transparent": true
+  },
+  {
+    "id": "E_rainha_death_1",
+    "prompt": "Use case: stylized-concept. Production raster game asset for Warp Fracture, Verdâmia eternal-night bioluminescent forest. Match supplied project's official style references: compact clean cartoon 2D, crisp angular silhouettes, two or three economical cel-shaded tones per surface, restrained local glow. No realism, painterly rendering, 3D, pixel art, text, watermark, scenery or cast shadows in sprite sheets. Palette outline #101923, forest #0A1716, moss #1D5248, pale mycelium #C7CEC0, lime #C5ED70, amber #F1BB55, danger violet #8D62BD. BOSS ANIMATION death, sheet 1 of 4. EXACTLY TWO distinct consecutive frames on ONE 1536x1024 transparent PNG, invisible 2 columns x 1 row; cells 768x1024. Do NOT use common 4x2 grid. Frame 1 left and 2 right; stagger and cap droops. Use ONLY RAINHA MICÉLIA design from E0 board: enormous rooted dark-purple root robe, pale compact mask face with threatening cyan eyes, large simple purple mushroom crown with mint glowing spots, two root arms. Never humanoid human legs, never a skeleton or ornate dress. Side view facing RIGHT with face slightly visible. Same anatomical size in ALL sheets: neutral height approx 760px, width 620px, base at y984. Every part inside own cell with 24px margin. No Lince or other enemies. Rooted base cannot translate. Match exact reference colors and crown shape. No text, grid, scenery, cast shadow. For death preserve original scale while collapsing.",
+    "refs": [
+      "/workspace/scratch/c1faa011a060/warp-fracture/colaboracao/entregas/VD_verdamia/E0_inimigos.png"
+    ],
+    "transparent": true
+  },
+  {
+    "id": "E_rainha_death_2",
+    "prompt": "Use case: stylized-concept. Production raster game asset for Warp Fracture, Verdâmia eternal-night bioluminescent forest. Match supplied project's official style references: compact clean cartoon 2D, crisp angular silhouettes, two or three economical cel-shaded tones per surface, restrained local glow. No realism, painterly rendering, 3D, pixel art, text, watermark, scenery or cast shadows in sprite sheets. Palette outline #101923, forest #0A1716, moss #1D5248, pale mycelium #C7CEC0, lime #C5ED70, amber #F1BB55, danger violet #8D62BD. BOSS ANIMATION death, sheet 2 of 4. EXACTLY TWO distinct consecutive frames on ONE 1536x1024 transparent PNG, invisible 2 columns x 1 row; cells 768x1024. Do NOT use common 4x2 grid. Frame 3 left and 4 right; root arms crumble; mask lowers. Use ONLY RAINHA MICÉLIA design from E0 board: enormous rooted dark-purple root robe, pale compact mask face with threatening cyan eyes, large simple purple mushroom crown with mint glowing spots, two root arms. Never humanoid human legs, never a skeleton or ornate dress. Side view facing RIGHT with face slightly visible. Same anatomical size in ALL sheets: neutral height approx 760px, width 620px, base at y984. Every part inside own cell with 24px margin. No Lince or other enemies. Rooted base cannot translate. Match exact reference colors and crown shape. No text, grid, scenery, cast shadow. For death preserve original scale while collapsing.",
+    "refs": [
+      "/workspace/scratch/c1faa011a060/warp-fracture/colaboracao/entregas/VD_verdamia/E0_inimigos.png"
+    ],
+    "transparent": true
+  },
+  {
+    "id": "E_rainha_death_3",
+    "prompt": "Use case: stylized-concept. Production raster game asset for Warp Fracture, Verdâmia eternal-night bioluminescent forest. Match supplied project's official style references: compact clean cartoon 2D, crisp angular silhouettes, two or three economical cel-shaded tones per surface, restrained local glow. No realism, painterly rendering, 3D, pixel art, text, watermark, scenery or cast shadows in sprite sheets. Palette outline #101923, forest #0A1716, moss #1D5248, pale mycelium #C7CEC0, lime #C5ED70, amber #F1BB55, danger violet #8D62BD. BOSS ANIMATION death, sheet 3 of 4. EXACTLY TWO distinct consecutive frames on ONE 1536x1024 transparent PNG, invisible 2 columns x 1 row; cells 768x1024. Do NOT use common 4x2 grid. Frame 5 left and 6 right; crown splits into simple cap fragments; body collapses. Use ONLY RAINHA MICÉLIA design from E0 board: enormous rooted dark-purple root robe, pale compact mask face with threatening cyan eyes, large simple purple mushroom crown with mint glowing spots, two root arms. Never humanoid human legs, never a skeleton or ornate dress. Side view facing RIGHT with face slightly visible. Same anatomical size in ALL sheets: neutral height approx 760px, width 620px, base at y984. Every part inside own cell with 24px margin. No Lince or other enemies. Rooted base cannot translate. Match exact reference colors and crown shape. No text, grid, scenery, cast shadow. For death preserve original scale while collapsing.",
+    "refs": [
+      "/workspace/scratch/c1faa011a060/warp-fracture/colaboracao/entregas/VD_verdamia/E0_inimigos.png"
+    ],
+    "transparent": true
+  },
+  {
+    "id": "E_rainha_death_4",
+    "prompt": "Use case: stylized-concept. Production raster game asset for Warp Fracture, Verdâmia eternal-night bioluminescent forest. Match supplied project's official style references: compact clean cartoon 2D, crisp angular silhouettes, two or three economical cel-shaded tones per surface, restrained local glow. No realism, painterly rendering, 3D, pixel art, text, watermark, scenery or cast shadows in sprite sheets. Palette outline #101923, forest #0A1716, moss #1D5248, pale mycelium #C7CEC0, lime #C5ED70, amber #F1BB55, danger violet #8D62BD. BOSS ANIMATION death, sheet 4 of 4. EXACTLY TWO distinct consecutive frames on ONE 1536x1024 transparent PNG, invisible 2 columns x 1 row; cells 768x1024. Do NOT use common 4x2 grid. Frame 7 left and 8 right; low inert dark rooted remains; lights go out. Use ONLY RAINHA MICÉLIA design from E0 board: enormous rooted dark-purple root robe, pale compact mask face with threatening cyan eyes, large simple purple mushroom crown with mint glowing spots, two root arms. Never humanoid human legs, never a skeleton or ornate dress. Side view facing RIGHT with face slightly visible. Same anatomical size in ALL sheets: neutral height approx 760px, width 620px, base at y984. Every part inside own cell with 24px margin. No Lince or other enemies. Rooted base cannot translate. Match exact reference colors and crown shape. No text, grid, scenery, cast shadow. For death preserve original scale while collapsing.",
+    "refs": [
+      "/workspace/scratch/c1faa011a060/warp-fracture/colaboracao/entregas/VD_verdamia/E0_inimigos.png"
+    ],
+    "transparent": true
+  },
+  {
+    "id": "E1_cogumelo_gigante",
+    "prompt": "Use case: stylized-concept. Production raster game asset for Warp Fracture, Verdâmia eternal-night bioluminescent forest. Match supplied project's official style references: compact clean cartoon 2D, crisp angular silhouettes, two or three economical cel-shaded tones per surface, restrained local glow. No realism, painterly rendering, 3D, pixel art, text, watermark, scenery or cast shadows in sprite sheets. Palette outline #101923, forest #0A1716, moss #1D5248, pale mycelium #C7CEC0, lime #C5ED70, amber #F1BB55, danger violet #8D62BD. STATIC OBJECT 1024x1024 PNG real transparent alpha. One isolated complete object occupying ~70% image, side-view platformer art, center horizontally. Support: ground. One giant umbrella mushroom: thick slightly curved dark-teal stalk, large broad moss-teal cap with three lime glowing spots, simple pale gills. Flat grounded base. No background plate, checkerboard, lettering, contact shadow, or horizon.",
+    "refs": [
+      "/workspace/scratch/c1faa011a060/warp-fracture/colaboracao/entregas/VD_verdamia/VD00_ambiente.png"
+    ],
+    "transparent": true
+  },
+  {
+    "id": "E1_grama",
+    "prompt": "Use case: stylized-concept. Production raster game asset for Warp Fracture, Verdâmia eternal-night bioluminescent forest. Match supplied project's official style references: compact clean cartoon 2D, crisp angular silhouettes, two or three economical cel-shaded tones per surface, restrained local glow. No realism, painterly rendering, 3D, pixel art, text, watermark, scenery or cast shadows in sprite sheets. Palette outline #101923, forest #0A1716, moss #1D5248, pale mycelium #C7CEC0, lime #C5ED70, amber #F1BB55, danger violet #8D62BD. STATIC OBJECT 1024x1024 PNG real transparent alpha. One isolated complete object occupying ~70% image, side-view platformer art, center horizontally. Support: ground. One compact tuft of bioluminescent grass, broad dark-teal blades and a few lime tips; readable at small scale, minimal internal detail. No background plate, checkerboard, lettering, contact shadow, or horizon.",
+    "refs": [
+      "/workspace/scratch/c1faa011a060/warp-fracture/colaboracao/entregas/VD_verdamia/VD00_ambiente.png"
+    ],
+    "transparent": true
+  },
+  {
+    "id": "E1_raiz_pendurada",
+    "prompt": "Use case: stylized-concept. Production raster game asset for Warp Fracture, Verdâmia eternal-night bioluminescent forest. Match supplied project's official style references: compact clean cartoon 2D, crisp angular silhouettes, two or three economical cel-shaded tones per surface, restrained local glow. No realism, painterly rendering, 3D, pixel art, text, watermark, scenery or cast shadows in sprite sheets. Palette outline #101923, forest #0A1716, moss #1D5248, pale mycelium #C7CEC0, lime #C5ED70, amber #F1BB55, danger violet #8D62BD. STATIC OBJECT 1024x1024 PNG real transparent alpha. One isolated complete object occupying ~70% image, side-view platformer art, center horizontally. Support: ceiling. One branching hanging root, thick flat ceiling attachment at upper end, three tapering dangling branches and two small amber fungus bulbs. Entire support included. No background plate, checkerboard, lettering, contact shadow, or horizon.",
+    "refs": [
+      "/workspace/scratch/c1faa011a060/warp-fracture/colaboracao/entregas/VD_verdamia/VD00_ambiente.png"
+    ],
+    "transparent": true
+  },
+  {
+    "id": "E1_tronco_plataforma",
+    "prompt": "Use case: stylized-concept. Production raster game asset for Warp Fracture, Verdâmia eternal-night bioluminescent forest. Match supplied project's official style references: compact clean cartoon 2D, crisp angular silhouettes, two or three economical cel-shaded tones per surface, restrained local glow. No realism, painterly rendering, 3D, pixel art, text, watermark, scenery or cast shadows in sprite sheets. Palette outline #101923, forest #0A1716, moss #1D5248, pale mycelium #C7CEC0, lime #C5ED70, amber #F1BB55, danger violet #8D62BD. STATIC OBJECT 1024x1024 PNG real transparent alpha. One isolated complete object occupying ~70% image, side-view platformer art, center horizontally. Support: ground. One horizontal fallen tree log serving as platform, straight flat moss-covered walkable top, bark with two cel facets, rooted cut ends providing ground support. Wide low silhouette. No background plate, checkerboard, lettering, contact shadow, or horizon.",
+    "refs": [
+      "/workspace/scratch/c1faa011a060/warp-fracture/colaboracao/entregas/VD_verdamia/VD00_ambiente.png"
+    ],
+    "transparent": true
+  },
+  {
+    "id": "E1_pedra_musgo",
+    "prompt": "Use case: stylized-concept. Production raster game asset for Warp Fracture, Verdâmia eternal-night bioluminescent forest. Match supplied project's official style references: compact clean cartoon 2D, crisp angular silhouettes, two or three economical cel-shaded tones per surface, restrained local glow. No realism, painterly rendering, 3D, pixel art, text, watermark, scenery or cast shadows in sprite sheets. Palette outline #101923, forest #0A1716, moss #1D5248, pale mycelium #C7CEC0, lime #C5ED70, amber #F1BB55, danger violet #8D62BD. STATIC OBJECT 1024x1024 PNG real transparent alpha. One isolated complete object occupying ~70% image, side-view platformer art, center horizontally. Support: ground. One low angular slate-teal boulder with broad moss patch and two small lime sprouts, flat bottom support. No background plate, checkerboard, lettering, contact shadow, or horizon.",
+    "refs": [
+      "/workspace/scratch/c1faa011a060/warp-fracture/colaboracao/entregas/VD_verdamia/VD00_ambiente.png"
+    ],
+    "transparent": true
+  },
+  {
+    "id": "E1_arco_templo",
+    "prompt": "Use case: stylized-concept. Production raster game asset for Warp Fracture, Verdâmia eternal-night bioluminescent forest. Match supplied project's official style references: compact clean cartoon 2D, crisp angular silhouettes, two or three economical cel-shaded tones per surface, restrained local glow. No realism, painterly rendering, 3D, pixel art, text, watermark, scenery or cast shadows in sprite sheets. Palette outline #101923, forest #0A1716, moss #1D5248, pale mycelium #C7CEC0, lime #C5ED70, amber #F1BB55, danger violet #8D62BD. STATIC OBJECT 1024x1024 PNG real transparent alpha. One isolated complete object occupying ~70% image, side-view platformer art, center horizontally. Support: ground. One large open pointed temple arch formed by thick intertwined teal roots and a few dark stone blocks. Clear empty opening with actual transparent alpha. Two broad legs contact SAME horizontal ground baseline. No gate painted inside. No background plate, checkerboard, lettering, contact shadow, or horizon.",
+    "refs": [
+      "/workspace/scratch/c1faa011a060/warp-fracture/colaboracao/entregas/VD_verdamia/VD00_ambiente.png"
+    ],
+    "transparent": true
+  },
+  {
+    "id": "E1_altar",
+    "prompt": "Use case: stylized-concept. Production raster game asset for Warp Fracture, Verdâmia eternal-night bioluminescent forest. Match supplied project's official style references: compact clean cartoon 2D, crisp angular silhouettes, two or three economical cel-shaded tones per surface, restrained local glow. No realism, painterly rendering, 3D, pixel art, text, watermark, scenery or cast shadows in sprite sheets. Palette outline #101923, forest #0A1716, moss #1D5248, pale mycelium #C7CEC0, lime #C5ED70, amber #F1BB55, danger violet #8D62BD. STATIC OBJECT 1024x1024 PNG real transparent alpha. One isolated complete object occupying ~70% image, side-view platformer art, center horizontally. Support: ground. One squat dark-teal stone altar holding an EMPTY shallow fragment cradle. Root embrace, thin cyan groove, flat broad grounded base. No crystal included because crystal separate. No background plate, checkerboard, lettering, contact shadow, or horizon.",
+    "refs": [
+      "/workspace/scratch/c1faa011a060/warp-fracture/colaboracao/entregas/VD_verdamia/VD00_ambiente.png"
+    ],
+    "transparent": true
+  },
+  {
+    "id": "VD_checkpoint",
+    "prompt": "Use case: stylized-concept. Production raster game asset for Warp Fracture, Verdâmia eternal-night bioluminescent forest. Match supplied project's official style references: compact clean cartoon 2D, crisp angular silhouettes, two or three economical cel-shaded tones per surface, restrained local glow. No realism, painterly rendering, 3D, pixel art, text, watermark, scenery or cast shadows in sprite sheets. Palette outline #101923, forest #0A1716, moss #1D5248, pale mycelium #C7CEC0, lime #C5ED70, amber #F1BB55, danger violet #8D62BD. STATIC OBJECT 1024x1024 PNG real transparent alpha. One isolated complete object occupying ~70% image, side-view platformer art, center horizontally. Support: ground. One organic resting/checkpoint station matching current in-game semicircular silhouette: squat stone base, arch of intertwined roots, small lime inner groove, empty seat in center and three small floating lime motes inside arch only. Entire base grounded. No mechanical console. No background plate, checkerboard, lettering, contact shadow, or horizon.",
+    "refs": [
+      "/workspace/scratch/c1faa011a060/warp-fracture/colaboracao/entregas/VD_verdamia/VD00_ambiente.png"
+    ],
+    "transparent": true
+  },
+  {
+    "id": "VD_barreira_arena",
+    "prompt": "Use case: stylized-concept. Production raster game asset for Warp Fracture, Verdâmia eternal-night bioluminescent forest. Match supplied project's official style references: compact clean cartoon 2D, crisp angular silhouettes, two or three economical cel-shaded tones per surface, restrained local glow. No realism, painterly rendering, 3D, pixel art, text, watermark, scenery or cast shadows in sprite sheets. Palette outline #101923, forest #0A1716, moss #1D5248, pale mycelium #C7CEC0, lime #C5ED70, amber #F1BB55, danger violet #8D62BD. STATIC OBJECT 1024x1024 PNG real transparent alpha. One isolated complete object occupying ~70% image, side-view platformer art, center horizontally. Support: ground. One vertical barrier made of five interlocked thorny purple roots, flat shared ground base, roots taper above, violet restrained edge highlights. Tall narrow silhouette with no frame or temple arch. This blocks the boss arena during fight. No background plate, checkerboard, lettering, contact shadow, or horizon.",
+    "refs": [
+      "/workspace/scratch/c1faa011a060/warp-fracture/colaboracao/entregas/VD_verdamia/VD00_ambiente.png"
+    ],
+    "transparent": true
+  },
+  {
+    "id": "VD_fragmento",
+    "prompt": "Use case: stylized-concept. Production raster game asset for Warp Fracture, Verdâmia eternal-night bioluminescent forest. Match supplied project's official style references: compact clean cartoon 2D, crisp angular silhouettes, two or three economical cel-shaded tones per surface, restrained local glow. No realism, painterly rendering, 3D, pixel art, text, watermark, scenery or cast shadows in sprite sheets. Palette outline #101923, forest #0A1716, moss #1D5248, pale mycelium #C7CEC0, lime #C5ED70, amber #F1BB55, danger violet #8D62BD. STATIC OBJECT 1024x1024 PNG real transparent alpha. One isolated complete object occupying ~70% image, side-view platformer art, center horizontally. Support: floating. One floating angular translucent cyan-white Dobra crystal, small violet orbit fragments, clean faceted shapes. Neutral frontal-side view, centered. No pedestal, roots or scenery; altar is separate. No background plate, checkerboard, lettering, contact shadow, or horizon.",
+    "refs": [
+      "/workspace/scratch/c1faa011a060/warp-fracture/colaboracao/entregas/VD_verdamia/VD00_ambiente.png"
+    ],
+    "transparent": true
+  },
+  {
+    "id": "VD_esporo_verde",
+    "prompt": "Use case: stylized-concept. Production raster game asset for Warp Fracture, Verdâmia eternal-night bioluminescent forest. Match supplied project's official style references: compact clean cartoon 2D, crisp angular silhouettes, two or three economical cel-shaded tones per surface, restrained local glow. No realism, painterly rendering, 3D, pixel art, text, watermark, scenery or cast shadows in sprite sheets. Palette outline #101923, forest #0A1716, moss #1D5248, pale mycelium #C7CEC0, lime #C5ED70, amber #F1BB55, danger violet #8D62BD. STATIC OBJECT 1024x1024 PNG real transparent alpha. One isolated complete object occupying ~70% image, side-view platformer art, center horizontally. Support: floating. One small spherical lime/teal spore projectile, asymmetrical few tiny fungal spikes, one pale highlight and restrained glow with alpha. Centered, no motion trail or enemy. No background plate, checkerboard, lettering, contact shadow, or horizon.",
+    "refs": [
+      "/workspace/scratch/c1faa011a060/warp-fracture/colaboracao/entregas/VD_verdamia/VD00_ambiente.png"
+    ],
+    "transparent": true
+  },
+  {
+    "id": "VD_esporo_violeta",
+    "prompt": "Use case: stylized-concept. Production raster game asset for Warp Fracture, Verdâmia eternal-night bioluminescent forest. Match supplied project's official style references: compact clean cartoon 2D, crisp angular silhouettes, two or three economical cel-shaded tones per surface, restrained local glow. No realism, painterly rendering, 3D, pixel art, text, watermark, scenery or cast shadows in sprite sheets. Palette outline #101923, forest #0A1716, moss #1D5248, pale mycelium #C7CEC0, lime #C5ED70, amber #F1BB55, danger violet #8D62BD. STATIC OBJECT 1024x1024 PNG real transparent alpha. One isolated complete object occupying ~70% image, side-view platformer art, center horizontally. Support: floating. One small spherical violet spore projectile for Queen spore rain, simple few pale purple spikes, one mint highlight and restrained local glow with alpha. Centered, no enemy or scenery. No background plate, checkerboard, lettering, contact shadow, or horizon.",
+    "refs": [
+      "/workspace/scratch/c1faa011a060/warp-fracture/colaboracao/entregas/VD_verdamia/VD00_ambiente.png"
+    ],
+    "transparent": true
+  },
+  {
+    "id": "VD_chao_musgo",
+    "prompt": "Use case: stylized-concept. Production raster game asset for Warp Fracture, Verdâmia eternal-night bioluminescent forest. Match supplied project's official style references: compact clean cartoon 2D, crisp angular silhouettes, two or three economical cel-shaded tones per surface, restrained local glow. No realism, painterly rendering, 3D, pixel art, text, watermark, scenery or cast shadows in sprite sheets. Palette outline #101923, forest #0A1716, moss #1D5248, pale mycelium #C7CEC0, lime #C5ED70, amber #F1BB55, danger violet #8D62BD. MODULAR TERRAIN 1024x1024 PNG. Horizontal repeating terrain TOP segment: top surface at y128, flat readable walkable moss edge with sparse small lime sprouts, dark teal soil and a few thick root facets from y148 to bottom. Left/right edges must visually match when tiled horizontally. Fill full width and bottom; transparent only above top moss edge. No isolated island. Match environment board style exactly. No text, grid, framed reference swatches. Edges for repetition are functional edges: no margin there. Do not add unrelated objects.",
+    "refs": [
+      "/workspace/scratch/c1faa011a060/warp-fracture/colaboracao/entregas/VD_verdamia/VD00_ambiente.png"
+    ],
+    "transparent": true
+  },
+  {
+    "id": "VD_subsolo",
+    "prompt": "Use case: stylized-concept. Production raster game asset for Warp Fracture, Verdâmia eternal-night bioluminescent forest. Match supplied project's official style references: compact clean cartoon 2D, crisp angular silhouettes, two or three economical cel-shaded tones per surface, restrained local glow. No realism, painterly rendering, 3D, pixel art, text, watermark, scenery or cast shadows in sprite sheets. Palette outline #101923, forest #0A1716, moss #1D5248, pale mycelium #C7CEC0, lime #C5ED70, amber #F1BB55, danger violet #8D62BD. MODULAR TERRAIN 1024x1024 PNG. Seamless solid dark teal earth/root FILL texture. Fill every pixel to all four edges, fully opaque. Few large subtle angular roots and stone facets, low contrast. Must repeat horizontally and vertically; no top moss surface, no vignette, borders, light spots or isolated objects. Match environment board style exactly. No text, grid, framed reference swatches. Edges for repetition are functional edges: no margin there. Do not add unrelated objects.",
+    "refs": [
+      "/workspace/scratch/c1faa011a060/warp-fracture/colaboracao/entregas/VD_verdamia/VD00_ambiente.png"
+    ],
+    "transparent": false
+  },
+  {
+    "id": "VD_parede_escalada",
+    "prompt": "Use case: stylized-concept. Production raster game asset for Warp Fracture, Verdâmia eternal-night bioluminescent forest. Match supplied project's official style references: compact clean cartoon 2D, crisp angular silhouettes, two or three economical cel-shaded tones per surface, restrained local glow. No realism, painterly rendering, 3D, pixel art, text, watermark, scenery or cast shadows in sprite sheets. Palette outline #101923, forest #0A1716, moss #1D5248, pale mycelium #C7CEC0, lime #C5ED70, amber #F1BB55, danger violet #8D62BD. MODULAR TERRAIN 1024x1024 PNG. Vertical wall terrain strip, straight climbable LEFT edge at x256 with restrained moss lip; dark teal root/rock mass fills from x256 to right edge, transparent to its left. Match top/bottom edges for vertical repetition. No protruding thorns, ground or standalone pillar. Match environment board style exactly. No text, grid, framed reference swatches. Edges for repetition are functional edges: no margin there. Do not add unrelated objects.",
+    "refs": [
+      "/workspace/scratch/c1faa011a060/warp-fracture/colaboracao/entregas/VD_verdamia/VD00_ambiente.png"
+    ],
+    "transparent": true
+  },
+  {
+    "id": "VD_canto_esquerdo",
+    "prompt": "Use case: stylized-concept. Production raster game asset for Warp Fracture, Verdâmia eternal-night bioluminescent forest. Match supplied project's official style references: compact clean cartoon 2D, crisp angular silhouettes, two or three economical cel-shaded tones per surface, restrained local glow. No realism, painterly rendering, 3D, pixel art, text, watermark, scenery or cast shadows in sprite sheets. Palette outline #101923, forest #0A1716, moss #1D5248, pale mycelium #C7CEC0, lime #C5ED70, amber #F1BB55, danger violet #8D62BD. MODULAR TERRAIN 1024x1024 PNG. TOP LEFT external corner cap of moss terrain: mass occupies x256..1024 and y256..1024, transparent above and left; flat walkable horizontal top, clean straight climbable left wall. Moss wraps corner, dark teal soil root facets. Right/bottom edge fill suitable for joining top terrain and wall. No floating island. Match environment board style exactly. No text, grid, framed reference swatches. Edges for repetition are functional edges: no margin there. Do not add unrelated objects.",
+    "refs": [
+      "/workspace/scratch/c1faa011a060/warp-fracture/colaboracao/entregas/VD_verdamia/VD00_ambiente.png"
+    ],
+    "transparent": true
+  },
+  {
+    "id": "VD_canto_direito",
+    "prompt": "Use case: stylized-concept. Production raster game asset for Warp Fracture, Verdâmia eternal-night bioluminescent forest. Match supplied project's official style references: compact clean cartoon 2D, crisp angular silhouettes, two or three economical cel-shaded tones per surface, restrained local glow. No realism, painterly rendering, 3D, pixel art, text, watermark, scenery or cast shadows in sprite sheets. Palette outline #101923, forest #0A1716, moss #1D5248, pale mycelium #C7CEC0, lime #C5ED70, amber #F1BB55, danger violet #8D62BD. MODULAR TERRAIN 1024x1024 PNG. TOP RIGHT external corner cap of moss terrain: mass occupies x0..768 and y256..1024, transparent above and right; flat walkable top, straight right wall. Moss wraps corner, dark teal soil root facets. Left/bottom edge fill suitable for adjoining terrain. No floating island. Match environment board style exactly. No text, grid, framed reference swatches. Edges for repetition are functional edges: no margin there. Do not add unrelated objects.",
+    "refs": [
+      "/workspace/scratch/c1faa011a060/warp-fracture/colaboracao/entregas/VD_verdamia/VD00_ambiente.png"
+    ],
+    "transparent": true
+  },
+  {
+    "id": "VD_espinhos",
+    "prompt": "Use case: stylized-concept. Production raster game asset for Warp Fracture, Verdâmia eternal-night bioluminescent forest. Match supplied project's official style references: compact clean cartoon 2D, crisp angular silhouettes, two or three economical cel-shaded tones per surface, restrained local glow. No realism, painterly rendering, 3D, pixel art, text, watermark, scenery or cast shadows in sprite sheets. Palette outline #101923, forest #0A1716, moss #1D5248, pale mycelium #C7CEC0, lime #C5ED70, amber #F1BB55, danger violet #8D62BD. MODULAR TERRAIN 1024x1024 PNG. Horizontal repeating THORN hazard strip across full width at lower third, narrow straight bottom root base at y780. Seven stylized rigid upward dark-purple root spikes with restrained pale-violet tips, visually sharp and clearly harmful, spaced evenly. Left/right root base edges match for horizontal tiling. All sky area transparent. No plants covering spikes. Support ground; intended for player's pogo bounce mechanic. Match environment board style exactly. No text, grid, framed reference swatches. Edges for repetition are functional edges: no margin there. Do not add unrelated objects.",
+    "refs": [
+      "/workspace/scratch/c1faa011a060/warp-fracture/colaboracao/entregas/VD_verdamia/VD00_ambiente.png"
+    ],
+    "transparent": true
+  },
+  {
+    "id": "VD_plataforma_raizes",
+    "prompt": "Use case: stylized-concept. Production raster game asset for Warp Fracture, Verdâmia eternal-night bioluminescent forest. Match supplied project's official style references: compact clean cartoon 2D, crisp angular silhouettes, two or three economical cel-shaded tones per surface, restrained local glow. No realism, painterly rendering, 3D, pixel art, text, watermark, scenery or cast shadows in sprite sheets. Palette outline #101923, forest #0A1716, moss #1D5248, pale mycelium #C7CEC0, lime #C5ED70, amber #F1BB55, danger violet #8D62BD. MODULAR TERRAIN 1024x1024 PNG. One wide low organic platform, walkable straight moss top at y500, solid teal interwoven roots and two short woody root buttresses underneath, silhouette width approx 900px. Transparent outside. Looks like part of a rooted rock ledge, not floating magic. No pillars extending out of image. Intended to overlay existing thin solid ledges. Support attached roots. Match environment board style exactly. No text, grid, framed reference swatches. Edges for repetition are functional edges: no margin there. Do not add unrelated objects.",
+    "refs": [
+      "/workspace/scratch/c1faa011a060/warp-fracture/colaboracao/entregas/VD_verdamia/VD00_ambiente.png"
+    ],
+    "transparent": true
+  },
+  {
+    "id": "VD_bg_distante",
+    "prompt": "Use case: stylized-concept. Production raster game asset for Warp Fracture, Verdâmia eternal-night bioluminescent forest. Match supplied project's official style references: compact clean cartoon 2D, crisp angular silhouettes, two or three economical cel-shaded tones per surface, restrained local glow. No realism, painterly rendering, 3D, pixel art, text, watermark, scenery or cast shadows in sprite sheets. Palette outline #101923, forest #0A1716, moss #1D5248, pale mycelium #C7CEC0, lime #C5ED70, amber #F1BB55, danger violet #8D62BD. PARALLAX LAYER 1536x1024, fully opaque. Eternal-night dark navy/teal sky gradient and barely visible very distant massive tree trunks and mushroom forest silhouettes, low contrast. Horizontal continuous composition, left/right color and silhouettes match for horizontal repeat. No ground line, foreground plants, characters, stars like space, text or frame. Large simple two-tone shapes, not detailed painting.",
+    "refs": [
+      "/workspace/scratch/c1faa011a060/warp-fracture/colaboracao/entregas/VD_verdamia/VD00_ambiente.png"
+    ],
+    "transparent": false
+  },
+  {
+    "id": "VD_bg_intermediario",
+    "prompt": "Use case: stylized-concept. Production raster game asset for Warp Fracture, Verdâmia eternal-night bioluminescent forest. Match supplied project's official style references: compact clean cartoon 2D, crisp angular silhouettes, two or three economical cel-shaded tones per surface, restrained local glow. No realism, painterly rendering, 3D, pixel art, text, watermark, scenery or cast shadows in sprite sheets. Palette outline #101923, forest #0A1716, moss #1D5248, pale mycelium #C7CEC0, lime #C5ED70, amber #F1BB55, danger violet #8D62BD. PARALLAX LAYER 1536x1024 with genuine transparent alpha between silhouettes. Mid-distance giant umbrella mushrooms on long simple stalks and large branching trunks, clustered irregularly, muted teal, tiny lime under-cap marks. All stems continue into bottom edge; no flat opaque sky or ground. Layer safe behind playable area: central middle open and low contrast. Left/right composition suitable horizontal repeat. No characters, foreground platform or bright fog plate.",
+    "refs": [
+      "/workspace/scratch/c1faa011a060/warp-fracture/colaboracao/entregas/VD_verdamia/VD00_ambiente.png"
+    ],
+    "transparent": true
+  },
+  {
+    "id": "VD_fg_vegetacao",
+    "prompt": "Use case: stylized-concept. Production raster game asset for Warp Fracture, Verdâmia eternal-night bioluminescent forest. Match supplied project's official style references: compact clean cartoon 2D, crisp angular silhouettes, two or three economical cel-shaded tones per surface, restrained local glow. No realism, painterly rendering, 3D, pixel art, text, watermark, scenery or cast shadows in sprite sheets. Palette outline #101923, forest #0A1716, moss #1D5248, pale mycelium #C7CEC0, lime #C5ED70, amber #F1BB55, danger violet #8D62BD. FOREGROUND PARALLAX LAYER 1536x1024 real transparent alpha. Very dark navy/teal grass, broad fern fronds and two small mushrooms forming a LOW strip along BOTTOM edge only; top 70 percent entirely transparent to keep gameplay visible. Sparse lime tips, simple silhouettes, no sky, ground plate, characters, arch or border. Side scrolling, horizontal repeatable edges.",
+    "refs": [
+      "/workspace/scratch/c1faa011a060/warp-fracture/colaboracao/entregas/VD_verdamia/VD00_ambiente.png"
+    ],
+    "transparent": true
+  },
+  {
+    "id": "VD_fx_raiz",
+    "prompt": "Use case: stylized-concept. Production raster game asset for Warp Fracture, Verdâmia eternal-night bioluminescent forest. Match supplied project's official style references: compact clean cartoon 2D, crisp angular silhouettes, two or three economical cel-shaded tones per surface, restrained local glow. No realism, painterly rendering, 3D, pixel art, text, watermark, scenery or cast shadows in sprite sheets. Palette outline #101923, forest #0A1716, moss #1D5248, pale mycelium #C7CEC0, lime #C5ED70, amber #F1BB55, danger violet #8D62BD. Exactly 1536x1024 transparent PNG. Invisible 4x2 grid, cells 384x512. Read order top left to bottom right. One pose per cell, same scale, contain each drawing within cell with 12px margin. No grid, labels, ground, background or cast shadow. 6 distinct sequential frames, 2 trailing cells entirely empty. root spike attack erupting from ground at origin y472: 1 tiny emerging purple roots, 2 half height, 3 full height 300px three pointed dark-purple roots with pale violet sharp tips, 4 full hold, 5 retract halfway, 6 almost fully retracted. Ground baseline fixed, no soil plate. Local luminous shape with genuine transparent surrounding pixels; no checkerboard painted.",
+    "refs": [
+      "/workspace/scratch/c1faa011a060/warp-fracture/colaboracao/entregas/VD_verdamia/VD00_ambiente.png"
+    ],
+    "transparent": true
+  },
+  {
+    "id": "VD_fx_aviso_raiz",
+    "prompt": "Use case: stylized-concept. Production raster game asset for Warp Fracture, Verdâmia eternal-night bioluminescent forest. Match supplied project's official style references: compact clean cartoon 2D, crisp angular silhouettes, two or three economical cel-shaded tones per surface, restrained local glow. No realism, painterly rendering, 3D, pixel art, text, watermark, scenery or cast shadows in sprite sheets. Palette outline #101923, forest #0A1716, moss #1D5248, pale mycelium #C7CEC0, lime #C5ED70, amber #F1BB55, danger violet #8D62BD. Exactly 1536x1024 transparent PNG. Invisible 4x2 grid, cells 384x512. Read order top left to bottom right. One pose per cell, same scale, contain each drawing within cell with 12px margin. No grid, labels, ground, background or cast shadow. 4 distinct sequential frames, 4 trailing cells entirely empty. telegraph BEFORE root eruption: 1 small violet horizontal crack, 2 brighter crack, 3 three tiny sprouts, 4 bright thin warning line and low sprouts. All warning under 60px high at local y472; never a full attack spike. Local luminous shape with genuine transparent surrounding pixels; no checkerboard painted.",
+    "refs": [
+      "/workspace/scratch/c1faa011a060/warp-fracture/colaboracao/entregas/VD_verdamia/VD00_ambiente.png"
+    ],
+    "transparent": true
+  },
+  {
+    "id": "VD_fx_impacto_esporo",
+    "prompt": "Use case: stylized-concept. Production raster game asset for Warp Fracture, Verdâmia eternal-night bioluminescent forest. Match supplied project's official style references: compact clean cartoon 2D, crisp angular silhouettes, two or three economical cel-shaded tones per surface, restrained local glow. No realism, painterly rendering, 3D, pixel art, text, watermark, scenery or cast shadows in sprite sheets. Palette outline #101923, forest #0A1716, moss #1D5248, pale mycelium #C7CEC0, lime #C5ED70, amber #F1BB55, danger violet #8D62BD. Exactly 1536x1024 transparent PNG. Invisible 4x2 grid, cells 384x512. Read order top left to bottom right. One pose per cell, same scale, contain each drawing within cell with 12px margin. No grid, labels, ground, background or cast shadow. 4 distinct sequential frames, 4 trailing cells entirely empty. small lime fungal impact burst at cell center: 1 tight core, 2 small soft-edged spore puff, 3 separated droplets, 4 fading sparse specks. No projectile or enemy. Local luminous shape with genuine transparent surrounding pixels; no checkerboard painted.",
+    "refs": [
+      "/workspace/scratch/c1faa011a060/warp-fracture/colaboracao/entregas/VD_verdamia/VD00_ambiente.png"
+    ],
+    "transparent": true
+  },
+  {
+    "id": "VD_fx_invocacao",
+    "prompt": "Use case: stylized-concept. Production raster game asset for Warp Fracture, Verdâmia eternal-night bioluminescent forest. Match supplied project's official style references: compact clean cartoon 2D, crisp angular silhouettes, two or three economical cel-shaded tones per surface, restrained local glow. No realism, painterly rendering, 3D, pixel art, text, watermark, scenery or cast shadows in sprite sheets. Palette outline #101923, forest #0A1716, moss #1D5248, pale mycelium #C7CEC0, lime #C5ED70, amber #F1BB55, danger violet #8D62BD. Exactly 1536x1024 transparent PNG. Invisible 4x2 grid, cells 384x512. Read order top left to bottom right. One pose per cell, same scale, contain each drawing within cell with 12px margin. No grid, labels, ground, background or cast shadow. 6 distinct sequential frames, 2 trailing cells entirely empty. amber and pale lime moth summoning effect, center fixed: 1 two amber motes, 2 curved local streaks, 3 concentrated glowing seed cluster, 4 small circular burst, 5 dispersed motes, 6 almost faded. No moth drawn; separate enemy. Local luminous shape with genuine transparent surrounding pixels; no checkerboard painted.",
+    "refs": [
+      "/workspace/scratch/c1faa011a060/warp-fracture/colaboracao/entregas/VD_verdamia/VD00_ambiente.png"
+    ],
+    "transparent": true
+  },
+  {
+    "id": "VD_fx_poeira",
+    "prompt": "Use case: stylized-concept. Production raster game asset for Warp Fracture, Verdâmia eternal-night bioluminescent forest. Match supplied project's official style references: compact clean cartoon 2D, crisp angular silhouettes, two or three economical cel-shaded tones per surface, restrained local glow. No realism, painterly rendering, 3D, pixel art, text, watermark, scenery or cast shadows in sprite sheets. Palette outline #101923, forest #0A1716, moss #1D5248, pale mycelium #C7CEC0, lime #C5ED70, amber #F1BB55, danger violet #8D62BD. Exactly 1536x1024 transparent PNG. Invisible 4x2 grid, cells 384x512. Read order top left to bottom right. One pose per cell, same scale, contain each drawing within cell with 12px margin. No grid, labels, ground, background or cast shadow. 4 distinct sequential frames, 4 trailing cells entirely empty. subtle pale-teal landing dust at local ground y472: 1 compressed tiny puff, 2 two side puffs, 3 expanding sparse particles, 4 fading. Very low restrained silhouette, no ground drawn. Local luminous shape with genuine transparent surrounding pixels; no checkerboard painted.",
+    "refs": [
+      "/workspace/scratch/c1faa011a060/warp-fracture/colaboracao/entregas/VD_verdamia/VD00_ambiente.png"
+    ],
+    "transparent": true
+  },
+  {
+    "id": "VD_fx_garras",
+    "prompt": "Use case: stylized-concept. Production raster game asset for Warp Fracture, Verdâmia eternal-night bioluminescent forest. Match supplied project's official style references: compact clean cartoon 2D, crisp angular silhouettes, two or three economical cel-shaded tones per surface, restrained local glow. No realism, painterly rendering, 3D, pixel art, text, watermark, scenery or cast shadows in sprite sheets. Palette outline #101923, forest #0A1716, moss #1D5248, pale mycelium #C7CEC0, lime #C5ED70, amber #F1BB55, danger violet #8D62BD. Exactly 1536x1024 transparent PNG. Invisible 4x2 grid, cells 384x512. Read order top left to bottom right. One pose per cell, same scale, contain each drawing within cell with 12px margin. No grid, labels, ground, background or cast shadow. 4 distinct sequential frames, 4 trailing cells entirely empty. separate attack arc ONLY, pale lime and white: 1 short slash seed, 2 widening three claw streaks curving right, 3 apex arc, 4 thin dissipating streaks. Anchored at cell center; no paw, animal or scenery. Local luminous shape with genuine transparent surrounding pixels; no checkerboard painted.",
+    "refs": [
+      "/workspace/scratch/c1faa011a060/warp-fracture/colaboracao/entregas/VD_verdamia/VD00_ambiente.png"
+    ],
+    "transparent": true
+  },
+  {
+    "id": "VD_fx_clarao",
+    "prompt": "Use case: stylized-concept. Production raster game asset for Warp Fracture, Verdâmia eternal-night bioluminescent forest. Match supplied project's official style references: compact clean cartoon 2D, crisp angular silhouettes, two or three economical cel-shaded tones per surface, restrained local glow. No realism, painterly rendering, 3D, pixel art, text, watermark, scenery or cast shadows in sprite sheets. Palette outline #101923, forest #0A1716, moss #1D5248, pale mycelium #C7CEC0, lime #C5ED70, amber #F1BB55, danger violet #8D62BD. Exactly 1536x1024 transparent PNG. Invisible 4x2 grid, cells 384x512. Read order top left to bottom right. One pose per cell, same scale, contain each drawing within cell with 12px margin. No grid, labels, ground, background or cast shadow. 6 distinct sequential frames, 2 trailing cells entirely empty. separate firefly flash effect ONLY: 1 small amber core, 2 bright core, 3 expanding amber-white ring, 4 largest transparent-center ring 300px across, 5 broken fading ring, 6 sparse amber motes. No animal or hard square glow backdrop. Local luminous shape with genuine transparent surrounding pixels; no checkerboard painted.",
+    "refs": [
+      "/workspace/scratch/c1faa011a060/warp-fracture/colaboracao/entregas/VD_verdamia/VD00_ambiente.png"
+    ],
+    "transparent": true
+  }
+]
