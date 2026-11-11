@@ -2764,7 +2764,39 @@
   {
     "id": "VD_esporo_verde",
     "arquivo": "VD_esporo_verde.png",
-    "gerado": false
+    "gerado": true,
+    "tamanho": [
+      1254,
+      1254
+    ],
+    "modo": "RGBA",
+    "bytes": 483995,
+    "sha256": "e6680de68ce109cc1e0f08ab26e799d6ca4c51bdb48619da19f854a8d443a21b",
+    "alpha_min_max": [
+      0,
+      255
+    ],
+    "fracao_transparente": 0.81592,
+    "exige_alpha": true,
+    "alpha_presente": true,
+    "avisos": [
+      "Canvas nativo difere do solicitado; usar dimensoes reais e calibrar escala na importacao. Original preservado."
+    ],
+    "canvas_solicitado": [
+      1024,
+      1024
+    ],
+    "bbox_visual": [
+      377,
+      288,
+      877,
+      915
+    ],
+    "ancora_sugerida_px": [
+      627.0,
+      601.5
+    ],
+    "apoio": "centro / flutuante"
   },
   {
     "id": "VD_esporo_violeta",
@@ -2806,7 +2838,34 @@
   {
     "id": "VD_chao_musgo",
     "arquivo": "VD_chao_musgo.png",
-    "gerado": false
+    "gerado": true,
+    "tamanho": [
+      2172,
+      724
+    ],
+    "modo": "RGBA",
+    "bytes": 1089346,
+    "sha256": "1fd2fe09c6fe764b3b4ba0bce621622cdd1522ae10b37346dba550f7f625a510",
+    "alpha_min_max": [
+      0,
+      255
+    ],
+    "fracao_transparente": 0.32962,
+    "exige_alpha": true,
+    "alpha_presente": true,
+    "avisos": [
+      "Canvas nativo difere do solicitado; usar dimensoes reais e calibrar escala na importacao. Original preservado."
+    ],
+    "canvas_solicitado": [
+      1024,
+      1024
+    ],
+    "bbox_visual": [
+      0,
+      208,
+      2172,
+      724
+    ]
   },
   {
     "id": "VD_subsolo",
@@ -2843,27 +2902,162 @@
   {
     "id": "VD_parede_escalada",
     "arquivo": "VD_parede_escalada.png",
-    "gerado": false
+    "gerado": true,
+    "tamanho": [
+      1254,
+      1254
+    ],
+    "modo": "RGBA",
+    "bytes": 1413495,
+    "sha256": "bd7e157cb5348f4cea635c060aa7826ab73619fdeb805967e5b511fb72219075",
+    "alpha_min_max": [
+      0,
+      255
+    ],
+    "fracao_transparente": 0.2459,
+    "exige_alpha": true,
+    "alpha_presente": true,
+    "avisos": [
+      "Canvas nativo difere do solicitado; usar dimensoes reais e calibrar escala na importacao. Original preservado."
+    ],
+    "canvas_solicitado": [
+      1024,
+      1024
+    ],
+    "bbox_visual": [
+      315,
+      0,
+      1254,
+      1254
+    ]
   },
   {
     "id": "VD_canto_esquerdo",
     "arquivo": "VD_canto_esquerdo.png",
-    "gerado": false
+    "gerado": true,
+    "tamanho": [
+      1254,
+      1254
+    ],
+    "modo": "RGBA",
+    "bytes": 1128148,
+    "sha256": "4d51d8a021a6eae11df8765bb29f16d2494d586badebacecbff4de77c3a53ed8",
+    "alpha_min_max": [
+      0,
+      255
+    ],
+    "fracao_transparente": 0.42372,
+    "exige_alpha": true,
+    "alpha_presente": true,
+    "avisos": [
+      "Canvas nativo difere do solicitado; usar dimensoes reais e calibrar escala na importacao. Original preservado."
+    ],
+    "canvas_solicitado": [
+      1024,
+      1024
+    ],
+    "bbox_visual": [
+      290,
+      273,
+      1254,
+      1254
+    ]
   },
   {
     "id": "VD_canto_direito",
     "arquivo": "VD_canto_direito.png",
-    "gerado": false
+    "gerado": true,
+    "tamanho": [
+      1254,
+      1254
+    ],
+    "modo": "RGBA",
+    "bytes": 958854,
+    "sha256": "e068fb726c9fc736663c77379583695495baf8bea9bea22b7af708e4b7d85f2e",
+    "alpha_min_max": [
+      0,
+      255
+    ],
+    "fracao_transparente": 0.52225,
+    "exige_alpha": true,
+    "alpha_presente": true,
+    "avisos": [
+      "Canvas nativo difere do solicitado; usar dimensoes reais e calibrar escala na importacao. Original preservado."
+    ],
+    "canvas_solicitado": [
+      1024,
+      1024
+    ],
+    "bbox_visual": [
+      0,
+      415,
+      943,
+      1254
+    ]
   },
   {
     "id": "VD_espinhos",
     "arquivo": "VD_espinhos.png",
-    "gerado": false
+    "gerado": true,
+    "tamanho": [
+      1254,
+      1254
+    ],
+    "modo": "RGBA",
+    "bytes": 395117,
+    "sha256": "dde4a43eb47d44eb2ee428e63eeea6f8b75888f6e60bef68e1bba1eca434d650",
+    "alpha_min_max": [
+      0,
+      255
+    ],
+    "fracao_transparente": 0.84558,
+    "exige_alpha": true,
+    "alpha_presente": true,
+    "avisos": [
+      "Canvas nativo difere do solicitado; usar dimensoes reais e calibrar escala na importacao. Original preservado."
+    ],
+    "canvas_solicitado": [
+      1024,
+      1024
+    ],
+    "bbox_visual": [
+      0,
+      873,
+      1254,
+      1184
+    ]
   },
   {
     "id": "VD_plataforma_raizes",
     "arquivo": "VD_plataforma_raizes.png",
-    "gerado": false
+    "gerado": true,
+    "tamanho": [
+      1774,
+      887
+    ],
+    "modo": "RGBA",
+    "bytes": 545706,
+    "sha256": "2d873f38a9a65d8e73bd5da94e655042769069e8d3d9adf8c7a27c7236da48b6",
+    "alpha_min_max": [
+      0,
+      255
+    ],
+    "fracao_transparente": 0.72671,
+    "exige_alpha": true,
+    "alpha_presente": true,
+    "avisos": [
+      "Canvas nativo difere do solicitado; usar dimensoes reais e calibrar escala na importacao. Original preservado."
+    ],
+    "canvas_solicitado": [
+      1024,
+      1024
+    ],
+    "bbox_visual": [
+      9,
+      443,
+      1765,
+      739
+    ]
   },
   {
     "id": "VD_bg_distante",
@@ -2873,7 +3067,32 @@
   {
     "id": "VD_bg_intermediario",
     "arquivo": "VD_bg_intermediario.png",
-    "gerado": false
+    "gerado": true,
+    "tamanho": [
+      1536,
+      1024
+    ],
+    "modo": "RGBA",
+    "bytes": 1552241,
+    "sha256": "44cd7f369a1cd37cc51d2cf9f42d7710ec471968c5b1cac23cbf8c309985edf9",
+    "alpha_min_max": [
+      0,
+      254
+    ],
+    "fracao_transparente": 0.4984,
+    "exige_alpha": true,
+    "alpha_presente": true,
+    "avisos": [],
+    "canvas_solicitado": [
+      1536,
+      1024
+    ],
+    "bbox_visual": [
+      0,
+      0,
+      1536,
+      1024
+    ]
   },
   {
     "id": "VD_fg_vegetacao",

@@ -1,6 +1,6 @@
 # Verdâmia — entrega de arte
 
-**Produção:** 47/64 imagens presentes neste commit.
+**Produção:** 55/64 imagens presentes neste commit.
 **Estado:** assets originais gerados; integração na Godot e revisão final do responsável pendentes.
 
 O responsável solicitou produzir todos os assets, incluindo a elaboração das especificações que faltavam, e manter commits ao longo da produção. A direção segue a DA-01 e os pacotes D/E do guia. As extensões do inventário cobrem elementos já usados pelo mapa e pelo código, sem introduzir novas mecânicas.
@@ -72,17 +72,17 @@ A Rainha usa 16 folhas 2×1; raízes, esporos e invocação são peças separada
 | VD_checkpoint | [VD_checkpoint.png](VD_checkpoint.png) | 1254×1254 | sim | Revisar avisos |
 | VD_barreira_arena | [VD_barreira_arena.png](VD_barreira_arena.png) | 1254×1254 | sim | Revisar avisos |
 | VD_fragmento | [VD_fragmento.png](VD_fragmento.png) | 1254×1254 | sim | Revisar avisos |
-| VD_esporo_verde | — | — | — | Ainda em produção |
+| VD_esporo_verde | [VD_esporo_verde.png](VD_esporo_verde.png) | 1254×1254 | sim | Revisar avisos |
 | VD_esporo_violeta | [VD_esporo_violeta.png](VD_esporo_violeta.png) | 1254×1254 | sim | Revisar avisos |
-| VD_chao_musgo | — | — | — | Ainda em produção |
+| VD_chao_musgo | [VD_chao_musgo.png](VD_chao_musgo.png) | 2172×724 | sim | Revisar avisos |
 | VD_subsolo | [VD_subsolo.png](VD_subsolo.png) | 1254×1254 | opaco | Revisar avisos |
-| VD_parede_escalada | — | — | — | Ainda em produção |
-| VD_canto_esquerdo | — | — | — | Ainda em produção |
-| VD_canto_direito | — | — | — | Ainda em produção |
-| VD_espinhos | — | — | — | Ainda em produção |
-| VD_plataforma_raizes | — | — | — | Ainda em produção |
+| VD_parede_escalada | [VD_parede_escalada.png](VD_parede_escalada.png) | 1254×1254 | sim | Revisar avisos |
+| VD_canto_esquerdo | [VD_canto_esquerdo.png](VD_canto_esquerdo.png) | 1254×1254 | sim | Revisar avisos |
+| VD_canto_direito | [VD_canto_direito.png](VD_canto_direito.png) | 1254×1254 | sim | Revisar avisos |
+| VD_espinhos | [VD_espinhos.png](VD_espinhos.png) | 1254×1254 | sim | Revisar avisos |
+| VD_plataforma_raizes | [VD_plataforma_raizes.png](VD_plataforma_raizes.png) | 1774×887 | sim | Revisar avisos |
 | VD_bg_distante | — | — | — | Ainda em produção |
-| VD_bg_intermediario | — | — | — | Ainda em produção |
+| VD_bg_intermediario | [VD_bg_intermediario.png](VD_bg_intermediario.png) | 1536×1024 | sim | Sem alerta automático; revisão visual necessária |
 | VD_fg_vegetacao | — | — | — | Ainda em produção |
 | VD_fx_raiz | — | — | — | Ainda em produção |
 | VD_fx_aviso_raiz | — | — | — | Ainda em produção |
@@ -104,5 +104,12 @@ A Rainha usa 16 folhas 2×1; raízes, esporos e invocação são peças separada
 - **VD_checkpoint**: Canvas nativo difere do solicitado; usar dimensoes reais e calibrar escala na importacao. Original preservado.
 - **VD_barreira_arena**: Canvas nativo difere do solicitado; usar dimensoes reais e calibrar escala na importacao. Original preservado.
 - **VD_fragmento**: Canvas nativo difere do solicitado; usar dimensoes reais e calibrar escala na importacao. Original preservado.
+- **VD_esporo_verde**: Canvas nativo difere do solicitado; usar dimensoes reais e calibrar escala na importacao. Original preservado.
 - **VD_esporo_violeta**: Canvas nativo difere do solicitado; usar dimensoes reais e calibrar escala na importacao. Original preservado.
+- **VD_chao_musgo**: Canvas nativo difere do solicitado; usar dimensoes reais e calibrar escala na importacao. Original preservado.
 - **VD_subsolo**: Canvas nativo difere do solicitado; usar dimensoes reais e calibrar escala na importacao. Original preservado.
+- **VD_parede_escalada**: Canvas nativo difere do solicitado; usar dimensoes reais e calibrar escala na importacao. Original preservado.
+- **VD_canto_esquerdo**: Canvas nativo difere do solicitado; usar dimensoes reais e calibrar escala na importacao. Original preservado.
+- **VD_canto_direito**: Canvas nativo difere do solicitado; usar dimensoes reais e calibrar escala na importacao. Original preservado.
+- **VD_espinhos**: Canvas nativo difere do solicitado; usar dimensoes reais e calibrar escala na importacao. Original preservado.
+- **VD_plataforma_raizes**: Canvas nativo difere do solicitado; usar dimensoes reais e calibrar escala na importacao. Original preservado.

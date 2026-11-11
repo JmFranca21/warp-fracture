@@ -230,9 +230,39 @@
     "sha256": "31ac5b6adb5802ad397c56c7b1ff9fb52bb5c0950f91aacd9d35b037f870a708"
   },
   {
+    "arquivo": "VD_bg_intermediario.png",
+    "bytes": 1552241,
+    "sha256": "44cd7f369a1cd37cc51d2cf9f42d7710ec471968c5b1cac23cbf8c309985edf9"
+  },
+  {
+    "arquivo": "VD_canto_direito.png",
+    "bytes": 958854,
+    "sha256": "e068fb726c9fc736663c77379583695495baf8bea9bea22b7af708e4b7d85f2e"
+  },
+  {
+    "arquivo": "VD_canto_esquerdo.png",
+    "bytes": 1128148,
+    "sha256": "4d51d8a021a6eae11df8765bb29f16d2494d586badebacecbff4de77c3a53ed8"
+  },
+  {
+    "arquivo": "VD_chao_musgo.png",
+    "bytes": 1089346,
+    "sha256": "1fd2fe09c6fe764b3b4ba0bce621622cdd1522ae10b37346dba550f7f625a510"
+  },
+  {
     "arquivo": "VD_checkpoint.png",
     "bytes": 819285,
     "sha256": "989a3cde391ce51493b6aa214411c3701716a60c6a2fcc409c4f4313722f433e"
+  },
+  {
+    "arquivo": "VD_espinhos.png",
+    "bytes": 395117,
+    "sha256": "dde4a43eb47d44eb2ee428e63eeea6f8b75888f6e60bef68e1bba1eca434d650"
+  },
+  {
+    "arquivo": "VD_esporo_verde.png",
+    "bytes": 483995,
+    "sha256": "e6680de68ce109cc1e0f08ab26e799d6ca4c51bdb48619da19f854a8d443a21b"
   },
   {
     "arquivo": "VD_esporo_violeta.png",
@@ -243,6 +273,16 @@
     "arquivo": "VD_fragmento.png",
     "bytes": 447810,
     "sha256": "19c39631f4b98119c7f74c6608c7a6356b7d5c5935306f3ded102146b68827cd"
+  },
+  {
+    "arquivo": "VD_parede_escalada.png",
+    "bytes": 1413495,
+    "sha256": "bd7e157cb5348f4cea635c060aa7826ab73619fdeb805967e5b511fb72219075"
+  },
+  {
+    "arquivo": "VD_plataforma_raizes.png",
+    "bytes": 545706,
+    "sha256": "2d873f38a9a65d8e73bd5da94e655042769069e8d3d9adf8c7a27c7236da48b6"
   },
   {
     "arquivo": "VD_subsolo.png",
