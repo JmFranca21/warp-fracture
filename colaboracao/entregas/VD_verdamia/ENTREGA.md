@@ -1,6 +1,6 @@
 # Verdâmia — entrega de arte
 
-**Produção:** 31/64 imagens presentes neste commit.
+**Produção:** 35/64 imagens presentes neste commit.
 **Estado:** assets originais gerados; integração na Godot e revisão final do responsável pendentes.
 
 O responsável solicitou produzir todos os assets, incluindo a elaboração das especificações que faltavam, e manter commits ao longo da produção. A direção segue a DA-01 e os pacotes D/E do guia. As extensões do inventário cobrem elementos já usados pelo mapa e pelo código, sem introduzir novas mecânicas.
@@ -55,11 +55,11 @@ A Rainha usa 16 folhas 2×1; raízes, esporos e invocação são peças separada
 | E_rainha_esporos_3 | [E_rainha_esporos_3.png](E_rainha_esporos_3.png) | 1536×1024 | sim | Sem alerta automático; revisão visual necessária |
 | E_rainha_rugido_1 | [E_rainha_rugido_1.png](E_rainha_rugido_1.png) | 1536×1024 | sim | Sem alerta automático; revisão visual necessária |
 | E_rainha_rugido_2 | [E_rainha_rugido_2.png](E_rainha_rugido_2.png) | 1536×1024 | sim | Sem alerta automático; revisão visual necessária |
-| E_rainha_hurt_1 | — | — | — | Ainda em produção |
+| E_rainha_hurt_1 | [E_rainha_hurt_1.png](E_rainha_hurt_1.png) | 1536×1024 | sim | Sem alerta automático; revisão visual necessária |
 | E_rainha_death_1 | [E_rainha_death_1.png](E_rainha_death_1.png) | 1536×1024 | sim | Sem alerta automático; revisão visual necessária |
-| E_rainha_death_2 | — | — | — | Ainda em produção |
-| E_rainha_death_3 | — | — | — | Ainda em produção |
-| E_rainha_death_4 | — | — | — | Ainda em produção |
+| E_rainha_death_2 | [E_rainha_death_2.png](E_rainha_death_2.png) | 1536×1024 | sim | Sem alerta automático; revisão visual necessária |
+| E_rainha_death_3 | [E_rainha_death_3.png](E_rainha_death_3.png) | 1536×1024 | sim | Sem alerta automático; revisão visual necessária |
+| E_rainha_death_4 | [E_rainha_death_4.png](E_rainha_death_4.png) | 1536×1024 | sim | Sem alerta automático; revisão visual necessária |
 | E1_cogumelo_gigante | — | — | — | Ainda em produção |
 | E1_grama | — | — | — | Ainda em produção |
 | E1_raiz_pendurada | — | — | — | Ainda em produção |

@@ -2114,7 +2114,52 @@
   {
     "id": "E_rainha_hurt_1",
     "arquivo": "E_rainha_hurt_1.png",
-    "gerado": false
+    "gerado": true,
+    "tamanho": [
+      1536,
+      1024
+    ],
+    "modo": "RGBA",
+    "bytes": 1465347,
+    "sha256": "c97d25226c7c1a71f7c2020e23b0cd5b1e93923fdef6d238da75c8913919efc4",
+    "alpha_min_max": [
+      0,
+      254
+    ],
+    "fracao_transparente": 0.66665,
+    "exige_alpha": true,
+    "alpha_presente": true,
+    "avisos": [],
+    "grade": [
+      2,
+      1
+    ],
+    "celulas": [
+      {
+        "quadro": 1,
+        "pixels_alpha_maior_64": 189157,
+        "bbox_local": [
+          38,
+          244,
+          746,
+          913
+        ],
+        "base_visual_local": 913
+      },
+      {
+        "quadro": 2,
+        "pixels_alpha_maior_64": 227754,
+        "bbox_local": [
+          16,
+          220,
+          730,
+          913
+        ],
+        "base_visual_local": 913
+      }
+    ],
+    "quadros_previstos": 2,
+    "observacao": "Bboxes medidos nao provam continuidade, anatomia, apoio ou quantidade correta de poses. Revisao visual e teste em Godot pendentes."
   },
   {
     "id": "E_rainha_death_1",
@@ -2169,17 +2214,152 @@
   {
     "id": "E_rainha_death_2",
     "arquivo": "E_rainha_death_2.png",
-    "gerado": false
+    "gerado": true,
+    "tamanho": [
+      1536,
+      1024
+    ],
+    "modo": "RGBA",
+    "bytes": 1499505,
+    "sha256": "cc8846a099a8d17ccdd4454e9870887f4e2ff90763accc1a866456235136e0ca",
+    "alpha_min_max": [
+      0,
+      254
+    ],
+    "fracao_transparente": 0.63288,
+    "exige_alpha": true,
+    "alpha_presente": true,
+    "avisos": [],
+    "grade": [
+      2,
+      1
+    ],
+    "celulas": [
+      {
+        "quadro": 1,
+        "pixels_alpha_maior_64": 240858,
+        "bbox_local": [
+          24,
+          183,
+          750,
+          903
+        ],
+        "base_visual_local": 903
+      },
+      {
+        "quadro": 2,
+        "pixels_alpha_maior_64": 218305,
+        "bbox_local": [
+          21,
+          274,
+          750,
+          903
+        ],
+        "base_visual_local": 903
+      }
+    ],
+    "quadros_previstos": 2,
+    "observacao": "Bboxes medidos nao provam continuidade, anatomia, apoio ou quantidade correta de poses. Revisao visual e teste em Godot pendentes."
   },
   {
     "id": "E_rainha_death_3",
     "arquivo": "E_rainha_death_3.png",
-    "gerado": false
+    "gerado": true,
+    "tamanho": [
+      1536,
+      1024
+    ],
+    "modo": "RGBA",
+    "bytes": 1424556,
+    "sha256": "22990d3f3bb749b9fe8a8f0dfa3e6a227501a8d9d147dbdacf0b631308b1bc1b",
+    "alpha_min_max": [
+      0,
+      254
+    ],
+    "fracao_transparente": 0.70281,
+    "exige_alpha": true,
+    "alpha_presente": true,
+    "avisos": [],
+    "grade": [
+      2,
+      1
+    ],
+    "celulas": [
+      {
+        "quadro": 1,
+        "pixels_alpha_maior_64": 187362,
+        "bbox_local": [
+          31,
+          201,
+          749,
+          864
+        ],
+        "base_visual_local": 864
+      },
+      {
+        "quadro": 2,
+        "pixels_alpha_maior_64": 136116,
+        "bbox_local": [
+          17,
+          442,
+          736,
+          864
+        ],
+        "base_visual_local": 864
+      }
+    ],
+    "quadros_previstos": 2,
+    "observacao": "Bboxes medidos nao provam continuidade, anatomia, apoio ou quantidade correta de poses. Revisao visual e teste em Godot pendentes."
   },
   {
     "id": "E_rainha_death_4",
     "arquivo": "E_rainha_death_4.png",
-    "gerado": false
+    "gerado": true,
+    "tamanho": [
+      1536,
+      1024
+    ],
+    "modo": "RGBA",
+    "bytes": 1249127,
+    "sha256": "971f0638571ace48685d6e63598dbae984d333e3680326b48debcb1a51b403cb",
+    "alpha_min_max": [
+      0,
+      254
+    ],
+    "fracao_transparente": 0.76849,
+    "exige_alpha": true,
+    "alpha_presente": true,
+    "avisos": [],
+    "grade": [
+      2,
+      1
+    ],
+    "celulas": [
+      {
+        "quadro": 1,
+        "pixels_alpha_maior_64": 163335,
+        "bbox_local": [
+          34,
+          396,
+          737,
+          857
+        ],
+        "base_visual_local": 857
+      },
+      {
+        "quadro": 2,
+        "pixels_alpha_maior_64": 149390,
+        "bbox_local": [
+          33,
+          493,
+          734,
+          857
+        ],
+        "base_visual_local": 857
+      }
+    ],
+    "quadros_previstos": 2,
+    "observacao": "Bboxes medidos nao provam continuidade, anatomia, apoio ou quantidade correta de poses. Revisao visual e teste em Godot pendentes."
   },
   {
     "id": "E1_cogumelo_gigante",

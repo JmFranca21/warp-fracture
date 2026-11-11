@@ -110,6 +110,21 @@
     "sha256": "9e585f56f7a5a1c34964faa0a2c3da033388648c9e73e26eff1c0c16cd235dda"
   },
   {
+    "arquivo": "E_rainha_death_2.png",
+    "bytes": 1499505,
+    "sha256": "cc8846a099a8d17ccdd4454e9870887f4e2ff90763accc1a866456235136e0ca"
+  },
+  {
+    "arquivo": "E_rainha_death_3.png",
+    "bytes": 1424556,
+    "sha256": "22990d3f3bb749b9fe8a8f0dfa3e6a227501a8d9d147dbdacf0b631308b1bc1b"
+  },
+  {
+    "arquivo": "E_rainha_death_4.png",
+    "bytes": 1249127,
+    "sha256": "971f0638571ace48685d6e63598dbae984d333e3680326b48debcb1a51b403cb"
+  },
+  {
     "arquivo": "E_rainha_esporos_1.png",
     "bytes": 1499784,
     "sha256": "15c43cdaf69b113637930154f1b513beed0adf2d8d2f83e4b99151ab9649201d"
@@ -123,6 +138,11 @@
     "arquivo": "E_rainha_esporos_3.png",
     "bytes": 1501639,
     "sha256": "b81b67449f2d86692b2ade6dc139e3e92169e2f8cebaa0c5759c3e31217e8a72"
+  },
+  {
+    "arquivo": "E_rainha_hurt_1.png",
+    "bytes": 1465347,
+    "sha256": "c97d25226c7c1a71f7c2020e23b0cd5b1e93923fdef6d238da75c8913919efc4"
   },
   {
     "arquivo": "E_rainha_idle_1.png",
