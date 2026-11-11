@@ -172,3 +172,15 @@ Os itens somam 12, distribuídos assim: 3 nas Dunas, 4 na Fábrica, 3 no corredo
 | Seta dupla tracejada | Patrulha de inimigo ou movimento de plataforma |
 | Contorno vermelho tracejado | Área de perigo de prensa ou válvula |
 | Círculo amarelo | Item |
+
+## Versão jogável
+
+Abra **Deserto de Ferrugem** no menu ou confirme com Enter após recuperar o fragmento de Verdâmia. Daymon entra em forma humana com o Arpão de Fase equipado. Use F para fisgar a argola ciano e espaço para saltar ou soltar o arpão durante a puxada. As duas estações de recarga respondem a E. O Deserto usa seu próprio arquivo de progresso. A opção do menu retoma o último checkpoint e a porta aberta encerra a fase. Ao concluir, a próxima visita começa nas Dunas.
+
+A montagem usa os PNGs de `colaboracao/entregas/DF*/`. As texturas de jogo ficam em `assets/deserto/`; para regenerá-las, rode `python tools/import_deserto.py` com Pillow instalado. As texturas repetíveis usam compressão sem perda. A conferência das 15 texturas verificou a continuidade dos pixels visíveis nos eixos de repetição, incluindo os dois eixos das paredes DF22, DF23 e DF24.
+
+O teste `tools/test_deserto.gd` abre a fase pelo fluxo de menu, verifica os seis inimigos e as 12 células, cruza os três vãos de arpão e os dois saltos da fábrica por input, verifica esteira, válvula, transporte nas duas plataformas, derrota persistente, checkpoint e porta de saída. Executar na raiz do projeto após importar os recursos, em um diretório de dados temporário:
+
+```sh
+XDG_DATA_HOME="$(mktemp -d)" godot --headless --fixed-fps 60 -s tools/test_deserto.gd
+```

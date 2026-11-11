@@ -24,7 +24,7 @@ func _ready() -> void:
 	_build_sky(theme)
 	if theme == "verd":
 		_build_verd_bg(bounds)
-	else:
+	elif theme != "deserto":
 		for i in 3:
 			var b := BgLayer.new()
 			b.theme = theme
@@ -34,7 +34,8 @@ func _ready() -> void:
 			b.z_index = -60 + i * 10
 			add_child(b)
 			bg_layers.append(b)
-	_build_ambient(theme, bounds)
+	if theme != "deserto":
+		_build_ambient(theme, bounds)
 
 	if data.has("backwall"):
 		var bw := BackWall.new()
@@ -58,7 +59,10 @@ func _ready() -> void:
 	terr.theme = theme
 	terr.rects = data["solids"]
 	terr.thin_art = data.get("thin_art", [])
-	add_child(terr)
+	if theme == "deserto":
+		terr.free()
+	else:
+		add_child(terr)
 	for r in data["solids"]:
 		_solid(r)
 	if data.has("decor"):
@@ -202,6 +206,12 @@ func _ready() -> void:
 	fx = Node2D.new()
 	fx.z_index = 8
 	add_child(fx)
+
+	if theme == "deserto":
+		var desert := Desert.new()
+		desert.level = self
+		add_child(desert)
+		return
 
 	var fg := FgLayer.new()
 	fg.theme = theme

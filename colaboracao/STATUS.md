@@ -32,14 +32,14 @@ Atualizado pelos dois agentes. Leia `PROTOCOLO.md` antes de começar.
 |---|---|---|---|---|---|
 | DF00 | Prancha de referência do Deserto (paleta, materiais, amostras) | ENTREGUE (aprovado pelo responsável) | [DF](pedidos/DF_deserto_ferrugem.md) | — | — |
 | DF01 | Ficha do Robô e do Drone do deserto | ENTREGUE (aprovado pelo responsável) | [DF](pedidos/DF_deserto_ferrugem.md) | — | — |
-| DF10–DF12 | Fundos em parallax das Dunas (céu, fábricas distantes, dunas) | ENTREGUE — aguarda revisão técnica e integração | [DF](pedidos/DF_deserto_ferrugem.md) | — | — |
-| DF20–DF28 | Terreno e paredes repetíveis (chão, espinhos, paredes, piso, esteira, trilho, cabo) | ENTREGUE — aguarda revisão técnica e integração | [DF](pedidos/DF_deserto_ferrugem.md) | — | — |
-| DF30–DF39 | Objetos de cenário (sucata, mastro, chaminé, portas, engrenagem, torre, lâmpadas, painéis) | ENTREGUE — aguarda revisão técnica e integração | [DF](pedidos/DF_deserto_ferrugem.md) | — | — |
-| DF50–DF57 | Mecanismos e perigos em peças (prensas, serra, plataformas, válvula, ponto de gancho) | PARCIAL: DF57, DF53, DF50 e DF52 ENTREGUES (aprovados; DF53b com escala de exportação aprovada); demais ABERTOS | [DF](pedidos/DF_deserto_ferrugem.md) | — | — |
-| DF60–DF71 | Animações do Robô e do Drone e projéteis | ENTREGUE (13 spritesheets, DF69b incluída; DF65/DF68 com transparência corrigida; SHA-256 conferidos; aguarda revisão técnica e integração) | [DF](pedidos/DF_deserto_ferrugem.md) | — | — |
-| DF80–DF86 | Efeitos (fumaça, vapor, faíscas, poeira, explosão, impacto, vento) | ABERTO para produção | [DF](pedidos/DF_deserto_ferrugem.md) | — | — |
+| DF10–DF12 | Fundos das Dunas em parallax | INTEGRADO | [DF](pedidos/DF_deserto_ferrugem.md) | — | — |
+| DF20–DF28 | Terreno, paredes, piso, esteira, trilho e cabo | INTEGRADO | [DF](pedidos/DF_deserto_ferrugem.md) | — | — |
+| DF30–DF39 | Objetos de cenário e portas | INTEGRADO | [DF](pedidos/DF_deserto_ferrugem.md) | — | — |
+| DF50–DF57 | Prensas, serra, plataformas, válvulas e gancho | INTEGRADO | [DF](pedidos/DF_deserto_ferrugem.md) | — | — |
+| DF60–DF71 | Robôs, drones e seus projéteis | INTEGRADO | [DF](pedidos/DF_deserto_ferrugem.md) | — | — |
+| DF80–DF86 | Efeitos de máquinas, areia, impacto e vento | INTEGRADO | [DF](pedidos/DF_deserto_ferrugem.md) | — | — |
 
-**11 IDs aguardam produção:** prensa pequena DF51, mecanismos DF54–DF56 e efeitos DF80–DF86. Montagem da fase e testes no Godot pendentes.
+O menu abre o **Deserto de Ferrugem** com Daymon e o arpão. As estações salvam o progresso desta fase separadamente. O percurso termina na porta do salão do Núcleo. [Montagem e testes](../docs/fases/deserto_ferrugem/detalhamento_da_fase.md#versão-jogável).
 
 ## Fase Verdâmia
 

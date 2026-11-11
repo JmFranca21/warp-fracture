@@ -344,6 +344,8 @@ func _physics_process(dt: float) -> void:
 		if form == "lince":
 			land_t = 0.09
 			FxAnim.verd(level.fx, "poeira", global_position + Vector2(0, 2)).z_index = 4
+		elif level.id == "deserto" and position.x < 1700:
+			Desert.effect(level.fx, "DF83", 6, position - Vector2(0, 31), Vector2(92, 74))
 		else:
 			Fx.burst(level.fx, global_position, Color(0.75, 0.8, 0.85, 0.5), 8, 120, 0.35, 0.05, 50)
 	was_floor = now_floor

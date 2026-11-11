@@ -230,6 +230,11 @@ func _unhandled_input(event: InputEvent) -> void:
 				open_map()
 		"victory":
 			if event.is_action_pressed("confirm"):
+				if level.id == "verdamia":
+					start_game(true, "deserto")
+				else:
+					show_menu()
+			elif event.is_action_pressed("pause") and not transitioning:
 				show_menu()
 
 
@@ -241,6 +246,8 @@ func _on_menu(action: String) -> void:
 			start_game(false)
 		"continue":
 			start_game(true)
+		"deserto":
+			start_game(true, "deserto")
 		"quit":
 			AudioMgr.inst.shutdown()
 			get_tree().quit()
@@ -337,14 +344,14 @@ func show_menu() -> void:
 	transitioning = false
 
 
-func start_game(from_save := false) -> void:
+func start_game(from_save := false, initial_level := "lab") -> void:
 	if transitioning:
 		return
 	transitioning = true
 	_reset_progress()
-	checkpoint_level = "lab"
-	checkpoint_pos = LevelData.get_level("lab")["spawn"]
-	var d := SaveGame.read() if from_save else {}
+	checkpoint_level = initial_level
+	checkpoint_pos = LevelData.get_level(initial_level)["spawn"]
+	var d := SaveGame.read(SaveGame.DESERT_PATH if initial_level == "deserto" else SaveGame.PATH) if from_save else {}
 	if not d.is_empty():
 		checkpoint_level = String(d.get("level", "lab"))
 		var pz: Array = d.get("pos", [checkpoint_pos.x, checkpoint_pos.y])
@@ -381,6 +388,8 @@ func _clear_world() -> void:
 func load_level(id: String, pos: Vector2, show_title: bool) -> void:
 	_clear_world()
 	var d: Dictionary = LevelData.get_level(id)
+	if id == "deserto":
+		modules["arpao"] = true
 	level = Level.new()
 	level.main = self
 	level.id = id
@@ -404,7 +413,7 @@ func load_level(id: String, pos: Vector2, show_title: bool) -> void:
 	cam.position = _cam_target()
 	cam.reset_smoothing()
 	state = "level"
-	AudioMgr.music("laboratorio" if d["theme"] == "lab" else "verdamia")
+	AudioMgr.music("laboratorio" if d["theme"] in ["lab", "deserto"] else "verdamia")
 	hud.set_prompt("")
 	hud.hide_tip()
 	if show_title:
@@ -586,6 +595,15 @@ func gain_core() -> void:
 func boss_defeated() -> void:
 	boss_done[level.id] = true
 	hud.notice("A Rainha Micélia recua para as raízes...")
+
+
+func finish_desert() -> void:
+	state = "victory"
+	player.controls_locked = true
+	AudioMgr.music("menu")
+	hud.show_victory()
+	if FileAccess.file_exists(SaveGame.DESERT_PATH):
+		DirAccess.remove_absolute(ProjectSettings.globalize_path(SaveGame.DESERT_PATH))
 
 
 func collect_fragment() -> void:

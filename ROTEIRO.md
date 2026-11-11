@@ -34,6 +34,6 @@ Ordem escolhida: primeiro o que todo jogador sente (som, salvamento, orientaçã
 |---|---|---|
 | Eco | A0 aprovada, A2 importada, A1/A3/A4/A5/A9 entregues. A4 tem uso provisório. | Produzir entulho, poeira e rachadura (A6–A8). Revisar as transições, programar o rastro e a Dobra conforme D01, o desabamento, o checkpoint e o som. Testar a chegada ao portal. |
 | Verdâmia | Fase e Rainha jogáveis. Lote ilustrado com 64 assets, 67 PNGs, galeria e manifesto. | Revisar a arte, preparar recortes e escalas, aplicar as folhas e testar movimento, combate e vitória. |
-| Deserto de Ferrugem | Layout em três zonas e especificações. Direção de arte, parte do terreno e dos mecanismos, Robô, Drone e projéteis entregues. | Criar os 29 pedidos abertos, montar e testar o percurso com Daymon humano, definir seu ponto de entrada na campanha. |
+| Deserto de Ferrugem | Três zonas jogáveis com arte integrada e teste de travessia. Entrada pelo menu ou pela tela do fragmento de Verdâmia. | Pedido DF concluído. |
 
 Os [pedidos de arte por ID](colaboracao/STATUS.md) e a [especificação do Deserto](docs/fases/deserto_ferrugem/detalhamento_da_fase.md) orientam a produção. A abertura, as Fendas Instáveis, Hidrópolis e os demais universos continuam no planejamento.

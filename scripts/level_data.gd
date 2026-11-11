@@ -5,6 +5,8 @@ extends RefCounted
 
 
 static func get_level(id: String) -> Dictionary:
+	if id == "deserto":
+		return Desert.layout()
 	if id == "verdamia":
 		return _verdamia()
 	return _lab()
