@@ -32,14 +32,14 @@ Atualizado pelos dois agentes. Leia `PROTOCOLO.md` antes de começar.
 |---|---|---|---|---|---|
 | DF00 | Prancha de referência do Deserto (paleta, materiais, amostras) | ENTREGUE (aprovado pelo responsável) | [DF](pedidos/DF_deserto_ferrugem.md) | — | — |
 | DF01 | Ficha do Robô e do Drone do deserto | ENTREGUE (aprovado pelo responsável) | [DF](pedidos/DF_deserto_ferrugem.md) | — | — |
-| DF10–DF12 | Fundos em parallax das Dunas (céu, fábricas distantes, dunas) | ABERTO para produção | [DF](pedidos/DF_deserto_ferrugem.md) | — | — |
-| DF20–DF28 | Terreno e paredes repetíveis (chão, espinhos, paredes, piso, esteira, trilho, cabo) | PARCIAL: DF20, DF21, DF25 e DF26 ENTREGUES (aprovados/autorizados); demais ABERTOS | [DF](pedidos/DF_deserto_ferrugem.md) | — | — |
-| DF30–DF39 | Objetos de cenário (sucata, mastro, chaminé, portas, engrenagem, torre, lâmpadas, painéis) | ABERTO para produção | [DF](pedidos/DF_deserto_ferrugem.md) | — | — |
+| DF10–DF12 | Fundos em parallax das Dunas (céu, fábricas distantes, dunas) | ENTREGUE — aguarda revisão técnica e integração | [DF](pedidos/DF_deserto_ferrugem.md) | — | — |
+| DF20–DF28 | Terreno e paredes repetíveis (chão, espinhos, paredes, piso, esteira, trilho, cabo) | ENTREGUE — aguarda revisão técnica e integração | [DF](pedidos/DF_deserto_ferrugem.md) | — | — |
+| DF30–DF39 | Objetos de cenário (sucata, mastro, chaminé, portas, engrenagem, torre, lâmpadas, painéis) | ENTREGUE — aguarda revisão técnica e integração | [DF](pedidos/DF_deserto_ferrugem.md) | — | — |
 | DF50–DF57 | Mecanismos e perigos em peças (prensas, serra, plataformas, válvula, ponto de gancho) | PARCIAL: DF57, DF53, DF50 e DF52 ENTREGUES (aprovados; DF53b com escala de exportação aprovada); demais ABERTOS | [DF](pedidos/DF_deserto_ferrugem.md) | — | — |
 | DF60–DF71 | Animações do Robô e do Drone e projéteis | ENTREGUE (13 spritesheets, DF69b incluída; DF65/DF68 com transparência corrigida; SHA-256 conferidos; aguarda revisão técnica e integração) | [DF](pedidos/DF_deserto_ferrugem.md) | — | — |
 | DF80–DF86 | Efeitos (fumaça, vapor, faíscas, poeira, explosão, impacto, vento) | ABERTO para produção | [DF](pedidos/DF_deserto_ferrugem.md) | — | — |
 
-**29 IDs aguardam produção.** Começar pelos fundos DF10–DF12 e paredes DF22–DF24. Em seguida, trilho e cabo DF27–DF28, objetos DF30–DF39, prensa pequena DF51, mecanismos DF54–DF56 e efeitos DF80–DF86. O primeiro lote de arte está entregue; a montagem da fase e os testes no Godot seguem pendentes.
+**11 IDs aguardam produção:** prensa pequena DF51, mecanismos DF54–DF56 e efeitos DF80–DF86. Montagem da fase e testes no Godot pendentes.
 
 ## Fase Verdâmia
 
