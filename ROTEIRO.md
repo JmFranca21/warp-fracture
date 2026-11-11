@@ -16,10 +16,20 @@ Ordem escolhida: primeiro o que todo jogador sente (som, salvamento, orientaçã
 7. **Fuga do Eco**: clímax no fim do laboratório, com o vilão perseguindo e a sala desmoronando.
 8. **Cena de abertura**: a explosão da Máquina de Dobra.
 9. **Fendas Instáveis**: salas-desafio cronometradas e escondidas.
-10. **Sprites do Lince-Vagalume** (prompt para o ChatGPT) e, depois, **Hidrópolis** (Cefalóide, nado livre).
+10. **Integração das artes de Verdâmia** (Lince, inimigos, chefe, cenário e efeitos entregues) e, depois, **Hidrópolis** (Cefalóide, nado livre).
 
 ## Fase 4 — Polimento contínuo
 - Inimigos mais táticos (grupo, reforço, turreta que gira), transições entre áreas e acessibilidade (remapear teclas).
 
 ## Correção v0.5.1 — 10/11/2026
 - Corrigida a interação com o portal do laboratório: E abre a calibração, Esc cancela e concluir as ondas leva a Verdâmia. A Etapa 7 continua pendente.
+
+## Situação das entregas em 11/11/2026
+
+| Frente | Publicado | Próximo trabalho |
+|---|---|---|
+| Eco | A0 aprovada, A2 importada, A1/A3/A4/A5/A9 entregues. A4 tem uso provisório. | Produzir entulho, poeira e rachadura (A6–A8). Revisar as transições, programar o rastro e a Dobra conforme D01, o desabamento, o checkpoint e o som. Testar a chegada ao portal. |
+| Verdâmia | Fase e Rainha jogáveis. Lote ilustrado com 64 assets, 67 PNGs, galeria e manifesto. | Revisar a arte, preparar recortes e escalas, aplicar as folhas e testar movimento, combate e vitória. |
+| Deserto de Ferrugem | Layout em três zonas e especificações. Direção de arte, parte do terreno e dos mecanismos, Robô, Drone e projéteis entregues. | Criar os 29 pedidos abertos, montar e testar o percurso com Daymon humano, definir seu ponto de entrada na campanha. |
+
+Os [pedidos de arte por ID](colaboracao/STATUS.md) e a [especificação do Deserto](docs/fases/deserto_ferrugem/detalhamento_da_fase.md) orientam a produção. A abertura, as Fendas Instáveis, Hidrópolis e os demais universos continuam no planejamento.

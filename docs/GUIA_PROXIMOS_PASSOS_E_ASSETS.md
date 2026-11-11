@@ -8,11 +8,11 @@ Este guia vale a partir da versão v0.5. Ele diz o que fazer em seguida, quem fa
 
 | # | Etapa | O que você faz | O que o agente faz |
 |---|---|---|---|
-| 7 | **Fuga do Eco** (clímax do laboratório) | Gera os assets do pacote A (Eco + desabamento) | Persegue, desaba a sala, adiciona checkpoint, trilha de fuga, registro novo e atualiza o caderno |
+| 7 | **Fuga do Eco** (clímax do laboratório) | Produz A6–A8; animações do Eco entregues | Persegue, desaba a sala, adiciona checkpoint, trilha de fuga, registro novo e atualiza o caderno |
 | 8 | **Cena de abertura** (explosão da Máquina de Dobra) | Gera o pacote B (Máquina, sala, Daymon acordando) | Monta a cena com legendas e botão de pular, que roda só em "Novo jogo" |
 | 9 | **Fendas Instáveis** (salas-desafio cronometradas) | Gera o pacote C (entrada da fenda + plataformas) | Monta 2 ou 3 salas escondidas, cronômetro, recorde salvo e recompensa |
-| 10a | **Lince-Vagalume com sprites** | Gera a ficha de personagem e depois o pacote D | Troca o Lince desenhado por código pelas sprites |
-| 10b | **Verdâmia com sprites** (opcional, mas recomendado) | Gera o pacote E (inimigos, Rainha e cenário) | Substitui os desenhos por código |
+| 10a | **Lince-Vagalume com sprites** | Revisa as folhas do Lince já entregues | Troca o Lince desenhado por código pelas sprites |
+| 10b | **Verdâmia com sprites** (opcional, mas recomendado) | Revisa o pacote ilustrado já entregue | Substitui os desenhos por código |
 | 10c | **Hidrópolis** (novo universo) | Gera as fichas e os pacotes F e G | Programa o nado em 360°, a forma Cefalóide, os inimigos, o chefe e a fase |
 
 **Você não precisa esperar a arte para começar.** O agente pode programar cada etapa com arte provisória desenhada por código e trocar pelas sprites quando elas chegarem. Mesmo assim, entregar a arte antes economiza uma rodada de ajustes.
@@ -21,7 +21,7 @@ Este guia vale a partir da versão v0.5. Ele diz o que fazer em seguida, quem fa
 
 1. Abra uma nova conversa no Claude ou no Claude Code com o GitHub conectado. Repositório: `JmFranca21/warp-fracture`.
 2. Cole o conteúdo de `PROMPT_PROXIMO_AGENTE.md`. Se não usar o GitHub, anexe o `WarpFracture_Handoff.zip`.
-3. Anexe os assets novos da etapa, ou envie-os para a pasta `arte_original/novos/<pacote>/` do repositório.
+3. Consulte as entregas em `colaboracao/entregas/` e o estado de cada pedido em `colaboracao/STATUS.md`.
 4. Peça: "Siga para a Etapa 7".
 
 ---
@@ -66,7 +66,7 @@ São as mesmas regras que já funcionaram no Daymon, no Drone e no Rastejador. S
 
 ### 2.4 Como nomear e entregar
 
-- Nomeie os arquivos como `pacote_personagem_animacao.png`, por exemplo `A_eco_run.png` ou `D_lince_pogo.png`.
+- Nomeie os arquivos como `pacote_personagem_animacao.png`, por exemplo `A3_eco_avanco.png` ou `D_lince_pogo.png`.
 - Se gerar uma segunda versão, acrescente `_v2`. **Não apague as versões anteriores.**
 - Entregue cada pacote num zip ou numa pasta `arte_original/novos/A_fuga_do_eco/` (e assim por diante).
 - Inclua um `quadros.txt` com o que o ChatGPT descreveu de cada imagem, por exemplo "1–8 = run, quadro 1 = pé esquerdo no chão".
@@ -111,7 +111,7 @@ Anexe sempre a ficha de referência do personagem e a prancha do ambiente: as qu
 Depois, as animações (com a ficha do Eco anexada):
 1. **A_eco_appear**: 8 quadros. Ele se materializa a partir de faíscas e estática, de uma nuvem de partículas até o corpo completo.
 2. **A_eco_float**: 6 quadros, loop. Paira parado, com os fragmentos se soltando e o jaleco de energia ondulando.
-3. **A_eco_run**: 8 quadros, loop. Corre de forma fluida e um pouco inclinada para a frente, deixando um rastro de estática.
+3. **A3_eco_avanco**: avanço flutuante de 6 quadros, em loop. A [D01](../colaboracao/decisoes/D01_locomocao_eco.md) define o rastro e a Dobra espectral (A9).
 4. **A_eco_grab**: 6 quadros. Estende o braço para agarrar, e a mão cresce em garras de energia.
 5. **A_eco_vanish**: 6 quadros. Se desfaz em estática e fragmentos.
 
@@ -236,4 +236,4 @@ Não precisa criar nada: os sons e as músicas são gerados por código (`tools/
 | 10b Verdâmia | Prancha + cerca de 15 animações + 7 objetos | cerca de 23 imagens |
 | 10c Hidrópolis | 2 fichas + cerca de 15 animações + 9 objetos | cerca de 26 imagens |
 
-**Prioridade sugerida:** Pacote A, depois D, depois B, depois C. O Eco e o Lince são o que o jogador mais vê.
+**Situação atual:** produzir A6–A8 e revisar as folhas existentes do Eco e de Verdâmia. O [quadro de pedidos](../colaboracao/STATUS.md) registra também o lote do Deserto. Os prompts acima documentam os pedidos originais.

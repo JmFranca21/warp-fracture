@@ -40,4 +40,4 @@ A lista completa de flags está no `HANDOFF.md`, seção 5.
 
 ## Próximos passos
 
-Fuga do Eco, cena de abertura, Fendas Instáveis, sprites do Lince-Vagalume e Hidrópolis. Os detalhes estão em `ROTEIRO.md` e no `HANDOFF.md`, seção 8.
+O primeiro fragmento de Verdâmia encerra a v0.5.1. A Fuga do Eco é a próxima etapa de gameplay. As novas artes do Eco, de Verdâmia e de parte do Deserto já estão no repositório. Consulte o [roteiro de implementação](ROTEIRO.md), o [quadro de arte](colaboracao/STATUS.md) e o [GDD de dez páginas](docs/Caderno_de_10_paginas_Warp_Fracture_v2.docx).

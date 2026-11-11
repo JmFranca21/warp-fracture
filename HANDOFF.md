@@ -1,6 +1,6 @@
 # Warp Fracture — Documento de passagem (handoff)
 
-Situação em 21/10/2026, versão **v0.5**. Este arquivo tem o contexto que um novo agente (ou programador) precisa para continuar o projeto sem refazer nada.
+Situação em 11/11/2026, protótipo **v0.5.1**. Este arquivo tem o contexto que um novo agente (ou programador) precisa para continuar o projeto sem refazer nada.
 
 ---
 
@@ -8,7 +8,7 @@ Situação em 21/10/2026, versão **v0.5**. Este arquivo tem o contexto que um n
 
 - **Jogo:** *Warp Fracture*, metroidvania 2D em visão lateral, com visual inspirado em Hollow Knight (ilustrado, **sem pixel art**). É um trabalho acadêmico do João Marcelo (Unifesp).
 - **História:** em 2100, o cientista Daymon Sagan explode a Máquina de Dobra do Projeto Hélix. Os 4 fragmentos da máquina caem em 4 universos (Verdâmia, Hidrópolis, Ferrumgrado e Umbra). Em cada universo, Daymon assume outra forma. A IA IRIS orienta pelo rádio, e o vilão é o **Eco**, uma entidade de energia com a silhueta de Daymon. No final, aparece um quinto sinal.
-- **Documento de design:** `Caderno_de_10_paginas_Warp_Fracture_v2.docx`, já atualizado para refletir o jogo real. É a fonte de verdade do design. Se o jogo mudar, o caderno precisa ser atualizado também, **sem passar de 10 páginas**.
+- **Documento de design:** [caderno de dez páginas](docs/Caderno_de_10_paginas_Warp_Fracture_v2.docx), revisado em 11/11/2026. É a fonte de verdade do design. Se o jogo mudar, o caderno precisa ser atualizado também, **sem passar de 10 páginas**.
 - **Motor:** Godot **4.3** (stable), GDScript, renderizador **GL Compatibility** (OpenGL 3.3). Exporta para **Windows e Linux**.
 
 > **Arte:** a diretriz oficial é a **DA-01** (`colaboracao/entregas/00_padrao_visual/PADRAO_VISUAL_OFICIAL.md`): 2D cartunizado, simplificado e minimalista, no mesmo traço das referências oficiais. A arte é feita pelo ChatGPT (diretor de arte) pelo canal `colaboracao/` (veja `colaboracao/PROTOCOLO.md`). O desenvolvimento não altera estilo nem gera arte final; só integra assets aprovados.
@@ -22,7 +22,7 @@ Situação em 21/10/2026, versão **v0.5**. Este arquivo tem o contexto que um n
 5. Textos do jogo e respostas em **português do Brasil**.
 6. Trabalhar seguindo o roteiro (seção 8), etapa por etapa. Entregue um build a cada marco e avise o que mudou.
 
-## 3. Estado atual (v0.5)
+## 3. Estado atual (v0.5.1)
 
 **Laboratório Hélix** (forma humana, com o Estabilizador de Fase):
 - Salas: A Despertar, B Fosso, C Turreta, D Sala Alta, E Lasers, F Campo, G Saída, mais a S Ala Secreta.
@@ -44,8 +44,8 @@ Situação em 21/10/2026, versão **v0.5**. Este arquivo tem o contexto que um n
 - Movimento: pulo duplo, salto na parede e golpe para baixo que quica (pogo).
 - Ataques: garras e clarão.
 - Inimigos: Esporângio e Mariposa.
-- Chefe: **Rainha Micélia** (esporos, raízes, rajada e invocação de mariposas). Vencê-la dá o fragmento e leva à tela de vitória.
-- O Lince ainda é desenhado por código, sem sprites.
+- Chefe: **Rainha Micélia** (esporos, raízes, rajada e invocação de mariposas). Vencê-la abre a barreira e faz surgir o fragmento. A coleta aciona a tela de vitória e salva o jogo.
+- O Lince, os inimigos da floresta e a Rainha ainda são desenhados por código. As folhas ilustradas estão em `colaboracao/entregas/VD_verdamia/`.
 
 **Sistemas:**
 - Menu principal: Continuar, Novo jogo, Opções e Sair.
@@ -162,7 +162,7 @@ godot --headless --path . --export-release "Linux" build_linux/WarpFracture.x86_
 - **Entregas do diretor de arte:** em grade 4×2 com fundo transparente. Importe com `python tools/import_cells.py .`: os conjuntos ficam em `CELL_SETS`, e o script gera `scripts/sprite_meta_cells.gd`. A escala é calibrada para a altura do Daymon idle no jogo.
 - **Pranchas originais:** estão na pasta `arte_original/` do pacote de handoff. Veja `arte_original/USADAS_NO_JOGO.md` para saber qual arquivo virou cada animação. As referências oficiais de design ficam em `00_Referencias_oficiais`.
 - **Arte nova:** siga `docs/GUIA_PROXIMOS_PASSOS_E_ASSETS.md`, que define os pacotes A–G com prompts e especificações. Os chefes grandes (Rainha e Leviatã) usam uma grade de 2×1, com células de 768×1024. Para eles, o `extract.py` precisa aceitar `CW, CH` por arquivo.
-- **Pendente:** o Lince-Vagalume precisa de spritesheets. Escreva um prompt nos mesmos moldes: idle, run, jump, fall, wall, garras, pogo, clarão, hurt e death.
+- **Verdâmia:** 64 assets em 67 PNGs. Usar o manifesto e as versões v2 de parede, garras e clarão. Revisar recortes, âncoras, escala e os 19 objetos/terrenos com dimensões diferentes do pedido antes de configurar animações e colisões.
 
 ## 7. Decisões de design já tomadas
 
@@ -179,7 +179,7 @@ godot --headless --path . --export-release "Linux" build_linux/WarpFracture.x86_
 - A sala desmorona enquanto isso: pedaços caem do teto com aviso no chão, o piso se fende e o alarme toca. O jogador corre até o portal usando a esquiva, o Arpão e as plataformas.
 - Precisa de um checkpoint no início da fuga, de uma trilha de fuga nova (em `gen_audio.py`) e de efeitos de desabamento.
 - Um registro novo pode amarrar o evento.
-- Depois, atualizar o caderno (página 8, Eco).
+- A [decisão D01](colaboracao/decisoes/D01_locomocao_eco.md) define o avanço flutuante pelo rastro, o agarrão aéreo e a Dobra com aviso. A2 está importada; A1/A3/A4/A5/A9 estão entregues (A4 provisória). Produzir A6–A8 e testar a sequência no motor.
 
 **8. Cena de abertura:**
 - Sequência de cerca de 60 s feita no motor, com opção de pular.
@@ -192,7 +192,7 @@ godot --headless --path . --export-release "Linux" build_linux/WarpFracture.x86_
 - O melhor tempo de cada sala fica salvo.
 
 **10. Lince e Hidrópolis:**
-- Primeiro, o prompt das spritesheets do Lince e a aplicação das sprites.
+- Revisar e aplicar as sprites já entregues do Lince, dos inimigos, da Rainha e do cenário de Verdâmia.
 - Depois, Hidrópolis: forma Cefalóide, nado em 360°, tentáculos e tinta; inimigos Enguia Voltaica e Guardião de Coral; chefe Leviatã Custódio.
 
 **Fase 4, polimento contínuo:**
@@ -202,6 +202,8 @@ godot --headless --path . --export-release "Linux" build_linux/WarpFracture.x86_
 - Acessibilidade.
 
 ## 9. Pendências conhecidas
+
+O [roteiro](ROTEIRO.md) consolida a implementação. O [quadro de arte](colaboracao/STATUS.md) detalha os 29 pedidos restantes do Deserto. A fase está especificada para Daymon humano com tiro e gancho; falta implementar o percurso e definir seu encaixe na campanha.
 
 - A mira 360° no analógico direito foi implementada, mas **não foi testada com um controle físico**.
 - Ao fechar o jogo, aparece o aviso "2 resources still in use at exit". É inofensivo.

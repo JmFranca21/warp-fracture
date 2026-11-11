@@ -2,7 +2,7 @@
 
 Primeiro protótipo jogável do *Warp Fracture*, feito em **Godot 4.3** a partir do Caderno de 10 páginas.
 
-A arte é 2D vetorial e desenhada por código, sem pixel art, com camadas de parallax, silhuetas escuras, brilhos e partículas. O visual tem atmosfera inspirada em Hollow Knight, mas os personagens e cenários são originais.
+O jogo combina sprites ilustrados com cenários e personagens desenhados por código, sem pixel art, com camadas de parallax, silhuetas escuras, brilhos e partículas. O visual tem atmosfera inspirada em Hollow Knight, mas os personagens e cenários são originais.
 
 ## Como jogar
 
@@ -40,7 +40,7 @@ O jogo usa o renderizador *Compatibility* (OpenGL 3.3), que funciona em PCs simp
 
 **1. Laboratório Hélix** (Daymon na forma humana, com o Estabilizador de Fase)
 - O tiro mira no cursor do mouse. Acertar inimigos carrega a Energia de Fase, que libera o tiro carregado.
-- Inimigos: Rastejador de Fenda e Drone de Segurança.
+- Inimigos: Rastejador de Fenda, Drone de Segurança e Turreta Sentinela.
 - Hazards: fosso eletrificado e cabos expostos. Cair num deles tira 1 de Integridade e devolve o jogador ao último chão seguro.
 - Puzzle: ativar os 2 terminais para destravar a porta de emergência.
 - Estação de Recarga: restaura a vida e salva o ponto de retorno.
@@ -55,9 +55,9 @@ O jogo usa o renderizador *Compatibility* (OpenGL 3.3), que funciona em PCs simp
 
 **HUD:** Integridade (cristais), Energia de Fase (orbe), Células de Fase (moeda), fragmentos, dicas contextuais e títulos de área.
 
-## Diferenças em relação ao Caderno
+## Câmera e alcance do protótipo
 
-- O laboratório virou visão **lateral** em vez de visão de cima, para combinar com o estilo Hollow Knight pedido. A visão de cima pode voltar no Ferrumgrado.
+A câmera é lateral. O Deserto de Ferrugem e a perseguição pelo Eco fazem parte do projeto e aguardam implementação.
 
 ## Sprites animados (AnimatedSprite2D)
 
@@ -99,7 +99,7 @@ Para ajustar no editor: dê dois cliques em `rastejador_frames.tres`. O painel *
 
 ## Novidades da v0.4
 
-- **Som e música:** 41 efeitos sonoros e 4 músicas (menu, laboratório, Verdâmia e chefe), todos gerados por síntese em `tools/gen_audio.py`. Os efeitos baixam de volume com a distância, a música troca suavemente entre áreas e a luta contra a Rainha tem trilha própria.
+- **Som e música:** 41 efeitos sonoros na v0.4 (44 no inventário atual) e 4 músicas (menu, laboratório, Verdâmia e chefe), todos gerados por síntese em `tools/gen_audio.py`. Os efeitos baixam de volume com a distância, a música troca suavemente entre áreas e a luta contra a Rainha tem trilha própria.
 - **Salvamento:** o jogo salva ao usar uma Estação de Recarga, ao atravessar um portal e ao sair pela pausa. O menu tem **Continuar** (com resumo do progresso), **Novo jogo** (pede confirmação para apagar), **Opções** e **Sair**.
 - **Mapa (TAB, M ou Select):** as salas aparecem conforme você explora, com terreno, plataformas, Estações, terminais (vermelho = pendente, verde = ativo), porta e portal.
 - **Pausa interativa:** Continuar, Mapa, Opções e Salvar e sair.
@@ -150,7 +150,7 @@ Os elementos estáticos foram recortados das pranchas "Laboratório Hélix – E
 | Drone | Animado na v0.3 |
 | Janela, tanque, bandeira, cabos, tubulação, câmera, alerta, trava, alavanca | Decoração |
 
-As animações que faltam (Daymon, Drone, efeitos) estão em `PROMPT_SPRITESHEETS.md`.
+O inventário de sprites importados está em [USADAS_NO_JOGO.md](arte_original/USADAS_NO_JOGO.md).
 
 ## Estrutura do código (`scripts/`)
 
@@ -164,9 +164,6 @@ As animações que faltam (Daymon, Drone, efeitos) estão em `PROMPT_SPRITESHEET
 | `bg_layer.gd`, `terrain.gd`, `fg_layer.gd` | Arte do cenário (fundo com parallax, chão, primeiro plano) |
 | `hud.gd`, `menu.gd`, `calibration.gd` | Interface |
 
-## Próximos passos sugeridos
+## Em desenvolvimento
 
-1. Sons e trilha: o tema principal com variações por universo, como descrito na página 6 do Caderno.
-2. Hidrópolis (Cefalóide, nado livre), Ferrumgrado (Autômato) e Umbra (Espectro).
-3. Bancada de Upgrades para gastar as Células de Fase.
-4. Substituir a arte por código por ilustrações feitas à mão (sprites), mantendo a mesma paleta.
+A produção da próxima versão está no [roteiro](ROTEIRO.md). As novas ilustrações de Verdâmia aguardam revisão e integração.

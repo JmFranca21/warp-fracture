@@ -8,7 +8,7 @@ Atualizado pelos dois agentes. Leia `PROTOCOLO.md` antes de começar.
 | A0_ficha_eco | Ficha de personagem do Eco (referência para A1–A5 e A9) | APROVADO (referência oficial) | [pedido](pedidos/A0_ficha_eco.md) | [entrega](entregas/A0_ficha_eco/) | [revisão](revisoes/A0_ficha_eco.md) |
 | A1_eco_appear | Materialização do Eco, 8 quadros | ENTREGUE | [pedido](pedidos/A1_eco_appear.md) | [entrega](entregas/A1_eco_appear/) | — |
 | A2_eco_float | Eco pairando (loop), 6 quadros | INTEGRADO (asset importado; entra no gameplay com a Fuga do Eco) | [pedido](pedidos/A2_eco_float.md) | [entrega](entregas/A2_eco_float/) | [revisão](revisoes/A2_eco_float.md) |
-| A3_eco_avanco | Avanço flutuante agressivo (loop), 6 quadros. Substitui a A3_eco_run, que foi cancelada | ENTREGUE | [pedido](pedidos/A3_eco_avanco.md) | — | — |
+| A3_eco_avanco | Avanço flutuante agressivo (loop), 6 quadros. Substitui a A3_eco_run, que foi cancelada | ENTREGUE | [pedido](pedidos/A3_eco_avanco.md) | [entrega](entregas/A3_eco_avanco/) | — |
 | A4_eco_grab | Agarrão no ar, 6 quadros (reescrito conforme a D01) | ENTREGUE (uso provisório) | [pedido](pedidos/A4_eco_grab.md) | [entrega](entregas/A4_eco_grab/) | — |
 | A5_eco_vanish | Eco se desfazendo, 6 quadros | ENTREGUE | [pedido](pedidos/A5_eco_vanish.md) | [entrega](entregas/A5_eco_vanish/) | — |
 | A9_fx_dobra_eco | Fenda da Dobra espectral (o Eco reaparece por ela), 8 quadros | ENTREGUE | [pedido](pedidos/A9_fx_dobra_eco.md) | [entrega](entregas/A9_fx_dobra_eco/) | — |
@@ -18,10 +18,7 @@ Atualizado pelos dois agentes. Leia `PROTOCOLO.md` antes de começar.
 
 **Todos os pedidos seguem a DA-01.** Propostas anteriores e rejeitadas do Eco não são referência.
 
-**Prioridade:**
-1. **A3_eco_avanco**, a locomoção principal. É a próxima peça mais importante.
-2. Depois A4, A1, A5 e A9.
-3. A6, A7 e A8 não dependem da A0 e podem ser feitos em paralelo.
+**Próximo trabalho:** produzir A6–A8 e revisar no motor as transições A2 → A3 → A4 e A5 → A9 → A1. A perseguição precisa do controlador de movimento, dos avisos de desabamento, do checkpoint e do teste de travessia até o portal.
 
 **Decisões:** [D01: locomoção do Eco](decisoes/D01_locomocao_eco.md), **DECIDIDA**: avanço flutuante; o Eco contorna o cenário pelo rastro do jogador e usa a Dobra espectral (A5, depois A9, depois A1) em vez de atravessar paredes.
 
@@ -35,14 +32,14 @@ Atualizado pelos dois agentes. Leia `PROTOCOLO.md` antes de começar.
 |---|---|---|---|---|---|
 | DF00 | Prancha de referência do Deserto (paleta, materiais, amostras) | ENTREGUE (aprovado pelo responsável) | [DF](pedidos/DF_deserto_ferrugem.md) | — | — |
 | DF01 | Ficha do Robô e do Drone do deserto | ENTREGUE (aprovado pelo responsável) | [DF](pedidos/DF_deserto_ferrugem.md) | — | — |
-| DF10–DF12 | Fundos em parallax das Dunas (céu, fábricas distantes, dunas) | ABERTO, após aprovação de DF00 | [DF](pedidos/DF_deserto_ferrugem.md) | — | — |
+| DF10–DF12 | Fundos em parallax das Dunas (céu, fábricas distantes, dunas) | ABERTO para produção | [DF](pedidos/DF_deserto_ferrugem.md) | — | — |
 | DF20–DF28 | Terreno e paredes repetíveis (chão, espinhos, paredes, piso, esteira, trilho, cabo) | PARCIAL: DF20, DF21, DF25 e DF26 ENTREGUES (aprovados/autorizados); demais ABERTOS | [DF](pedidos/DF_deserto_ferrugem.md) | — | — |
-| DF30–DF39 | Objetos de cenário (sucata, mastro, chaminé, portas, engrenagem, torre, lâmpadas, painéis) | ABERTO, após aprovação de DF00 | [DF](pedidos/DF_deserto_ferrugem.md) | — | — |
+| DF30–DF39 | Objetos de cenário (sucata, mastro, chaminé, portas, engrenagem, torre, lâmpadas, painéis) | ABERTO para produção | [DF](pedidos/DF_deserto_ferrugem.md) | — | — |
 | DF50–DF57 | Mecanismos e perigos em peças (prensas, serra, plataformas, válvula, ponto de gancho) | PARCIAL: DF57, DF53, DF50 e DF52 ENTREGUES (aprovados; DF53b com escala de exportação aprovada); demais ABERTOS | [DF](pedidos/DF_deserto_ferrugem.md) | — | — |
 | DF60–DF71 | Animações do Robô e do Drone e projéteis | ENTREGUE (13 spritesheets, DF69b incluída; DF65/DF68 com transparência corrigida; SHA-256 conferidos; aguarda revisão técnica e integração) | [DF](pedidos/DF_deserto_ferrugem.md) | — | — |
-| DF80–DF86 | Efeitos (fumaça, vapor, faíscas, poeira, explosão, impacto, vento) | ABERTO, após aprovação de DF00 | [DF](pedidos/DF_deserto_ferrugem.md) | — | — |
+| DF80–DF86 | Efeitos (fumaça, vapor, faíscas, poeira, explosão, impacto, vento) | ABERTO para produção | [DF](pedidos/DF_deserto_ferrugem.md) | — | — |
 
-Ordem de produção do Deserto: DF00 e DF01, depois o bloco jogável (DF20, DF21, DF25, DF57, DF53, DF50, DF52, DF26, DF60–DF71), depois fundos e paredes, e por último o restante.
+**29 IDs aguardam produção.** Começar pelos fundos DF10–DF12 e paredes DF22–DF24. Em seguida, trilho e cabo DF27–DF28, objetos DF30–DF39, prensa pequena DF51, mecanismos DF54–DF56 e efeitos DF80–DF86. O primeiro lote de arte está entregue; a montagem da fase e os testes no Godot seguem pendentes.
 
 ## Fase Verdâmia
 
