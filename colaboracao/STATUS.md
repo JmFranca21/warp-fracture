@@ -43,3 +43,16 @@ Atualizado pelos dois agentes. Leia `PROTOCOLO.md` antes de começar.
 | DF80–DF86 | Efeitos (fumaça, vapor, faíscas, poeira, explosão, impacto, vento) | ABERTO, após aprovação de DF00 | [DF](pedidos/DF_deserto_ferrugem.md) | — | — |
 
 Ordem de produção do Deserto: DF00 e DF01, depois o bloco jogável (DF20, DF21, DF25, DF57, DF53, DF50, DF52, DF26, DF60–DF71), depois fundos e paredes, e por último o restante.
+
+## Fase Verdâmia
+
+Pacote completo de produção autorizado pelo responsável em 10/11/2026, incluindo especificações faltantes elaboradas pela direção de arte enquanto o agente de desenvolvimento está indisponível. Originais e documentos em [VD_verdamia](entregas/VD_verdamia/).
+
+| ID | O que é | Estado |
+|---|---|---|
+| D0 / E0 / VD00 | Referências do Lince, inimigos e ambiente | ENTREGUE (produção autorizada; revisão final do responsável pendente) |
+| D | 11 animações do Lince-Vagalume | EM PRODUÇÃO; consultar MANIFESTO.json para arquivos presentes |
+| E | Inimigos, chefe e objetos de cenário | EM PRODUÇÃO |
+| VD | Terreno modular, parallax, perigos, projéteis, efeitos e sistemas locais | EM PRODUÇÃO |
+
+64 imagens previstas. Nenhuma destas entregas está integrada no jogo; o código permanece com arte procedural em Verdâmia. Dimensões, alpha, enquadramento e SHA-256 são registrados no manifesto, sem tratar inspeção técnica como aprovação estética.

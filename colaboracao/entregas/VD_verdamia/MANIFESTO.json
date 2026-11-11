@@ -1,0 +1,1418 @@
+[
+  {
+    "id": "D0_lince",
+    "arquivo": "D0_lince.png",
+    "gerado": true,
+    "tamanho": [
+      1536,
+      1024
+    ],
+    "modo": "RGB",
+    "bytes": 1446810,
+    "sha256": "6f2aa3771882476ea35bfbf9a29101d5a26a28ba547dc25b103ffa5411ff498c",
+    "alpha_min_max": [
+      255,
+      255
+    ],
+    "fracao_transparente": 0.0,
+    "exige_alpha": false,
+    "alpha_presente": false,
+    "avisos": []
+  },
+  {
+    "id": "E0_inimigos",
+    "arquivo": "E0_inimigos.png",
+    "gerado": true,
+    "tamanho": [
+      1536,
+      1024
+    ],
+    "modo": "RGB",
+    "bytes": 1689766,
+    "sha256": "58faf7c2f4e4637c4bcbdbb3e0de8fa6e5ba63375a9db40de8d764c9aa9b7449",
+    "alpha_min_max": [
+      255,
+      255
+    ],
+    "fracao_transparente": 0.0,
+    "exige_alpha": false,
+    "alpha_presente": false,
+    "avisos": []
+  },
+  {
+    "id": "VD00_ambiente",
+    "arquivo": "VD00_ambiente.png",
+    "gerado": true,
+    "tamanho": [
+      1536,
+      1024
+    ],
+    "modo": "RGB",
+    "bytes": 1688230,
+    "sha256": "7c89fa47ce017a6480ab85767ee6dba5975a3d02cc99f076e245db2160b07665",
+    "alpha_min_max": [
+      255,
+      255
+    ],
+    "fracao_transparente": 0.0,
+    "exige_alpha": false,
+    "alpha_presente": false,
+    "avisos": []
+  },
+  {
+    "id": "D_lince_idle",
+    "arquivo": "D_lince_idle.png",
+    "gerado": true,
+    "tamanho": [
+      1536,
+      1024
+    ],
+    "modo": "RGBA",
+    "bytes": 1557558,
+    "sha256": "f4a81eea9663a5e960830107d342da761cbb53c97d62f71ce252786951b3f4c2",
+    "alpha_min_max": [
+      0,
+      254
+    ],
+    "fracao_transparente": 0.69366,
+    "exige_alpha": true,
+    "alpha_presente": true,
+    "avisos": [],
+    "grade": [
+      4,
+      2
+    ],
+    "celulas": [
+      {
+        "quadro": 1,
+        "pixels_alpha_maior_64": 42866,
+        "bbox_local": [
+          27,
+          101,
+          365,
+          429
+        ],
+        "base_visual_local": 429
+      },
+      {
+        "quadro": 2,
+        "pixels_alpha_maior_64": 43154,
+        "bbox_local": [
+          27,
+          98,
+          364,
+          429
+        ],
+        "base_visual_local": 429
+      },
+      {
+        "quadro": 3,
+        "pixels_alpha_maior_64": 44110,
+        "bbox_local": [
+          28,
+          85,
+          356,
+          428
+        ],
+        "base_visual_local": 428
+      },
+      {
+        "quadro": 4,
+        "pixels_alpha_maior_64": 42836,
+        "bbox_local": [
+          27,
+          98,
+          365,
+          429
+        ],
+        "base_visual_local": 429
+      },
+      {
+        "quadro": 5,
+        "pixels_alpha_maior_64": 43397,
+        "bbox_local": [
+          22,
+          99,
+          365,
+          428
+        ],
+        "base_visual_local": 428
+      },
+      {
+        "quadro": 6,
+        "pixels_alpha_maior_64": 42693,
+        "bbox_local": [
+          27,
+          102,
+          365,
+          428
+        ],
+        "base_visual_local": 428
+      },
+      {
+        "quadro": 7,
+        "pixels_alpha_maior_64": 0
+      },
+      {
+        "quadro": 8,
+        "pixels_alpha_maior_64": 0
+      }
+    ],
+    "observacao": "Bboxes medidos nao provam continuidade, anatomia, apoio ou quantidade correta de poses. Revisao visual e teste em Godot pendentes."
+  },
+  {
+    "id": "D_lince_run",
+    "arquivo": "D_lince_run.png",
+    "gerado": true,
+    "tamanho": [
+      1536,
+      1024
+    ],
+    "modo": "RGBA",
+    "bytes": 1627230,
+    "sha256": "021e4d419e7efe79d5d0d73aff8ab5c18a43b8daefb00ab70d6a3d4f85ba41b0",
+    "alpha_min_max": [
+      0,
+      254
+    ],
+    "fracao_transparente": 0.65973,
+    "exige_alpha": true,
+    "alpha_presente": true,
+    "avisos": [],
+    "grade": [
+      4,
+      2
+    ],
+    "celulas": [
+      {
+        "quadro": 1,
+        "pixels_alpha_maior_64": 34345,
+        "bbox_local": [
+          19,
+          165,
+          370,
+          413
+        ],
+        "base_visual_local": 413
+      },
+      {
+        "quadro": 2,
+        "pixels_alpha_maior_64": 34727,
+        "bbox_local": [
+          17,
+          142,
+          363,
+          408
+        ],
+        "base_visual_local": 408
+      },
+      {
+        "quadro": 3,
+        "pixels_alpha_maior_64": 31746,
+        "bbox_local": [
+          18,
+          120,
+          367,
+          349
+        ],
+        "base_visual_local": 349
+      },
+      {
+        "quadro": 4,
+        "pixels_alpha_maior_64": 35071,
+        "bbox_local": [
+          15,
+          135,
+          370,
+          411
+        ],
+        "base_visual_local": 411
+      },
+      {
+        "quadro": 5,
+        "pixels_alpha_maior_64": 30951,
+        "bbox_local": [
+          13,
+          158,
+          373,
+          398
+        ],
+        "base_visual_local": 398
+      },
+      {
+        "quadro": 6,
+        "pixels_alpha_maior_64": 33496,
+        "bbox_local": [
+          16,
+          149,
+          371,
+          398
+        ],
+        "base_visual_local": 398
+      },
+      {
+        "quadro": 7,
+        "pixels_alpha_maior_64": 33136,
+        "bbox_local": [
+          16,
+          142,
+          370,
+          382
+        ],
+        "base_visual_local": 382
+      },
+      {
+        "quadro": 8,
+        "pixels_alpha_maior_64": 33284,
+        "bbox_local": [
+          14,
+          120,
+          369,
+          359
+        ],
+        "base_visual_local": 359
+      }
+    ],
+    "observacao": "Bboxes medidos nao provam continuidade, anatomia, apoio ou quantidade correta de poses. Revisao visual e teste em Godot pendentes."
+  },
+  {
+    "id": "D_lince_jump",
+    "arquivo": "D_lince_jump.png",
+    "gerado": true,
+    "tamanho": [
+      1536,
+      1024
+    ],
+    "modo": "RGBA",
+    "bytes": 1000026,
+    "sha256": "968d901b443858af125f8b3b3acd15281d45377abbdeaff94ea51d48557711c0",
+    "alpha_min_max": [
+      0,
+      254
+    ],
+    "fracao_transparente": 0.89678,
+    "exige_alpha": true,
+    "alpha_presente": true,
+    "avisos": [],
+    "grade": [
+      4,
+      2
+    ],
+    "celulas": [
+      {
+        "quadro": 1,
+        "pixels_alpha_maior_64": 37215,
+        "bbox_local": [
+          39,
+          221,
+          377,
+          473
+        ],
+        "base_visual_local": 473
+      },
+      {
+        "quadro": 2,
+        "pixels_alpha_maior_64": 39470,
+        "bbox_local": [
+          36,
+          99,
+          375,
+          471
+        ],
+        "base_visual_local": 471
+      },
+      {
+        "quadro": 3,
+        "pixels_alpha_maior_64": 32636,
+        "bbox_local": [
+          50,
+          70,
+          368,
+          344
+        ],
+        "base_visual_local": 344
+      },
+      {
+        "quadro": 4,
+        "pixels_alpha_maior_64": 0
+      },
+      {
+        "quadro": 5,
+        "pixels_alpha_maior_64": 0
+      },
+      {
+        "quadro": 6,
+        "pixels_alpha_maior_64": 0
+      },
+      {
+        "quadro": 7,
+        "pixels_alpha_maior_64": 0
+      },
+      {
+        "quadro": 8,
+        "pixels_alpha_maior_64": 0
+      }
+    ],
+    "observacao": "Bboxes medidos nao provam continuidade, anatomia, apoio ou quantidade correta de poses. Revisao visual e teste em Godot pendentes."
+  },
+  {
+    "id": "D_lince_fall",
+    "arquivo": "D_lince_fall.png",
+    "gerado": true,
+    "tamanho": [
+      1536,
+      1024
+    ],
+    "modo": "RGBA",
+    "bytes": 1056068,
+    "sha256": "6186c3b5ae95bdbf6ca4a4e4e9136d09cc5a057b78daa3f0e41ba9c06af2f409",
+    "alpha_min_max": [
+      0,
+      254
+    ],
+    "fracao_transparente": 0.85025,
+    "exige_alpha": true,
+    "alpha_presente": true,
+    "avisos": [],
+    "grade": [
+      4,
+      2
+    ],
+    "celulas": [
+      {
+        "quadro": 1,
+        "pixels_alpha_maior_64": 37930,
+        "bbox_local": [
+          32,
+          84,
+          360,
+          373
+        ],
+        "base_visual_local": 373
+      },
+      {
+        "quadro": 2,
+        "pixels_alpha_maior_64": 38966,
+        "bbox_local": [
+          15,
+          117,
+          377,
+          425
+        ],
+        "base_visual_local": 425
+      },
+      {
+        "quadro": 3,
+        "pixels_alpha_maior_64": 36410,
+        "bbox_local": [
+          34,
+          133,
+          352,
+          445
+        ],
+        "base_visual_local": 445
+      },
+      {
+        "quadro": 4,
+        "pixels_alpha_maior_64": 0
+      },
+      {
+        "quadro": 5,
+        "pixels_alpha_maior_64": 0
+      },
+      {
+        "quadro": 6,
+        "pixels_alpha_maior_64": 0
+      },
+      {
+        "quadro": 7,
+        "pixels_alpha_maior_64": 0
+      },
+      {
+        "quadro": 8,
+        "pixels_alpha_maior_64": 0
+      }
+    ],
+    "observacao": "Bboxes medidos nao provam continuidade, anatomia, apoio ou quantidade correta de poses. Revisao visual e teste em Godot pendentes."
+  },
+  {
+    "id": "D_lince_doublejump",
+    "arquivo": "D_lince_doublejump.png",
+    "gerado": true,
+    "tamanho": [
+      1536,
+      1024
+    ],
+    "modo": "RGBA",
+    "bytes": 1170426,
+    "sha256": "8cc218f75cb8c41a0618fd115c0c073d735d88c62a80f34077122e9a4917323f",
+    "alpha_min_max": [
+      0,
+      254
+    ],
+    "fracao_transparente": 0.82354,
+    "exige_alpha": true,
+    "alpha_presente": true,
+    "avisos": [],
+    "grade": [
+      4,
+      2
+    ],
+    "celulas": [
+      {
+        "quadro": 1,
+        "pixels_alpha_maior_64": 32486,
+        "bbox_local": [
+          54,
+          150,
+          360,
+          447
+        ],
+        "base_visual_local": 447
+      },
+      {
+        "quadro": 2,
+        "pixels_alpha_maior_64": 34578,
+        "bbox_local": [
+          39,
+          117,
+          341,
+          416
+        ],
+        "base_visual_local": 416
+      },
+      {
+        "quadro": 3,
+        "pixels_alpha_maior_64": 32141,
+        "bbox_local": [
+          66,
+          128,
+          333,
+          450
+        ],
+        "base_visual_local": 450
+      },
+      {
+        "quadro": 4,
+        "pixels_alpha_maior_64": 34254,
+        "bbox_local": [
+          39,
+          133,
+          355,
+          443
+        ],
+        "base_visual_local": 443
+      },
+      {
+        "quadro": 5,
+        "pixels_alpha_maior_64": 0
+      },
+      {
+        "quadro": 6,
+        "pixels_alpha_maior_64": 0
+      },
+      {
+        "quadro": 7,
+        "pixels_alpha_maior_64": 0
+      },
+      {
+        "quadro": 8,
+        "pixels_alpha_maior_64": 0
+      }
+    ],
+    "observacao": "Bboxes medidos nao provam continuidade, anatomia, apoio ou quantidade correta de poses. Revisao visual e teste em Godot pendentes."
+  },
+  {
+    "id": "D_lince_wall",
+    "arquivo": "D_lince_wall.png",
+    "gerado": true,
+    "tamanho": [
+      1536,
+      1024
+    ],
+    "modo": "RGBA",
+    "bytes": 1470808,
+    "sha256": "02175cb7b97eda19fada2d4350455c807381fbea356b094c4ff90b6fbb51e808",
+    "alpha_min_max": [
+      0,
+      254
+    ],
+    "fracao_transparente": 0.38825,
+    "exige_alpha": true,
+    "alpha_presente": true,
+    "avisos": [
+      "Quadro 1: desenho toca borda; revisar recorte.",
+      "Quadro 2: desenho toca borda; revisar recorte.",
+      "Quadro 3: desenho toca borda; revisar recorte.",
+      "Quadro 4: desenho toca borda; revisar recorte."
+    ],
+    "grade": [
+      4,
+      2
+    ],
+    "celulas": [
+      {
+        "quadro": 1,
+        "pixels_alpha_maior_64": 135664,
+        "bbox_local": [
+          0,
+          0,
+          384,
+          465
+        ],
+        "base_visual_local": 465
+      },
+      {
+        "quadro": 2,
+        "pixels_alpha_maior_64": 157923,
+        "bbox_local": [
+          0,
+          0,
+          384,
+          479
+        ],
+        "base_visual_local": 479
+      },
+      {
+        "quadro": 3,
+        "pixels_alpha_maior_64": 170814,
+        "bbox_local": [
+          0,
+          0,
+          384,
+          497
+        ],
+        "base_visual_local": 497
+      },
+      {
+        "quadro": 4,
+        "pixels_alpha_maior_64": 33420,
+        "bbox_local": [
+          0,
+          31,
+          122,
+          493
+        ],
+        "base_visual_local": 493
+      },
+      {
+        "quadro": 5,
+        "pixels_alpha_maior_64": 0
+      },
+      {
+        "quadro": 6,
+        "pixels_alpha_maior_64": 0
+      },
+      {
+        "quadro": 7,
+        "pixels_alpha_maior_64": 0
+      },
+      {
+        "quadro": 8,
+        "pixels_alpha_maior_64": 0
+      }
+    ],
+    "observacao": "Bboxes medidos nao provam continuidade, anatomia, apoio ou quantidade correta de poses. Revisao visual e teste em Godot pendentes."
+  },
+  {
+    "id": "D_lince_claw",
+    "arquivo": "D_lince_claw.png",
+    "gerado": true,
+    "tamanho": [
+      1536,
+      1024
+    ],
+    "modo": "RGBA",
+    "bytes": 1046072,
+    "sha256": "d57b8ed35cb7363c31b5d8325a8d8f4270cc8eb0cb68d0a063414c4b55c2fd6c",
+    "alpha_min_max": [
+      0,
+      254
+    ],
+    "fracao_transparente": 0.86623,
+    "exige_alpha": true,
+    "alpha_presente": true,
+    "avisos": [
+      "Quadro 3: desenho toca borda; revisar recorte.",
+      "Quadro 4: desenho toca borda; revisar recorte."
+    ],
+    "grade": [
+      4,
+      2
+    ],
+    "celulas": [
+      {
+        "quadro": 1,
+        "pixels_alpha_maior_64": 34289,
+        "bbox_local": [
+          39,
+          150,
+          337,
+          412
+        ],
+        "base_visual_local": 412
+      },
+      {
+        "quadro": 2,
+        "pixels_alpha_maior_64": 33801,
+        "bbox_local": [
+          25,
+          140,
+          312,
+          412
+        ],
+        "base_visual_local": 412
+      },
+      {
+        "quadro": 3,
+        "pixels_alpha_maior_64": 36940,
+        "bbox_local": [
+          18,
+          144,
+          384,
+          412
+        ],
+        "base_visual_local": 412
+      },
+      {
+        "quadro": 4,
+        "pixels_alpha_maior_64": 33907,
+        "bbox_local": [
+          0,
+          150,
+          338,
+          412
+        ],
+        "base_visual_local": 412
+      },
+      {
+        "quadro": 5,
+        "pixels_alpha_maior_64": 0
+      },
+      {
+        "quadro": 6,
+        "pixels_alpha_maior_64": 0
+      },
+      {
+        "quadro": 7,
+        "pixels_alpha_maior_64": 0
+      },
+      {
+        "quadro": 8,
+        "pixels_alpha_maior_64": 0
+      }
+    ],
+    "observacao": "Bboxes medidos nao provam continuidade, anatomia, apoio ou quantidade correta de poses. Revisao visual e teste em Godot pendentes."
+  },
+  {
+    "id": "D_lince_pogo",
+    "arquivo": "D_lince_pogo.png",
+    "gerado": true,
+    "tamanho": [
+      1536,
+      1024
+    ],
+    "modo": "RGBA",
+    "bytes": 1248892,
+    "sha256": "5715960f015adf9035fcf910e357fffe637590040058842b377e8ba6c9fea761",
+    "alpha_min_max": [
+      0,
+      254
+    ],
+    "fracao_transparente": 0.74923,
+    "exige_alpha": true,
+    "alpha_presente": true,
+    "avisos": [],
+    "grade": [
+      4,
+      2
+    ],
+    "celulas": [
+      {
+        "quadro": 1,
+        "pixels_alpha_maior_64": 32722,
+        "bbox_local": [
+          28,
+          120,
+          350,
+          368
+        ],
+        "base_visual_local": 368
+      },
+      {
+        "quadro": 2,
+        "pixels_alpha_maior_64": 36433,
+        "bbox_local": [
+          27,
+          134,
+          347,
+          429
+        ],
+        "base_visual_local": 429
+      },
+      {
+        "quadro": 3,
+        "pixels_alpha_maior_64": 38412,
+        "bbox_local": [
+          26,
+          152,
+          359,
+          502
+        ],
+        "base_visual_local": 502
+      },
+      {
+        "quadro": 4,
+        "pixels_alpha_maior_64": 33905,
+        "bbox_local": [
+          22,
+          122,
+          347,
+          391
+        ],
+        "base_visual_local": 391
+      },
+      {
+        "quadro": 5,
+        "pixels_alpha_maior_64": 0
+      },
+      {
+        "quadro": 6,
+        "pixels_alpha_maior_64": 0
+      },
+      {
+        "quadro": 7,
+        "pixels_alpha_maior_64": 0
+      },
+      {
+        "quadro": 8,
+        "pixels_alpha_maior_64": 0
+      }
+    ],
+    "observacao": "Bboxes medidos nao provam continuidade, anatomia, apoio ou quantidade correta de poses. Revisao visual e teste em Godot pendentes."
+  },
+  {
+    "id": "D_lince_flash",
+    "arquivo": "D_lince_flash.png",
+    "gerado": true,
+    "tamanho": [
+      1536,
+      1024
+    ],
+    "modo": "RGBA",
+    "bytes": 1607901,
+    "sha256": "ea924fcdd14684cd236b11f946d3151b34f72d012c59a5d7062f432da634629b",
+    "alpha_min_max": [
+      0,
+      254
+    ],
+    "fracao_transparente": 0.60643,
+    "exige_alpha": true,
+    "alpha_presente": true,
+    "avisos": [
+      "Quadro 3: desenho toca borda; revisar recorte.",
+      "Quadro 4: desenho toca borda; revisar recorte."
+    ],
+    "grade": [
+      4,
+      2
+    ],
+    "celulas": [
+      {
+        "quadro": 1,
+        "pixels_alpha_maior_64": 41828,
+        "bbox_local": [
+          33,
+          124,
+          362,
+          420
+        ],
+        "base_visual_local": 420
+      },
+      {
+        "quadro": 2,
+        "pixels_alpha_maior_64": 44107,
+        "bbox_local": [
+          20,
+          124,
+          362,
+          420
+        ],
+        "base_visual_local": 420
+      },
+      {
+        "quadro": 3,
+        "pixels_alpha_maior_64": 46527,
+        "bbox_local": [
+          12,
+          124,
+          384,
+          420
+        ],
+        "base_visual_local": 420
+      },
+      {
+        "quadro": 4,
+        "pixels_alpha_maior_64": 117439,
+        "bbox_local": [
+          0,
+          74,
+          384,
+          455
+        ],
+        "base_visual_local": 455
+      },
+      {
+        "quadro": 5,
+        "pixels_alpha_maior_64": 44242,
+        "bbox_local": [
+          16,
+          124,
+          362,
+          420
+        ],
+        "base_visual_local": 420
+      },
+      {
+        "quadro": 6,
+        "pixels_alpha_maior_64": 41836,
+        "bbox_local": [
+          33,
+          124,
+          362,
+          420
+        ],
+        "base_visual_local": 420
+      },
+      {
+        "quadro": 7,
+        "pixels_alpha_maior_64": 0
+      },
+      {
+        "quadro": 8,
+        "pixels_alpha_maior_64": 0
+      }
+    ],
+    "observacao": "Bboxes medidos nao provam continuidade, anatomia, apoio ou quantidade correta de poses. Revisao visual e teste em Godot pendentes."
+  },
+  {
+    "id": "D_lince_hurt",
+    "arquivo": "D_lince_hurt.png",
+    "gerado": true,
+    "tamanho": [
+      1536,
+      1024
+    ],
+    "modo": "RGBA",
+    "bytes": 957703,
+    "sha256": "d844d0e6bdaa1fa3b0f4fa624c2cd509fb8a165a1850892a65a190b53e83a44e",
+    "alpha_min_max": [
+      0,
+      254
+    ],
+    "fracao_transparente": 0.92556,
+    "exige_alpha": true,
+    "alpha_presente": true,
+    "avisos": [],
+    "grade": [
+      4,
+      2
+    ],
+    "celulas": [
+      {
+        "quadro": 1,
+        "pixels_alpha_maior_64": 45384,
+        "bbox_local": [
+          39,
+          104,
+          363,
+          439
+        ],
+        "base_visual_local": 439
+      },
+      {
+        "quadro": 2,
+        "pixels_alpha_maior_64": 41118,
+        "bbox_local": [
+          42,
+          194,
+          368,
+          441
+        ],
+        "base_visual_local": 441
+      },
+      {
+        "quadro": 3,
+        "pixels_alpha_maior_64": 0
+      },
+      {
+        "quadro": 4,
+        "pixels_alpha_maior_64": 0
+      },
+      {
+        "quadro": 5,
+        "pixels_alpha_maior_64": 0
+      },
+      {
+        "quadro": 6,
+        "pixels_alpha_maior_64": 0
+      },
+      {
+        "quadro": 7,
+        "pixels_alpha_maior_64": 0
+      },
+      {
+        "quadro": 8,
+        "pixels_alpha_maior_64": 0
+      }
+    ],
+    "observacao": "Bboxes medidos nao provam continuidade, anatomia, apoio ou quantidade correta de poses. Revisao visual e teste em Godot pendentes."
+  },
+  {
+    "id": "D_lince_death",
+    "arquivo": "D_lince_death.png",
+    "gerado": true,
+    "tamanho": [
+      1536,
+      1024
+    ],
+    "modo": "RGBA",
+    "bytes": 1387914,
+    "sha256": "9ef09d5d1f819e3feab5d06ed9f00d7fbf26481034d489477d2d144d6c14ceb4",
+    "alpha_min_max": [
+      0,
+      254
+    ],
+    "fracao_transparente": 0.71671,
+    "exige_alpha": true,
+    "alpha_presente": true,
+    "avisos": [],
+    "grade": [
+      4,
+      2
+    ],
+    "celulas": [
+      {
+        "quadro": 1,
+        "pixels_alpha_maior_64": 36711,
+        "bbox_local": [
+          53,
+          120,
+          365,
+          415
+        ],
+        "base_visual_local": 415
+      },
+      {
+        "quadro": 2,
+        "pixels_alpha_maior_64": 37634,
+        "bbox_local": [
+          41,
+          139,
+          360,
+          415
+        ],
+        "base_visual_local": 415
+      },
+      {
+        "quadro": 3,
+        "pixels_alpha_maior_64": 37310,
+        "bbox_local": [
+          34,
+          179,
+          351,
+          415
+        ],
+        "base_visual_local": 415
+      },
+      {
+        "quadro": 4,
+        "pixels_alpha_maior_64": 34287,
+        "bbox_local": [
+          21,
+          223,
+          349,
+          415
+        ],
+        "base_visual_local": 415
+      },
+      {
+        "quadro": 5,
+        "pixels_alpha_maior_64": 28657,
+        "bbox_local": [
+          33,
+          227,
+          367,
+          386
+        ],
+        "base_visual_local": 386
+      },
+      {
+        "quadro": 6,
+        "pixels_alpha_maior_64": 28692,
+        "bbox_local": [
+          32,
+          227,
+          367,
+          386
+        ],
+        "base_visual_local": 386
+      },
+      {
+        "quadro": 7,
+        "pixels_alpha_maior_64": 0
+      },
+      {
+        "quadro": 8,
+        "pixels_alpha_maior_64": 0
+      }
+    ],
+    "observacao": "Bboxes medidos nao provam continuidade, anatomia, apoio ou quantidade correta de poses. Revisao visual e teste em Godot pendentes."
+  },
+  {
+    "id": "E_esporangio_idle",
+    "arquivo": "E_esporangio_idle.png",
+    "gerado": true,
+    "tamanho": [
+      1536,
+      1024
+    ],
+    "modo": "RGBA",
+    "bytes": 1362454,
+    "sha256": "30daaa76a0cc8ef7f3555704ea3d3f6c8a442110f5f05ce8949af8f587f16b66",
+    "alpha_min_max": [
+      0,
+      254
+    ],
+    "fracao_transparente": 0.78615,
+    "exige_alpha": true,
+    "alpha_presente": true,
+    "avisos": [],
+    "grade": [
+      4,
+      2
+    ],
+    "celulas": [
+      {
+        "quadro": 1,
+        "pixels_alpha_maior_64": 37440,
+        "bbox_local": [
+          38,
+          118,
+          346,
+          429
+        ],
+        "base_visual_local": 429
+      },
+      {
+        "quadro": 2,
+        "pixels_alpha_maior_64": 40055,
+        "bbox_local": [
+          38,
+          100,
+          346,
+          429
+        ],
+        "base_visual_local": 429
+      },
+      {
+        "quadro": 3,
+        "pixels_alpha_maior_64": 44576,
+        "bbox_local": [
+          38,
+          85,
+          346,
+          429
+        ],
+        "base_visual_local": 429
+      },
+      {
+        "quadro": 4,
+        "pixels_alpha_maior_64": 43210,
+        "bbox_local": [
+          38,
+          92,
+          346,
+          429
+        ],
+        "base_visual_local": 429
+      },
+      {
+        "quadro": 5,
+        "pixels_alpha_maior_64": 41379,
+        "bbox_local": [
+          38,
+          94,
+          346,
+          430
+        ],
+        "base_visual_local": 430
+      },
+      {
+        "quadro": 6,
+        "pixels_alpha_maior_64": 38925,
+        "bbox_local": [
+          38,
+          107,
+          346,
+          429
+        ],
+        "base_visual_local": 429
+      },
+      {
+        "quadro": 7,
+        "pixels_alpha_maior_64": 0
+      },
+      {
+        "quadro": 8,
+        "pixels_alpha_maior_64": 0
+      }
+    ],
+    "observacao": "Bboxes medidos nao provam continuidade, anatomia, apoio ou quantidade correta de poses. Revisao visual e teste em Godot pendentes."
+  },
+  {
+    "id": "E_esporangio_attack",
+    "arquivo": "E_esporangio_attack.png",
+    "gerado": false
+  },
+  {
+    "id": "E_esporangio_death",
+    "arquivo": "E_esporangio_death.png",
+    "gerado": false
+  },
+  {
+    "id": "E_mariposa_fly",
+    "arquivo": "E_mariposa_fly.png",
+    "gerado": false
+  },
+  {
+    "id": "E_mariposa_death",
+    "arquivo": "E_mariposa_death.png",
+    "gerado": false
+  },
+  {
+    "id": "E_rainha_idle_1",
+    "arquivo": "E_rainha_idle_1.png",
+    "gerado": false
+  },
+  {
+    "id": "E_rainha_idle_2",
+    "arquivo": "E_rainha_idle_2.png",
+    "gerado": false
+  },
+  {
+    "id": "E_rainha_idle_3",
+    "arquivo": "E_rainha_idle_3.png",
+    "gerado": false
+  },
+  {
+    "id": "E_rainha_raizes_1",
+    "arquivo": "E_rainha_raizes_1.png",
+    "gerado": false
+  },
+  {
+    "id": "E_rainha_raizes_2",
+    "arquivo": "E_rainha_raizes_2.png",
+    "gerado": false
+  },
+  {
+    "id": "E_rainha_raizes_3",
+    "arquivo": "E_rainha_raizes_3.png",
+    "gerado": false
+  },
+  {
+    "id": "E_rainha_esporos_1",
+    "arquivo": "E_rainha_esporos_1.png",
+    "gerado": false
+  },
+  {
+    "id": "E_rainha_esporos_2",
+    "arquivo": "E_rainha_esporos_2.png",
+    "gerado": false
+  },
+  {
+    "id": "E_rainha_esporos_3",
+    "arquivo": "E_rainha_esporos_3.png",
+    "gerado": false
+  },
+  {
+    "id": "E_rainha_rugido_1",
+    "arquivo": "E_rainha_rugido_1.png",
+    "gerado": false
+  },
+  {
+    "id": "E_rainha_rugido_2",
+    "arquivo": "E_rainha_rugido_2.png",
+    "gerado": false
+  },
+  {
+    "id": "E_rainha_hurt_1",
+    "arquivo": "E_rainha_hurt_1.png",
+    "gerado": false
+  },
+  {
+    "id": "E_rainha_death_1",
+    "arquivo": "E_rainha_death_1.png",
+    "gerado": false
+  },
+  {
+    "id": "E_rainha_death_2",
+    "arquivo": "E_rainha_death_2.png",
+    "gerado": false
+  },
+  {
+    "id": "E_rainha_death_3",
+    "arquivo": "E_rainha_death_3.png",
+    "gerado": false
+  },
+  {
+    "id": "E_rainha_death_4",
+    "arquivo": "E_rainha_death_4.png",
+    "gerado": false
+  },
+  {
+    "id": "E1_cogumelo_gigante",
+    "arquivo": "E1_cogumelo_gigante.png",
+    "gerado": false
+  },
+  {
+    "id": "E1_grama",
+    "arquivo": "E1_grama.png",
+    "gerado": false
+  },
+  {
+    "id": "E1_raiz_pendurada",
+    "arquivo": "E1_raiz_pendurada.png",
+    "gerado": false
+  },
+  {
+    "id": "E1_tronco_plataforma",
+    "arquivo": "E1_tronco_plataforma.png",
+    "gerado": false
+  },
+  {
+    "id": "E1_pedra_musgo",
+    "arquivo": "E1_pedra_musgo.png",
+    "gerado": false
+  },
+  {
+    "id": "E1_arco_templo",
+    "arquivo": "E1_arco_templo.png",
+    "gerado": false
+  },
+  {
+    "id": "E1_altar",
+    "arquivo": "E1_altar.png",
+    "gerado": false
+  },
+  {
+    "id": "VD_checkpoint",
+    "arquivo": "VD_checkpoint.png",
+    "gerado": false
+  },
+  {
+    "id": "VD_barreira_arena",
+    "arquivo": "VD_barreira_arena.png",
+    "gerado": false
+  },
+  {
+    "id": "VD_fragmento",
+    "arquivo": "VD_fragmento.png",
+    "gerado": false
+  },
+  {
+    "id": "VD_esporo_verde",
+    "arquivo": "VD_esporo_verde.png",
+    "gerado": false
+  },
+  {
+    "id": "VD_esporo_violeta",
+    "arquivo": "VD_esporo_violeta.png",
+    "gerado": false
+  },
+  {
+    "id": "VD_chao_musgo",
+    "arquivo": "VD_chao_musgo.png",
+    "gerado": false
+  },
+  {
+    "id": "VD_subsolo",
+    "arquivo": "VD_subsolo.png",
+    "gerado": false
+  },
+  {
+    "id": "VD_parede_escalada",
+    "arquivo": "VD_parede_escalada.png",
+    "gerado": false
+  },
+  {
+    "id": "VD_canto_esquerdo",
+    "arquivo": "VD_canto_esquerdo.png",
+    "gerado": false
+  },
+  {
+    "id": "VD_canto_direito",
+    "arquivo": "VD_canto_direito.png",
+    "gerado": false
+  },
+  {
+    "id": "VD_espinhos",
+    "arquivo": "VD_espinhos.png",
+    "gerado": false
+  },
+  {
+    "id": "VD_plataforma_raizes",
+    "arquivo": "VD_plataforma_raizes.png",
+    "gerado": false
+  },
+  {
+    "id": "VD_bg_distante",
+    "arquivo": "VD_bg_distante.png",
+    "gerado": false
+  },
+  {
+    "id": "VD_bg_intermediario",
+    "arquivo": "VD_bg_intermediario.png",
+    "gerado": false
+  },
+  {
+    "id": "VD_fg_vegetacao",
+    "arquivo": "VD_fg_vegetacao.png",
+    "gerado": false
+  },
+  {
+    "id": "VD_fx_raiz",
+    "arquivo": "VD_fx_raiz.png",
+    "gerado": false
+  },
+  {
+    "id": "VD_fx_aviso_raiz",
+    "arquivo": "VD_fx_aviso_raiz.png",
+    "gerado": false
+  },
+  {
+    "id": "VD_fx_impacto_esporo",
+    "arquivo": "VD_fx_impacto_esporo.png",
+    "gerado": false
+  },
+  {
+    "id": "VD_fx_invocacao",
+    "arquivo": "VD_fx_invocacao.png",
+    "gerado": false
+  },
+  {
+    "id": "VD_fx_poeira",
+    "arquivo": "VD_fx_poeira.png",
+    "gerado": false
+  },
+  {
+    "id": "VD_fx_garras",
+    "arquivo": "VD_fx_garras.png",
+    "gerado": false
+  },
+  {
+    "id": "VD_fx_clarao",
+    "arquivo": "VD_fx_clarao.png",
+    "gerado": false
+  }
+]
