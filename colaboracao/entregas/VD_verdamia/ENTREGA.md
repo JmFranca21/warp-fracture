@@ -1,6 +1,6 @@
 # Verdâmia — entrega de arte
 
-**Produção:** 60/64 imagens presentes neste commit.
+**Produção:** 64/64 imagens presentes neste commit.
 **Estado:** assets originais gerados; integração na Godot e revisão final do responsável pendentes.
 
 O responsável solicitou produzir todos os assets, incluindo a elaboração das especificações que faltavam, e manter commits ao longo da produção. A direção segue a DA-01 e os pacotes D/E do guia. As extensões do inventário cobrem elementos já usados pelo mapa e pelo código, sem introduzir novas mecânicas.
@@ -86,11 +86,11 @@ A Rainha usa 16 folhas 2×1; raízes, esporos e invocação são peças separada
 | VD_fg_vegetacao | [VD_fg_vegetacao.png](VD_fg_vegetacao.png) | 1536×1024 | sim | Sem alerta automático; revisão visual necessária |
 | VD_fx_raiz | [VD_fx_raiz.png](VD_fx_raiz.png) | 1536×1024 | sim | Sem alerta automático; revisão visual necessária |
 | VD_fx_aviso_raiz | [VD_fx_aviso_raiz.png](VD_fx_aviso_raiz.png) | 1536×1024 | sim | Sem alerta automático; revisão visual necessária |
-| VD_fx_impacto_esporo | — | — | — | Ainda em produção |
-| VD_fx_invocacao | — | — | — | Ainda em produção |
+| VD_fx_impacto_esporo | [VD_fx_impacto_esporo.png](VD_fx_impacto_esporo.png) | 1536×1024 | sim | Sem alerta automático; revisão visual necessária |
+| VD_fx_invocacao | [VD_fx_invocacao.png](VD_fx_invocacao.png) | 1536×1024 | sim | Sem alerta automático; revisão visual necessária |
 | VD_fx_poeira | [VD_fx_poeira.png](VD_fx_poeira.png) | 1536×1024 | sim | Sem alerta automático; revisão visual necessária |
-| VD_fx_garras | — | — | — | Ainda em produção |
-| VD_fx_clarao | — | — | — | Ainda em produção |
+| VD_fx_garras | [VD_fx_garras.png](VD_fx_garras.png) | 1536×1024 | sim | Sem alerta automático; revisão visual necessária |
+| VD_fx_clarao | [VD_fx_clarao.png](VD_fx_clarao.png) | 1536×1024 | sim | Sem alerta automático; revisão visual necessária |
 
 ## Alertas de enquadramento
 

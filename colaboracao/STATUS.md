@@ -51,8 +51,8 @@ Pacote completo de produção autorizado pelo responsável em 10/11/2026, inclui
 | ID | O que é | Estado |
 |---|---|---|
 | D0 / E0 / VD00 | Referências do Lince, inimigos e ambiente | ENTREGUE (produção autorizada; revisão final do responsável pendente) |
-| D | 11 animações do Lince-Vagalume | EM PRODUÇÃO; consultar MANIFESTO.json para arquivos presentes |
-| E | Inimigos, chefe e objetos de cenário | EM PRODUÇÃO |
-| VD | Terreno modular, parallax, perigos, projéteis, efeitos e sistemas locais | EM PRODUÇÃO |
+| D | 11 animações do Lince-Vagalume | ENTREGUE (originais; wall, claw e flash com v2 de enquadramento) |
+| E | Inimigos, chefe e objetos de cenário | ENTREGUE (originais; revisão e integração pendentes) |
+| VD | Terreno modular, parallax, perigos, projéteis, efeitos e sistemas locais | ENTREGUE (originais; preparação técnica e integração pendentes) |
 
-64 imagens previstas. Nenhuma destas entregas está integrada no jogo; o código permanece com arte procedural em Verdâmia. Dimensões, alpha, enquadramento e SHA-256 são registrados no manifesto, sem tratar inspeção técnica como aprovação estética.
+Conferência em 11/11/2026: **64/64 assets gerados, 67 PNGs contando versões preservadas**. Transparência conferida e SHA-256 de todos os PNGs registrado; 19 objetos/terrenos têm canvas nativo diferente do solicitado e precisam de preparação de importação. Nenhuma destas entregas está integrada no jogo; o código permanece com arte procedural em Verdâmia. Dimensões, alpha, enquadramento e SHA-256 são registrados no manifesto, sem tratar inspeção técnica como aprovação estética.

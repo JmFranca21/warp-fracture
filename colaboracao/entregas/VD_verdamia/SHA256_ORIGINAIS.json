@@ -290,6 +290,26 @@
     "sha256": "573fadb91d543d124d8296032fbce3a61ca410e2c99ab5bb647871073266e7e3"
   },
   {
+    "arquivo": "VD_fx_clarao.png",
+    "bytes": 1331309,
+    "sha256": "6868f28ef4f37b6295dfc1b633037e0ebce171c8ef1d1d2844678cefdcc08469"
+  },
+  {
+    "arquivo": "VD_fx_garras.png",
+    "bytes": 898065,
+    "sha256": "9ecbcdcf16567009c110dd382d4cad32a1b136b5f59d2491066271c7739b68da"
+  },
+  {
+    "arquivo": "VD_fx_impacto_esporo.png",
+    "bytes": 1129892,
+    "sha256": "8b55155c6602d67ac61fd7d2bd386f52f0a2c30d2ba9cc03e4ddcd5a79539613"
+  },
+  {
+    "arquivo": "VD_fx_invocacao.png",
+    "bytes": 1320566,
+    "sha256": "338362692f30a1914e82686fa9e3173fa8e916af440cad7f7f82d6aec4a70284"
+  },
+  {
     "arquivo": "VD_fx_poeira.png",
     "bytes": 894816,
     "sha256": "a03fdacb056d4d2174d840207bef68b4d2d0e6bdaacf7845effc59ba32a5d09f"
