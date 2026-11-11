@@ -1,6 +1,6 @@
 # Verdâmia — entrega de arte
 
-**Produção:** 19/64 imagens presentes neste commit.
+**Produção:** 25/64 imagens presentes neste commit.
 **Estado:** assets originais gerados; integração na Godot e revisão final do responsável pendentes.
 
 O responsável solicitou produzir todos os assets, incluindo a elaboração das especificações que faltavam, e manter commits ao longo da produção. A direção segue a DA-01 e os pacotes D/E do guia. As extensões do inventário cobrem elementos já usados pelo mapa e pelo código, sem introduzir novas mecânicas.
@@ -43,12 +43,12 @@ A Rainha usa 16 folhas 2×1; raízes, esporos e invocação são peças separada
 | E_esporangio_death | [E_esporangio_death.png](E_esporangio_death.png) | 1536×1024 | sim | Sem alerta automático; revisão visual necessária |
 | E_mariposa_fly | [E_mariposa_fly.png](E_mariposa_fly.png) | 1536×1024 | sim | Sem alerta automático; revisão visual necessária |
 | E_mariposa_death | [E_mariposa_death.png](E_mariposa_death.png) | 1536×1024 | sim | Sem alerta automático; revisão visual necessária |
-| E_rainha_idle_1 | — | — | — | Ainda em produção |
-| E_rainha_idle_2 | — | — | — | Ainda em produção |
-| E_rainha_idle_3 | — | — | — | Ainda em produção |
-| E_rainha_raizes_1 | — | — | — | Ainda em produção |
-| E_rainha_raizes_2 | — | — | — | Ainda em produção |
-| E_rainha_raizes_3 | — | — | — | Ainda em produção |
+| E_rainha_idle_1 | [E_rainha_idle_1.png](E_rainha_idle_1.png) | 1536×1024 | sim | Sem alerta automático; revisão visual necessária |
+| E_rainha_idle_2 | [E_rainha_idle_2.png](E_rainha_idle_2.png) | 1536×1024 | sim | Sem alerta automático; revisão visual necessária |
+| E_rainha_idle_3 | [E_rainha_idle_3.png](E_rainha_idle_3.png) | 1536×1024 | sim | Sem alerta automático; revisão visual necessária |
+| E_rainha_raizes_1 | [E_rainha_raizes_1.png](E_rainha_raizes_1.png) | 1536×1024 | sim | Sem alerta automático; revisão visual necessária |
+| E_rainha_raizes_2 | [E_rainha_raizes_2.png](E_rainha_raizes_2.png) | 1536×1024 | sim | Sem alerta automático; revisão visual necessária |
+| E_rainha_raizes_3 | [E_rainha_raizes_3.png](E_rainha_raizes_3.png) | 1536×1024 | sim | Sem alerta automático; revisão visual necessária |
 | E_rainha_esporos_1 | — | — | — | Ainda em produção |
 | E_rainha_esporos_2 | — | — | — | Ainda em produção |
 | E_rainha_esporos_3 | — | — | — | Ainda em produção |

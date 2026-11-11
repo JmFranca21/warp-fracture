@@ -1580,32 +1580,302 @@
   {
     "id": "E_rainha_idle_1",
     "arquivo": "E_rainha_idle_1.png",
-    "gerado": false
+    "gerado": true,
+    "tamanho": [
+      1536,
+      1024
+    ],
+    "modo": "RGBA",
+    "bytes": 1464142,
+    "sha256": "bf9de349c823e3ab2b7468ee7bae462df6ad1858b8f20209d6ef319bfac9aba8",
+    "alpha_min_max": [
+      0,
+      254
+    ],
+    "fracao_transparente": 0.67416,
+    "exige_alpha": true,
+    "alpha_presente": true,
+    "avisos": [],
+    "grade": [
+      2,
+      1
+    ],
+    "celulas": [
+      {
+        "quadro": 1,
+        "pixels_alpha_maior_64": 192411,
+        "bbox_local": [
+          37,
+          224,
+          751,
+          844
+        ],
+        "base_visual_local": 844
+      },
+      {
+        "quadro": 2,
+        "pixels_alpha_maior_64": 197604,
+        "bbox_local": [
+          20,
+          206,
+          732,
+          844
+        ],
+        "base_visual_local": 844
+      }
+    ],
+    "quadros_previstos": 2,
+    "observacao": "Bboxes medidos nao provam continuidade, anatomia, apoio ou quantidade correta de poses. Revisao visual e teste em Godot pendentes."
   },
   {
     "id": "E_rainha_idle_2",
     "arquivo": "E_rainha_idle_2.png",
-    "gerado": false
+    "gerado": true,
+    "tamanho": [
+      1536,
+      1024
+    ],
+    "modo": "RGBA",
+    "bytes": 1565446,
+    "sha256": "0669a59f43205073d7a542b197c5ea0a1c56b3357033e70ff87c3207c6302113",
+    "alpha_min_max": [
+      0,
+      254
+    ],
+    "fracao_transparente": 0.56419,
+    "exige_alpha": true,
+    "alpha_presente": true,
+    "avisos": [],
+    "grade": [
+      2,
+      1
+    ],
+    "celulas": [
+      {
+        "quadro": 1,
+        "pixels_alpha_maior_64": 249381,
+        "bbox_local": [
+          6,
+          189,
+          763,
+          894
+        ],
+        "base_visual_local": 894
+      },
+      {
+        "quadro": 2,
+        "pixels_alpha_maior_64": 255978,
+        "bbox_local": [
+          6,
+          160,
+          763,
+          894
+        ],
+        "base_visual_local": 894
+      }
+    ],
+    "quadros_previstos": 2,
+    "observacao": "Bboxes medidos nao provam continuidade, anatomia, apoio ou quantidade correta de poses. Revisao visual e teste em Godot pendentes."
   },
   {
     "id": "E_rainha_idle_3",
     "arquivo": "E_rainha_idle_3.png",
-    "gerado": false
+    "gerado": true,
+    "tamanho": [
+      1536,
+      1024
+    ],
+    "modo": "RGBA",
+    "bytes": 1536222,
+    "sha256": "372cc4941e1cc504e4a91aae2e01771bcd4319b44cf952204408ada232545e49",
+    "alpha_min_max": [
+      0,
+      254
+    ],
+    "fracao_transparente": 0.56186,
+    "exige_alpha": true,
+    "alpha_presente": true,
+    "avisos": [],
+    "grade": [
+      2,
+      1
+    ],
+    "celulas": [
+      {
+        "quadro": 1,
+        "pixels_alpha_maior_64": 217447,
+        "bbox_local": [
+          27,
+          175,
+          749,
+          863
+        ],
+        "base_visual_local": 863
+      },
+      {
+        "quadro": 2,
+        "pixels_alpha_maior_64": 212398,
+        "bbox_local": [
+          21,
+          207,
+          748,
+          863
+        ],
+        "base_visual_local": 863
+      }
+    ],
+    "quadros_previstos": 2,
+    "observacao": "Bboxes medidos nao provam continuidade, anatomia, apoio ou quantidade correta de poses. Revisao visual e teste em Godot pendentes."
   },
   {
     "id": "E_rainha_raizes_1",
     "arquivo": "E_rainha_raizes_1.png",
-    "gerado": false
+    "gerado": true,
+    "tamanho": [
+      1536,
+      1024
+    ],
+    "modo": "RGBA",
+    "bytes": 1510885,
+    "sha256": "689bb2e541b7f88f6dc0d886a9c6e7b7e8c6c5759c659b20bc4363614a1dfb0a",
+    "alpha_min_max": [
+      0,
+      254
+    ],
+    "fracao_transparente": 0.61223,
+    "exige_alpha": true,
+    "alpha_presente": true,
+    "avisos": [],
+    "grade": [
+      2,
+      1
+    ],
+    "celulas": [
+      {
+        "quadro": 1,
+        "pixels_alpha_maior_64": 229379,
+        "bbox_local": [
+          31,
+          201,
+          748,
+          906
+        ],
+        "base_visual_local": 906
+      },
+      {
+        "quadro": 2,
+        "pixels_alpha_maior_64": 227669,
+        "bbox_local": [
+          20,
+          200,
+          737,
+          906
+        ],
+        "base_visual_local": 906
+      }
+    ],
+    "quadros_previstos": 2,
+    "observacao": "Bboxes medidos nao provam continuidade, anatomia, apoio ou quantidade correta de poses. Revisao visual e teste em Godot pendentes."
   },
   {
     "id": "E_rainha_raizes_2",
     "arquivo": "E_rainha_raizes_2.png",
-    "gerado": false
+    "gerado": true,
+    "tamanho": [
+      1536,
+      1024
+    ],
+    "modo": "RGBA",
+    "bytes": 1462758,
+    "sha256": "8ae50fa1d476396b63000566ddb6610021c919e51e842774b593868903abd66e",
+    "alpha_min_max": [
+      0,
+      254
+    ],
+    "fracao_transparente": 0.68803,
+    "exige_alpha": true,
+    "alpha_presente": true,
+    "avisos": [],
+    "grade": [
+      2,
+      1
+    ],
+    "celulas": [
+      {
+        "quadro": 1,
+        "pixels_alpha_maior_64": 219559,
+        "bbox_local": [
+          25,
+          235,
+          738,
+          865
+        ],
+        "base_visual_local": 865
+      },
+      {
+        "quadro": 2,
+        "pixels_alpha_maior_64": 209257,
+        "bbox_local": [
+          26,
+          296,
+          749,
+          866
+        ],
+        "base_visual_local": 866
+      }
+    ],
+    "quadros_previstos": 2,
+    "observacao": "Bboxes medidos nao provam continuidade, anatomia, apoio ou quantidade correta de poses. Revisao visual e teste em Godot pendentes."
   },
   {
     "id": "E_rainha_raizes_3",
     "arquivo": "E_rainha_raizes_3.png",
-    "gerado": false
+    "gerado": true,
+    "tamanho": [
+      1536,
+      1024
+    ],
+    "modo": "RGBA",
+    "bytes": 1545033,
+    "sha256": "5164676800b4897757d3ac540a990887a213e6eaf55b39c4f9cf0cfe0dfc469e",
+    "alpha_min_max": [
+      0,
+      254
+    ],
+    "fracao_transparente": 0.61876,
+    "exige_alpha": true,
+    "alpha_presente": true,
+    "avisos": [],
+    "grade": [
+      2,
+      1
+    ],
+    "celulas": [
+      {
+        "quadro": 1,
+        "pixels_alpha_maior_64": 247154,
+        "bbox_local": [
+          27,
+          201,
+          743,
+          894
+        ],
+        "base_visual_local": 894
+      },
+      {
+        "quadro": 2,
+        "pixels_alpha_maior_64": 239061,
+        "bbox_local": [
+          27,
+          200,
+          743,
+          894
+        ],
+        "base_visual_local": 894
+      }
+    ],
+    "quadros_previstos": 2,
+    "observacao": "Bboxes medidos nao provam continuidade, anatomia, apoio ou quantidade correta de poses. Revisao visual e teste em Godot pendentes."
   },
   {
     "id": "E_rainha_esporos_1",
