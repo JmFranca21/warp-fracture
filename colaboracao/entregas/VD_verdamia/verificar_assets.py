@@ -73,6 +73,16 @@ for task in tasks:
         yy, xx = np.where(alpha > 64)
         if len(xx):
             row['bbox_visual'] = [int(xx.min()), int(yy.min()), int(xx.max()+1), int(yy.max()+1)]
+            bx0, by0, bx1, by1 = row['bbox_visual']
+            if task['id'] == 'E1_raiz_pendurada':
+                row['ancora_sugerida_px'] = [(bx0+bx1)/2, by0]
+                row['apoio'] = 'teto'
+            elif task['id'] in {'VD_fragmento', 'VD_esporo_verde', 'VD_esporo_violeta'}:
+                row['ancora_sugerida_px'] = [(bx0+bx1)/2, (by0+by1)/2]
+                row['apoio'] = 'centro / flutuante'
+            elif task['id'].startswith('E1_') or task['id'] in {'VD_checkpoint', 'VD_barreira_arena'}:
+                row['ancora_sugerida_px'] = [(bx0+bx1)/2, by1]
+                row['apoio'] = 'chao'
     rows.append(row)
 (ROOT / 'MANIFESTO.json').write_text(json.dumps(rows, ensure_ascii=False, indent=2) + '\n')
 all_files = []

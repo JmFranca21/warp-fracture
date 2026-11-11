@@ -233,5 +233,20 @@
     "arquivo": "VD_checkpoint.png",
     "bytes": 819285,
     "sha256": "989a3cde391ce51493b6aa214411c3701716a60c6a2fcc409c4f4313722f433e"
+  },
+  {
+    "arquivo": "VD_esporo_violeta.png",
+    "bytes": 598056,
+    "sha256": "159bb61c0d8af357d1dd39eff6fac9e9d9f8561632b9e3465c8423a2e710acf6"
+  },
+  {
+    "arquivo": "VD_fragmento.png",
+    "bytes": 447810,
+    "sha256": "19c39631f4b98119c7f74c6608c7a6356b7d5c5935306f3ded102146b68827cd"
+  },
+  {
+    "arquivo": "VD_subsolo.png",
+    "bytes": 1265743,
+    "sha256": "737d807bb3c6e984dc44e3a5c53879a8cabfbc9ca3990b6b7ff27671fa866972"
   }
 ]

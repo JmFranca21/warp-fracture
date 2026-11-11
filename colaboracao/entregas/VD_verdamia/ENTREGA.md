@@ -1,6 +1,6 @@
 # Verdâmia — entrega de arte
 
-**Produção:** 44/64 imagens presentes neste commit.
+**Produção:** 47/64 imagens presentes neste commit.
 **Estado:** assets originais gerados; integração na Godot e revisão final do responsável pendentes.
 
 O responsável solicitou produzir todos os assets, incluindo a elaboração das especificações que faltavam, e manter commits ao longo da produção. A direção segue a DA-01 e os pacotes D/E do guia. As extensões do inventário cobrem elementos já usados pelo mapa e pelo código, sem introduzir novas mecânicas.
@@ -71,11 +71,11 @@ A Rainha usa 16 folhas 2×1; raízes, esporos e invocação são peças separada
 | E1_altar | [E1_altar.png](E1_altar.png) | 1254×1254 | sim | Revisar avisos |
 | VD_checkpoint | [VD_checkpoint.png](VD_checkpoint.png) | 1254×1254 | sim | Revisar avisos |
 | VD_barreira_arena | [VD_barreira_arena.png](VD_barreira_arena.png) | 1254×1254 | sim | Revisar avisos |
-| VD_fragmento | — | — | — | Ainda em produção |
+| VD_fragmento | [VD_fragmento.png](VD_fragmento.png) | 1254×1254 | sim | Revisar avisos |
 | VD_esporo_verde | — | — | — | Ainda em produção |
-| VD_esporo_violeta | — | — | — | Ainda em produção |
+| VD_esporo_violeta | [VD_esporo_violeta.png](VD_esporo_violeta.png) | 1254×1254 | sim | Revisar avisos |
 | VD_chao_musgo | — | — | — | Ainda em produção |
-| VD_subsolo | — | — | — | Ainda em produção |
+| VD_subsolo | [VD_subsolo.png](VD_subsolo.png) | 1254×1254 | opaco | Revisar avisos |
 | VD_parede_escalada | — | — | — | Ainda em produção |
 | VD_canto_esquerdo | — | — | — | Ainda em produção |
 | VD_canto_direito | — | — | — | Ainda em produção |
@@ -103,3 +103,6 @@ A Rainha usa 16 folhas 2×1; raízes, esporos e invocação são peças separada
 - **E1_altar**: Canvas nativo difere do solicitado; usar dimensoes reais e calibrar escala na importacao. Original preservado.
 - **VD_checkpoint**: Canvas nativo difere do solicitado; usar dimensoes reais e calibrar escala na importacao. Original preservado.
 - **VD_barreira_arena**: Canvas nativo difere do solicitado; usar dimensoes reais e calibrar escala na importacao. Original preservado.
+- **VD_fragmento**: Canvas nativo difere do solicitado; usar dimensoes reais e calibrar escala na importacao. Original preservado.
+- **VD_esporo_violeta**: Canvas nativo difere do solicitado; usar dimensoes reais e calibrar escala na importacao. Original preservado.
+- **VD_subsolo**: Canvas nativo difere do solicitado; usar dimensoes reais e calibrar escala na importacao. Original preservado.

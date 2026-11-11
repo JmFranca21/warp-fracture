@@ -2421,7 +2421,12 @@
       173,
       1155,
       1100
-    ]
+    ],
+    "ancora_sugerida_px": [
+      624.0,
+      1100
+    ],
+    "apoio": "chao"
   },
   {
     "id": "E1_grama",
@@ -2453,7 +2458,12 @@
       325,
       1098,
       920
-    ]
+    ],
+    "ancora_sugerida_px": [
+      620.5,
+      920
+    ],
+    "apoio": "chao"
   },
   {
     "id": "E1_raiz_pendurada",
@@ -2485,7 +2495,12 @@
       149,
       1058,
       1108
-    ]
+    ],
+    "ancora_sugerida_px": [
+      626.0,
+      149
+    ],
+    "apoio": "teto"
   },
   {
     "id": "E1_tronco_plataforma",
@@ -2517,7 +2532,12 @@
       282,
       1725,
       675
-    ]
+    ],
+    "ancora_sugerida_px": [
+      888.5,
+      675
+    ],
+    "apoio": "chao"
   },
   {
     "id": "E1_pedra_musgo",
@@ -2549,7 +2569,12 @@
       372,
       1140,
       944
-    ]
+    ],
+    "ancora_sugerida_px": [
+      622.5,
+      944
+    ],
+    "apoio": "chao"
   },
   {
     "id": "E1_arco_templo",
@@ -2581,7 +2606,12 @@
       187,
       1206,
       1045
-    ]
+    ],
+    "ancora_sugerida_px": [
+      627.0,
+      1045
+    ],
+    "apoio": "chao"
   },
   {
     "id": "E1_altar",
@@ -2613,7 +2643,12 @@
       370,
       1174,
       964
-    ]
+    ],
+    "ancora_sugerida_px": [
+      626.5,
+      964
+    ],
+    "apoio": "chao"
   },
   {
     "id": "VD_checkpoint",
@@ -2645,7 +2680,12 @@
       256,
       1207,
       997
-    ]
+    ],
+    "ancora_sugerida_px": [
+      626.5,
+      997
+    ],
+    "apoio": "chao"
   },
   {
     "id": "VD_barreira_arena",
@@ -2677,12 +2717,49 @@
       56,
       934,
       1208
-    ]
+    ],
+    "ancora_sugerida_px": [
+      626.5,
+      1208
+    ],
+    "apoio": "chao"
   },
   {
     "id": "VD_fragmento",
     "arquivo": "VD_fragmento.png",
-    "gerado": false
+    "gerado": true,
+    "tamanho": [
+      1254,
+      1254
+    ],
+    "modo": "RGBA",
+    "bytes": 447810,
+    "sha256": "19c39631f4b98119c7f74c6608c7a6356b7d5c5935306f3ded102146b68827cd",
+    "alpha_min_max": [
+      0,
+      255
+    ],
+    "fracao_transparente": 0.83257,
+    "exige_alpha": true,
+    "alpha_presente": true,
+    "avisos": [
+      "Canvas nativo difere do solicitado; usar dimensoes reais e calibrar escala na importacao. Original preservado."
+    ],
+    "canvas_solicitado": [
+      1024,
+      1024
+    ],
+    "bbox_visual": [
+      243,
+      139,
+      1004,
+      1069
+    ],
+    "ancora_sugerida_px": [
+      623.5,
+      604.0
+    ],
+    "apoio": "centro / flutuante"
   },
   {
     "id": "VD_esporo_verde",
@@ -2692,7 +2769,39 @@
   {
     "id": "VD_esporo_violeta",
     "arquivo": "VD_esporo_violeta.png",
-    "gerado": false
+    "gerado": true,
+    "tamanho": [
+      1254,
+      1254
+    ],
+    "modo": "RGBA",
+    "bytes": 598056,
+    "sha256": "159bb61c0d8af357d1dd39eff6fac9e9d9f8561632b9e3465c8423a2e710acf6",
+    "alpha_min_max": [
+      0,
+      255
+    ],
+    "fracao_transparente": 0.76776,
+    "exige_alpha": true,
+    "alpha_presente": true,
+    "avisos": [
+      "Canvas nativo difere do solicitado; usar dimensoes reais e calibrar escala na importacao. Original preservado."
+    ],
+    "canvas_solicitado": [
+      1024,
+      1024
+    ],
+    "bbox_visual": [
+      342,
+      312,
+      917,
+      924
+    ],
+    "ancora_sugerida_px": [
+      629.5,
+      618.0
+    ],
+    "apoio": "centro / flutuante"
   },
   {
     "id": "VD_chao_musgo",
@@ -2702,7 +2811,34 @@
   {
     "id": "VD_subsolo",
     "arquivo": "VD_subsolo.png",
-    "gerado": false
+    "gerado": true,
+    "tamanho": [
+      1254,
+      1254
+    ],
+    "modo": "RGB",
+    "bytes": 1265743,
+    "sha256": "737d807bb3c6e984dc44e3a5c53879a8cabfbc9ca3990b6b7ff27671fa866972",
+    "alpha_min_max": [
+      255,
+      255
+    ],
+    "fracao_transparente": 0.0,
+    "exige_alpha": false,
+    "alpha_presente": false,
+    "avisos": [
+      "Canvas nativo difere do solicitado; usar dimensoes reais e calibrar escala na importacao. Original preservado."
+    ],
+    "canvas_solicitado": [
+      1024,
+      1024
+    ],
+    "bbox_visual": [
+      0,
+      0,
+      1254,
+      1254
+    ]
   },
   {
     "id": "VD_parede_escalada",
