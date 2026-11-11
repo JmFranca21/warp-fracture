@@ -1,6 +1,6 @@
 # Verdâmia — entrega de arte
 
-**Produção:** 55/64 imagens presentes neste commit.
+**Produção:** 60/64 imagens presentes neste commit.
 **Estado:** assets originais gerados; integração na Godot e revisão final do responsável pendentes.
 
 O responsável solicitou produzir todos os assets, incluindo a elaboração das especificações que faltavam, e manter commits ao longo da produção. A direção segue a DA-01 e os pacotes D/E do guia. As extensões do inventário cobrem elementos já usados pelo mapa e pelo código, sem introduzir novas mecânicas.
@@ -81,14 +81,14 @@ A Rainha usa 16 folhas 2×1; raízes, esporos e invocação são peças separada
 | VD_canto_direito | [VD_canto_direito.png](VD_canto_direito.png) | 1254×1254 | sim | Revisar avisos |
 | VD_espinhos | [VD_espinhos.png](VD_espinhos.png) | 1254×1254 | sim | Revisar avisos |
 | VD_plataforma_raizes | [VD_plataforma_raizes.png](VD_plataforma_raizes.png) | 1774×887 | sim | Revisar avisos |
-| VD_bg_distante | — | — | — | Ainda em produção |
+| VD_bg_distante | [VD_bg_distante.png](VD_bg_distante.png) | 1536×1024 | opaco | Sem alerta automático; revisão visual necessária |
 | VD_bg_intermediario | [VD_bg_intermediario.png](VD_bg_intermediario.png) | 1536×1024 | sim | Sem alerta automático; revisão visual necessária |
-| VD_fg_vegetacao | — | — | — | Ainda em produção |
-| VD_fx_raiz | — | — | — | Ainda em produção |
-| VD_fx_aviso_raiz | — | — | — | Ainda em produção |
+| VD_fg_vegetacao | [VD_fg_vegetacao.png](VD_fg_vegetacao.png) | 1536×1024 | sim | Sem alerta automático; revisão visual necessária |
+| VD_fx_raiz | [VD_fx_raiz.png](VD_fx_raiz.png) | 1536×1024 | sim | Sem alerta automático; revisão visual necessária |
+| VD_fx_aviso_raiz | [VD_fx_aviso_raiz.png](VD_fx_aviso_raiz.png) | 1536×1024 | sim | Sem alerta automático; revisão visual necessária |
 | VD_fx_impacto_esporo | — | — | — | Ainda em produção |
 | VD_fx_invocacao | — | — | — | Ainda em produção |
-| VD_fx_poeira | — | — | — | Ainda em produção |
+| VD_fx_poeira | [VD_fx_poeira.png](VD_fx_poeira.png) | 1536×1024 | sim | Sem alerta automático; revisão visual necessária |
 | VD_fx_garras | — | — | — | Ainda em produção |
 | VD_fx_clarao | — | — | — | Ainda em produção |
 

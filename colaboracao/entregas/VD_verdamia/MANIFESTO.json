@@ -3062,7 +3062,32 @@
   {
     "id": "VD_bg_distante",
     "arquivo": "VD_bg_distante.png",
-    "gerado": false
+    "gerado": true,
+    "tamanho": [
+      1536,
+      1024
+    ],
+    "modo": "RGB",
+    "bytes": 1481513,
+    "sha256": "7acc13faea61b0153bcd1275daa46b095ed0943676d0db511974a17eae79ec60",
+    "alpha_min_max": [
+      255,
+      255
+    ],
+    "fracao_transparente": 0.0,
+    "exige_alpha": false,
+    "alpha_presente": false,
+    "avisos": [],
+    "canvas_solicitado": [
+      1536,
+      1024
+    ],
+    "bbox_visual": [
+      0,
+      0,
+      1536,
+      1024
+    ]
   },
   {
     "id": "VD_bg_intermediario",
@@ -3097,17 +3122,222 @@
   {
     "id": "VD_fg_vegetacao",
     "arquivo": "VD_fg_vegetacao.png",
-    "gerado": false
+    "gerado": true,
+    "tamanho": [
+      1536,
+      1024
+    ],
+    "modo": "RGBA",
+    "bytes": 802910,
+    "sha256": "918bcdfb4ec343a066054e773142eb8334c6cfcf364a633729d72efb44057a42",
+    "alpha_min_max": [
+      0,
+      254
+    ],
+    "fracao_transparente": 0.86549,
+    "exige_alpha": true,
+    "alpha_presente": true,
+    "avisos": [],
+    "canvas_solicitado": [
+      1536,
+      1024
+    ],
+    "bbox_visual": [
+      0,
+      809,
+      1536,
+      1024
+    ]
   },
   {
     "id": "VD_fx_raiz",
     "arquivo": "VD_fx_raiz.png",
-    "gerado": false
+    "gerado": true,
+    "tamanho": [
+      1536,
+      1024
+    ],
+    "modo": "RGBA",
+    "bytes": 1422194,
+    "sha256": "50016d3b343b5bf5f03aa90856dc744adc36e3dc5eb6990554248822de1de19d",
+    "alpha_min_max": [
+      0,
+      254
+    ],
+    "fracao_transparente": 0.83587,
+    "exige_alpha": true,
+    "alpha_presente": true,
+    "avisos": [],
+    "grade": [
+      4,
+      2
+    ],
+    "celulas": [
+      {
+        "quadro": 1,
+        "pixels_alpha_maior_64": 5356,
+        "bbox_local": [
+          83,
+          388,
+          314,
+          459
+        ],
+        "base_visual_local": 459
+      },
+      {
+        "quadro": 2,
+        "pixels_alpha_maior_64": 19503,
+        "bbox_local": [
+          59,
+          246,
+          321,
+          460
+        ],
+        "base_visual_local": 460
+      },
+      {
+        "quadro": 3,
+        "pixels_alpha_maior_64": 37566,
+        "bbox_local": [
+          54,
+          76,
+          331,
+          460
+        ],
+        "base_visual_local": 460
+      },
+      {
+        "quadro": 4,
+        "pixels_alpha_maior_64": 37791,
+        "bbox_local": [
+          54,
+          69,
+          331,
+          460
+        ],
+        "base_visual_local": 460
+      },
+      {
+        "quadro": 5,
+        "pixels_alpha_maior_64": 25150,
+        "bbox_local": [
+          62,
+          192,
+          324,
+          453
+        ],
+        "base_visual_local": 453
+      },
+      {
+        "quadro": 6,
+        "pixels_alpha_maior_64": 6007,
+        "bbox_local": [
+          77,
+          388,
+          315,
+          454
+        ],
+        "base_visual_local": 454
+      },
+      {
+        "quadro": 7,
+        "pixels_alpha_maior_64": 0
+      },
+      {
+        "quadro": 8,
+        "pixels_alpha_maior_64": 0
+      }
+    ],
+    "quadros_previstos": 6,
+    "observacao": "Bboxes medidos nao provam continuidade, anatomia, apoio ou quantidade correta de poses. Revisao visual e teste em Godot pendentes."
   },
   {
     "id": "VD_fx_aviso_raiz",
     "arquivo": "VD_fx_aviso_raiz.png",
-    "gerado": false
+    "gerado": true,
+    "tamanho": [
+      1536,
+      1024
+    ],
+    "modo": "RGBA",
+    "bytes": 830334,
+    "sha256": "573fadb91d543d124d8296032fbce3a61ca410e2c99ab5bb647871073266e7e3",
+    "alpha_min_max": [
+      0,
+      254
+    ],
+    "fracao_transparente": 0.97461,
+    "exige_alpha": true,
+    "alpha_presente": true,
+    "avisos": [],
+    "grade": [
+      4,
+      2
+    ],
+    "celulas": [
+      {
+        "quadro": 1,
+        "pixels_alpha_maior_64": 1804,
+        "bbox_local": [
+          97,
+          443,
+          300,
+          467
+        ],
+        "base_visual_local": 467
+      },
+      {
+        "quadro": 2,
+        "pixels_alpha_maior_64": 3286,
+        "bbox_local": [
+          66,
+          436,
+          321,
+          468
+        ],
+        "base_visual_local": 468
+      },
+      {
+        "quadro": 3,
+        "pixels_alpha_maior_64": 4379,
+        "bbox_local": [
+          65,
+          403,
+          312,
+          468
+        ],
+        "base_visual_local": 468
+      },
+      {
+        "quadro": 4,
+        "pixels_alpha_maior_64": 5914,
+        "bbox_local": [
+          62,
+          383,
+          323,
+          468
+        ],
+        "base_visual_local": 468
+      },
+      {
+        "quadro": 5,
+        "pixels_alpha_maior_64": 0
+      },
+      {
+        "quadro": 6,
+        "pixels_alpha_maior_64": 0
+      },
+      {
+        "quadro": 7,
+        "pixels_alpha_maior_64": 0
+      },
+      {
+        "quadro": 8,
+        "pixels_alpha_maior_64": 0
+      }
+    ],
+    "quadros_previstos": 4,
+    "observacao": "Bboxes medidos nao provam continuidade, anatomia, apoio ou quantidade correta de poses. Revisao visual e teste em Godot pendentes."
   },
   {
     "id": "VD_fx_impacto_esporo",
@@ -3122,7 +3352,90 @@
   {
     "id": "VD_fx_poeira",
     "arquivo": "VD_fx_poeira.png",
-    "gerado": false
+    "gerado": true,
+    "tamanho": [
+      1536,
+      1024
+    ],
+    "modo": "RGBA",
+    "bytes": 894816,
+    "sha256": "a03fdacb056d4d2174d840207bef68b4d2d0e6bdaacf7845effc59ba32a5d09f",
+    "alpha_min_max": [
+      0,
+      253
+    ],
+    "fracao_transparente": 0.95568,
+    "exige_alpha": true,
+    "alpha_presente": true,
+    "avisos": [],
+    "grade": [
+      4,
+      2
+    ],
+    "celulas": [
+      {
+        "quadro": 1,
+        "pixels_alpha_maior_64": 2509,
+        "bbox_local": [
+          158,
+          359,
+          257,
+          423
+        ],
+        "base_visual_local": 423
+      },
+      {
+        "quadro": 2,
+        "pixels_alpha_maior_64": 5552,
+        "bbox_local": [
+          70,
+          343,
+          313,
+          423
+        ],
+        "base_visual_local": 423
+      },
+      {
+        "quadro": 3,
+        "pixels_alpha_maior_64": 9153,
+        "bbox_local": [
+          33,
+          297,
+          342,
+          424
+        ],
+        "base_visual_local": 424
+      },
+      {
+        "quadro": 4,
+        "pixels_alpha_maior_64": 2349,
+        "bbox_local": [
+          56,
+          364,
+          309,
+          422
+        ],
+        "base_visual_local": 422
+      },
+      {
+        "quadro": 5,
+        "pixels_alpha_maior_64": 0
+      },
+      {
+        "quadro": 6,
+        "pixels_alpha_maior_64": 0
+      },
+      {
+        "quadro": 7,
+        "pixels_alpha_maior_64": 0
+      },
+      {
+        "quadro": 8,
+        "pixels_alpha_maior_64": 0
+      }
+    ],
+    "quadros_previstos": 4,
+    "observacao": "Bboxes medidos nao provam continuidade, anatomia, apoio ou quantidade correta de poses. Revisao visual e teste em Godot pendentes."
   },
   {
     "id": "VD_fx_garras",

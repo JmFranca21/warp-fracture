@@ -230,6 +230,11 @@
     "sha256": "31ac5b6adb5802ad397c56c7b1ff9fb52bb5c0950f91aacd9d35b037f870a708"
   },
   {
+    "arquivo": "VD_bg_distante.png",
+    "bytes": 1481513,
+    "sha256": "7acc13faea61b0153bcd1275daa46b095ed0943676d0db511974a17eae79ec60"
+  },
+  {
     "arquivo": "VD_bg_intermediario.png",
     "bytes": 1552241,
     "sha256": "44cd7f369a1cd37cc51d2cf9f42d7710ec471968c5b1cac23cbf8c309985edf9"
@@ -270,9 +275,29 @@
     "sha256": "159bb61c0d8af357d1dd39eff6fac9e9d9f8561632b9e3465c8423a2e710acf6"
   },
   {
+    "arquivo": "VD_fg_vegetacao.png",
+    "bytes": 802910,
+    "sha256": "918bcdfb4ec343a066054e773142eb8334c6cfcf364a633729d72efb44057a42"
+  },
+  {
     "arquivo": "VD_fragmento.png",
     "bytes": 447810,
     "sha256": "19c39631f4b98119c7f74c6608c7a6356b7d5c5935306f3ded102146b68827cd"
+  },
+  {
+    "arquivo": "VD_fx_aviso_raiz.png",
+    "bytes": 830334,
+    "sha256": "573fadb91d543d124d8296032fbce3a61ca410e2c99ab5bb647871073266e7e3"
+  },
+  {
+    "arquivo": "VD_fx_poeira.png",
+    "bytes": 894816,
+    "sha256": "a03fdacb056d4d2174d840207bef68b4d2d0e6bdaacf7845effc59ba32a5d09f"
+  },
+  {
+    "arquivo": "VD_fx_raiz.png",
+    "bytes": 1422194,
+    "sha256": "50016d3b343b5bf5f03aa90856dc744adc36e3dc5eb6990554248822de1de19d"
   },
   {
     "arquivo": "VD_parede_escalada.png",
