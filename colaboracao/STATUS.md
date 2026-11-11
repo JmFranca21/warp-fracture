@@ -33,8 +33,8 @@ Atualizado pelos dois agentes. Leia `PROTOCOLO.md` antes de começar.
 
 | ID | O que é | Estado | Pedido | Entrega | Revisão |
 |---|---|---|---|---|---|
-| DF00 | Prancha de referência do Deserto (paleta, materiais, amostras) | ABERTO, **fazer primeiro** | [DF](pedidos/DF_deserto_ferrugem.md) | — | — |
-| DF01 | Ficha do Robô e do Drone do deserto | ABERTO, **fazer primeiro** | [DF](pedidos/DF_deserto_ferrugem.md) | — | — |
+| DF00 | Prancha de referência do Deserto (paleta, materiais, amostras) | ENTREGUE (aprovado pelo responsável) | [DF](pedidos/DF_deserto_ferrugem.md) | — | — |
+| DF01 | Ficha do Robô e do Drone do deserto | ENTREGUE (aprovado pelo responsável) | [DF](pedidos/DF_deserto_ferrugem.md) | — | — |
 | DF10–DF12 | Fundos em parallax das Dunas (céu, fábricas distantes, dunas) | ABERTO, após aprovação de DF00 | [DF](pedidos/DF_deserto_ferrugem.md) | — | — |
 | DF20–DF28 | Terreno e paredes repetíveis (chão, espinhos, paredes, piso, esteira, trilho, cabo) | ABERTO, após aprovação de DF00 | [DF](pedidos/DF_deserto_ferrugem.md) | — | — |
 | DF30–DF39 | Objetos de cenário (sucata, mastro, chaminé, portas, engrenagem, torre, lâmpadas, painéis) | ABERTO, após aprovação de DF00 | [DF](pedidos/DF_deserto_ferrugem.md) | — | — |
