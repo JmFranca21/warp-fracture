@@ -2,7 +2,7 @@
 
 Metroidvania 2D em visão lateral feito em **Godot 4.3**, com visual ilustrado inspirado em Hollow Knight (sem pixel art). Daymon Sagan, cientista do Projeto Hélix, atravessa realidades fraturadas para recuperar os fragmentos da Máquina de Dobra. Em cada universo, ele assume uma forma diferente.
 
-**Versão atual:** protótipo v0.5.1 (correção da interação com o portal). Laboratório Hélix e Verdâmia jogáveis, com chefe, Arpão de Fase, Bancada de Upgrades, Registros do Projeto, mapa, save e som.
+**Versão atual:** protótipo v0.6 (Verdâmia com a arte oficial: Lince-Vagalume, inimigos, Rainha Micélia, cenário e efeitos). Laboratório Hélix e Verdâmia jogáveis, com chefe, Arpão de Fase, Bancada de Upgrades, Registros do Projeto, mapa, save e som.
 
 ## Como abrir
 
@@ -40,4 +40,4 @@ A lista completa de flags está no `HANDOFF.md`, seção 5.
 
 ## Próximos passos
 
-O primeiro fragmento de Verdâmia encerra a v0.5.1. A Fuga do Eco é a próxima etapa de gameplay. As novas artes do Eco, de Verdâmia e de parte do Deserto já estão no repositório. Consulte o [roteiro de implementação](ROTEIRO.md), o [quadro de arte](colaboracao/STATUS.md) e o [GDD de dez páginas](docs/Caderno_de_10_paginas_Warp_Fracture_v2.docx).
+O primeiro fragmento de Verdâmia encerra a v0.6. A arte de Verdâmia está integrada (veja `colaboracao/revisoes/VD_verdamia.md`). A Fuga do Eco é a próxima etapa de gameplay. As artes do Eco e de parte do Deserto já estão no repositório e ainda não entraram no jogo. Consulte o [roteiro de implementação](ROTEIRO.md), o [quadro de arte](colaboracao/STATUS.md) e o [GDD de dez páginas](docs/Caderno_de_10_paginas_Warp_Fracture_v2.docx).

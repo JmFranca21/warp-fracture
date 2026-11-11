@@ -22,15 +22,18 @@ func _ready() -> void:
 	var theme: String = data["theme"]
 	var bounds: Rect2 = data["bounds"]
 	_build_sky(theme)
-	for i in 3:
-		var b := BgLayer.new()
-		b.theme = theme
-		b.depth = [0.12, 0.3, 0.55][i]
-		b.layer_index = i
-		b.span = Vector2(-1600.0, bounds.end.x + 1600.0)
-		b.z_index = -60 + i * 10
-		add_child(b)
-		bg_layers.append(b)
+	if theme == "verd":
+		_build_verd_bg(bounds)
+	else:
+		for i in 3:
+			var b := BgLayer.new()
+			b.theme = theme
+			b.depth = [0.12, 0.3, 0.55][i]
+			b.layer_index = i
+			b.span = Vector2(-1600.0, bounds.end.x + 1600.0)
+			b.z_index = -60 + i * 10
+			add_child(b)
+			bg_layers.append(b)
 	_build_ambient(theme, bounds)
 
 	if data.has("backwall"):
@@ -54,6 +57,7 @@ func _ready() -> void:
 	var terr := TerrainDraw.new()
 	terr.theme = theme
 	terr.rects = data["solids"]
+	terr.thin_art = data.get("thin_art", [])
 	add_child(terr)
 	for r in data["solids"]:
 		_solid(r)
@@ -204,6 +208,10 @@ func _ready() -> void:
 	fg.depth = 1.0
 	fg.span = Vector2(-600.0, bounds.end.x + 900.0)
 	fg.ground_rects = data["solids"]
+	if theme == "verd":
+		fg.depth = 1.2
+		fg.base_y = bounds.end.y + 40.0
+		fg.span = Vector2(-400.0, bounds.end.x * 1.2 + 900.0)
 	fg.z_index = 30
 	add_child(fg)
 	fg_layers.append(fg)
@@ -315,6 +323,23 @@ func _process(_dt: float) -> void:
 		b.position = cp * (1.0 - b.depth)
 	for f in fg_layers:
 		f.position = Vector2(cp.x * (1.0 - f.depth), 0.0)
+
+
+## Parallax de Verdâmia com a arte entregue: floresta distante (opaca) e fungos intermediários.
+func _build_verd_bg(bounds: Rect2) -> void:
+	var view := Vector2(1280, 720) / 1.1 + Vector2(240, 40)   # folga para telas mais largas (aspect expand)
+	var cam_x := Vector2(bounds.position.x + 580.0, bounds.end.x - 580.0)
+	var cam_y := Vector2(bounds.position.y + 327.0, bounds.end.y - 327.0)
+	var defs := [["bg_distante.png", 0.06, 0.9, Color(1, 1, 1)], ["bg_intermediario.png", 0.26, 0.8, Color(0.46, 0.54, 0.58)]]
+	for i in defs.size():
+		var b := VerdBg.new()
+		b.tex = load(SpriteMetaVerd.FUNDO_DIR + String(defs[i][0]))
+		b.depth = defs[i][1]
+		b.fit(view, cam_x, cam_y, defs[i][2])
+		b.modulate = defs[i][3]
+		b.z_index = -60 + i * 10
+		add_child(b)
+		bg_layers.append(b)
 
 
 func _build_decor(list: Array) -> void:

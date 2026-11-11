@@ -46,9 +46,12 @@ var flash_t := 0.0
 var warping := false
 var warp_to := Vector2.ZERO
 var warp_t := 0.0
-var tail_end := Vector2.ZERO
-var ghosts: Array = []
-# rig de sprites (forma humana)
+# Lince-Vagalume: animação de ação em curso ("claw", "pogo", "flash", "doublejump") e tempos de pose
+var act := ""
+var act_t := 0.0
+var hurt_t := 0.0
+var held_pose := false
+# rig de sprites (humano: corpo + braço; lince: corpo)
 const BODY_SCALE := 0.58
 const ARM_SCALE := 0.40
 const FX_SCALE := 0.55
@@ -108,13 +111,16 @@ func _ready() -> void:
 		run_speed = 360.0
 		max_air_jumps = 1
 		jump_v = 740.0
-		glow_a = Art.glow(Color(0.85, 1.0, 0.45, 0.85), 40)
+		glow_a = Art.glow(Color(1.0, 0.78, 0.35, 0.8), 30)
+		_build_lynx()
 	add_child(glow_a)
 	glow_b = Art.glow(Color(0.4, 0.9, 1.0, 0.0), 120)
 	glow_b.position = Vector2(0, -24)
 	add_child(glow_b)
-	var amb := Art.glow(Color(0.5, 0.7, 1.0, 0.10), 150)
+	# halo suave atrás do personagem; mais forte no Lince, que é escuro contra a floresta
+	var amb := Art.glow(Color(0.5, 0.7, 1.0, 0.10), 150) if form == "human" else Art.glow(Color(0.55, 0.95, 0.9, 0.20), 120)
 	amb.position = Vector2(0, -30)
+	amb.z_index = -1
 	add_child(amb)
 	last_safe = position
 	if main != null:
@@ -152,15 +158,27 @@ func _build_rig() -> void:
 	arm_pivot.add_child(muzzle)
 
 
+## Lince-Vagalume: 11 animações (D_lince_*) em um AnimatedSprite2D; âncora nos pés.
+func _build_lynx() -> void:
+	rig = Node2D.new()
+	add_child(rig)
+	body_spr = AnimatedSprite2D.new()
+	body_spr.sprite_frames = load(SpriteMetaVerd.LINCE_FRAMES)
+	body_spr.offset = SpriteMetaVerd.LINCE_OFFSET
+	body_spr.scale = Vector2.ONE * SpriteMetaVerd.LINCE_SCALE
+	rig.add_child(body_spr)
+	body_spr.play("idle")
+
+
 ## ponta do cano em coordenadas globais
 func gun_tip() -> Vector2:
-	if rig == null:
+	if arm_pivot == null:
 		return global_position + Vector2(0, -32) + aim * 28.0
 	return arm_pivot.to_global(Vector2(arm_len, -3))
 
 
 func shoulder_global() -> Vector2:
-	if rig == null:
+	if arm_pivot == null:
 		return global_position + Vector2(0, -18)
 	return rig.to_global(arm_pivot.position)
 
@@ -249,10 +267,7 @@ func _physics_process(dt: float) -> void:
 		dash_t -= dt
 		velocity = Vector2(facing * 760.0, 0.0)
 		if int(t * 60.0) % 2 == 0:
-			if rig != null:
-				_spawn_ghost()
-			else:
-				ghosts.append([global_position, 0.25])
+			_spawn_ghost()
 		if dash_t <= 0.0:
 			velocity.x = facing * run_speed
 	elif knock_t > 0.0:
@@ -287,8 +302,10 @@ func _physics_process(dt: float) -> void:
 			elif air_jumps > 0:
 				air_jumps -= 1
 				_jump(0.92)
-				Fx.burst(level.fx, global_position, Color(0.85, 1.0, 0.5, 0.9), 14, 220, 0.45, 0.07, 200)
-				Fx.ring(level.fx, global_position, Color(0.85, 1.0, 0.5, 0.6), 40, 0.3, 3)
+				if form == "lince":
+					act = "doublejump"      # cambalhota (a arte já traz os riscos do impulso)
+					act_t = 0.28
+				Fx.burst(level.fx, global_position, Color(0.85, 1.0, 0.5, 0.9), 8, 180, 0.35, 0.05, 200)
 		if not controls_locked and Input.is_action_just_pressed("dash") and dash_cd <= 0.0 and (on_floor or air_dash):
 			if dir != 0.0:
 				facing = int(signf(dir))
@@ -324,7 +341,11 @@ func _physics_process(dt: float) -> void:
 	if now_floor and not was_floor:
 		squash = 1.0
 		AudioMgr.sfx("pouso", Vector2.INF, -6.0, 0.1)
-		Fx.burst(level.fx, global_position, Color(0.75, 0.8, 0.85, 0.5), 8, 120, 0.35, 0.05, 50)
+		if form == "lince":
+			land_t = 0.09
+			FxAnim.verd(level.fx, "poeira", global_position + Vector2(0, 2)).z_index = 4
+		else:
+			Fx.burst(level.fx, global_position, Color(0.75, 0.8, 0.85, 0.5), 8, 120, 0.35, 0.05, 50)
 	was_floor = now_floor
 	squash = move_toward(squash, 0.0, dt * 6.0)
 	if now_floor and absf(velocity.x) > 10.0:
@@ -337,17 +358,18 @@ func _physics_process(dt: float) -> void:
 
 
 func _process(dt: float) -> void:
-	for gh in ghosts:
-		gh[1] -= dt
-	ghosts = ghosts.filter(func(g): return g[1] > 0.0)
 	var f := float(facing)
 	if form == "human":
 		_update_rig(dt)
 		glow_a.global_position = gun_tip()
 		glow_a.modulate.a = 0.25 + (0.6 if atk_anim > 0.0 else 0.0)
 	else:
-		glow_a.position = Vector2(tail_end.x * f, tail_end.y)
-		glow_a.modulate.a = 0.7 + 0.2 * sin(t * 4.0)
+		_update_lynx(dt)
+		# o brilho acompanha a lanterna da cauda, quadro a quadro
+		var pts: Array = SpriteMetaVerd.LINCE_LANTERN[String(body_spr.animation)]
+		var lp: Vector2 = pts[mini(body_spr.frame, pts.size() - 1)]
+		glow_a.position = Vector2(lp.x * f, lp.y)
+		glow_a.modulate.a = 0.0 if dead else 0.5 + 0.15 * sin(t * 4.0)
 	var gb := 0.0
 	if flash_t > 0.0:
 		gb = flash_t / 0.4 * 0.9
@@ -453,14 +475,66 @@ func _spawn_ghost() -> void:
 	g.texture = tex
 	g.offset = body_spr.offset
 	g.global_position = global_position
-	g.scale = Vector2(BODY_SCALE * facing, BODY_SCALE)
-	g.modulate = Color(0.4, 0.9, 1.0, 0.45)
+	g.scale = Vector2(body_spr.scale.x * facing, body_spr.scale.y)
+	g.modulate = Color(0.4, 0.9, 1.0, 0.45) if form == "human" else Color(0.7, 1.0, 0.55, 0.4)
 	g.material = Art.add_mat()
 	g.z_index = 4
 	level.fx.add_child(g)
 	var tw := g.create_tween()
 	tw.tween_property(g, "modulate:a", 0.0, 0.25)
 	tw.tween_callback(g.queue_free)
+
+
+## Escolhe a animação do Lince pelo estado real do personagem.
+## Prioridade: morte > dano > ação (garras no chão, pogo, clarão, cambalhota) > esquiva > parede > ar > pouso > corrida > idle.
+func _update_lynx(dt: float) -> void:
+	act_t -= dt
+	land_t -= dt
+	hurt_t -= dt
+	var on_floor := is_on_floor()
+	if act == "claw" and not on_floor:
+		act_t = 0.0             # garras no chão: se sair do chão, volta para a pose de ar
+	if act_t <= 0.0:
+		act = ""
+	var an := "idle"
+	var pose := -1              # >= 0: quadro fixo (pose), sem tocar a animação
+	if dead:
+		an = "death"
+	elif hurt_t > 0.0:
+		an = "hurt"
+	elif act != "":
+		an = act
+	elif dash_t > 0.0:
+		an = "run"
+		pose = 2                # corpo todo esticado
+	elif wall_dir != 0 and velocity.y > 0.0:
+		an = "wall"
+	elif not on_floor:
+		if velocity.y < 0.0:
+			an = "jump"
+			pose = 1 if velocity.y < -300.0 else 2
+		else:
+			an = "fall"
+			pose = 0 if velocity.y < 220.0 else (1 if velocity.y < 640.0 else 2)
+	elif land_t > 0.0:
+		an = "jump"
+		pose = 0                # agachamento do pouso
+	elif absf(velocity.x) > 30.0:
+		an = "run"
+	if body_spr.animation != an or (pose < 0 and held_pose):
+		body_spr.play(an)
+	held_pose = pose >= 0
+	if held_pose:
+		body_spr.pause()
+		body_spr.frame = pose
+	body_spr.speed_scale = clampf(absf(velocity.x) / run_speed, 0.5, 1.2) if an == "run" else 1.0
+	var sx := 1.0 + squash * 0.08
+	var sy := 1.0 - squash * 0.07
+	rig.scale = Vector2(sx * facing, sy)
+	var a := 1.0
+	if inv > 0.0 and inv < 50.0 and not dead and int(t * 20.0) % 2 == 0:
+		a = 0.35
+	rig.modulate = Color(1, 1, 1, a)
 
 
 func _update_rig(dt: float) -> void:
@@ -569,6 +643,12 @@ func _attack() -> void:
 			d = Vector2(0, -1)
 		elif Input.is_action_pressed("down") and not is_on_floor():
 			d = Vector2(0, 1)
+		if d.y > 0.0:
+			act = "pogo"
+			act_t = 0.25
+		elif d.y == 0.0 and is_on_floor():
+			act = "claw"
+			act_t = 0.25
 		AudioMgr.sfx("garras", Vector2.INF, -3.0, 0.1)
 		var s := Slash.new()
 		s.dir = d
@@ -600,10 +680,12 @@ func _special() -> void:
 		Fx.ring(level.fx, tip, Color(0.5, 0.95, 1.0, 0.8), 50, 0.25, 4)
 	else:
 		flash_t = 0.4
+		act = "flash"
+		act_t = 0.4
 		AudioMgr.sfx("clarao", Vector2.INF, -2.0, 0.02)
 		var c := global_position + Vector2(0, -18)
-		Fx.ring(level.fx, c, Color(0.85, 1.0, 0.55, 1.0), 180, 0.45, 8)
-		Fx.burst(level.fx, c, Color(0.9, 1.0, 0.6), 30, 420, 0.5, 0.08, 0)
+		# anel do clarão (VD_fx_clarao): o diâmetro máximo coincide com o alcance do golpe (190 px)
+		FxAnim.verd(level.fx, "clarao", c)
 		main.add_shake(8.0)
 		for e in get_tree().get_nodes_in_group("enemies"):
 			if is_instance_valid(e) and not e.dead and e.global_position.distance_to(c) < 190.0:
@@ -685,6 +767,8 @@ func hurt(from: Vector2, dmg: int = 1, hazard: bool = false) -> void:
 	hp -= dmg
 	inv = 1.2
 	knock_t = 0.2
+	hurt_t = 0.3
+	act = ""
 	dash_t = 0.0
 	var sx := signf(global_position.x - from.x)
 	if sx == 0.0:
@@ -702,6 +786,7 @@ func heal(n: int) -> void:
 
 func die() -> void:
 	dead = true
+	act = ""
 	velocity = Vector2(-facing * 120.0, -300.0)
 	Fx.burst(level.fx, global_position + Vector2(0, -25), Color(0.5, 0.9, 1.0), 40, 420, 0.9, 0.1, 100)
 	main.add_shake(16.0)
@@ -723,126 +808,3 @@ func _draw() -> void:
 		var e := a.lerp(b, hook_len)
 		draw_line(a, e, Color(0.35, 0.92, 1.0, 0.35), 6.0, true)
 		draw_line(a, e, Color(0.8, 1.0, 1.0, 0.95), 2.0, true)
-	if rig != null:
-		return
-	var f := float(facing)
-	var a := 1.0
-	if inv > 0.0 and inv < 50.0 and not dead and int(t * 20.0) % 2 == 0:
-		a = 0.3
-	if dead:
-		a = clampf(1.0 - (t - floorf(t)) * 0.0, 0.0, 1.0) * 0.6
-	for gh in ghosts:
-		var off: Vector2 = (gh[0] as Vector2) - global_position
-		draw_set_transform(off, 0.0, Vector2(f, 1))
-		var ga: float = gh[1] / 0.25 * 0.35
-		if form == "human":
-			_draw_human(ga, true)
-		else:
-			_draw_lince(ga, true)
-	var sx := 1.0 + squash * 0.18
-	var sy := 1.0 - squash * 0.15
-	draw_set_transform(Vector2.ZERO, 0.0, Vector2(sx * f, sy))
-	if form == "human":
-		_draw_human(a, false)
-	else:
-		_draw_lince(a, false)
-	draw_set_transform(Vector2.ZERO, 0.0, Vector2.ONE)
-
-
-func _draw_human(a: float, ghost: bool) -> void:
-	var coat := Color(0.17, 0.21, 0.30, a)
-	var suit := Color(0.06, 0.08, 0.12, a)
-	var pale := Color(0.93, 0.91, 0.86, a)
-	var cyan := Color(0.35, 0.92, 1.0, a)
-	if ghost:
-		coat = Color(0.4, 0.85, 1.0, a)
-		suit = coat
-		pale = coat
-	var f := float(facing)
-	var run := clampf(absf(velocity.x) / run_speed, 0.0, 1.0)
-	var air := not is_on_floor()
-	var l1 := sin(walk_phase) * 8.0 * run
-	var l2 := -l1
-	var k1 := 0.0
-	var k2 := 0.0
-	if air:
-		l1 = -5.0
-		l2 = 6.0
-		k1 = -6.0
-	draw_line(Vector2(-3, -18), Vector2(-3 + l1, -k1), suit, 5.0, true)
-	draw_line(Vector2(4, -18), Vector2(4 + l2, -k2), suit, 5.0, true)
-	var fwd := velocity.x * f
-	var trail := clampf(fwd * 0.03, -6.0, 14.0)
-	var lift := clampf(-velocity.y * 0.012, -6.0, 8.0)
-	var coat_pts := PackedVector2Array([Vector2(-7, -44), Vector2(8, -44), Vector2(10, -24), Vector2(7, -12),
-		Vector2(-4, -9 - lift * 0.3), Vector2(-13 - trail, -6 - lift + sin(t * 7.0) * 1.5), Vector2(-11 - trail * 0.5, -27)])
-	Art.poly(self, coat_pts, coat)
-	if not ghost:
-		draw_line(Vector2(1, -42), Vector2(2, -16), cyan, 2.0, true)
-		draw_line(Vector2(-6, -38), Vector2(-9 - trail * 0.4, -14), Color(0.35, 0.92, 1.0, a * 0.5), 1.5, true)
-	Art.poly(self, Art.ellipse(Vector2(1, -53), 10.5, 11.5, 22), pale)
-	draw_line(Vector2(-5, -62), Vector2(-9, -71), pale, 2.0, true)
-	if not ghost:
-		draw_circle(Vector2(-9, -71), 2.2, cyan)
-		Art.poly(self, PackedVector2Array([Vector2(3, -57), Vector2(11.5, -55), Vector2(11, -48), Vector2(3, -49)]), Color(0.03, 0.04, 0.07, a))
-		draw_line(Vector2(5, -53), Vector2(10.5, -52), cyan, 2.0, true)
-	# braço + arma (mira em espaço local já espelhado)
-	var la := Vector2(aim.x * f, aim.y)
-	var sh := Vector2(2, -37)
-	var hand := sh + la * 12.0
-	draw_line(sh, hand, coat, 4.0, true)
-	var tip := hand + la * 15.0
-	draw_line(hand - la * 2.0, tip, Color(0.22, 0.27, 0.34, a), 5.0, true)
-	if not ghost:
-		draw_line(hand + la * 4.0, tip, Color(0.35, 0.92, 1.0, a * 0.7), 1.5, true)
-		draw_circle(tip, 2.5 + (2.5 if atk_anim > 0.0 else 0.0), cyan)
-
-
-func _draw_lince(a: float, ghost: bool) -> void:
-	var body := Color(0.05, 0.07, 0.09, a)
-	var pale := Color(0.94, 0.92, 0.87, a)
-	var bulb := Color(0.86, 1.0, 0.5, a)
-	var cyan := Color(0.35, 0.92, 1.0, a)
-	if ghost:
-		body = Color(0.7, 1.0, 0.6, a)
-		pale = body
-	var f := float(facing)
-	var run := clampf(absf(velocity.x) / run_speed, 0.0, 1.0)
-	var air := not is_on_floor()
-	var fwd := velocity.x * f
-	var trail := clampf(fwd * 0.02, -4.0, 10.0)
-	var tail := PackedVector2Array()
-	for i in 10:
-		var s := float(i) / 9.0
-		tail.append(Vector2(-15 - s * 22.0 - trail * s, -20 - s * 20.0 + sin(t * 5.0 + s * 3.0) * 4.0 * s + clampf(velocity.y * 0.01, -8, 8) * s))
-	draw_polyline(tail, body, 4.5, true)
-	tail_end = tail[tail.size() - 1]
-	Art.poly(self, Art.circle(tail_end, 5.0, 14), bulb)
-	var hips := [Vector2(10, -12), Vector2(5, -12), Vector2(-7, -12), Vector2(-12, -12)]
-	var offs := [0.0, PI, PI * 0.5, PI * 1.5]
-	for i in 4:
-		var hp0: Vector2 = hips[i]
-		var foot: Vector2
-		if air:
-			foot = hp0 + Vector2(4.0 if i < 2 else -5.0, 8.0)
-		else:
-			var ph: float = walk_phase + offs[i]
-			foot = hp0 + Vector2(sin(ph) * 7.0 * run, 12.0 - maxf(0.0, cos(ph)) * 4.0 * run)
-		draw_line(hp0, foot, body, 4.0, true)
-	Art.poly(self, Art.ellipse(Vector2(0, -18), 17.0 + trail * 0.3, 10.0, 22), body)
-	if not ghost:
-		draw_line(Vector2(5, -27), Vector2(7, -11), cyan, 2.0, true)
-	var hc := Vector2(15, -27)
-	var fur := Color(0.16, 0.20, 0.25, a) if not ghost else body
-	Art.poly(self, PackedVector2Array([hc + Vector2(-8, -4), hc + Vector2(-6, -19), hc + Vector2(0, -8)]), fur)
-	Art.poly(self, PackedVector2Array([hc + Vector2(0, -8), hc + Vector2(5, -18), hc + Vector2(8, -3)]), fur)
-	if not ghost:
-		draw_line(hc + Vector2(-6, -19), hc + Vector2(-7, -24), fur, 1.5, true)
-		draw_line(hc + Vector2(5, -18), hc + Vector2(6, -23), fur, 1.5, true)
-	Art.poly(self, Art.ellipse(hc, 10.0, 8.5, 20), fur)
-	Art.poly(self, PackedVector2Array([hc + Vector2(1, 0), hc + Vector2(12, 2), hc + Vector2(9, 7), hc + Vector2(2, 7)]), pale)
-	if not ghost:
-		var eye := Color(0.85, 1.0, 0.45, a)
-		Art.poly(self, PackedVector2Array([hc + Vector2(-1, -3), hc + Vector2(6, -4), hc + Vector2(3, -1)]), eye)
-		draw_line(hc + Vector2(-6, 0), hc + Vector2(-2, 4), Color(0.35, 0.92, 1.0, a * 0.8), 1.5, true)
-		draw_circle(hc + Vector2(11.5, 3), 1.6, Color(0.1, 0.1, 0.12, a))

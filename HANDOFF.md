@@ -1,6 +1,6 @@
 # Warp Fracture — Documento de passagem (handoff)
 
-Situação em 11/11/2026, protótipo **v0.5.1**. Este arquivo tem o contexto que um novo agente (ou programador) precisa para continuar o projeto sem refazer nada.
+Situação em 11/11/2026, protótipo **v0.6**. Este arquivo tem o contexto que um novo agente (ou programador) precisa para continuar o projeto sem refazer nada.
 
 ---
 
@@ -22,7 +22,7 @@ Situação em 11/11/2026, protótipo **v0.5.1**. Este arquivo tem o contexto que
 5. Textos do jogo e respostas em **português do Brasil**.
 6. Trabalhar seguindo o roteiro (seção 8), etapa por etapa. Entregue um build a cada marco e avise o que mudou.
 
-## 3. Estado atual (v0.5.1)
+## 3. Estado atual (v0.6)
 
 **Laboratório Hélix** (forma humana, com o Estabilizador de Fase):
 - Salas: A Despertar, B Fosso, C Turreta, D Sala Alta, E Lasers, F Campo, G Saída, mais a S Ala Secreta.
@@ -220,3 +220,32 @@ godot --headless --audio-driver Dummy --path . --script res://tools/test_portal.
 ```
 
 Verifica proximidade, E, pausa, Esc, reabertura, ajuste das três ondas e chegada a Verdâmia como Lince. Falhava antes da correção e passou depois.
+
+## 11. v0.6 — Verdâmia com a arte oficial (11/11/2026)
+
+Toda a arte de `colaboracao/entregas/VD_verdamia/` foi integrada. Nenhuma mecânica nova e nenhuma mudança no formato do save. O registro asset por asset está em `colaboracao/revisoes/VD_verdamia.md`.
+
+**Importação.** `python tools/import_verdamia.py .` e depois `godot --headless --import`. O script lê os PNGs entregues (nunca os altera) e gera `assets/verdamia/` e `scripts/sprite_meta_verd.gd`. Ele faz o que as folhas não trazem prontas:
+- normaliza a escala entre folhas (cada folha do Lince veio em um tamanho; a tabela de fatores está no script);
+- alinha a âncora: pés no chão, centro do corpo no ar, patas na parede, base da Rainha e dos Esporângios;
+- mede a posição da lanterna do Lince em cada quadro (`LINCE_LANTERN`), para o brilho acompanhar a cauda;
+- recorta os objetos pelos limites visuais e prepara o terreno repetível (fusão das bordas no chão e nos espinhos, mosaico espelhado no subsolo, borda de parede e quinas com esmaecimento).
+
+**Onde cada coisa é ligada.**
+- `player.gd`: `_build_lynx()` e `_update_lynx()` (prioridade: morte, dano, ação, esquiva, parede, ar, pouso, corrida, idle). O Lince não é mais desenhado por código.
+- `moth.gd`, `spore_plant.gd`, `queen.gd`: `Enemy.make_sprite()`. A Rainha toca a animação e solta o efeito no quadro certo (`WINDUP`).
+- `spike.gd` (aviso + raiz), `enemy_bullet.gd` (`sprite = "esporo_verde"` ou `"esporo_violeta"`), `slash.gd` (garras), `gate.gd` (barreira), `fragment.gd`, `checkpoint.gd`.
+- `terrain.gd` (`_verd_all`), `hazard.gd` (espinhos), `verd_bg.gd` (parallax), `fg_layer.gd` (primeiro plano), `level_data.gd` (`decor` e `thin_art` de Verdâmia).
+- `fx_anim.gd`: `FxAnim.verd(pai, "poeira" | "clarao" | "invocacao" | "impacto_esporo", pos)`.
+
+**Cuidado ao desenhar texturas em `_draw()`.** A textura precisa continuar referenciada depois do `_draw` (use `Props.tex()`, que guarda em cache). Uma textura carregada em variável local é liberada antes de o quadro ser desenhado e aparece como um retângulo branco.
+
+**Teste de regressão novo:**
+
+```bash
+godot --headless --audio-driver Dummy --path . --script res://tools/test_verdamia.gd -- save at=999
+```
+
+Percorre menu, novo jogo, portal, as 11 animações do Lince, garras em inimigo, santuário (E), morte e retorno, salvar e continuar, os quatro ataques da Rainha, barreira, fragmento e vitória. Ele apaga o save no fim.
+
+**Mudanças de comportamento (pequenas):** a Rainha conta só as mariposas da arena antes de invocar (antes, as mariposas do resto da fase bloqueavam a invocação); os ataques dela saem 0,35 a 0,5 s depois do início da animação; a raiz tem colisão de 56 px de largura (era 40) para acompanhar o desenho; a placa do Clarão foi de x 2600 para 2700 e o Registro 07 de x 2680 para 2800, para não ficarem sobre o santuário.

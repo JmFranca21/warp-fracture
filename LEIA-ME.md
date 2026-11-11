@@ -1,8 +1,8 @@
-# Warp Fracture — Protótipo v0.5.1
+# Warp Fracture — Protótipo v0.6
 
 Primeiro protótipo jogável do *Warp Fracture*, feito em **Godot 4.3** a partir do Caderno de 10 páginas.
 
-O jogo combina sprites ilustrados com cenários e personagens desenhados por código, sem pixel art, com camadas de parallax, silhuetas escuras, brilhos e partículas. O visual tem atmosfera inspirada em Hollow Knight, mas os personagens e cenários são originais.
+O jogo combina sprites ilustrados (todo o Daymon, os inimigos do laboratório e Verdâmia inteira) com alguns cenários desenhados por código, sem pixel art, com camadas de parallax, silhuetas escuras, brilhos e partículas. O visual tem atmosfera inspirada em Hollow Knight, mas os personagens e cenários são originais.
 
 ## Como jogar
 
@@ -81,6 +81,14 @@ Para ajustar no editor: dê dois cliques em `rastejador_frames.tres`. O painel *
 
 **Para os próximos inimigos:** gere o GIF ou spritesheet com fundo transparente ou de cor sólida e diga quais quadros são de cada ação.
 
+
+## Novidades da v0.6
+
+- **Verdâmia com a arte oficial.** O Lince-Vagalume tem 11 animações (parado, corrida, salto, queda, cambalhota do pulo duplo, parede, garras, golpe para baixo, clarão, dano e morte).
+- **Inimigos ilustrados:** Esporângio (carrega, cospe e murcha), Mariposa Lanterna (voa e cai) e Rainha Micélia (cada ataque tem a sua animação; as raízes avisam no chão antes de subir).
+- **Cenário novo:** chão com musgo, paredes de escalada, espinhos, plataformas de raízes e de tronco, cogumelos gigantes, arco e altar do templo, santuário de recarga, barreira de raízes, fragmento de cristal e três camadas de floresta em parallax.
+- A Rainha agora invoca mariposas mesmo que ainda existam mariposas em outras partes da fase.
+- A placa do Clarão e o Registro ao lado do santuário foram afastados um pouco para não ficar em cima dele.
 
 ## Correção da v0.5.1
 

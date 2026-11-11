@@ -4,6 +4,8 @@ extends Enemy
 
 var home := Vector2.ZERO
 var g: Sprite2D
+var spr: AnimatedSprite2D
+var face := 1.0
 
 
 func _ready() -> void:
@@ -19,9 +21,10 @@ func _ready() -> void:
 	cs.shape = c
 	add_child(cs)
 	setup_hurt(Vector2(40, 32), Vector2.ZERO)
-	g = Art.glow(Color(1.0, 0.88, 0.45, 0.75), 50)
-	g.position = Vector2(0, 6)
+	g = Art.glow(Color(1.0, 0.82, 0.4, 0.5), 34)
 	add_child(g)
+	spr = make_sprite(SpriteMetaVerd.MARIPOSA_FRAMES, SpriteMetaVerd.MARIPOSA_OFFSET, SpriteMetaVerd.MARIPOSA_SCALE, "fly")
+	spr.frame = randi() % 6
 	t = randf() * 5.0
 
 
@@ -40,22 +43,31 @@ func _physics_process(dt: float) -> void:
 		var target := home + Vector2(cos(t * 0.9) * 70.0, sin(t * 1.7) * 30.0)
 		velocity = ((target - global_position) * 1.5).limit_length(120.0)
 	move_and_slide()
-	g.modulate.a = 0.55 + 0.25 * sin(t * 7.0)
+	# a arte olha para a direita; vira para onde voa (com folga para não tremer ao pairar)
+	if absf(velocity.x) > 25.0:
+		face = signf(velocity.x)
+	spr.scale.x = SpriteMetaVerd.MARIPOSA_SCALE * face
+	spr.speed_scale = 0.35 if stun > 0.0 else 1.0
+	spr.modulate = flash_mod()
+	g.position = Vector2(-9.0 * face, 7.0)      # abdômen luminoso
+	g.modulate.a = 0.4 + 0.2 * sin(t * 7.0)
 	queue_redraw()
 
 
+func die() -> void:
+	if dead:
+		return
+	# o corpo cai e some (E_mariposa_death)
+	var f := FxAnim.spawn(level.fx, SpriteMetaVerd.MARIPOSA_FRAMES, SpriteMetaVerd.MARIPOSA_OFFSET,
+		global_position, SpriteMetaVerd.MARIPOSA_SCALE, "death")
+	if f != null:
+		f.scale.x *= face
+		f.vel = Vector2(velocity.x * 0.3, -60.0)
+		f.grav = 520.0
+		f.linger = 0.15
+		f.z_index = 6
+	super.die()
+
+
 func _draw() -> void:
-	var flap := 0.3 + 0.7 * absf(sin(t * 13.0))
-	if stun > 0.0:
-		flap = 0.3
-	var wing := fc(Color(0.88, 0.85, 0.76, 0.85))
-	var wing2 := fc(Color(0.7, 0.66, 0.58, 0.8))
-	for s: float in [-1.0, 1.0]:
-		Art.poly(self, Art.ellipse(Vector2(s * 13.0, -4.0 * flap), 13.0, 10.0 * flap + 1.0, 18, s * -0.5), wing)
-		Art.poly(self, Art.ellipse(Vector2(s * 9.0, 7.0), 8.0, 6.0 * flap + 1.0, 14, s * 0.6), wing2)
-		draw_circle(Vector2(s * 15.0, -5.0 * flap), 2.5, fc(Color(0.25, 0.2, 0.3, 0.8)))
-	Art.poly(self, Art.ellipse(Vector2(0, 2), 4.0, 10.0, 14), fc(Color("2a2232")))
-	Art.poly(self, Art.ellipse(Vector2(0, 8), 3.5, 5.0, 12), Color(1.0, 0.9, 0.55))
-	draw_line(Vector2(-2, -8), Vector2(-6, -15), fc(Color("2a2232")), 1.5, true)
-	draw_line(Vector2(2, -8), Vector2(6, -15), fc(Color("2a2232")), 1.5, true)
-	draw_stun(Vector2(0, -22))
+	draw_stun(Vector2(0, -26))

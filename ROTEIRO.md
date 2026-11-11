@@ -16,10 +16,14 @@ Ordem escolhida: primeiro o que todo jogador sente (som, salvamento, orientaçã
 7. **Fuga do Eco**: clímax no fim do laboratório, com o vilão perseguindo e a sala desmoronando.
 8. **Cena de abertura**: a explosão da Máquina de Dobra.
 9. **Fendas Instáveis**: salas-desafio cronometradas e escondidas.
-10. **Integração das artes de Verdâmia** (Lince, inimigos, chefe, cenário e efeitos entregues) e, depois, **Hidrópolis** (Cefalóide, nado livre).
+10. ✅ **Integração das artes de Verdâmia** (v0.6, 11/11/2026): Lince, inimigos, chefe, cenário e efeitos no jogo. Destino de cada asset em `colaboracao/revisoes/VD_verdamia.md`.
+11. **Hidrópolis** (Cefalóide, nado livre).
 
 ## Fase 4 — Polimento contínuo
 - Inimigos mais táticos (grupo, reforço, turreta que gira), transições entre áreas e acessibilidade (remapear teclas).
+
+## v0.6 — 11/11/2026
+- Verdâmia passou a usar a arte entregue pelo diretor de arte (61 assets integrados, 3 pranchas de referência). Nenhuma mecânica nova. A Etapa 7 (Fuga do Eco) continua sendo a próxima.
 
 ## Correção v0.5.1 — 10/11/2026
 - Corrigida a interação com o portal do laboratório: E abre a calibração, Esc cancela e concluir as ondas leva a Verdâmia. A Etapa 7 continua pendente.

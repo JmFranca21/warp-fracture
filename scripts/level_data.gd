@@ -184,6 +184,9 @@ static func _lab() -> Dictionary:
 	}
 
 
+const VO := "res://assets/verdamia/objetos/"
+
+
 static func _verdamia() -> Dictionary:
 	return {
 		"name": "VERDÂMIA",
@@ -208,6 +211,8 @@ static func _verdamia() -> Dictionary:
 			Rect2(4260, 560, 150, 24),
 			Rect2(4920, -600, 60, 2000),
 		],
+		# arte das plataformas finas, na ordem em que aparecem em "solids"
+		"thin_art": ["plataforma_raizes", "plataforma_raizes", "tronco_plataforma", "tronco_plataforma"],
 		"hazards": [
 			Rect2(800, 1004, 300, 36),
 			Rect2(1860, 768, 600, 32),
@@ -228,17 +233,40 @@ static func _verdamia() -> Dictionary:
 			["heal", Vector2(2310, 370), "v_h1"],
 			["heal", Vector2(3760, 760), "v_h2"],
 			["registro", Vector2(420, 776), "log_06"],
-			["registro", Vector2(2680, 776), "log_07"],
+			["registro", Vector2(2800, 776), "log_07"],
 			["registro", Vector2(3600, 776), "log_08"],
 		],
 		"signs": [
 			[Vector2(200, 800), "NOVA FORMA — LINCE-VAGALUME.  Aperte ESPAÇO de novo no ar para dar um PULO DUPLO."],
 			[Vector2(520, 800), "Clique esquerdo (ou J): garras.  No ar, segure S + ataque para golpear para baixo e QUICAR em inimigos e espinhos."],
 			[Vector2(1230, 800), "Segure na direção da parede para deslizar. ESPAÇO encostado na parede = SALTO DE PAREDE. Suba pelo poço!"],
-			[Vector2(2600, 800), "Clique direito (ou K) com 1/3 de energia: CLARÃO — fere e atordoa tudo ao redor."],
+			[Vector2(2700, 800), "Clique direito (ou K) com 1/3 de energia: CLARÃO — fere e atordoa tudo ao redor."],
 			[Vector2(3700, 800), "IRIS: \"O sinal do Fragmento está logo à frente... e algo enorme está enraizado em volta dele.\""],
 		],
 		"checkpoints": [Vector2(2570, 800)],
+		# cenário (arte E1_*): [arquivo, posição, escala (0.5 = tamanho natural), espelhar, ancoragem, brilho]
+		"decor": [
+			[VO + "cogumelo_gigante.png", Vector2(330, 806), 0.5, false, "chao", 0.8],
+			[VO + "grama.png", Vector2(20, 804), 0.5, false, "chao", 0.9],
+			[VO + "grama.png", Vector2(615, 804), 0.42, true, "chao", 0.9],
+			[VO + "pedra_musgo.png", Vector2(705, 806), 0.5, false, "chao", 0.85],
+			[VO + "cogumelo_gigante.png", Vector2(1345, 806), 0.4, true, "chao", 0.72],
+			[VO + "grama.png", Vector2(1150, 804), 0.5, false, "chao", 0.9],
+			[VO + "grama.png", Vector2(1500, 804), 0.4, true, "chao", 0.9],
+			[VO + "grama.png", Vector2(1795, 304), 0.4, false, "chao", 0.9],
+			[VO + "raiz_pendurada.png", Vector2(2050, 364), 0.5, false, "teto", 0.8],
+			[VO + "raiz_pendurada.png", Vector2(2310, 424), 0.44, true, "teto", 0.8],
+			[VO + "pedra_musgo.png", Vector2(2495, 806), 0.42, true, "chao", 0.85],
+			[VO + "grama.png", Vector2(2890, 804), 0.5, true, "chao", 0.9],
+			[VO + "cogumelo_gigante.png", Vector2(3130, 806), 0.5, true, "chao", 0.8],
+			[VO + "pedra_musgo.png", Vector2(3330, 806), 0.5, false, "chao", 0.85],
+			[VO + "grama.png", Vector2(3545, 804), 0.45, false, "chao", 0.9],
+			[VO + "arco_templo.png", Vector2(3760, 806), 0.5, false, "chao", 0.85],
+			[VO + "grama.png", Vector2(4110, 804), 0.42, true, "chao", 0.9],
+			[VO + "altar.png", Vector2(4330, 804), 0.5, false, "chao", 0.72],
+			[VO + "arco_templo.png", Vector2(4740, 808), 0.66, true, "chao", 0.6],
+			[VO + "grama.png", Vector2(4555, 804), 0.5, false, "chao", 0.9],
+		],
 		"rooms": [
 			["A", Rect2(-200, 100, 1000, 700), "Clareira"],
 			["B", Rect2(800, 100, 300, 940), "Espinhos"],

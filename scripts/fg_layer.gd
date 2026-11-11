@@ -6,6 +6,7 @@ var theme := "lab"
 var depth := 1.0
 var span := Vector2(-600, 6000)
 var ground_rects: Array = []
+var base_y := 1190.0        # Verdâmia: y da base da faixa de vegetação
 
 
 func _ready() -> void:
@@ -13,6 +14,9 @@ func _ready() -> void:
 
 
 func _draw() -> void:
+	if theme == "verd":
+		_draw_verd()
+		return
 	var rng := RandomNumberGenerator.new()
 	rng.seed = 991
 	for rv in ground_rects:
@@ -21,23 +25,27 @@ func _draw() -> void:
 			continue
 		var x := r.position.x + rng.randf_range(20, 120)
 		while x < r.end.x - 40.0:
-			if theme == "verd":
-				_tuft(Vector2(x, r.position.y + 6), rng)
-			else:
-				_rubble(Vector2(x, r.position.y + 4), rng)
+			_rubble(Vector2(x, r.position.y + 4), rng)
 			x += rng.randf_range(180, 420)
 
 
-func _tuft(p: Vector2, rng: RandomNumberGenerator) -> void:
-	var c := Color("010304")
-	for i in 7 + rng.randi() % 6:
-		var h := rng.randf_range(18, 46)
-		var dx := rng.randf_range(-22, 22)
-		var lean := dx * 0.6 + rng.randf_range(-6, 6)
-		var pts := PackedVector2Array([p + Vector2(dx - 3, 0), p + Vector2(dx + lean, -h), p + Vector2(dx + 3, 0)])
-		draw_colored_polygon(pts, c)
-	if rng.randf() < 0.4:
-		draw_circle(p + Vector2(rng.randf_range(-10, 10), -rng.randf_range(30, 46)), 2.2, Color(0.85, 1.0, 0.5, 0.9))
+## Verdâmia: faixa de vegetação de primeiro plano (VD_fg_vegetacao) na borda de baixo da tela.
+## Fica abaixo do nível dos fossos para não esconder perigos; as cópias vizinhas são espelhadas.
+func _draw_verd() -> void:
+	var tex: Texture2D = Props.tex(SpriteMetaVerd.FUNDO_DIR + "fg_vegetacao.png")
+	var s := 0.62
+	var w := tex.get_width() * s
+	var h := tex.get_height() * s
+	var top := base_y - h
+	var k := int(floor(span.x / w))
+	while k * w < span.y:
+		if k % 2 == 0:
+			draw_set_transform(Vector2(k * w, top), 0.0, Vector2.ONE)
+		else:
+			draw_set_transform(Vector2((k + 1) * w, top), 0.0, Vector2(-1, 1))
+		draw_texture_rect(tex, Rect2(0, 0, w + 1.0, h), false, Color(0.42, 0.5, 0.5))
+		k += 1
+	draw_set_transform(Vector2.ZERO, 0.0, Vector2.ONE)
 
 
 func _rubble(p: Vector2, rng: RandomNumberGenerator) -> void:

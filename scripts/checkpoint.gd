@@ -15,6 +15,13 @@ func _setup() -> void:
 		var spr := Props.sprite("celula_suporte", 0.55)
 		add_child(spr)
 		glow.position = Vector2(0, -42)
+	else:
+		# santuário orgânico (VD_checkpoint), apoiado no chão
+		var shrine := Props.sprite(SpriteMetaVerd.OBJ_DIR + "checkpoint.png", SpriteMetaVerd.OBJ_SCALE)
+		shrine.position = Vector2(0, 5)
+		add_child(shrine)
+		glow.position = Vector2(0, -38)
+		glow.scale *= 0.7
 
 
 func interact() -> void:
@@ -40,13 +47,3 @@ func _draw() -> void:
 			draw_line(Vector2(x - 4, y), Vector2(x + 4, y), Color(0.5, 1.0, 1.0, 0.6), 2.0)
 			draw_line(Vector2(x, y - 4), Vector2(x, y + 4), Color(0.5, 1.0, 1.0, 0.6), 2.0)
 		return
-	var dark := Color("10161f") if theme == "lab" else Color("0a1716")
-	var lite := Color(0.4, 0.95, 1.0) if theme == "lab" else Color(0.6, 1.0, 0.75)
-	Art.poly(self, PackedVector2Array([Vector2(-40, 0), Vector2(-34, -10), Vector2(34, -10), Vector2(40, 0)]), dark)
-	draw_arc(Vector2(0, -10), 34.0, PI, TAU, 32, dark, 6.0, true)
-	draw_arc(Vector2(0, -10), 30.0, PI, TAU, 32, Color(lite, 0.35 + 0.2 * sin(t * 2.0)), 1.5, true)
-	draw_rect(Rect2(-22, -18, 44, 6), dark)
-	draw_line(Vector2(-18, -15), Vector2(18, -15), Color(lite, 0.7), 2.0)
-	for i in 3:
-		var y := -20.0 - fmod(t * 20.0 + i * 12.0, 36.0)
-		draw_circle(Vector2(-10 + i * 10, y), 1.8, Color(lite, 0.6 * (1.0 + y / 56.0)))

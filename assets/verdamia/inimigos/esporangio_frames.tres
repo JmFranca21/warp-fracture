@@ -1,0 +1,133 @@
+[gd_resource type="SpriteFrames" load_steps=18 format=3]
+
+[ext_resource type="Texture2D" path="res://assets/verdamia/inimigos/esporangio_sheet.png" id="1_sheet"]
+
+[sub_resource type="AtlasTexture" id="f0"]
+atlas = ExtResource("1_sheet")
+region = Rect2(0, 0, 168, 184)
+
+[sub_resource type="AtlasTexture" id="f1"]
+atlas = ExtResource("1_sheet")
+region = Rect2(168, 0, 168, 184)
+
+[sub_resource type="AtlasTexture" id="f2"]
+atlas = ExtResource("1_sheet")
+region = Rect2(336, 0, 168, 184)
+
+[sub_resource type="AtlasTexture" id="f3"]
+atlas = ExtResource("1_sheet")
+region = Rect2(504, 0, 168, 184)
+
+[sub_resource type="AtlasTexture" id="f4"]
+atlas = ExtResource("1_sheet")
+region = Rect2(672, 0, 168, 184)
+
+[sub_resource type="AtlasTexture" id="f5"]
+atlas = ExtResource("1_sheet")
+region = Rect2(840, 0, 168, 184)
+
+[sub_resource type="AtlasTexture" id="f6"]
+atlas = ExtResource("1_sheet")
+region = Rect2(1008, 0, 168, 184)
+
+[sub_resource type="AtlasTexture" id="f7"]
+atlas = ExtResource("1_sheet")
+region = Rect2(1176, 0, 168, 184)
+
+[sub_resource type="AtlasTexture" id="f8"]
+atlas = ExtResource("1_sheet")
+region = Rect2(1344, 0, 168, 184)
+
+[sub_resource type="AtlasTexture" id="f9"]
+atlas = ExtResource("1_sheet")
+region = Rect2(1512, 0, 168, 184)
+
+[sub_resource type="AtlasTexture" id="f10"]
+atlas = ExtResource("1_sheet")
+region = Rect2(1680, 0, 168, 184)
+
+[sub_resource type="AtlasTexture" id="f11"]
+atlas = ExtResource("1_sheet")
+region = Rect2(1848, 0, 168, 184)
+
+[sub_resource type="AtlasTexture" id="f12"]
+atlas = ExtResource("1_sheet")
+region = Rect2(2016, 0, 168, 184)
+
+[sub_resource type="AtlasTexture" id="f13"]
+atlas = ExtResource("1_sheet")
+region = Rect2(2184, 0, 168, 184)
+
+[sub_resource type="AtlasTexture" id="f14"]
+atlas = ExtResource("1_sheet")
+region = Rect2(2352, 0, 168, 184)
+
+[sub_resource type="AtlasTexture" id="f15"]
+atlas = ExtResource("1_sheet")
+region = Rect2(2520, 0, 168, 184)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("f0")
+}, {
+"duration": 1.0,
+"texture": SubResource("f1")
+}, {
+"duration": 1.0,
+"texture": SubResource("f2")
+}, {
+"duration": 1.0,
+"texture": SubResource("f3")
+}, {
+"duration": 1.0,
+"texture": SubResource("f4")
+}, {
+"duration": 1.0,
+"texture": SubResource("f5")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("f6")
+}, {
+"duration": 1.0,
+"texture": SubResource("f7")
+}, {
+"duration": 1.0,
+"texture": SubResource("f8")
+}, {
+"duration": 1.0,
+"texture": SubResource("f9")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("f10")
+}, {
+"duration": 1.0,
+"texture": SubResource("f11")
+}, {
+"duration": 1.0,
+"texture": SubResource("f12")
+}, {
+"duration": 1.0,
+"texture": SubResource("f13")
+}, {
+"duration": 1.0,
+"texture": SubResource("f14")
+}, {
+"duration": 1.0,
+"texture": SubResource("f15")
+}],
+"loop": false,
+"name": &"death",
+"speed": 10.0
+}]

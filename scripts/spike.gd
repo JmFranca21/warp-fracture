@@ -7,6 +7,8 @@ var warn := 0.6
 var up := 0.5
 var height := 140.0
 var active := false
+var spr: AnimatedSprite2D
+const HIT_W := 56.0
 
 
 func _ready() -> void:
@@ -17,13 +19,27 @@ func _ready() -> void:
 	z_index = 6
 	var cs := CollisionShape2D.new()
 	var r := RectangleShape2D.new()
-	r.size = Vector2(40, height)
+	r.size = Vector2(HIT_W, height)
 	cs.shape = r
 	cs.position = Vector2(0, -height / 2.0)
 	add_child(cs)
 	var g := Art.glow(Color(0.7, 0.35, 1.0, 0.6), 50)
 	g.position = Vector2(0, -6)
 	add_child(g)
+	spr = AnimatedSprite2D.new()
+	add_child(spr)
+	_show("aviso_raiz", 0)
+
+
+func _show(nome: String, fr: int) -> void:
+	var d: Array = SpriteMetaVerd.FX[nome]
+	var sf := FxAnim.frames(d[0])
+	if spr.sprite_frames != sf:
+		spr.sprite_frames = sf
+		spr.offset = d[1]
+		spr.scale = Vector2.ONE * float(d[2])
+		spr.animation = "play"
+	spr.frame = fr
 
 
 func _physics_process(dt: float) -> void:
@@ -36,29 +52,21 @@ func _physics_process(dt: float) -> void:
 		active = false
 	if t > warn + up + 0.35:
 		queue_free()
-	queue_redraw()
+	# aviso no chão (VD_fx_aviso_raiz) → raiz irrompe (VD_fx_raiz 1–2), fica alta (3–4) e recolhe (5–6).
+	# O dano vale só enquanto a raiz está de pé: da subida até começar a recolher.
+	if t < warn:
+		_show("aviso_raiz", mini(3, int(t / warn * 4.0)))
+	elif t < warn + 0.05:
+		_show("raiz", 0)
+	elif t < warn + 0.12:
+		_show("raiz", 1)
+	elif t < warn + up:
+		_show("raiz", 2 if int((t - warn) * 8.0) % 2 == 0 else 3)
+	elif t < warn + up + 0.17:
+		_show("raiz", 4)
+	else:
+		_show("raiz", 5)
 
 
 func is_harmful() -> bool:
 	return active
-
-
-func _draw() -> void:
-	if t < warn:
-		var k := t / warn
-		var c := Color(0.75, 0.45, 1.0, 0.4 + 0.5 * k)
-		draw_line(Vector2(-22, -2), Vector2(22, -2), c, 3.0 + 3.0 * k, true)
-		for i in 3:
-			draw_line(Vector2(-10 + i * 10, -2), Vector2(-14 + i * 12, -8 - 10 * k), c, 2.0, true)
-		return
-	var h := height
-	if t < warn + 0.12:
-		h = height * ((t - warn) / 0.12)
-	elif t > warn + up:
-		h = height * maxf(0.0, 1.0 - (t - warn - up) / 0.35)
-	var dark := Color("1b0f2c")
-	for i in 3:
-		var x := -14.0 + i * 14.0
-		var hh := h * (0.75 + 0.25 * float(i % 2))
-		draw_colored_polygon(PackedVector2Array([Vector2(x - 10, 0), Vector2(x + 2, -hh), Vector2(x + 10, 0)]), dark)
-		draw_line(Vector2(x + 2, -hh), Vector2(x, -hh * 0.6), Color(0.85, 0.65, 1.0, 0.8), 2.0, true)

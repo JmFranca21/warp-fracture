@@ -47,3 +47,18 @@ Importadas com `tools/import_cells.py` (grade 4×2 transparente, âncora fixa po
 | eco/float | colaboracao/entregas/A2_eco_float/A2_eco_float.png | 6 | 8 (loop) | assets/inimigos/eco/eco_frames.tres |
 
 Referências aprovadas: `arte_original/referencias_aprovadas/A0_ficha_eco.png` (ficha do Eco).
+
+## Verdâmia (v0.6)
+
+Importada com `tools/import_verdamia.py` a partir de `colaboracao/entregas/VD_verdamia/`. Saída em `assets/verdamia/` e `scripts/sprite_meta_verd.gd`. O destino de cada um dos 64 assets está em `colaboracao/revisoes/VD_verdamia.md`.
+
+| No jogo | Arquivos de origem | Quadros |
+|---|---|---|
+| lince (idle, run, jump, fall, doublejump, wall, claw, pogo, flash, hurt, death) | D_lince_* (wall, claw e flash na versão `_v2`) | 6, 8, 3, 3, 4, 3, 4, 4, 6, 2, 6 |
+| esporangio (idle, attack, death) | E_esporangio_* | 6, 4, 6 |
+| mariposa (fly, death) | E_mariposa_* | 6, 6 |
+| rainha (idle, raizes, esporos, rugido, hurt, death) | 16 folhas E_rainha_* de 2 quadros | 6, 6, 6, 4, 2, 8 |
+| efeitos (raiz, aviso_raiz, impacto_esporo, invocacao, poeira, garras, clarao) | VD_fx_* | 6, 4, 4, 6, 4, 4, 6 |
+| objetos | E1_cogumelo_gigante, E1_grama, E1_raiz_pendurada, E1_pedra_musgo, E1_arco_templo, E1_altar, VD_checkpoint, VD_barreira_arena, VD_fragmento, VD_esporo_verde, VD_esporo_violeta | estáticos |
+| terreno | VD_chao_musgo, VD_subsolo, VD_parede_escalada, VD_canto_esquerdo, VD_canto_direito, VD_espinhos, VD_plataforma_raizes, E1_tronco_plataforma | repetíveis |
+| fundo | VD_bg_distante, VD_bg_intermediario, VD_fg_vegetacao | parallax |

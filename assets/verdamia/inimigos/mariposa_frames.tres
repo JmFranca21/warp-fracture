@@ -1,0 +1,100 @@
+[gd_resource type="SpriteFrames" load_steps=14 format=3]
+
+[ext_resource type="Texture2D" path="res://assets/verdamia/inimigos/mariposa_sheet.png" id="1_sheet"]
+
+[sub_resource type="AtlasTexture" id="f0"]
+atlas = ExtResource("1_sheet")
+region = Rect2(0, 0, 130, 102)
+
+[sub_resource type="AtlasTexture" id="f1"]
+atlas = ExtResource("1_sheet")
+region = Rect2(130, 0, 130, 102)
+
+[sub_resource type="AtlasTexture" id="f2"]
+atlas = ExtResource("1_sheet")
+region = Rect2(260, 0, 130, 102)
+
+[sub_resource type="AtlasTexture" id="f3"]
+atlas = ExtResource("1_sheet")
+region = Rect2(390, 0, 130, 102)
+
+[sub_resource type="AtlasTexture" id="f4"]
+atlas = ExtResource("1_sheet")
+region = Rect2(520, 0, 130, 102)
+
+[sub_resource type="AtlasTexture" id="f5"]
+atlas = ExtResource("1_sheet")
+region = Rect2(650, 0, 130, 102)
+
+[sub_resource type="AtlasTexture" id="f6"]
+atlas = ExtResource("1_sheet")
+region = Rect2(780, 0, 130, 102)
+
+[sub_resource type="AtlasTexture" id="f7"]
+atlas = ExtResource("1_sheet")
+region = Rect2(910, 0, 130, 102)
+
+[sub_resource type="AtlasTexture" id="f8"]
+atlas = ExtResource("1_sheet")
+region = Rect2(1040, 0, 130, 102)
+
+[sub_resource type="AtlasTexture" id="f9"]
+atlas = ExtResource("1_sheet")
+region = Rect2(1170, 0, 130, 102)
+
+[sub_resource type="AtlasTexture" id="f10"]
+atlas = ExtResource("1_sheet")
+region = Rect2(1300, 0, 130, 102)
+
+[sub_resource type="AtlasTexture" id="f11"]
+atlas = ExtResource("1_sheet")
+region = Rect2(1430, 0, 130, 102)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("f0")
+}, {
+"duration": 1.0,
+"texture": SubResource("f1")
+}, {
+"duration": 1.0,
+"texture": SubResource("f2")
+}, {
+"duration": 1.0,
+"texture": SubResource("f3")
+}, {
+"duration": 1.0,
+"texture": SubResource("f4")
+}, {
+"duration": 1.0,
+"texture": SubResource("f5")
+}],
+"loop": true,
+"name": &"fly",
+"speed": 14.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("f6")
+}, {
+"duration": 1.0,
+"texture": SubResource("f7")
+}, {
+"duration": 1.0,
+"texture": SubResource("f8")
+}, {
+"duration": 1.0,
+"texture": SubResource("f9")
+}, {
+"duration": 1.0,
+"texture": SubResource("f10")
+}, {
+"duration": 1.0,
+"texture": SubResource("f11")
+}],
+"loop": false,
+"name": &"death",
+"speed": 10.0
+}]

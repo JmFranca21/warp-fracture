@@ -87,6 +87,22 @@ func die() -> void:
 	queue_free()
 
 
+## Cria o AnimatedSprite2D do inimigo a partir dos dados gerados (SpriteMetaVerd).
+func make_sprite(frames_path: String, off: Vector2, sc: float, anim: String) -> AnimatedSprite2D:
+	var s := AnimatedSprite2D.new()
+	s.sprite_frames = FxAnim.frames(frames_path)
+	s.offset = off
+	s.scale = Vector2.ONE * sc
+	add_child(s)
+	s.play(anim)
+	return s
+
+
+## Clarão branco ao levar dano (equivalente ao fc() dos inimigos desenhados por código).
+func flash_mod(base := Color(1, 1, 1)) -> Color:
+	return Color(2.6, 2.6, 2.6) if flash > 0.0 else base
+
+
 func fc(c: Color) -> Color:
 	if flash > 0.0:
 		return c.lerp(Color(1, 1, 1, c.a), 0.85)

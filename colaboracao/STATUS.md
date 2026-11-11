@@ -43,13 +43,13 @@ Atualizado pelos dois agentes. Leia `PROTOCOLO.md` antes de começar.
 
 ## Fase Verdâmia
 
-Pacote completo de produção autorizado pelo responsável em 10/11/2026, incluindo especificações faltantes elaboradas pela direção de arte enquanto o agente de desenvolvimento está indisponível. Originais e documentos em [VD_verdamia](entregas/VD_verdamia/).
+Pacote completo em [VD_verdamia](entregas/VD_verdamia/) (64 assets em 67 PNGs). **Integrado ao jogo na v0.6 (11/11/2026).** Revisão, medidas e destino de cada asset: [revisão VD_verdamia](revisoes/VD_verdamia.md).
 
 | ID | O que é | Estado |
 |---|---|---|
-| D0 / E0 / VD00 | Referências do Lince, inimigos e ambiente | ENTREGUE (produção autorizada; revisão final do responsável pendente) |
-| D | 11 animações do Lince-Vagalume | ENTREGUE (originais; wall, claw e flash com v2 de enquadramento) |
-| E | Inimigos, chefe e objetos de cenário | ENTREGUE (originais; revisão e integração pendentes) |
-| VD | Terreno modular, parallax, perigos, projéteis, efeitos e sistemas locais | ENTREGUE (originais; preparação técnica e integração pendentes) |
+| D0 / E0 / VD00 | Referências do Lince, inimigos e ambiente | APROVADO (referência; não entra no jogo) |
+| D | 11 animações do Lince-Vagalume (wall, claw e flash na versão `_v2`) | INTEGRADO |
+| E | Esporângio (3), Mariposa (2), Rainha Micélia (16 folhas) e 7 objetos de cenário | INTEGRADO |
+| VD | Terreno (7), parallax (3), efeitos (7), projéteis (2), checkpoint, barreira e fragmento | INTEGRADO |
 
-Conferência em 11/11/2026: **64/64 assets gerados, 67 PNGs contando versões preservadas**. Transparência conferida e SHA-256 de todos os PNGs registrado; 19 objetos/terrenos têm canvas nativo diferente do solicitado e precisam de preparação de importação. Nenhuma destas entregas está integrada no jogo; o código permanece com arte procedural em Verdâmia. Dimensões, alpha, enquadramento e SHA-256 são registrados no manifesto, sem tratar inspeção técnica como aprovação estética.
+**61 assets integrados e verificados no jogo, 3 referências, nenhum pendente.** A revisão lista 7 pedidos de ajuste que não bloqueiam (escala entre folhas do Lince, garras no ar, esquiva, fim da morte da Rainha, contorno de `esporos_3`, subsolo repetível e miolo da parede).

@@ -113,4 +113,4 @@ func _draw() -> void:
 		if summary != "" and list.items.size() > 0 and list.items[list.sel]["id"] == "continue":
 			Art.text(self, Vector2(0, sz.y - 58), summary, 16, Color(0.6, 0.75, 0.85), HORIZONTAL_ALIGNMENT_CENTER, sz.x)
 	Art.text(self, Vector2(0, sz.y - 26), "W/S ou mouse para escolher · ENTER confirma · ESC volta", 14, Color(0.55, 0.62, 0.72), HORIZONTAL_ALIGNMENT_CENTER, sz.x)
-	Art.text(self, Vector2(sz.x - 200, 30), "Protótipo v0.4", 14, Color(0.5, 0.58, 0.68), HORIZONTAL_ALIGNMENT_RIGHT, 180)
+	Art.text(self, Vector2(sz.x - 200, 30), "Protótipo v0.6", 14, Color(0.5, 0.58, 0.68), HORIZONTAL_ALIGNMENT_RIGHT, 180)

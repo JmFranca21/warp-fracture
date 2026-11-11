@@ -24,6 +24,20 @@ func _ready() -> void:
 		cs.position = center + dir * 44.0
 	cs.shape = r
 	add_child(cs)
+	# corte de garras (VD_fx_garras): a arte corta para a direita; gira para cima/baixo e espelha para a esquerda
+	var d: Array = SpriteMetaVerd.FX["garras"]
+	var fx := AnimatedSprite2D.new()
+	fx.sprite_frames = FxAnim.frames(d[0])
+	fx.offset = d[1]
+	fx.scale = Vector2.ONE * float(d[2])
+	fx.position = cs.position
+	if dir.y != 0.0:
+		fx.rotation = dir.angle()
+		fx.scale.y *= float(player.facing)
+	elif dir.x < 0.0:
+		fx.scale.x *= -1.0
+	add_child(fx)
+	fx.play("play")
 
 
 func _physics_process(dt: float) -> void:
@@ -49,27 +63,3 @@ func _physics_process(dt: float) -> void:
 				player.pogo()
 	if life <= 0.0:
 		queue_free()
-	queue_redraw()
-
-
-func _draw() -> void:
-	var k := 1.0 - life / total
-	var alpha := 1.0 - k * 0.8
-	var c := Vector2(0, -18) + dir * 10.0
-	var base_ang := dir.angle()
-	var sweep := deg_to_rad(150.0)
-	var a0 := base_ang - sweep * 0.5 + sweep * k * 0.25
-	var a1 := base_ang + sweep * 0.5
-	var outer := PackedVector2Array()
-	var inner := PackedVector2Array()
-	var n := 16
-	for i in n + 1:
-		var s := float(i) / float(n)
-		var ang := lerpf(a0, a1, s)
-		var thick := sin(s * PI)
-		outer.append(c + Vector2.from_angle(ang) * (56.0 + 4.0 * thick))
-		inner.append(c + Vector2.from_angle(ang) * (53.0 - 18.0 * thick))
-	inner.reverse()
-	var pts := outer + inner
-	draw_colored_polygon(pts, Color(1, 1, 1, 0.85 * alpha))
-	draw_polyline(outer, Color(0.8, 1.0, 0.7, 0.6 * alpha), 3.0, true)

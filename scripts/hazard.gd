@@ -46,7 +46,8 @@ func _process(dt: float) -> void:
 				pts.append(Vector2(x, rect.position.y + randf_range(-10, 6)))
 				x += randf_range(10, 24)
 			bolts.append(pts)
-	queue_redraw()
+	if theme == "lab":
+		queue_redraw()
 
 
 func _draw() -> void:
@@ -56,13 +57,8 @@ func _draw() -> void:
 			draw_polyline(b, Color(0.55, 0.4, 1.0, 0.35), 5, true)
 			draw_polyline(b, Color(0.9, 0.85, 1.0, 0.9), 1.5, true)
 	else:
-		var x := rect.position.x
-		var i := 0
-		while x < rect.end.x:
-			var h := 22.0 + 10.0 * sin(i * 2.3)
-			var w := 14.0
-			var base := rect.end.y
-			draw_colored_polygon(PackedVector2Array([Vector2(x, base), Vector2(x + w * 0.5 + sin(i) * 2.0, base - h - 10), Vector2(x + w, base)]), Color("140818"))
-			draw_line(Vector2(x + w * 0.5 + sin(i) * 2.0, base - h - 10), Vector2(x + w * 0.5, base - h + 2), Color(0.9, 0.75, 1.0, 0.7), 2, true)
-			x += w * 0.8
-			i += 1
+		# faixa de espinhos (VD_espinhos) repetida; a linha do musgo fica na base do perigo
+		var tex: Texture2D = Props.tex(SpriteMetaVerd.TERRENO_DIR + "espinhos.png")
+		var h := tex.get_height() / 2.0
+		var top := rect.end.y - SpriteMetaVerd.ESPINHOS_BASE
+		TerrainDraw.tile(self, tex, Rect2(rect.position.x, top, rect.size.x, h), Vector2(rect.position.x, top))

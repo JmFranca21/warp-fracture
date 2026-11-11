@@ -5,6 +5,11 @@ extends Enemy
 var cd := 1.5
 var charging := 0.0
 const SPORE_G := 900.0
+const MOUTH := Vector2(30, -60)     # boca do bulbo na arte (olhando para a direita)
+var spr: AnimatedSprite2D
+var glow: Sprite2D
+var face := -1.0
+var shot_t := 0.0
 
 
 func _ready() -> void:
@@ -16,17 +21,21 @@ func _ready() -> void:
 	collision_layer = 0
 	collision_mask = 0
 	setup_hurt(Vector2(40, 60), Vector2(0, -32))
-	var g := Art.glow(Color(0.35, 1.0, 0.8, 0.5), 50)
-	g.position = Vector2(0, -50)
-	add_child(g)
+	glow = Art.glow(Color(0.6, 1.0, 0.5, 0.35), 44)
+	add_child(glow)
+	spr = make_sprite(SpriteMetaVerd.ESPORANGIO_FRAMES, SpriteMetaVerd.ESPORANGIO_OFFSET, SpriteMetaVerd.ESPORANGIO_SCALE, "idle")
+	spr.frame = randi() % 6
 	cd = 1.0 + randf() * 1.5
 
 
 func _physics_process(dt: float) -> void:
 	tick(dt)
+	shot_t -= dt
 	var p := player()
 	if p != null and stun <= 0.0:
 		var d := p.global_position - global_position
+		if absf(d.x) > 12.0 and shot_t <= 0.0:
+			face = signf(d.x)
 		if absf(d.x) < 560.0 and absf(d.y) < 320.0:
 			cd -= dt
 			charging = clampf(1.0 - cd / 0.6, 0.0, 1.0)
@@ -34,11 +43,48 @@ func _physics_process(dt: float) -> void:
 				_shoot(p)
 				cd = 2.3
 				charging = 0.0
+				shot_t = 0.3
+	_animate()
 	queue_redraw()
 
 
+## idle → contrai e incha (E_esporangio_attack 1–2) enquanto carrega → cospe (3) → recolhe (4) → idle
+func _animate() -> void:
+	spr.scale.x = SpriteMetaVerd.ESPORANGIO_SCALE * face
+	spr.modulate = flash_mod()
+	glow.position = Vector2(14.0 * face, -62.0)
+	glow.modulate.a = 0.3 + 0.4 * charging
+	if shot_t > 0.0:
+		_pose("attack", 2 if shot_t > 0.14 else 3)
+	elif charging > 0.0:
+		_pose("attack", 0 if charging < 0.5 else 1)
+	elif spr.animation != "idle" or not spr.is_playing():
+		spr.play("idle")
+	spr.speed_scale = 0.3 if stun > 0.0 else 1.0
+
+
+func _pose(an: String, fr: int) -> void:
+	if spr.animation != an:
+		spr.play(an)
+	spr.pause()
+	spr.frame = fr
+
+
+func die() -> void:
+	if dead:
+		return
+	# murcha no lugar (E_esporangio_death)
+	var f := FxAnim.spawn(level.fx, SpriteMetaVerd.ESPORANGIO_FRAMES, SpriteMetaVerd.ESPORANGIO_OFFSET,
+		global_position, SpriteMetaVerd.ESPORANGIO_SCALE, "death")
+	if f != null:
+		f.scale.x *= face
+		f.linger = 0.6
+		f.z_index = -1
+	super.die()
+
+
 func _shoot(p: Player) -> void:
-	var start := global_position + Vector2(0, -52)
+	var start := global_position + Vector2(MOUTH.x * face, MOUTH.y)
 	var tgt := p.global_position + Vector2(p.velocity.x * 0.3, -20)
 	var dx := tgt.x - start.x
 	var dy := tgt.y - start.y
@@ -48,30 +94,12 @@ func _shoot(p: Player) -> void:
 	b.color = Color(0.45, 1.0, 0.75)
 	b.radius = 8.0
 	b.grav = SPORE_G
+	b.sprite = "esporo_verde"
 	b.vel = Vector2(dx / T, (dy - 0.5 * SPORE_G * T * T) / T)
 	b.position = start
 	level.add_fx(b)
-	Fx.burst(level.fx, start, Color(0.45, 1.0, 0.75), 8, 150, 0.4, 0.05)
+	Fx.burst(level.fx, start, Color(0.75, 1.0, 0.45), 6, 120, 0.3, 0.04)
 
 
 func _draw() -> void:
-	var sway := sin(t * 1.8) * 4.0
-	var stalk := fc(Color("0a1d1c"))
-	var bulbc := fc(Color("123634"))
-	for s: float in [-1.0, 1.0]:
-		draw_line(Vector2(0, -4), Vector2(s * 18.0, 0), stalk, 4.0, true)
-		draw_line(Vector2(s * 6.0, -2), Vector2(s * 26.0, 2), stalk, 2.5, true)
-	var pts := PackedVector2Array()
-	for i in 9:
-		var s2 := float(i) / 8.0
-		pts.append(Vector2(sway * s2 * s2, -s2 * 40.0))
-	draw_polyline(pts, stalk, 7.0, true)
-	var bc := Vector2(sway, -52)
-	var swell := 1.0 + charging * 0.3 + 0.04 * sin(t * 4.0)
-	Art.poly(self, Art.ellipse(bc, 17.0 * swell, 15.0 * swell, 22), bulbc)
-	for i in 4:
-		var a := -PI * 0.9 + i * 0.6
-		var sp := bc + Vector2(cos(a) * 9.0, sin(a) * 7.0) * swell
-		draw_circle(sp, 3.0 + charging * 2.0, Color(0.5, 1.0, 0.8, 0.6 + 0.4 * charging))
-	Art.poly(self, PackedVector2Array([bc + Vector2(-6, -13 * swell), bc + Vector2(0, -24 * swell), bc + Vector2(6, -13 * swell)]), bulbc)
-	draw_stun(Vector2(sway, -82))
+	draw_stun(Vector2(8.0 * face, -92))
