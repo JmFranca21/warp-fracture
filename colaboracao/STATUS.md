@@ -39,7 +39,7 @@ Atualizado pelos dois agentes. Leia `PROTOCOLO.md` antes de começar.
 | DF20–DF28 | Terreno e paredes repetíveis (chão, espinhos, paredes, piso, esteira, trilho, cabo) | PARCIAL: DF20, DF21, DF25 e DF26 ENTREGUES (aprovados/autorizados); demais ABERTOS | [DF](pedidos/DF_deserto_ferrugem.md) | — | — |
 | DF30–DF39 | Objetos de cenário (sucata, mastro, chaminé, portas, engrenagem, torre, lâmpadas, painéis) | ABERTO, após aprovação de DF00 | [DF](pedidos/DF_deserto_ferrugem.md) | — | — |
 | DF50–DF57 | Mecanismos e perigos em peças (prensas, serra, plataformas, válvula, ponto de gancho) | PARCIAL: DF57, DF53, DF50 e DF52 ENTREGUES (aprovados; DF53b com escala de exportação aprovada); demais ABERTOS | [DF](pedidos/DF_deserto_ferrugem.md) | — | — |
-| DF60–DF71 | Animações do Robô e do Drone e projéteis | ABERTO, após aprovação de DF01 | [DF](pedidos/DF_deserto_ferrugem.md) | — | — |
+| DF60–DF71 | Animações do Robô e do Drone e projéteis | ENTREGUE (13 spritesheets, DF69b incluída; DF65/DF68 com transparência corrigida; SHA-256 conferidos; aguarda revisão técnica e integração) | [DF](pedidos/DF_deserto_ferrugem.md) | — | — |
 | DF80–DF86 | Efeitos (fumaça, vapor, faíscas, poeira, explosão, impacto, vento) | ABERTO, após aprovação de DF00 | [DF](pedidos/DF_deserto_ferrugem.md) | — | — |
 
 Ordem de produção do Deserto: DF00 e DF01, depois o bloco jogável (DF20, DF21, DF25, DF57, DF53, DF50, DF52, DF26, DF60–DF71), depois fundos e paredes, e por último o restante.

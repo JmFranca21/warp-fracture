@@ -1,0 +1,38 @@
+{
+  "file": "DF69_drone_dano.png",
+  "count": 2,
+  "frame_size": [
+    384,
+    512
+  ],
+  "frames": [
+    {
+      "frame": 1,
+      "bounds": [
+        66,
+        173,
+        309,
+        315
+      ],
+      "scale": [
+        1.0,
+        0.8235294117647058
+      ],
+      "bounded_fit": false
+    },
+    {
+      "frame": 2,
+      "bounds": [
+        72,
+        179,
+        310,
+        321
+      ],
+      "scale": [
+        1.0,
+        0.8235294117647058
+      ],
+      "bounded_fit": false
+    }
+  ]
+}

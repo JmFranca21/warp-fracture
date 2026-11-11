@@ -1,0 +1,52 @@
+{
+  "file": "DF62_robo_aviso.png",
+  "count": 3,
+  "frame_size": [
+    384,
+    512
+  ],
+  "frames": [
+    {
+      "frame": 1,
+      "bounds": [
+        31,
+        110,
+        353,
+        472
+      ],
+      "scale": [
+        1.25,
+        1.157556270096463
+      ],
+      "bounded_fit": false
+    },
+    {
+      "frame": 2,
+      "bounds": [
+        34,
+        107,
+        350,
+        472
+      ],
+      "scale": [
+        1.25,
+        1.157556270096463
+      ],
+      "bounded_fit": false
+    },
+    {
+      "frame": 3,
+      "bounds": [
+        32,
+        103,
+        353,
+        472
+      ],
+      "scale": [
+        1.25,
+        1.157556270096463
+      ],
+      "bounded_fit": false
+    }
+  ]
+}
