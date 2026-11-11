@@ -529,29 +529,24 @@
   },
   {
     "id": "D_lince_wall",
-    "arquivo": "D_lince_wall.png",
+    "arquivo": "D_lince_wall_v2.png",
     "gerado": true,
+    "original_preservado": "D_lince_wall.png",
     "tamanho": [
       1536,
       1024
     ],
     "modo": "RGBA",
-    "bytes": 1470808,
-    "sha256": "02175cb7b97eda19fada2d4350455c807381fbea356b094c4ff90b6fbb51e808",
+    "bytes": 1034583,
+    "sha256": "47e6dfaa252ffae9b770803836913eb3b3525abc803b636b2eb474cd6e018573",
     "alpha_min_max": [
       0,
       254
     ],
-    "fracao_transparente": 0.38825,
+    "fracao_transparente": 0.87356,
     "exige_alpha": true,
     "alpha_presente": true,
-    "avisos": [
-      "Quadro 1: desenho toca borda; revisar recorte.",
-      "Quadro 2: desenho toca borda; revisar recorte.",
-      "Quadro 3: desenho toca borda; revisar recorte.",
-      "Quadro 4: desenho toca borda; revisar recorte.",
-      "Celula excedente 4 contem pixels: verificar vazamento."
-    ],
+    "avisos": [],
     "grade": [
       4,
       2
@@ -559,47 +554,40 @@
     "celulas": [
       {
         "quadro": 1,
-        "pixels_alpha_maior_64": 135664,
+        "pixels_alpha_maior_64": 35892,
         "bbox_local": [
-          0,
-          0,
-          384,
+          75,
+          76,
+          337,
+          443
+        ],
+        "base_visual_local": 443
+      },
+      {
+        "quadro": 2,
+        "pixels_alpha_maior_64": 37003,
+        "bbox_local": [
+          57,
+          91,
+          332,
           465
         ],
         "base_visual_local": 465
       },
       {
-        "quadro": 2,
-        "pixels_alpha_maior_64": 157923,
-        "bbox_local": [
-          0,
-          0,
-          384,
-          479
-        ],
-        "base_visual_local": 479
-      },
-      {
         "quadro": 3,
-        "pixels_alpha_maior_64": 170814,
+        "pixels_alpha_maior_64": 38663,
         "bbox_local": [
-          0,
-          0,
-          384,
-          497
+          54,
+          104,
+          326,
+          482
         ],
-        "base_visual_local": 497
+        "base_visual_local": 482
       },
       {
         "quadro": 4,
-        "pixels_alpha_maior_64": 33420,
-        "bbox_local": [
-          0,
-          31,
-          122,
-          493
-        ],
-        "base_visual_local": 493
+        "pixels_alpha_maior_64": 0
       },
       {
         "quadro": 5,
@@ -623,26 +611,24 @@
   },
   {
     "id": "D_lince_claw",
-    "arquivo": "D_lince_claw.png",
+    "arquivo": "D_lince_claw_v2.png",
     "gerado": true,
+    "original_preservado": "D_lince_claw.png",
     "tamanho": [
       1536,
       1024
     ],
     "modo": "RGBA",
-    "bytes": 1046072,
-    "sha256": "d57b8ed35cb7363c31b5d8325a8d8f4270cc8eb0cb68d0a063414c4b55c2fd6c",
+    "bytes": 961882,
+    "sha256": "c3dfd0a2c2128e17012233bec881918a9a1ee888e39053d1fb59c428a0da0d2b",
     "alpha_min_max": [
       0,
       254
     ],
-    "fracao_transparente": 0.86623,
+    "fracao_transparente": 0.90278,
     "exige_alpha": true,
     "alpha_presente": true,
-    "avisos": [
-      "Quadro 3: desenho toca borda; revisar recorte.",
-      "Quadro 4: desenho toca borda; revisar recorte."
-    ],
+    "avisos": [],
     "grade": [
       4,
       2
@@ -650,47 +636,47 @@
     "celulas": [
       {
         "quadro": 1,
-        "pixels_alpha_maior_64": 34289,
+        "pixels_alpha_maior_64": 28423,
         "bbox_local": [
-          39,
-          150,
-          337,
-          412
+          63,
+          153,
+          341,
+          394
         ],
-        "base_visual_local": 412
+        "base_visual_local": 394
       },
       {
         "quadro": 2,
-        "pixels_alpha_maior_64": 33801,
+        "pixels_alpha_maior_64": 27832,
         "bbox_local": [
-          25,
-          140,
-          312,
-          412
+          56,
+          142,
+          320,
+          393
         ],
-        "base_visual_local": 412
+        "base_visual_local": 393
       },
       {
         "quadro": 3,
-        "pixels_alpha_maior_64": 36940,
+        "pixels_alpha_maior_64": 29617,
         "bbox_local": [
-          18,
-          144,
-          384,
-          412
+          46,
+          149,
+          361,
+          392
         ],
-        "base_visual_local": 412
+        "base_visual_local": 392
       },
       {
         "quadro": 4,
-        "pixels_alpha_maior_64": 33907,
+        "pixels_alpha_maior_64": 27768,
         "bbox_local": [
-          0,
-          150,
-          338,
-          412
+          46,
+          153,
+          317,
+          392
         ],
-        "base_visual_local": 412
+        "base_visual_local": 392
       },
       {
         "quadro": 5,
@@ -802,26 +788,24 @@
   },
   {
     "id": "D_lince_flash",
-    "arquivo": "D_lince_flash.png",
+    "arquivo": "D_lince_flash_v2.png",
     "gerado": true,
+    "original_preservado": "D_lince_flash.png",
     "tamanho": [
       1536,
       1024
     ],
     "modo": "RGBA",
-    "bytes": 1607901,
-    "sha256": "ea924fcdd14684cd236b11f946d3151b34f72d012c59a5d7062f432da634629b",
+    "bytes": 1467916,
+    "sha256": "354fc8fc62106734b0b3718e225f3ffd35b849c32715bc9d397873bc5ebc9095",
     "alpha_min_max": [
       0,
       254
     ],
-    "fracao_transparente": 0.60643,
+    "fracao_transparente": 0.77622,
     "exige_alpha": true,
     "alpha_presente": true,
-    "avisos": [
-      "Quadro 3: desenho toca borda; revisar recorte.",
-      "Quadro 4: desenho toca borda; revisar recorte."
-    ],
+    "avisos": [],
     "grade": [
       4,
       2
@@ -829,69 +813,69 @@
     "celulas": [
       {
         "quadro": 1,
-        "pixels_alpha_maior_64": 41828,
+        "pixels_alpha_maior_64": 37335,
         "bbox_local": [
-          33,
-          124,
-          362,
-          420
+          35,
+          130,
+          344,
+          405
         ],
-        "base_visual_local": 420
+        "base_visual_local": 405
       },
       {
         "quadro": 2,
-        "pixels_alpha_maior_64": 44107,
+        "pixels_alpha_maior_64": 38467,
         "bbox_local": [
-          20,
-          124,
-          362,
-          420
+          28,
+          130,
+          345,
+          405
         ],
-        "base_visual_local": 420
+        "base_visual_local": 405
       },
       {
         "quadro": 3,
-        "pixels_alpha_maior_64": 46527,
+        "pixels_alpha_maior_64": 38801,
         "bbox_local": [
-          12,
-          124,
-          384,
-          420
+          25,
+          130,
+          345,
+          405
         ],
-        "base_visual_local": 420
+        "base_visual_local": 405
       },
       {
         "quadro": 4,
-        "pixels_alpha_maior_64": 117439,
+        "pixels_alpha_maior_64": 45353,
         "bbox_local": [
-          0,
-          74,
-          384,
-          455
+          25,
+          129,
+          345,
+          406
         ],
-        "base_visual_local": 455
+        "base_visual_local": 406
       },
       {
         "quadro": 5,
-        "pixels_alpha_maior_64": 44242,
+        "pixels_alpha_maior_64": 38596,
         "bbox_local": [
-          16,
-          124,
-          362,
-          420
+          26,
+          130,
+          344,
+          406
         ],
-        "base_visual_local": 420
+        "base_visual_local": 406
       },
       {
         "quadro": 6,
-        "pixels_alpha_maior_64": 41836,
+        "pixels_alpha_maior_64": 37313,
         "bbox_local": [
-          33,
-          124,
-          362,
-          420
+          35,
+          130,
+          345,
+          405
         ],
-        "base_visual_local": 420
+        "base_visual_local": 405
       },
       {
         "quadro": 7,
@@ -1880,12 +1864,102 @@
   {
     "id": "E_rainha_esporos_1",
     "arquivo": "E_rainha_esporos_1.png",
-    "gerado": false
+    "gerado": true,
+    "tamanho": [
+      1536,
+      1024
+    ],
+    "modo": "RGBA",
+    "bytes": 1499784,
+    "sha256": "15c43cdaf69b113637930154f1b513beed0adf2d8d2f83e4b99151ab9649201d",
+    "alpha_min_max": [
+      0,
+      254
+    ],
+    "fracao_transparente": 0.65789,
+    "exige_alpha": true,
+    "alpha_presente": true,
+    "avisos": [],
+    "grade": [
+      2,
+      1
+    ],
+    "celulas": [
+      {
+        "quadro": 1,
+        "pixels_alpha_maior_64": 221871,
+        "bbox_local": [
+          31,
+          237,
+          759,
+          894
+        ],
+        "base_visual_local": 894
+      },
+      {
+        "quadro": 2,
+        "pixels_alpha_maior_64": 230713,
+        "bbox_local": [
+          10,
+          206,
+          738,
+          894
+        ],
+        "base_visual_local": 894
+      }
+    ],
+    "quadros_previstos": 2,
+    "observacao": "Bboxes medidos nao provam continuidade, anatomia, apoio ou quantidade correta de poses. Revisao visual e teste em Godot pendentes."
   },
   {
     "id": "E_rainha_esporos_2",
     "arquivo": "E_rainha_esporos_2.png",
-    "gerado": false
+    "gerado": true,
+    "tamanho": [
+      1536,
+      1024
+    ],
+    "modo": "RGBA",
+    "bytes": 1511556,
+    "sha256": "2ccef22abda9327a6a54749a625e7c98a4fe64d483e84b682ea96bb97fabf3a1",
+    "alpha_min_max": [
+      0,
+      254
+    ],
+    "fracao_transparente": 0.60738,
+    "exige_alpha": true,
+    "alpha_presente": true,
+    "avisos": [],
+    "grade": [
+      2,
+      1
+    ],
+    "celulas": [
+      {
+        "quadro": 1,
+        "pixels_alpha_maior_64": 213486,
+        "bbox_local": [
+          28,
+          179,
+          742,
+          845
+        ],
+        "base_visual_local": 845
+      },
+      {
+        "quadro": 2,
+        "pixels_alpha_maior_64": 214900,
+        "bbox_local": [
+          25,
+          176,
+          740,
+          845
+        ],
+        "base_visual_local": 845
+      }
+    ],
+    "quadros_previstos": 2,
+    "observacao": "Bboxes medidos nao provam continuidade, anatomia, apoio ou quantidade correta de poses. Revisao visual e teste em Godot pendentes."
   },
   {
     "id": "E_rainha_esporos_3",
@@ -1895,7 +1969,52 @@
   {
     "id": "E_rainha_rugido_1",
     "arquivo": "E_rainha_rugido_1.png",
-    "gerado": false
+    "gerado": true,
+    "tamanho": [
+      1536,
+      1024
+    ],
+    "modo": "RGBA",
+    "bytes": 1495744,
+    "sha256": "7f4b577fdb2ea365512a0e013683ccb5a0cb8cbcba597bf1131675538e1a7ff9",
+    "alpha_min_max": [
+      0,
+      254
+    ],
+    "fracao_transparente": 0.65317,
+    "exige_alpha": true,
+    "alpha_presente": true,
+    "avisos": [],
+    "grade": [
+      2,
+      1
+    ],
+    "celulas": [
+      {
+        "quadro": 1,
+        "pixels_alpha_maior_64": 204836,
+        "bbox_local": [
+          32,
+          236,
+          746,
+          868
+        ],
+        "base_visual_local": 868
+      },
+      {
+        "quadro": 2,
+        "pixels_alpha_maior_64": 218179,
+        "bbox_local": [
+          25,
+          209,
+          738,
+          869
+        ],
+        "base_visual_local": 869
+      }
+    ],
+    "quadros_previstos": 2,
+    "observacao": "Bboxes medidos nao provam continuidade, anatomia, apoio ou quantidade correta de poses. Revisao visual e teste em Godot pendentes."
   },
   {
     "id": "E_rainha_rugido_2",

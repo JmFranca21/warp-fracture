@@ -1,0 +1,157 @@
+[
+  {
+    "arquivo": "D0_lince.png",
+    "bytes": 1446810,
+    "sha256": "6f2aa3771882476ea35bfbf9a29101d5a26a28ba547dc25b103ffa5411ff498c"
+  },
+  {
+    "arquivo": "D_lince_claw.png",
+    "bytes": 1046072,
+    "sha256": "d57b8ed35cb7363c31b5d8325a8d8f4270cc8eb0cb68d0a063414c4b55c2fd6c"
+  },
+  {
+    "arquivo": "D_lince_claw_v2.png",
+    "bytes": 961882,
+    "sha256": "c3dfd0a2c2128e17012233bec881918a9a1ee888e39053d1fb59c428a0da0d2b"
+  },
+  {
+    "arquivo": "D_lince_death.png",
+    "bytes": 1387914,
+    "sha256": "9ef09d5d1f819e3feab5d06ed9f00d7fbf26481034d489477d2d144d6c14ceb4"
+  },
+  {
+    "arquivo": "D_lince_doublejump.png",
+    "bytes": 1170426,
+    "sha256": "8cc218f75cb8c41a0618fd115c0c073d735d88c62a80f34077122e9a4917323f"
+  },
+  {
+    "arquivo": "D_lince_fall.png",
+    "bytes": 1056068,
+    "sha256": "6186c3b5ae95bdbf6ca4a4e4e9136d09cc5a057b78daa3f0e41ba9c06af2f409"
+  },
+  {
+    "arquivo": "D_lince_flash.png",
+    "bytes": 1607901,
+    "sha256": "ea924fcdd14684cd236b11f946d3151b34f72d012c59a5d7062f432da634629b"
+  },
+  {
+    "arquivo": "D_lince_flash_v2.png",
+    "bytes": 1467916,
+    "sha256": "354fc8fc62106734b0b3718e225f3ffd35b849c32715bc9d397873bc5ebc9095"
+  },
+  {
+    "arquivo": "D_lince_hurt.png",
+    "bytes": 957703,
+    "sha256": "d844d0e6bdaa1fa3b0f4fa624c2cd509fb8a165a1850892a65a190b53e83a44e"
+  },
+  {
+    "arquivo": "D_lince_idle.png",
+    "bytes": 1557558,
+    "sha256": "f4a81eea9663a5e960830107d342da761cbb53c97d62f71ce252786951b3f4c2"
+  },
+  {
+    "arquivo": "D_lince_jump.png",
+    "bytes": 1000026,
+    "sha256": "968d901b443858af125f8b3b3acd15281d45377abbdeaff94ea51d48557711c0"
+  },
+  {
+    "arquivo": "D_lince_pogo.png",
+    "bytes": 1248892,
+    "sha256": "5715960f015adf9035fcf910e357fffe637590040058842b377e8ba6c9fea761"
+  },
+  {
+    "arquivo": "D_lince_run.png",
+    "bytes": 1627230,
+    "sha256": "021e4d419e7efe79d5d0d73aff8ab5c18a43b8daefb00ab70d6a3d4f85ba41b0"
+  },
+  {
+    "arquivo": "D_lince_wall.png",
+    "bytes": 1470808,
+    "sha256": "02175cb7b97eda19fada2d4350455c807381fbea356b094c4ff90b6fbb51e808"
+  },
+  {
+    "arquivo": "D_lince_wall_v2.png",
+    "bytes": 1034583,
+    "sha256": "47e6dfaa252ffae9b770803836913eb3b3525abc803b636b2eb474cd6e018573"
+  },
+  {
+    "arquivo": "E0_inimigos.png",
+    "bytes": 1689766,
+    "sha256": "58faf7c2f4e4637c4bcbdbb3e0de8fa6e5ba63375a9db40de8d764c9aa9b7449"
+  },
+  {
+    "arquivo": "E_esporangio_attack.png",
+    "bytes": 1053866,
+    "sha256": "2f425e9367f1f2017e2f7d867d0e99bf215fbee06cb9eeaa3a552dc57614303e"
+  },
+  {
+    "arquivo": "E_esporangio_death.png",
+    "bytes": 1409127,
+    "sha256": "83bebf65543ada448ff5e6ca7e647f6832a6381e427e72fface8699bb9d1167f"
+  },
+  {
+    "arquivo": "E_esporangio_idle.png",
+    "bytes": 1362454,
+    "sha256": "30daaa76a0cc8ef7f3555704ea3d3f6c8a442110f5f05ce8949af8f587f16b66"
+  },
+  {
+    "arquivo": "E_mariposa_death.png",
+    "bytes": 1364014,
+    "sha256": "a6869c2fbb1c12227332cf3a4cb63b5d3d027b1e8018ed4722e02cf7051f2cd4"
+  },
+  {
+    "arquivo": "E_mariposa_fly.png",
+    "bytes": 1377967,
+    "sha256": "9e3ca1f3c4c3b6b619c52343b6158f279da8b8192d730151b6eecfd30b203654"
+  },
+  {
+    "arquivo": "E_rainha_esporos_1.png",
+    "bytes": 1499784,
+    "sha256": "15c43cdaf69b113637930154f1b513beed0adf2d8d2f83e4b99151ab9649201d"
+  },
+  {
+    "arquivo": "E_rainha_esporos_2.png",
+    "bytes": 1511556,
+    "sha256": "2ccef22abda9327a6a54749a625e7c98a4fe64d483e84b682ea96bb97fabf3a1"
+  },
+  {
+    "arquivo": "E_rainha_idle_1.png",
+    "bytes": 1464142,
+    "sha256": "bf9de349c823e3ab2b7468ee7bae462df6ad1858b8f20209d6ef319bfac9aba8"
+  },
+  {
+    "arquivo": "E_rainha_idle_2.png",
+    "bytes": 1565446,
+    "sha256": "0669a59f43205073d7a542b197c5ea0a1c56b3357033e70ff87c3207c6302113"
+  },
+  {
+    "arquivo": "E_rainha_idle_3.png",
+    "bytes": 1536222,
+    "sha256": "372cc4941e1cc504e4a91aae2e01771bcd4319b44cf952204408ada232545e49"
+  },
+  {
+    "arquivo": "E_rainha_raizes_1.png",
+    "bytes": 1510885,
+    "sha256": "689bb2e541b7f88f6dc0d886a9c6e7b7e8c6c5759c659b20bc4363614a1dfb0a"
+  },
+  {
+    "arquivo": "E_rainha_raizes_2.png",
+    "bytes": 1462758,
+    "sha256": "8ae50fa1d476396b63000566ddb6610021c919e51e842774b593868903abd66e"
+  },
+  {
+    "arquivo": "E_rainha_raizes_3.png",
+    "bytes": 1545033,
+    "sha256": "5164676800b4897757d3ac540a990887a213e6eaf55b39c4f9cf0cfe0dfc469e"
+  },
+  {
+    "arquivo": "E_rainha_rugido_1.png",
+    "bytes": 1495744,
+    "sha256": "7f4b577fdb2ea365512a0e013683ccb5a0cb8cbcba597bf1131675538e1a7ff9"
+  },
+  {
+    "arquivo": "VD00_ambiente.png",
+    "bytes": 1688230,
+    "sha256": "7c89fa47ce017a6480ab85767ee6dba5975a3d02cc99f076e245db2160b07665"
+  }
+]

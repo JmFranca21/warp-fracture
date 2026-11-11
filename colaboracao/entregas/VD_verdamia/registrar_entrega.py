@@ -20,6 +20,7 @@ O responsável solicitou produzir todos os assets, incluindo a elaboração das 
 - `ESPECIFICACOES.md`: escopo, paleta, dimensões, grade e continuidade.
 - `PROMPTS.json`: instruções de produção por imagem e referências utilizadas.
 - `MANIFESTO.json`: tamanho real, alpha, bytes, SHA-256 e bboxes por célula; não é certificado de qualidade estética.
+- `SHA256_ORIGINAIS.json`: hashes de todos os PNGs, incluindo versões preservadas. O manifesto principal seleciona a versão mais recente de cada asset.
 - `verificar_assets.py` e `registrar_entrega.py`: inspeção sem modificar as imagens e atualização desta lista.
 
 ## Uso e limites

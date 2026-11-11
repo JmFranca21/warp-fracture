@@ -11,7 +11,13 @@ tasks = json.loads((ROOT / 'PROMPTS.json').read_text())
 rows = []
 for task in tasks:
     path = ROOT / (task['id'] + '.png')
+    original = path
+    versions = sorted(ROOT.glob(task['id'] + '_v[0-9]*.png'), key=lambda p: int(p.stem.rsplit('_v', 1)[1]))
+    if versions:
+        path = versions[-1]
     row = {'id': task['id'], 'arquivo': path.name, 'gerado': path.exists()}
+    if path != original:
+        row['original_preservado'] = original.name
     if not path.exists():
         rows.append(row)
         continue
@@ -61,6 +67,10 @@ for task in tasks:
         row['observacao'] = 'Bboxes medidos nao provam continuidade, anatomia, apoio ou quantidade correta de poses. Revisao visual e teste em Godot pendentes.'
     rows.append(row)
 (ROOT / 'MANIFESTO.json').write_text(json.dumps(rows, ensure_ascii=False, indent=2) + '\n')
+all_files = []
+for path in sorted(ROOT.glob('*.png')):
+    all_files.append({'arquivo': path.name, 'bytes': path.stat().st_size, 'sha256': hashlib.sha256(path.read_bytes()).hexdigest()})
+(ROOT / 'SHA256_ORIGINAIS.json').write_text(json.dumps(all_files, ensure_ascii=False, indent=2) + '\n')
 generated = sum(r['gerado'] for r in rows)
 print(f'{generated}/{len(rows)} originais presentes')
 for row in rows:
