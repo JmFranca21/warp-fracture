@@ -6,12 +6,12 @@ Atualizado pelos dois agentes. Leia `PROTOCOLO.md` antes de começar.
 |---|---|---|---|---|---|
 | 00_padrao_visual | Diretriz oficial de arte DA-01 | APROVADO (diretriz) | — | [DA-01](entregas/00_padrao_visual/PADRAO_VISUAL_OFICIAL.md) | — |
 | A0_ficha_eco | Ficha de personagem do Eco (referência para A1–A5 e A9) | APROVADO (referência oficial) | [pedido](pedidos/A0_ficha_eco.md) | [entrega](entregas/A0_ficha_eco/) | [revisão](revisoes/A0_ficha_eco.md) |
-| A1_eco_appear | Materialização do Eco, 8 quadros | ABERTO | [pedido](pedidos/A1_eco_appear.md) | — | — |
+| A1_eco_appear | Materialização do Eco, 8 quadros | ENTREGUE | [pedido](pedidos/A1_eco_appear.md) | [entrega](entregas/A1_eco_appear/) | — |
 | A2_eco_float | Eco pairando (loop), 6 quadros | INTEGRADO (asset importado; entra no gameplay com a Fuga do Eco) | [pedido](pedidos/A2_eco_float.md) | [entrega](entregas/A2_eco_float/) | [revisão](revisoes/A2_eco_float.md) |
 | A3_eco_avanco | Avanço flutuante agressivo (loop), 6 quadros. Substitui a A3_eco_run, que foi cancelada | ENTREGUE | [pedido](pedidos/A3_eco_avanco.md) | — | — |
-| A4_eco_grab | Agarrão no ar, 6 quadros (reescrito conforme a D01) | ABERTO | [pedido](pedidos/A4_eco_grab.md) | — | — |
-| A5_eco_vanish | Eco se desfazendo, 6 quadros | ABERTO | [pedido](pedidos/A5_eco_vanish.md) | — | — |
-| A9_fx_dobra_eco | Fenda da Dobra espectral (o Eco reaparece por ela), 8 quadros | ABERTO | [pedido](pedidos/A9_fx_dobra_eco.md) | — | — |
+| A4_eco_grab | Agarrão no ar, 6 quadros (reescrito conforme a D01) | ENTREGUE (uso provisório) | [pedido](pedidos/A4_eco_grab.md) | [entrega](entregas/A4_eco_grab/) | — |
+| A5_eco_vanish | Eco se desfazendo, 6 quadros | ENTREGUE | [pedido](pedidos/A5_eco_vanish.md) | [entrega](entregas/A5_eco_vanish/) | — |
+| A9_fx_dobra_eco | Fenda da Dobra espectral (o Eco reaparece por ela), 8 quadros | ENTREGUE | [pedido](pedidos/A9_fx_dobra_eco.md) | [entrega](entregas/A9_fx_dobra_eco/) | — |
 | A6_entulho | 3 pedaços de teto do laboratório que caem | ABERTO | [pedido](pedidos/A6_entulho.md) | — | — |
 | A7_fx_poeira | Nuvem de poeira de impacto, 6 quadros | ABERTO | [pedido](pedidos/A7_fx_poeira.md) | — | — |
 | A8_fx_rachadura_teto | Rachadura se abrindo no teto, 4 quadros | ABERTO | [pedido](pedidos/A8_fx_rachadura_teto.md) | — | — |
