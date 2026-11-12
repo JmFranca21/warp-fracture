@@ -9,7 +9,7 @@ Em vigor desde 12/11/2026. Complementa o [PROTOCOLO.md](PROTOCOLO.md); onde os d
 | **Gerente de projeto** | Sessão principal do Claude Code (Opus) | Planeja cada ciclo, distribui as tarefas, confere o estado real, faz os commits locais e corrige documentos esquecidos |
 | **Especialista em artes** | Codex CLI (ChatGPT) com geração de imagens | Apenas `colaboracao/entregas/<ID>/` |
 | **Especialista técnico** | Claude Code (worker programador) | Código, assets do jogo, pedidos, documentos (`HANDOFF`, `ROTEIRO`, `LEIA-ME`, `README`, GDD, documento de arte) |
-| **Revisor** | Antigravity (Gemini), agente independente dos outros dois | Apenas `colaboracao/revisoes/` |
+| **Revisor** | Sempre o fornecedor que não fez a entrega: **Claude Sonnet** revisa a arte (feita pelo Codex) e o **Codex** revisa o código e os documentos (feitos pelo Claude Opus). O Antigravity revisou o ciclo 1 e foi retirado em 12/11/2026 | Apenas `colaboracao/revisoes/` |
 | **João Marcelo** | Pessoa responsável | Decisões de design e aprovação final de **fichas novas de personagem** |
 
 Como os agentes trabalham ao mesmo tempo, **só o gerente edita o `STATUS.md`**, a partir do `ENTREGA.md` e das revisões. Nenhum agente faz push. O gerente faz commits locais na branch `auto/fluxo`, com o prefixo do papel (`[arte]`, `[dev]`, `[rev]`, `[gp]`); o João faz merge e push.

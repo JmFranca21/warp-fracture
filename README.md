@@ -17,7 +17,7 @@ O catálogo de toda a arte, com o estado de cada item, está no [documento de ar
 
 ## Fluxo automático
 
-Desde 12/11/2026, arte, desenvolvimento e revisão trabalham em ciclos automáticos: gerente de projeto (Claude Code), especialista em artes (Codex), especialista técnico (Claude Code) e revisor independente (Antigravity). As regras estão em [colaboracao/FLUXO_AUTOMATICO.md](colaboracao/FLUXO_AUTOMATICO.md). O João Marcelo decide o design e aprova as fichas novas de personagem.
+Desde 12/11/2026, arte, desenvolvimento e revisão trabalham em ciclos automáticos: gerente de projeto (Claude Code), especialista em artes (Codex), especialista técnico (Claude Code) e revisão cruzada: o Claude Sonnet revisa a arte e o Codex revisa o código. As regras estão em [colaboracao/FLUXO_AUTOMATICO.md](colaboracao/FLUXO_AUTOMATICO.md). O João Marcelo decide o design e aprova as fichas novas de personagem.
 
 ## Como abrir
 
