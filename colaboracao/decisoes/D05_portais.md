@@ -1,6 +1,6 @@
 # D05: Portais (linguagem visual, peças e integração)
 
-**Estado:** PROPOSTA. Aguarda decisão do João Marcelo. Depende da D02 (opção A).
+**Estado:** DECIDIDA em 12/11/2026.
 **Autor:** Claude (design e desenvolvimento) · 11/11/2026
 
 ## O portal atual
@@ -69,3 +69,7 @@ Ou seja: **para dentro é aberto, tremor é instável, fechado é parado**. Quem
 1. Dois tipos (Arco e Fenda) com membrana comum.
 2. Cores, glifos e movimentos por destino.
 3. Receptáculo da Máquina como peça separada do Arco, ligada a ele por um cabo.
+
+## Decisão final (12/11/2026)
+
+**a linguagem, as peças e a integração propostas neste documento**, conforme a recomendação acima. O João Marcelo aceitou as recomendações de D02 a D05 em 12/11/2026. Os pedidos que dependiam desta decisão foram liberados.

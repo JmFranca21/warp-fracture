@@ -1,6 +1,6 @@
 # D02: Passagem entre Verdâmia (Fase 1) e o Deserto de Ferrugem (Fase 2)
 
-**Estado:** PROPOSTA. Aguarda decisão do João Marcelo.
+**Estado:** DECIDIDA em 12/11/2026.
 **Autor:** Claude (design e desenvolvimento) · 11/11/2026
 **Base:** `main` em `e731e1a`; GDD v2 (págs. 2, 4 e 7); `scripts/main.gd`, `level.gd`, `portal.gd`, `calibration.gd`, `save_game.gd`.
 
@@ -67,3 +67,7 @@ Formato novo: `version: 2`. Os campos antigos são mantidos e três são novos:
 2. **Fim do protótipo:** a tela de vitória sai do fragmento de Verdâmia. Até o Deserto estar pronto, o seletor mostra o Deserto como "sinal detectado" e a travessia fica bloqueada com uma fala de IRIS. Na versão completa, o fim passa para a vitória sobre o chefe do Deserto (D04).
 3. Textos de IRIS e o registro novo `log_09` (eu escrevo; o responsável revisa).
 4. **Revisitar Verdâmia:** pelo seletor, o jogador chega à fenda de retorno, no fundo da arena.
+
+## Decisão final (12/11/2026)
+
+**Opção A: retorno ao Hélix e o Receptáculo da Máquina**, conforme a recomendação acima. O João Marcelo aceitou as recomendações de D02 a D05 em 12/11/2026. Os pedidos que dependiam desta decisão foram liberados.

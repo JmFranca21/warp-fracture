@@ -1,6 +1,6 @@
 # D03: Forma de Daymon no Deserto de Ferrugem
 
-**Estado:** PROPOSTA. Aguarda decisão do João Marcelo.
+**Estado:** DECIDIDA em 12/11/2026.
 **Autor:** Claude (design e desenvolvimento) · 11/11/2026
 **Base:** GDD v2, pág. 4 (formas) e pág. 5 (Ferrumgrado); `docs/fases/deserto_ferrugem/detalhamento_da_fase.md`; protótipo da branch `prototipo/deserto-de-ferrugem` (`b753433`).
 
@@ -68,3 +68,7 @@ Um besouro pequeno de carapaça de chapa (0,6 D), que **plana** com os élitros,
 2. Deserto como primeira área de Ferrumgrado e Fase 2 da campanha (Hidrópolis depois).
 3. Escala de 1,05 D, com colisão 30 × 62.
 4. O soco que quebra paredes do GDD fica para as próximas áreas de Ferrumgrado (não é necessário neste percurso).
+
+## Decisão final (12/11/2026)
+
+**Opção 1: Autômato de Fase (o Deserto é a primeira área de Ferrumgrado e a Fase 2 da campanha; Hidrópolis passa para depois)**, conforme a recomendação acima. O João Marcelo aceitou as recomendações de D02 a D05 em 12/11/2026. Os pedidos que dependiam desta decisão foram liberados.

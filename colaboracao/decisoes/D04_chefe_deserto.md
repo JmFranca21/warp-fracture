@@ -1,6 +1,6 @@
 # D04: Chefe do Deserto de Ferrugem
 
-**Estado:** PROPOSTA. Aguarda decisão do João Marcelo.
+**Estado:** DECIDIDA em 12/11/2026.
 **Autor:** Claude (design e desenvolvimento) · 11/11/2026
 **Base:** GDD v2, pág. 8 ("Forja-Mãe (Ferrumgrado): IA da fábrica; luta em 3 fases, cada uma com um núcleo a destruir; quer usar o fragmento para invadir outras realidades"); detalhamento do Deserto (que termina na porta do Núcleo, sem chefe); D03 (Autômato).
 
@@ -88,3 +88,7 @@ Um robô-tanque gigante (2,5 D) sobre esteiras, que persegue o jogador pelo Sal�
 3. Câmara nova depois da porta do Salão, com uma estação antes.
 4. Recompensa: só o fragmento, ou fragmento mais um módulo.
 5. Vida de cada núcleo (6, 6 e 8 rebites) como ponto de partida para teste.
+
+## Decisão final (12/11/2026)
+
+**Opção A: Forja-Mãe**, conforme a recomendação acima. O João Marcelo aceitou as recomendações de D02 a D05 em 12/11/2026. Os pedidos que dependiam desta decisão foram liberados.
