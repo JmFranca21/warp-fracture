@@ -70,12 +70,12 @@ Ficha de referência: **A0_ficha_eco**, aprovada como referência oficial ([revi
 | ID | Item | Estado | Arquivos | Onde aparece |
 |---|---|---|---|---|
 | A0 | Ficha do Eco | aprovado (referência; não entra no jogo) | `colaboracao/entregas/A0_ficha_eco/A0_ficha_eco.png` | — |
-| A1 | Materialização, 8 quadros | ajuste pedido (ciclo 1: escala dos quadros 3–7; [revisão](../colaboracao/revisoes/A1_eco_appear.md)) | `entregas/A1_eco_appear/A1_eco_appear.png` | Ainda não usado (Fuga do Eco) |
+| A1 | Materialização, 8 quadros | aprovado `_v2` pelo João Marcelo ([revisão](../colaboracao/revisoes/A1_eco_appear.md)) | `entregas/A1_eco_appear/A1_eco_appear_v2.png` | Ainda não usado (Fuga do Eco) |
 | A2 | Pairando (loop), 6 quadros | integrado como asset; fora do gameplay | `entregas/A2_eco_float/A2_eco_float.png` → `assets/inimigos/eco/eco_sheet.png`, `eco_frames.tres` (`tools/import_cells.py`) | `sprite_meta_cells.gd` (`ECO_FRAMES`). Nenhum script de gameplay usa ainda |
 | A3 | Avanço flutuante (loop), 6 quadros | aprovado ([revisão](../colaboracao/revisoes/A3_eco_avanco.md)) | `entregas/A3_eco_avanco/A3_eco_avanco.png` | Ainda não usado |
 | A3_eco_run | Corrida (versão antiga) | cancelado (substituído pela A3_eco_avanco) | [pedido](../colaboracao/pedidos/A3_eco_run.md) | — |
 | A4 | Agarrão no ar, 6 quadros | aprovado ([revisão](../colaboracao/revisoes/A4_eco_grab.md)) | `entregas/A4_eco_grab/A4_eco_grab.png` | Ainda não usado |
-| A5 | Eco se desfazendo, 6 quadros | ajuste pedido (ciclo 1: escala dos quadros 2–4; [revisão](../colaboracao/revisoes/A5_eco_vanish.md)) | `entregas/A5_eco_vanish/A5_eco_vanish.png` | Ainda não usado |
+| A5 | Eco se desfazendo, 6 quadros | aprovado `_v2` pelo João Marcelo ([revisão](../colaboracao/revisoes/A5_eco_vanish.md)) | `entregas/A5_eco_vanish/A5_eco_vanish_v2.png` | Ainda não usado |
 | A9 | Fenda da Dobra espectral, 8 quadros | aprovado ([revisão](../colaboracao/revisoes/A9_fx_dobra_eco.md)) | `entregas/A9_fx_dobra_eco/A9_fx_dobra_eco.png` | Ainda não usado |
 
 ### Desabamento da Fuga do Eco
@@ -86,7 +86,7 @@ Ficha de referência: Prancha de Elementos do Laboratório (pedidos A6–A8).
 |---|---|---|---|---|
 | A6 | 3 pedaços de teto que caem | aprovado ([revisão](../colaboracao/revisoes/A6_entulho.md)) | `entregas/A6_entulho/A6_entulho_1.png`, `_2.png`, `_3.png` | Fuga do Eco (a implementar) |
 | A7 | Poeira de impacto, 6 quadros | aprovado ([revisão](../colaboracao/revisoes/A7_fx_poeira.md)) | `entregas/A7_fx_poeira/A7_fx_poeira.png` | Fuga do Eco (a implementar) |
-| A8 | Rachadura no teto, 4 quadros | pedido (ABERTO) | [pedido](../colaboracao/pedidos/A8_fx_rachadura_teto.md) | Fuga do Eco (a implementar) |
+| A8 | Rachadura no teto, 4 quadros | aprovado pelo João Marcelo ([revisão](../colaboracao/revisoes/A8_fx_rachadura_teto.md)) | `entregas/A8_fx_rachadura_teto/A8_fx_rachadura_teto.png` | Fuga do Eco (a implementar) |
 
 ---
 

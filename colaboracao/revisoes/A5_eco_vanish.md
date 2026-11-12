@@ -70,3 +70,8 @@ OK
 - **quadro 4:** cabeça e tronco remanescentes desenhados na escala ampliada (altura 407 px) -> aplicar fator de redução proporcional de escala de ~0,80 e manter a cabeça alinhada com o topo do quadro 1 (topo em y ≈ 13–15).
 - **quadro 5:** dispersão dos olhos e fragmentos posicionada com base no corpo gigante -> reposicionar a altura dos olhos e fragmentos para coincidirem com o nível do rosto do Eco do quadro 1 (olhos em y ≈ 88).
 - **quadro 6:** rachadura e fragmentos finais -> alinhar verticalmente com a altura do peito do Eco normalizado (y ≈ 200–220).
+
+
+## Revisão da v2 (ciclo 2): APROVADO
+
+**Aprovado pelo João Marcelo em 12/11/2026** após ver a prévia animada e a prancha. O revisor automático do ciclo 2 não chegou a concluir (o Antigravity foi retirado do fluxo). Medidas do gerente: `check_art.py` OK; Eco com 380–381 px nos quadros em que está inteiro, base em y = 393; continuidade com a A2 quadro 1 com diferença zero (`colaboracao/revisoes/evidencias/c02/EVIDENCIAS.md`). Arquivo aprovado: `A5_eco_vanish_v2.png`.

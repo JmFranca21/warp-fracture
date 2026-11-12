@@ -71,3 +71,8 @@ OK
 - **quadro 5:** figura com 428 px de altura e base em y=444 -> aplicar redução proporcional de escala (~0,89) para altura de 380 px e alinhar base em y ≈ 393.
 - **quadro 6:** figura com 426 px de altura e base em y=443 -> aplicar redução proporcional de escala (~0,89) para altura de 380 px e alinhar base em y ≈ 393.
 - **quadro 7:** figura com 425 px de altura e base em y=443, provocando salto de 45 px de altura e 50 px de base para o quadro 8 -> aplicar redução proporcional de escala (~0,89) para que o corpo/cabeça corresponda aos 380 px e alinhar base em y ≈ 393, garantindo transição suave e sem solavancos para o quadro 8.
+
+
+## Revisão da v2 (ciclo 2): APROVADO
+
+**Aprovado pelo João Marcelo em 12/11/2026** após ver a prévia animada e a prancha. O revisor automático do ciclo 2 não chegou a concluir (o Antigravity foi retirado do fluxo). Medidas do gerente: `check_art.py` OK; Eco com 380–381 px nos quadros em que está inteiro, base em y = 393; continuidade com a A2 quadro 1 com diferença zero (`colaboracao/revisoes/evidencias/c02/EVIDENCIAS.md`). Arquivo aprovado: `A1_eco_appear_v2.png`.
