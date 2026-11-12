@@ -1,6 +1,6 @@
 # Protocolo de colaboração: Desenvolvimento (Claude) × Arte (ChatGPT)
 
-Toda a comunicação entre os dois agentes acontece **dentro deste repositório**. O João Marcelo só passa um prompt curto avisando que há algo novo. Ninguém precisa copiar relatórios de um agente para o outro.
+Toda a comunicação entre os agentes acontece **dentro deste repositório**. **Desde 12/11/2026 o trabalho roda em ciclos automáticos, com um revisor independente: veja [FLUXO_AUTOMATICO.md](FLUXO_AUTOMATICO.md), que prevalece sobre este arquivo.** O João Marcelo só passa um prompt curto avisando que há algo novo. Ninguém precisa copiar relatórios de um agente para o outro.
 
 ## Papéis
 

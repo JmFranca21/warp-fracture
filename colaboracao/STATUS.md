@@ -1,6 +1,6 @@
 # Quadro de pedidos de arte
 
-Atualizado pelos dois agentes. Leia `PROTOCOLO.md` antes de começar.
+Atualizado pelos agentes. Leia `PROTOCOLO.md` e `FLUXO_AUTOMATICO.md` antes de começar. Estados: `SUSPENSO`, `ABERTO`, `ENTREGUE`, `AJUSTE`, `APROVADO`, `AGUARDA JOÃO` (fichas novas), `INTEGRADO`.
 
 | ID | O que é | Estado | Pedido | Entrega | Revisão |
 |---|---|---|---|---|---|
