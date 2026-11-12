@@ -34,6 +34,6 @@ Ordem escolhida: primeiro o que todo jogador sente (som, salvamento, orientaçã
 |---|---|---|
 | Eco | A0 aprovada, A2 importada, A1/A3/A4/A5/A9 entregues. A4 tem uso provisório. | Produzir entulho, poeira e rachadura (A6–A8). Revisar as transições, programar o rastro e a Dobra conforme D01, o desabamento, o checkpoint e o som. Testar a chegada ao portal. |
 | Verdâmia | Fase e Rainha jogáveis. Lote ilustrado com 64 assets, 67 PNGs, galeria e manifesto. | Revisar a arte, preparar recortes e escalas, aplicar as folhas e testar movimento, combate e vitória. |
-| Deserto de Ferrugem | Arte completa e entregue. Protótipo jogável preservado na branch `prototipo/deserto-de-ferrugem`. | Definir a integração na campanha principal. |
+| Deserto de Ferrugem | Arte completa e entregue. Protótipo jogável preservado na branch `prototipo/deserto-de-ferrugem`. | Proposta de campanha em revisão (passagem, Autômato, Forja-Mãe e portais): [proposta da Fase 2](docs/fases/deserto_ferrugem/proposta_fase2.md). |
 
 Os [pedidos de arte por ID](colaboracao/STATUS.md) e a [especificação do Deserto](docs/fases/deserto_ferrugem/detalhamento_da_fase.md) orientam a produção. A abertura, as Fendas Instáveis, Hidrópolis e os demais universos continuam no planejamento.

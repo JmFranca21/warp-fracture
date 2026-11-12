@@ -41,6 +41,26 @@ Atualizado pelos dois agentes. Leia `PROTOCOLO.md` antes de começar.
 
 Todos os assets do pedido DF estão entregues. A versão jogável está na [branch do protótipo](https://github.com/JmFranca21/warp-fracture/tree/prototipo/deserto-de-ferrugem). A integração na campanha principal está pendente.
 
+## Fase 2: Deserto de Ferrugem (proposta de campanha, 11/11/2026)
+
+Visão geral, divergências e plano: [proposta da Fase 2](../docs/fases/deserto_ferrugem/proposta_fase2.md). **As decisões D02–D05 aguardam o João Marcelo.** Nenhum pedido abaixo deve começar antes disso.
+
+| Decisão | Tema | Estado |
+|---|---|---|
+| [D02](decisoes/D02_passagem_verdamia_deserto.md) | Passagem entre Verdâmia e o Deserto, e save | PROPOSTA |
+| [D03](decisoes/D03_forma_deserto.md) | Forma de Daymon no Deserto (Autômato recomendado) | PROPOSTA |
+| [D04](decisoes/D04_chefe_deserto.md) | Chefe do Deserto (Forja-Mãe recomendada) | PROPOSTA |
+| [D05](decisoes/D05_portais.md) | Portais: linguagem, peças e integração | PROPOSTA |
+
+| ID | O que é | Estado | Pedido | Entrega | Revisão |
+|---|---|---|---|---|---|
+| DF02 | Ficha do Autômato (lote 1) | SUSPENSO (aguarda D03) | [pedido](pedidos/DF02_ficha_automato.md) | — | — |
+| DF03 | Ficha da Forja-Mãe e esquema da arena (lote 1) | SUSPENSO (aguarda D04) | [pedido](pedidos/DF03_ficha_forja_mae.md) | — | — |
+| PT00 | Ficha dos portais e do Receptáculo (lote 1) | SUSPENSO (aguarda D05) | [pedido](pedidos/PT00_ficha_portais.md) | — | — |
+| DF87–DF99 | Autômato: 7 folhas do corpo, braço, rebite, disparo, feixe e pulso (lote 2) | SUSPENSO (aguarda DF02) | [pedido](pedidos/DF87-DF99_automato.md) | — | — |
+| PT10–PT23 | Arco de Dobra, glifos, Receptáculo, membrana e Fenda (lote 2) | SUSPENSO (aguarda PT00) | [pedido](pedidos/PT10-PT23_portais.md) | — | — |
+| DF100–DF112 | Forja-Mãe: corpo, lente, peito, braço, martelo, núcleo, escotilha, grade e efeitos (lote 3) | SUSPENSO (aguarda DF03) | [pedido](pedidos/DF100-DF112_forja_mae.md) | — | — |
+
 ## Fase Verdâmia
 
 Pacote completo em [VD_verdamia](entregas/VD_verdamia/) (64 assets em 67 PNGs). **Integrado ao jogo na v0.6 (11/11/2026).** Revisão, medidas e destino de cada asset: [revisão VD_verdamia](revisoes/VD_verdamia.md).
