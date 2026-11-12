@@ -2,13 +2,13 @@
 
 Metroidvania 2D em visão lateral feito em **Godot 4.3**, com visual ilustrado inspirado em Hollow Knight (sem pixel art). Daymon Sagan, cientista do Projeto Hélix, atravessa realidades fraturadas para recuperar os fragmentos da Máquina de Dobra. Em cada universo, ele assume uma forma diferente.
 
-**Versão atual:** protótipo v0.6 (Verdâmia com a arte oficial: Lince-Vagalume, inimigos, Rainha Micélia, cenário e efeitos). Laboratório Hélix, Verdâmia e Deserto de Ferrugem jogáveis, com chefe, Arpão de Fase, Bancada de Upgrades, Registros do Projeto, mapa, save e som.
+**Versão atual:** protótipo v0.6 (Verdâmia com a arte oficial: Lince-Vagalume, inimigos, Rainha Micélia, cenário e efeitos). Laboratório Hélix e Verdâmia jogáveis, com chefe, Arpão de Fase, Bancada de Upgrades, Registros do Projeto, mapa, save e som.
 
 ## Como abrir
 
 1. Instale o [Godot 4.3 stable](https://godotengine.org/download/archive/4.3-stable/).
 2. Clone este repositório, abra o Godot, clique em **Importar** e escolha `project.godot`.
-3. Aperte **F5** para jogar. Para abrir a nova fase diretamente, escolha **Deserto de Ferrugem** no menu. Ela também está disponível após recuperar o fragmento de Verdâmia.
+3. Aperte **F5** para jogar.
 
 Para gerar os executáveis, use **Projeto → Exportar** (presets "Windows Desktop" e "Linux"). Os builds prontos devem ser publicados em **Releases**, não no repositório.
 

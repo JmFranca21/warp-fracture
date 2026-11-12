@@ -387,11 +387,11 @@ func _draw_victory(sz: Vector2) -> void:
 	var a := clampf(victory_t / 1.2, 0.0, 1.0)
 	draw_rect(Rect2(Vector2.ZERO, sz), Color(0.0, 0.02, 0.04, 0.82 * a))
 	var y := sz.y * 0.26
-	Art.text(self, Vector2(0, y), "DESERTO ATRAVESSADO" if main.level.id == "deserto" else "FRAGMENTO RECUPERADO", 46, Color(0.75, 0.92, 1.0, a), HORIZONTAL_ALIGNMENT_CENTER, sz.x, 8)
-	Art.text(self, Vector2(0, y + 48), "Núcleo central" if main.level.id == "deserto" else "%d / 4" % main.fragments, 28, Color(0.95, 0.97, 1.0, a), HORIZONTAL_ALIGNMENT_CENTER, sz.x)
+	Art.text(self, Vector2(0, y), "FRAGMENTO RECUPERADO", 46, Color(0.75, 0.92, 1.0, a), HORIZONTAL_ALIGNMENT_CENTER, sz.x, 8)
+	Art.text(self, Vector2(0, y + 48), "%d / 4" % main.fragments, 28, Color(0.95, 0.97, 1.0, a), HORIZONTAL_ALIGNMENT_CENTER, sz.x)
 	var secs := int(main.play_time)
 	var stats := "Tempo  %02d:%02d     ·     Células de Fase  %d     ·     Quedas  %d" % [secs / 60, secs % 60, main.cells, main.deaths]
 	Art.text(self, Vector2(0, y + 110), stats, 19, Color(0.8, 0.88, 0.95, a), HORIZONTAL_ALIGNMENT_CENTER, sz.x)
-	Art.text(self, Vector2(0, y + 170), "Porta de saída alcançada." if main.level.id == "deserto" else "A próxima travessia leva ao Deserto de Ferrugem.", 17, Color(0.7, 0.78, 0.86, a), HORIZONTAL_ALIGNMENT_CENTER, sz.x)
+	Art.text(self, Vector2(0, y + 170), "Fim do protótipo. Hidrópolis, Ferrumgrado e Umbra chegam nas próximas versões.", 17, Color(0.7, 0.78, 0.86, a), HORIZONTAL_ALIGNMENT_CENTER, sz.x)
 	if victory_t > 1.5:
-		Art.text(self, Vector2(0, y + 240), "ENTER — voltar ao menu" if main.level.id == "deserto" else "ENTER — Deserto de Ferrugem     ESC — menu", 20, Color(1, 1, 1, 0.6 + 0.4 * sin(t * 3.0)), HORIZONTAL_ALIGNMENT_CENTER, sz.x)
+		Art.text(self, Vector2(0, y + 240), "ENTER — voltar ao menu", 20, Color(1, 1, 1, 0.6 + 0.4 * sin(t * 3.0)), HORIZONTAL_ALIGNMENT_CENTER, sz.x)

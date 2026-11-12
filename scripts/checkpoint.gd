@@ -8,10 +8,10 @@ var used_t := 0.0
 
 func _setup() -> void:
 	prompt = "[E] Descansar na Estação de Recarga"
-	glow = Art.glow(Color(0.4, 0.95, 1.0, 0.4) if theme in ["lab", "deserto"] else Color(0.6, 1.0, 0.7, 0.4), 110)
+	glow = Art.glow(Color(0.4, 0.95, 1.0, 0.4) if theme == "lab" else Color(0.6, 1.0, 0.7, 0.4), 110)
 	glow.position = Vector2(0, -50)
 	add_child(glow)
-	if theme in ["lab", "deserto"]:
+	if theme == "lab":
 		var spr := Props.sprite("celula_suporte", 0.55)
 		add_child(spr)
 		glow.position = Vector2(0, -42)
@@ -38,7 +38,7 @@ func _process(dt: float) -> void:
 
 
 func _draw() -> void:
-	if theme in ["lab", "deserto"]:
+	if theme == "lab":
 		var k := 0.35 + 0.15 * sin(t * 2.0) + used_t * 0.5
 		draw_arc(Vector2(0, -2), 46.0, 0.0, TAU, 40, Color(0.35, 0.9, 1.0, k * 0.6), 2.0, true)
 		for i in 3:

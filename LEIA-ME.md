@@ -57,7 +57,7 @@ O jogo usa o renderizador *Compatibility* (OpenGL 3.3), que funciona em PCs simp
 
 ## Câmera e alcance do protótipo
 
-A câmera é lateral. Escolha **Deserto de Ferrugem** no menu ou aperte **Enter** na tela do fragmento de Verdâmia. Daymon volta à forma humana com o arpão equipado. A saída fica depois das válvulas do Núcleo. As estações do Deserto usam um salvamento próprio. A perseguição pelo Eco aguarda implementação.
+A câmera é lateral. O Deserto de Ferrugem e a perseguição pelo Eco fazem parte do projeto e aguardam implementação.
 
 ## Sprites animados (AnimatedSprite2D)
 

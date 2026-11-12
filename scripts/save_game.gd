@@ -3,7 +3,6 @@ extends RefCounted
 ## Salvamento em user://warp_save.json (nas Estações de Recarga e ao trocar de área).
 
 const PATH := "user://warp_save.json"
-const DESERT_PATH := "user://warp_deserto.json"
 const VERSION := 1
 
 
@@ -27,15 +26,15 @@ static func write(main) -> void:
 		"modules": main.modules.keys(),
 		"upgrades": main.upgrades,
 	}
-	var f := FileAccess.open(DESERT_PATH if main.checkpoint_level == "deserto" else PATH, FileAccess.WRITE)
+	var f := FileAccess.open(PATH, FileAccess.WRITE)
 	if f != null:
 		f.store_string(JSON.stringify(d, "\t"))
 
 
-static func read(path := PATH) -> Dictionary:
-	if not FileAccess.file_exists(path):
+static func read() -> Dictionary:
+	if not exists():
 		return {}
-	var f := FileAccess.open(path, FileAccess.READ)
+	var f := FileAccess.open(PATH, FileAccess.READ)
 	if f == null:
 		return {}
 	var d = JSON.parse_string(f.get_as_text())

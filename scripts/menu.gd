@@ -29,13 +29,12 @@ func refresh() -> void:
 	if SaveGame.exists():
 		items.append({"id": "continue", "label": "Continuar"})
 	items.append({"id": "new", "label": "Novo jogo"})
-	items.append({"id": "deserto", "label": "Deserto de Ferrugem"})
 	items.append({"id": "options", "label": "Opções"})
 	items.append({"id": "quit", "label": "Sair"})
 	list.set_items(items)
 	list.sel = 0
 	list.font_size = 26
-	list.spacing = 37.0
+	list.spacing = 46.0
 
 
 func handle(event: InputEvent) -> void:
@@ -54,8 +53,6 @@ func handle(event: InputEvent) -> void:
 						list.sel = 1
 					else:
 						chosen.emit("new")
-				"deserto":
-					chosen.emit("deserto")
 				"options":
 					screen = "options"
 					list.set_items(MenuList.options_items())

@@ -32,14 +32,14 @@ Atualizado pelos dois agentes. Leia `PROTOCOLO.md` antes de começar.
 |---|---|---|---|---|---|
 | DF00 | Prancha de referência do Deserto (paleta, materiais, amostras) | ENTREGUE (aprovado pelo responsável) | [DF](pedidos/DF_deserto_ferrugem.md) | — | — |
 | DF01 | Ficha do Robô e do Drone do deserto | ENTREGUE (aprovado pelo responsável) | [DF](pedidos/DF_deserto_ferrugem.md) | — | — |
-| DF10–DF12 | Fundos das Dunas em parallax | INTEGRADO | [DF](pedidos/DF_deserto_ferrugem.md) | — | — |
-| DF20–DF28 | Terreno, paredes, piso, esteira, trilho e cabo | INTEGRADO | [DF](pedidos/DF_deserto_ferrugem.md) | — | — |
-| DF30–DF39 | Objetos de cenário e portas | INTEGRADO | [DF](pedidos/DF_deserto_ferrugem.md) | — | — |
-| DF50–DF57 | Prensas, serra, plataformas, válvulas e gancho | INTEGRADO | [DF](pedidos/DF_deserto_ferrugem.md) | — | — |
-| DF60–DF71 | Robôs, drones e seus projéteis | INTEGRADO | [DF](pedidos/DF_deserto_ferrugem.md) | — | — |
-| DF80–DF86 | Efeitos de máquinas, areia, impacto e vento | INTEGRADO | [DF](pedidos/DF_deserto_ferrugem.md) | — | — |
+| DF10–DF12 | Fundos das Dunas em parallax | ENTREGUE | [DF](pedidos/DF_deserto_ferrugem.md) | — | — |
+| DF20–DF28 | Terreno, paredes, piso, esteira, trilho e cabo | ENTREGUE | [DF](pedidos/DF_deserto_ferrugem.md) | — | — |
+| DF30–DF39 | Objetos de cenário e portas | ENTREGUE | [DF](pedidos/DF_deserto_ferrugem.md) | — | — |
+| DF50–DF57 | Prensas, serra, plataformas, válvulas e gancho | ENTREGUE | [DF](pedidos/DF_deserto_ferrugem.md) | — | — |
+| DF60–DF71 | Robôs, drones e seus projéteis | ENTREGUE | [DF](pedidos/DF_deserto_ferrugem.md) | — | — |
+| DF80–DF86 | Efeitos de máquinas, areia, impacto e vento | ENTREGUE | [DF](pedidos/DF_deserto_ferrugem.md) | — | — |
 
-O menu abre o **Deserto de Ferrugem** com Daymon e o arpão. As estações salvam o progresso desta fase separadamente. O percurso termina na porta do salão do Núcleo. [Montagem e testes](../docs/fases/deserto_ferrugem/detalhamento_da_fase.md#versão-jogável).
+Todos os assets do pedido DF estão entregues. A versão jogável está na [branch do protótipo](https://github.com/JmFranca21/warp-fracture/tree/prototipo/deserto-de-ferrugem). A integração na campanha principal está pendente.
 
 ## Fase Verdâmia
 
