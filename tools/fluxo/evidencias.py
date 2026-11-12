@@ -20,9 +20,10 @@ SHEET = ["--grid", "4x2", "--cell", "384x512"]
 SPECS = {  # ID -> argumentos do check_art.py
     "A1_eco_appear": SHEET, "A2_eco_float": SHEET, "A3_eco_avanco": SHEET,
     "A4_eco_grab": SHEET, "A5_eco_vanish": SHEET, "A9_fx_dobra_eco": SHEET,
-    "A7_fx_poeira": SHEET + ["--feet", "40"], "A8_fx_rachadura_teto": SHEET,
+    "A7_fx_poeira": SHEET + ["--feet", "40"], "A8_fx_rachadura_teto": SHEET + ["--margin", "0"],
     "A6_entulho": ["--size", "1024x1024", "--fill", "0.6-0.7"],
 }
+VERSIONED = {"A1_eco_appear", "A2_eco_float", "A3_eco_avanco", "A4_eco_grab", "A5_eco_vanish", "A7_fx_poeira", "A8_fx_rachadura_teto", "A9_fx_dobra_eco"}
 # (descrição, (ID, quadro), (ID, quadro)) — quadros numerados a partir de 1
 CONTINUIDADE = [
     ("A1 quadro 8 = A2 quadro 1", ("A1_eco_appear", 8), ("A2_eco_float", 1)),
@@ -36,6 +37,14 @@ CONTINUIDADE = [
 def main_png(id_):
     pngs = sorted(p for p in (ENT / id_).glob("*.png") if "previa" not in p.stem.lower())
     return pngs
+
+
+def latest(id_):
+    """PNG principal mais recente (o de maior sufixo _vN; sem sufixo = v1)."""
+    import re
+    pngs = main_png(id_)
+    ver = lambda p: int(m.group(1)) if (m := re.search(r"_v(\d+)$", p.stem)) else 1
+    return sorted(pngs, key=ver)[-1:] if pngs else []
 
 
 def cell(img, n, cw=384, ch=512, cols=4):
@@ -86,7 +95,7 @@ def main():
           "do quadro e linha azul a 40 px da base da célula. Medidas em px da imagem original.", ""]
     for id_ in ids:
         md += [f"## {id_}", ""]
-        pngs = main_png(id_)
+        pngs = latest(id_) if id_ in VERSIONED else main_png(id_)
         if not pngs:
             md += ["Nenhum PNG encontrado.", ""]
             continue
@@ -110,7 +119,7 @@ def main():
     if pairs:
         md += ["## Continuidade entre pedidos", "", "| regra | pixels diferentes | diferença média (0-255) |", "|---|---|---|"]
         for desc, (ia, fa), (ib, fb) in pairs:
-            pa, pb = main_png(ia), main_png(ib)
+            pa, pb = latest(ia), latest(ib)
             if not pa or not pb:
                 md.append(f"| {desc} | arquivo ausente | |")
                 continue
