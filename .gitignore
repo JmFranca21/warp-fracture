@@ -15,3 +15,8 @@ build_linux/
 .DS_Store
 Thumbs.db
 __pycache__/
+
+# pacotes de evidência do revisor (regeneráveis com tools/fluxo/evidencias.py)
+colaboracao/revisoes/evidencias/*/*.png
+colaboracao/revisoes/evidencias/*/diff_*.txt
+.alethe/
