@@ -22,18 +22,21 @@ Ordem escolhida: primeiro o que todo jogador sente (som, salvamento, orientaçã
 ## Fase 4 — Polimento contínuo
 - Inimigos mais táticos (grupo, reforço, turreta que gira), transições entre áreas e acessibilidade (remapear teclas).
 
+## Correção v0.6.1 — 12/11/2026
+- O fragmento de Verdâmia não reaparece no altar depois de "Continuar" (defeito registrado na [D02](colaboracao/decisoes/D02_passagem_verdamia_deserto.md)). O save ganhou o campo `frags`, e os saves antigos são migrados. Teste novo: `tools/test_fragmento.gd`. A Etapa 7 (Fuga do Eco) continua sendo a próxima.
+
 ## v0.6 — 11/11/2026
 - Verdâmia passou a usar a arte entregue pelo diretor de arte (61 assets integrados, 3 pranchas de referência). Nenhuma mecânica nova. A Etapa 7 (Fuga do Eco) continua sendo a próxima.
 
 ## Correção v0.5.1 — 10/11/2026
 - Corrigida a interação com o portal do laboratório: E abre a calibração, Esc cancela e concluir as ondas leva a Verdâmia. A Etapa 7 continua pendente.
 
-## Situação das entregas em 11/11/2026
+## Situação das entregas em 12/11/2026
 
 | Frente | Publicado | Próximo trabalho |
 |---|---|---|
 | Eco | A0 aprovada, A2 importada, A1/A3/A4/A5/A9 entregues. A4 tem uso provisório. | Produzir entulho, poeira e rachadura (A6–A8). Revisar as transições, programar o rastro e a Dobra conforme D01, o desabamento, o checkpoint e o som. Testar a chegada ao portal. |
-| Verdâmia | Fase e Rainha jogáveis. Lote ilustrado com 64 assets, 67 PNGs, galeria e manifesto. | Revisar a arte, preparar recortes e escalas, aplicar as folhas e testar movimento, combate e vitória. |
-| Deserto de Ferrugem | Arte completa e entregue. Protótipo jogável preservado na branch `prototipo/deserto-de-ferrugem`. | Proposta de campanha em revisão (passagem, Autômato, Forja-Mãe e portais): [proposta da Fase 2](docs/fases/deserto_ferrugem/proposta_fase2.md). |
+| Verdâmia | Arte integrada na v0.6 (61 assets). Fragmento corrigido na v0.6.1. | Ajustes não bloqueantes da [revisão VD_verdamia](colaboracao/revisoes/VD_verdamia.md). |
+| Deserto de Ferrugem | Arte da fase entregue. Protótipo jogável preservado na branch `prototipo/deserto-de-ferrugem`. D02–D05 decididas em 12/11/2026 (recomendações aceitas). | Fichas DF02, DF03 e PT00 em produção (aprovação final do João). Base: [proposta da Fase 2](docs/fases/deserto_ferrugem/proposta_fase2.md). |
 
 Os [pedidos de arte por ID](colaboracao/STATUS.md) e a [especificação do Deserto](docs/fases/deserto_ferrugem/detalhamento_da_fase.md) orientam a produção. A abertura, as Fendas Instáveis, Hidrópolis e os demais universos continuam no planejamento.

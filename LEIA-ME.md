@@ -1,4 +1,4 @@
-# Warp Fracture — Protótipo v0.6
+# Warp Fracture — Protótipo v0.6.1
 
 Primeiro protótipo jogável do *Warp Fracture*, feito em **Godot 4.3** a partir do Caderno de 10 páginas.
 
@@ -81,6 +81,11 @@ Para ajustar no editor: dê dois cliques em `rastejador_frames.tres`. O painel *
 
 **Para os próximos inimigos:** gere o GIF ou spritesheet com fundo transparente ou de cor sólida e diga quais quadros são de cada ação.
 
+
+## Correção da v0.6.1
+
+- O fragmento de Verdâmia não reaparece mais no altar ao **Continuar** um jogo salvo depois da vitória. Antes, ele podia ser coletado de novo e o contador ia a 2/4.
+- Saves antigos continuam funcionando. Quem já tinha chegado a 2/4 por causa do defeito volta a 1/4. Quem salvou depois de vencer a Rainha, mas antes de pegar o fragmento, ainda o encontra no altar.
 
 ## Novidades da v0.6
 

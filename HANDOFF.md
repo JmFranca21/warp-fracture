@@ -1,6 +1,6 @@
 # Warp Fracture — Documento de passagem (handoff)
 
-Situação em 11/11/2026, protótipo **v0.6**. Este arquivo tem o contexto que um novo agente (ou programador) precisa para continuar o projeto sem refazer nada.
+Situação em 12/11/2026, protótipo **v0.6.1** (seção 12). D02–D05 decididas em 12/11/2026, com as recomendações aceitas; o trabalho segue o [fluxo automático](colaboracao/FLUXO_AUTOMATICO.md). Este arquivo tem o contexto que um novo agente (ou programador) precisa para continuar o projeto sem refazer nada.
 
 ---
 
@@ -249,3 +249,23 @@ godot --headless --audio-driver Dummy --path . --script res://tools/test_verdami
 Percorre menu, novo jogo, portal, as 11 animações do Lince, garras em inimigo, santuário (E), morte e retorno, salvar e continuar, os quatro ataques da Rainha, barreira, fragmento e vitória. Ele apaga o save no fim.
 
 **Mudanças de comportamento (pequenas):** a Rainha conta só as mariposas da arena antes de invocar (antes, as mariposas do resto da fase bloqueavam a invocação); os ataques dela saem 0,35 a 0,5 s depois do início da animação; a raiz tem colisão de 56 px de largura (era 40) para acompanhar o desenho; a placa do Clarão foi de x 2600 para 2700 e o Registro 07 de x 2680 para 2800, para não ficarem sobre o santuário.
+
+## 12. Correção v0.6.1 e ambiente Windows (12/11/2026)
+
+**Fragmento duplicado (defeito da D02).** O `level.gd` recriava o fragmento sempre que `boss_done` tinha a fase, sem saber se ele já tinha sido pego; no save só havia o contador `fragments`. Agora:
+- `main.frags` guarda os fragmentos recuperados por fase (`{"verdamia": true}`), e `fragments` é sempre `frags.size()`;
+- `collect_fragment()` ignora uma segunda coleta na mesma fase;
+- `level.gd` só cria o fragmento se a Rainha foi vencida **e** a fase não está em `frags`;
+- o save grava `frags` (o `version` continua 1, porque o campo é opcional). `SaveGame.fragment_set()` migra os saves antigos como a D02 pede: Rainha vencida e `fragments` ≥ 1 vira `["verdamia"]` (2/4 volta a 1/4); Rainha vencida e `fragments` = 0 mantém o fragmento no altar. O resumo do menu usa a mesma função.
+
+A D02 (Opção A) vai trocar a tela de vitória pela fenda de retorno e levar o save à `version 2` com `installed` e `portal_cal`. O campo `frags` já tem o nome e o formato que ela define.
+
+Teste novo, que restaura o save do usuário no fim:
+
+```bash
+tools/fluxo/godot.sh --script res://tools/test_fragmento.gd -- save at=999
+```
+
+Ele cobre três casos: o jogo real (Rainha → coleta → Continuar), um save antigo com 2/4 e um save antigo gravado entre a vitória e a coleta.
+
+**Ambiente Windows.** O fluxo automático roda em Windows com Git Bash. O `tools/fluxo/godot.sh` substitui o `tools/run.sh`: usa o Godot 4.3 de `C:/Users/joao.marcelo/AreaJM/Ferramentas/godot-4.3/` (ou o que estiver em `GODOT`) e aceita as mesmas flags; `--script` e `--import` rodam sem tela. Capturas usam caminhos Windows (`shot=C:/...png`). O ffmpeg não está instalado, então o `gen_audio.py` não converte OGG. O save fica em `%APPDATA%/Godot/app_userdata/Warp Fracture - Prototipo/warp_save.json`.

@@ -192,7 +192,8 @@ func _ready() -> void:
 	if data.has("boss"):
 		var bd: Dictionary = data["boss"]
 		if main.boss_done.has(id):
-			spawn_fragment()
+			if not main.frags.has(id):   # Rainha vencida, mas o fragmento ainda não foi pego
+				spawn_fragment()
 		else:
 			boss = Queen.new()
 			boss.level = self

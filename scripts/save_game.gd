@@ -20,6 +20,7 @@ static func write(main) -> void:
 		"boss_done": main.boss_done.keys(),
 		"visited": main.visited.keys(),
 		"fragments": main.fragments,
+		"frags": main.frags.keys(),
 		"cells": main.cells,
 		"deaths": main.deaths,
 		"play_time": main.play_time,
@@ -54,6 +55,25 @@ static func to_set(arr) -> Dictionary:
 	return out
 
 
+## Fragmentos recuperados, por fase. Saves sem o campo "frags" (até a v0.6) são migrados:
+## cada fase com chefe derrotado conta como coletada enquanto houver "fragments" para cobrir.
+## Assim, Rainha vencida + fragments >= 1 vira ["verdamia"] (e um contador 2/4, do defeito
+## da v0.6, volta a 1/4); Rainha vencida + fragments = 0 mantém o fragmento no altar.
+static func fragment_set(d: Dictionary) -> Dictionary:
+	if d.has("frags"):
+		return to_set(d["frags"])
+	var out := {}
+	var n := int(d.get("fragments", 0))
+	var bd = d.get("boss_done", [])
+	if bd is Array:
+		for lv in bd:
+			if n <= 0:
+				break
+			out[String(lv)] = true
+			n -= 1
+	return out
+
+
 ## resumo curto para o menu ("Laboratório Hélix · 12:34 · 1/4 fragmentos")
 static func summary() -> String:
 	var d := read()
@@ -61,4 +81,4 @@ static func summary() -> String:
 		return ""
 	var lv: String = LevelData.get_level(String(d.get("level", "lab")))["name"]
 	var secs := int(d.get("play_time", 0.0))
-	return "%s  ·  %02d:%02d  ·  %d/4 fragmentos" % [lv.capitalize(), secs / 60, secs % 60, int(d.get("fragments", 0))]
+	return "%s  ·  %02d:%02d  ·  %d/4 fragmentos" % [lv.capitalize(), secs / 60, secs % 60, fragment_set(d).size()]

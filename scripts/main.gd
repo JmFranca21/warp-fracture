@@ -26,7 +26,8 @@ var fade_rect: ColorRect
 var cells := 0
 var deaths := 0
 var play_time := 0.0
-var fragments := 0
+var fragments := 0       # contagem mostrada no HUD; sempre igual a frags.size()
+var frags := {}          # fragmentos já recuperados, por fase ("verdamia")
 var terminals := {}
 var collected := {}
 var boss_done := {}
@@ -318,6 +319,7 @@ func _reset_progress() -> void:
 	deaths = 0
 	play_time = 0.0
 	fragments = 0
+	frags = {}
 	terminals = {}
 	collected = {}
 	boss_done = {}
@@ -355,7 +357,8 @@ func start_game(from_save := false) -> void:
 		visited = SaveGame.to_set(d.get("visited", []))
 		modules = SaveGame.to_set(d.get("modules", []))
 		upgrades = d.get("upgrades", {})
-		fragments = int(d.get("fragments", 0))
+		frags = SaveGame.fragment_set(d)   # saves antigos: deduz de boss_done + fragments
+		fragments = frags.size()
 		cells = int(d.get("cells", 0))
 		deaths = int(d.get("deaths", 0))
 		play_time = float(d.get("play_time", 0.0))
@@ -589,7 +592,11 @@ func boss_defeated() -> void:
 
 
 func collect_fragment() -> void:
-	fragments += 1
+	var lid: String = level.id if level != null else ""
+	if frags.has(lid):
+		return   # um fragmento por fase: nunca conta duas vezes
+	frags[lid] = true
+	fragments = frags.size()
 	AudioMgr.sfx("cura", Vector2.INF, 2.0)
 	AudioMgr.music("menu")
 	state = "victory"
