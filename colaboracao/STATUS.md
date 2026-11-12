@@ -12,8 +12,8 @@ Atualizado pelos agentes. Leia `PROTOCOLO.md` e `FLUXO_AUTOMATICO.md` antes de c
 | A4_eco_grab | Agarrão no ar, 6 quadros (reescrito conforme a D01) | ENTREGUE (uso provisório) | [pedido](pedidos/A4_eco_grab.md) | [entrega](entregas/A4_eco_grab/) | — |
 | A5_eco_vanish | Eco se desfazendo, 6 quadros | ENTREGUE | [pedido](pedidos/A5_eco_vanish.md) | [entrega](entregas/A5_eco_vanish/) | — |
 | A9_fx_dobra_eco | Fenda da Dobra espectral (o Eco reaparece por ela), 8 quadros | ENTREGUE | [pedido](pedidos/A9_fx_dobra_eco.md) | [entrega](entregas/A9_fx_dobra_eco/) | — |
-| A6_entulho | 3 pedaços de teto do laboratório que caem | ABERTO | [pedido](pedidos/A6_entulho.md) | — | — |
-| A7_fx_poeira | Nuvem de poeira de impacto, 6 quadros | ABERTO | [pedido](pedidos/A7_fx_poeira.md) | — | — |
+| A6_entulho | 3 pedaços de teto do laboratório que caem | ENTREGUE (ciclo 1, aguarda revisor) | [pedido](pedidos/A6_entulho.md) | [entrega](entregas/A6_entulho/) | — |
+| A7_fx_poeira | Nuvem de poeira de impacto, 6 quadros | ENTREGUE (ciclo 1, aguarda revisor) | [pedido](pedidos/A7_fx_poeira.md) | [entrega](entregas/A7_fx_poeira/) | — |
 | A8_fx_rachadura_teto | Rachadura se abrindo no teto, 4 quadros | ABERTO | [pedido](pedidos/A8_fx_rachadura_teto.md) | — | — |
 
 **Todos os pedidos seguem a DA-01.** Propostas anteriores e rejeitadas do Eco não são referência.
