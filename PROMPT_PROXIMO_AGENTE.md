@@ -2,7 +2,7 @@
 
 Use a branch `main` do repositório JmFranca21/warp-fracture. No fluxo automático, o trabalho local acontece na branch `auto/fluxo`, e o João Marcelo faz o merge e o push. As entregas publicadas e o caderno atualizado estão na árvore do projeto.
 
-Você vai continuar o desenvolvimento do jogo **Warp Fracture**, um metroidvania 2D em visão lateral feito em **Godot 4.3** (GDScript, renderizador GL Compatibility). A arte segue a DA-01: 2D cartunizado, simplificado e minimalista, sem pixel art. O projeto está na **v0.6.1**: Laboratório Hélix e Verdâmia jogáveis, com a arte oficial de Verdâmia, chefe, menu, save, mapa, Arpão de Fase, Bancada de Upgrades e Registros. A v0.6.1 corrigiu o fragmento que reaparecia no altar ao continuar o jogo.
+Você vai continuar o desenvolvimento do jogo **Warp Fracture**, um metroidvania 2D em visão lateral feito em **Godot 4.3** (GDScript, renderizador GL Compatibility). A arte segue a DA-01: 2D cartunizado, simplificado e minimalista, sem pixel art. O projeto está na **v0.7**: Laboratório Hélix (com a Fuga do Eco) e Verdâmia jogáveis, com a arte oficial de Verdâmia, chefe, menu, save, mapa, Arpão de Fase, Bancada de Upgrades e Registros. A v0.6.1 corrigiu o fragmento que reaparecia no altar ao continuar o jogo.
 
 **Decisões em vigor:** D01 (locomoção do Eco) e D02 a D05 (passagem Verdâmia → Hélix → Deserto com o Receptáculo, forma Autômato, chefe Forja-Mãe e portais), decididas em 12/11/2026 com as recomendações aceitas. Estão em `colaboracao/decisoes/`.
 
@@ -18,11 +18,12 @@ Antes de qualquer coisa:
      ```bash
      tools/fluxo/godot.sh --script res://tools/test_verdamia.gd -- save at=999
      tools/fluxo/godot.sh --script res://tools/test_fragmento.gd -- save at=999
-     tools/fluxo/godot.sh --script res://tools/test_portal.gd -- level=lab pos=4960,680 terminals god at=30
+     tools/fluxo/godot.sh --script res://tools/test_portal.gd -- level=lab pos=6560,680 terminals god at=30
+     tools/fluxo/godot.sh --script res://tools/test_fuga.gd -- level=lab terminals arpao pos=4250,790 save at=999
      ```
 
 Regras de trabalho:
-- Siga o roteiro etapa por etapa. A próxima é a **Etapa 7, Fuga do Eco**, descrita na seção 8 do HANDOFF e na D01. Depois vêm a cena de abertura, as Fendas Instáveis e Hidrópolis, além da campanha do Deserto conforme D02–D05.
+- Siga o roteiro etapa por etapa. A Etapa 7 (Fuga do Eco) foi concluída na v0.7 (HANDOFF, seção 13). A próxima é a **Etapa 8, cena de abertura**; em paralelo, a etapa 1 da campanha do Deserto (passagem e save, D02) não depende de arte nova. Depois vêm as Fendas Instáveis e Hidrópolis.
 - **Sempre verifique bugs e o posicionamento dos elementos com capturas de tela.** Nenhum elemento, nem os do cenário de fundo, pode parecer flutuando sem contexto (use correntes, suportes, apoio no chão ou no teto). A fase deve ser desafiadora, sem ficar aglomerada.
 - Plataformas devem ser atravessáveis por baixo.
 - Para cada caminho novo, faça testes de alcance com o harness (`act=...`), além da regressão: menu, portal, chefe, vitória, save e continuar.
@@ -31,4 +32,4 @@ Regras de trabalho:
 - Quando uma mudança afetar o design, atualize também o caderno .docx, mantendo exatamente 10 páginas.
 - Escreva tudo em português do Brasil e explique de forma direta o que mudou em cada entrega.
 
-Comece confirmando que o projeto roda e que a regressão passa. Depois resuma o estado atual em poucas linhas e siga para a Etapa 7.
+Comece confirmando que o projeto roda e que a regressão passa. Depois resuma o estado atual em poucas linhas e siga para a próxima etapa.

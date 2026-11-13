@@ -34,6 +34,7 @@ var boss_done := {}
 var visited := {}        # salas exploradas ("lab:A") — usadas pelo mapa
 var modules := {}        # módulos da arma conquistados ("arpao")
 var upgrades := {}       # melhorias compradas na bancada
+var events := {}         # eventos únicos já vividos ("fuga_lab")
 var checkpoint_level := "lab"
 var checkpoint_pos := Vector2.ZERO
 var interact_target: Node = null
@@ -120,6 +121,8 @@ func _ready() -> void:
 		_reset_progress()
 		if auto.has("terminals"):
 			terminals = {"A": true, "B": true}
+		if auto.has("fugadone"):
+			events["fuga_lab"] = true
 		menu.visible = false
 		hud.visible = true
 		var lid: String = auto["level"]
@@ -315,6 +318,7 @@ func _reset_progress() -> void:
 	visited = {}
 	modules = {}
 	upgrades = {}
+	events = {}
 	cells = 0
 	deaths = 0
 	play_time = 0.0
@@ -358,6 +362,10 @@ func start_game(from_save := false) -> void:
 		modules = SaveGame.to_set(d.get("modules", []))
 		upgrades = d.get("upgrades", {})
 		frags = SaveGame.fragment_set(d)   # saves antigos: deduz de boss_done + fragments
+		events = SaveGame.to_set(d.get("events", []))
+		# saves de antes da v0.7: quem já saiu do laboratório não revive a Fuga do Eco
+		if checkpoint_level != "lab" or not frags.is_empty():
+			events["fuga_lab"] = true
 		fragments = frags.size()
 		cells = int(d.get("cells", 0))
 		deaths = int(d.get("deaths", 0))
@@ -551,6 +559,8 @@ func enter_portal(target: String, portal_pos: Vector2) -> void:
 		return
 	transitioning = true
 	player.controls_locked = true
+	if level != null and level.fuga != null:
+		level.fuga.finish()           # o Eco se desfaz; a fuga fica registrada
 	player.start_warp(portal_pos + Vector2(0, -80))
 	AudioMgr.sfx("portal")
 	add_shake(14.0)

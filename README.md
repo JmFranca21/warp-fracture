@@ -2,15 +2,15 @@
 
 Metroidvania 2D em visão lateral feito em **Godot 4.3**, com visual ilustrado inspirado em Hollow Knight (sem pixel art). Daymon Sagan, cientista do Projeto Hélix, atravessa realidades fraturadas para recuperar os fragmentos da Máquina de Dobra. Em cada universo, ele assume uma forma diferente.
 
-**Versão atual:** protótipo v0.6.1. A v0.6 trouxe Verdâmia com a arte oficial (Lince-Vagalume, inimigos, Rainha Micélia, cenário e efeitos). A v0.6.1 corrige o fragmento que reaparecia no altar ao continuar um save gravado depois da vitória. Laboratório Hélix e Verdâmia jogáveis, com chefe, Arpão de Fase, Bancada de Upgrades, Registros do Projeto, mapa, save e som.
+**Versão atual:** protótipo v0.7. A v0.7 traz a **Fuga do Eco**: ao abrir a porta da Sala G, o Eco surge por uma fenda e persegue Daymon enquanto o laboratório desaba, até o portal, agora no fim da nova Galeria do Portal. A v0.6 trouxe Verdâmia com a arte oficial (Lince-Vagalume, inimigos, Rainha Micélia, cenário e efeitos). A v0.6.1 corrige o fragmento que reaparecia no altar ao continuar um save gravado depois da vitória. Laboratório Hélix e Verdâmia jogáveis, com chefe, Arpão de Fase, Bancada de Upgrades, Registros do Projeto, mapa, save e som.
 
-## Estado do projeto (12/11/2026)
+## Estado do projeto (13/11/2026)
 
 | Frente | Situação |
 |---|---|
-| Laboratório Hélix | Jogável: 8 salas, Arpão de Fase, Bancada, Registros e portal com calibração |
+| Laboratório Hélix | Jogável: 9 salas (nova Galeria do Portal), Arpão de Fase, Bancada, Registros, Fuga do Eco e portal com calibração |
 | Verdâmia | Jogável, com a arte oficial integrada e a Rainha Micélia; o fragmento 1/4 encerra o protótipo |
-| Eco (Etapa 7, Fuga do Eco) | Próxima etapa. Ficha A0 aprovada, A2 importada, A1/A3/A4/A5/A9 entregues, A6–A8 pedidas |
+| Eco (Etapa 7, Fuga do Eco) | Jogável na v0.7. A1–A9 integradas: o Eco surge (A1, A9), observa (A2), avança pelo rastro (A3), agarra com aviso (A4), usa a Dobra (A5, A9, A1) e se desfaz no portal (A5); o teto cai (A6, A7, A8) |
 | Deserto de Ferrugem (Fase 2) | Arte da fase entregue; protótipo só na branch `prototipo/deserto-de-ferrugem`. As decisões [D02](colaboracao/decisoes/D02_passagem_verdamia_deserto.md) a [D05](colaboracao/decisoes/D05_portais.md) foram tomadas em 12/11/2026, com as recomendações aceitas: retorno ao Hélix com o Receptáculo, forma Autômato, chefe Forja-Mãe e a nova linguagem dos portais. As fichas DF02, DF03 e PT00 estão em produção |
 
 O catálogo de toda a arte, com o estado de cada item, está no [documento de arte](docs/DOCUMENTO_DE_ARTE.md).
@@ -53,11 +53,12 @@ No Windows (Git Bash), use `tools/fluxo/godot.sh`, que já aponta para o Godot 4
 tools/fluxo/godot.sh level=verdamia pos=4100,790 god at=3 shot=C:/caminho/x.png
 tools/fluxo/godot.sh --script res://tools/test_verdamia.gd -- save at=999
 tools/fluxo/godot.sh --script res://tools/test_fragmento.gd -- save at=999
-tools/fluxo/godot.sh --script res://tools/test_portal.gd -- level=lab pos=4960,680 terminals god at=30
+tools/fluxo/godot.sh --script res://tools/test_portal.gd -- level=lab pos=6560,680 terminals god at=30
+tools/fluxo/godot.sh --script res://tools/test_fuga.gd -- level=lab terminals arpao pos=4250,790 save at=999
 ```
 
 No Linux, use `GODOT=/caminho/do/godot tools/run.sh ...` com as mesmas flags.
 
 ## Próximos passos
 
-A próxima etapa é a **7, Fuga do Eco**: o Eco persegue Daymon enquanto o laboratório desmorona (veja a seção 8 do `HANDOFF.md` e a [D01](colaboracao/decisoes/D01_locomocao_eco.md)). As artes do Eco e do Deserto já estão no repositório e ainda não entraram no jogo. A campanha do Deserto segue as decisões D02 a D05. Consulte o [roteiro de implementação](ROTEIRO.md), o [quadro de arte](colaboracao/STATUS.md) e o [GDD de dez páginas](docs/Caderno_de_10_paginas_Warp_Fracture_v2.docx).
+A Etapa 7 (Fuga do Eco) entrou na v0.7. As próximas são a **8, cena de abertura**, e a etapa 1 da campanha do Deserto (passagem entre fases e save, pela D02), que não depende de arte nova. As artes do Deserto já estão no repositório e ainda não entraram no jogo. A campanha do Deserto segue as decisões D02 a D05. Consulte o [roteiro de implementação](ROTEIRO.md), o [quadro de arte](colaboracao/STATUS.md) e o [GDD de dez páginas](docs/Caderno_de_10_paginas_Warp_Fracture_v2.docx).

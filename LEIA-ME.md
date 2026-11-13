@@ -1,4 +1,4 @@
-# Warp Fracture — Protótipo v0.6.1
+# Warp Fracture — Protótipo v0.7
 
 Primeiro protótipo jogável do *Warp Fracture*, feito em **Godot 4.3** a partir do Caderno de 10 páginas.
 
@@ -45,6 +45,7 @@ O jogo usa o renderizador *Compatibility* (OpenGL 3.3), que funciona em PCs simp
 - Puzzle: ativar os 2 terminais para destravar a porta de emergência.
 - Estação de Recarga: restaura a vida e salva o ponto de retorno.
 - Mini-game de Calibração de Portal: alinhar 3 ondas de frequência.
+- **Fuga do Eco:** ao abrir a porta da Sala G, o Eco surge por uma fenda e persegue Daymon até o portal, no fim da Galeria do Portal, enquanto o teto cai e o piso cede. Ele não pode ser morto: corra, use a esquiva para atravessar o agarrão e o Arpão no último fosso. Perto do portal, a luz segura o Eco.
 
 **2. Verdâmia** (forma Lince-Vagalume)
 - Pulo duplo, salto de parede, garras e golpe para baixo que quica em inimigos e espinhos.
@@ -81,6 +82,13 @@ Para ajustar no editor: dê dois cliques em `rastejador_frames.tres`. O painel *
 
 **Para os próximos inimigos:** gere o GIF ou spritesheet com fundo transparente ou de cor sólida e diga quais quadros são de cada ação.
 
+
+## Novidades da v0.7
+
+- **Fuga do Eco.** Depois dos dois terminais, a porta da Sala G abre e começa a fuga: alarme, trilha nova e o Eco, que segue o seu rastro pelo ar. Perto, ele agarra; o golpe é avisado e a esquiva o atravessa. Se você abrir muita distância, ele some e reaparece por uma fenda atrás de você.
+- **Galeria do Portal.** O laboratório ganhou uma sala nova depois da Saída, com piso que desaba, uma barricada de escombros e um fosso com gancho. O portal agora fica no fim dela.
+- O teto cai pelo caminho, sempre com aviso: rachadura no teto e marca vermelha no chão.
+- O jogo salva no início da fuga. Se Daymon cair, ela recomeça na Sala G.
 
 ## Correção da v0.6.1
 
@@ -179,4 +187,4 @@ O inventário de sprites importados está em [USADAS_NO_JOGO.md](arte_original/U
 
 ## Em desenvolvimento
 
-A produção da próxima versão está no [roteiro](ROTEIRO.md). As novas ilustrações de Verdâmia aguardam revisão e integração.
+A produção da próxima versão está no [roteiro](ROTEIRO.md).

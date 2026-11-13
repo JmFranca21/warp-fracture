@@ -13,7 +13,7 @@ Ordem escolhida: primeiro o que todo jogador sente (som, salvamento, orientaçã
 6. **Registros do Projeto**: diários espalhados que contam o que aconteceu antes da explosão.
 
 ## Fase 3 — Conteúdo (v0.6+)
-7. **Fuga do Eco**: clímax no fim do laboratório, com o vilão perseguindo e a sala desmoronando.
+7. ✅ **Fuga do Eco** (v0.7, 13/11/2026): o Eco persegue Daymon da Sala G ao portal, agora no fim da nova Galeria do Portal, enquanto o laboratório desaba. Veja a seção 13 do `HANDOFF.md`.
 8. **Cena de abertura**: a explosão da Máquina de Dobra.
 9. **Fendas Instáveis**: salas-desafio cronometradas e escondidas.
 10. ✅ **Integração das artes de Verdâmia** (v0.6, 11/11/2026): Lince, inimigos, chefe, cenário e efeitos no jogo. Destino de cada asset em `colaboracao/revisoes/VD_verdamia.md`.
@@ -21,6 +21,9 @@ Ordem escolhida: primeiro o que todo jogador sente (som, salvamento, orientaçã
 
 ## Fase 4 — Polimento contínuo
 - Inimigos mais táticos (grupo, reforço, turreta que gira), transições entre áreas e acessibilidade (remapear teclas).
+
+## v0.7 — 13/11/2026
+- Etapa 7 concluída: Fuga do Eco com a arte A1–A9, Galeria do Portal (portal em x 6560), entulho com aviso, piso que desaba, alarme, trilha `fuga`, ponto de retorno no início e evento `fuga_lab` no save. Teste novo: `tools/test_fuga.gd`. A próxima é a Etapa 8 (cena de abertura).
 
 ## Correção v0.6.1 — 12/11/2026
 - O fragmento de Verdâmia não reaparece no altar depois de "Continuar" (defeito registrado na [D02](colaboracao/decisoes/D02_passagem_verdamia_deserto.md)). O save ganhou o campo `frags`, e os saves antigos são migrados. Teste novo: `tools/test_fragmento.gd`. A Etapa 7 (Fuga do Eco) continua sendo a próxima.

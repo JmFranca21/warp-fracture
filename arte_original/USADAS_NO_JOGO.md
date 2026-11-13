@@ -45,6 +45,14 @@ Importadas com `tools/import_cells.py` (grade 4×2 transparente, âncora fixa po
 | Animação no jogo | Arquivo de origem | Quadros | fps | Gerado em |
 |---|---|---|---|---|
 | eco/float | colaboracao/entregas/A2_eco_float/A2_eco_float.png | 6 | 8 (loop) | assets/inimigos/eco/eco_frames.tres |
+| eco/appear | colaboracao/entregas/A1_eco_appear/A1_eco_appear_v2.png | 8 | 14 | assets/inimigos/eco/eco_frames.tres |
+| eco/advance | colaboracao/entregas/A3_eco_avanco/A3_eco_avanco.png | 6 | 12 (loop) | assets/inimigos/eco/eco_frames.tres |
+| eco/grab | colaboracao/entregas/A4_eco_grab/A4_eco_grab.png | 6 | 12 (1–3 mais lentos no jogo) | assets/inimigos/eco/eco_frames.tres |
+| eco/vanish | colaboracao/entregas/A5_eco_vanish/A5_eco_vanish_v2.png | 6 | 12 | assets/inimigos/eco/eco_frames.tres |
+| eco_dobra/play | colaboracao/entregas/A9_fx_dobra_eco/A9_fx_dobra_eco.png | 8 | 14 | assets/inimigos/eco/eco_dobra_frames.tres |
+| poeira_lab/play | colaboracao/entregas/A7_fx_poeira/A7_fx_poeira.png | 6 | 14 | assets/laboratorio/fx/poeira_lab_frames.tres |
+| rachadura_teto/play | colaboracao/entregas/A8_fx_rachadura_teto/A8_fx_rachadura_teto.png | 4 | 10 | assets/laboratorio/fx/rachadura_teto_frames.tres |
+| entulho 1–3 (estático) | colaboracao/entregas/A6_entulho/A6_entulho_1..3.png | 1 | — | assets/laboratorio/entulho_1..3.png (256 px) |
 
 Referências aprovadas: `arte_original/referencias_aprovadas/A0_ficha_eco.png` (ficha do Eco).
 

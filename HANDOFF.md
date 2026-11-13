@@ -1,6 +1,6 @@
 # Warp Fracture — Documento de passagem (handoff)
 
-Situação em 12/11/2026, protótipo **v0.6.1** (seção 12). D02–D05 decididas em 12/11/2026, com as recomendações aceitas; o trabalho segue o [fluxo automático](colaboracao/FLUXO_AUTOMATICO.md). Este arquivo tem o contexto que um novo agente (ou programador) precisa para continuar o projeto sem refazer nada.
+Situação em 13/11/2026, protótipo **v0.7** (seção 13: Fuga do Eco). D02–D05 decididas em 12/11/2026, com as recomendações aceitas; o trabalho segue o [fluxo automático](colaboracao/FLUXO_AUTOMATICO.md). Este arquivo tem o contexto que um novo agente (ou programador) precisa para continuar o projeto sem refazer nada.
 
 ---
 
@@ -174,7 +174,7 @@ godot --headless --path . --export-release "Linux" build_linux/WarpFracture.x86_
 
 ## 8. Próximos passos (Fase 3 do roteiro, nesta ordem)
 
-**7. Fuga do Eco** (clímax do laboratório):
+**7. Fuga do Eco** (clímax do laboratório) — **concluída na v0.7; veja a seção 13.** A especificação original fica abaixo como registro:
 - Depois que os dois terminais forem ativados e a porta abrir, o Eco aparece. É uma silhueta de energia roxa e ciano com a forma do Daymon. Ele persegue o jogador sem poder ser morto.
 - A sala desmorona enquanto isso: pedaços caem do teto com aviso no chão, o piso se fende e o alarme toca. O jogador corre até o portal usando a esquiva, o Arpão e as plataformas.
 - Precisa de um checkpoint no início da fuga, de uma trilha de fuga nova (em `gen_audio.py`) e de efeitos de desabamento.
@@ -216,7 +216,7 @@ O [roteiro](ROTEIRO.md) consolida a implementação. O [quadro de arte](colabora
 Teste de regressão com Godot 4.3 (entradas reais de teclado, sem a flag que resolve a calibração automaticamente):
 
 ```bash
-godot --headless --audio-driver Dummy --path . --script res://tools/test_portal.gd -- level=lab pos=4960,680 terminals god at=30
+godot --headless --audio-driver Dummy --path . --script res://tools/test_portal.gd -- level=lab pos=6560,680 terminals god at=30
 ```
 
 Verifica proximidade, E, pausa, Esc, reabertura, ajuste das três ondas e chegada a Verdâmia como Lince. Falhava antes da correção e passou depois.
@@ -269,3 +269,34 @@ tools/fluxo/godot.sh --script res://tools/test_fragmento.gd -- save at=999
 Ele cobre três casos: o jogo real (Rainha → coleta → Continuar), um save antigo com 2/4 e um save antigo gravado entre a vitória e a coleta.
 
 **Ambiente Windows.** O fluxo automático roda em Windows com Git Bash. O `tools/fluxo/godot.sh` substitui o `tools/run.sh`: usa o Godot 4.3 de `C:/Users/joao.marcelo/AreaJM/Ferramentas/godot-4.3/` (ou o que estiver em `GODOT`) e aceita as mesmas flags; `--script` e `--import` rodam sem tela. Capturas usam caminhos Windows (`shot=C:/...png`). O ffmpeg não está instalado, então o `gen_audio.py` não converte OGG. O save fica em `%APPDATA%/Godot/app_userdata/Warp Fracture - Prototipo/warp_save.json`.
+
+## 13. v0.7: Fuga do Eco (13/11/2026)
+
+**Como acontece no jogo.** Com os dois terminais ativos, a porta da Sala G abre. Ao entrar na Sala G (x ≥ 4330), começa a fuga:
+- o jogo salva o ponto de retorno na estação da Sala G (Integridade cheia), troca para a trilha `fuga`, liga o alarme (som a cada 1,6 s, tela levemente vermelha, tremores) e mostra "FUGA" e a fala de IRIS;
+- uma fenda (A9) se abre atrás da porta, na Sala F, e o Eco sai por ela (A1), observa (A2) e começa a avançar (A3);
+- o teto cai em 5 pontos do caminho. Cada pedaço avisa 0,9 s antes com a rachadura no teto (A8), uma marca vermelha tracejada no chão e poeira caindo; ao bater, levanta poeira (A7) e fica caído, sem ferir;
+- o piso sobre o fosso 1 da Galeria racha e despenca 0,55 s depois que o jogador passa de x 5220;
+- perto do portal (300 px), a luz do portal segura o Eco. Ele paira na borda, observando, e dá para calibrar com calma;
+- ao atravessar, o Eco se desfaz (A5) e o evento `fuga_lab` vai para o save. O laboratório não repete a fuga.
+
+**Rota nova.** O laboratório foi estendido à direita com a **Galeria do Portal** (sala H, x 5050–6700). O portal saiu de x 4960 e foi para **x 6560**. A Sala G perdeu o drone, a turreta, o rastejador e as três caixas: a pressão ali é o Eco. A rota é: degrau do bloco elevado → piso que desaba sobre o fosso 1 (200 px) → plataforma suspensa → topo da barricada de escombros → **gancho do Arpão** sobre o fosso 2 (300 px; também dá para atravessar com corrida, pulo e esquiva) → plataforma do portal. Os fossos têm piso eletrificado (dano e volta ao último ponto seguro).
+
+**Eco (`scripts/eco.gd`).** Segue o rastro do jogador (pontos gravados a cada 0,05 s na altura do tronco), sem atravessar paredes. A velocidade é elástica: 230 px/s perto e até 410 px/s quando o rastro passa de 650 px; ele para a ~55 px do jogador. A menos de 95 px, agarra (A4): os quadros 1–3 são o aviso (0,4 s) e o golpe é o quadro 4 (dano 1). **A esquiva atravessa o golpe.** Se o rastro passar de 820 px, usa a Dobra: some (A5, quadros 1–4), abre a fenda (A9) num ponto do rastro ~330 px atrás do jogador, nunca a menos de 250 px dele, espera 0,4 s e sai (A1, quadros 3–8). Há 4 s entre Dobras. Tiros atravessam o Eco: ele não pode ser morto.
+
+**Outros scripts.** `fuga.gd` (orquestra), `debris.gd` (entulho), `collapse_slab.gd` (piso que desaba; se o jogador estava em cima, o ponto seguro recua para antes do fosso). `level.gd` cria a fuga quando a fase tem `"fuga"` e `main.events` não tem `fuga_<fase>`.
+
+**Save.** Campo novo `events` (`["fuga_lab"]`). O `version` continua 1. Saves de antes da v0.7 que já estavam fora do laboratório, ou com fragmento, recebem `fuga_lab`. Morrer na fuga volta à estação da Sala G, e a fuga recomeça ao andar.
+
+**Arte e som.** `tools/import_cells.py` importa A1_v2, A3, A4, A5_v2 (Eco), A9 (fenda), A7 (poeira), A8 (rachadura) e A6 (entulho reduzido a 256 px). Os quatro sons novos (`eco_dobra`, `eco_agarra`, `rachadura`, `desaba`) e a trilha `fuga` saem de `python tools/gen_audio.py . --so-fuga`, que não regrava os outros arquivos.
+
+**Harness.** Flag nova `fugadone` (marca a fuga como concluída). O teste do portal agora usa `pos=6560,680`. Teste novo, que restaura o save do usuário:
+
+```bash
+tools/fluxo/godot.sh --script res://tools/test_fuga.gd -- level=lab terminals arpao pos=4250,790 save at=999
+```
+
+Ele cobre: início (ponto de retorno, trilha, Eco longe do jogador), agarrão com aviso (≥ 0,28 s), esquiva atravessando o golpe, morte e recomeço, corrida completa por input até o portal (degrau, piso que desaba, plataforma, barricada e gancho) sem levar dano, zona do portal, Dobra a pelo menos 250 px, calibração, Verdâmia e save.
+
+**Pontos para ajustar jogando.** A corrida perfeita da Sala G ao portal leva cerca de 7 s, então a fuga é curta. Alongar a Galeria ou somar obstáculos é a primeira melhoria se o João Marcelo achar que falta tensão.
+

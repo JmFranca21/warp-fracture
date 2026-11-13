@@ -26,6 +26,7 @@ static func write(main) -> void:
 		"play_time": main.play_time,
 		"modules": main.modules.keys(),
 		"upgrades": main.upgrades,
+		"events": main.events.keys(),
 	}
 	var f := FileAccess.open(PATH, FileAccess.WRITE)
 	if f != null:

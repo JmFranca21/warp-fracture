@@ -1,13 +1,16 @@
 """Gera todos os efeitos sonoros (WAV) e músicas (OGG) do Warp Fracture por síntese.
 Sem amostras externas: tudo é oscilador + ruído + filtro + envelope.
-uso: python gen_audio.py <pasta_projeto>
+uso: python gen_audio.py <pasta_projeto> [--so-fuga]
+   --so-fuga: gera só os sons e a trilha da Fuga do Eco (v0.7), sem regravar o resto.
 """
 import os, sys, subprocess
 import numpy as np
 from scipy.signal import butter, lfilter
 
 SR = 44100
-OUT = sys.argv[1] if len(sys.argv) > 1 else "."
+ARGS = [a for a in sys.argv[1:] if not a.startswith("--")]
+OUT = ARGS[0] if ARGS else "."
+SO_FUGA = "--so-fuga" in sys.argv
 SFX = os.path.join(OUT, "assets/audio/sfx")
 MUS = os.path.join(OUT, "assets/audio/music")
 os.makedirs(SFX, exist_ok=True)
@@ -419,6 +422,43 @@ def music():
     render_track("menu", 70, 2, [L_pad(0.35, 3, 900), L_arp(0.07, 5, "sine", 2, 0.4)], master=0.6)
 
 
-sfx()
-print("efeitos:", len(os.listdir(SFX)))
-music()
+
+
+# ------------------------------------------------------------------ Fuga do Eco (v0.7)
+def fuga():
+    global rng
+    rng = np.random.default_rng(1707)   # semente própria: não altera os sons anteriores
+    # fenda da Dobra espectral: rasgo agudo descendo + zumbido grave
+    d = 0.7
+    save_wav("eco_dobra", mix(sweep(2400, 300, d, "saw", 0.6) * env(int(SR * d), 0.02, 0.2, 0.3, 0.3) * 0.35,
+                              osc(55, d, "sine") * env(int(SR * d), 0.1, 0.2, 0.6, 0.3) * 0.8,
+                              bp(noise(d), 1500, 6000) * env(int(SR * d), 0.01, 0.15, 0.2, 0.3) * 0.5))
+    # agarrão do Eco: aviso sussurrado que sobe e um golpe seco
+    d = 0.5
+    save_wav("eco_agarra", mix(lp_sweep(noise(d), 600, 5000) * env(int(SR * d), 0.25, 0.05, 0.4, 0.15) * 0.6,
+                               sweep(180, 60, d, "square", 2.0) * env(int(SR * d), 0.3, 0.1, 0.3, 0.1) * 0.4))
+    # teto rachando: estalos metálicos
+    d = 0.6
+    cr = np.zeros(int(SR * d))
+    for k in range(7):
+        i = int(rng.uniform(0, d * 0.8) * SR)
+        c = bp(noise(0.03), 2000, 7000) * expdec(int(SR * 0.03), 0.006)
+        cr[i:i + len(c)] += c[: len(cr) - i]
+    save_wav("rachadura", mix(cr, sweep(90, 70, d, "saw") * env(int(SR * d), 0.05, 0.2, 0.3, 0.2) * 0.25))
+    # desabamento: impacto pesado com cascalho
+    d = 0.8
+    save_wav("desaba", mix(sweep(120, 35, d) * expdec(int(SR * d), 0.18),
+                           lp(noise(d), 1800) * expdec(int(SR * d), 0.25) * 0.8,
+                           bp(noise(0.2), 800, 4000) * expdec(int(SR * 0.2), 0.05) * 0.4))
+    # trilha da fuga: urgente, menor, com caixa e sirene no arpejo
+    render_track("fuga", 142, 1, [
+        L_pad(0.20, 3, 1600), L_bass(0.48, (1, 1, 1, 0, 1, 1, 0, 1), "saw", 650), L_arp(0.11, 5, "square", 4, 0.07, False),
+        L_drums(0.62, kick=(1, 0, 1, 0, 1, 0, 1, 0), hat=(1, 1, 1, 1, 1, 1, 1, 1), snare=(0, 0, 1, 0, 0, 0, 1, 1)),
+    ], master=0.8)
+
+
+if not SO_FUGA:
+    sfx()
+    print("efeitos:", len(os.listdir(SFX)))
+    music()
+fuga()

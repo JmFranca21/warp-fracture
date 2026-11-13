@@ -23,8 +23,31 @@ DAYMON_REF_TEX_H = 488 * 0.30
 CELL_SETS = {
     "eco": ("assets/inimigos/eco", 380, (192, 472), {
         "float": ("colaboracao/entregas/A2_eco_float/A2_eco_float.png", 6, 8, True),
+        "appear": ("colaboracao/entregas/A1_eco_appear/A1_eco_appear_v2.png", 8, 14, False),
+        "advance": ("colaboracao/entregas/A3_eco_avanco/A3_eco_avanco.png", 6, 12, True),
+        "grab": ("colaboracao/entregas/A4_eco_grab/A4_eco_grab.png", 6, 12, False),
+        "vanish": ("colaboracao/entregas/A5_eco_vanish/A5_eco_vanish_v2.png", 6, 12, False),
+    }),
+    # fenda da Dobra espectral: mesma escala do Eco, âncora no centro da fenda
+    "eco_dobra": ("assets/inimigos/eco", 380, (192, 252), {
+        "play": ("colaboracao/entregas/A9_fx_dobra_eco/A9_fx_dobra_eco.png", 8, 14, False),
+    }),
+    # desabamento do laboratório (Fuga do Eco)
+    "poeira_lab": ("assets/laboratorio/fx", 380, (192, 472), {
+        "play": ("colaboracao/entregas/A7_fx_poeira/A7_fx_poeira.png", 6, 14, False),
+    }),
+    "rachadura_teto": ("assets/laboratorio/fx", 380, (192, 0), {
+        "play": ("colaboracao/entregas/A8_fx_rachadura_teto/A8_fx_rachadura_teto.png", 4, 10, False),
     }),
 }
+
+# objetos soltos (1024 x 1024, um por arquivo): copiados reduzidos para o jogo
+SINGLES = {
+    "assets/laboratorio/entulho_1.png": "colaboracao/entregas/A6_entulho/A6_entulho_1.png",
+    "assets/laboratorio/entulho_2.png": "colaboracao/entregas/A6_entulho/A6_entulho_2.png",
+    "assets/laboratorio/entulho_3.png": "colaboracao/entregas/A6_entulho/A6_entulho_3.png",
+}
+SINGLE_SIZE = 256
 
 
 def despill(im):
@@ -90,4 +113,9 @@ for name, (folder, drawn_h, anchor, anims) in CELL_SETS.items():
     out.append(f"const {const}_OFFSET := Vector2({off[0]:.2f}, {off[1]:.2f})")
     out.append(f"const {const}_TEX_SCALE := {ts:.4f}")
     out.append("")
+for dst, src in SINGLES.items():
+    im = despill(Image.open(os.path.join(PROJ, src)))
+    im.resize((SINGLE_SIZE, SINGLE_SIZE), Image.LANCZOS).save(os.path.join(PROJ, dst), optimize=True)
+    print(f"{dst}: {SINGLE_SIZE}x{SINGLE_SIZE}")
+out.append('const ENTULHO := ["res://assets/laboratorio/entulho_1.png", "res://assets/laboratorio/entulho_2.png", "res://assets/laboratorio/entulho_3.png"]')
 open(os.path.join(PROJ, "scripts/sprite_meta_cells.gd"), "w").write("\n".join(out) + "\n")

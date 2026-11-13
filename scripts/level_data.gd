@@ -12,7 +12,7 @@ static func get_level(id: String) -> Dictionary:
 
 static func _lab() -> Dictionary:
 	# Seções: A despertar | B fosso | C turreta | D sala alta (terminal A) | E lasers + câmera
-	#         F sala do campo de força (terminal B) | G saída com portal
+	#         F sala do campo de força (terminal B) | G saída | H Galeria do Portal (Fuga do Eco)
 	# Física do Daymon: pulo máx. ≈144 px de altura; corrida+pulo ≈240 px; +esquiva ≈360 px.
 	return {
 		"name": "LABORATÓRIO HÉLIX",
@@ -20,7 +20,7 @@ static func _lab() -> Dictionary:
 		"theme": "lab",
 		"form": "human",
 		"spawn": Vector2(60, 790),
-		"bounds": Rect2(-200, -300, 5250, 1450),
+		"bounds": Rect2(-200, -300, 6900, 1450),
 		"kill_y": 1300.0,
 		"solids": [
 			Rect2(-260, -300, 60, 1700),     # parede esquerda
@@ -33,17 +33,22 @@ static func _lab() -> Dictionary:
 			Rect2(2680, -80, 40, 680),       # parede direita da sala D (abertura no alto p/ a ala secreta)
 			Rect2(2020, 470, 170, 22),       # beiral da alavanca (preso na parede)
 			Rect2(2560, 120, 120, 22),       # beiral do terminal A (preso na parede)
-			Rect2(2720, -300, 2390, 40),     # topo da ala secreta
+			Rect2(2720, -300, 4040, 40),     # topo da ala secreta (e da Galeria)
 			Rect2(2720, -80, 300, 300),      # piso da ala secreta / teto do corredor de lasers
 			Rect2(3020, 100, 460, 120),      # fundo do fosso da ala secreta
 			Rect2(3480, -80, 150, 300),      # piso da ala (sala do núcleo)
 			Rect2(3690, -80, 130, 300),      # piso da ala (após o alçapão)
-			Rect2(3820, -260, 1290, 480),    # teto F–G
+			Rect2(3820, -260, 2940, 480),    # teto F–H (base em y=220)
 			Rect2(3700, 220, 40, 380),       # parede acima do campo de força
 			Rect2(4010, 580, 130, 22),       # beiral do terminal B (preso na parede)
 			Rect2(4140, 220, 110, 380),      # parede acima da porta
-			Rect2(4520, 690, 590, 710),      # bloco elevado da saída
-			Rect2(5050, -300, 60, 1700),     # parede direita
+			Rect2(4520, 690, 960, 710),      # bloco elevado da saída e começo da Galeria
+			Rect2(5480, 1040, 200, 360),     # fundo do fosso 1 da Galeria (coberto pelo piso que desaba)
+			Rect2(5680, 690, 260, 710),      # Galeria: trecho entre os fossos
+			Rect2(5940, 470, 90, 930),       # Galeria: barricada de escombros (sobe pela plataforma suspensa)
+			Rect2(6030, 1040, 300, 360),     # fundo do fosso 2 da Galeria (gancho)
+			Rect2(6330, 690, 370, 710),      # Galeria: plataforma do portal
+			Rect2(6700, -300, 60, 1700),     # parede direita
 		],
 		# [tipo, retângulo, (deslocamento), {hang: y do teto, sid: id do gatilho, period}]
 		"platforms": [
@@ -55,16 +60,20 @@ static func _lab() -> Dictionary:
 			["suspensa", Rect2(2050, 250, 130, 24), {"hang": -260.0}],
 			["quebravel", Rect2(3840, 690, 140, 24), {"hang": 220.0}],
 			["suspensa", Rect2(4560, 560, 140, 24), {"hang": 220.0}],
+			["suspensa", Rect2(5735, 585, 135, 24), {"hang": 220.0}],   # Galeria: degrau para a barricada
 		],
 		"hazards": [
 			Rect2(1000, 1008, 320, 32),      # piso eletrificado do fosso
 			Rect2(3020, 70, 460, 30),        # fosso eletrificado da ala secreta
+			Rect2(5480, 1008, 200, 32),      # fosso 1 da Galeria
+			Rect2(6030, 1008, 300, 32),      # fosso 2 da Galeria
 		],
 		# ganchos do Arpão: [posição, y do teto onde o suporte está preso]
 		"hooks": [
 			[Vector2(2700, -200), -260.0],
 			[Vector2(3150, -215), -260.0],
 			[Vector2(3400, -215), -260.0],
+			[Vector2(6180, 330), 220.0],      # Galeria: sobre o fosso 2
 		],
 		"lasers": [[2960.0, 0.0], [3210.0, 1.4]],
 		"cameras": [[Vector2(2880, 220), 1, [Vector2(3430, 790), Vector2(3470, 790)]]],
@@ -80,18 +89,13 @@ static func _lab() -> Dictionary:
 			["drone", Vector2(2330, 160)],
 			["crawler", Vector2(3900, 790)],
 			["crawler", Vector2(2880, -90)],
-			["drone", Vector2(4440, 450)],
-			["turret_l", Vector2(4700, 690)],
-			["crawler", Vector2(4860, 680)],
+			# a Sala G e a Galeria não têm inimigos: a pressão ali é o Eco e o desabamento
 		],
 		"crates": [
 			["caixa", Vector2(380, 800)],
 			["barril", Vector2(760, 800)],
 			["barril", Vector2(3530, 800)],
 			["caixa_pesada", Vector2(3960, 800), "heal"],
-			["caixa", Vector2(4380, 800)],
-			["caixa", Vector2(4424, 800)],
-			["caixa", Vector2(4402, 764)],
 		],
 		# [tipo, posição, id, (reaparece em s)]
 		"pickups": [
@@ -118,11 +122,12 @@ static func _lab() -> Dictionary:
 			["cell", Vector2(4630, 520), "lab_c8"],
 		],
 		"backwall": {
-			"spans": [[-200, 2020, 220, 800], [1000, 1320, 800, 1040], [1980, 2720, -260, 800], [2680, 5050, 220, 800],
+			"spans": [[-200, 2020, 220, 800], [1000, 1320, 800, 1040], [1980, 2720, -260, 800], [2680, 6700, 220, 800],
+				[5480, 5680, 690, 1040], [6030, 6330, 690, 1040],
 				[2720, 3820, -260, -80], [3020, 3480, -80, 100], [3630, 3690, -80, 220]],
-			"columns": [120, 560, 990, 1330, 1760, 2350, 2900, 3330, 3940, 4400, 4800, 3000, 3500],
+			"columns": [120, 560, 990, 1330, 1760, 2350, 2900, 3330, 3940, 4400, 4800, 3000, 3500, 5300, 5810, 6450],
 			"breaches": [[775, 520, 70], [3500, 560, 75]],
-			"pipes": [[120, 560, 330], [1330, 1980, 320], [2900, 3330, 300], [4400, 4800, 330]],
+			"pipes": [[120, 560, 330], [1330, 1980, 320], [2900, 3330, 300], [4400, 4800, 330], [5300, 5810, 320]],
 			"drops": [[200, 684, 330], [1860, 684, 320], [4470, 684, 330]],
 		},
 		# decoração: [nome, posição, escala, espelhar, ancoragem(chao/teto/centro), brilho]
@@ -155,6 +160,16 @@ static func _lab() -> Dictionary:
 			["alerta", Vector2(4115, 800), 0.7, false, "chao", 0.9],
 			["alerta", Vector2(4275, 800), 0.7, false, "chao", 0.9],
 			["alerta", Vector2(3765, 800), 0.7, false, "chao", 0.9],
+			["janela", Vector2(5300, 450), 1.0, true, "centro", 0.8],
+			["janela", Vector2(6450, 450), 1.0, false, "centro", 0.8],
+			["cabos", Vector2(5600, 220), 1.0, false, "teto"],
+			["cabos", Vector2(6250, 220), 0.9, true, "teto"],
+			["bandeira", Vector2(5980, 220), 0.8, false, "teto"],
+			["entulho_2", Vector2(5965, 470), 0.3, false, "chao", 0.8],
+			["entulho_1", Vector2(6010, 470), 0.26, true, "chao", 0.75],
+			["entulho_3", Vector2(5910, 690), 0.24, false, "chao", 0.75],
+			["alerta", Vector2(5440, 690), 0.7, false, "chao", 0.9],
+			["alerta", Vector2(6370, 690), 0.7, true, "chao", 0.9],
 		],
 		"signs": [
 			[Vector2(230, 800), "A / D para mover  ·  ESPAÇO para pular (segure para ir mais alto)  ·  SHIFT para esquivar"],
@@ -163,7 +178,7 @@ static func _lab() -> Dictionary:
 			[Vector2(2080, 800), "IRIS: \"O Terminal A está no alto desta sala. A alavanca no beiral religa o elevador.\""],
 			[Vector2(2830, 800), "IRIS: \"Lasers alternados e uma câmera de segurança. Se ela te enxergar, o alarme solta Rastejadores.\""],
 			[Vector2(3545, 800), "IRIS: \"Um campo de força protege o Terminal B. A trava precisa de 1/3 da sua Energia de Fase.\""],
-			[Vector2(4880, 690), "IRIS: \"O portal está instável... calibre-o no painel.\""],
+			[Vector2(6400, 690), "IRIS: \"O portal está instável... calibre-o no painel.\""],
 		],
 		"checkpoints": [Vector2(1450, 800), Vector2(2790, 800), Vector2(4300, 800)],
 		"benches": [Vector2(645, 800)],
@@ -176,11 +191,22 @@ static func _lab() -> Dictionary:
 			["E", Rect2(2720, 220, 1020, 580), "Lasers"],
 			["F", Rect2(3740, 220, 400, 580), "Campo"],
 			["G", Rect2(4140, 220, 910, 580), "Saída"],
+			["H", Rect2(5050, 220, 1650, 820), "Galeria do Portal"],
 			["S", Rect2(2720, -260, 1100, 200), "Ala Secreta"],
 		],
 		"terminals": [["A", Vector2(2625, 120)], ["B", Vector2(4075, 580)]],
 		"door": {"rect": Rect2(4140, 600, 110, 200), "needs": ["A", "B"]},
-		"portal": {"pos": Vector2(4960, 690), "target": "verdamia"},
+		"portal": {"pos": Vector2(6560, 690), "target": "verdamia"},
+		# Fuga do Eco (Etapa 7): começa ao entrar na Sala G com a porta aberta
+		"fuga": {
+			"trigger_x": 4330.0,
+			"start": Vector2(4300, 800),          # ponto de retorno salvo no início (a estação da Sala G)
+			"eco_spawn": Vector2(3960, 740),      # fenda atrás da porta, na Sala F
+			"debris": [[4600, 690], [4960, 690], [5300, 690], [5780, 690], [6420, 690]],   # [x, chão]
+			"slab": Rect2(5480, 690, 200, 40),    # piso que desaba sobre o fosso 1
+			"slab_trigger_x": 5220.0,
+			"portal_safe": 300.0,                 # perto do portal, a luz segura o Eco
+		},
 	}
 
 

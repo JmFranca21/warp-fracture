@@ -16,6 +16,7 @@ var portal: Portal = null
 var gate: Gate = null
 var boss: Queen = null
 var boss_active := false
+var fuga: Fuga = null
 
 
 func _ready() -> void:
@@ -203,6 +204,13 @@ func _ready() -> void:
 	fx = Node2D.new()
 	fx.z_index = 8
 	add_child(fx)
+
+	if data.has("fuga") and not main.events.has("fuga_" + id):
+		fuga = Fuga.new()
+		fuga.level = self
+		fuga.main = main
+		fuga.cfg = data["fuga"]
+		add_child(fuga)
 
 	var fg := FgLayer.new()
 	fg.theme = theme
