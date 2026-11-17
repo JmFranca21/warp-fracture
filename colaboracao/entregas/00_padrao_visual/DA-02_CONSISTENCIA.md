@@ -29,7 +29,7 @@ Para comparação, o que saiu da régua no Deserto:
 
 | Peça | Altura | Contorno escuro na borda | Cor do contorno | Problema |
 | --- | --- | --- | --- | --- |
-| Autômato (DF90) | 1,08 D, largura 0,76 da altura | 96% | #23191a preto-marrom | Contorno fechado e quente, proporção de mascote, ferrugem dominando o herói, sem a assinatura do Traje Âncora |
+| Autômato (DF90) | 1,08 D, largura 0,76 da altura | 96% | #23191a preto-marrom | Contorno fechado e quente, proporção de mascote, ferrugem dominando o herói |
 | Robô (DF60) | 0,77 D | 87% | #221513 preto-marrom | Contorno fechado e quente, sem ponto de leitura |
 | Drone (DF66) | 0,30 D | 88% | #2c2323 | Pequeno demais |
 | Forja-Mãe (DF100) | 3,62 D | 95% | #2c1c1b | Contorno fechado e quente; listras de aviso como enfeite |
@@ -42,16 +42,10 @@ Para comparação, o que saiu da régua no Deserto:
 - Chefes: **2,5 D a 3,5 D**. Objetos interativos: **0,5 D a 1,5 D**.
 - No jogo a escala é sempre **uniforme**: nenhuma peça é esticada só na largura ou só na altura (regra do código, conferida pelo desenvolvimento).
 
-### R2. Formas do Daymon: silhueta livre, assinatura fixa
-- A forma **não precisa lembrar o corpo do Daymon**. O Lince-Vagalume é quadrúpede e muito diferente dele, e é a referência aprovada de forma (escolha do João, 17/11/2026). Cada universo pode gerar uma criatura ou máquina própria.
-- O que liga as formas entre si é a **assinatura do Traje Âncora**, como no Lince:
-  - corpo dominado pelo **azul-marinho do traje** (#1B2946 / #2A3C5D, contorno #101923); a cor de material do universo nunca domina o herói;
-  - a **faixa ciano diagonal** (#39E6FF) no peito ou ombro;
-  - **olhos ciano** brilhando;
-  - o acento do universo em **pequenas marcas** (as manchas lima do Lince), não em áreas grandes;
-  - **um elemento-assinatura** ligado à mecânica da forma (a lanterna na cauda do Lince).
-- **Linguagem de forma do Lince:** planos angulosos e facetados, membros finos, pontas afiadas, poses alertas. Nada de proporção de mascote ou brinquedo: cabeça enorme, tronco em barril, pernas curtas e grossas, mãos e pés gigantes.
-- **Leitura:** ágil e elegante, mesmo numa forma pesada. O peso vem da pose e da animação, não do volume.
+### R2. Formas do Daymon pertencem ao universo
+- A forma **não precisa seguir a estética do Daymon**. Ela segue a estética do universo em que aparece, como um ser nativo dali: o Lince-Vagalume é muito diferente do Daymon e funciona porque combina com Verdâmia (observação do João, 17/11/2026).
+- O Lince é exemplo desse princípio, **não modelo** para as outras formas: cada forma tem a linguagem do seu próprio universo.
+- O que vale para todas é o resto desta régua (escala, contorno, tons, saturação, valores) e a leitura de jogo: a forma se distingue dos inimigos da mesma fase à primeira vista. Como marcar isso fica a critério da direção de arte.
 
 ### R3. Contorno (a regra que mais mudou)
 - **Personagens e inimigos não têm traço preto em volta.** A forma é feita por blocos de cor; o contorno escuro aparece em **no máximo metade da borda** (aprovados: 19% a 46%) e some onde bate luz de recorte, no jaleco claro ou na energia.
