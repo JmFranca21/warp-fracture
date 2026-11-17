@@ -1,7 +1,8 @@
 """Gera todos os efeitos sonoros (WAV) e músicas (OGG) do Warp Fracture por síntese.
 Sem amostras externas: tudo é oscilador + ruído + filtro + envelope.
-uso: python gen_audio.py <pasta_projeto> [--so-fuga]
+uso: python gen_audio.py <pasta_projeto> [--so-fuga | --so-fase2]
    --so-fuga: gera só os sons e a trilha da Fuga do Eco (v0.7), sem regravar o resto.
+   --so-fase2: gera só os sons e a trilha da Fase 2 (Deserto, portais e Forja-Mãe, v0.8).
 """
 import os, sys, subprocess
 import numpy as np
@@ -11,6 +12,7 @@ SR = 44100
 ARGS = [a for a in sys.argv[1:] if not a.startswith("--")]
 OUT = ARGS[0] if ARGS else "."
 SO_FUGA = "--so-fuga" in sys.argv
+SO_FASE2 = "--so-fase2" in sys.argv
 SFX = os.path.join(OUT, "assets/audio/sfx")
 MUS = os.path.join(OUT, "assets/audio/music")
 os.makedirs(SFX, exist_ok=True)
@@ -457,8 +459,66 @@ def fuga():
     ], master=0.8)
 
 
+# ------------------------------------------------------------------ Fase 2 (v0.8)
+def fase2():
+    global rng
+    rng = np.random.default_rng(2808)   # semente própria: não altera os sons anteriores
+    d = 0.9
+    save_wav("portal_abre", mix(sweep(180, 900, d, "saw", 0.7) * env(int(SR * d), 0.05, 0.3, 0.4, 0.3) * 0.3,
+                                osc(110, d) * env(int(SR * d), 0.1, 0.3, 0.6, 0.3) * 0.6,
+                                bp(noise(d), 800, 5000) * env(int(SR * d), 0.2, 0.2, 0.3, 0.3) * 0.4))
+    d = 1.0
+    save_wav("fenda_abre", mix(sweep(2600, 400, d, "saw", 0.5) * env(int(SR * d), 0.02, 0.3, 0.3, 0.4) * 0.3,
+                               osc(65, d) * env(int(SR * d), 0.1, 0.3, 0.7, 0.4) * 0.8,
+                               bp(noise(d), 1200, 7000) * env(int(SR * d), 0.01, 0.2, 0.2, 0.4) * 0.5))
+    d = 0.3
+    save_wav("arranque", mix(bp(noise(d), 300, 2500) * np.sin(np.linspace(0, np.pi, int(SR * d))) * 0.8,
+                             sweep(140, 260, d, "square", 0.8) * env(int(SR * d), 0.01, 0.2) * 0.2))
+    d = 0.45
+    save_wav("ima", mix(sweep(300, 1200, d, "sine", 0.6) * env(int(SR * d), 0.01, 0.2, 0.5, 0.15) * 0.5,
+                        osc(60, d, "square") * env(int(SR * d), 0.02, 0.2, 0.4, 0.15) * 0.2,
+                        osc(1800, d) * (0.5 + 0.5 * np.sin(np.linspace(0, 60, int(SR * d)))) * expdec(int(SR * d), 0.2) * 0.15))
+    d = 0.7
+    save_wav("pulso", mix(sweep(900, 80, d, "sine", 0.4) * expdec(int(SR * d), 0.25),
+                          lp(noise(d), 1200) * expdec(int(SR * d), 0.2) * 0.5,
+                          osc(55, d) * expdec(int(SR * d), 0.3) * 0.6))
+    d = 0.12
+    save_wav("rebite", mix(bp(noise(d), 1500, 6000) * expdec(int(SR * d), 0.02) * 0.7,
+                           sweep(900, 300, d, "square", 0.5) * expdec(int(SR * d), 0.03) * 0.3,
+                           osc(3200, d) * expdec(int(SR * d), 0.015) * 0.3))
+    d = 1.0
+    save_wav("esteira", mix(lp(noise(d), 700) * env(int(SR * d), 0.2, 0.3, 0.6, 0.2) * 0.6,
+                            osc(48, d, "saw") * env(int(SR * d), 0.2, 0.3, 0.6, 0.2) * 0.3))
+    d = 0.6
+    save_wav("trilho", mix(bp(noise(d), 2500, 8000) * env(int(SR * d), 0.02, 0.2, 0.5, 0.2) * 0.4,
+                           osc(220, d, "square") * env(int(SR * d), 0.05, 0.2, 0.3, 0.2) * 0.08))
+    d = 0.7
+    save_wav("martelo_carga", mix(sweep(120, 500, d, "saw", 1.5) * env(int(SR * d), 0.05, 0.3, 0.5, 0.1) * 0.35,
+                                  osc(60, d) * env(int(SR * d), 0.05, 0.3, 0.5, 0.1) * 0.5))
+    d = 0.9
+    save_wav("martelo", mix(sweep(140, 30, d) * expdec(int(SR * d), 0.2) * 1.2,
+                            lp(noise(d), 2500) * expdec(int(SR * d), 0.12),
+                            osc(410, d) * expdec(int(SR * d), 0.25) * 0.15,
+                            bp(noise(0.08), 3000, 8000) * expdec(int(SR * 0.08), 0.02) * 0.5), 0.95)
+    d = 1.0
+    save_wav("feixe_carga", mix(sweep(200, 2400, d, "saw", 1.4) * env(int(SR * d), 0.05, 0.1, 0.8, 0.05) * 0.25,
+                                osc(70, d) * env(int(SR * d), 0.1, 0.1, 0.7, 0.05) * 0.5))
+    d = 0.6
+    parts = [osc(f, d) * expdec(int(SR * d), tau) * a for f, tau, a in [(520, 0.15, 0.5), (1170, 0.1, 0.4), (2300, 0.06, 0.3)]]
+    save_wav("placas", mix(*parts, bp(noise(0.3), 600, 4000) * expdec(int(SR * 0.3), 0.06)))
+    # trilha do Deserto: lenta e quente, com percussão metálica (fábrica ao longe)
+    render_track("deserto", 92, 2, [
+        L_pad(0.24, 3, 1000, "tri"), L_bass(0.28, (1, 0, 0, 1, 0, 0, 1, 0), "saw", 420), L_marimba(0.10),
+        L_drums(0.32, kick=(1, 0, 0, 0, 1, 0, 0, 0), hat=(0, 0, 1, 0, 0, 1, 1, 0), shaker=True),
+    ], master=0.72)
+
+
+if SO_FASE2:
+    fase2()
+    sys.exit(0)
 if not SO_FUGA:
     sfx()
     print("efeitos:", len(os.listdir(SFX)))
     music()
 fuga()
+fase2()

@@ -28,8 +28,14 @@ func _ready() -> void:
 	Fx.ring(get_parent(), position, Color(0.7, 0.9, 1.0), 200, 0.7, 8)
 
 
+var absorb := false
+
+
 func _process(dt: float) -> void:
 	t += dt
+	if absorb:
+		spr.rotation += dt * 9.0
+		return
 	position.y = base_y + sin(t * 2.0) * 8.0
 	g.modulate.a = 0.45 + 0.2 * sin(t * 3.0)
 	spr.rotation = sin(t * 1.3) * 0.06
@@ -39,7 +45,18 @@ func _on_body(b: Node) -> void:
 	if taken or not (b is Player):
 		return
 	taken = true
+	absorb = true
+	var at := Vector2(global_position.x, base_y + 30.0)
 	Fx.burst(get_parent(), global_position, Color(0.7, 0.9, 1.0), 50, 500, 1.0, 0.1, 0)
-	Fx.ring(get_parent(), global_position, Color(0.8, 0.95, 1.0), 500, 1.0, 10)
-	main.collect_fragment()
-	visible = false
+	main.collect_fragment(at)
+	# o cristal sobe, gira e entra no Traje Âncora com um anel de luz
+	var p: Player = b
+	var tw := create_tween()
+	tw.tween_property(self, "position:y", position.y - 60.0, 0.9).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE)
+	tw.tween_method(func(k: float):
+		if is_instance_valid(p):
+			global_position = global_position.lerp(p.global_position + Vector2(0, -36), k)
+		scale = Vector2.ONE * (1.0 - k * 0.85), 0.0, 1.0, 0.8)
+	tw.tween_callback(func():
+		Fx.ring(get_parent(), global_position, Color(0.8, 0.95, 1.0), 260, 0.7, 8)
+		visible = false)

@@ -71,3 +71,9 @@ Formato novo: `version: 2`. Os campos antigos são mantidos e três são novos:
 ## Decisão final (12/11/2026)
 
 **Opção A: retorno ao Hélix e o Receptáculo da Máquina**, conforme a recomendação acima. O João Marcelo aceitou as recomendações de D02 a D05 em 12/11/2026. Os pedidos que dependiam desta decisão foram liberados.
+
+## Implementação (17/11/2026)
+
+Implementada na **v0.8**. Detalhes, valores finais e testes no `HANDOFF.md`, seção 14.
+
+**Ajuste feito na implementação:** o Receptáculo fica na Galeria do Portal (x 6395), ao lado do Arco, porque o portal mudou para o fim da Galeria na v0.7. Daymon chega do retorno em (6470, 690).

@@ -14,9 +14,14 @@ var fx: Node2D
 var door: Door = null
 var portal: Portal = null
 var gate: Gate = null
-var boss: Queen = null
+var boss = null                 # Queen (Verdâmia) ou Forja (Deserto)
 var boss_active := false
 var fuga: Fuga = null
+var receptacle: Receptacle = null
+var return_rift: Rift = null
+var arrival_rift: Rift = null
+var boss_cam := Vector2.INF       # centro fixo da câmera durante a luta (INF = segue o jogador)
+var desert: Desert = null
 
 
 func _ready() -> void:
@@ -25,7 +30,7 @@ func _ready() -> void:
 	_build_sky(theme)
 	if theme == "verd":
 		_build_verd_bg(bounds)
-	else:
+	elif theme != "deserto":
 		for i in 3:
 			var b := BgLayer.new()
 			b.theme = theme
@@ -35,7 +40,8 @@ func _ready() -> void:
 			b.z_index = -60 + i * 10
 			add_child(b)
 			bg_layers.append(b)
-	_build_ambient(theme, bounds)
+	if theme != "deserto":
+		_build_ambient(theme, bounds)
 
 	if data.has("backwall"):
 		var bw := BackWall.new()
@@ -59,7 +65,10 @@ func _ready() -> void:
 	terr.theme = theme
 	terr.rects = data["solids"]
 	terr.thin_art = data.get("thin_art", [])
-	add_child(terr)
+	if theme == "deserto":
+		terr.free()          # o Deserto desenha o próprio terreno com a arte DF (Desert)
+	else:
+		add_child(terr)
 	for r in data["solids"]:
 		_solid(r)
 	if data.has("decor"):
@@ -105,6 +114,20 @@ func _ready() -> void:
 		portal.target = data["portal"]["target"]
 		portal.position = data["portal"]["pos"]
 		objects.add_child(portal)
+	if data.has("receptacle"):
+		receptacle = Receptacle.new()
+		receptacle.main = main
+		receptacle.position = data["receptacle"]
+		receptacle.portal_x = portal.position.x if portal != null else 0.0
+		objects.add_child(receptacle)
+	if data.has("arrival_rift"):
+		arrival_rift = Rift.new()
+		arrival_rift.main = main
+		arrival_rift.target = "lab"
+		arrival_rift.position = data["arrival_rift"]
+		objects.add_child(arrival_rift)
+	if data.has("return_rift") and main.frags.has(id):
+		open_return_rift(false)
 	for pk in data["pickups"]:
 		if main.collected.has(pk[2]):
 			continue
@@ -212,11 +235,18 @@ func _ready() -> void:
 		fuga.cfg = data["fuga"]
 		add_child(fuga)
 
+	if theme == "deserto":
+		desert = Desert.new()
+		desert.level = self
+		add_child(desert)
+		return
+
 	var fg := FgLayer.new()
 	fg.theme = theme
 	fg.depth = 1.0
 	fg.span = Vector2(-600.0, bounds.end.x + 900.0)
 	fg.ground_rects = data["solids"]
+	fg.clear = data.get("fg_clear", [])
 	if theme == "verd":
 		fg.depth = 1.2
 		fg.base_y = bounds.end.y + 40.0
@@ -224,6 +254,24 @@ func _ready() -> void:
 	fg.z_index = 30
 	add_child(fg)
 	fg_layers.append(fg)
+
+
+## Fenda de retorno ao Hélix, aberta pela energia do fragmento (D02 passo 2).
+func open_return_rift(animated: bool) -> void:
+	if return_rift != null or not data.has("return_rift"):
+		return
+	return_rift = Rift.new()
+	return_rift.main = main
+	return_rift.target = "lab"
+	return_rift.position = data["return_rift"]
+	objects.add_child(return_rift)
+	if animated:
+		return_rift.open_anim()
+		main.add_shake(8.0)
+	else:
+		return_rift.open_now()
+	if desert != null:
+		desert.on_fragment_taken()
 
 
 func add_player(p: Player) -> void:
@@ -318,7 +366,7 @@ func spawn_fragment() -> void:
 
 
 func _physics_process(_dt: float) -> void:
-	if boss != null and not boss_active and not boss.dead and is_instance_valid(player):
+	if data.has("boss") and boss != null and not boss_active and not boss.dead and is_instance_valid(player):
 		if player.global_position.x > float(data["boss"]["trigger_x"]):
 			start_boss()
 
@@ -415,6 +463,9 @@ func _build_sky(theme: String) -> void:
 	if theme == "lab":
 		g.set_color(0, Color("04070d"))
 		g.set_color(1, Color("17263a"))
+	elif theme == "deserto":
+		g.set_color(0, Color("e8b07a"))
+		g.set_color(1, Color("7a3d22"))
 	else:
 		g.set_color(0, Color("020a0e"))
 		g.set_color(1, Color("10383a"))

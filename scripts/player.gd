@@ -1,6 +1,7 @@
 class_name Player
 extends CharacterBody2D
-## Daymon Sagan. Forma "human" (laboratório) ou "lince" (Lince-Vagalume, Verdâmia).
+## Daymon Sagan. Forma "human" (laboratório), "lince" (Lince-Vagalume, Verdâmia) ou
+## "automato" (Autômato de Fase, Deserto de Ferrugem — D03).
 
 const GRAV := 2000.0
 const MAX_FALL := 950.0
@@ -74,6 +75,15 @@ var hook_pull_t := 0.0
 var last_hook: Node2D = null
 var last_hook_t := 0.0
 # posição do ombro (pés = origem, olhando para a direita) por animação
+# Autômato (DF90–DF97): ombro do braço-ímã por animação, medido nas entregas (pés = origem)
+const SHOULDER_AUT := {
+	"idle": Vector2(-1.5, -42), "walk": Vector2(-1.5, -41), "jump": Vector2(-1.5, -36),
+	"fall": Vector2(-1.5, -31), "dash": Vector2(-1.5, -30), "hurt": Vector2(-1.5, -37), "death": Vector2(-1.5, -30),
+}
+const PULSE_R := 150.0
+var beam_t := 0.0           # feixe do ímã visível (puxando um drone)
+var beam_to := Vector2.ZERO
+var pulse_cd := 0.0
 const SHOULDER := {
 	"idle": Vector2(3, -50), "run": Vector2(8, -47), "jump": Vector2(6, -48),
 	"fall": Vector2(4, -50), "dash": Vector2(8, -36), "hurt": Vector2(0, -48), "death": Vector2(0, -40),
@@ -84,7 +94,7 @@ func _ready() -> void:
 	collision_layer = 2
 	collision_mask = 1 | ONEWAY_LAYER
 	floor_snap_length = 6.0
-	var size := Vector2(24, 62) if form == "human" else Vector2(32, 34)
+	var size := Vector2(24, 62) if form == "human" else (Vector2(30, 62) if form == "automato" else Vector2(32, 34))
 	var cs := CollisionShape2D.new()
 	var r := RectangleShape2D.new()
 	r.size = size
@@ -107,6 +117,12 @@ func _ready() -> void:
 		jump_v = 760.0
 		glow_a = Art.glow(Color(0.3, 0.9, 1.0, 0.6), 22)
 		_build_rig()
+	elif form == "automato":
+		run_speed = 272.0          # 0,85 × humano
+		max_air_jumps = 0
+		jump_v = 721.0             # ~130 px de pulo (90% do humano)
+		glow_a = Art.glow(Color(0.3, 0.9, 1.0, 0.6), 22)
+		_build_automato()
 	else:
 		run_speed = 360.0
 		max_air_jumps = 1
@@ -158,6 +174,50 @@ func _build_rig() -> void:
 	arm_pivot.add_child(muzzle)
 
 
+## Autômato: corpo (DF90–DF96) + braço-ímã (DF97) que gira para mirar, como o braço humano.
+func _build_automato() -> void:
+	rig = Node2D.new()
+	add_child(rig)
+	var sf := SpriteFrames.new()
+	DFArt.add_anim(sf, "idle", "DF90", range(6), 8.0, true)
+	DFArt.add_anim(sf, "walk", "DF91", range(8), 12.0, true)
+	DFArt.add_anim(sf, "jump", "DF92", range(4), 12.0, false)
+	DFArt.add_anim(sf, "fall", "DF93", range(3), 8.0, false)
+	DFArt.add_anim(sf, "dash", "DF94", range(4), 18.0, false)
+	DFArt.add_anim(sf, "hurt", "DF95", range(2), 10.0, false)
+	DFArt.add_anim(sf, "death", "DF96", range(6), 8.0, false)
+	body_spr = AnimatedSprite2D.new()
+	body_spr.sprite_frames = sf
+	body_spr.offset = DFArt.offset(Vector2(384, 512), Vector2(192, 472))
+	body_spr.scale = Vector2.ONE * DFArt.NODE
+	rig.add_child(body_spr)
+	body_spr.play("idle")
+	arm_pivot = Node2D.new()
+	arm_pivot.position = SHOULDER_AUT["idle"]
+	rig.add_child(arm_pivot)
+	var af := SpriteFrames.new()
+	DFArt.add_anim(af, "braco", "DF97", [0], 1.0, false)
+	DFArt.add_anim(af, "fire", "DF97", [1, 2, 0], 14.0, false)
+	DFArt.add_anim(af, "beam", "DF97", [3], 1.0, false)
+	arm_spr = AnimatedSprite2D.new()
+	arm_spr.sprite_frames = af
+	arm_spr.offset = DFArt.offset(Vector2(384, 512), Vector2(60, 256))
+	arm_spr.scale = Vector2.ONE * DFArt.NODE
+	arm_spr.play("braco")
+	arm_pivot.add_child(arm_spr)
+	arm_len = (289.0 - 60.0) * DFArt.K
+	var mf := SpriteFrames.new()
+	DFArt.add_anim(mf, "fire", "DF88", range(3), 20.0, false)
+	muzzle = AnimatedSprite2D.new()
+	muzzle.sprite_frames = mf
+	muzzle.offset = DFArt.offset(Vector2(384, 512), Vector2(40, 256))
+	muzzle.scale = Vector2.ONE * DFArt.NODE
+	muzzle.position = Vector2(arm_len - 2, 0)
+	muzzle.visible = false
+	muzzle.animation_finished.connect(func(): muzzle.visible = false)
+	arm_pivot.add_child(muzzle)
+
+
 ## Lince-Vagalume: 11 animações (D_lince_*) em um AnimatedSprite2D; âncora nos pés.
 func _build_lynx() -> void:
 	rig = Node2D.new()
@@ -187,6 +247,11 @@ func _fire_fx(big: bool) -> void:
 	if muzzle == null:
 		return
 	muzzle.visible = true
+	if form == "automato":
+		arm_spr.play("fire")
+		muzzle.play("fire")
+		muzzle.frame = 0
+		return
 	muzzle.scale = Vector2.ONE * FX_SCALE * (1.6 if big else 1.0)
 	muzzle.play("fire")
 	muzzle.frame = 0
@@ -265,7 +330,7 @@ func _physics_process(dt: float) -> void:
 		_hook_physics(dt)
 	elif dash_t > 0.0:
 		dash_t -= dt
-		velocity = Vector2(facing * 760.0, 0.0)
+		velocity = Vector2(facing * (600.0 if form == "automato" else 760.0), 0.0)
 		if int(t * 60.0) % 2 == 0:
 			_spawn_ghost()
 		if dash_t <= 0.0:
@@ -278,7 +343,7 @@ func _physics_process(dt: float) -> void:
 		var accel := 900.0 if wall_lock > 0.0 else 4200.0
 		wall_lock -= dt
 		velocity.x = move_toward(velocity.x, target, accel * dt)
-		if dir != 0.0 and not (form == "human" and use_mouse):
+		if dir != 0.0 and not (form != "lince" and use_mouse):
 			facing = int(signf(dir))
 		var g := GRAV
 		if velocity.y < 0.0 and (controls_locked or not Input.is_action_pressed("jump")):
@@ -306,20 +371,24 @@ func _physics_process(dt: float) -> void:
 					act = "doublejump"      # cambalhota (a arte já traz os riscos do impulso)
 					act_t = 0.28
 				Fx.burst(level.fx, global_position, Color(0.85, 1.0, 0.5, 0.9), 8, 180, 0.35, 0.05, 200)
-		if not controls_locked and Input.is_action_just_pressed("dash") and dash_cd <= 0.0 and (on_floor or air_dash):
+		if not controls_locked and Input.is_action_just_pressed("dash") and dash_cd <= 0.0 and (on_floor or (air_dash and form != "automato")):
 			if dir != 0.0:
 				facing = int(signf(dir))
-			dash_t = 0.16
+			dash_t = 0.2 if form == "automato" else 0.16
 			dash_cd = Upgrades.dash_cd(main)
-			AudioMgr.sfx("esquiva", Vector2.INF, -2.0)
+			AudioMgr.sfx("arranque" if form == "automato" else "esquiva", Vector2.INF, -2.0)
 			if not on_floor:
 				air_dash = false
 			Fx.burst(level.fx, global_position + Vector2(-facing * 10, -24), Color(0.5, 0.9, 1.0, 0.8), 10, 200, 0.3, 0.06, 0)
 
-	if not controls_locked and Input.is_action_just_pressed("hook") and has_module("arpao"):
+	beam_t -= dt
+	pulse_cd -= dt
+	if not controls_locked and Input.is_action_just_pressed("hook") and (has_module("arpao") or form == "automato"):
 		var hc := hook_candidate()
 		if hc != null:
 			_start_hook(hc)
+		elif form == "automato" and _magnet_drone():
+			pass
 		else:
 			AudioMgr.sfx("negado", Vector2.INF, -8.0, 0.0)
 	if not controls_locked:
@@ -344,6 +413,12 @@ func _physics_process(dt: float) -> void:
 		if form == "lince":
 			land_t = 0.09
 			FxAnim.verd(level.fx, "poeira", global_position + Vector2(0, 2)).z_index = 4
+		elif form == "automato":
+			land_t = 0.08
+			if level.id == "deserto" and position.x < 1700:
+				Desert.effect(level.fx, "DF83", 6, position - Vector2(0, 31), Vector2(92, 74))
+			else:
+				Fx.burst(level.fx, global_position, Color(0.85, 0.6, 0.4, 0.5), 8, 120, 0.35, 0.05, 50)
 		else:
 			Fx.burst(level.fx, global_position, Color(0.75, 0.8, 0.85, 0.5), 8, 120, 0.35, 0.05, 50)
 	was_floor = now_floor
@@ -363,6 +438,10 @@ func _process(dt: float) -> void:
 		_update_rig(dt)
 		glow_a.global_position = gun_tip()
 		glow_a.modulate.a = 0.25 + (0.6 if atk_anim > 0.0 else 0.0)
+	elif form == "automato":
+		_update_automato(dt)
+		glow_a.global_position = gun_tip()
+		glow_a.modulate.a = 0.2 + (0.6 if atk_anim > 0.0 or hook != null or beam_t > 0.0 else 0.0)
 	else:
 		_update_lynx(dt)
 		# o brilho acompanha a lanterna da cauda, quadro a quadro
@@ -388,7 +467,7 @@ func has_module(id: String) -> bool:
 
 ## gancho mais próximo dentro do alcance, à frente/acima, com linha de visão livre
 func hook_candidate() -> Node2D:
-	if form != "human" or dead:
+	if form == "lince" or dead:
 		return null
 	var best: Node2D = null
 	var best_score := INF
@@ -537,6 +616,110 @@ func _update_lynx(dt: float) -> void:
 	rig.modulate = Color(1, 1, 1, a)
 
 
+## Animação do Autômato pelo estado real; o braço-ímã segue a mira (some no dano, na morte e no Arranque).
+func _update_automato(dt: float) -> void:
+	hurt_t -= dt
+	land_t -= dt
+	var an := "idle"
+	var pose := -1
+	var on_floor := is_on_floor()
+	if dead:
+		an = "death"
+	elif hurt_t > 0.0:
+		an = "hurt"
+	elif dash_t > 0.0:
+		an = "dash"
+		pose = 1 if dash_t > 0.1 else 2
+	elif hook != null:
+		an = "jump"
+		pose = 3
+	elif not on_floor:
+		if velocity.y < 0.0:
+			an = "jump"
+			pose = 1 if velocity.y < -500.0 else (2 if velocity.y < -150.0 else 3)
+		else:
+			an = "fall"
+			pose = 0 if velocity.y < 250.0 else (1 if velocity.y < 600.0 else 2)
+	elif land_t > 0.0:
+		an = "jump"
+		pose = 0
+	elif absf(velocity.x) > 30.0:
+		an = "walk"
+	if body_spr.animation != an or (pose < 0 and held_pose):
+		body_spr.play(an)
+	held_pose = pose >= 0
+	if held_pose:
+		body_spr.pause()
+		body_spr.frame = pose
+	body_spr.speed_scale = clampf(absf(velocity.x) / run_speed, 0.6, 1.2) if an == "walk" else 1.0
+	var sx := 1.0 + squash * 0.06
+	var sy := 1.0 - squash * 0.05
+	rig.scale = Vector2(sx * facing, sy)
+	var a := 1.0
+	if inv > 0.0 and inv < 50.0 and not dead and int(t * 20.0) % 2 == 0:
+		a = 0.35
+	rig.modulate = Color(1, 1, 1, a)
+	arm_pivot.visible = an in ["idle", "walk", "jump", "fall"]
+	arm_pivot.position = SHOULDER_AUT[an]
+	var la := Vector2(aim.x * facing, aim.y)
+	if la.x < -0.2:
+		la.x = -0.2
+	arm_pivot.rotation = la.angle()
+	if hook != null or beam_t > 0.0:
+		if arm_spr.animation != "beam":
+			arm_spr.play("beam")
+	elif arm_spr.animation == "beam":
+		arm_spr.play("braco")
+
+
+## Feixe do ímã sem âncora ao alcance: puxa o drone mais próximo até o chão à frente (D03).
+func _magnet_drone() -> bool:
+	var from := shoulder_global()
+	var best = null
+	var bd := HOOK_RANGE
+	for e in get_tree().get_nodes_in_group("enemies"):
+		if not (e is DesertEnemy) or e.dead or not e.drone or e.falling or e.downed > 0.0:
+			continue
+		var d: float = e.global_position.distance_to(from)
+		if d < bd:
+			var q := PhysicsRayQueryParameters2D.create(from, e.global_position, 1)
+			if get_world_2d().direct_space_state.intersect_ray(q).is_empty():
+				bd = d
+				best = e
+	if best == null:
+		return false
+	var dx := signf(best.global_position.x - global_position.x)
+	if dx == 0.0:
+		dx = facing
+	best.magnet_pull(Vector2(global_position.x + dx * 80.0, global_position.y - 40.0))
+	beam_t = 0.35
+	beam_to = best.global_position
+	aim = (best.global_position - from).normalized()
+	AudioMgr.sfx("ima", Vector2.INF, -2.0, 0.05)
+	return true
+
+
+## Pulso Magnético (D03): onda de 150 px. Derruba drones, para robôs por 2 s, desvia projéteis
+## inimigos e abre as placas imantadas do peito da Forja-Mãe (D04).
+func _magnet_pulse() -> void:
+	var c := global_position + Vector2(0, -32)
+	DFArt.fx(level.fx, "DF99", 6, c, 18.0, false, 0.9)
+	AudioMgr.sfx("pulso", Vector2.INF, -1.0, 0.03)
+	main.add_shake(7.0)
+	for e in get_tree().get_nodes_in_group("enemies"):
+		if not is_instance_valid(e) or e.dead or e.global_position.distance_to(c) > PULSE_R + 20.0:
+			continue
+		if e.has_method("magnet_pulse"):
+			e.magnet_pulse()
+		else:
+			e.stun = 2.0
+	for b in get_tree().get_nodes_in_group("enemy_attack"):
+		if b is EnemyBullet and is_instance_valid(b) and b.global_position.distance_to(c) < PULSE_R:
+			b.pop()
+	if level.desert != null and level.desert.forja != null:
+		level.desert.forja.on_pulse(c)
+
+
 func _update_rig(dt: float) -> void:
 	var an := "idle"
 	var on_floor := is_on_floor()
@@ -607,13 +790,13 @@ func _update_aim() -> void:
 		var m := get_global_mouse_position() - chest
 		if m.length() > 4.0:
 			aim = m.normalized()
-		if form == "human" and absf(aim.x) > 0.15 and dash_t <= 0.0:
+		if form != "lince" and absf(aim.x) > 0.15 and dash_t <= 0.0:
 			facing = int(signf(aim.x))
 	else:
 		var rs := Vector2(Input.get_joy_axis(0, JOY_AXIS_RIGHT_X), Input.get_joy_axis(0, JOY_AXIS_RIGHT_Y))
 		if rs.length() > 0.35:
 			aim = rs.normalized()
-			if form == "human" and absf(aim.x) > 0.15 and dash_t <= 0.0:
+			if form != "lince" and absf(aim.x) > 0.15 and dash_t <= 0.0:
 				facing = int(signf(aim.x))
 		elif Input.is_action_pressed("up"):
 			aim = Vector2(0, -1)
@@ -624,6 +807,19 @@ func _update_aim() -> void:
 
 
 func _attack() -> void:
+	if form == "automato":
+		atk_cd = Upgrades.fire_cd(main) * 1.25      # cadência 20% menor que o Estabilizador
+		atk_anim = 0.12
+		var rb := Bullet.new()
+		rb.dir = aim
+		rb.player = self
+		rb.rivet = true
+		rb.speed = 900.0
+		rb.position = gun_tip()
+		level.add_fx(rb)
+		_fire_fx(false)
+		AudioMgr.sfx("rebite", Vector2.INF, -4.0, 0.08)
+		return
 	if form == "human":
 		atk_cd = Upgrades.fire_cd(main)
 		atk_anim = 0.12
@@ -661,6 +857,9 @@ func _special() -> void:
 		main.hud.energy_denied()
 		return
 	energy -= 33.0
+	if form == "automato":
+		_magnet_pulse()
+		return
 	if form == "human":
 		var tip := gun_tip()
 		var b := Bullet.new()
@@ -766,14 +965,17 @@ func hurt(from: Vector2, dmg: int = 1, hazard: bool = false) -> void:
 	hook = null
 	hp -= dmg
 	inv = 1.2
-	knock_t = 0.2
 	hurt_t = 0.3
 	act = ""
 	dash_t = 0.0
-	var sx := signf(global_position.x - from.x)
-	if sx == 0.0:
-		sx = -facing
-	velocity = Vector2(sx * 340.0, -360.0)
+	if form == "automato":
+		knock_t = 0.0               # pesado: não sofre recuo (D03)
+	else:
+		knock_t = 0.2
+		var sx := signf(global_position.x - from.x)
+		if sx == 0.0:
+			sx = -facing
+		velocity = Vector2(sx * 340.0, -360.0)
 	main.on_player_hurt()
 	Fx.burst(level.fx, global_position + Vector2(0, -25), Color(1, 1, 1), 18, 300, 0.4, 0.07)
 	if hp <= 0:
@@ -802,9 +1004,41 @@ func start_warp(target: Vector2) -> void:
 
 # ---------------------------------------------------------------- desenho
 func _draw() -> void:
+	if form == "automato":
+		var tgt := Vector2.INF
+		var k := 1.0
+		if hook != null and is_instance_valid(hook):
+			tgt = hook.global_position
+			k = hook_len
+		elif beam_t > 0.0:
+			tgt = beam_to
+		if tgt != Vector2.INF:
+			_draw_beam(to_local(gun_tip()), to_local(tgt), k)
+		return
 	if hook != null and is_instance_valid(hook):
 		var a := to_local(gun_tip())
 		var b := to_local(hook.global_position)
 		var e := a.lerp(b, hook_len)
 		draw_line(a, e, Color(0.35, 0.92, 1.0, 0.35), 6.0, true)
 		draw_line(a, e, Color(0.8, 1.0, 1.0, 0.95), 2.0, true)
+
+
+## Feixe do Ímã de Fase (DF98): segmento repetível em loop + garra de luz na ponta.
+func _draw_beam(a: Vector2, b: Vector2, k: float) -> void:
+	var e := a.lerp(b, k)
+	var d := e - a
+	var L := d.length()
+	if L < 4.0:
+		return
+	var fr := int(t * 16.0) % 4
+	var seg := DFArt.strip("DF98", 0, fr)
+	var tip := DFArt.strip("DF98", 1, fr)
+	var h := 256.0 * DFArt.K          # 48 px de espessura no original ≈ 10 px no jogo
+	draw_set_transform(a, d.angle(), Vector2.ONE)
+	var x := 0.0
+	while x < L - h * 0.6:
+		var w := minf(h, L - x)
+		draw_texture_rect_region(seg.atlas, Rect2(x, -h / 2.0, w, h), Rect2(seg.region.position, Vector2(seg.region.size.x * w / h, seg.region.size.y)))
+		x += h
+	draw_texture_rect(tip, Rect2(L - h * 200.0 / 256.0, -h / 2.0, h, h), false)
+	draw_set_transform(Vector2.ZERO, 0.0, Vector2.ONE)

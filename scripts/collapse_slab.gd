@@ -37,7 +37,7 @@ func collapse() -> void:
 		cracks.append(randf_range(10.0, rect.size.x - 10.0))
 
 
-func _process(dt: float) -> void:
+func _physics_process(dt: float) -> void:
 	if t < 0.0 or fell:
 		return
 	t += dt

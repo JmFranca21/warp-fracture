@@ -18,9 +18,14 @@ Ordem escolhida: primeiro o que todo jogador sente (som, salvamento, orientaçã
 9. **Fendas Instáveis**: salas-desafio cronometradas e escondidas.
 10. ✅ **Integração das artes de Verdâmia** (v0.6, 11/11/2026): Lince, inimigos, chefe, cenário e efeitos no jogo. Destino de cada asset em `colaboracao/revisoes/VD_verdamia.md`.
 11. **Hidrópolis** (Cefalóide, nado livre).
+12. ✅ **Fase 2: Deserto de Ferrugem e Forja-Mãe** (v0.8, 17/11/2026): passagem pelo Receptáculo e pelo Arco (D02), Autômato (D03), Forja-Mãe (D04) e portais com arte (D05). Veja a seção 14 do `HANDOFF.md`.
+13. **Fase de neve** (nova, em planejamento): o João Marcelo vai enviar o primeiro plano; a partir dele, planejar a fase por completo e gerar os pedidos de arte. A ordem das próximas etapas depende do plano revisto.
 
 ## Fase 4 — Polimento contínuo
 - Inimigos mais táticos (grupo, reforço, turreta que gira), transições entre áreas e acessibilidade (remapear teclas).
+
+## v0.8 — 17/11/2026
+- Fase 2 concluída: Deserto de Ferrugem jogável como Autômato, Forja-Mãe com três fases e fragmento 2/4, passagem entre universos (fenda de retorno, Receptáculo, seletor e calibração do Deserto), portais com a arte PT, save versão 2. Testes novos: `test_passagem.gd`, `test_deserto.gd` e `test_forja.gd`. Próximo passo: o plano da fase de neve.
 
 ## v0.7 — 13/11/2026
 - Etapa 7 concluída: Fuga do Eco com a arte A1–A9, Galeria do Portal (portal em x 6560), entulho com aviso, piso que desaba, alarme, trilha `fuga`, ponto de retorno no início e evento `fuga_lab` no save. Teste novo: `tools/test_fuga.gd`. A próxima é a Etapa 8 (cena de abertura).
@@ -34,12 +39,12 @@ Ordem escolhida: primeiro o que todo jogador sente (som, salvamento, orientaçã
 ## Correção v0.5.1 — 10/11/2026
 - Corrigida a interação com o portal do laboratório: E abre a calibração, Esc cancela e concluir as ondas leva a Verdâmia. A Etapa 7 continua pendente.
 
-## Situação das entregas em 12/11/2026
+## Situação das entregas em 17/11/2026
 
 | Frente | Publicado | Próximo trabalho |
 |---|---|---|
 | Eco | A0 aprovada, A2 importada, A1/A3/A4/A5/A9 entregues. A4 tem uso provisório. | Produzir entulho, poeira e rachadura (A6–A8). Revisar as transições, programar o rastro e a Dobra conforme D01, o desabamento, o checkpoint e o som. Testar a chegada ao portal. |
 | Verdâmia | Arte integrada na v0.6 (61 assets). Fragmento corrigido na v0.6.1. | Ajustes não bloqueantes da [revisão VD_verdamia](colaboracao/revisoes/VD_verdamia.md). |
-| Deserto de Ferrugem | Arte da fase entregue. Protótipo jogável preservado na branch `prototipo/deserto-de-ferrugem`. D02–D05 decididas em 12/11/2026 (recomendações aceitas). | Fichas DF02, DF03 e PT00 em produção (aprovação final do João). Base: [proposta da Fase 2](docs/fases/deserto_ferrugem/proposta_fase2.md). |
+| Deserto de Ferrugem | v0.8: fase, Autômato, Forja-Mãe e portais jogáveis com a arte DF/PT (pacote Revisão v2 integrado). | Aprovação das fichas DF02, DF03 e PT00 pelo João Marcelo; revisão cruzada das entregas DF e PT. |
 
 Os [pedidos de arte por ID](colaboracao/STATUS.md) e a [especificação do Deserto](docs/fases/deserto_ferrugem/detalhamento_da_fase.md) orientam a produção. A abertura, as Fendas Instáveis, Hidrópolis e os demais universos continuam no planejamento.

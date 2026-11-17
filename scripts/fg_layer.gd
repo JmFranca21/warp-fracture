@@ -7,6 +7,7 @@ var depth := 1.0
 var span := Vector2(-600, 6000)
 var ground_rects: Array = []
 var base_y := 1190.0        # Verdâmia: y da base da faixa de vegetação
+var clear: Array = []       # faixas [x0, x1] sem entulho na frente (Receptáculo e Arco)
 
 
 func _ready() -> void:
@@ -50,6 +51,9 @@ func _draw_verd() -> void:
 
 func _rubble(p: Vector2, rng: RandomNumberGenerator) -> void:
 	var c := Color("020406")
+	for cx in clear:
+		if p.x > float(cx[0]) - 70.0 and p.x < float(cx[1]) + 70.0:
+			c.a = 0.0         # mesma sequência aleatória, sem desenhar na frente das máquinas
 	var pts := PackedVector2Array()
 	var w := rng.randf_range(30, 70)
 	pts.append(p + Vector2(-w, 2))

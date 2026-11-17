@@ -22,7 +22,7 @@ Situação em 13/11/2026, protótipo **v0.7** (seção 13: Fuga do Eco). D02–D
 5. Textos do jogo e respostas em **português do Brasil**.
 6. Trabalhar seguindo o roteiro (seção 8), etapa por etapa. Entregue um build a cada marco e avise o que mudou.
 
-## 3. Estado atual (v0.6)
+## 3. Estado atual (v0.6; v0.7 e v0.8 nas seções 13 e 14)
 
 **Laboratório Hélix** (forma humana, com o Estabilizador de Fase):
 - Salas: A Despertar, B Fosso, C Turreta, D Sala Alta, E Lasers, F Campo, G Saída, mais a S Ala Secreta.
@@ -112,7 +112,7 @@ timeout ${TO:-60} xvfb-run -a -s "-screen 0 1280x720x24" ./Godot_v4.3-stable_lin
 
 | Flag | Efeito |
 |---|---|
-| `level=lab` / `level=verdamia` | Pula o menu e carrega a fase |
+| `level=lab` / `level=verdamia` / `level=deserto` | Pula o menu e carrega a fase |
 | `pos=x,y` | Posição inicial |
 | `at=2.0` | Tempo até a captura e o fechamento |
 | `shot=/tmp/x.png` | Salva uma captura de tela em `at` |
@@ -122,6 +122,7 @@ timeout ${TO:-60} xvfb-run -a -s "-screen 0 1280x720x24" ./Godot_v4.3-stable_lin
 | `energy=99`, `hp=3`, `cells=50`, `arpao` | Estado inicial |
 | `boss`, `killboss=1.5`, `victory`, `calib`, `pause`, `trigger=id`, `visitall`, `trace`, `title` | Atalhos de teste |
 | `save` | Permite gravar o save durante o teste (normalmente fica desligado) |
+| `frags=verdamia,deserto`, `installed=verdamia`, `cal=verdamia,deserto`, `bossdone=verdamia,deserto`, `fugadone` | Progresso inicial da campanha (v0.8) |
 
 Exemplos:
 ```bash
@@ -181,6 +182,8 @@ godot --headless --path . --export-release "Linux" build_linux/WarpFracture.x86_
 - Um registro novo pode amarrar o evento.
 - A [decisão D01](colaboracao/decisoes/D01_locomocao_eco.md) define o avanço flutuante pelo rastro, o agarrão aéreo e a Dobra com aviso. A2 está importada; A1/A3/A4/A5/A9 estão entregues (A4 provisória). Produzir A6–A8 e testar a sequência no motor.
 
+> **Atualização da v0.8:** a Fase 2 (Deserto e Forja-Mãe) foi feita antes da cena de abertura, porque a arte estava pronta. O plano do jogo está em revisão para incluir uma fase de neve; a ordem abaixo vale até o novo plano chegar.
+
 **8. Cena de abertura:**
 - Sequência de cerca de 60 s feita no motor, com opção de pular.
 - Conteúdo: contagem regressiva, aviso da IRIS, sobrecarga, clarão, o Eco surgindo e Daymon acordando nos escombros.
@@ -203,7 +206,7 @@ godot --headless --path . --export-release "Linux" build_linux/WarpFracture.x86_
 
 ## 9. Pendências conhecidas
 
-O [roteiro](ROTEIRO.md) consolida a implementação. O [quadro de arte](colaboracao/STATUS.md) detalha os 29 pedidos restantes do Deserto. A fase está especificada para Daymon humano com tiro e gancho; falta implementar o percurso e definir seu encaixe na campanha.
+O [roteiro](ROTEIRO.md) consolida a implementação. Na v0.8 o Deserto, a Forja-Mãe e a passagem entre universos entraram no jogo (seção 14). Pendências: aprovação das fichas DF02, DF03 e PT00 pelo João Marcelo (os lotes foram integrados como estão) e o plano da **fase de neve**, que o João Marcelo vai enviar.
 
 - A mira 360° no analógico direito foi implementada, mas **não foi testada com um controle físico**.
 - Ao fechar o jogo, aparece o aviso "2 resources still in use at exit". É inofensivo.
@@ -299,4 +302,44 @@ tools/fluxo/godot.sh --script res://tools/test_fuga.gd -- level=lab terminals ar
 Ele cobre: início (ponto de retorno, trilha, Eco longe do jogador), agarrão com aviso (≥ 0,28 s), esquiva atravessando o golpe, morte e recomeço, corrida completa por input até o portal (degrau, piso que desaba, plataforma, barricada e gancho) sem levar dano, zona do portal, Dobra a pelo menos 250 px, calibração, Verdâmia e save.
 
 **Pontos para ajustar jogando.** A corrida perfeita da Sala G ao portal leva cerca de 7 s, então a fuga é curta. Alongar a Galeria ou somar obstáculos é a primeira melhoria se o João Marcelo achar que falta tensão.
+
+## 14. v0.8: Fase 2, Deserto de Ferrugem e Forja-Mãe (17/11/2026)
+
+Implementa as decisões D02 a D05 com a arte do pacote Revisão v2 (DF02, DF03, DF87–DF112, PT00–PT23) e a arte do Deserto (DF10–DF86).
+
+**Passagem (D02, `main.gd`).**
+- `collect_fragment(at)`: sem tela de vitória. Trava os controles por 3 s, o cristal sobe e entra no Traje (`fragment.gd`), aparece "FRAGMENTO RECUPERADO · n/4", o ponto de retorno vai para o altar e o jogo salva. Depois `level.open_return_rift(true)` abre a fenda e IRIS fala (`hud.say`, caixa de diálogo em fila).
+- Fenda de retorno (`rift.gd`): `return_rift` nos dados da fase (Verdâmia x 4560; Deserto x 8720, atrás da porta direita da Câmara). `[E] Voltar ao Laboratório Hélix` chama `enter_portal("lab", ...)`. A chegada no Hélix é em (6470, 690), ao lado do Arco.
+- Receptáculo (`receptacle.gd`, PT15, x 6395 da Galeria): `[E] Instalar o fragmento` → `install_fragment()`: soquete aceso, feixe no cabo, `log_09`, ponto de retorno e save. Sem fragmento pendente, funciona como estação.
+- Arco (`portal.gd`): `main.portal_action()` decide destino, estado e texto. Antes do 1º fragmento, `[E] Calibrar o portal` (igual à v0.7). Fragmento sem instalar: `[E] Portal sem energia`. Depois: `[E] Escolher destino` abre o seletor (`dest_select.gd`). Verdâmia atravessa direto. O Deserto, sem calibrar, abre a calibração com `pattern = "deserto"` (âmbar, onda 2 com deriva de um passo a cada 2,4 s); ao concluir, `portal.arm("deserto")` deixa o diafragma aberto com `[E] Atravessar`, e só esse E viaja. Esc cancela em qualquer ponto.
+- `_form_banner()`: "FORMA HUMANA", "NOVA FORMA: LINCE-VAGALUME" e "NOVA FORMA: AUTÔMATO" (primeira vez; depois "FORMA: AUTÔMATO", evento `forma_automato`).
+- Fim da versão: o fragmento do Deserto, ~5,5 s depois da coleta, abre o resumo (`show_victory`); ENTER continua explorando e ESC salva e volta ao menu.
+
+**Save versão 2 (`save_game.gd`).** Campos novos `installed` e `portal_cal`. Saves da versão 1 são migrados em `portal_cal_set`: quem esteve em Verdâmia ou tem o fragmento dela recebe `portal_cal = ["verdamia"]`. Os cinco estados de "Continuar" da D02 estão cobertos por `test_passagem.gd`.
+
+**Portais com arte (D05).** `DFArt` (`df_art.gd`) carrega a arte da Fase 2, importada em meia resolução por `tools/import_fase2.py` (escala do jogo K = 0,214 do original; nó a 0,428). O Arco usa o registro comum (centro da base em 512, 984): PT10 atrás, membrana PT20 tingida (pulsos para Hélix, véus no sentido anti-horário para Verdâmia, ondulação horizontal para o Deserto), 8 lâminas PT12 que giram, encolhem e somem ao abrir, glifo PT13 no painel do topo (pisca em "sinal") e PT11 com `z_index` absoluto 7, na frente do personagem. A Fenda usa PT22 no chão, PT23 para abrir e fechar (ao contrário) e PT21 em loop; a de chegada fica dormente.
+
+**Deserto (`desert.gd`, D03).** Layout e máquinas do protótipo, reescritos na estrutura da `main` (sem merge da branch). Zonas: A Dunas (0–1700), B Fábrica (1700–3580), C Salão do Núcleo (3580–6990), D Câmara da Forja (6990–8550) e E Saída (8550–8900). Estações em x 1650, 4730 e 6650 (antes da porta). Portas DF38 com colisão (`set_door`). Os jatos das válvulas destroem drones baixos (`vent_hits`).
+
+**Autômato (`player.gd`, forma `automato`).** Colisão 30 × 62, 272 px/s, `jump_v` 721 (~136 px), sem pulo duplo nem salto de parede. Corpo DF90–DF96 com âncora nos pés (192, 472) e braço DF97 com pivô (60, 256), no ombro medido nas entregas (`SHOULDER_AUT`). Rebitadeira: `Bullet.rivet` (DF87, clarão DF88), intervalo 1,25 × o do Estabilizador. Ímã de Fase: a física do Arpão, sem precisar do módulo, com o feixe DF98 desenhado em `_draw_beam`; sem âncora, `_magnet_drone()` puxa o drone mais próximo até o chão. Pulso Magnético (`_magnet_pulse`, DF99): 150 px, derruba drones, para robôs por 2 s, estoura projéteis e abre o peito da Forja. Arranque: 0,2 s a 600 px/s, só no chão, invulnerável. Sem recuo ao levar dano.
+
+**Inimigos (`desert_enemy.gd`).** Robô (3 vidas) e Drone (2) com aviso de 0,5 s antes do tiro; `magnet_pulse`, `knock_down` e `magnet_pull`. Drone derrubado fica 1,5 s no chão e volta a voar; no fosso ou no jato, explode.
+
+**Forja-Mãe (`forja.gd`, D04).** Corpo DF100 na base (7770, 770); lente, escotilhas, peito e grade ficam atrás das aberturas do corpo, sobre um fundo escuro. Braços: carrinho DF103 no trilho (y 300, preso ao teto por tirantes), pivô em y 360, dois segmentos DF104 (IK de duas juntas) e martelo DF105 com o núcleo DF106 na junta. Começa quando o jogador passa de x 7110: a porta fecha, a câmera trava em (7770, 420) com zoom 0,85 e toca a trilha `chefe`.
+- Fase 1 (6): martelo esquerdo. Corre no trilho (0,6 s), aviso de 0,7 s (sobe 40 px, faixas vermelhas, marca tracejada), golpe e onda de 40 px, preso por 1,6 s com a âncora ligada (o ímã leva o jogador para cima dele; plataforma de mão única no topo) e o núcleo exposto (área 110 × 40 na junta). Rajada de rebites a cada 3 ataques: aviso de 0,5 s na lente, três DF70 em duas alturas e a grade aberta por 0,8 s (rebite na grade = dano em dobro no núcleo da fase).
+- Fase 2 (6): martelo direito com aviso de 0,55 s, esteira (setas por 1 s, empurra para a fornalha, a grade fere) e dois drones pelas escotilhas a cada 10 s.
+- Fase 3 (8): os braços caem e os martelos viram degraus. O peito só abre com o Pulso a até 160 px do centro (placas voando por 3 s); feixe da lente (carga DF111 de 1 s, mira varrendo e feixe a 20 px do chão, da direita para a esquerda) e sobrecarga das válvulas laterais.
+- Vitória: lente apagada, grade fria, explosões, fragmento 2/4 saindo do peito, `boss_done["deserto"]`; ao pegar, as duas portas abrem e a fenda de retorno aparece. Morrer volta à estação de x 6650 com a Forja inteira; a abertura longa (2 s) só acontece na primeira vez (`forja_intro`).
+
+**Som.** `python tools/gen_audio.py . --so-fase2` gera 12 sons (`portal_abre`, `fenda_abre`, `arranque`, `ima`, `pulso`, `rebite`, `esteira`, `trilho`, `martelo_carga`, `martelo`, `feixe_carga`, `placas`) e a trilha `deserto`, sem regravar o resto.
+
+**Testes novos** (restauram o save do usuário):
+```bash
+tools/fluxo/godot.sh --script res://tools/test_passagem.gd -- save at=999   # D02 e save v2 (37 checagens)
+tools/fluxo/godot.sh --script res://tools/test_deserto.gd -- save at=999    # Autômato e percurso
+tools/fluxo/godot.sh --script res://tools/test_forja.gd -- save at=999      # luta completa e volta ao Hélix
+```
+`tools/shots_fase2.gd -- out=<pasta>` gera 15 capturas de conferência. `test_verdamia` e `test_fragmento` foram atualizados para a D02 (sem tela de vitória). O entulho e o piso da Fuga passaram para `_physics_process` (o tempo de aviso não depende mais da taxa de quadros), o que também estabilizou `test_fuga`.
+
+**Pontos para ajustar jogando.** O peito da Forja fica baixo na arte: o Pulso funciona do chão, sem precisar das âncoras do teto. Com o Pulso, os 8 rebites cabem numa abertura de 3 s. As fichas DF02, DF03 e PT00 ainda não foram aprovadas; se mudarem, os lotes 2 e 3 podem precisar de ajuste.
 

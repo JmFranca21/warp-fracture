@@ -2,16 +2,19 @@
 
 Metroidvania 2D em visão lateral feito em **Godot 4.3**, com visual ilustrado inspirado em Hollow Knight (sem pixel art). Daymon Sagan, cientista do Projeto Hélix, atravessa realidades fraturadas para recuperar os fragmentos da Máquina de Dobra. Em cada universo, ele assume uma forma diferente.
 
-**Versão atual:** protótipo v0.7. A v0.7 traz a **Fuga do Eco**: ao abrir a porta da Sala G, o Eco surge por uma fenda e persegue Daymon enquanto o laboratório desaba, até o portal, agora no fim da nova Galeria do Portal. A v0.6 trouxe Verdâmia com a arte oficial (Lince-Vagalume, inimigos, Rainha Micélia, cenário e efeitos). A v0.6.1 corrige o fragmento que reaparecia no altar ao continuar um save gravado depois da vitória. Laboratório Hélix e Verdâmia jogáveis, com chefe, Arpão de Fase, Bancada de Upgrades, Registros do Projeto, mapa, save e som.
+**Versão atual:** protótipo v0.8. A v0.8 traz a **Fase 2, Deserto de Ferrugem**: o fragmento de Verdâmia abre uma fenda de volta ao Hélix, Daymon instala o fragmento no Receptáculo da Máquina, escolhe o destino no Arco de Dobra, calibra o sinal fraco do Deserto e atravessa como **Autômato** (Ímã de Fase, Rebitadeira, Pulso Magnético e Arranque). O Deserto tem três zonas, seis máquinas, três vãos de ímã e termina na **Forja-Mãe**, chefe de três fases que guarda o fragmento 2/4. Os portais ganharam a arte nova (Arco, Fenda, Receptáculo e membrana por destino) e o save passou para a versão 2. A v0.7 trouxe a **Fuga do Eco**: ao abrir a porta da Sala G, o Eco surge por uma fenda e persegue Daymon enquanto o laboratório desaba, até o portal, agora no fim da nova Galeria do Portal. A v0.6 trouxe Verdâmia com a arte oficial (Lince-Vagalume, inimigos, Rainha Micélia, cenário e efeitos). A v0.6.1 corrige o fragmento que reaparecia no altar ao continuar um save gravado depois da vitória. Laboratório Hélix e Verdâmia jogáveis, com chefe, Arpão de Fase, Bancada de Upgrades, Registros do Projeto, mapa, save e som.
 
-## Estado do projeto (13/11/2026)
+## Estado do projeto (17/11/2026)
 
 | Frente | Situação |
 |---|---|
 | Laboratório Hélix | Jogável: 9 salas (nova Galeria do Portal), Arpão de Fase, Bancada, Registros, Fuga do Eco e portal com calibração |
-| Verdâmia | Jogável, com a arte oficial integrada e a Rainha Micélia; o fragmento 1/4 encerra o protótipo |
+| Verdâmia | Jogável, com a arte oficial integrada e a Rainha Micélia; o fragmento 1/4 abre a fenda de retorno ao Hélix (D02) |
 | Eco (Etapa 7, Fuga do Eco) | Jogável na v0.7. A1–A9 integradas: o Eco surge (A1, A9), observa (A2), avança pelo rastro (A3), agarra com aviso (A4), usa a Dobra (A5, A9, A1) e se desfaz no portal (A5); o teto cai (A6, A7, A8) |
-| Deserto de Ferrugem (Fase 2) | Arte da fase entregue; protótipo só na branch `prototipo/deserto-de-ferrugem`. As decisões [D02](colaboracao/decisoes/D02_passagem_verdamia_deserto.md) a [D05](colaboracao/decisoes/D05_portais.md) foram tomadas em 12/11/2026, com as recomendações aceitas: retorno ao Hélix com o Receptáculo, forma Autômato, chefe Forja-Mãe e a nova linguagem dos portais. As fichas DF02, DF03 e PT00 estão em produção |
+| Passagem e portais (D02, D05) | Jogável na v0.8: fenda de retorno, Receptáculo, seletor de destino, calibração do Deserto com onda à deriva, Arco de Dobra e Fendas com a arte PT10–PT23, save versão 2 com migração |
+| Deserto de Ferrugem (Fase 2, D03) | Jogável na v0.8 como Autômato (DF87–DF99): Dunas, Fábrica e Salão do Núcleo, com Robôs, Drones, prensas, serra, esteira, válvulas e plataformas (DF10–DF86) |
+| Forja-Mãe (D04) | Jogável na v0.8 (DF100–DF112): três fases (pistão esquerdo, pistão direito com esteira e drones, núcleo central aberto pelo Pulso), fragmento 2/4 e fim da versão atual |
+| Arte nova da Fase 2 | Entregue em 13/11/2026 (pacote Revisão v2). As fichas DF02, DF03 e PT00 ainda aguardam a aprovação do João Marcelo; os lotes foram integrados como estão |
 
 O catálogo de toda a arte, com o estado de cada item, está no [documento de arte](docs/DOCUMENTO_DE_ARTE.md).
 
@@ -55,10 +58,15 @@ tools/fluxo/godot.sh --script res://tools/test_verdamia.gd -- save at=999
 tools/fluxo/godot.sh --script res://tools/test_fragmento.gd -- save at=999
 tools/fluxo/godot.sh --script res://tools/test_portal.gd -- level=lab pos=6560,680 terminals god at=30
 tools/fluxo/godot.sh --script res://tools/test_fuga.gd -- level=lab terminals arpao pos=4250,790 save at=999
+tools/fluxo/godot.sh --script res://tools/test_passagem.gd -- save at=999
+tools/fluxo/godot.sh --script res://tools/test_deserto.gd -- save at=999
+tools/fluxo/godot.sh --script res://tools/test_forja.gd -- save at=999
 ```
+
+`tools/shots_fase2.gd -- out=<pasta>` gera 15 capturas de conferência da Fase 2 (portais, Deserto e Forja-Mãe).
 
 No Linux, use `GODOT=/caminho/do/godot tools/run.sh ...` com as mesmas flags.
 
 ## Próximos passos
 
-A Etapa 7 (Fuga do Eco) entrou na v0.7. As próximas são a **8, cena de abertura**, e a etapa 1 da campanha do Deserto (passagem entre fases e save, pela D02), que não depende de arte nova. As artes do Deserto já estão no repositório e ainda não entraram no jogo. A campanha do Deserto segue as decisões D02 a D05. Consulte o [roteiro de implementação](ROTEIRO.md), o [quadro de arte](colaboracao/STATUS.md) e o [GDD de dez páginas](docs/Caderno_de_10_paginas_Warp_Fracture_v2.docx).
+A Fase 2 (Deserto de Ferrugem e Forja-Mãe) entrou na v0.8. O plano do jogo está sendo revisto pelo João Marcelo para incluir uma **fase de neve**, que será planejada por completo (design e pedidos de arte) a partir do primeiro plano que ele enviar. Também seguem pendentes a **Etapa 8, cena de abertura**, e a aprovação das fichas DF02, DF03 e PT00. Consulte o [roteiro de implementação](ROTEIRO.md), o [quadro de arte](colaboracao/STATUS.md) e o [GDD de dez páginas](docs/Caderno_de_10_paginas_Warp_Fracture_v2.docx).

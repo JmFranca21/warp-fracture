@@ -25,6 +25,10 @@ var pause_list := MenuList.new()
 var map_open := false
 var victory := false
 var victory_t := 0.0
+var victory_kind := "fim"    # "fim": fim da versão (fragmento do Deserto)
+var say_lines: Array = []    # falas de IRIS em fila (caixa de diálogo curta)
+var say_t := 0.0
+const SAY_TIME := 4.2
 
 
 func _ready() -> void:
@@ -42,6 +46,7 @@ func reset() -> void:
 	paused_shown = false
 	map_open = false
 	victory = false
+	say_lines = []
 
 
 func set_prompt(s: String) -> void:
@@ -71,6 +76,14 @@ func show_banner(a: String, b: String) -> void:
 	banner_a = a
 	banner_b = b
 	banner_t = 0.0
+
+
+## Fala curta na caixa de diálogo (não pausa o jogo). Cada linha fica SAY_TIME s.
+func say(lines: Array) -> void:
+	for l in lines:
+		say_lines.append(String(l))
+	if say_t <= 0.0:
+		say_t = SAY_TIME
 
 
 func damage() -> void:
@@ -108,6 +121,11 @@ func _process(dt: float) -> void:
 	denied_t = maxf(0.0, denied_t - dt)
 	if victory:
 		victory_t += dt
+	if not say_lines.is_empty():
+		say_t -= dt
+		if say_t <= 0.0:
+			say_lines.pop_front()
+			say_t = SAY_TIME if not say_lines.is_empty() else 0.0
 	if main != null and is_instance_valid(main.player):
 		energy_disp = lerpf(energy_disp, main.player.energy, 1.0 - exp(-dt * 10.0))
 	queue_redraw()
@@ -136,6 +154,13 @@ func _draw() -> void:
 		draw_rect(r, Color(0.02, 0.04, 0.07, 0.72 * tip_a))
 		draw_line(r.position, Vector2(r.end.x, r.position.y), Color(0.5, 0.85, 1.0, 0.6 * tip_a), 1.5)
 		draw_multiline_string(Art.font(), r.position + Vector2(18, 28), tip, HORIZONTAL_ALIGNMENT_CENTER, w - 36.0, 17, 3, Color(0.88, 0.94, 1.0, tip_a))
+	if not say_lines.is_empty() and not victory:
+		var sw := minf(760.0, sz.x - 80.0)
+		var sr := Rect2((sz.x - sw) / 2.0, sz.y - 236.0, sw, 70.0)
+		var sa := clampf(minf(say_t, SAY_TIME - say_t) * 4.0, 0.0, 1.0)
+		draw_rect(sr, Color(0.02, 0.04, 0.08, 0.82 * sa))
+		draw_rect(Rect2(sr.position, Vector2(4, sr.size.y)), Color(0.35, 0.9, 1.0, 0.9 * sa))
+		draw_multiline_string(Art.font(), sr.position + Vector2(20, 28), say_lines[0], HORIZONTAL_ALIGNMENT_LEFT, sw - 40.0, 17, 3, Color(0.88, 0.96, 1.0, sa))
 	if prompt != "" and not victory:
 		var pr := Rect2(sz.x / 2.0 - 190.0, sz.y - 62.0, 380.0, 36.0)
 		draw_rect(pr, Color(0.02, 0.04, 0.07, 0.75))
@@ -231,13 +256,13 @@ func _draw_banner(sz: Vector2) -> void:
 	Art.text(self, Vector2(0, y + 28), banner_b, 16, Color(0.85, 0.95, 0.9, a), HORIZONTAL_ALIGNMENT_CENTER, sz.x, 4)
 
 
-func _draw_boss_bar(sz: Vector2, b: Queen) -> void:
+func _draw_boss_bar(sz: Vector2, b) -> void:
 	var w := 520.0
 	var r := Rect2((sz.x - w) / 2.0, sz.y - 40.0, w, 10.0)
 	draw_rect(r, Color(0.05, 0.03, 0.08, 0.85))
 	draw_rect(Rect2(r.position, Vector2(w * clampf(float(b.hp) / b.max_hp, 0, 1), 10)), Color(0.7, 0.5, 1.0))
 	draw_rect(r, Color(0.9, 0.85, 1.0, 0.6), false, 1.0)
-	Art.text(self, Vector2(0, r.position.y - 8), "RAINHA MICÉLIA", 15, Color(0.9, 0.85, 1.0), HORIZONTAL_ALIGNMENT_CENTER, sz.x, 4)
+	Art.text(self, Vector2(0, r.position.y - 8), String(b.get("boss_name")) if b.get("boss_name") != null else "RAINHA MICÉLIA", 15, Color(0.9, 0.85, 1.0), HORIZONTAL_ALIGNMENT_CENTER, sz.x, 4)
 
 
 func open_pause() -> void:
@@ -392,6 +417,6 @@ func _draw_victory(sz: Vector2) -> void:
 	var secs := int(main.play_time)
 	var stats := "Tempo  %02d:%02d     ·     Células de Fase  %d     ·     Quedas  %d" % [secs / 60, secs % 60, main.cells, main.deaths]
 	Art.text(self, Vector2(0, y + 110), stats, 19, Color(0.8, 0.88, 0.95, a), HORIZONTAL_ALIGNMENT_CENTER, sz.x)
-	Art.text(self, Vector2(0, y + 170), "Fim do protótipo. Hidrópolis, Ferrumgrado e Umbra chegam nas próximas versões.", 17, Color(0.7, 0.78, 0.86, a), HORIZONTAL_ALIGNMENT_CENTER, sz.x)
+	Art.text(self, Vector2(0, y + 170), "A Forja-Mãe se apagou. Fim da versão atual do protótipo: os próximos universos chegam nas próximas versões.", 17, Color(0.7, 0.78, 0.86, a), HORIZONTAL_ALIGNMENT_CENTER, sz.x)
 	if victory_t > 1.5:
-		Art.text(self, Vector2(0, y + 240), "ENTER — voltar ao menu", 20, Color(1, 1, 1, 0.6 + 0.4 * sin(t * 3.0)), HORIZONTAL_ALIGNMENT_CENTER, sz.x)
+		Art.text(self, Vector2(0, y + 240), "ENTER — continuar explorando     ESC — menu", 20, Color(1, 1, 1, 0.6 + 0.4 * sin(t * 3.0)), HORIZONTAL_ALIGNMENT_CENTER, sz.x)

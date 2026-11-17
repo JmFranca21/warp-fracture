@@ -2,7 +2,7 @@ class_name Logs
 extends RefCounted
 ## Registros do Projeto: diários espalhados pelas fases que contam a história.
 
-const ORDER := ["log_01", "log_02", "log_03", "log_04", "log_05", "log_06", "log_07", "log_08"]
+const ORDER := ["log_01", "log_02", "log_03", "log_04", "log_05", "log_06", "log_07", "log_08", "log_09"]
 
 const LOGS := {
 	"log_01": ["Diário de Daymon — Dia 412",
@@ -21,6 +21,8 @@ const LOGS := {
 		"Entalhado na casca, num idioma que o traje traduz aos poucos:\n\n\"A Estrela Caída chegou com o trovão. A Rainha a guardou no coração do templo. Quem quiser levá-la deve primeiro ouvir as raízes.\"\n\nAcho que a Estrela Caída é o fragmento."],
 	"log_08": ["Diário de Daymon — sinal desconhecido",
 		"O monitor do traje captou um pulso vindo de muito longe. Não é de Verdâmia, nem de Hidrópolis, nem de nenhuma das quatro realidades mapeadas.\n\nUm quinto sinal.\n\nA IRIS diz que é ruído. Anotei as coordenadas mesmo assim."],
+	"log_09": ["Análise de IRIS — segundo sinal",
+		"Com o primeiro fragmento instalado, separei um segundo sinal: calor seco, metal e ferrugem. Ferrumgrado.\n\nNa superfície, um deserto de sucata. No meio dele, uma fábrica que nunca parou de funcionar. Os padrões de energia lembram uma linha de montagem... e uma mente.\n\nO fragmento está no coração dessa fábrica. Daymon, o que estiver lá dentro não vai entregá-lo de boa vontade."],
 }
 
 

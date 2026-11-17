@@ -5,6 +5,8 @@ extends RefCounted
 
 
 static func get_level(id: String) -> Dictionary:
+	if id == "deserto":
+		return Desert.layout()
 	if id == "verdamia":
 		return _verdamia()
 	return _lab()
@@ -125,7 +127,7 @@ static func _lab() -> Dictionary:
 			"spans": [[-200, 2020, 220, 800], [1000, 1320, 800, 1040], [1980, 2720, -260, 800], [2680, 6700, 220, 800],
 				[5480, 5680, 690, 1040], [6030, 6330, 690, 1040],
 				[2720, 3820, -260, -80], [3020, 3480, -80, 100], [3630, 3690, -80, 220]],
-			"columns": [120, 560, 990, 1330, 1760, 2350, 2900, 3330, 3940, 4400, 4800, 3000, 3500, 5300, 5810, 6450],
+			"columns": [120, 560, 990, 1330, 1760, 2350, 2900, 3330, 3940, 4400, 4800, 3000, 3500, 5300, 5810],
 			"breaches": [[775, 520, 70], [3500, 560, 75]],
 			"pipes": [[120, 560, 330], [1330, 1980, 320], [2900, 3330, 300], [4400, 4800, 330], [5300, 5810, 320]],
 			"drops": [[200, 684, 330], [1860, 684, 320], [4470, 684, 330]],
@@ -169,7 +171,6 @@ static func _lab() -> Dictionary:
 			["entulho_1", Vector2(6010, 470), 0.26, true, "chao", 0.75],
 			["entulho_3", Vector2(5910, 690), 0.24, false, "chao", 0.75],
 			["alerta", Vector2(5440, 690), 0.7, false, "chao", 0.9],
-			["alerta", Vector2(6370, 690), 0.7, true, "chao", 0.9],
 		],
 		"signs": [
 			[Vector2(230, 800), "A / D para mover  ·  ESPAÇO para pular (segure para ir mais alto)  ·  SHIFT para esquivar"],
@@ -178,7 +179,7 @@ static func _lab() -> Dictionary:
 			[Vector2(2080, 800), "IRIS: \"O Terminal A está no alto desta sala. A alavanca no beiral religa o elevador.\""],
 			[Vector2(2830, 800), "IRIS: \"Lasers alternados e uma câmera de segurança. Se ela te enxergar, o alarme solta Rastejadores.\""],
 			[Vector2(3545, 800), "IRIS: \"Um campo de força protege o Terminal B. A trava precisa de 1/3 da sua Energia de Fase.\""],
-			[Vector2(6400, 690), "IRIS: \"O portal está instável... calibre-o no painel.\""],
+			[Vector2(5790, 690), "IRIS: \"O portal está instável... calibre-o no painel.\""],
 		],
 		"checkpoints": [Vector2(1450, 800), Vector2(2790, 800), Vector2(4300, 800)],
 		"benches": [Vector2(645, 800)],
@@ -197,6 +198,8 @@ static func _lab() -> Dictionary:
 		"terminals": [["A", Vector2(2625, 120)], ["B", Vector2(4075, 580)]],
 		"door": {"rect": Rect2(4140, 600, 110, 200), "needs": ["A", "B"]},
 		"portal": {"pos": Vector2(6560, 690), "target": "verdamia"},
+		"receptacle": Vector2(6395, 690),     # Receptáculo da Máquina (D02), ligado ao Arco por um cabo
+		"fg_clear": [[6340, 6700]],           # sem entulho de primeiro plano na frente do Receptáculo e do Arco
 		# Fuga do Eco (Etapa 7): começa ao entrar na Sala G com a porta aberta
 		"fuga": {
 			"trigger_x": 4330.0,
@@ -303,4 +306,6 @@ static func _verdamia() -> Dictionary:
 		],
 		"terminals": [],
 		"boss": {"pos": Vector2(4730, 800), "trigger_x": 3960.0, "gate": Rect2(3836, 300, 50, 500), "fragment": Vector2(4330, 768)},
+		"return_rift": Vector2(4560, 800),    # fenda de retorno ao Hélix, atrás do altar (abre com o fragmento)
+		"arrival_rift": Vector2(30, 800),     # rachadura dormente de onde o Lince chegou (D05)
 	}

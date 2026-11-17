@@ -3,7 +3,7 @@ extends RefCounted
 ## Salvamento em user://warp_save.json (nas Estações de Recarga e ao trocar de área).
 
 const PATH := "user://warp_save.json"
-const VERSION := 1
+const VERSION := 2
 
 
 static func exists() -> bool:
@@ -27,6 +27,8 @@ static func write(main) -> void:
 		"modules": main.modules.keys(),
 		"upgrades": main.upgrades,
 		"events": main.events.keys(),
+		"installed": main.installed.keys(),
+		"portal_cal": main.portal_cal.keys(),
 	}
 	var f := FileAccess.open(PATH, FileAccess.WRITE)
 	if f != null:
@@ -72,6 +74,17 @@ static func fragment_set(d: Dictionary) -> Dictionary:
 				break
 			out[String(lv)] = true
 			n -= 1
+	return out
+
+
+## Destinos já calibrados no Arco do Hélix. Saves da versão 1 não tinham o campo: quem já esteve
+## em Verdâmia (ou tem o fragmento dela) calibrou o portal para lá.
+static func portal_cal_set(d: Dictionary, frags: Dictionary) -> Dictionary:
+	if d.has("portal_cal"):
+		return to_set(d["portal_cal"])
+	var out := {}
+	if String(d.get("level", "lab")) == "verdamia" or frags.has("verdamia"):
+		out["verdamia"] = true
 	return out
 
 

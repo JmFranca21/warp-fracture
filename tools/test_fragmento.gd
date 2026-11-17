@@ -81,7 +81,9 @@ func _run() -> void:
 	Input.action_press("right")
 	await _wait(0.8)
 	Input.action_release("right")
-	_check(game.state == "victory" and game.fragments == 1, "coletar leva à vitória com 1/4")
+	_check(game.state == "level" and game.fragments == 1 and game.hud.banner_a.begins_with("FRAGMENTO RECUPERADO · 1/4"), "coletar mostra o letreiro 1/4, sem tela de vitória (D02)")
+	await _wait(3.4)
+	_check(game.level.return_rift != null and game.level.return_rift.state in ["abrindo", "aberta"], "a fenda de retorno ao Hélix se abre atrás do altar")
 	var d := SaveGame.read()
 	_check(int(d.get("fragments", -1)) == 1, "o save gravado na coleta tem fragments = 1")
 	await _continue()
@@ -89,6 +91,7 @@ func _run() -> void:
 	_check(_fragments_in_level() == 0, "o fragmento coletado NÃO reaparece no altar")
 	_check(game.fragments == 1, "o contador continua 1/4 (obtido %d)" % game.fragments)
 	_check(game.level.boss == null and game.level.gate == null, "a Rainha não volta e a barreira continua aberta")
+	_check(game.level.return_rift != null and game.level.return_rift.state == "aberta", "a fenda de retorno continua aberta depois de Continuar")
 	game.player.inv = 60.0
 	game.player.global_position = Vector2(4300, 790)
 	await _wait(0.6)
@@ -112,7 +115,7 @@ func _run() -> void:
 	Input.action_press("right")
 	await _wait(0.8)
 	Input.action_release("right")
-	_check(game.fragments == 1 and game.state == "victory", "coletar depois desse save leva a 1/4")
+	_check(game.fragments == 1 and game.state == "level", "coletar depois desse save leva a 1/4")
 
 	print("RESULTADO: ", "PASS" if fails == 0 else "FAIL (%d)" % fails)
 	SaveGame.erase()

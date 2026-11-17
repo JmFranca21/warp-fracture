@@ -70,3 +70,20 @@ Importada com `tools/import_verdamia.py` a partir de `colaboracao/entregas/VD_ve
 | objetos | E1_cogumelo_gigante, E1_grama, E1_raiz_pendurada, E1_pedra_musgo, E1_arco_templo, E1_altar, VD_checkpoint, VD_barreira_arena, VD_fragmento, VD_esporo_verde, VD_esporo_violeta | estáticos |
 | terreno | VD_chao_musgo, VD_subsolo, VD_parede_escalada, VD_canto_esquerdo, VD_canto_direito, VD_espinhos, VD_plataforma_raizes, E1_tronco_plataforma | repetíveis |
 | fundo | VD_bg_distante, VD_bg_intermediario, VD_fg_vegetacao | parallax |
+
+## Deserto de Ferrugem e portais (v0.8)
+
+Arte da fase (DF10–DF86): `tools/import_deserto.py` → `assets/deserto/` (folhas DF60–DF86 em 512 × 384). Lotes 2 e 3 (DF87–DF112) e portais (PT10–PT23): `tools/import_fase2.py` → `assets/deserto/` e `assets/portais/`, em meia resolução, carregados por `scripts/df_art.gd`. Os PNGs das entregas não são alterados.
+
+| No jogo | Arquivos de origem | Quadros / uso |
+|---|---|---|
+| autômato (idle, walk, jump, fall, dash, hurt, death) | DF90–DF96 | 6, 8, 4, 3, 4, 2, 6 (pés em 192, 472) |
+| braço-ímã (repouso, disparo, feixe) | DF97 | 1, 3, 1 (pivô em 60, 256) |
+| rebite, clarão, feixe do ímã, pulso | DF87, DF88, DF98, DF99 | 4 (loop), 3, segmento 4 + ponta 4, 6 |
+| Robô e Drone do Deserto, projéteis | DF60–DF71 | como no protótipo |
+| cenário, máquinas e efeitos | DF20–DF57, DF80–DF86 | repetíveis, estáticos e animados |
+| Forja-Mãe | DF100 corpo, DF101 lente (4), DF102 peito (6), DF103 carrinho, DF104 segmento, DF105 martelo (4), DF106 núcleo (3), DF107 escotilha (4), DF108 grade (8), DF110 feixe, DF111 carga (6), DF112 explosão (8) | peças montadas por código |
+| Arco de Dobra | PT10 traseira, PT11 frente, PT12 lâmina (8 cópias), PT13 glifos (3 × 2), PT20 membrana (8, loop) | registro comum: base em 512, 984 |
+| Fendas e Receptáculo | PT21 borda (8, loop), PT22 base, PT23 abrindo (8), PT15 Receptáculo | base no chão |
+
+Referências (não entram no jogo): DF00, DF01, DF02, DF03, PT00.

@@ -11,7 +11,12 @@ var cur: Array = []
 var sel := 0
 var t := 0.0
 var success_t := -1.0
+var pattern := "verdamia"     # "deserto": ondas âmbar, e uma delas deriva devagar (precisa acompanhar)
+var drift_row := -1
+var drift_t := 0.0
+var drift_dir := 1.0
 const STEP := 0.25
+const DRIFT_EVERY := 2.4
 
 
 func _ready() -> void:
@@ -20,7 +25,11 @@ func _ready() -> void:
 	visible = false
 
 
-func open() -> void:
+func open(pat := "verdamia") -> void:
+	pattern = pat
+	drift_row = 1 if pattern == "deserto" else -1
+	drift_t = DRIFT_EVERY
+	drift_dir = 1.0
 	target.clear()
 	cur.clear()
 	for i in 3:
@@ -79,6 +88,17 @@ func _process(dt: float) -> void:
 		success_t += dt
 		if success_t > 1.0:
 			_close(true)
+	elif drift_row >= 0:
+		# deriva lenta: a onda escapa um passo de cada vez, para um lado e depois para o outro
+		drift_t -= dt
+		if drift_t <= 0.0:
+			drift_t = DRIFT_EVERY
+			var nv: float = cur[drift_row] + STEP * drift_dir
+			if nv > 5.0 or nv < 0.5:
+				drift_dir = -drift_dir
+				nv = cur[drift_row] + STEP * drift_dir
+			cur[drift_row] = nv
+			_check()
 	if main != null and main.auto.has("calib") and success_t < 0.0 and t > 0.0:
 		# modo de teste: resolve sozinho
 		for i in 3:
@@ -96,9 +116,12 @@ func _draw() -> void:
 	var h := 430.0
 	var r := Rect2((sz.x - w) / 2.0, (sz.y - h) / 2.0, w, h)
 	draw_rect(r, Color(0.03, 0.05, 0.09, 0.95))
-	draw_rect(r, Color(0.5, 0.4, 1.0, 0.7), false, 2.0)
-	Art.text(self, r.position + Vector2(0, 44), "CALIBRAÇÃO DO PORTAL", 28, Color(0.9, 0.95, 1.0), HORIZONTAL_ALIGNMENT_CENTER, w)
-	Art.text(self, r.position + Vector2(0, 72), "Alinhe cada onda (ciano) com a onda-alvo (lilás).", 16, Color(0.7, 0.78, 0.88), HORIZONTAL_ALIGNMENT_CENTER, w)
+	var des := pattern == "deserto"
+	var tc := Color(0.95, 0.55, 0.25, 0.55) if des else Color(0.7, 0.55, 1.0, 0.55)
+	var cc := Color(0.95, 0.72, 0.3) if des else Color(0.35, 0.92, 1.0)
+	draw_rect(r, Color(0.95, 0.7, 0.3, 0.7) if des else Color(0.5, 0.4, 1.0, 0.7), false, 2.0)
+	Art.text(self, r.position + Vector2(0, 44), "CALIBRAÇÃO · DESERTO DE FERRUGEM" if des else "CALIBRAÇÃO DO PORTAL", 28, Color(0.9, 0.95, 1.0), HORIZONTAL_ALIGNMENT_CENTER, w)
+	Art.text(self, r.position + Vector2(0, 72), "Sinal fraco: uma das ondas deriva. Alinhe as três ao mesmo tempo." if des else "Alinhe cada onda (ciano) com a onda-alvo (lilás).", 16, Color(0.7, 0.78, 0.88), HORIZONTAL_ALIGNMENT_CENTER, w)
 	for i in 3:
 		var row := Rect2(r.position.x + 40, r.position.y + 100 + i * 92, w - 80, 76)
 		var matched := absf(cur[i] - target[i]) < 0.01
@@ -107,8 +130,10 @@ func _draw() -> void:
 			border = Color(0.5, 1.0, 0.6, 0.9)
 		draw_rect(row, Color(0.02, 0.03, 0.06, 0.9))
 		draw_rect(row, border, false, 2.0 if i == sel else 1.0)
-		_wave(row, target[i], Color(0.7, 0.55, 1.0, 0.55), 2.0, 0.0)
-		var wc := Color(0.5, 1.0, 0.6) if matched else Color(0.35, 0.92, 1.0)
+		_wave(row, target[i], tc, 2.0, 0.0)
+		var wc := Color(0.5, 1.0, 0.6) if matched else cc
+		if i == drift_row and not matched:
+			Art.text(self, row.position + Vector2(10, 18), "deriva", 12, Color(1.0, 0.7, 0.3, 0.6 + 0.4 * sin(t * 6.0)))
 		_wave(row, cur[i], wc, 2.5, 0.0 if matched else t * 2.0)
 		Art.text(self, row.position + Vector2(row.size.x - 120, 20), "%.2f Hz" % cur[i], 14, Color(0.8, 0.88, 0.95), HORIZONTAL_ALIGNMENT_RIGHT, 110)
 		if i == sel:

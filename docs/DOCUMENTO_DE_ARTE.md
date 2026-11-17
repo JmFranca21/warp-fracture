@@ -2,7 +2,7 @@
 
 > **Mantido pelo fluxo automático** ([colaboracao/FLUXO_AUTOMATICO.md](../colaboracao/FLUXO_AUTOMATICO.md)). O especialista técnico atualiza este arquivo a cada entrega. Quem decide o estado de cada pedido é o [quadro de pedidos](../colaboracao/STATUS.md), que só o gerente edita; se este documento divergir do quadro, vale o quadro, e a diferença deve ser corrigida no ciclo seguinte.
 >
-> Situação em 13/11/2026, jogo na v0.7.
+> Situação em 17/11/2026, jogo na v0.8.
 
 ## Como ler
 
@@ -140,20 +140,20 @@ Registrados na revisão VD_verdamia: escala entre as folhas do Lince, garras no 
 
 ## 3. Deserto de Ferrugem (pedido DF, arte da fase)
 
-Pedido: [DF_deserto_ferrugem.md](../colaboracao/pedidos/DF_deserto_ferrugem.md). Escala: Daymon = 400 px (D). Todos os itens estão **entregues** no quadro. A versão jogável está só na branch `prototipo/deserto-de-ferrugem`; **nenhum asset do DF está integrado na campanha principal** (não há `assets/deserto/` nem referência no código da `main`). Não há revisão registrada em `colaboracao/revisoes/` para o pacote DF.
+Pedido: [DF_deserto_ferrugem.md](../colaboracao/pedidos/DF_deserto_ferrugem.md). Escala: Daymon = 400 px (D). Todos os itens foram **integrados na campanha principal na v0.8** (17/11/2026): importados em `assets/deserto/` por `tools/import_deserto.py` e usados em `scripts/desert.gd` e `scripts/desert_enemy.gd` (e nas peças reaproveitadas pela Forja-Mãe). Nenhum asset ficou sem uso. Ainda não há revisão cruzada registrada em `colaboracao/revisoes/` para o pacote DF.
 
 | ID | Item | Ficha de referência | Estado | Arquivos (`colaboracao/entregas/`) | Onde aparece |
 |---|---|---|---|---|---|
 | DF00 | Prancha de referência do Deserto | Prancha de Elementos do Laboratório | entregue (aprovado pelo responsável, segundo o quadro) | `DF00/DF00_prancha_deserto.png` | Referência; não entra no jogo |
 | DF01 | Ficha do Robô e do Drone do deserto | Folha de Inimigos do Laboratório | entregue (aprovado pelo responsável, segundo o quadro) | `DF01/DF01_ficha_inimigos_deserto.png` | Referência; não entra no jogo |
-| DF10–DF12 | Fundos em parallax: céu, fábricas distantes, dunas de sucata | DF00 | entregue | `DF10/DF10_fundo_ceu.png`, `DF11/…_fabricas_distantes.png`, `DF12/…_dunas_sucata.png` (a peça opcional `DF10b_sol` não foi entregue) | Só no protótipo |
-| DF20–DF28 | Chão das dunas, espinhos, paredes externa/interna/do Núcleo, piso de metal, esteira (e pontas), trilho vertical, cabo | DF00 | entregue | `DF20` a `DF28` | Só no protótipo |
-| DF30–DF39 | Montes de sucata, mastro com viga, chaminé, porta da fábrica, engrenagem de fundo, abertura na parede, torre do Núcleo, lâmpada (acesa e apagada), porta de saída (fechada e aberta), painel e canos | DF00 | entregue | `DF30` a `DF39` | Só no protótipo |
-| DF50–DF57 | Prensa grande e pequena (3 peças cada), serra e base, plataformas suspensas, vertical e móvel (com trilho), válvula de vapor (2 estados), ponto de gancho | DF00 | entregue | `DF50` a `DF57` | Só no protótipo |
-| DF60–DF65 | Robô: idle, andar, aviso, tiro, dano, destruído | DF01 | entregue | `DF60` a `DF65` | Só no protótipo |
-| DF66–DF69 | Drone do deserto: voo, aviso, tiro, dano e destruído | DF01 | entregue | `DF66` a `DF69` | Só no protótipo |
-| DF70–DF71 | Projéteis do Robô e do Drone | DF01 | entregue | `DF70`, `DF71` | Só no protótipo |
-| DF80–DF86 | Fumaça de chaminé, jato de vapor, faíscas da prensa, poeira de areia, explosão de máquina, impacto de projétil, partículas de vento | DF00 | entregue | `DF80` a `DF86` | Só no protótipo |
+| DF10–DF12 | Fundos em parallax: céu, fábricas distantes, dunas de sucata | DF00 | integrado (v0.8) | `DF10/DF10_fundo_ceu.png`, `DF11/…_fabricas_distantes.png`, `DF12/…_dunas_sucata.png` (a peça opcional `DF10b_sol` não foi entregue) | Deserto (`desert.gd`, `desert_enemy.gd`) |
+| DF20–DF28 | Chão das dunas, espinhos, paredes externa/interna/do Núcleo, piso de metal, esteira (e pontas), trilho vertical, cabo | DF00 | integrado (v0.8) | `DF20` a `DF28` | Deserto (`desert.gd`, `desert_enemy.gd`) |
+| DF30–DF39 | Montes de sucata, mastro com viga, chaminé, porta da fábrica, engrenagem de fundo, abertura na parede, torre do Núcleo, lâmpada (acesa e apagada), porta de saída (fechada e aberta), painel e canos | DF00 | integrado (v0.8) | `DF30` a `DF39` | Deserto (`desert.gd`, `desert_enemy.gd`) |
+| DF50–DF57 | Prensa grande e pequena (3 peças cada), serra e base, plataformas suspensas, vertical e móvel (com trilho), válvula de vapor (2 estados), ponto de gancho | DF00 | integrado (v0.8) | `DF50` a `DF57` | Deserto (`desert.gd`, `desert_enemy.gd`) |
+| DF60–DF65 | Robô: idle, andar, aviso, tiro, dano, destruído | DF01 | integrado (v0.8) | `DF60` a `DF65` | Deserto (`desert.gd`, `desert_enemy.gd`) |
+| DF66–DF69 | Drone do deserto: voo, aviso, tiro, dano e destruído | DF01 | integrado (v0.8) | `DF66` a `DF69` | Deserto (`desert.gd`, `desert_enemy.gd`) |
+| DF70–DF71 | Projéteis do Robô e do Drone | DF01 | integrado (v0.8) | `DF70`, `DF71` | Deserto (`desert.gd`, `desert_enemy.gd`) |
+| DF80–DF86 | Fumaça de chaminé, jato de vapor, faíscas da prensa, poeira de areia, explosão de máquina, impacto de projétil, partículas de vento | DF00 | integrado (v0.8) | `DF80` a `DF86` | Deserto (`desert.gd`, `desert_enemy.gd`) |
 
 ---
 
@@ -163,12 +163,14 @@ Base: [proposta da Fase 2](fases/deserto_ferrugem/proposta_fase2.md) e decisões
 
 | ID | Item | Ficha de referência | Estado | Arquivos | Onde vai aparecer |
 |---|---|---|---|---|---|
-| DF02 | Ficha do Autômato (forma de Daymon no Deserto) | Ficha do Daymon; DF00 | pedido (ABERTO; aprovação final do João) | [pedido](../colaboracao/pedidos/DF02_ficha_automato.md) | Referência do lote DF87–DF99 |
-| DF03 | Ficha da Forja-Mãe e esquema da arena | DF00, DF01 | pedido (ABERTO; aprovação final do João) | [pedido](../colaboracao/pedidos/DF03_ficha_forja_mae.md) | Referência do lote DF100–DF112 |
-| PT00 | Ficha dos portais e do Receptáculo | Prancha de Elementos do Laboratório | pedido (ABERTO; aprovação final do João) | [pedido](../colaboracao/pedidos/PT00_ficha_portais.md) | Referência do lote PT10–PT23 |
-| DF87–DF99 | Autômato: 7 folhas do corpo, braço, rebite, disparo, feixe e pulso | DF02 (pendente) | suspenso (aguarda DF02) | [pedido](../colaboracao/pedidos/DF87-DF99_automato.md) | Jogador no Deserto (`player.gd`, forma nova, a implementar) |
-| PT10–PT23 | Arco de Dobra, glifos, Receptáculo, membrana e Fenda | PT00 (pendente) | suspenso (aguarda PT00) | [pedido](../colaboracao/pedidos/PT10-PT23_portais.md) | Portal do Hélix (`portal.gd`, hoje desenhado por código), Receptáculo e fenda de retorno de Verdâmia (D02) |
-| DF100–DF112 | Forja-Mãe: corpo, lente, peito, braço, martelo, núcleo, escotilha, grade e efeitos | DF03 (pendente) | suspenso (aguarda DF03) | [pedido](../colaboracao/pedidos/DF100-DF112_forja_mae.md) | Chefe do Deserto (a implementar) |
+| DF02 | Ficha do Autômato (forma de Daymon no Deserto) | Ficha do Daymon; DF00 | entregue em 13/11/2026; aguarda a aprovação do João | `DF02/DF02_ficha_automato.png` | Referência do lote DF87–DF99 |
+| DF03 | Ficha da Forja-Mãe e esquema da arena | DF00, DF01 | entregue em 13/11/2026; aguarda a aprovação do João | `DF03/DF03_ficha_forja_mae.png` | Referência do lote DF100–DF112 |
+| PT00 | Ficha dos portais e do Receptáculo | Prancha de Elementos do Laboratório | entregue em 13/11/2026; aguarda a aprovação do João | `PT00/PT00_ficha_portais.png` | Referência do lote PT10–PT23 |
+| DF87–DF99 | Autômato: 7 folhas do corpo, braço, rebite, disparo, feixe e pulso | DF02 | integrado (v0.8) | `DF87`, `DF88`, `DF90`–`DF99` | Forma Autômato (`player.gd`), rebite (`bullet.gd`) |
+| PT10–PT23 | Arco de Dobra, glifos, Receptáculo, membrana e Fenda | PT00 | integrado (v0.8) | `PT10`–`PT13`, `PT15`, `PT20`–`PT23` | Arco do Hélix (`portal.gd`), Fendas (`rift.gd`), Receptáculo (`receptacle.gd`) e seletor (`dest_select.gd`) |
+| DF100–DF112 | Forja-Mãe: corpo, lente, peito, braço, martelo, núcleo, escotilha, grade e efeitos | DF03 | integrado (v0.8) | `DF100`–`DF108`, `DF110`–`DF112` | Chefe do Deserto (`forja.gd`) |
+
+Os lotes 2 e 3 foram importados em meia resolução por `tools/import_fase2.py` (`assets/deserto/` e `assets/portais/`) e carregados por `scripts/df_art.gd`, com as âncoras dos pedidos. Escala do jogo: K = 0,214 do desenho original (D = 400 px vira ~86 px).
 
 ---
 
@@ -179,7 +181,8 @@ Base: [proposta da Fase 2](fases/deserto_ferrugem/proposta_fase2.md) e decisões
 | HUD (Integridade, Energia, Células, fragmentos, avisos, vitória) | sem registro | sem registro (desenhado por código) | — | `hud.gd` |
 | Menu principal, pausa e opções | sem registro | sem registro (desenhado por código) | — | `menu.gd`, `menu_list.gd` |
 | Mapa | sem registro | sem registro (desenhado por código) | — | `hud.gd` |
-| Calibração do portal | sem registro | sem registro (desenhado por código) | — | `calibration.gd` |
+| Calibração do portal (padrão ciano e padrão âmbar do Deserto) | sem registro | sem registro (desenhado por código) | — | `calibration.gd` |
+| Seletor de destino (usa os glifos PT13) e caixa de diálogo de IRIS | PT13 | desenhado por código | — | `dest_select.gd`, `hud.gd` |
 | Painel da Bancada e painel de Registros | sem registro | sem registro (desenhado por código) | — | `bench_panel.gd`, `log_panel.gd` |
 | Placas de dica | sem registro | sem registro (desenhado por código) | — | `sign.gd` |
 

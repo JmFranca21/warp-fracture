@@ -7,6 +7,8 @@ var speed := 1000.0
 var dmg := 1
 var pierce := false
 var big := false
+var rivet := false          # Rebitadeira do Autômato (DF87)
+var spr: AnimatedSprite2D
 var player
 var life := 0.9
 var hit := {}
@@ -23,6 +25,16 @@ func _ready() -> void:
 	add_child(cs)
 	g = Art.glow(Color(0.4, 0.9, 1.0, 0.9), 70.0 if big else 30.0)
 	add_child(g)
+	if rivet:
+		g.modulate.a = 0.45
+		var sf := SpriteFrames.new()
+		DFArt.add_anim(sf, "spin", "DF87", range(4), 18.0, true)
+		spr = AnimatedSprite2D.new()
+		spr.sprite_frames = sf
+		spr.scale = Vector2.ONE * DFArt.NODE * 1.6
+		spr.rotation = dir.angle()
+		add_child(spr)
+		spr.play("spin")
 	body_entered.connect(_on_body)
 	z_index = 8
 
@@ -68,6 +80,9 @@ func _pop() -> void:
 
 
 func _draw() -> void:
+	if rivet:
+		draw_line(-dir * 14.0, Vector2.ZERO, Color(0.35, 0.9, 1.0, 0.35), 4.0, true)
+		return
 	var l := 34.0 if big else 18.0
 	var w := 14.0 if big else 6.0
 	draw_line(-dir * l, Vector2.ZERO, Color(0.4, 0.9, 1.0, 0.45), w, true)

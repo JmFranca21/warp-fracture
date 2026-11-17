@@ -2,7 +2,7 @@
 
 Use a branch `main` do repositório JmFranca21/warp-fracture. No fluxo automático, o trabalho local acontece na branch `auto/fluxo`, e o João Marcelo faz o merge e o push. As entregas publicadas e o caderno atualizado estão na árvore do projeto.
 
-Você vai continuar o desenvolvimento do jogo **Warp Fracture**, um metroidvania 2D em visão lateral feito em **Godot 4.3** (GDScript, renderizador GL Compatibility). A arte segue a DA-01: 2D cartunizado, simplificado e minimalista, sem pixel art. O projeto está na **v0.7**: Laboratório Hélix (com a Fuga do Eco) e Verdâmia jogáveis, com a arte oficial de Verdâmia, chefe, menu, save, mapa, Arpão de Fase, Bancada de Upgrades e Registros. A v0.6.1 corrigiu o fragmento que reaparecia no altar ao continuar o jogo.
+Você vai continuar o desenvolvimento do jogo **Warp Fracture**, um metroidvania 2D em visão lateral feito em **Godot 4.3** (GDScript, renderizador GL Compatibility). A arte segue a DA-01: 2D cartunizado, simplificado e minimalista, sem pixel art. O projeto está na **v0.8**: Laboratório Hélix (com a Fuga do Eco), Verdâmia e o Deserto de Ferrugem jogáveis, com a passagem entre universos pelo Receptáculo e pelo Arco de Dobra, a forma Autômato e a Forja-Mãe (fragmento 2/4), além de menu, save (versão 2), mapa, Arpão de Fase, Bancada de Upgrades e Registros.
 
 **Decisões em vigor:** D01 (locomoção do Eco) e D02 a D05 (passagem Verdâmia → Hélix → Deserto com o Receptáculo, forma Autômato, chefe Forja-Mãe e portais), decididas em 12/11/2026 com as recomendações aceitas. Estão em `colaboracao/decisoes/`.
 
@@ -20,10 +20,13 @@ Antes de qualquer coisa:
      tools/fluxo/godot.sh --script res://tools/test_fragmento.gd -- save at=999
      tools/fluxo/godot.sh --script res://tools/test_portal.gd -- level=lab pos=6560,680 terminals god at=30
      tools/fluxo/godot.sh --script res://tools/test_fuga.gd -- level=lab terminals arpao pos=4250,790 save at=999
+     tools/fluxo/godot.sh --script res://tools/test_passagem.gd -- save at=999
+     tools/fluxo/godot.sh --script res://tools/test_deserto.gd -- save at=999
+     tools/fluxo/godot.sh --script res://tools/test_forja.gd -- save at=999
      ```
 
 Regras de trabalho:
-- Siga o roteiro etapa por etapa. A Etapa 7 (Fuga do Eco) foi concluída na v0.7 (HANDOFF, seção 13). A próxima é a **Etapa 8, cena de abertura**; em paralelo, a etapa 1 da campanha do Deserto (passagem e save, D02) não depende de arte nova. Depois vêm as Fendas Instáveis e Hidrópolis.
+- Siga o roteiro etapa por etapa. A Fase 2 (Deserto e Forja-Mãe) foi concluída na v0.8 (HANDOFF, seção 14). **Antes de seguir, espere o primeiro plano da fase de neve, que o João Marcelo vai enviar:** o plano do jogo mudou e essa fase será planejada por completo (design e pedidos de arte). Depois vêm a Etapa 8 (cena de abertura), as Fendas Instáveis e Hidrópolis, na ordem que o plano revisto definir.
 - **Sempre verifique bugs e o posicionamento dos elementos com capturas de tela.** Nenhum elemento, nem os do cenário de fundo, pode parecer flutuando sem contexto (use correntes, suportes, apoio no chão ou no teto). A fase deve ser desafiadora, sem ficar aglomerada.
 - Plataformas devem ser atravessáveis por baixo.
 - Para cada caminho novo, faça testes de alcance com o harness (`act=...`), além da regressão: menu, portal, chefe, vitória, save e continuar.

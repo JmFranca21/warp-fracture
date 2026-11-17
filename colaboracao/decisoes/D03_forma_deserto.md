@@ -72,3 +72,7 @@ Um besouro pequeno de carapaça de chapa (0,6 D), que **plana** com os élitros,
 ## Decisão final (12/11/2026)
 
 **Opção 1: Autômato de Fase (o Deserto é a primeira área de Ferrumgrado e a Fase 2 da campanha; Hidrópolis passa para depois)**, conforme a recomendação acima. O João Marcelo aceitou as recomendações de D02 a D05 em 12/11/2026. Os pedidos que dependiam desta decisão foram liberados.
+
+## Implementação (17/11/2026)
+
+Implementada na **v0.8**. Detalhes, valores finais e testes no `HANDOFF.md`, seção 14.

@@ -12,6 +12,7 @@ void fragment() {
 """
 
 var state := "menu"
+const MUSIC := {"lab": "laboratorio", "verd": "verdamia", "deserto": "deserto"}
 var world: Node2D
 var level: Level
 var player: Player
@@ -19,6 +20,7 @@ var cam: Camera2D
 var hud: Hud
 var menu: MainMenu
 var calib: Calibration
+var dest_select: DestSelect
 var bench_panel: BenchPanel
 var log_panel: LogPanel
 var fade_rect: ColorRect
@@ -35,6 +37,8 @@ var visited := {}        # salas exploradas ("lab:A") — usadas pelo mapa
 var modules := {}        # módulos da arma conquistados ("arpao")
 var upgrades := {}       # melhorias compradas na bancada
 var events := {}         # eventos únicos já vividos ("fuga_lab")
+var installed := {}      # fragmentos instalados no Receptáculo da Máquina ("verdamia")
+var portal_cal := {}     # destinos já calibrados no Arco do Hélix ("verdamia", "deserto")
 var checkpoint_level := "lab"
 var checkpoint_pos := Vector2.ZERO
 var interact_target: Node = null
@@ -89,6 +93,10 @@ func _ready() -> void:
 	calib.main = self
 	cl.add_child(calib)
 	calib.done.connect(_on_calib_done)
+	dest_select = DestSelect.new()
+	dest_select.main = self
+	cl.add_child(dest_select)
+	dest_select.done.connect(_on_dest_chosen)
 	bench_panel = BenchPanel.new()
 	bench_panel.main = self
 	cl.add_child(bench_panel)
@@ -123,6 +131,19 @@ func _ready() -> void:
 			terminals = {"A": true, "B": true}
 		if auto.has("fugadone"):
 			events["fuga_lab"] = true
+		if auto.has("frags"):
+			for f in String(auto["frags"]).split(","):
+				frags[f] = true
+			fragments = frags.size()
+		if auto.has("installed"):
+			for f in String(auto["installed"]).split(","):
+				installed[f] = true
+		if auto.has("cal"):
+			for f in String(auto["cal"]).split(","):
+				portal_cal[f] = true
+		if auto.has("bossdone"):
+			for f in String(auto["bossdone"]).split(","):
+				boss_done[f] = true
 		menu.visible = false
 		hud.visible = true
 		var lid: String = auto["level"]
@@ -234,6 +255,9 @@ func _unhandled_input(event: InputEvent) -> void:
 				open_map()
 		"victory":
 			if event.is_action_pressed("confirm"):
+				close_victory()
+			elif event.is_action_pressed("pause"):
+				save_now()
 				show_menu()
 
 
@@ -319,6 +343,8 @@ func _reset_progress() -> void:
 	modules = {}
 	upgrades = {}
 	events = {}
+	installed = {}
+	portal_cal = {}
 	cells = 0
 	deaths = 0
 	play_time = 0.0
@@ -367,6 +393,8 @@ func start_game(from_save := false) -> void:
 		if checkpoint_level != "lab" or not frags.is_empty():
 			events["fuga_lab"] = true
 		fragments = frags.size()
+		installed = SaveGame.to_set(d.get("installed", []))
+		portal_cal = SaveGame.portal_cal_set(d, frags)
 		cells = int(d.get("cells", 0))
 		deaths = int(d.get("deaths", 0))
 		play_time = float(d.get("play_time", 0.0))
@@ -415,7 +443,7 @@ func load_level(id: String, pos: Vector2, show_title: bool) -> void:
 	cam.position = _cam_target()
 	cam.reset_smoothing()
 	state = "level"
-	AudioMgr.music("laboratorio" if d["theme"] == "lab" else "verdamia")
+	AudioMgr.music(MUSIC.get(String(d["theme"]), "laboratorio"))
 	hud.set_prompt("")
 	hud.hide_tip()
 	if show_title:
@@ -430,6 +458,8 @@ func _cam_target() -> Vector2:
 		look = 140.0
 	var tg := player.global_position + Vector2(player.facing * 70.0, -165.0 + look)
 	if level != null and level.boss_active:
+		if level.boss_cam != Vector2.INF:
+			return level.boss_cam
 		tg.x = 4380.0
 	return tg
 
@@ -531,14 +561,14 @@ func add_cells(n: int) -> void:
 	hud.pulse_cells()
 
 
-func open_calibration(portal: Node) -> void:
+func open_calibration(portal: Node, pattern := "verdamia") -> void:
 	if transitioning:
 		return
 	calib_portal = portal
 	state = "calib"
 	get_tree().paused = true
 	hud.set_prompt("")
-	calib.open()
+	calib.open(pattern)
 
 
 func _on_calib_done(ok: bool) -> void:
@@ -546,12 +576,101 @@ func _on_calib_done(ok: bool) -> void:
 	state = "level"
 	if ok:
 		AudioMgr.sfx("calibra_ok")
-	if ok and is_instance_valid(calib_portal):
+	if not is_instance_valid(calib_portal):
+		return
+	if ok and calib.pattern == "deserto":
+		# D02 passo 9: o diafragma abre, mas só o último E começa a viagem
+		portal_cal["deserto"] = true
+		calib_portal.arm("deserto")
+		hud.say(["IRIS: \"Sinal travado. O Deserto está do outro lado. Quando estiver pronto, atravesse.\""])
+		save_now()
+	elif ok:
+		portal_cal[calib_portal.target] = true
 		calib_portal.activate()
 		await get_tree().create_timer(0.7).timeout
 		enter_portal(calib_portal.target, calib_portal.global_position)
-	elif is_instance_valid(calib_portal) and calib_portal.player_near:
-		hud.set_prompt(calib_portal.prompt)
+	else:
+		calib_portal.refresh_state()
+		if calib_portal.player_near:
+			hud.set_prompt(calib_portal.prompt)
+
+
+# ---------------------------------------------------------------- Arco de Dobra (D02)
+## O que o Arco do Hélix faz agora: destino mostrado, estado visual e texto do E.
+func portal_action() -> Dictionary:
+	if not frags.has("verdamia"):
+		return {"target": "verdamia", "state": "sinal", "prompt": "[E] Calibrar o portal"}
+	if installed.is_empty():
+		return {"target": "verdamia", "state": "bloqueado", "prompt": "[E] Portal sem energia"}
+	var tg := "deserto" if not frags.has("deserto") else "verdamia"
+	return {"target": tg, "state": "sinal", "prompt": "[E] Escolher destino"}
+
+
+func portal_interact(portal: Portal) -> void:
+	if transitioning:
+		return
+	if not frags.has("verdamia"):
+		open_calibration(portal)
+	elif installed.is_empty():
+		hud.say(["IRIS: \"Sem energia para outra travessia. Instale o fragmento no Receptáculo, ao lado do portal.\""])
+	else:
+		calib_portal = portal
+		state = "dest"
+		get_tree().paused = true
+		hud.set_prompt("")
+		var items := [{"id": "verdamia", "nome": "Verdâmia", "status": "estável"}]
+		items.append({"id": "deserto", "nome": "Deserto de Ferrugem",
+			"status": "calibrado" if portal_cal.has("deserto") else "sinal fraco · calibração necessária"})
+		dest_select.open(items, 1 if not frags.has("deserto") else 0)
+
+
+func _on_dest_chosen(choice: String) -> void:
+	get_tree().paused = false
+	state = "level"
+	var portal: Portal = calib_portal
+	if choice == "" or not is_instance_valid(portal):
+		if is_instance_valid(portal):
+			portal.refresh_state()
+		return
+	if choice == "deserto" and not portal_cal.has("deserto"):
+		portal.target = "deserto"
+		open_calibration(portal, "deserto")
+		return
+	portal.arm(choice)
+	if choice == "verdamia":
+		# Verdâmia é estável: atravessa direto
+		await get_tree().create_timer(0.5).timeout
+		enter_portal("verdamia", portal.global_position)
+
+
+## Fragmento recuperado e ainda não instalado ("" se nenhum).
+func pending_install() -> String:
+	for f in Receptacle.ORDER:
+		if frags.has(f) and not installed.has(f):
+			return f
+	return ""
+
+
+func install_fragment(f: String, rec: Node) -> void:
+	installed[f] = true
+	AudioMgr.sfx("modulo", Vector2.INF, 0.0, 0.0)
+	add_shake(7.0)
+	checkpoint_level = level.id
+	checkpoint_pos = rec.global_position + Vector2(-60, -10)
+	if is_instance_valid(player):
+		player.hp = player.max_hp
+	if level.portal != null:
+		level.portal.refresh_state()
+	if f == "verdamia":
+		hud.show_banner("FRAGMENTO INSTALADO · 1/4", "O Arco de Dobra ganhou energia para outra travessia")
+		hud.say(["IRIS: \"Com um fragmento na máquina, consigo separar os sinais...\"",
+			"IRIS: \"Há um segundo: calor, metal, ferrugem. E uma fábrica que ainda funciona sozinha.\"",
+			"IRIS: \"Escolha o destino no portal. O sinal do Deserto é fraco: vamos ter de calibrar.\""])
+		collected["log_09"] = true
+		hud.notice("Registro novo: Análise de IRIS — segundo sinal (Pausa → Registros)")
+	else:
+		hud.show_banner("FRAGMENTO INSTALADO · %d/4" % installed.size(), "A Máquina de Dobra está mais estável")
+	save_now()
 
 
 func enter_portal(target: String, portal_pos: Vector2) -> void:
@@ -566,15 +685,44 @@ func enter_portal(target: String, portal_pos: Vector2) -> void:
 	add_shake(14.0)
 	await get_tree().create_timer(0.9).timeout
 	await _fade_to(Color(0.85, 0.95, 1.0, 1.0), 0.45)
-	var sp: Vector2 = LevelData.get_level(target)["spawn"]
+	var sp := arrival_point(target)
 	checkpoint_level = target
 	checkpoint_pos = sp
 	load_level(target, sp, true)
 	save_now()
-	hud.show_banner("NOVA FORMA: LINCE-VAGALUME", "Pulo duplo  ·  Salto de parede  ·  Garras  ·  Clarão")
+	_form_banner()
+	if level.arrival_rift != null and level.arrival_rift.global_position.distance_to(sp) < 260.0:
+		level.arrival_rift.open_now()
+		level.arrival_rift.close_anim()     # a fenda de chegada se fecha atrás do jogador
 	await _fade_to(Color(0.85, 0.95, 1.0, 0.0), 1.4)
 	fade_rect.color = Color(0, 0, 0, 0)
 	transitioning = false
+	if target == "lab" and pending_install() != "":
+		hud.say(["IRIS: \"Bem-vindo de volta. Leve o fragmento até o Receptáculo da Máquina.\"",
+			"IRIS: \"Sem ele, o portal não tem força para outra travessia.\""])
+
+
+## Onde o jogador aparece ao atravessar para cada universo.
+func arrival_point(target: String) -> Vector2:
+	var d: Dictionary = LevelData.get_level(target)
+	if target == "lab":
+		return Vector2(6470, 680)
+	if d.has("return_rift") and frags.has(target):
+		return Vector2(d["return_rift"].x - 50.0, d["return_rift"].y - 10.0)
+	return d["spawn"]
+
+
+func _form_banner() -> void:
+	match player.form:
+		"lince":
+			hud.show_banner("NOVA FORMA: LINCE-VAGALUME", "Pulo duplo  ·  Salto de parede  ·  Garras  ·  Clarão")
+		"automato":
+			var first := not events.has("forma_automato")
+			events["forma_automato"] = true
+			hud.show_banner("NOVA FORMA: AUTÔMATO" if first else "FORMA: AUTÔMATO",
+				"Ímã de Fase (F)  ·  Rebitadeira  ·  Pulso Magnético  ·  Arranque")
+		_:
+			hud.show_banner("FORMA HUMANA", "Estabilizador de Fase  ·  Arpão de Fase")
 
 
 func gain_module(id: String) -> void:
@@ -601,19 +749,60 @@ func boss_defeated() -> void:
 	hud.notice("A Rainha Micélia recua para as raízes...")
 
 
-func collect_fragment() -> void:
+## Fragmento recuperado (D02 passo 1): sem tela de vitória. Controles travam ~3 s, o cristal
+## entra no Traje, o HUD acende, o letreiro aparece e o jogo salva. Depois a fenda de retorno se abre.
+func collect_fragment(at := Vector2.INF) -> void:
 	var lid: String = level.id if level != null else ""
 	if frags.has(lid):
 		return   # um fragmento por fase: nunca conta duas vezes
 	frags[lid] = true
 	fragments = frags.size()
 	AudioMgr.sfx("cura", Vector2.INF, 2.0)
-	AudioMgr.music("menu")
-	state = "victory"
-	player.controls_locked = true
 	add_shake(10.0)
-	hud.show_victory()
+	if is_instance_valid(player):
+		player.controls_locked = true
+		player.velocity = Vector2.ZERO
+	hud.show_banner("FRAGMENTO RECUPERADO · %d/4" % fragments, "O Traje Âncora absorveu o fragmento")
+	if at != Vector2.INF:
+		checkpoint_level = lid
+		checkpoint_pos = at
+	elif is_instance_valid(player):
+		checkpoint_level = lid
+		checkpoint_pos = player.global_position + Vector2(0, -10)
 	save_now()
+	await get_tree().create_timer(3.0, false).timeout
+	if level == null or level.id != lid:
+		return
+	if is_instance_valid(player):
+		player.controls_locked = false
+	level.open_return_rift(true)
+	if lid == "deserto":
+		hud.say(["IRIS: \"Segundo fragmento estável. A porta da Câmara abriu, e a fenda atrás dela leva de volta ao Hélix.\""])
+		await get_tree().create_timer(2.5, false).timeout
+		if level != null and level.id == lid:
+			show_victory()
+	else:
+		hud.say(["IRIS: \"Sinal estável. O fragmento abriu um caminho de volta ao Hélix. Quando estiver pronto, atravesse.\""])
+
+
+## Fim da versão atual (fragmento do Deserto): resumo por cima do jogo; ENTER continua, ESC vai ao menu.
+func show_victory() -> void:
+	state = "victory"
+	AudioMgr.music("menu")
+	if is_instance_valid(player):
+		player.controls_locked = true
+	hud.show_victory()
+
+
+func close_victory() -> void:
+	if hud.victory_t < 1.0:
+		return
+	hud.victory = false
+	state = "level"
+	if is_instance_valid(player):
+		player.controls_locked = false
+	if level != null:
+		AudioMgr.music(MUSIC.get(String(level.data["theme"]), "laboratorio"))
 
 
 # ---------------------------------------------------------------- automação (testes)
@@ -670,7 +859,7 @@ func _auto_process(delta: float) -> void:
 		level.boss.take_hit(999, level.boss.global_position)
 	if auto.has("victory") and not auto.has("_v") and auto_t > 0.3:
 		auto["_v"] = 1
-		collect_fragment()
+		show_victory()
 	if auto.has("pause") and not auto.has("_p") and auto_t > 0.3:
 		auto["_p"] = 1
 		toggle_pause()

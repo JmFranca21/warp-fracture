@@ -36,7 +36,7 @@ func _ready() -> void:
 	add_child(spr)
 
 
-func _process(dt: float) -> void:
+func _physics_process(dt: float) -> void:
 	t += dt
 	if not falling and t >= WARN:
 		falling = true

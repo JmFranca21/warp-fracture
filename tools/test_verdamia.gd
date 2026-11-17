@@ -1,7 +1,7 @@
 extends SceneTree
 ## Regressão de Verdâmia (v0.6): percorre os sistemas da fase com a arte integrada.
 ## menu → novo jogo → portal → Lince (11 animações) → garras em inimigo → checkpoint (E) → morte e
-## retorno → salvar e continuar → Rainha (4 ataques com arte) → barreira abre → fragmento → vitória.
+## retorno → salvar e continuar → Rainha (4 ataques com arte) → barreira abre → fragmento → fenda de retorno.
 ## uso: godot --headless --audio-driver Dummy --path . --script res://tools/test_verdamia.gd -- save at=999
 
 var game
@@ -162,11 +162,17 @@ func _run() -> void:
 	_check(game.level.id == "verdamia" and p.form == "lince" and p.global_position.distance_to(Vector2(2570, 790)) < 40.0, "Continuar retoma em Verdâmia no santuário")
 
 	# --- Rainha Micélia
-	await _put(Vector2(4000, 790))
-	await _wait(0.4)
 	var lv = game.level
+	game.player.global_position = Vector2(4000, 790)
+	var roar := false
+	for i in 60:
+		await physics_frame
+		if lv.boss_active and lv.boss.spr.animation == "rugido":
+			roar = true
+			break
+	await _wait(0.3)
 	_check(lv.boss_active and lv.gate != null, "entrar na arena acorda a Rainha e fecha a barreira")
-	_check(lv.boss.spr.animation == "rugido", "a Rainha ruge ao acordar")
+	_check(roar, "a Rainha ruge ao acordar")
 	var seen := {}
 	var anims := {}
 	var t := 0.0
@@ -208,7 +214,9 @@ func _run() -> void:
 	Input.action_press("right")
 	await _wait(0.8)
 	Input.action_release("right")
-	_check(game.state == "victory" and game.fragments == 1, "coletar o fragmento leva à tela de vitória")
+	_check(game.state == "level" and game.fragments == 1 and game.player.controls_locked, "coletar o fragmento: 1/4, controles travados na absorção (sem tela de vitória)")
+	await _wait(3.4)
+	_check(not game.player.controls_locked and game.level.return_rift != null, "depois de ~3 s o controle volta e a fenda de retorno abre")
 
 	print("RESULTADO: ", "PASS" if fails == 0 else "FAIL (%d)" % fails)
 	SaveGame.erase()

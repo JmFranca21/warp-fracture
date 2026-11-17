@@ -117,6 +117,8 @@ func _run_to_portal(limit := 30.0) -> float:
 			_release_all()
 			return t
 	_release_all()
+	if is_instance_valid(p):
+		print("  (parou em ", p.global_position.round(), " morto=", p.dead, " t=", snappedf(t, 0.1), ")")
 	return -1.0
 
 

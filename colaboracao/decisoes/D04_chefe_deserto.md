@@ -92,3 +92,12 @@ Um robô-tanque gigante (2,5 D) sobre esteiras, que persegue o jogador pelo Sal�
 ## Decisão final (12/11/2026)
 
 **Opção A: Forja-Mãe**, conforme a recomendação acima. O João Marcelo aceitou as recomendações de D02 a D05 em 12/11/2026. Os pedidos que dependiam desta decisão foram liberados.
+
+## Implementação (17/11/2026)
+
+Implementada na **v0.8**. Detalhes, valores finais e testes no `HANDOFF.md`, seção 14.
+
+**Ajustes feitos na implementação:**
+- O núcleo do pistão fica exposto na junta enquanto o martelo está preso: de pé na chapa do martelo, o rebite acerta à queima-roupa (área de 110 × 40 px).
+- O peito da arte (DF100) fica baixo, então o Pulso a até 160 px do centro do peito funciona também do chão; as âncoras do teto continuam úteis contra o feixe.
+- O trilho dos braços fica pendurado a 150 px abaixo do teto (y 300), para que os segmentos do braço (DF104) alcancem o chão sem esticar.

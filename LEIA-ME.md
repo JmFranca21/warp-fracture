@@ -1,4 +1,4 @@
-# Warp Fracture — Protótipo v0.7
+# Warp Fracture — Protótipo v0.8
 
 Primeiro protótipo jogável do *Warp Fracture*, feito em **Godot 4.3** a partir do Caderno de 10 páginas.
 
@@ -52,13 +52,24 @@ O jogo usa o renderizador *Compatibility* (OpenGL 3.3), que funciona em PCs simp
 - Clarão: fere e atordoa tudo ao redor.
 - Inimigos: Mariposa Lanterna e Esporângio.
 - Chefe: **Rainha Micélia**, com chuva de esporos, raízes que irrompem do chão, rajada e invocação de mariposas. Ela tem uma 2ª fase abaixo de 50% de vida.
-- Recuperar o Fragmento 1/4 encerra o protótipo.
+- Recuperar o Fragmento 1/4 abre uma fenda de volta ao Laboratório Hélix, atrás do altar.
+
+**3. Laboratório Hélix, de volta** (Receptáculo e Arco de Dobra)
+- Instale o fragmento no **Receptáculo da Máquina**, ao lado do portal. Ele passa a funcionar como estação.
+- No portal, **[E] Escolher destino**: Verdâmia (estável, atravessa direto) ou o **Deserto de Ferrugem** (sinal fraco). A calibração do Deserto tem uma onda que deriva devagar: alinhe as três ao mesmo tempo. Só o último **E** começa a viagem.
+
+**4. Deserto de Ferrugem** (forma Autômato)
+- Lento e pesado: não recua ao levar dano, tem um pulo só (um pouco mais baixo) e a esquiva vira o **Arranque**, sobre as rodinhas dos pés.
+- **Ímã de Fase (F):** puxa o Autômato até as argolas ciano. Sem argola ao alcance, puxa um drone até o chão.
+- **Rebitadeira:** tiro mirado em 360°. **Pulso Magnético** (clique direito, 1/3 da energia): derruba drones, para robôs e desvia tiros.
+- Zonas: Dunas de sucata, Fábrica autônoma (esteira, prensas e serra) e Salão do Núcleo (válvulas de vapor e plataformas móveis). Inimigos: Robô e Drone do Deserto.
+- Chefe: **Forja-Mãe**, a IA da fábrica. Fase 1: o martelo esquerdo prende no chão; suba nele com o ímã e acerte o núcleo do pistão. Fase 2: o braço direito, a esteira e os drones. Fase 3: use o Pulso perto do peito para arrancar as placas e acertar o núcleo central. Recuperar o Fragmento 2/4 encerra a versão atual.
 
 **HUD:** Integridade (cristais), Energia de Fase (orbe), Células de Fase (moeda), fragmentos, dicas contextuais e títulos de área.
 
 ## Câmera e alcance do protótipo
 
-A câmera é lateral. O Deserto de Ferrugem e a perseguição pelo Eco fazem parte do projeto e aguardam implementação.
+A câmera é lateral. Na Câmara da Forja, ela se afasta para mostrar a sala inteira durante a luta.
 
 ## Sprites animados (AnimatedSprite2D)
 
@@ -82,6 +93,16 @@ Para ajustar no editor: dê dois cliques em `rastejador_frames.tres`. O painel *
 
 **Para os próximos inimigos:** gere o GIF ou spritesheet com fundo transparente ou de cor sólida e diga quais quadros são de cada ação.
 
+
+## Novidades da v0.8
+
+- **Fase 2: Deserto de Ferrugem.** Fase nova inteira, com a forma **Autômato** e a arte oficial do Deserto: três zonas, seis máquinas, três vãos de ímã, 12 células e três estações.
+- **Forja-Mãe.** Chefe de três fases na Câmara da Forja, depois do Salão do Núcleo. Ao morrer, você volta à estação antes da porta e ela recomeça inteira.
+- **Passagem entre universos.** O fragmento não abre mais a tela de vitória: ele entra no Traje, a fenda de retorno se abre e o caminho segue pelo Receptáculo e pelo seletor de destino do portal.
+- **Portais com arte nova.** Arco de Dobra com diafragma de oito lâminas, glifo e membrana na cor e no movimento de cada destino (ciano, verde-lima e âmbar), Fendas de chegada e de retorno, e o Receptáculo ligado ao portal por um cabo.
+- Registro novo (**Análise de IRIS — segundo sinal**), falas de IRIS em caixa de diálogo, trilha do Deserto e 12 sons novos.
+- O save passou para a **versão 2** (fragmentos instalados e destinos calibrados). Saves antigos são convertidos sozinhos.
+- Correção: o entulho e o piso que desaba na Fuga do Eco agora seguem o relógio da física, então o tempo de aviso não muda em computadores mais lentos.
 
 ## Novidades da v0.7
 
@@ -182,6 +203,8 @@ O inventário de sprites importados está em [USADAS_NO_JOGO.md](arte_original/U
 | `level.gd` | Monta a fase a partir dos dados |
 | `player.gd` | Daymon: movimento, formas, ataques, dano |
 | `crawler.gd`, `drone.gd`, `moth.gd`, `spore_plant.gd`, `queen.gd` | Inimigos e chefe |
+| `desert.gd`, `desert_enemy.gd`, `forja.gd` | Deserto de Ferrugem: cenário e máquinas, Robô e Drone, Forja-Mãe |
+| `portal.gd`, `rift.gd`, `receptacle.gd`, `dest_select.gd` | Arco de Dobra, Fendas, Receptáculo e seletor de destino |
 | `bg_layer.gd`, `terrain.gd`, `fg_layer.gd` | Arte do cenário (fundo com parallax, chão, primeiro plano) |
 | `hud.gd`, `menu.gd`, `calibration.gd` | Interface |
 

@@ -73,3 +73,7 @@ Ou seja: **para dentro é aberto, tremor é instável, fechado é parado**. Quem
 ## Decisão final (12/11/2026)
 
 **a linguagem, as peças e a integração propostas neste documento**, conforme a recomendação acima. O João Marcelo aceitou as recomendações de D02 a D05 em 12/11/2026. Os pedidos que dependiam desta decisão foram liberados.
+
+## Implementação (17/11/2026)
+
+Implementada na **v0.8**. Detalhes, valores finais e testes no `HANDOFF.md`, seção 14.
