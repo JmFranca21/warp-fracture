@@ -1,90 +1,122 @@
 # Warp Fracture — Régua de consistência visual (DA-02)
 
-**Status:** PROPOSTA, aguardando a aprovação do João Marcelo. Depois de aprovada, vale para toda arte nova, junto com a [DA-01](PADRAO_VISUAL_OFICIAL.md).
-**Origem:** [auditoria de consistência do Deserto](../../../docs/auditoria_deserto/) (17/11/2026).
-**Autoria:** Claude (desenvolvimento), com revisão pedida ao ChatGPT (direção de arte).
+**Status:** VERSÃO FINAL PARA APROVAÇÃO do João Marcelo. Depois de aprovada, vale para toda arte nova, junto com a [DA-01](PADRAO_VISUAL_OFICIAL.md).
+**Histórico:** proposta do Claude a partir da [auditoria do Deserto](../../../docs/auditoria_deserto/) (17/11/2026). R2 corrigida pelo João (17/11). Revisada pelo ChatGPT (17/11): concordou com o diagnóstico, ajustou R1 e R3–R8, propôs R9–R11 e a tabela de evidência. Consolidada pelo Claude.
+**Os números de R6, R7 e R9 são metas da primeira rodada.** Serão recalibrados com as referências aprovadas e com as duas fichas v2 (DF02 e DF01) antes de virarem corte definitivo.
 
 ## Por que existe
 
-A DA-01 descreve o estilo em palavras. No Deserto isso não bastou: as fichas DF00/DF01 e DF02/DF03 seguiram a DA-01 ao pé da letra e mesmo assim criaram duas famílias visuais que não combinam entre si nem com o Laboratório e Verdâmia. A DA-02 transforma o estilo das peças aprovadas em **números conferíveis** e acrescenta uma **prancha de comparação obrigatória** em toda entrega.
+A DA-01 descreve o estilo em palavras. No Deserto isso não bastou: surgiram três famílias visuais.
 
-Parte do problema veio também do pedido: a ficha DF02 pedia 0,8 D de largura, tronco em barril e pés largos. Os pedidos de agora em diante também seguem esta régua.
+1. **Laboratório e Verdâmia (aprovadas):** volume construído por massas e facetas de cor, contorno frio só em parte da borda, fundo escuro.
+2. **DF00/DF01:** a ferrugem do Robô e da parede ficam em faixas próximas de cor e valor; a lente se vê, o corpo some no fundo quente.
+3. **DF02/DF03 e lotes 2–3:** proporção de brinquedo (Autômato com L/A 0,76, como o pedido mandava), contorno fechado preto-marrom e excesso de chanfros, aros, rebites e faixas dividindo a atenção.
+
+Os pedidos e a integração também erraram (pedido de tronco em barril; peças esticadas no jogo). A DA-02 vale para quem desenha, para quem pede e para quem integra.
 
 ## Base de medição
 
-Medido nas peças aprovadas, na escala de ficha **D = 400 px = altura do Daymon** (no jogo, D ≈ 91 px de tela):
+Peças aprovadas, escala de ficha **D = 400 px = altura do Daymon** (no jogo, D ≈ 91 px):
 
-| Peça aprovada | Altura | Contorno escuro na borda | Cor do contorno | Saturação média | Cores efetivas |
+| Peça aprovada | Altura | Contorno na borda | Cor do contorno | Saturação média | Cores efetivas |
 | --- | --- | --- | --- | --- | --- |
 | Daymon (ficha oficial) | 1,00 D | parcial (jaleco sem traço) | azul-marinho | baixa | ~8 |
-| Eco (A3) | 0,70 D (flutuando) | 26% | #302389 violeta | 0,85 (aura) | 10 |
-| Lince-Vagalume | 0,67 D | 36% | #253045 azul-marinho | 0,52 | 8 |
-| Mariposa | 0,58 D | 75% | #2e3035 | 0,22 | 10 |
-| Esporângio | 0,86 D | 46% | #1d3d3e verde-escuro frio | 0,54 | 11 |
-| Rainha Micélia | 3,14 D | 19% | #372e4c violeta | 0,43 | 13 |
-| Pedra com musgo, Altar (objetos) | 0,96–1,43 D | 83–93% | #102027–#142426 | 0,49–0,54 | 8–10 |
-| Arco de Dobra PT10 (objeto) | 2,36 D | 97% | #0f1422 | 0,38 | 12 |
+| Eco (A3) | 0,70 D | 26% | #302389 | 0,85 (energia) | 10 |
+| Lince-Vagalume | 0,67 D | 36% | #101923 / #253045 | 0,52 | 8 |
+| Mariposa | 0,58 D | 75% (linha fina nas asas) | #2e3035 | 0,22 | 10 |
+| Esporângio | 0,86 D | 46% | #1d3d3e | 0,54 | 11 |
+| Rainha Micélia | 3,14 D | 19% | #372e4c | 0,43 | 13 |
+| Pedra com musgo, Altar | 0,96–1,43 D | 83–93% | #102027–#142426 | 0,49–0,54 | 8–10 |
+| Arco PT10 | 2,30 D | 97% | #0f1422 | 0,38 | 12 |
 
-Para comparação, o que saiu da régua no Deserto:
-
-| Peça | Altura | Contorno escuro na borda | Cor do contorno | Problema |
-| --- | --- | --- | --- | --- |
-| Autômato (DF90) | 1,08 D, largura 0,76 da altura | 96% | #23191a preto-marrom | Contorno fechado e quente, proporção de mascote, ferrugem dominando o herói |
-| Robô (DF60) | 0,77 D | 87% | #221513 preto-marrom | Contorno fechado e quente, sem ponto de leitura |
-| Drone (DF66) | 0,30 D | 88% | #2c2323 | Pequeno demais |
-| Forja-Mãe (DF100) | 3,62 D | 95% | #2c1c1b | Contorno fechado e quente; listras de aviso como enfeite |
+Fora da régua no Deserto: Autômato DF90 (1,08 D, L/A 0,76, contorno 96% #23191a); Robô DF60 (0,77 D, 87% #221513, corpo some no fundo); Drone DF01 (0,35 D × 0,60 D); Forja-Mãe DF100 (3,62 D, 95% #2c1c1b, faixas sem perigo associado). Detalhe: a média de saturação do DF90 (0,475) e do DF100 (0,518) **passa** na faixa. A média sozinha não pega o problema, por isso existem R9–R11.
 
 ## As regras
 
-### R1. Escala única
-- D = 400 px no desenho original é a altura do Daymon humano. Toda peça é desenhada nessa régua, e a ficha mostra a faixa de escala com o Daymon em silhueta.
-- Inimigos comuns: **0,55 D a 1,0 D** de altura. Voadores: no mínimo **0,55 D** de altura ou **0,7 D** de largura.
-- Chefes: **2,5 D a 3,5 D**. Objetos interativos: **0,5 D a 1,5 D**.
-- No jogo a escala é sempre **uniforme**: nenhuma peça é esticada só na largura ou só na altura (regra do código, conferida pelo desenvolvimento).
+### R1. Escala
+- D = 400 px. Inimigos terrestres **0,55–1,00 D**. Voadores: **A ≥ 0,55 D ou L ≥ 0,70 D**, medindo corpo e superfícies visíveis (não a hélice solta). Chefes **2,50–3,50 D**. Interativos de porte comum **0,50–1,50 D**.
+- Estruturas atravessáveis (portais, arcos) e formas jogáveis recebem cota própria na ficha.
+- Escala sempre uniforme no sprite e nos nós acima dele: `abs(scale.x) = abs(scale.y)`.
+- **Medir:** caixa da máscara do corpo com alfa ≥ 128, sem halo nem efeito solto, na pose de jogo; A/D, L/D e L/A. Sprites compostos: corpo e montagem em separado.
 
 ### R2. Formas do Daymon pertencem ao universo
-- A forma **não precisa seguir a estética do Daymon**. Ela segue a estética do universo em que aparece, como um ser nativo dali: o Lince-Vagalume é muito diferente do Daymon e funciona porque combina com Verdâmia (observação do João, 17/11/2026).
-- O Lince é exemplo desse princípio, **não modelo** para as outras formas: cada forma tem a linguagem do seu próprio universo.
-- O que vale para todas é o resto desta régua (escala, contorno, tons, saturação, valores) e a leitura de jogo: a forma se distingue dos inimigos da mesma fase à primeira vista. Como marcar isso fica a critério da direção de arte.
+- A forma **não precisa seguir a estética do Daymon**. Ela segue a estética do universo em que aparece, como um ser nativo dali. O Lince-Vagalume é muito diferente do Daymon e funciona porque combina com Verdâmia (observação do João, 17/11/2026). Ele é exemplo do princípio, **não modelo** para as outras formas.
+- A forma se distingue dos inimigos da fase pelo **conjunto de silhueta, postura e ação**. A distinção tem que sobreviver em silhueta (sem cor), a ~90 px, sem depender do rosto.
+- Vale para ela todo o resto da régua. Cotas de tamanho e proporção ficam na ficha de cada forma.
 
-### R3. Contorno (a regra que mais mudou)
-- **Personagens e inimigos não têm traço preto em volta.** A forma é feita por blocos de cor; o contorno escuro aparece em **no máximo metade da borda** (aprovados: 19% a 46%) e some onde bate luz de recorte, no jaleco claro ou na energia.
-- **Cor do contorno sempre fria:** azul-marinho, violeta ou verde-escuro frio, com azul maior ou igual ao vermelho (faixa aprovada #1d2a3c a #372e4c). **Nunca preto puro nem marrom-preto**, nem em materiais quentes como ferrugem: a sombra mais escura da ferrugem é azul-marinho, não marrom.
-- **Objetos de cenário** podem ter contorno fechado, fino e frio (a cor mais escura do próprio material puxada para o azul).
+### R3. Contorno
+- Personagens e inimigos: traço escuro em **no máximo 50% do perímetro externo**, cedendo à luz de recorte.
+- Exceção: linha estrutural fina em apêndices claros (asas da Mariposa), indicando a referência aprovada e registrando a cobertura total.
+- Objetos inertes podem fechar **até 100%** da borda com traço fino e frio. Chefe integrado ao cenário segue a regra de inimigo na montagem ativa.
+- **Cores de contorno: só amostras frias aprovadas**, `#101923`, `#1D2A3C`, `#253045`, `#302389`, `#372E4C` (B > R). Nunca preto puro nem marrom-preto, mesmo na ferrugem.
+- **Medir:** perímetro da máscara, trechos com faixa escura distinta do preenchimento ÷ perímetro total; hex no miolo do traço, fora do antialias. Linhas internas à parte (R9).
 
 ### R4. Tons
-- **2 a 3 tons por superfície** (base, sombra, luz). Nada de degradê pintado nem ruído de textura.
-- Até **12 cores efetivas** por figura (cores que ocupam mais de 2% da área).
+- **2–3 tons por material dominante**; 1 tom em detalhes pequenos. Volume por planos chapados; desgaste em manchas localizadas, sem textura espalhada nem degradê.
+- **Até 12 cores efetivas** no corpo, contando contorno e núcleo sólido dos acentos. Halos, partículas e efeitos ficam fora da conta.
 
-### R5. Saturação e acentos
-- Saturação média da figura entre **0,20 e 0,55**.
-- Cores acima de 0,8 de saturação só nos **acentos de energia** (ciano do Traje Âncora, lima de Verdâmia, âmbar do destino Deserto, vermelho de perigo) e no máximo **10% da área** da figura.
-- **Listras de aviso** (amarelo e preto, vermelho e branco) só onde há perigo de verdade no jogo, nunca como enfeite.
+### R5. Saturação
+- **0,20–0,55 (HSV)** de média é triagem, não aprovação: olhar também a distribuição.
+- **S > 0,80 em até 10% da área sólida**, só em energia e sinal de perigo. Entidades de energia (Eco) têm orçamento próprio documentado.
+- Listras de aviso só numa superfície ou zona de perigo identificável no jogo.
 
-### R6. Estrutura de valores da cena
-- O fundo de jogo fica **escuro**: luminosidade média da cena até **0,20** (Laboratório 0,10–0,13; Verdâmia 0,15–0,16).
-- Personagem, inimigos e perigos ficam **mais claros ou de matiz diferente** do fundo atrás deles. Um universo de cor quente (Deserto) usa fundo quente **escuro** e personagens com sombras frias.
-- A cor de material de um universo nunca é a cor principal do herói daquele universo.
+### R6. Valores da cena
+- Fundo jogável com luma média **≤ 0,20**, em `Y′ = 0,2126 R′ + 0,7152 G′ + 0,0722 B′` (canais 0–1), medida em recortes da área jogável sem HUD.
+- **Contraste local:** diferença de **≥ 0,10 de luma** em pelo menos **⅔ do perímetro visível** da figura nos fundos típicos. Onde a separação depender de matiz, validar em cor na escala de jogo e registrar.
+- Universo quente usa fundo quente **escuro** e figuras com sombras frias. Exterior claro precisa de validação na faixa onde há combate.
 
 ### R7. Ponto de leitura dos inimigos
-- Todo inimigo tem **um ponto de alto contraste** (olho, núcleo, luz) ocupando **4% a 10%** da silhueta, na cor de perigo (vermelho) ou na energia própria, nunca da cor do fundo.
-- A silhueta do inimigo é diferente da do herói da fase à primeira vista, em tamanho reduzido.
+- Uma **região focal** (olho, máscara, boca, lanterna, núcleo ou grupo compacto de marcas) com **4–10% da silhueta sólida**, sem contar o halo. Pontos menores são aceitos se passarem no teste de jogo.
+- Diferença de **≥ 0,20 de luma** entre o foco e o entorno; núcleo de **≥ 2 px no eixo menor** na escala de jogo.
+- O foco também indica a ameaça: para onde o inimigo ataca (canhão horizontal do Robô, lente inferior do Drone).
+- No Deserto o foco não usa a cor do fundo (laranja ou âmbar sobre ferrugem); vermelho é a cor de perigo.
 
-### R8. Paleta comum
-- Cada universo tem **uma família de material** (Laboratório: aço azulado; Verdâmia: verde-azulado e musgo; Deserto: ferrugem e cobre) **mais o azul-marinho comum do jogo** (#0f1422 a #253045) nas sombras e contornos. É esse azul-marinho que amarra os universos.
+### R8. Paleta
+- Por universo: **uma família dominante de material**, os materiais de apoio e as **cores de estado** (cada uma com função fixa).
+- Sombra de referência: o azul-marinho comum `#0F1422` a `#253045`.
+- Deserto: ferrugem na face exposta das chapas; ferro frio nas juntas e cavidades; chapa clara onde um plano precisa destacar; ciano, âmbar e vermelho só com função por peça e estado.
 
-## Verificação obrigatória em cada entrega (prancha de comparação)
+### R9. Espessura e linhas internas
+- Traço escuro com **mediana ≤ 1% de D (4 px)** e **P90 ≤ 1,5% de D (6 px)** na ficha; no jogo isso dá cerca de 0,9 e 1,35 px.
+- Linhas internas contadas à parte: uma junta pode ter linha; **cada rebite e cada placa fechados por linha escura recriam o acabamento rejeitado**, mesmo com metade da borda externa aberta.
+- Objetos inertes: espessura comparada ao PT10 ou à pedra de musgo na escala de jogo.
 
-Além do checklist da DA-01, toda ficha e toda folha entregue vem com uma **prancha de comparação** (PNG separado, `<ID>_comparacao.png`):
+### R10. Construção da sucata (e de materiais em geral)
+- Chapas em **planos grandes**; luz de recorte na mesma direção em todas as peças da cena.
+- Rebite só onde se vê uma união; desgaste onde há quina, atrito ou impacto.
+- Reduzir aros concêntricos, chanfros repetidos e molduras em volta de cada placa quando competirem com a silhueta.
+- **Olhos e lentes:** a função é padronizada por inimigo e por estado; a geometria varia. O visor do herói e a lente dos inimigos se distinguem mesmo em cinza.
 
-1. A peça nova **ao lado do Daymon** (ficha oficial) e de **uma peça aprovada do mesmo tipo** (personagem com personagem, inimigo com inimigo, objeto com objeto), todos na escala D = 400 px.
-2. A mesma linha **reduzida à escala do jogo** (Daymon com ~90 px de altura) sobre o fundo da fase.
-3. No `ENTREGA.md`, a tabela da régua preenchida: altura em D, largura/altura, cor do contorno (hex), parte da borda com contorno escuro (estimada), tons por superfície, saturação dos acentos e o ponto de leitura (inimigos).
+### R11. Aprovação na montagem
+- A peça é aprovada **como entra no jogo**: escala uniforme, pivôs e encaixes conferidos nas poses de espera e de ação.
+- Peças montadas (braço, lente, núcleo, escotilhas, martelos) são conferidas montadas, em repouso e em aviso.
+- Composição esticada, ou sinal que muda de posição sem motivo, volta para correção mesmo se os PNGs isolados passaram.
 
-Se algum número ficar fora da régua, a entrega diz qual e por quê, e o João decide antes do upload.
+## Evidência em cada entrega
+
+1. **`<ID>_comparacao.png`**: a peça, Daymon a **400 px** e uma referência aprovada do mesmo tipo, com orientação e apoio alinhados; a mesma linha com Daymon a **~90 px** sobre o fundo da fase, e também o recorte de pior contraste, se for outro. Referências combinadas:
+   - forma jogável: o Lince (forma aprovada) e o inimigo comum da fase (teste de distinção);
+   - inimigo de tiro horizontal: a Turreta do Laboratório; voador: o Drone do Laboratório;
+   - objeto: PT10 ou a pedra de musgo.
+2. **`ENTREGA.md`** com pose, quadro, estado e referência usados e a tabela:
+
+| Medida | Meta | Resultado |
+| --- | --- | --- |
+| A/D, L/D, L/A | R1 e ficha | |
+| Hex do contorno | R3 | |
+| % do perímetro com contorno | R3 | |
+| Espessura mediana / P90 | R9 | |
+| Tons por material; cores efetivas | R4 | |
+| S médio; S dos acentos; área com S > 0,80 | R5 | |
+| Luma do fundo; contraste local | R6 | |
+| Área e tamanho do foco (inimigos) | R7 | |
+| Resultado em jogo (silhueta, distinção, leitura) | R2, R11 | |
+
+Metas escritas na ficha entram como metas; medidas do PNG e da montagem entram como resultados. O que não se aplica é marcado; exceções são justificadas. Se algo sair da régua, o João decide antes do upload.
 
 ## Do lado do desenvolvimento
 
 - Escala uniforme sempre; nada de esticar peça para caber num retângulo.
-- Antes de cada entrega de fase: prancha das figuras na escala do jogo (`tools/lineup.gd`) e capturas de cena, conferidas contra R1, R6 e R7.
+- Antes de cada entrega de fase: prancha das figuras na escala do jogo (`tools/lineup.gd`) e capturas de cena, conferidas contra R1, R6, R7 e R11.
+- Pedidos de arte seguem esta régua: nada de pedir proporção, contorno ou detalhe que ela proíbe.
 - Nada de preencher parede, teto ou peça faltando com cor chapada: se falta arte, o desenvolvimento pede.

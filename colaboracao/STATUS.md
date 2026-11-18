@@ -5,7 +5,7 @@ Atualizado pelos agentes. Leia `PROTOCOLO.md` e `FLUXO_AUTOMATICO.md` antes de c
 | ID | O que é | Estado | Pedido | Entrega | Revisão |
 |---|---|---|---|---|---|
 | 00_padrao_visual | Diretriz oficial de arte DA-01 | APROVADO (diretriz) | — | [DA-01](entregas/00_padrao_visual/PADRAO_VISUAL_OFICIAL.md) | — |
-| DA-02 | Régua numérica de consistência visual (complementa a DA-01; saída da auditoria do Deserto) | ABERTO (revisão do ChatGPT, prompt 1; depois AGUARDA JOÃO) | [pedido](pedidos/DA02_regua_e_fichas_v2.md) | [DA-02 proposta](entregas/00_padrao_visual/DA-02_CONSISTENCIA.md) | — |
+| DA-02 | Régua numérica de consistência visual (complementa a DA-01; saída da auditoria do Deserto) | AGUARDA JOÃO (versão final, revisada pelo ChatGPT em 17/11/2026) | [pedido](pedidos/DA02_regua_e_fichas_v2.md) | [DA-02 proposta](entregas/00_padrao_visual/DA-02_CONSISTENCIA.md) | — |
 | A0_ficha_eco | Ficha de personagem do Eco (referência para A1–A5 e A9) | APROVADO (referência oficial) | [pedido](pedidos/A0_ficha_eco.md) | [entrega](entregas/A0_ficha_eco/) | [revisão](revisoes/A0_ficha_eco.md) |
 | A1_eco_appear | Materialização do Eco, 8 quadros | INTEGRADO (v0.7, Fuga do Eco) | [pedido](pedidos/A1_eco_appear.md) | [entrega](entregas/A1_eco_appear/) | [revisão](revisoes/A1_eco_appear.md) |
 | A2_eco_float | Eco pairando (loop), 6 quadros | INTEGRADO (v0.7, Fuga do Eco) | [pedido](pedidos/A2_eco_float.md) | [entrega](entregas/A2_eco_float/) | [revisão](revisoes/A2_eco_float.md) |
