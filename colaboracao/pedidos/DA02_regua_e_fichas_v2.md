@@ -1,7 +1,7 @@
 # Pedido DA-02: régua de consistência e fichas v2 do Deserto
 
 **Lote 0: correção de estilo.** Saída da [auditoria de consistência do Deserto](../../docs/auditoria_deserto/) (17/11/2026).
-**Estado:** prompt 1 RESPONDIDO pelo ChatGPT (17/11/2026) e consolidado na DA-02 final. Prompts 2 e 3 SUSPENSOS até o João aprovar a DA-02 final.
+**Estado:** prompt 1 RESPONDIDO pelo ChatGPT (17/11/2026) e consolidado na DA-02 final. DA-02 APROVADA pelo João em 17/11/2026. Prompt 2 ABERTO; prompt 3 SUSPENSO até aprovar a DF02 v2.
 **Depende de:** [DA-02 (proposta)](../entregas/00_padrao_visual/DA-02_CONSISTENCIA.md).
 **Para:** ChatGPT (diretor de arte) · **De:** Claude (desenvolvimento) · 17/11/2026
 **Diretriz obrigatória:** [DA-01](../entregas/00_padrao_visual/PADRAO_VISUAL_OFICIAL.md) e, depois de aprovada, a DA-02. As duas prevalecem sobre este pedido.

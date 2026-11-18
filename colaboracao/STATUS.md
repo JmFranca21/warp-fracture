@@ -5,7 +5,7 @@ Atualizado pelos agentes. Leia `PROTOCOLO.md` e `FLUXO_AUTOMATICO.md` antes de c
 | ID | O que é | Estado | Pedido | Entrega | Revisão |
 |---|---|---|---|---|---|
 | 00_padrao_visual | Diretriz oficial de arte DA-01 | APROVADO (diretriz) | — | [DA-01](entregas/00_padrao_visual/PADRAO_VISUAL_OFICIAL.md) | — |
-| DA-02 | Régua numérica de consistência visual (complementa a DA-01; saída da auditoria do Deserto) | AGUARDA JOÃO (versão final, revisada pelo ChatGPT em 17/11/2026) | [pedido](pedidos/DA02_regua_e_fichas_v2.md) | [DA-02 proposta](entregas/00_padrao_visual/DA-02_CONSISTENCIA.md) | — |
+| DA-02 | Régua numérica de consistência visual (complementa a DA-01; saída da auditoria do Deserto) | APROVADO (diretriz, 17/11/2026; revisada pelo ChatGPT) | [pedido](pedidos/DA02_regua_e_fichas_v2.md) | [DA-02 proposta](entregas/00_padrao_visual/DA-02_CONSISTENCIA.md) | — |
 | A0_ficha_eco | Ficha de personagem do Eco (referência para A1–A5 e A9) | APROVADO (referência oficial) | [pedido](pedidos/A0_ficha_eco.md) | [entrega](entregas/A0_ficha_eco/) | [revisão](revisoes/A0_ficha_eco.md) |
 | A1_eco_appear | Materialização do Eco, 8 quadros | INTEGRADO (v0.7, Fuga do Eco) | [pedido](pedidos/A1_eco_appear.md) | [entrega](entregas/A1_eco_appear/) | [revisão](revisoes/A1_eco_appear.md) |
 | A2_eco_float | Eco pairando (loop), 6 quadros | INTEGRADO (v0.7, Fuga do Eco) | [pedido](pedidos/A2_eco_float.md) | [entrega](entregas/A2_eco_float/) | [revisão](revisoes/A2_eco_float.md) |
@@ -32,7 +32,7 @@ Atualizado pelos agentes. Leia `PROTOCOLO.md` e `FLUXO_AUTOMATICO.md` antes de c
 | ID | O que é | Estado | Pedido | Entrega | Revisão |
 |---|---|---|---|---|---|
 | DF00 | Prancha de referência do Deserto (paleta, materiais, amostras) | ENTREGUE (aprovado pelo responsável) | [DF](pedidos/DF_deserto_ferrugem.md) | — | — |
-| DF01 | Ficha do Robô e do Drone do deserto | REFAZER (auditoria 17/11/2026); v2 SUSPENSA até a DA-02 | [DF](pedidos/DF_deserto_ferrugem.md) · [v2](pedidos/DA02_regua_e_fichas_v2.md) | — | — |
+| DF01 | Ficha do Robô e do Drone do deserto | REFAZER (auditoria 17/11/2026); v2 SUSPENSA até aprovar a DF02 v2 | [DF](pedidos/DF_deserto_ferrugem.md) · [v2](pedidos/DA02_regua_e_fichas_v2.md) | — | — |
 | DF10–DF12 | Fundos das Dunas em parallax | INTEGRADO (v0.8, 17/11/2026) | [DF](pedidos/DF_deserto_ferrugem.md) | — | — |
 | DF20–DF28 | Terreno, paredes, piso, esteira, trilho e cabo | INTEGRADO (v0.8, 17/11/2026) | [DF](pedidos/DF_deserto_ferrugem.md) | — | — |
 | DF30–DF39 | Objetos de cenário e portas | INTEGRADO (v0.8, 17/11/2026) | [DF](pedidos/DF_deserto_ferrugem.md) | — | — |
@@ -55,7 +55,7 @@ Visão geral, divergências e plano: [proposta da Fase 2](../docs/fases/deserto_
 
 | ID | O que é | Estado | Pedido | Entrega | Revisão |
 |---|---|---|---|---|---|
-| DF02 | Ficha do Autômato (lote 1) | REFAZER (auditoria 17/11/2026); v2 SUSPENSA até a DA-02 | [pedido](pedidos/DF02_ficha_automato.md) · [v2](pedidos/DA02_regua_e_fichas_v2.md) | [entrega](entregas/DF02/) | — |
+| DF02 | Ficha do Autômato (lote 1) | REFAZER (auditoria 17/11/2026); v2 ABERTA (prompt 2) | [pedido](pedidos/DF02_ficha_automato.md) · [v2](pedidos/DA02_regua_e_fichas_v2.md) | [entrega](entregas/DF02/) | — |
 | DF03 | Ficha da Forja-Mãe e esquema da arena (lote 1) | ENTREGUE (AGUARDA JOÃO; pacote Revisão v2 de 13/11/2026) | [pedido](pedidos/DF03_ficha_forja_mae.md) | [entrega](entregas/DF03/) | — |
 | PT00 | Ficha dos portais e do Receptáculo (lote 1) | ENTREGUE (AGUARDA JOÃO; pacote Revisão v2 de 13/11/2026) | [pedido](pedidos/PT00_ficha_portais.md) | [entrega](entregas/PT00/) | — |
 | DF87–DF99 | Autômato: 7 folhas do corpo, braço, rebite, disparo, feixe e pulso (lote 2) | INTEGRADO (v0.8, 17/11/2026; a ficha DF02 ainda aguarda o João) | [pedido](pedidos/DF87-DF99_automato.md) | entregas DF87, DF88, DF90–DF99 | — |

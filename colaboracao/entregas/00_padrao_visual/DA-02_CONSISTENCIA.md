@@ -1,6 +1,6 @@
 # Warp Fracture — Régua de consistência visual (DA-02)
 
-**Status:** VERSÃO FINAL PARA APROVAÇÃO do João Marcelo. Depois de aprovada, vale para toda arte nova, junto com a [DA-01](PADRAO_VISUAL_OFICIAL.md).
+**Status:** APROVADA pelo João Marcelo em 17/11/2026. Vale para toda arte nova, junto com a [DA-01](PADRAO_VISUAL_OFICIAL.md).
 **Histórico:** proposta do Claude a partir da [auditoria do Deserto](../../../docs/auditoria_deserto/) (17/11/2026). R2 corrigida pelo João (17/11). Revisada pelo ChatGPT (17/11): concordou com o diagnóstico, ajustou R1 e R3–R8, propôs R9–R11 e a tabela de evidência. Consolidada pelo Claude.
 **Os números de R6, R7 e R9 são metas da primeira rodada.** Serão recalibrados com as referências aprovadas e com as duas fichas v2 (DF02 e DF01) antes de virarem corte definitivo.
 
