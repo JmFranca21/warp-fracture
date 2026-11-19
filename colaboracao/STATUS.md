@@ -82,7 +82,7 @@ Proposta e decisões D06–D08: [proposta da Fase 3](../docs/fases/nivaria/propo
 | ID | O que é | Estado | Pedido | Entrega | Revisão |
 |---|---|---|---|---|---|
 | GL00 | Prancha de referência de Nivária (paleta, materiais, cenas, valores) | ABERTO | [GL](pedidos/GL_lote1_fichas.md) | — | — |
-| GL01 | Ficha da Coruja-de-Geada (forma de Daymon) | SUSPENSO (D07 e GL00) | [GL](pedidos/GL_lote1_fichas.md) | — | — |
+| GL01 | Ficha do Daymon de inverno (camada polar, cachecol) | SUSPENSO (GL00 e GL04; D07 decidida) | [GL](pedidos/GL_lote1_fichas.md) | — | — |
 | GL02 | Ficha dos inimigos: Gelinho, Drone Gélido, Morcego-de-Cristal | SUSPENSO (GL01) | [GL](pedidos/GL_lote1_fichas.md) | — | — |
 | GL03 | Ficha do Guardião Glacial e esquema da arena | SUSPENSO (D08, GL01 e GL02) | [GL](pedidos/GL_lote1_fichas.md) | — | — |
 | GL04 | Prancha de objetos, perigos e coletáveis | SUSPENSO (GL00; vai logo depois dela) | [GL](pedidos/GL_lote1_fichas.md) | — | — |
