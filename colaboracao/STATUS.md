@@ -81,3 +81,4 @@ Pacote completo em [VD_verdamia](entregas/VD_verdamia/) (64 assets em 67 PNGs). 
 | GL00 | Prancha de Nivária | ENTREGUE | [Prancha e aferição](entregas/GL00/ENTREGA.md) |
 | GL01 | Daymon de inverno | ENTREGUE | [Ficha e comparação](entregas/GL01/ENTREGA.md) |
 | GL02 | Ficha do Gelinho, Drone Gélido e Morcego-de-Cristal | ENTREGUE | [Ficha, comparação e aferição DA-02](entregas/GL02/ENTREGA.md) |
+| GL03 | Guardião Glacial e esquema da arena | ENTREGUE | [Ficha, arena e comparação](entregas/GL03/ENTREGA.md) |
