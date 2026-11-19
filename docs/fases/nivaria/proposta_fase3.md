@@ -1,6 +1,6 @@
 # Fase 3: proposta para o universo de gelo (Nivária)
 
-**Estado:** PROPOSTA (19/11/2026). D07 decidida pelo João (19/11/2026: Daymon com roupa de inverno). D06 e D08 dependem dele.
+**Estado:** EM PRODUÇÃO (19/11/2026). D07 e D08 aprovadas pelo João em 19/11/2026 (Daymon com roupa de inverno; Guardião Glacial). D06 (lugar na campanha) ainda depende dele. Fichas GL00–GL03 entregues na `main`; GL04 em revisão.
 **Autor:** Claude (design e desenvolvimento).
 **Ponto de partida:** o [esboço de level design](esboco_level_design.png) do João, com quatro zonas: Cume Congelado, Caverna de Cristal, Encosta Nevada e Arena do Chefe Final. Pedidos do João: inimigos que **congelam** o jogador, uma parte de **plataformas quebradiças de gelo** e uma encosta onde **bolas de neve** rolam e o jogador usa o **gancho** para escapar.
 **Diretrizes de arte:** [DA-01](../../../colaboracao/entregas/00_padrao_visual/PADRAO_VISUAL_OFICIAL.md) e [DA-02](../../../colaboracao/entregas/00_padrao_visual/DA-02_CONSISTENCIA.md), aprovadas.
@@ -79,7 +79,7 @@ Em Nivária, Daymon **não se transforma**. O frio extremo faz o Traje Âncora g
 | **Drone Gélido** (voador, ≥ 0,70 D de largura) | Cume (2), Caverna (1), Encosta (1) | Construto de cristal das estações antigas que ainda patrulha. Vigia na horizontal; ao ver Daymon, mira (foco vermelho acende) e solta uma **esfera de geada** lenta que deixa **gelo escorregadio** onde cai (+1 geada) | Esquivar da esfera e mirar para o alto. 1 tiro |
 | **Morcego-de-Cristal** (voador, ≥ 0,70 D de envergadura) | Caverna (2) | Dorme pendurado no teto, parecendo uma estalactite. Quando Daymon passa embaixo, se solta e dá um **rasante em arco**; o contato dá dano e +1 geada | Ver o brilho vermelho no teto antes; mirar para cima. 1 tiro |
 
-## Chefe (D08): Guardião Glacial
+## Chefe (D08): Guardião Glacial (APROVADA pelo João, 19/11/2026)
 
 | Item | Proposta |
 | --- | --- |
