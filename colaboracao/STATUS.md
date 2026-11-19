@@ -73,3 +73,9 @@ Pacote completo em [VD_verdamia](entregas/VD_verdamia/) (64 assets em 67 PNGs). 
 | VD | Terreno (7), parallax (3), efeitos (7), projéteis (2), checkpoint, barreira e fragmento | INTEGRADO |
 
 **61 assets integrados e verificados no jogo, 3 referências, nenhum pendente.** A revisão lista 7 pedidos de ajuste que não bloqueiam (escala entre folhas do Lince, garras no ar, esquiva, fim da morte da Rainha, contorno de `esporos_3`, subsolo repetível e miolo da parede).
+
+## Nivária
+
+| ID | O que é | Estado | Entrega |
+|---|---|---|---|
+| GL02 | Ficha do Gelinho, Drone Gélido e Morcego-de-Cristal | ENTREGUE | [Ficha, comparação e aferição DA-02](entregas/GL02/ENTREGA.md) |
