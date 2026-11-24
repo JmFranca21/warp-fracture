@@ -34,8 +34,8 @@ Atualizado pelos agentes. Leia `PROTOCOLO.md` e `FLUXO_AUTOMATICO.md` antes de c
 |---|---|---|---|---|---|
 | DF00 | Prancha de referência do Deserto (paleta, materiais, amostras) | ENTREGUE (aprovado pelo responsável) | [DF](pedidos/DF_deserto_ferrugem.md) | — | — |
 | DF01 | Ficha do Robô e do Drone do deserto | REFAZER (auditoria 17/11/2026); v2 SUSPENSA até aprovar a DF02 v2 | [DF](pedidos/DF_deserto_ferrugem.md) · [v2](pedidos/DA02_regua_e_fichas_v2.md) | — | — |
-| DF10–DF12 | Fundos das Dunas em parallax | INTEGRADO (v0.8, 17/11/2026) | [DF](pedidos/DF_deserto_ferrugem.md) | — | — |
-| DF20–DF28 | Terreno, paredes, piso, esteira, trilho e cabo | INTEGRADO (v0.8, 17/11/2026) | [DF](pedidos/DF_deserto_ferrugem.md) | — | — |
+| DF10–DF12 | Fundos das Dunas em parallax | INTEGRADO (v0.8); A REFAZER (DF200, DF201) | [DF](pedidos/DF_deserto_ferrugem.md) | — | — |
+| DF20–DF28 | Terreno, paredes, piso, esteira, trilho e cabo | INTEGRADO (v0.8); A REFAZER (DF202, DF205) | [DF](pedidos/DF_deserto_ferrugem.md) | — | — |
 | DF30–DF39 | Objetos de cenário e portas | INTEGRADO (v0.8, 17/11/2026) | [DF](pedidos/DF_deserto_ferrugem.md) | — | — |
 | DF50–DF57 | Prensas, serra, plataformas, válvulas e gancho | INTEGRADO (v0.8, 17/11/2026) | [DF](pedidos/DF_deserto_ferrugem.md) | — | — |
 | DF60–DF71 | Robôs, drones e seus projéteis | INTEGRADO (v0.8, 17/11/2026) | [DF](pedidos/DF_deserto_ferrugem.md) | — | — |
@@ -111,3 +111,23 @@ Proposta e decisões: [proposta da Fase 3](../docs/fases/nivaria/proposta_fase3.
 | GL100 | Guardião Glacial: poses (lote 3) | ABERTO | [GL lote 2](pedidos/GL_lote2_producao.md) | — | — |
 | GL101 | Guardião Glacial: placas e núcleo (lote 3) | ABERTO | [GL lote 2](pedidos/GL_lote2_producao.md) | — | — |
 | GL102 | Guardião Glacial: efeitos (lote 3) | ABERTO | [GL lote 2](pedidos/GL_lote2_producao.md) | — | — |
+
+## Deserto de Ferrugem: refação da cena (DA-03)
+
+Pedido: [DF refação](pedidos/DF_refacao_cena.md) (24/11/2026). Inventário de arte das quatro fases: [docs/INVENTARIO_DE_ARTE.md](../docs/INVENTARIO_DE_ARTE.md).
+
+| ID | O que é | Estado | Pedido | Entrega | Revisão |
+|---|---|---|---|---|---|
+| DF00 v2 | Prancha do Deserto com os valores da DA-03 | ABERTO | [DF refação](pedidos/DF_refacao_cena.md) | — | — |
+| DF200 | Fundo distante: céu do crepúsculo de tempestade | ABERTO | [DF refação](pedidos/DF_refacao_cena.md) | — | — |
+| DF201 | Fundo intermediário: dunas de sucata e a fábrica ao longe | ABERTO | [DF refação](pedidos/DF_refacao_cena.md) | — | — |
+| DF202 | Fundos internos: Fábrica e Salão do Núcleo | ABERTO | [DF refação](pedidos/DF_refacao_cena.md) | — | — |
+| DF203 | Fundo da Câmara da Forja | ABERTO | [DF refação](pedidos/DF_refacao_cena.md) | — | — |
+| DF204 | Estrutura de fundo (peças grandes) | ABERTO | [DF refação](pedidos/DF_refacao_cena.md) | — | — |
+| DF205 | Terreno completo | ABERTO | [DF refação](pedidos/DF_refacao_cena.md) | — | — |
+| DF206 | Decoração média e pequena | ABERTO | [DF refação](pedidos/DF_refacao_cena.md) | — | — |
+| DF207 | Moldura | ABERTO | [DF refação](pedidos/DF_refacao_cena.md) | — | — |
+| DF208 | Primeiro plano | ABERTO | [DF refação](pedidos/DF_refacao_cena.md) | — | — |
+| DF209 | Efeitos de ambiente | ABERTO | [DF refação](pedidos/DF_refacao_cena.md) | — | — |
+| DF210 | Placa, estação, célula, núcleo e registro do Deserto | ABERTO | [DF refação](pedidos/DF_refacao_cena.md) | — | — |
+| DF03 v2 | Retoque da Forja-Mãe (DF03, DF100–DF108) | ABERTO | [DF refação](pedidos/DF_refacao_cena.md) | — | — |

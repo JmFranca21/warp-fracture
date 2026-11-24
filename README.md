@@ -17,7 +17,7 @@ Metroidvania 2D em visão lateral feito em **Godot 4.3**, com visual ilustrado i
 | Nivária (Fase 3, D07 e D08) | Jogável na v0.9 (branch `dev/neve`): Daymon de inverno, Geada, Pulso Térmico, quatro zonas, Gelinho, Drone Gélido, Morcego-de-Cristal e o Guardião Glacial (fragmento 3/4 e fim da versão). Arte provisória recortada das fichas GL01–GL04 v2; pedidos do lote 2 em `colaboracao/pedidos/GL_lote2_producao.md` |
 | Arte nova da Fase 2 | Entregue em 13/11/2026 (pacote Revisão v2). As fichas DF02, DF03 e PT00 ainda aguardam a aprovação do João Marcelo; os lotes foram integrados como estão |
 
-O catálogo de toda a arte, com o estado de cada item, está no [documento de arte](docs/DOCUMENTO_DE_ARTE.md).
+O catálogo de toda a arte, com o estado de cada item, está no [documento de arte](docs/DOCUMENTO_DE_ARTE.md). O que falta por fase, organizado pela receita de cena (DA-03), está no [inventário de arte](docs/INVENTARIO_DE_ARTE.md).
 
 ## Fluxo automático
 
