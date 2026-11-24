@@ -118,13 +118,13 @@ Pedido: [DF refação](pedidos/DF_refacao_cena.md) (24/11/2026). Inventário de 
 
 | ID | O que é | Estado | Pedido | Entrega | Revisão |
 |---|---|---|---|---|---|
-| DF00 v2 | Prancha do Deserto com os valores da DA-03 | ABERTO | [DF refação](pedidos/DF_refacao_cena.md) | — | — |
+| DF00 v2 | Prancha do Deserto com os valores da DA-03 | APROVADO pelo João (24/11/2026) e publicado na `main` (`9aae70b`) | [DF refação](pedidos/DF_refacao_cena.md) | [entregas/DF00](entregas/DF00/ENTREGA_v2.md) | Claude: Autômato atual sobre as Dunas pintadas, com o halo do jogo, 71–76% de separação (ver DF205) |
 | DF200 | Fundo distante: céu do crepúsculo de tempestade | ABERTO | [DF refação](pedidos/DF_refacao_cena.md) | — | — |
 | DF201 | Fundo intermediário: dunas de sucata e a fábrica ao longe | ABERTO | [DF refação](pedidos/DF_refacao_cena.md) | — | — |
 | DF202 | Fundos internos: Fábrica e Salão do Núcleo | ABERTO | [DF refação](pedidos/DF_refacao_cena.md) | — | — |
 | DF203 | Fundo da Câmara da Forja | ABERTO | [DF refação](pedidos/DF_refacao_cena.md) | — | — |
 | DF204 | Estrutura de fundo (peças grandes) | ABERTO | [DF refação](pedidos/DF_refacao_cena.md) | — | — |
-| DF205 | Terreno completo | ABERTO | [DF refação](pedidos/DF_refacao_cena.md) | — | — |
+| DF205 | Terreno completo (22 peças no formato do terreno de Verdâmia; gabarito de colisões) | ABERTO, prompt pronto para envio | [DF refação](pedidos/DF_refacao_cena.md) | — | — |
 | DF206 | Decoração média e pequena | ABERTO | [DF refação](pedidos/DF_refacao_cena.md) | — | — |
 | DF207 | Moldura | ABERTO | [DF refação](pedidos/DF_refacao_cena.md) | — | — |
 | DF208 | Primeiro plano | ABERTO | [DF refação](pedidos/DF_refacao_cena.md) | — | — |
