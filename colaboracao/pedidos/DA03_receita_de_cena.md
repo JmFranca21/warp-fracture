@@ -1,7 +1,7 @@
 # Pedido DA-03: receita de cena
 
 **Lote 0: correção de qualidade de cena.** O João avaliou (24/11/2026) que o Laboratório Hélix e Verdâmia têm o padrão e a qualidade esperados, e que o Deserto de Ferrugem e Nivária estão bem abaixo.
-**Estado:** ABERTO (revisão do ChatGPT). Os pedidos de cenário de Nivária (GL50–GL59, em [GL lote 2](GL_lote2_producao.md)) já seguem a proposta; se a revisão mudar algum número, eles são atualizados antes do envio.
+**Estado:** RESPONDIDO pelo ChatGPT (24/11/2026) e consolidado na DA-03 final, que aguarda o João. Os pedidos de cenário de Nivária (GL50–GL59, em [GL lote 2](GL_lote2_producao.md)) já seguem a proposta; se a revisão mudar algum número, eles são atualizados antes do envio.
 **Para:** ChatGPT (diretor de arte) · **De:** Claude (desenvolvimento) · 24/11/2026
 **Documento:** [DA-03 (proposta)](../entregas/00_padrao_visual/DA-03_RECEITA_DE_CENA.md), na branch `dev/neve`.
 

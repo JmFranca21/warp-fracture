@@ -6,7 +6,7 @@ Atualizado pelos agentes. Leia `PROTOCOLO.md` e `FLUXO_AUTOMATICO.md` antes de c
 |---|---|---|---|---|---|
 | 00_padrao_visual | Diretriz oficial de arte DA-01 | APROVADO (diretriz) | — | [DA-01](entregas/00_padrao_visual/PADRAO_VISUAL_OFICIAL.md) | — |
 | DA-02 | Régua numérica de consistência visual (complementa a DA-01; saída da auditoria do Deserto) | APROVADO (diretriz, 17/11/2026; revisada pelo ChatGPT) | [pedido](pedidos/DA02_regua_e_fichas_v2.md) | [DA-02 proposta](entregas/00_padrao_visual/DA-02_CONSISTENCIA.md) | — |
-| DA-03 | Receita de cena (camadas, valores, estrutura, escala da decoração, terreno, luz) medida no Laboratório e em Verdâmia | ABERTO (revisão do ChatGPT; depois AGUARDA JOÃO) | [pedido](pedidos/DA03_receita_de_cena.md) | [DA-03 proposta](entregas/00_padrao_visual/DA-03_RECEITA_DE_CENA.md) | — |
+| DA-03 | Receita de cena (camadas, valores, estrutura, escala da decoração, terreno, luz) medida no Laboratório e em Verdâmia | AGUARDA JOÃO (versão final; revisada pelo ChatGPT em 24/11/2026) | [pedido](pedidos/DA03_receita_de_cena.md) | [DA-03 proposta](entregas/00_padrao_visual/DA-03_RECEITA_DE_CENA.md) | — |
 | A0_ficha_eco | Ficha de personagem do Eco (referência para A1–A5 e A9) | APROVADO (referência oficial) | [pedido](pedidos/A0_ficha_eco.md) | [entrega](entregas/A0_ficha_eco/) | [revisão](revisoes/A0_ficha_eco.md) |
 | A1_eco_appear | Materialização do Eco, 8 quadros | INTEGRADO (v0.7, Fuga do Eco) | [pedido](pedidos/A1_eco_appear.md) | [entrega](entregas/A1_eco_appear/) | [revisão](revisoes/A1_eco_appear.md) |
 | A2_eco_float | Eco pairando (loop), 6 quadros | INTEGRADO (v0.7, Fuga do Eco) | [pedido](pedidos/A2_eco_float.md) | [entrega](entregas/A2_eco_float/) | [revisão](revisoes/A2_eco_float.md) |

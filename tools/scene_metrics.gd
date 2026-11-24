@@ -1,7 +1,8 @@
 extends SceneTree
 ## Medição da "receita de cena" (DA-03): para cada fase, conta camadas, decoração, luzes e partículas
-## e salva capturas em pontos fixos (com tudo, sem primeiro plano, sem decoração e sem personagens),
-## para tools/scene_metrics.py calcular valores, cobertura e contraste.
+## e salva capturas em quatro pontos fixos (com tudo, sem primeiro plano e sem o jogador), as três no
+## mesmo quadro (árvore pausada), para tools/scene_metrics.py calcular valores, estrutura e contraste.
+## Parâmetros fixos: janela 1.280 × 720, zoom 1,1, câmera no alvo normal do jogador, HUD escondido.
 ## uso: godot --path . --script res://tools/scene_metrics.gd -- out=/pasta
 
 var game
@@ -54,6 +55,18 @@ func _walk(n: Node, acc: Dictionary, lv: Level) -> void:
 		_walk(c, acc, lv)
 
 
+## Esconde tudo o que não é o jogador nem um ancestral dele (camadas de fundo em CanvasLayer inclusive).
+func _hide_all_but(n: Node, p: Node, acc: Array) -> void:
+	for c in n.get_children():
+		if c == p:
+			continue
+		if c.is_ancestor_of(p):
+			_hide_all_but(c, p, acc)
+		elif (c is CanvasItem or c is CanvasLayer) and c.visible:
+			c.visible = false
+			acc.append(c)
+
+
 func _run() -> void:
 	game = load("res://main.tscn").instantiate()
 	root.add_child(game)
@@ -92,6 +105,7 @@ func _run() -> void:
 			game.cam.reset_smoothing()
 			await ticks(3)
 			var tag := "%s_%d" % [lid, i]
+			paused = true          # as três variantes no mesmo estado (partículas e animações paradas)
 			await shot(tag + "_a_tudo")
 			for f in lv.fg_layers:
 				f.visible = false
@@ -99,8 +113,16 @@ func _run() -> void:
 			p.visible = false
 			await shot(tag + "_c_sem_jogador")
 			p.visible = true
+			# d: só o jogador sobre preto (máscara exata do personagem para o contraste)
+			var hidden := []
+			_hide_all_but(game.world, p, hidden)
+			RenderingServer.set_default_clear_color(Color.BLACK)
+			await shot(tag + "_d_so_jogador")
+			for c in hidden:
+				c.visible = true
 			for f in lv.fg_layers:
 				f.visible = true
+			paused = false
 	var f := FileAccess.open(out.path_join("contagem.json"), FileAccess.WRITE)
 	f.store_string(JSON.stringify(report, "  "))
 	print(JSON.stringify(report))
