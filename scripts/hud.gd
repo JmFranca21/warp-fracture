@@ -215,6 +215,8 @@ func _draw_stats(p: Player) -> void:
 		draw_line(mc + Vector2(-5, 5), mc + Vector2(4, -4), Color(1, 1, 1), 2.0, true)
 		draw_arc(mc + Vector2(4, -1), 4.0, -PI * 0.9, PI * 0.4, 10, Color(1, 1, 1), 2.0, true)
 		Art.text(self, mc + Vector2(16, 5), "F", 13, Color(0.75, 0.85, 0.95))
+	if p.form == "inverno":
+		_draw_geada(p, Vector2(222, 88))
 	var cc := Vector2(126, 90)
 	var s := 1.0 + cell_pulse * 1.5
 	Art.poly(self, PackedVector2Array([cc + Vector2(0, -8) * s, cc + Vector2(5, 0) * s, cc + Vector2(0, 8) * s, cc + Vector2(-5, 0) * s]), Color(0.55, 0.95, 1.0))
@@ -229,6 +231,21 @@ func _draw_stats(p: Player) -> void:
 		else:
 			pts2.append(pts2[0])
 			draw_polyline(pts2, Color(0.5, 0.6, 0.7, 0.6), 1.5, true)
+
+
+## Geada de Nivária: floco com três pontas que se enchem; pisca quando o traje congela.
+func _draw_geada(p: Player, c: Vector2) -> void:
+	var frozen: bool = p.frozen_t > 0.0
+	var base := Color(0.85, 0.94, 1.0) if not frozen else Color(1.0, 1.0, 1.0, 0.5 + 0.5 * sin(t * 18.0))
+	for i in 3:
+		var a := -PI / 2.0 + TAU * i / 3.0
+		var tip := c + Vector2(cos(a), sin(a)) * 13.0
+		var on: bool = i < p.geada or frozen
+		draw_line(c, tip, base if on else Color(0.45, 0.55, 0.65, 0.6), 3.0 if on else 1.5, true)
+		draw_circle(tip, 3.5 if on else 2.5, Color(0.75, 0.9, 1.0) if on else Color(0.3, 0.38, 0.46, 0.8))
+	draw_circle(c, 3.0, base)
+	if frozen:
+		Art.text(self, c + Vector2(20, 6), "CONGELADO", 13, Color(0.85, 0.95, 1.0))
 
 
 func _draw_title(sz: Vector2) -> void:
@@ -417,6 +434,6 @@ func _draw_victory(sz: Vector2) -> void:
 	var secs := int(main.play_time)
 	var stats := "Tempo  %02d:%02d     ·     Células de Fase  %d     ·     Quedas  %d" % [secs / 60, secs % 60, main.cells, main.deaths]
 	Art.text(self, Vector2(0, y + 110), stats, 19, Color(0.8, 0.88, 0.95, a), HORIZONTAL_ALIGNMENT_CENTER, sz.x)
-	Art.text(self, Vector2(0, y + 170), "A Forja-Mãe se apagou. Fim da versão atual do protótipo: os próximos universos chegam nas próximas versões.", 17, Color(0.7, 0.78, 0.86, a), HORIZONTAL_ALIGNMENT_CENTER, sz.x)
+	Art.text(self, Vector2(0, y + 170), "O inverno de Nivária acabou. Fim da versão atual do protótipo: o último universo chega na próxima versão.", 17, Color(0.7, 0.78, 0.86, a), HORIZONTAL_ALIGNMENT_CENTER, sz.x)
 	if victory_t > 1.5:
 		Art.text(self, Vector2(0, y + 240), "ENTER — continuar explorando     ESC — menu", 20, Color(1, 1, 1, 0.6 + 0.4 * sin(t * 3.0)), HORIZONTAL_ALIGNMENT_CENTER, sz.x)

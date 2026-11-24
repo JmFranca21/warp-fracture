@@ -22,15 +22,17 @@ var return_rift: Rift = null
 var arrival_rift: Rift = null
 var boss_cam := Vector2.INF       # centro fixo da câmera durante a luta (INF = segue o jogador)
 var desert: Desert = null
+var nivaria: Nivaria = null
 
 
 func _ready() -> void:
 	var theme: String = data["theme"]
 	var bounds: Rect2 = data["bounds"]
 	_build_sky(theme)
+	var own_art: bool = theme in ["deserto", "nivaria"]      # fases que desenham o próprio cenário
 	if theme == "verd":
 		_build_verd_bg(bounds)
-	elif theme != "deserto":
+	elif not own_art:
 		for i in 3:
 			var b := BgLayer.new()
 			b.theme = theme
@@ -40,7 +42,7 @@ func _ready() -> void:
 			b.z_index = -60 + i * 10
 			add_child(b)
 			bg_layers.append(b)
-	if theme != "deserto":
+	if not own_art:
 		_build_ambient(theme, bounds)
 
 	if data.has("backwall"):
@@ -65,8 +67,8 @@ func _ready() -> void:
 	terr.theme = theme
 	terr.rects = data["solids"]
 	terr.thin_art = data.get("thin_art", [])
-	if theme == "deserto":
-		terr.free()          # o Deserto desenha o próprio terreno com a arte DF (Desert)
+	if own_art:
+		terr.free()          # Deserto e Nivária desenham o próprio terreno
 	else:
 		add_child(terr)
 	for r in data["solids"]:
@@ -239,6 +241,11 @@ func _ready() -> void:
 		desert = Desert.new()
 		desert.level = self
 		add_child(desert)
+		return
+	if theme == "nivaria":
+		nivaria = Nivaria.new()
+		nivaria.level = self
+		add_child(nivaria)
 		return
 
 	var fg := FgLayer.new()

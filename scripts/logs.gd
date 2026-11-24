@@ -2,7 +2,8 @@ class_name Logs
 extends RefCounted
 ## Registros do Projeto: diários espalhados pelas fases que contam a história.
 
-const ORDER := ["log_01", "log_02", "log_03", "log_04", "log_05", "log_06", "log_07", "log_08", "log_09"]
+const ORDER := ["log_01", "log_02", "log_03", "log_04", "log_05", "log_06", "log_07", "log_08", "log_09",
+	"log_10", "log_11", "log_12", "log_13"]
 
 const LOGS := {
 	"log_01": ["Diário de Daymon — Dia 412",
@@ -23,6 +24,14 @@ const LOGS := {
 		"O monitor do traje captou um pulso vindo de muito longe. Não é de Verdâmia, nem de Hidrópolis, nem de nenhuma das quatro realidades mapeadas.\n\nUm quinto sinal.\n\nA IRIS diz que é ruído. Anotei as coordenadas mesmo assim."],
 	"log_09": ["Análise de IRIS — segundo sinal",
 		"Com o primeiro fragmento instalado, separei um segundo sinal: calor seco, metal e ferrugem. Ferrumgrado.\n\nNa superfície, um deserto de sucata. No meio dele, uma fábrica que nunca parou de funcionar. Os padrões de energia lembram uma linha de montagem... e uma mente.\n\nO fragmento está no coração dessa fábrica. Daymon, o que estiver lá dentro não vai entregá-lo de boa vontade."],
+	"log_10": ["Análise de IRIS — terceiro sinal",
+		"O terceiro sinal é frio. Uma cordilheira sob uma noite que não termina: a temperatura cai um pouco a cada hora, como se alguma coisa estivesse bebendo o calor do mundo.\n\nChamei de Nivária.\n\nO traje aguenta, mas só se você mantiver as resistências quentes. Não fique parado no frio, Daymon."],
+	"log_11": ["Caderno de observação — Estação do Cume",
+		"Escrito à mão, numa língua que o traje traduz aos poucos:\n\n\"Noite 3.112. A aurora mudou de cor depois da estrela caída: está rosa. O céu não clareia mais.\n\nO gelo cobriu o telescópio grande. Vamos descer para a caverna dos cristais e esperar o dia.\""],
+	"log_12": ["Painel da Caverna de Cristal",
+		"Último registro gravado no painel:\n\n\"A névoa roxa nos poços cresce quando a estrela pulsa. Os cristais cantam junto com ela.\n\nAlguma coisa no cume está se juntando em volta da estrela. Feita de gelo. Ela não nos deixa subir.\""],
+	"log_13": ["Diário de Daymon — Encosta Nevada",
+		"Daqui de cima dá para ver a forma lá no cume: um gigante de gelo em volta de uma luz azul. É o fragmento.\n\nO que me preocupa é a névoa roxa. É a mesma energia da fratura, a mesma que o Eco come.\n\nSe ele está se alimentando daqui, cada fragmento que eu demoro a pegar o deixa mais forte."],
 }
 
 

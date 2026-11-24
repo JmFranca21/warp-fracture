@@ -269,10 +269,8 @@ func _run() -> void:
 	_check(desert.door_open("out") and desert.door_open("in"), "as portas da Câmara se abrem")
 	_check(game.level.return_rift != null, "a fenda de retorno aparece atrás da porta direita")
 	await _wait(3.0)
-	_check(game.state == "victory" and game.hud.victory, "fim da versão: resumo por cima do jogo")
-	await _key(KEY_ENTER)
-	await _wait(0.3)
-	_check(game.state == "level" and not game.player.controls_locked, "ENTER continua explorando")
+	# desde a Fase 3 (Nivária), o Deserto não encerra mais a versão: IRIS manda instalar o fragmento
+	_check(game.state == "level" and not game.hud.victory and not game.player.controls_locked, "sem tela de fim: o jogo segue para o Receptáculo")
 
 	# --- volta ao Hélix com o segundo fragmento
 	p = game.player

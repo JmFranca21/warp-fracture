@@ -11,6 +11,7 @@ const DESTS := {
 	"lab": {"nome": "Laboratório Hélix", "cor": Color("2ec7e6"), "glifo": 0},
 	"verdamia": {"nome": "Verdâmia", "cor": Color("a6e05a"), "glifo": 1},
 	"deserto": {"nome": "Deserto de Ferrugem", "cor": Color("f2b24c"), "glifo": 2},
+	"nivaria": {"nome": "Nivária", "cor": Color("ff8fd0"), "glifo": 3},
 }
 const OPEN_C := Vector2(0, -344)       # centro da abertura (original) em relação ao centro da base
 
@@ -27,6 +28,14 @@ var glyph: Sprite2D
 var halo: Sprite2D
 var floor_light: Sprite2D
 var parts: CPUParticles2D
+
+
+## Glifo do destino (PT13). A folha PT13 só tem três glifos; o de Nivária (floco) é desenhado aqui
+## até o lote 2 (pedido GL90).
+static func glyph_tex(id: String, lit: bool) -> Texture2D:
+	if id == "nivaria":
+		return NvArt.glyph(lit)
+	return DFArt.cell("PT13", DESTS[id]["glifo"] + (4 if lit else 0))
 
 
 static func dest_color(id: String) -> Color:
@@ -103,7 +112,7 @@ func refresh_state() -> void:
 		state = a["state"]
 	prompt = "" if active else a["prompt"]
 	refresh_prompt()
-	glyph.texture = DFArt.cell("PT13", DESTS[target]["glifo"] + (4 if state != "bloqueado" else 0))
+	glyph.texture = glyph_tex(target, state != "bloqueado")
 
 
 func interact() -> void:
@@ -130,7 +139,7 @@ func arm(t_id: String) -> void:
 	state = "aberto"
 	prompt = "[E] Atravessar"
 	refresh_prompt()
-	glyph.texture = DFArt.cell("PT13", DESTS[target]["glifo"] + 4)
+	glyph.texture = glyph_tex(target, true)
 	AudioMgr.sfx("portal_abre", global_position, -2.0, 0.0)
 
 
@@ -193,5 +202,9 @@ func _move_membrane(_dt: float, _col: Color) -> void:
 		"deserto":
 			memb.scale.x = base * (1.0 + 0.05 * sin(t * 7.0))
 			memb.position.x += sin(t * 11.0) * 1.5
+		"nivaria":
+			# cristaliza: a membrana pulsa devagar e treme de frio
+			memb.scale *= 1.0 + 0.03 * sin(t * 0.9)
+			memb.position.y += sin(t * 23.0) * 0.6
 		_:
 			memb.scale *= 1.0 - 0.05 * fmod(t * 0.8, 1.0)

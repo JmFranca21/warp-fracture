@@ -1,7 +1,8 @@
 class_name Player
 extends CharacterBody2D
-## Daymon Sagan. Forma "human" (laboratório), "lince" (Lince-Vagalume, Verdâmia) ou
-## "automato" (Autômato de Fase, Deserto de Ferrugem — D03).
+## Daymon Sagan. Forma "human" (laboratório), "lince" (Lince-Vagalume, Verdâmia),
+## "automato" (Autômato de Fase, Deserto de Ferrugem — D03) ou "inverno" (Nivária — D07: o mesmo
+## Daymon humano com a camada polar, cachecol, Geada e Pulso Térmico).
 
 const GRAV := 2000.0
 const MAX_FALL := 950.0
@@ -84,6 +85,21 @@ const PULSE_R := 150.0
 var beam_t := 0.0           # feixe do ímã visível (puxando um drone)
 var beam_to := Vector2.ZERO
 var pulse_cd := 0.0
+# Nivária (forma "inverno", D07): Geada, bloco de gelo, Pulso Térmico e cachecol
+const GEADA_MAX := 3
+const GEADA_DECAY := 4.0      # sem golpe de frio, uma camada cai a cada 4 s (Forro Térmico: 2,5 s)
+const FREEZE_T := 1.5
+const HEAT_R := 140.0
+const ICE_TINT := Color(0.64, 0.74, 0.8)
+var geada := 0
+var geada_t := 0.0
+var frozen_t := 0.0
+var slip_t := 0.0             # sobre gelo escorregadio (renovado a cada quadro pela mancha)
+var heat_t := 0.0             # anel do Pulso Térmico visível
+var frost_cd := 0.0
+var scarf: Array = []         # pontos do cachecol (verlet), em coordenadas globais
+var scarf_prev: Array = []
+var ice_block: Sprite2D
 const SHOULDER := {
 	"idle": Vector2(3, -50), "run": Vector2(8, -47), "jump": Vector2(6, -48),
 	"fall": Vector2(4, -50), "dash": Vector2(8, -36), "hurt": Vector2(0, -48), "death": Vector2(0, -40),
@@ -94,7 +110,7 @@ func _ready() -> void:
 	collision_layer = 2
 	collision_mask = 1 | ONEWAY_LAYER
 	floor_snap_length = 6.0
-	var size := Vector2(24, 62) if form == "human" else (Vector2(30, 62) if form == "automato" else Vector2(32, 34))
+	var size := Vector2(24, 62) if is_human() else (Vector2(30, 62) if form == "automato" else Vector2(32, 34))
 	var cs := CollisionShape2D.new()
 	var r := RectangleShape2D.new()
 	r.size = size
@@ -111,12 +127,14 @@ func _ready() -> void:
 	hc.position = cs.position
 	hurtbox.add_child(hc)
 	add_child(hurtbox)
-	if form == "human":
+	if is_human():
 		run_speed = 320.0
 		max_air_jumps = 0
 		jump_v = 760.0
 		glow_a = Art.glow(Color(0.3, 0.9, 1.0, 0.6), 22)
 		_build_rig()
+		if form == "inverno":
+			_build_winter()
 	elif form == "automato":
 		run_speed = 272.0          # 0,85 × humano
 		max_air_jumps = 0
@@ -134,7 +152,7 @@ func _ready() -> void:
 	glow_b.position = Vector2(0, -24)
 	add_child(glow_b)
 	# halo suave atrás do personagem; mais forte no Lince, que é escuro contra a floresta
-	var amb := Art.glow(Color(0.5, 0.7, 1.0, 0.10), 150) if form == "human" else Art.glow(Color(0.55, 0.95, 0.9, 0.20), 120)
+	var amb := Art.glow(Color(0.5, 0.7, 1.0, 0.10), 150) if is_human() else Art.glow(Color(0.55, 0.95, 0.9, 0.20), 120)
 	amb.position = Vector2(0, -30)
 	amb.z_index = -1
 	add_child(amb)
@@ -290,6 +308,11 @@ func _physics_process(dt: float) -> void:
 		move_and_slide()
 		queue_redraw()
 		return
+	if form == "inverno":
+		_winter_tick(dt)
+		if frozen_t > 0.0:
+			_frozen_physics(dt)
+			return
 
 	var dir := 0.0
 	if not controls_locked:
@@ -339,8 +362,8 @@ func _physics_process(dt: float) -> void:
 		knock_t -= dt
 		velocity.y = minf(velocity.y + GRAV * dt, MAX_FALL)
 	else:
-		var target := dir * run_speed
-		var accel := 900.0 if wall_lock > 0.0 else 4200.0
+		var target := dir * run_speed * (1.0 - 0.15 * geada)
+		var accel := 900.0 if wall_lock > 0.0 else (380.0 if slip_t > 0.0 else 4200.0)
 		wall_lock -= dt
 		velocity.x = move_toward(velocity.x, target, accel * dt)
 		if dir != 0.0 and not (form != "lince" and use_mouse):
@@ -383,7 +406,7 @@ func _physics_process(dt: float) -> void:
 
 	beam_t -= dt
 	pulse_cd -= dt
-	if not controls_locked and Input.is_action_just_pressed("hook") and (has_module("arpao") or form == "automato"):
+	if not controls_locked and Input.is_action_just_pressed("hook") and (has_module("arpao") or form == "automato" or form == "inverno"):
 		var hc := hook_candidate()
 		if hc != null:
 			_start_hook(hc)
@@ -434,8 +457,10 @@ func _physics_process(dt: float) -> void:
 
 func _process(dt: float) -> void:
 	var f := float(facing)
-	if form == "human":
+	if is_human():
 		_update_rig(dt)
+		if form == "inverno":
+			_update_winter(dt)
 		glow_a.global_position = gun_tip()
 		glow_a.modulate.a = 0.25 + (0.6 if atk_anim > 0.0 else 0.0)
 	elif form == "automato":
@@ -452,13 +477,18 @@ func _process(dt: float) -> void:
 	var gb := 0.0
 	if flash_t > 0.0:
 		gb = flash_t / 0.4 * 0.9
-	elif atk_anim > 0.0 and form == "human":
+	elif atk_anim > 0.0 and is_human():
 		gb = 0.25
 	glow_b.modulate = Color(0.6, 1.0, 0.8, gb) if form == "lince" else Color(0.4, 0.9, 1.0, gb)
 	if warping:
 		modulate = Color(1, 1, 1, maxf(0.0, 1.0 - warp_t * 1.2))
 		scale = Vector2.ONE * maxf(0.05, 1.0 - warp_t * 0.9)
 		rotation = warp_t * 8.0
+
+
+## Formas que usam o rig humano (corpo + braço armado): o laboratório e a camada polar de Nivária.
+func is_human() -> bool:
+	return form == "human" or form == "inverno"
 
 
 func has_module(id: String) -> bool:
@@ -555,7 +585,7 @@ func _spawn_ghost() -> void:
 	g.offset = body_spr.offset
 	g.global_position = global_position
 	g.scale = Vector2(body_spr.scale.x * facing, body_spr.scale.y)
-	g.modulate = Color(0.4, 0.9, 1.0, 0.45) if form == "human" else Color(0.7, 1.0, 0.55, 0.4)
+	g.modulate = Color(0.4, 0.9, 1.0, 0.45) if is_human() else Color(0.7, 1.0, 0.55, 0.4)
 	g.material = Art.add_mat()
 	g.z_index = 4
 	level.fx.add_child(g)
@@ -820,7 +850,7 @@ func _attack() -> void:
 		_fire_fx(false)
 		AudioMgr.sfx("rebite", Vector2.INF, -4.0, 0.08)
 		return
-	if form == "human":
+	if is_human():
 		atk_cd = Upgrades.fire_cd(main)
 		atk_anim = 0.12
 		var tip := gun_tip()
@@ -859,6 +889,9 @@ func _special() -> void:
 	energy -= 33.0
 	if form == "automato":
 		_magnet_pulse()
+		return
+	if form == "inverno":
+		_heat_pulse()
 		return
 	if form == "human":
 		var tip := gun_tip()
@@ -912,6 +945,8 @@ func _update_safe(dt: float, floor_now: bool) -> void:
 	safe_t += dt
 	if safe_t < 0.12:
 		return
+	if level.nivaria != null and level.nivaria.on_fragile(global_position):
+		return          # gelo fino não vale como ponto de retorno (ele quebra)
 	var space := get_world_2d().direct_space_state
 	for ox in [-20.0, 20.0]:
 		var q := PhysicsRayQueryParameters2D.create(global_position + Vector2(ox, -4), global_position + Vector2(ox, 14), 1)
@@ -929,6 +964,13 @@ func _check_hurt() -> void:
 		if a.is_in_group("hazard"):
 			hurt(a.global_position, 1, true)
 			return
+	# frio de Nivária (sopro, esfera, onda): deixa geada sem tirar Integridade
+	for a in areas:
+		if a.is_in_group("frost") and frost_cd <= 0.0 and frozen_t <= 0.0:
+			add_geada(int(a.get_meta("geada", 1)))
+			frost_cd = 0.7
+			if a.has_meta("owner") and is_instance_valid(a.get_meta("owner")):
+				a.get_meta("owner").popped()
 	if inv > 0.0 or dash_t > 0.0:
 		return
 	for a in areas:
@@ -936,6 +978,8 @@ func _check_hurt() -> void:
 			var e = a.get_meta("enemy")
 			if is_instance_valid(e) and not e.dead and e.stun <= 0.0:
 				hurt(e.global_position)
+				if e.get("frost_touch") == true:
+					add_geada(1)
 				return
 		elif a.is_in_group("enemy_attack"):
 			if a.has_method("is_harmful") and not a.is_harmful():
@@ -943,6 +987,8 @@ func _check_hurt() -> void:
 			if a.has_method("on_hit_player"):
 				a.on_hit_player()
 			hurt(a.global_position)
+			if a.has_meta("snowball") and is_instance_valid(a.get_meta("snowball")):
+				a.get_meta("snowball").on_hit_player()
 			return
 
 
@@ -1004,6 +1050,8 @@ func start_warp(target: Vector2) -> void:
 
 # ---------------------------------------------------------------- desenho
 func _draw() -> void:
+	if form == "inverno":
+		_draw_winter()
 	if form == "automato":
 		var tgt := Vector2.INF
 		var k := 1.0
@@ -1042,3 +1090,155 @@ func _draw_beam(a: Vector2, b: Vector2, k: float) -> void:
 		x += h
 	draw_texture_rect(tip, Rect2(L - h * 200.0 / 256.0, -h / 2.0, h, h), false)
 	draw_set_transform(Vector2.ZERO, 0.0, Vector2.ONE)
+
+
+# ---------------------------------------------------------------- Nivária: camada polar (D07)
+func _build_winter() -> void:
+	# PLACEHOLDER: as folhas do Daymon de inverno (GL10–GL24) são do lote 2. Até lá o corpo é o do
+	# laboratório; o cachecol (GL01) é desenhado e simulado aqui, e o bloco de gelo vem da GL01.
+	ice_block = Sprite2D.new()
+	ice_block.texture = NvArt.tex("gl01_bloco")
+	ice_block.scale = Vector2.ONE * (104.0 / ice_block.texture.get_height())
+	ice_block.position = Vector2(0, -50)
+	ice_block.modulate = Color(1, 1, 1, 0.82)
+	ice_block.visible = false
+	ice_block.z_index = 2
+	add_child(ice_block)
+	for i in 5:
+		scarf.append(global_position + Vector2(-facing * 9.0 * i, -64.0))
+		scarf_prev.append(scarf[i])
+
+
+## Ponto de onde o cachecol sai (cruz da GL01), em coordenadas locais.
+func scarf_anchor() -> Vector2:
+	return Vector2(-3.0 * facing, -64.0 + (6.0 if frozen_t > 0.0 else 0.0))
+
+
+func _winter_tick(dt: float) -> void:
+	slip_t -= dt
+	frost_cd -= dt
+	heat_t -= dt
+	if geada > 0 and frozen_t <= 0.0:
+		geada_t += dt
+		var decay := 2.5 if main != null and main.upgrades.has("forro") else GEADA_DECAY
+		if geada_t >= decay:
+			geada_t = 0.0
+			geada -= 1
+	if main != null and main.level != null and main.level.nivaria != null and main.level.nivaria.near_fire(global_position):
+		if geada > 0 or frozen_t > 0.0:
+			_thaw()
+
+
+## Golpe de frio (Gelinho, Drone, Morcego, Onda do Guardião). Só a forma de inverno acumula geada.
+func add_geada(n: int) -> void:
+	if form != "inverno" or dead or frozen_t > 0.0:
+		return
+	geada = mini(GEADA_MAX, geada + n)
+	geada_t = 0.0
+	Fx.burst(level.fx, global_position + Vector2(0, -40), Color(0.8, 0.92, 1.0, 0.9), 10, 160, 0.4, 0.05, 0)
+	if geada >= GEADA_MAX:
+		_freeze()
+
+
+func _freeze() -> void:
+	frozen_t = FREEZE_T
+	hook = null
+	dash_t = 0.0
+	act = ""
+	velocity.x = 0.0
+	AudioMgr.sfx("rachadura", Vector2.INF, -2.0, 0.05)
+	main.add_shake(5.0)
+	if main.hud.has_method("say") and not main.events.has("dica_congelado"):
+		main.events["dica_congelado"] = true
+		main.hud.notice("CONGELADO! Aperte PULO ou ATAQUE várias vezes, ou use o PULSO TÉRMICO.")
+
+
+func _thaw(burst := true) -> void:
+	var was := frozen_t > 0.0
+	frozen_t = 0.0
+	geada = 0
+	geada_t = 0.0
+	if burst and was:
+		Fx.burst(level.fx, global_position + Vector2(0, -45), Color(0.8, 0.92, 1.0), 22, 260, 0.5, 0.07, 120)
+		AudioMgr.sfx("plataforma_quebra", Vector2.INF, -4.0, 0.08)
+
+
+func _frozen_physics(dt: float) -> void:
+	frozen_t -= dt
+	velocity.x = move_toward(velocity.x, 0.0, 2000.0 * dt)
+	velocity.y = minf(velocity.y + GRAV * dt, MAX_FALL)
+	if not controls_locked:
+		if Input.is_action_just_pressed("jump") or Input.is_action_just_pressed("attack"):
+			frozen_t -= 0.3          # bater no gelo: 1,5 s viram até ~0,6 s
+			Fx.burst(level.fx, global_position + Vector2(randf_range(-14, 14), -50), Color(0.85, 0.95, 1.0), 4, 120, 0.25, 0.04, 200)
+		if Input.is_action_just_pressed("special"):
+			_special()
+	move_and_slide()
+	if frozen_t <= 0.0:
+		_thaw()
+	_check_hurt()
+	if global_position.y > float(level.data["kill_y"]):
+		hurt(global_position, 1, true)
+	queue_redraw()
+
+
+## Pulso Térmico (1/3 da energia): as resistências do traje aquecem de uma vez.
+func _heat_pulse() -> void:
+	heat_t = 0.45
+	_thaw()
+	AudioMgr.sfx("pulso", Vector2.INF, -2.0, 0.03)
+	main.add_shake(6.0)
+	var c := global_position + Vector2(0, -40)
+	Fx.ring(level.fx, c, Color(0.94, 0.59, 0.33), HEAT_R, 0.4, 6)
+	Fx.burst(level.fx, c, Color(1.0, 0.7, 0.35), 24, 300, 0.5, 0.06, 0)
+	if level.nivaria != null:
+		level.nivaria.on_heat(c, HEAT_R)
+
+
+func _update_winter(dt: float) -> void:
+	var k := float(geada) / GEADA_MAX
+	rig.modulate = Color(1, 1, 1).lerp(ICE_TINT, 0.55 * k) if frozen_t <= 0.0 else ICE_TINT
+	ice_block.visible = frozen_t > 0.0
+	if frozen_t > 0.0:
+		ice_block.position = Vector2(randf_range(-1, 1) * minf(1.0, 0.6 / maxf(frozen_t, 0.01)), -50)
+	# cachecol: verlet com gravidade leve, vento de Nivária e arrasto pela velocidade
+	if scarf.is_empty():
+		return
+	var anchor := global_position + scarf_anchor()
+	var wind := Vector2(-18.0 + 10.0 * sin(t * 1.7), 0.0)
+	scarf[0] = anchor
+	for i in range(1, scarf.size()):
+		var cur: Vector2 = scarf[i]
+		var vel: Vector2 = (cur - scarf_prev[i]) * 0.9
+		scarf_prev[i] = cur
+		scarf[i] = cur + vel + (Vector2(0, 260.0) + wind * 6.0 - velocity * 0.9) * dt * dt
+	for _it in 3:
+		for i in range(1, scarf.size()):
+			var a: Vector2 = scarf[i - 1]
+			var b: Vector2 = scarf[i]
+			var d := b - a
+			var l := d.length()
+			if l > 0.001:
+				scarf[i] = a + d / l * 9.5
+	if frozen_t > 0.0:
+		for i in range(1, scarf.size()):
+			scarf[i] = scarf_prev[i]
+
+
+func _draw_winter() -> void:
+	if scarf.size() > 1:
+		var pts := PackedVector2Array()
+		for q in scarf:
+			pts.append(to_local(q))
+		for i in range(pts.size() - 1):
+			var w := 6.0 - i * 0.8
+			draw_line(pts[i], pts[i + 1], Color("ef9655") if frozen_t <= 0.0 else Color("c9b4a8"), w, true)
+			if i % 2 == 1:
+				draw_line(pts[i].lerp(pts[i + 1], 0.4), pts[i].lerp(pts[i + 1], 0.6), Color("b67a51"), w, true)
+		draw_circle(pts[0], 5.0, Color("ef9655") if frozen_t <= 0.0 else Color("c9b4a8"))
+	if heat_t > 0.0:
+		var k := heat_t / 0.45
+		draw_arc(Vector2(0, -40), HEAT_R * (1.0 - k * 0.6), 0, TAU, 48, Color(0.94, 0.59, 0.33, k), 4.0, true)
+	for i in geada:
+		var a := t * 1.5 + TAU * i / 3.0
+		draw_circle(Vector2(cos(a) * 18.0, -70.0 + sin(a) * 5.0), 2.2, Color(0.85, 0.95, 1.0, 0.8))

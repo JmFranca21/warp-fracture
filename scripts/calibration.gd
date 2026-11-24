@@ -27,7 +27,7 @@ func _ready() -> void:
 
 func open(pat := "verdamia") -> void:
 	pattern = pat
-	drift_row = 1 if pattern == "deserto" else -1
+	drift_row = 1 if pattern == "deserto" else (2 if pattern == "nivaria" else -1)
 	drift_t = DRIFT_EVERY
 	drift_dir = 1.0
 	target.clear()
@@ -117,11 +117,13 @@ func _draw() -> void:
 	var r := Rect2((sz.x - w) / 2.0, (sz.y - h) / 2.0, w, h)
 	draw_rect(r, Color(0.03, 0.05, 0.09, 0.95))
 	var des := pattern == "deserto"
-	var tc := Color(0.95, 0.55, 0.25, 0.55) if des else Color(0.7, 0.55, 1.0, 0.55)
+	var niv := pattern == "nivaria"
+	var tc := Color(0.95, 0.55, 0.25, 0.55) if des else (Color(1.0, 0.56, 0.82, 0.55) if niv else Color(0.7, 0.55, 1.0, 0.55))
 	var cc := Color(0.95, 0.72, 0.3) if des else Color(0.35, 0.92, 1.0)
-	draw_rect(r, Color(0.95, 0.7, 0.3, 0.7) if des else Color(0.5, 0.4, 1.0, 0.7), false, 2.0)
-	Art.text(self, r.position + Vector2(0, 44), "CALIBRAÇÃO · DESERTO DE FERRUGEM" if des else "CALIBRAÇÃO DO PORTAL", 28, Color(0.9, 0.95, 1.0), HORIZONTAL_ALIGNMENT_CENTER, w)
-	Art.text(self, r.position + Vector2(0, 72), "Sinal fraco: uma das ondas deriva. Alinhe as três ao mesmo tempo." if des else "Alinhe cada onda (ciano) com a onda-alvo (lilás).", 16, Color(0.7, 0.78, 0.88), HORIZONTAL_ALIGNMENT_CENTER, w)
+	draw_rect(r, Color(0.95, 0.7, 0.3, 0.7) if des else (Color(1.0, 0.56, 0.82, 0.7) if niv else Color(0.5, 0.4, 1.0, 0.7)), false, 2.0)
+	var title := "CALIBRAÇÃO · DESERTO DE FERRUGEM" if des else ("CALIBRAÇÃO · NIVÁRIA" if niv else "CALIBRAÇÃO DO PORTAL")
+	Art.text(self, r.position + Vector2(0, 44), title, 28, Color(0.9, 0.95, 1.0), HORIZONTAL_ALIGNMENT_CENTER, w)
+	Art.text(self, r.position + Vector2(0, 72), "Sinal fraco: uma das ondas deriva. Alinhe as três ao mesmo tempo." if des or niv else "Alinhe cada onda (ciano) com a onda-alvo (lilás).", 16, Color(0.7, 0.78, 0.88), HORIZONTAL_ALIGNMENT_CENTER, w)
 	for i in 3:
 		var row := Rect2(r.position.x + 40, r.position.y + 100 + i * 92, w - 80, 76)
 		var matched := absf(cur[i] - target[i]) < 0.01

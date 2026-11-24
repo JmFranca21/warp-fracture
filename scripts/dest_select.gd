@@ -79,7 +79,7 @@ func _draw() -> void:
 		var on := i == sel
 		draw_circle(c, 46.0, Color(0.02, 0.03, 0.06))
 		draw_arc(c, 46.0, 0, TAU, 40, Color(col, 0.9 if on else 0.35), 3.0 if on else 1.5, true)
-		var g := DFArt.cell("PT13", Portal.DESTS[it["id"]]["glifo"] + (4 if on else 0))
+		var g := Portal.glyph_tex(it["id"], on)
 		var gs := Vector2(110, 110)
 		draw_texture_rect(g, Rect2(c - gs / 2.0, gs), false)
 		Art.text(self, Vector2(cx - 140, c.y + 76), it["nome"], 18, Color(1, 1, 1, 1.0 if on else 0.6), HORIZONTAL_ALIGNMENT_CENTER, 280)

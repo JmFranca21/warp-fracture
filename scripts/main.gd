@@ -12,7 +12,7 @@ void fragment() {
 """
 
 var state := "menu"
-const MUSIC := {"lab": "laboratorio", "verd": "verdamia", "deserto": "deserto"}
+const MUSIC := {"lab": "laboratorio", "verd": "verdamia", "deserto": "deserto", "nivaria": "menu"}   # Nivária: trilha própria no lote 2
 var world: Node2D
 var level: Level
 var player: Player
@@ -578,11 +578,14 @@ func _on_calib_done(ok: bool) -> void:
 		AudioMgr.sfx("calibra_ok")
 	if not is_instance_valid(calib_portal):
 		return
-	if ok and calib.pattern == "deserto":
+	if ok and calib.pattern in ["deserto", "nivaria"]:
 		# D02 passo 9: o diafragma abre, mas só o último E começa a viagem
-		portal_cal["deserto"] = true
-		calib_portal.arm("deserto")
-		hud.say(["IRIS: \"Sinal travado. O Deserto está do outro lado. Quando estiver pronto, atravesse.\""])
+		portal_cal[calib.pattern] = true
+		calib_portal.arm(calib.pattern)
+		if calib.pattern == "deserto":
+			hud.say(["IRIS: \"Sinal travado. O Deserto está do outro lado. Quando estiver pronto, atravesse.\""])
+		else:
+			hud.say(["IRIS: \"Sinal travado. Do outro lado faz quarenta graus negativos. O traje vai se adaptar.\""])
 		save_now()
 	elif ok:
 		portal_cal[calib_portal.target] = true
@@ -602,7 +605,11 @@ func portal_action() -> Dictionary:
 		return {"target": "verdamia", "state": "sinal", "prompt": "[E] Calibrar o portal"}
 	if installed.is_empty():
 		return {"target": "verdamia", "state": "bloqueado", "prompt": "[E] Portal sem energia"}
-	var tg := "deserto" if not frags.has("deserto") else "verdamia"
+	var tg := "verdamia"
+	if not frags.has("deserto"):
+		tg = "deserto"
+	elif installed.has("deserto") and not frags.has("nivaria"):
+		tg = "nivaria"
 	return {"target": tg, "state": "sinal", "prompt": "[E] Escolher destino"}
 
 
@@ -621,7 +628,13 @@ func portal_interact(portal: Portal) -> void:
 		var items := [{"id": "verdamia", "nome": "Verdâmia", "status": "estável"}]
 		items.append({"id": "deserto", "nome": "Deserto de Ferrugem",
 			"status": "calibrado" if portal_cal.has("deserto") else "sinal fraco · calibração necessária"})
-		dest_select.open(items, 1 if not frags.has("deserto") else 0)
+		var pick := 1 if not frags.has("deserto") else 0
+		if installed.has("deserto"):
+			items.append({"id": "nivaria", "nome": "Nivária",
+				"status": "calibrado" if portal_cal.has("nivaria") else "sinal frio · calibração necessária"})
+			if not frags.has("nivaria"):
+				pick = 2
+		dest_select.open(items, pick)
 
 
 func _on_dest_chosen(choice: String) -> void:
@@ -632,9 +645,9 @@ func _on_dest_chosen(choice: String) -> void:
 		if is_instance_valid(portal):
 			portal.refresh_state()
 		return
-	if choice == "deserto" and not portal_cal.has("deserto"):
-		portal.target = "deserto"
-		open_calibration(portal, "deserto")
+	if choice in ["deserto", "nivaria"] and not portal_cal.has(choice):
+		portal.target = choice
+		open_calibration(portal, choice)
 		return
 	portal.arm(choice)
 	if choice == "verdamia":
@@ -668,6 +681,13 @@ func install_fragment(f: String, rec: Node) -> void:
 			"IRIS: \"Escolha o destino no portal. O sinal do Deserto é fraco: vamos ter de calibrar.\""])
 		collected["log_09"] = true
 		hud.notice("Registro novo: Análise de IRIS — segundo sinal (Pausa → Registros)")
+	elif f == "deserto":
+		hud.show_banner("FRAGMENTO INSTALADO · 2/4", "A Máquina de Dobra está mais estável")
+		hud.say(["IRIS: \"Dois fragmentos. O terceiro sinal é frio, muito frio: uma noite que não termina.\"",
+			"IRIS: \"Os picos de lá estão perdendo calor para alguma coisa. Acho que é o fragmento.\"",
+			"IRIS: \"Escolha Nivária no portal. Vamos ter de calibrar de novo.\""])
+		collected["log_10"] = true
+		hud.notice("Registro novo: Análise de IRIS — terceiro sinal (Pausa → Registros)")
 	else:
 		hud.show_banner("FRAGMENTO INSTALADO · %d/4" % installed.size(), "A Máquina de Dobra está mais estável")
 	save_now()
@@ -716,6 +736,14 @@ func _form_banner() -> void:
 	match player.form:
 		"lince":
 			hud.show_banner("NOVA FORMA: LINCE-VAGALUME", "Pulo duplo  ·  Salto de parede  ·  Garras  ·  Clarão")
+		"inverno":
+			var first := not events.has("forma_inverno")
+			events["forma_inverno"] = true
+			hud.show_banner("CAMADA POLAR" if first else "NIVÁRIA · CAMADA POLAR",
+				"Arpão de Fase (F)  ·  Estabilizador  ·  Pulso Térmico (clique direito / K)")
+			if first:
+				hud.say(["IRIS: \"Temperatura externa crítica. Ativando camada polar.\"",
+					"IRIS: \"Golpes de frio vão cobrir o traje de geada. Se congelar, aqueça as resistências: Pulso Térmico.\""])
 		"automato":
 			var first := not events.has("forma_automato")
 			events["forma_automato"] = true
@@ -777,7 +805,10 @@ func collect_fragment(at := Vector2.INF) -> void:
 		player.controls_locked = false
 	level.open_return_rift(true)
 	if lid == "deserto":
-		hud.say(["IRIS: \"Segundo fragmento estável. A porta da Câmara abriu, e a fenda atrás dela leva de volta ao Hélix.\""])
+		hud.say(["IRIS: \"Segundo fragmento estável. A porta da Câmara abriu, e a fenda atrás dela leva de volta ao Hélix.\"",
+			"IRIS: \"Instale-o no Receptáculo: há outro sinal esperando.\""])
+	elif lid == "nivaria":
+		hud.say(["IRIS: \"Terceiro fragmento estável. Olhe o céu, Daymon: está clareando.\""])
 		await get_tree().create_timer(2.5, false).timeout
 		if level != null and level.id == lid:
 			show_victory()

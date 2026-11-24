@@ -22,7 +22,7 @@ func _process(dt: float) -> void:
 	t += dt
 	var p = level.player if level != null else null
 	var target := 0.0
-	if is_instance_valid(p) and (p.has_module("arpao") or p.form == "automato") and p.hook_candidate() == self:
+	if is_instance_valid(p) and (p.has_module("arpao") or p.form == "automato" or p.form == "inverno") and p.hook_candidate() == self:
 		target = 1.0
 	lit = move_toward(lit, target, dt * 6.0)
 	glow.modulate.a = 0.25 + 0.15 * sin(t * 3.0) + lit * 0.5
@@ -30,8 +30,8 @@ func _process(dt: float) -> void:
 
 
 func _draw() -> void:
-	if level != null and level.data.get("theme", "") == "deserto":
-		# a argola DF57 já está na arte; aqui só o brilho de alcance
+	if level != null and level.data.get("theme", "") in ["deserto", "nivaria"]:
+		# a argola (DF57 no Deserto, gancho GL04 em Nivária) já está na arte; aqui só o brilho de alcance
 		if lit > 0.05:
 			var cl := Color(0.35, 0.92, 1.0)
 			draw_arc(Vector2.ZERO, 20.0 + 3.0 * sin(t * 8.0), 0, TAU, 32, Color(cl, 0.5 * lit), 2.0, true)
