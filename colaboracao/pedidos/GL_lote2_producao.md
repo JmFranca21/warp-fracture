@@ -3,9 +3,11 @@
 **Lote 2: folhas de produção** (e lote 3 do Guardião). Fase 3, Nivária ([proposta](../../docs/fases/nivaria/proposta_fase3.md)).
 **Estado:** ABERTO. As fichas GL01–GL04 v2 estão aprovadas e publicadas na `main` (commit `22828aa`).
 **Para:** ChatGPT (diretor de arte) · **De:** Claude (desenvolvimento) · 24/11/2026
-**Diretrizes obrigatórias:** DA-01 e DA-02. As fichas v2 decidem desenho, cor e acabamento; estes pedidos só fixam o que o jogo precisa (escala, apoio, pivô, quadros, grade).
+**Diretrizes obrigatórias:** DA-01, DA-02 e DA-03. As fichas v2 decidem desenho, cor e acabamento; estes pedidos só fixam o que o jogo precisa (escala, apoio, pivô, quadros, grade).
 
-A fase já roda inteira com **placeholders**: recortes das fichas v2 (`tools/import_nivaria.py`), o corpo do Daymon do laboratório com o cachecol desenhado por código, e terreno e fundos desenhados por código com a paleta da GL00. Cada pedido abaixo substitui um desses placeholders. Ordem sugerida: **GL10 → GL11 → GL12 → GL13 → GL30 → GL31 → GL32 → GL70 → GL71 → GL52 → GL50 → GL51 → GL14 → GL90 → GL100 → GL101 → GL102**.
+A fase já roda inteira com **placeholders**: recortes das fichas v2 (`tools/import_nivaria.py`), o corpo do Daymon do laboratório com o cachecol desenhado por código, e terreno e fundos desenhados por código com a paleta da GL00. Cada pedido abaixo substitui um desses placeholders. Ordem sugerida: **cenário primeiro** (é o que mais separa Nivária do Laboratório e de Verdâmia), **GL55 → GL50 → GL51 → GL54 → GL56 → GL57 → GL58 → GL52 → GL53 → GL59**, depois o Daymon (**GL10 → GL11 → GL12 → GL13 → GL14**), os inimigos (**GL30 → GL31 → GL32**), os objetos (**GL70 → GL71 → GL90**) e o Guardião (**GL100 → GL101 → GL102**).
+
+**Os pedidos de cenário seguem a [DA-03, receita de cena](../entregas/00_padrao_visual/DA-03_RECEITA_DE_CENA.md):** cinco camadas, valores escuros, estrutura e moldura em toda tela, decoração em três escalas, terreno com borda viva e nada flutuando sem motivo. Cada entrega de cenário traz a prancha de cena (`<ID>_cena.png`) ao lado do Laboratório e de Verdâmia.
 
 Cada bloco é um prompt completo. Copie **um por vez** e mande o seguinte só depois de aprovar o anterior.
 
@@ -22,9 +24,16 @@ Cada bloco é um prompt completo. Copie **um por vez** e mande o seguinte só de
 | GL100 | Guardião Glacial: poses de combate | frontal e poses pequenas ampliadas da GL03 |
 | GL101 | Guardião Glacial: placas do peito e núcleo | recortes da blindagem da GL03 |
 | GL102 | Guardião Glacial: efeitos da luta | estaca da GL04 e onda desenhada por código |
-| GL50 | Fundos em parallax: céu, picos e colinas | céu e cordilheiras por código |
-| GL51 | Fundos da Caverna de Cristal e da Arena | retângulos escuros |
-| GL52 | Terreno de Nivária em tiles | terreno desenhado por código |
+| GL50 | Fundo distante: céu da noite polar | céu desenhado por código |
+| GL51 | Fundo intermediário: cordilheira, pinheiros e estações ao longe | cordilheiras desenhadas por código |
+| GL52 | Fundos da Caverna de Cristal | retângulo escuro da Caverna |
+| GL53 | Fundo da Arena do Guardião | retângulo escuro da Arena |
+| GL54 | Estrutura de fundo no plano do jogo (peças grandes) | nada (falta estrutura de fundo) |
+| GL55 | Terreno completo de Nivária | terreno desenhado por código |
+| GL56 | Decoração média e pequena | nada (falta decoração) |
+| GL57 | Moldura: o que desce do alto | nada (falta moldura) |
+| GL58 | Primeiro plano | nada (falta primeiro plano) |
+| GL59 | Efeitos de ambiente | partículas provisórias por código |
 | GL70 | Objetos de Nivária animados (perigos) | recortes estáticos da GL04 |
 | GL71 | Objetos de Nivária animados (interação e coletáveis) | recortes estáticos da GL04 e marco por código |
 | GL90 | Glifo de Nivária no Arco e ícone de Geada | floco desenhado por código e ícone de geada por código |
@@ -38,7 +47,7 @@ Cada bloco é um prompt completo. Copie **um por vez** e mande o seguinte só de
 ````markdown
 **[GL10] Daymon de inverno: folhas do corpo (7 animações)**
 
-Você é o diretor de arte do Warp Fracture. Siga a DA-01 (`colaboracao/entregas/00_padrao_visual/PADRAO_VISUAL_OFICIAL.md`), a régua **DA-02** (`colaboracao/entregas/00_padrao_visual/DA-02_CONSISTENCIA.md`, na branch `dev/neve`) e a ficha v2 aprovada indicada abaixo. Esta é uma peça de **produção**: vai direto para o jogo, então o desenho, as cores e o acabamento são os da ficha v2, com bordas suaves e pintadas como a ficha oficial do Daymon (nada de polígono serrilhado nem pixel art).
+Você é o diretor de arte do Warp Fracture. Siga a DA-01 (`colaboracao/entregas/00_padrao_visual/PADRAO_VISUAL_OFICIAL.md`), a régua **DA-02** (`colaboracao/entregas/00_padrao_visual/DA-02_CONSISTENCIA.md`), a receita de cena **DA-03** (`colaboracao/entregas/00_padrao_visual/DA-03_RECEITA_DE_CENA.md`; as duas na branch `dev/neve`) e a ficha v2 aprovada indicada abaixo. Esta é uma peça de **produção**: vai direto para o jogo, então o desenho, as cores e o acabamento são os da ficha v2, com bordas suaves e pintadas como a ficha oficial do Daymon (nada de polígono serrilhado nem pixel art).
 
 Régua (resumo): D = 400 px = altura do Daymon; no jogo o Daymon tem ~91 px (fator 0,2275), sempre em escala uniforme. Contorno escuro em no máximo metade da borda, só nas cores frias `#101923`, `#1D2A3C`, `#253045`, `#302389`, `#372E4C`. 2–3 tons por material; saturação média 0,20–0,55; S > 0,80 só em energia e perigo, até 10% da área. Foco dos inimigos em vermelho `#E0303A`, 4–10% da silhueta. Paleta de Nivária: a da GL00.
 
@@ -63,7 +72,7 @@ Régua (resumo): D = 400 px = altura do Daymon; no jogo o Daymon tem ~91 px (fat
 ````markdown
 **[GL11] Daymon de inverno: braço armado com manga e luva**
 
-Você é o diretor de arte do Warp Fracture. Siga a DA-01 (`colaboracao/entregas/00_padrao_visual/PADRAO_VISUAL_OFICIAL.md`), a régua **DA-02** (`colaboracao/entregas/00_padrao_visual/DA-02_CONSISTENCIA.md`, na branch `dev/neve`) e a ficha v2 aprovada indicada abaixo. Esta é uma peça de **produção**: vai direto para o jogo, então o desenho, as cores e o acabamento são os da ficha v2, com bordas suaves e pintadas como a ficha oficial do Daymon (nada de polígono serrilhado nem pixel art).
+Você é o diretor de arte do Warp Fracture. Siga a DA-01 (`colaboracao/entregas/00_padrao_visual/PADRAO_VISUAL_OFICIAL.md`), a régua **DA-02** (`colaboracao/entregas/00_padrao_visual/DA-02_CONSISTENCIA.md`), a receita de cena **DA-03** (`colaboracao/entregas/00_padrao_visual/DA-03_RECEITA_DE_CENA.md`; as duas na branch `dev/neve`) e a ficha v2 aprovada indicada abaixo. Esta é uma peça de **produção**: vai direto para o jogo, então o desenho, as cores e o acabamento são os da ficha v2, com bordas suaves e pintadas como a ficha oficial do Daymon (nada de polígono serrilhado nem pixel art).
 
 Régua (resumo): D = 400 px = altura do Daymon; no jogo o Daymon tem ~91 px (fator 0,2275), sempre em escala uniforme. Contorno escuro em no máximo metade da borda, só nas cores frias `#101923`, `#1D2A3C`, `#253045`, `#302389`, `#372E4C`. 2–3 tons por material; saturação média 0,20–0,55; S > 0,80 só em energia e perigo, até 10% da área. Foco dos inimigos em vermelho `#E0303A`, 4–10% da silhueta. Paleta de Nivária: a da GL00.
 
@@ -88,7 +97,7 @@ Régua (resumo): D = 400 px = altura do Daymon; no jogo o Daymon tem ~91 px (fat
 ````markdown
 **[GL12] Daymon de inverno: cachecol em peças**
 
-Você é o diretor de arte do Warp Fracture. Siga a DA-01 (`colaboracao/entregas/00_padrao_visual/PADRAO_VISUAL_OFICIAL.md`), a régua **DA-02** (`colaboracao/entregas/00_padrao_visual/DA-02_CONSISTENCIA.md`, na branch `dev/neve`) e a ficha v2 aprovada indicada abaixo. Esta é uma peça de **produção**: vai direto para o jogo, então o desenho, as cores e o acabamento são os da ficha v2, com bordas suaves e pintadas como a ficha oficial do Daymon (nada de polígono serrilhado nem pixel art).
+Você é o diretor de arte do Warp Fracture. Siga a DA-01 (`colaboracao/entregas/00_padrao_visual/PADRAO_VISUAL_OFICIAL.md`), a régua **DA-02** (`colaboracao/entregas/00_padrao_visual/DA-02_CONSISTENCIA.md`), a receita de cena **DA-03** (`colaboracao/entregas/00_padrao_visual/DA-03_RECEITA_DE_CENA.md`; as duas na branch `dev/neve`) e a ficha v2 aprovada indicada abaixo. Esta é uma peça de **produção**: vai direto para o jogo, então o desenho, as cores e o acabamento são os da ficha v2, com bordas suaves e pintadas como a ficha oficial do Daymon (nada de polígono serrilhado nem pixel art).
 
 Régua (resumo): D = 400 px = altura do Daymon; no jogo o Daymon tem ~91 px (fator 0,2275), sempre em escala uniforme. Contorno escuro em no máximo metade da borda, só nas cores frias `#101923`, `#1D2A3C`, `#253045`, `#302389`, `#372E4C`. 2–3 tons por material; saturação média 0,20–0,55; S > 0,80 só em energia e perigo, até 10% da área. Foco dos inimigos em vermelho `#E0303A`, 4–10% da silhueta. Paleta de Nivária: a da GL00.
 
@@ -113,7 +122,7 @@ Régua (resumo): D = 400 px = altura do Daymon; no jogo o Daymon tem ~91 px (fat
 ````markdown
 **[GL13] Geada e bloco de gelo**
 
-Você é o diretor de arte do Warp Fracture. Siga a DA-01 (`colaboracao/entregas/00_padrao_visual/PADRAO_VISUAL_OFICIAL.md`), a régua **DA-02** (`colaboracao/entregas/00_padrao_visual/DA-02_CONSISTENCIA.md`, na branch `dev/neve`) e a ficha v2 aprovada indicada abaixo. Esta é uma peça de **produção**: vai direto para o jogo, então o desenho, as cores e o acabamento são os da ficha v2, com bordas suaves e pintadas como a ficha oficial do Daymon (nada de polígono serrilhado nem pixel art).
+Você é o diretor de arte do Warp Fracture. Siga a DA-01 (`colaboracao/entregas/00_padrao_visual/PADRAO_VISUAL_OFICIAL.md`), a régua **DA-02** (`colaboracao/entregas/00_padrao_visual/DA-02_CONSISTENCIA.md`), a receita de cena **DA-03** (`colaboracao/entregas/00_padrao_visual/DA-03_RECEITA_DE_CENA.md`; as duas na branch `dev/neve`) e a ficha v2 aprovada indicada abaixo. Esta é uma peça de **produção**: vai direto para o jogo, então o desenho, as cores e o acabamento são os da ficha v2, com bordas suaves e pintadas como a ficha oficial do Daymon (nada de polígono serrilhado nem pixel art).
 
 Régua (resumo): D = 400 px = altura do Daymon; no jogo o Daymon tem ~91 px (fator 0,2275), sempre em escala uniforme. Contorno escuro em no máximo metade da borda, só nas cores frias `#101923`, `#1D2A3C`, `#253045`, `#302389`, `#372E4C`. 2–3 tons por material; saturação média 0,20–0,55; S > 0,80 só em energia e perigo, até 10% da área. Foco dos inimigos em vermelho `#E0303A`, 4–10% da silhueta. Paleta de Nivária: a da GL00.
 
@@ -138,7 +147,7 @@ Régua (resumo): D = 400 px = altura do Daymon; no jogo o Daymon tem ~91 px (fat
 ````markdown
 **[GL14] Pulso Térmico (efeito)**
 
-Você é o diretor de arte do Warp Fracture. Siga a DA-01 (`colaboracao/entregas/00_padrao_visual/PADRAO_VISUAL_OFICIAL.md`), a régua **DA-02** (`colaboracao/entregas/00_padrao_visual/DA-02_CONSISTENCIA.md`, na branch `dev/neve`) e a ficha v2 aprovada indicada abaixo. Esta é uma peça de **produção**: vai direto para o jogo, então o desenho, as cores e o acabamento são os da ficha v2, com bordas suaves e pintadas como a ficha oficial do Daymon (nada de polígono serrilhado nem pixel art).
+Você é o diretor de arte do Warp Fracture. Siga a DA-01 (`colaboracao/entregas/00_padrao_visual/PADRAO_VISUAL_OFICIAL.md`), a régua **DA-02** (`colaboracao/entregas/00_padrao_visual/DA-02_CONSISTENCIA.md`), a receita de cena **DA-03** (`colaboracao/entregas/00_padrao_visual/DA-03_RECEITA_DE_CENA.md`; as duas na branch `dev/neve`) e a ficha v2 aprovada indicada abaixo. Esta é uma peça de **produção**: vai direto para o jogo, então o desenho, as cores e o acabamento são os da ficha v2, com bordas suaves e pintadas como a ficha oficial do Daymon (nada de polígono serrilhado nem pixel art).
 
 Régua (resumo): D = 400 px = altura do Daymon; no jogo o Daymon tem ~91 px (fator 0,2275), sempre em escala uniforme. Contorno escuro em no máximo metade da borda, só nas cores frias `#101923`, `#1D2A3C`, `#253045`, `#302389`, `#372E4C`. 2–3 tons por material; saturação média 0,20–0,55; S > 0,80 só em energia e perigo, até 10% da área. Foco dos inimigos em vermelho `#E0303A`, 4–10% da silhueta. Paleta de Nivária: a da GL00.
 
@@ -163,7 +172,7 @@ Régua (resumo): D = 400 px = altura do Daymon; no jogo o Daymon tem ~91 px (fat
 ````markdown
 **[GL30] Gelinho: folha de animação**
 
-Você é o diretor de arte do Warp Fracture. Siga a DA-01 (`colaboracao/entregas/00_padrao_visual/PADRAO_VISUAL_OFICIAL.md`), a régua **DA-02** (`colaboracao/entregas/00_padrao_visual/DA-02_CONSISTENCIA.md`, na branch `dev/neve`) e a ficha v2 aprovada indicada abaixo. Esta é uma peça de **produção**: vai direto para o jogo, então o desenho, as cores e o acabamento são os da ficha v2, com bordas suaves e pintadas como a ficha oficial do Daymon (nada de polígono serrilhado nem pixel art).
+Você é o diretor de arte do Warp Fracture. Siga a DA-01 (`colaboracao/entregas/00_padrao_visual/PADRAO_VISUAL_OFICIAL.md`), a régua **DA-02** (`colaboracao/entregas/00_padrao_visual/DA-02_CONSISTENCIA.md`), a receita de cena **DA-03** (`colaboracao/entregas/00_padrao_visual/DA-03_RECEITA_DE_CENA.md`; as duas na branch `dev/neve`) e a ficha v2 aprovada indicada abaixo. Esta é uma peça de **produção**: vai direto para o jogo, então o desenho, as cores e o acabamento são os da ficha v2, com bordas suaves e pintadas como a ficha oficial do Daymon (nada de polígono serrilhado nem pixel art).
 
 Régua (resumo): D = 400 px = altura do Daymon; no jogo o Daymon tem ~91 px (fator 0,2275), sempre em escala uniforme. Contorno escuro em no máximo metade da borda, só nas cores frias `#101923`, `#1D2A3C`, `#253045`, `#302389`, `#372E4C`. 2–3 tons por material; saturação média 0,20–0,55; S > 0,80 só em energia e perigo, até 10% da área. Foco dos inimigos em vermelho `#E0303A`, 4–10% da silhueta. Paleta de Nivária: a da GL00.
 
@@ -188,7 +197,7 @@ Régua (resumo): D = 400 px = altura do Daymon; no jogo o Daymon tem ~91 px (fat
 ````markdown
 **[GL31] Drone Gélido: folha de animação, esfera e gelo no chão**
 
-Você é o diretor de arte do Warp Fracture. Siga a DA-01 (`colaboracao/entregas/00_padrao_visual/PADRAO_VISUAL_OFICIAL.md`), a régua **DA-02** (`colaboracao/entregas/00_padrao_visual/DA-02_CONSISTENCIA.md`, na branch `dev/neve`) e a ficha v2 aprovada indicada abaixo. Esta é uma peça de **produção**: vai direto para o jogo, então o desenho, as cores e o acabamento são os da ficha v2, com bordas suaves e pintadas como a ficha oficial do Daymon (nada de polígono serrilhado nem pixel art).
+Você é o diretor de arte do Warp Fracture. Siga a DA-01 (`colaboracao/entregas/00_padrao_visual/PADRAO_VISUAL_OFICIAL.md`), a régua **DA-02** (`colaboracao/entregas/00_padrao_visual/DA-02_CONSISTENCIA.md`), a receita de cena **DA-03** (`colaboracao/entregas/00_padrao_visual/DA-03_RECEITA_DE_CENA.md`; as duas na branch `dev/neve`) e a ficha v2 aprovada indicada abaixo. Esta é uma peça de **produção**: vai direto para o jogo, então o desenho, as cores e o acabamento são os da ficha v2, com bordas suaves e pintadas como a ficha oficial do Daymon (nada de polígono serrilhado nem pixel art).
 
 Régua (resumo): D = 400 px = altura do Daymon; no jogo o Daymon tem ~91 px (fator 0,2275), sempre em escala uniforme. Contorno escuro em no máximo metade da borda, só nas cores frias `#101923`, `#1D2A3C`, `#253045`, `#302389`, `#372E4C`. 2–3 tons por material; saturação média 0,20–0,55; S > 0,80 só em energia e perigo, até 10% da área. Foco dos inimigos em vermelho `#E0303A`, 4–10% da silhueta. Paleta de Nivária: a da GL00.
 
@@ -213,7 +222,7 @@ Régua (resumo): D = 400 px = altura do Daymon; no jogo o Daymon tem ~91 px (fat
 ````markdown
 **[GL32] Morcego-de-Cristal: folha de animação**
 
-Você é o diretor de arte do Warp Fracture. Siga a DA-01 (`colaboracao/entregas/00_padrao_visual/PADRAO_VISUAL_OFICIAL.md`), a régua **DA-02** (`colaboracao/entregas/00_padrao_visual/DA-02_CONSISTENCIA.md`, na branch `dev/neve`) e a ficha v2 aprovada indicada abaixo. Esta é uma peça de **produção**: vai direto para o jogo, então o desenho, as cores e o acabamento são os da ficha v2, com bordas suaves e pintadas como a ficha oficial do Daymon (nada de polígono serrilhado nem pixel art).
+Você é o diretor de arte do Warp Fracture. Siga a DA-01 (`colaboracao/entregas/00_padrao_visual/PADRAO_VISUAL_OFICIAL.md`), a régua **DA-02** (`colaboracao/entregas/00_padrao_visual/DA-02_CONSISTENCIA.md`), a receita de cena **DA-03** (`colaboracao/entregas/00_padrao_visual/DA-03_RECEITA_DE_CENA.md`; as duas na branch `dev/neve`) e a ficha v2 aprovada indicada abaixo. Esta é uma peça de **produção**: vai direto para o jogo, então o desenho, as cores e o acabamento são os da ficha v2, com bordas suaves e pintadas como a ficha oficial do Daymon (nada de polígono serrilhado nem pixel art).
 
 Régua (resumo): D = 400 px = altura do Daymon; no jogo o Daymon tem ~91 px (fator 0,2275), sempre em escala uniforme. Contorno escuro em no máximo metade da borda, só nas cores frias `#101923`, `#1D2A3C`, `#253045`, `#302389`, `#372E4C`. 2–3 tons por material; saturação média 0,20–0,55; S > 0,80 só em energia e perigo, até 10% da área. Foco dos inimigos em vermelho `#E0303A`, 4–10% da silhueta. Paleta de Nivária: a da GL00.
 
@@ -240,7 +249,7 @@ Régua (resumo): D = 400 px = altura do Daymon; no jogo o Daymon tem ~91 px (fat
 ````markdown
 **[GL100] Guardião Glacial: poses de combate**
 
-Você é o diretor de arte do Warp Fracture. Siga a DA-01 (`colaboracao/entregas/00_padrao_visual/PADRAO_VISUAL_OFICIAL.md`), a régua **DA-02** (`colaboracao/entregas/00_padrao_visual/DA-02_CONSISTENCIA.md`, na branch `dev/neve`) e a ficha v2 aprovada indicada abaixo. Esta é uma peça de **produção**: vai direto para o jogo, então o desenho, as cores e o acabamento são os da ficha v2, com bordas suaves e pintadas como a ficha oficial do Daymon (nada de polígono serrilhado nem pixel art).
+Você é o diretor de arte do Warp Fracture. Siga a DA-01 (`colaboracao/entregas/00_padrao_visual/PADRAO_VISUAL_OFICIAL.md`), a régua **DA-02** (`colaboracao/entregas/00_padrao_visual/DA-02_CONSISTENCIA.md`), a receita de cena **DA-03** (`colaboracao/entregas/00_padrao_visual/DA-03_RECEITA_DE_CENA.md`; as duas na branch `dev/neve`) e a ficha v2 aprovada indicada abaixo. Esta é uma peça de **produção**: vai direto para o jogo, então o desenho, as cores e o acabamento são os da ficha v2, com bordas suaves e pintadas como a ficha oficial do Daymon (nada de polígono serrilhado nem pixel art).
 
 Régua (resumo): D = 400 px = altura do Daymon; no jogo o Daymon tem ~91 px (fator 0,2275), sempre em escala uniforme. Contorno escuro em no máximo metade da borda, só nas cores frias `#101923`, `#1D2A3C`, `#253045`, `#302389`, `#372E4C`. 2–3 tons por material; saturação média 0,20–0,55; S > 0,80 só em energia e perigo, até 10% da área. Foco dos inimigos em vermelho `#E0303A`, 4–10% da silhueta. Paleta de Nivária: a da GL00.
 
@@ -265,7 +274,7 @@ Régua (resumo): D = 400 px = altura do Daymon; no jogo o Daymon tem ~91 px (fat
 ````markdown
 **[GL101] Guardião Glacial: placas do peito e núcleo**
 
-Você é o diretor de arte do Warp Fracture. Siga a DA-01 (`colaboracao/entregas/00_padrao_visual/PADRAO_VISUAL_OFICIAL.md`), a régua **DA-02** (`colaboracao/entregas/00_padrao_visual/DA-02_CONSISTENCIA.md`, na branch `dev/neve`) e a ficha v2 aprovada indicada abaixo. Esta é uma peça de **produção**: vai direto para o jogo, então o desenho, as cores e o acabamento são os da ficha v2, com bordas suaves e pintadas como a ficha oficial do Daymon (nada de polígono serrilhado nem pixel art).
+Você é o diretor de arte do Warp Fracture. Siga a DA-01 (`colaboracao/entregas/00_padrao_visual/PADRAO_VISUAL_OFICIAL.md`), a régua **DA-02** (`colaboracao/entregas/00_padrao_visual/DA-02_CONSISTENCIA.md`), a receita de cena **DA-03** (`colaboracao/entregas/00_padrao_visual/DA-03_RECEITA_DE_CENA.md`; as duas na branch `dev/neve`) e a ficha v2 aprovada indicada abaixo. Esta é uma peça de **produção**: vai direto para o jogo, então o desenho, as cores e o acabamento são os da ficha v2, com bordas suaves e pintadas como a ficha oficial do Daymon (nada de polígono serrilhado nem pixel art).
 
 Régua (resumo): D = 400 px = altura do Daymon; no jogo o Daymon tem ~91 px (fator 0,2275), sempre em escala uniforme. Contorno escuro em no máximo metade da borda, só nas cores frias `#101923`, `#1D2A3C`, `#253045`, `#302389`, `#372E4C`. 2–3 tons por material; saturação média 0,20–0,55; S > 0,80 só em energia e perigo, até 10% da área. Foco dos inimigos em vermelho `#E0303A`, 4–10% da silhueta. Paleta de Nivária: a da GL00.
 
@@ -290,7 +299,7 @@ Régua (resumo): D = 400 px = altura do Daymon; no jogo o Daymon tem ~91 px (fat
 ````markdown
 **[GL102] Guardião Glacial: efeitos da luta**
 
-Você é o diretor de arte do Warp Fracture. Siga a DA-01 (`colaboracao/entregas/00_padrao_visual/PADRAO_VISUAL_OFICIAL.md`), a régua **DA-02** (`colaboracao/entregas/00_padrao_visual/DA-02_CONSISTENCIA.md`, na branch `dev/neve`) e a ficha v2 aprovada indicada abaixo. Esta é uma peça de **produção**: vai direto para o jogo, então o desenho, as cores e o acabamento são os da ficha v2, com bordas suaves e pintadas como a ficha oficial do Daymon (nada de polígono serrilhado nem pixel art).
+Você é o diretor de arte do Warp Fracture. Siga a DA-01 (`colaboracao/entregas/00_padrao_visual/PADRAO_VISUAL_OFICIAL.md`), a régua **DA-02** (`colaboracao/entregas/00_padrao_visual/DA-02_CONSISTENCIA.md`), a receita de cena **DA-03** (`colaboracao/entregas/00_padrao_visual/DA-03_RECEITA_DE_CENA.md`; as duas na branch `dev/neve`) e a ficha v2 aprovada indicada abaixo. Esta é uma peça de **produção**: vai direto para o jogo, então o desenho, as cores e o acabamento são os da ficha v2, com bordas suaves e pintadas como a ficha oficial do Daymon (nada de polígono serrilhado nem pixel art).
 
 Régua (resumo): D = 400 px = altura do Daymon; no jogo o Daymon tem ~91 px (fator 0,2275), sempre em escala uniforme. Contorno escuro em no máximo metade da borda, só nas cores frias `#101923`, `#1D2A3C`, `#253045`, `#302389`, `#372E4C`. 2–3 tons por material; saturação média 0,20–0,55; S > 0,80 só em energia e perigo, até 10% da área. Foco dos inimigos em vermelho `#E0303A`, 4–10% da silhueta. Paleta de Nivária: a da GL00.
 
@@ -310,77 +319,252 @@ Régua (resumo): D = 400 px = altura do Daymon; no jogo o Daymon tem ~91 px (fat
 
 ---
 
-## GL50: Fundos em parallax: céu, picos e colinas
+## GL50: Fundo distante: céu da noite polar
 
 ````markdown
-**[GL50] Fundos em parallax: céu, picos e colinas**
+**[GL50] Fundo distante: céu da noite polar**
 
-Você é o diretor de arte do Warp Fracture. Siga a DA-01 (`colaboracao/entregas/00_padrao_visual/PADRAO_VISUAL_OFICIAL.md`), a régua **DA-02** (`colaboracao/entregas/00_padrao_visual/DA-02_CONSISTENCIA.md`, na branch `dev/neve`) e a ficha v2 aprovada indicada abaixo. Esta é uma peça de **produção**: vai direto para o jogo, então o desenho, as cores e o acabamento são os da ficha v2, com bordas suaves e pintadas como a ficha oficial do Daymon (nada de polígono serrilhado nem pixel art).
+Você é o diretor de arte do Warp Fracture. Siga a DA-01 (`colaboracao/entregas/00_padrao_visual/PADRAO_VISUAL_OFICIAL.md`), a régua **DA-02** (`colaboracao/entregas/00_padrao_visual/DA-02_CONSISTENCIA.md`), a receita de cena **DA-03** (`colaboracao/entregas/00_padrao_visual/DA-03_RECEITA_DE_CENA.md`; as duas na branch `dev/neve`) e a ficha v2 aprovada indicada abaixo. Esta é uma peça de **produção**: vai direto para o jogo, então o desenho, as cores e o acabamento são os da ficha v2, com bordas suaves e pintadas como a ficha oficial do Daymon (nada de polígono serrilhado nem pixel art).
 
 Régua (resumo): D = 400 px = altura do Daymon; no jogo o Daymon tem ~91 px (fator 0,2275), sempre em escala uniforme. Contorno escuro em no máximo metade da borda, só nas cores frias `#101923`, `#1D2A3C`, `#253045`, `#302389`, `#372E4C`. 2–3 tons por material; saturação média 0,20–0,55; S > 0,80 só em energia e perigo, até 10% da área. Foco dos inimigos em vermelho `#E0303A`, 4–10% da silhueta. Paleta de Nivária: a da GL00.
 
 - **ID:** GL50
-- **Arquivo(s):** `GL50_ceu.png`, `GL50_picos.png`, `GL50_colinas.png`
-- **Finalidade no jogo:** substituem o fundo desenhado por código (céu em degradê, aurora rosa, lua, estrelas e duas cordilheiras). Profundidades no jogo: 0,02, 0,12 e 0,30.
-- **Ficha v2 de referência:** `colaboracao/entregas/GL00/GL00_prancha_nivaria.png` (faixa do Cume Congelado e paleta).
-- **Escala:** o Daymon (91 px) contra as cordilheiras como na faixa da GL00; luma média de cada camada ≤ 0,20 (R6).
+- **Arquivo(s):** `GL50_ceu.png` e `GL50_aurora.png`
+- **Finalidade no jogo:** camada 1 da DA-03 (parallax 0,02) no Cume e na Encosta: céu, lua, estrelas e a aurora rosa, que ondula por código. Substitui o céu desenhado por código, hoje um vazio azul.
+- **Ficha v2 de referência:** `colaboracao/entregas/GL00/GL00_prancha_nivaria.png` (faixa do Cume Congelado e paleta) e, como referência de acabamento de fundo, `assets/verdamia/fundo/bg_distante.png`.
+- **Escala:** a tela do jogo tem 1.280 × 720 com zoom 1,1; o céu cobre a tela inteira com folga vertical de 1,5 tela.
 - **Orientação:** paisagem lateral.
-- **Âncora e pivô:** as três imagens repetem na horizontal sem emenda; a base das cordilheiras é reta para encaixar uma camada na outra.
-- **Estados e quadros:** 1 imagem por camada; a aurora pode vir em camada própria (`GL50_aurora.png`) para ondular por código.
-- **Dimensões e grade:** céu 2.048 × 1.024 px; picos 2.048 × 768 px; colinas 2.048 × 512 px, todas repetíveis na horizontal.
-- **Fundo:** o céu opaco; picos e colinas com transparência acima do recorte.
-- **Antes de apresentar, confira:**  cada quadro com a mesma escala e o mesmo ponto de apoio; nada cortado na borda da célula; a sequência lida em loop (quando for loop) sem salto; a mesma peça reduzida a ~91 px de Daymon continua legível sobre a faixa de cena de pior contraste da GL00.
+- **Âncora e pivô:** repetível na horizontal sem emenda; a aurora em camada separada com transparência.
+- **Estados e quadros:** 1 imagem cada. Céu do topo `#13182C` ao horizonte `#1B2943`; a aurora em faixas suaves, com saturação contida (DA-03, C2: terço de cima da tela com luma até 0,15).
+- **Dimensões e grade:** céu 2.560 × 1.440 px; aurora 2.560 × 720 px.
+- **Fundo:** céu opaco; aurora transparente.
+- **Antes de apresentar, confira:** monte a `GL50_cena.png` (DA-03): tela de 1.280 × 720 com o céu, as camadas GL51 se já existirem e o Daymon a ~91 px, ao lado de capturas do Laboratório e de Verdâmia (`colaboracao/entregas/00_padrao_visual/` tem a régua); luma do terço de cima ≤ 0,15; cada quadro com a mesma escala e o mesmo ponto de apoio; nada cortado na borda da célula; a sequência lida em loop (quando for loop) sem salto; a mesma peça reduzida a ~91 px de Daymon continua legível sobre a faixa de cena de pior contraste da GL00.
 - **Entrega:** Apresente ao João Marcelo e **só suba depois da aprovação explícita dele**. Coloque os PNGs em `colaboracao/entregas/GL50/` com um `ENTREGA.md` (lista de quadros, âncoras medidas em pixels, cores por material, a tabela da DA-02 com meta e resultado, confirmação da aprovação, SHA-256 de cada PNG e o que não conseguiu cumprir). Atualize a linha GL50 do `colaboracao/STATUS.md` para `ENTREGUE` e faça o commit com prefixo `[arte]` na `main`.
 ````
 
 ---
 
-## GL51: Fundos da Caverna de Cristal e da Arena
+## GL51: Fundo intermediário: cordilheira, pinheiros e estações ao longe
 
 ````markdown
-**[GL51] Fundos da Caverna de Cristal e da Arena**
+**[GL51] Fundo intermediário: cordilheira, pinheiros e estações ao longe**
 
-Você é o diretor de arte do Warp Fracture. Siga a DA-01 (`colaboracao/entregas/00_padrao_visual/PADRAO_VISUAL_OFICIAL.md`), a régua **DA-02** (`colaboracao/entregas/00_padrao_visual/DA-02_CONSISTENCIA.md`, na branch `dev/neve`) e a ficha v2 aprovada indicada abaixo. Esta é uma peça de **produção**: vai direto para o jogo, então o desenho, as cores e o acabamento são os da ficha v2, com bordas suaves e pintadas como a ficha oficial do Daymon (nada de polígono serrilhado nem pixel art).
+Você é o diretor de arte do Warp Fracture. Siga a DA-01 (`colaboracao/entregas/00_padrao_visual/PADRAO_VISUAL_OFICIAL.md`), a régua **DA-02** (`colaboracao/entregas/00_padrao_visual/DA-02_CONSISTENCIA.md`), a receita de cena **DA-03** (`colaboracao/entregas/00_padrao_visual/DA-03_RECEITA_DE_CENA.md`; as duas na branch `dev/neve`) e a ficha v2 aprovada indicada abaixo. Esta é uma peça de **produção**: vai direto para o jogo, então o desenho, as cores e o acabamento são os da ficha v2, com bordas suaves e pintadas como a ficha oficial do Daymon (nada de polígono serrilhado nem pixel art).
 
 Régua (resumo): D = 400 px = altura do Daymon; no jogo o Daymon tem ~91 px (fator 0,2275), sempre em escala uniforme. Contorno escuro em no máximo metade da borda, só nas cores frias `#101923`, `#1D2A3C`, `#253045`, `#302389`, `#372E4C`. 2–3 tons por material; saturação média 0,20–0,55; S > 0,80 só em energia e perigo, até 10% da área. Foco dos inimigos em vermelho `#E0303A`, 4–10% da silhueta. Paleta de Nivária: a da GL00.
 
 - **ID:** GL51
-- **Arquivo(s):** `GL51_caverna.png`, `GL51_arena.png`
-- **Finalidade no jogo:** paredes de fundo das zonas fechadas: Caverna (320 px de altura jogável, x 2.400–4.700) e Arena do Guardião (1.400 × 520 px).
-- **Ficha v2 de referência:** GL00 (faixas da Caverna de Cristal e da Arena do Guardião) e `GL03_esquema_arena_v2.png`.
-- **Escala:** caverna em tile de 1.024 × 320 px **na escala do jogo**; arena em 1.400 × 520 px na escala do jogo (entregue a 2×: 2.800 × 1.040 px).
-- **Orientação:** lateral.
-- **Âncora e pivô:** caverna repetível na horizontal; arena com o chão no pé da imagem e as paredes laterais dentro dela.
-- **Estados e quadros:** 1 imagem cada; cristais lavanda e brilho frio sem competir com as figuras (luma média ≤ 0,20).
-- **Dimensões e grade:** caverna 2.048 × 640 px (2×), repetível; arena 2.800 × 1.040 px.
-- **Fundo:** opaco.
-- **Antes de apresentar, confira:**  cada quadro com a mesma escala e o mesmo ponto de apoio; nada cortado na borda da célula; a sequência lida em loop (quando for loop) sem salto; a mesma peça reduzida a ~91 px de Daymon continua legível sobre a faixa de cena de pior contraste da GL00.
+- **Arquivo(s):** `GL51_cordilheira.png` (parallax 0,12) e `GL51_encostas.png` (parallax 0,3)
+- **Finalidade no jogo:** camada 2 da DA-03: as massas grandes de Nivária, preenchendo a altura da tela abaixo do céu. Picos nevados, encostas com pinheiros e as cúpulas das estações de observação abandonadas, pequenas e distantes.
+- **Ficha v2 de referência:** GL00 (faixas do Cume e da Encosta; materiais neve, rocha e metal das estações) e `assets/verdamia/fundo/bg_intermediario.png` (como uma camada intermediária aprovada fecha a tela).
+- **Escala:** picos com 2 a 3 vezes a altura da tela no horizonte; pinheiros das encostas com 1–2 D na camada de 0,3.
+- **Orientação:** paisagem lateral.
+- **Âncora e pivô:** base reta para encaixar uma camada na outra; repetível na horizontal.
+- **Estados e quadros:** 1 imagem por camada. Quanto mais longe, mais escura e mais próxima da cor do céu (DA-03, C2); a neve dos fundos em azul de noite, nunca branca.
+- **Dimensões e grade:** 2.560 × 1.024 px cada, repetíveis.
+- **Fundo:** transparente acima do recorte.
+- **Antes de apresentar, confira:** monte a `GL51_cena.png` com GL50 + GL51 + o terreno provisório e o Daymon a ~91 px; nenhum pedaço de céu vazio maior que um terço da tela; cada quadro com a mesma escala e o mesmo ponto de apoio; nada cortado na borda da célula; a sequência lida em loop (quando for loop) sem salto; a mesma peça reduzida a ~91 px de Daymon continua legível sobre a faixa de cena de pior contraste da GL00.
 - **Entrega:** Apresente ao João Marcelo e **só suba depois da aprovação explícita dele**. Coloque os PNGs em `colaboracao/entregas/GL51/` com um `ENTREGA.md` (lista de quadros, âncoras medidas em pixels, cores por material, a tabela da DA-02 com meta e resultado, confirmação da aprovação, SHA-256 de cada PNG e o que não conseguiu cumprir). Atualize a linha GL51 do `colaboracao/STATUS.md` para `ENTREGUE` e faça o commit com prefixo `[arte]` na `main`.
 ````
 
 ---
 
-## GL52: Terreno de Nivária em tiles
+## GL52: Fundos da Caverna de Cristal
 
 ````markdown
-**[GL52] Terreno de Nivária em tiles**
+**[GL52] Fundos da Caverna de Cristal**
 
-Você é o diretor de arte do Warp Fracture. Siga a DA-01 (`colaboracao/entregas/00_padrao_visual/PADRAO_VISUAL_OFICIAL.md`), a régua **DA-02** (`colaboracao/entregas/00_padrao_visual/DA-02_CONSISTENCIA.md`, na branch `dev/neve`) e a ficha v2 aprovada indicada abaixo. Esta é uma peça de **produção**: vai direto para o jogo, então o desenho, as cores e o acabamento são os da ficha v2, com bordas suaves e pintadas como a ficha oficial do Daymon (nada de polígono serrilhado nem pixel art).
+Você é o diretor de arte do Warp Fracture. Siga a DA-01 (`colaboracao/entregas/00_padrao_visual/PADRAO_VISUAL_OFICIAL.md`), a régua **DA-02** (`colaboracao/entregas/00_padrao_visual/DA-02_CONSISTENCIA.md`), a receita de cena **DA-03** (`colaboracao/entregas/00_padrao_visual/DA-03_RECEITA_DE_CENA.md`; as duas na branch `dev/neve`) e a ficha v2 aprovada indicada abaixo. Esta é uma peça de **produção**: vai direto para o jogo, então o desenho, as cores e o acabamento são os da ficha v2, com bordas suaves e pintadas como a ficha oficial do Daymon (nada de polígono serrilhado nem pixel art).
 
 Régua (resumo): D = 400 px = altura do Daymon; no jogo o Daymon tem ~91 px (fator 0,2275), sempre em escala uniforme. Contorno escuro em no máximo metade da borda, só nas cores frias `#101923`, `#1D2A3C`, `#253045`, `#302389`, `#372E4C`. 2–3 tons por material; saturação média 0,20–0,55; S > 0,80 só em energia e perigo, até 10% da área. Foco dos inimigos em vermelho `#E0303A`, 4–10% da silhueta. Paleta de Nivária: a da GL00.
 
 - **ID:** GL52
-- **Arquivo(s):** `GL52_chao_neve.png`, `GL52_rocha.png`, `GL52_teto.png`, `GL52_rampa.png`, `GL52_laje.png`
-- **Finalidade no jogo:** substitui o terreno desenhado por código: chão com topo de neve, corpo de rocha, teto da caverna com pingentes, a rampa da Encosta (sobe 400 px em 2.050 px, ~11°) e as lajes (520 × 30 px, 120 × 22 px).
-- **Ficha v2 de referência:** GL00 v2 (superfícies de apoio: neve, gelo suspenso, pedra, parede) e a paleta de materiais.
-- **Escala:** na escala do jogo, entregue a 2×: topo de neve com ~18 px de espessura no jogo (só nas superfícies jogáveis), rocha da GL00.
+- **Arquivo(s):** `GL52_caverna_distante.png` e `GL52_caverna_parede.png`
+- **Finalidade no jogo:** camadas 1 a 3 da DA-03 na Caverna (x 2.400–4.700, 320 px de altura jogável): fundo distante escuro com veios de cristal lavanda e a parede próxima com colunas de gelo, nichos e cristais grandes atrás do plano do jogo.
+- **Ficha v2 de referência:** GL00 (faixa da Caverna de Cristal) e GL04 v2 (cristais ressonantes, para a parede não competir com eles).
+- **Escala:** parede próxima com colunas de 2–4 D; cristais grandes de 1–2 D.
 - **Orientação:** lateral.
-- **Âncora e pivô:** chão e rampa: a linha do topo da neve no alto do tile; teto: a borda de baixo do tile é a borda do teto.
-- **Estados e quadros:** chão de neve (topo + face) repetível na horizontal; rocha repetível nos dois eixos; teto com pingentes repetível na horizontal; rampa em tile inclinado repetível ao longo da diagonal; laje com as duas pontas.
-- **Dimensões e grade:** tiles de 512 × 256 px (chão, teto), 512 × 512 px (rocha), 1.024 × 256 px (rampa), 1.040 × 120 px (laje).
-- **Fundo:** transparente (PNG RGBA), sem sombra projetada e sem texto.
-- **Antes de apresentar, confira:** a costura dos tiles não aparece a 91 px de Daymon; cada quadro com a mesma escala e o mesmo ponto de apoio; nada cortado na borda da célula; a sequência lida em loop (quando for loop) sem salto; a mesma peça reduzida a ~91 px de Daymon continua legível sobre a faixa de cena de pior contraste da GL00.
+- **Âncora e pivô:** repetíveis na horizontal; a parede com o chão no pé da imagem.
+- **Estados e quadros:** 1 imagem cada. Brilho próprio dos cristais contido (os cristais ressonantes e o perigo têm de ser mais claros).
+- **Dimensões e grade:** distante 2.048 × 1.024 px; parede 2.048 × 768 px, repetíveis.
+- **Fundo:** distante opaco; parede com transparência acima.
+- **Antes de apresentar, confira:** monte a `GL52_cena.png` com a Caverna, um poço de névoa e o Daymon a ~91 px; contraste do Daymon ≥ +0,07 (DA-03, C2); cada quadro com a mesma escala e o mesmo ponto de apoio; nada cortado na borda da célula; a sequência lida em loop (quando for loop) sem salto; a mesma peça reduzida a ~91 px de Daymon continua legível sobre a faixa de cena de pior contraste da GL00.
 - **Entrega:** Apresente ao João Marcelo e **só suba depois da aprovação explícita dele**. Coloque os PNGs em `colaboracao/entregas/GL52/` com um `ENTREGA.md` (lista de quadros, âncoras medidas em pixels, cores por material, a tabela da DA-02 com meta e resultado, confirmação da aprovação, SHA-256 de cada PNG e o que não conseguiu cumprir). Atualize a linha GL52 do `colaboracao/STATUS.md` para `ENTREGUE` e faça o commit com prefixo `[arte]` na `main`.
+````
+
+---
+
+## GL53: Fundo da Arena do Guardião
+
+````markdown
+**[GL53] Fundo da Arena do Guardião**
+
+Você é o diretor de arte do Warp Fracture. Siga a DA-01 (`colaboracao/entregas/00_padrao_visual/PADRAO_VISUAL_OFICIAL.md`), a régua **DA-02** (`colaboracao/entregas/00_padrao_visual/DA-02_CONSISTENCIA.md`), a receita de cena **DA-03** (`colaboracao/entregas/00_padrao_visual/DA-03_RECEITA_DE_CENA.md`; as duas na branch `dev/neve`) e a ficha v2 aprovada indicada abaixo. Esta é uma peça de **produção**: vai direto para o jogo, então o desenho, as cores e o acabamento são os da ficha v2, com bordas suaves e pintadas como a ficha oficial do Daymon (nada de polígono serrilhado nem pixel art).
+
+Régua (resumo): D = 400 px = altura do Daymon; no jogo o Daymon tem ~91 px (fator 0,2275), sempre em escala uniforme. Contorno escuro em no máximo metade da borda, só nas cores frias `#101923`, `#1D2A3C`, `#253045`, `#302389`, `#372E4C`. 2–3 tons por material; saturação média 0,20–0,55; S > 0,80 só em energia e perigo, até 10% da área. Foco dos inimigos em vermelho `#E0303A`, 4–10% da silhueta. Paleta de Nivária: a da GL00.
+
+- **ID:** GL53
+- **Arquivo(s):** `GL53_arena.png`
+- **Finalidade no jogo:** o salão de gelo do chefe (1.400 × 520 px no jogo): paredes de gelo glacial em blocos, colunas, o brilho frio no centro e a abertura do elevador à esquerda.
+- **Ficha v2 de referência:** GL00 (faixa da Arena), `GL03_esquema_arena_v2.png` (medidas) e GL03 v2 (o Guardião tem de se destacar do salão).
+- **Escala:** na escala do jogo, entregue a 2× (2.800 × 1.040 px).
+- **Orientação:** lateral, chão no pé da imagem.
+- **Âncora e pivô:** o canto de baixo à esquerda é a borda do poço do elevador (x 7.620 no jogo).
+- **Estados e quadros:** 1 imagem. O salão mais escuro que o corpo do Guardião.
+- **Dimensões e grade:** 2.800 × 1.040 px.
+- **Fundo:** opaco.
+- **Antes de apresentar, confira:** monte a `GL53_cena.png` com o Guardião (GL03 v2) e o Daymon na escala do jogo; cada quadro com a mesma escala e o mesmo ponto de apoio; nada cortado na borda da célula; a sequência lida em loop (quando for loop) sem salto; a mesma peça reduzida a ~91 px de Daymon continua legível sobre a faixa de cena de pior contraste da GL00.
+- **Entrega:** Apresente ao João Marcelo e **só suba depois da aprovação explícita dele**. Coloque os PNGs em `colaboracao/entregas/GL53/` com um `ENTREGA.md` (lista de quadros, âncoras medidas em pixels, cores por material, a tabela da DA-02 com meta e resultado, confirmação da aprovação, SHA-256 de cada PNG e o que não conseguiu cumprir). Atualize a linha GL53 do `colaboracao/STATUS.md` para `ENTREGUE` e faça o commit com prefixo `[arte]` na `main`.
+````
+
+---
+
+## GL54: Estrutura de fundo no plano do jogo (peças grandes)
+
+````markdown
+**[GL54] Estrutura de fundo no plano do jogo (peças grandes)**
+
+Você é o diretor de arte do Warp Fracture. Siga a DA-01 (`colaboracao/entregas/00_padrao_visual/PADRAO_VISUAL_OFICIAL.md`), a régua **DA-02** (`colaboracao/entregas/00_padrao_visual/DA-02_CONSISTENCIA.md`), a receita de cena **DA-03** (`colaboracao/entregas/00_padrao_visual/DA-03_RECEITA_DE_CENA.md`; as duas na branch `dev/neve`) e a ficha v2 aprovada indicada abaixo. Esta é uma peça de **produção**: vai direto para o jogo, então o desenho, as cores e o acabamento são os da ficha v2, com bordas suaves e pintadas como a ficha oficial do Daymon (nada de polígono serrilhado nem pixel art).
+
+Régua (resumo): D = 400 px = altura do Daymon; no jogo o Daymon tem ~91 px (fator 0,2275), sempre em escala uniforme. Contorno escuro em no máximo metade da borda, só nas cores frias `#101923`, `#1D2A3C`, `#253045`, `#302389`, `#372E4C`. 2–3 tons por material; saturação média 0,20–0,55; S > 0,80 só em energia e perigo, até 10% da área. Foco dos inimigos em vermelho `#E0303A`, 4–10% da silhueta. Paleta de Nivária: a da GL00.
+
+- **ID:** GL54
+- **Arquivo(s):** `GL54_estrutura.png` (folha de peças)
+- **Finalidade no jogo:** camada 3 da DA-03: o que dá escala e ritmo atrás do jogador, como os troncos e cogumelos gigantes de Verdâmia e as colunas do Laboratório.
+- **Ficha v2 de referência:** GL00 e GL04 v2 (observatório). Referência de função: `assets/verdamia/objetos/cogumelo_gigante.png` e `arco_templo.png`.
+- **Escala:** faixa grande da DA-03, C4: 3–6 D de altura.
+- **Orientação:** lateral.
+- **Âncora e pivô:** base no chão de cada peça (cruz no `ENTREGA.md`).
+- **Estados e quadros:** 10 peças: 3 pinheiros nevados (alturas diferentes), 2 paredões de rocha com gelo, ruína de estação (colunas e arco), torre de antena caída, 2 pilares de gelo da caverna, coluna da arena. Mais escuras que o plano do jogo (ficam atrás).
+- **Dimensões e grade:** células de 1.024 × 1.536 px, 5 colunas.
+- **Fundo:** transparente (PNG RGBA), sem sombra projetada e sem texto.
+- **Antes de apresentar, confira:**  cada quadro com a mesma escala e o mesmo ponto de apoio; nada cortado na borda da célula; a sequência lida em loop (quando for loop) sem salto; a mesma peça reduzida a ~91 px de Daymon continua legível sobre a faixa de cena de pior contraste da GL00.
+- **Entrega:** Apresente ao João Marcelo e **só suba depois da aprovação explícita dele**. Coloque os PNGs em `colaboracao/entregas/GL54/` com um `ENTREGA.md` (lista de quadros, âncoras medidas em pixels, cores por material, a tabela da DA-02 com meta e resultado, confirmação da aprovação, SHA-256 de cada PNG e o que não conseguiu cumprir). Atualize a linha GL54 do `colaboracao/STATUS.md` para `ENTREGUE` e faça o commit com prefixo `[arte]` na `main`.
+````
+
+---
+
+## GL55: Terreno completo de Nivária
+
+````markdown
+**[GL55] Terreno completo de Nivária**
+
+Você é o diretor de arte do Warp Fracture. Siga a DA-01 (`colaboracao/entregas/00_padrao_visual/PADRAO_VISUAL_OFICIAL.md`), a régua **DA-02** (`colaboracao/entregas/00_padrao_visual/DA-02_CONSISTENCIA.md`), a receita de cena **DA-03** (`colaboracao/entregas/00_padrao_visual/DA-03_RECEITA_DE_CENA.md`; as duas na branch `dev/neve`) e a ficha v2 aprovada indicada abaixo. Esta é uma peça de **produção**: vai direto para o jogo, então o desenho, as cores e o acabamento são os da ficha v2, com bordas suaves e pintadas como a ficha oficial do Daymon (nada de polígono serrilhado nem pixel art).
+
+Régua (resumo): D = 400 px = altura do Daymon; no jogo o Daymon tem ~91 px (fator 0,2275), sempre em escala uniforme. Contorno escuro em no máximo metade da borda, só nas cores frias `#101923`, `#1D2A3C`, `#253045`, `#302389`, `#372E4C`. 2–3 tons por material; saturação média 0,20–0,55; S > 0,80 só em energia e perigo, até 10% da área. Foco dos inimigos em vermelho `#E0303A`, 4–10% da silhueta. Paleta de Nivária: a da GL00.
+
+- **ID:** GL55
+- **Arquivo(s):** `GL55_terreno.png` (folha de peças)
+- **Finalidade no jogo:** substitui o terreno desenhado por código, que hoje são retângulos com uma faixa de neve (DA-03, C5). É o equivalente ao conjunto de oito peças de Verdâmia (`assets/verdamia/terreno/`).
+- **Ficha v2 de referência:** GL00 v2 (superfícies de apoio, materiais e paleta) e o conjunto de Verdâmia (chão com borda viva, subsolo, cantos, borda de parede, plataforma).
+- **Escala:** no jogo, a neve do topo tem 18–30 px de espessura e é irregular (montes, rastros, pedras aparecendo). Entregue a 2× da escala do jogo.
+- **Orientação:** lateral.
+- **Âncora e pivô:** linha do topo marcada em cada peça; peças de canto com o ponto de encontro marcado.
+- **Estados e quadros:** chão de neve (topo irregular + face), subsolo de rocha escura, canto esquerdo e direito, borda de parede (lado de um bloco), teto de caverna com pingentes, rampa da Encosta (sobe 400 px em 2.050), plataforma de rocha **com correntes ou suportes de metal das estações** (nada flutua sem motivo), laje de gelo presa na rocha. 10 peças, repetíveis onde fizer sentido.
+- **Dimensões e grade:** tiles de 512 × 256 px (chão, teto), 512 × 512 px (subsolo, borda), 1.024 × 256 px (rampa); cantos e plataformas em células de 512 × 384 px.
+- **Fundo:** transparente (PNG RGBA), sem sombra projetada e sem texto.
+- **Antes de apresentar, confira:** a costura dos tiles não aparece a ~91 px de Daymon; nenhum topo de chão é uma linha reta; cada quadro com a mesma escala e o mesmo ponto de apoio; nada cortado na borda da célula; a sequência lida em loop (quando for loop) sem salto; a mesma peça reduzida a ~91 px de Daymon continua legível sobre a faixa de cena de pior contraste da GL00.
+- **Entrega:** Apresente ao João Marcelo e **só suba depois da aprovação explícita dele**. Coloque os PNGs em `colaboracao/entregas/GL55/` com um `ENTREGA.md` (lista de quadros, âncoras medidas em pixels, cores por material, a tabela da DA-02 com meta e resultado, confirmação da aprovação, SHA-256 de cada PNG e o que não conseguiu cumprir). Atualize a linha GL55 do `colaboracao/STATUS.md` para `ENTREGUE` e faça o commit com prefixo `[arte]` na `main`.
+````
+
+---
+
+## GL56: Decoração média e pequena
+
+````markdown
+**[GL56] Decoração média e pequena**
+
+Você é o diretor de arte do Warp Fracture. Siga a DA-01 (`colaboracao/entregas/00_padrao_visual/PADRAO_VISUAL_OFICIAL.md`), a régua **DA-02** (`colaboracao/entregas/00_padrao_visual/DA-02_CONSISTENCIA.md`), a receita de cena **DA-03** (`colaboracao/entregas/00_padrao_visual/DA-03_RECEITA_DE_CENA.md`; as duas na branch `dev/neve`) e a ficha v2 aprovada indicada abaixo. Esta é uma peça de **produção**: vai direto para o jogo, então o desenho, as cores e o acabamento são os da ficha v2, com bordas suaves e pintadas como a ficha oficial do Daymon (nada de polígono serrilhado nem pixel art).
+
+Régua (resumo): D = 400 px = altura do Daymon; no jogo o Daymon tem ~91 px (fator 0,2275), sempre em escala uniforme. Contorno escuro em no máximo metade da borda, só nas cores frias `#101923`, `#1D2A3C`, `#253045`, `#302389`, `#372E4C`. 2–3 tons por material; saturação média 0,20–0,55; S > 0,80 só em energia e perigo, até 10% da área. Foco dos inimigos em vermelho `#E0303A`, 4–10% da silhueta. Paleta de Nivária: a da GL00.
+
+- **ID:** GL56
+- **Arquivo(s):** `GL56_media.png` e `GL56_pequena.png`
+- **Finalidade no jogo:** as faixas média e pequena da DA-03, C4: 2–4 peças médias e 6–12 pequenas por tela, como cogumelos, grama e pedras em Verdâmia.
+- **Ficha v2 de referência:** GL00 e GL04 v2 (observatório, telescópio, painel), `assets/verdamia/objetos/` (pedra_musgo, grama) como referência de acabamento.
+- **Escala:** médias com 1–2 D; pequenas com 0,15–0,5 D.
+- **Orientação:** lateral.
+- **Âncora e pivô:** base no chão de cada peça.
+- **Estados e quadros:** médias (10): rocha nevada grande, monte de neve, pinheiro jovem, telescópio quebrado, poste de sinal da estação, caixa de equipamento coberta de neve, cristal lavanda grande, trenó abandonado, antena, fogueira apagada. Pequenas (14): tufos de capim congelado (3), pedras (3), cristais pequenos (2), pingentes de chão (2), lanterna da estação, placa torta, cabo com neve, pegadas de animal.
+- **Dimensões e grade:** médias em células de 512 × 512 px, 5 colunas; pequenas em células de 256 × 256 px, 7 colunas.
+- **Fundo:** transparente (PNG RGBA), sem sombra projetada e sem texto.
+- **Antes de apresentar, confira:**  cada quadro com a mesma escala e o mesmo ponto de apoio; nada cortado na borda da célula; a sequência lida em loop (quando for loop) sem salto; a mesma peça reduzida a ~91 px de Daymon continua legível sobre a faixa de cena de pior contraste da GL00.
+- **Entrega:** Apresente ao João Marcelo e **só suba depois da aprovação explícita dele**. Coloque os PNGs em `colaboracao/entregas/GL56/` com um `ENTREGA.md` (lista de quadros, âncoras medidas em pixels, cores por material, a tabela da DA-02 com meta e resultado, confirmação da aprovação, SHA-256 de cada PNG e o que não conseguiu cumprir). Atualize a linha GL56 do `colaboracao/STATUS.md` para `ENTREGUE` e faça o commit com prefixo `[arte]` na `main`.
+````
+
+---
+
+## GL57: Moldura: o que desce do alto
+
+````markdown
+**[GL57] Moldura: o que desce do alto**
+
+Você é o diretor de arte do Warp Fracture. Siga a DA-01 (`colaboracao/entregas/00_padrao_visual/PADRAO_VISUAL_OFICIAL.md`), a régua **DA-02** (`colaboracao/entregas/00_padrao_visual/DA-02_CONSISTENCIA.md`), a receita de cena **DA-03** (`colaboracao/entregas/00_padrao_visual/DA-03_RECEITA_DE_CENA.md`; as duas na branch `dev/neve`) e a ficha v2 aprovada indicada abaixo. Esta é uma peça de **produção**: vai direto para o jogo, então o desenho, as cores e o acabamento são os da ficha v2, com bordas suaves e pintadas como a ficha oficial do Daymon (nada de polígono serrilhado nem pixel art).
+
+Régua (resumo): D = 400 px = altura do Daymon; no jogo o Daymon tem ~91 px (fator 0,2275), sempre em escala uniforme. Contorno escuro em no máximo metade da borda, só nas cores frias `#101923`, `#1D2A3C`, `#253045`, `#302389`, `#372E4C`. 2–3 tons por material; saturação média 0,20–0,55; S > 0,80 só em energia e perigo, até 10% da área. Foco dos inimigos em vermelho `#E0303A`, 4–10% da silhueta. Paleta de Nivária: a da GL00.
+
+- **ID:** GL57
+- **Arquivo(s):** `GL57_moldura.png`
+- **Finalidade no jogo:** DA-03, C3: toda tela tem algo descendo do alto (em Verdâmia, os cipós e raízes penduradas). Em Nivária: galhos de pinheiro com neve, correntes e cabos das estações com gelo, cortinas de pingentes, raízes congeladas na caverna.
+- **Ficha v2 de referência:** GL00, GL04 v2 (gancho de teto e corrente) e `assets/verdamia/objetos/raiz_pendurada.png`.
+- **Escala:** de 1 a 3 D de comprimento.
+- **Orientação:** penduradas, de frente.
+- **Âncora e pivô:** ponto de fixação no topo da célula.
+- **Estados e quadros:** 8 peças: 2 galhos de pinheiro, 2 correntes com gelo, 2 cortinas de pingentes, cabo partido com lanterna, raiz congelada.
+- **Dimensões e grade:** células de 512 × 768 px, 4 colunas.
+- **Fundo:** transparente (PNG RGBA), sem sombra projetada e sem texto.
+- **Antes de apresentar, confira:**  cada quadro com a mesma escala e o mesmo ponto de apoio; nada cortado na borda da célula; a sequência lida em loop (quando for loop) sem salto; a mesma peça reduzida a ~91 px de Daymon continua legível sobre a faixa de cena de pior contraste da GL00.
+- **Entrega:** Apresente ao João Marcelo e **só suba depois da aprovação explícita dele**. Coloque os PNGs em `colaboracao/entregas/GL57/` com um `ENTREGA.md` (lista de quadros, âncoras medidas em pixels, cores por material, a tabela da DA-02 com meta e resultado, confirmação da aprovação, SHA-256 de cada PNG e o que não conseguiu cumprir). Atualize a linha GL57 do `colaboracao/STATUS.md` para `ENTREGUE` e faça o commit com prefixo `[arte]` na `main`.
+````
+
+---
+
+## GL58: Primeiro plano
+
+````markdown
+**[GL58] Primeiro plano**
+
+Você é o diretor de arte do Warp Fracture. Siga a DA-01 (`colaboracao/entregas/00_padrao_visual/PADRAO_VISUAL_OFICIAL.md`), a régua **DA-02** (`colaboracao/entregas/00_padrao_visual/DA-02_CONSISTENCIA.md`), a receita de cena **DA-03** (`colaboracao/entregas/00_padrao_visual/DA-03_RECEITA_DE_CENA.md`; as duas na branch `dev/neve`) e a ficha v2 aprovada indicada abaixo. Esta é uma peça de **produção**: vai direto para o jogo, então o desenho, as cores e o acabamento são os da ficha v2, com bordas suaves e pintadas como a ficha oficial do Daymon (nada de polígono serrilhado nem pixel art).
+
+Régua (resumo): D = 400 px = altura do Daymon; no jogo o Daymon tem ~91 px (fator 0,2275), sempre em escala uniforme. Contorno escuro em no máximo metade da borda, só nas cores frias `#101923`, `#1D2A3C`, `#253045`, `#302389`, `#372E4C`. 2–3 tons por material; saturação média 0,20–0,55; S > 0,80 só em energia e perigo, até 10% da área. Foco dos inimigos em vermelho `#E0303A`, 4–10% da silhueta. Paleta de Nivária: a da GL00.
+
+- **ID:** GL58
+- **Arquivo(s):** `GL58_primeiro_plano.png` e `GL58_primeiro_plano_caverna.png`
+- **Finalidade no jogo:** camada 5 da DA-03 (parallax 1,0–1,2): silhuetas escuras na borda de baixo da tela, na frente do jogador, como `assets/verdamia/fundo/fg_vegetacao.png`.
+- **Ficha v2 de referência:** GL00 e `assets/verdamia/fundo/fg_vegetacao.png` (altura, densidade e escurecimento).
+- **Escala:** faixa de até 1/5 da altura da tela no jogo.
+- **Orientação:** lateral.
+- **Âncora e pivô:** base reta; repetível na horizontal (o jogo espelha as cópias vizinhas).
+- **Estados e quadros:** exterior: montes de neve, rochas e galhos de pinheiro em silhueta azul-marinho quase preta; caverna: rochas e cristais em silhueta. Nunca mais claro que o plano do jogo.
+- **Dimensões e grade:** 2.048 × 512 px cada.
+- **Fundo:** transparente acima da silhueta.
+- **Antes de apresentar, confira:**  cada quadro com a mesma escala e o mesmo ponto de apoio; nada cortado na borda da célula; a sequência lida em loop (quando for loop) sem salto; a mesma peça reduzida a ~91 px de Daymon continua legível sobre a faixa de cena de pior contraste da GL00.
+- **Entrega:** Apresente ao João Marcelo e **só suba depois da aprovação explícita dele**. Coloque os PNGs em `colaboracao/entregas/GL58/` com um `ENTREGA.md` (lista de quadros, âncoras medidas em pixels, cores por material, a tabela da DA-02 com meta e resultado, confirmação da aprovação, SHA-256 de cada PNG e o que não conseguiu cumprir). Atualize a linha GL58 do `colaboracao/STATUS.md` para `ENTREGUE` e faça o commit com prefixo `[arte]` na `main`.
+````
+
+---
+
+## GL59: Efeitos de ambiente
+
+````markdown
+**[GL59] Efeitos de ambiente**
+
+Você é o diretor de arte do Warp Fracture. Siga a DA-01 (`colaboracao/entregas/00_padrao_visual/PADRAO_VISUAL_OFICIAL.md`), a régua **DA-02** (`colaboracao/entregas/00_padrao_visual/DA-02_CONSISTENCIA.md`), a receita de cena **DA-03** (`colaboracao/entregas/00_padrao_visual/DA-03_RECEITA_DE_CENA.md`; as duas na branch `dev/neve`) e a ficha v2 aprovada indicada abaixo. Esta é uma peça de **produção**: vai direto para o jogo, então o desenho, as cores e o acabamento são os da ficha v2, com bordas suaves e pintadas como a ficha oficial do Daymon (nada de polígono serrilhado nem pixel art).
+
+Régua (resumo): D = 400 px = altura do Daymon; no jogo o Daymon tem ~91 px (fator 0,2275), sempre em escala uniforme. Contorno escuro em no máximo metade da borda, só nas cores frias `#101923`, `#1D2A3C`, `#253045`, `#302389`, `#372E4C`. 2–3 tons por material; saturação média 0,20–0,55; S > 0,80 só em energia e perigo, até 10% da área. Foco dos inimigos em vermelho `#E0303A`, 4–10% da silhueta. Paleta de Nivária: a da GL00.
+
+- **ID:** GL59
+- **Arquivo(s):** `GL59_neve.png`, `GL59_brilho_cristal.png`, `GL59_poeira_neve.png`, `GL59_rajada.png`
+- **Finalidade no jogo:** DA-03, C6: flocos de neve caindo (partícula), o brilho que os cristais lançam no entorno, a poeira de neve ao pousar e correr, e rajadas de vento que passam na Encosta.
+- **Ficha v2 de referência:** GL00 e os efeitos de Verdâmia em `assets/verdamia/efeitos/` (poeira).
+- **Escala:** flocos de 6–16 px no jogo; poeira de pouso com ~0,8 D de largura; rajada com 2–3 D.
+- **Orientação:** lateral.
+- **Âncora e pivô:** centro da célula (poeira: centro da base).
+- **Estados e quadros:** neve: 4 flocos diferentes · brilho: 1 (gradiente radial lavanda) · poeira: 6 quadros · rajada: 6 quadros (loop).
+- **Dimensões e grade:** células de 256 × 256 px, uma folha por efeito.
+- **Fundo:** transparente (PNG RGBA), sem sombra projetada e sem texto.
+- **Antes de apresentar, confira:**  cada quadro com a mesma escala e o mesmo ponto de apoio; nada cortado na borda da célula; a sequência lida em loop (quando for loop) sem salto; a mesma peça reduzida a ~91 px de Daymon continua legível sobre a faixa de cena de pior contraste da GL00.
+- **Entrega:** Apresente ao João Marcelo e **só suba depois da aprovação explícita dele**. Coloque os PNGs em `colaboracao/entregas/GL59/` com um `ENTREGA.md` (lista de quadros, âncoras medidas em pixels, cores por material, a tabela da DA-02 com meta e resultado, confirmação da aprovação, SHA-256 de cada PNG e o que não conseguiu cumprir). Atualize a linha GL59 do `colaboracao/STATUS.md` para `ENTREGUE` e faça o commit com prefixo `[arte]` na `main`.
 ````
 
 ---
@@ -390,7 +574,7 @@ Régua (resumo): D = 400 px = altura do Daymon; no jogo o Daymon tem ~91 px (fat
 ````markdown
 **[GL70] Objetos de Nivária animados (perigos)**
 
-Você é o diretor de arte do Warp Fracture. Siga a DA-01 (`colaboracao/entregas/00_padrao_visual/PADRAO_VISUAL_OFICIAL.md`), a régua **DA-02** (`colaboracao/entregas/00_padrao_visual/DA-02_CONSISTENCIA.md`, na branch `dev/neve`) e a ficha v2 aprovada indicada abaixo. Esta é uma peça de **produção**: vai direto para o jogo, então o desenho, as cores e o acabamento são os da ficha v2, com bordas suaves e pintadas como a ficha oficial do Daymon (nada de polígono serrilhado nem pixel art).
+Você é o diretor de arte do Warp Fracture. Siga a DA-01 (`colaboracao/entregas/00_padrao_visual/PADRAO_VISUAL_OFICIAL.md`), a régua **DA-02** (`colaboracao/entregas/00_padrao_visual/DA-02_CONSISTENCIA.md`), a receita de cena **DA-03** (`colaboracao/entregas/00_padrao_visual/DA-03_RECEITA_DE_CENA.md`; as duas na branch `dev/neve`) e a ficha v2 aprovada indicada abaixo. Esta é uma peça de **produção**: vai direto para o jogo, então o desenho, as cores e o acabamento são os da ficha v2, com bordas suaves e pintadas como a ficha oficial do Daymon (nada de polígono serrilhado nem pixel art).
 
 Régua (resumo): D = 400 px = altura do Daymon; no jogo o Daymon tem ~91 px (fator 0,2275), sempre em escala uniforme. Contorno escuro em no máximo metade da borda, só nas cores frias `#101923`, `#1D2A3C`, `#253045`, `#302389`, `#372E4C`. 2–3 tons por material; saturação média 0,20–0,55; S > 0,80 só em energia e perigo, até 10% da área. Foco dos inimigos em vermelho `#E0303A`, 4–10% da silhueta. Paleta de Nivária: a da GL00.
 
@@ -415,7 +599,7 @@ Régua (resumo): D = 400 px = altura do Daymon; no jogo o Daymon tem ~91 px (fat
 ````markdown
 **[GL71] Objetos de Nivária animados (interação e coletáveis)**
 
-Você é o diretor de arte do Warp Fracture. Siga a DA-01 (`colaboracao/entregas/00_padrao_visual/PADRAO_VISUAL_OFICIAL.md`), a régua **DA-02** (`colaboracao/entregas/00_padrao_visual/DA-02_CONSISTENCIA.md`, na branch `dev/neve`) e a ficha v2 aprovada indicada abaixo. Esta é uma peça de **produção**: vai direto para o jogo, então o desenho, as cores e o acabamento são os da ficha v2, com bordas suaves e pintadas como a ficha oficial do Daymon (nada de polígono serrilhado nem pixel art).
+Você é o diretor de arte do Warp Fracture. Siga a DA-01 (`colaboracao/entregas/00_padrao_visual/PADRAO_VISUAL_OFICIAL.md`), a régua **DA-02** (`colaboracao/entregas/00_padrao_visual/DA-02_CONSISTENCIA.md`), a receita de cena **DA-03** (`colaboracao/entregas/00_padrao_visual/DA-03_RECEITA_DE_CENA.md`; as duas na branch `dev/neve`) e a ficha v2 aprovada indicada abaixo. Esta é uma peça de **produção**: vai direto para o jogo, então o desenho, as cores e o acabamento são os da ficha v2, com bordas suaves e pintadas como a ficha oficial do Daymon (nada de polígono serrilhado nem pixel art).
 
 Régua (resumo): D = 400 px = altura do Daymon; no jogo o Daymon tem ~91 px (fator 0,2275), sempre em escala uniforme. Contorno escuro em no máximo metade da borda, só nas cores frias `#101923`, `#1D2A3C`, `#253045`, `#302389`, `#372E4C`. 2–3 tons por material; saturação média 0,20–0,55; S > 0,80 só em energia e perigo, até 10% da área. Foco dos inimigos em vermelho `#E0303A`, 4–10% da silhueta. Paleta de Nivária: a da GL00.
 
@@ -440,7 +624,7 @@ Régua (resumo): D = 400 px = altura do Daymon; no jogo o Daymon tem ~91 px (fat
 ````markdown
 **[GL90] Glifo de Nivária no Arco e ícone de Geada**
 
-Você é o diretor de arte do Warp Fracture. Siga a DA-01 (`colaboracao/entregas/00_padrao_visual/PADRAO_VISUAL_OFICIAL.md`), a régua **DA-02** (`colaboracao/entregas/00_padrao_visual/DA-02_CONSISTENCIA.md`, na branch `dev/neve`) e a ficha v2 aprovada indicada abaixo. Esta é uma peça de **produção**: vai direto para o jogo, então o desenho, as cores e o acabamento são os da ficha v2, com bordas suaves e pintadas como a ficha oficial do Daymon (nada de polígono serrilhado nem pixel art).
+Você é o diretor de arte do Warp Fracture. Siga a DA-01 (`colaboracao/entregas/00_padrao_visual/PADRAO_VISUAL_OFICIAL.md`), a régua **DA-02** (`colaboracao/entregas/00_padrao_visual/DA-02_CONSISTENCIA.md`), a receita de cena **DA-03** (`colaboracao/entregas/00_padrao_visual/DA-03_RECEITA_DE_CENA.md`; as duas na branch `dev/neve`) e a ficha v2 aprovada indicada abaixo. Esta é uma peça de **produção**: vai direto para o jogo, então o desenho, as cores e o acabamento são os da ficha v2, com bordas suaves e pintadas como a ficha oficial do Daymon (nada de polígono serrilhado nem pixel art).
 
 Régua (resumo): D = 400 px = altura do Daymon; no jogo o Daymon tem ~91 px (fator 0,2275), sempre em escala uniforme. Contorno escuro em no máximo metade da borda, só nas cores frias `#101923`, `#1D2A3C`, `#253045`, `#302389`, `#372E4C`. 2–3 tons por material; saturação média 0,20–0,55; S > 0,80 só em energia e perigo, até 10% da área. Foco dos inimigos em vermelho `#E0303A`, 4–10% da silhueta. Paleta de Nivária: a da GL00.
 

@@ -182,21 +182,67 @@ class Terrain extends Node2D:
 				draw_colored_polygon(PackedVector2Array([Vector2(x - 7, r.end.y), Vector2(x + 7, r.end.y), Vector2(x, r.end.y + h)]), Color(NvArt.GELO, 0.85))
 				x += 38.0 + fmod(x * 3.7, 30.0)
 		for r: Rect2 in rects:
-			draw_rect(r, NvArt.ROCHA_B)
-			draw_rect(Rect2(r.position.x, r.position.y + 18, r.size.x, minf(26.0, r.size.y - 18)), NvArt.ROCHA_C.lerp(NvArt.ROCHA_B, 0.6))
-			draw_rect(Rect2(r.position.x, r.position.y, r.size.x, 9), NvArt.NEVE_TOPO)
-			draw_rect(Rect2(r.position.x, r.position.y + 9, r.size.x, 9), NvArt.NEVE)
-			draw_rect(Rect2(r.position.x, r.position.y + 18, r.size.x, 3), NvArt.NEVE_SOMBRA)
-			draw_line(Vector2(r.position.x, r.position.y + 4), Vector2(r.position.x, r.end.y), NvArt.ROCHA_A, 3.0)
-			draw_line(Vector2(r.end.x, r.position.y + 4), Vector2(r.end.x, r.end.y), NvArt.ROCHA_A, 3.0)
+			_block(r)
 		if slope.size() > 2:
 			draw_colored_polygon(slope, NvArt.ROCHA_B)
 			var a := slope[0]
 			var b := slope[1]
 			var n := (b - a).orthogonal().normalized() * -1.0
-			draw_line(a, b, NvArt.NEVE_TOPO, 9.0)
-			draw_line(a + n * -9.0, b + n * -9.0, NvArt.NEVE, 9.0)
-			draw_line(a + n * -15.0, b + n * -15.0, NvArt.NEVE_SOMBRA, 3.0)
+			# subsolo: faixas mais escuras para baixo e pedras
+			for i in 4:
+				var off := 40.0 + i * 70.0
+				draw_line(a + n * off, b + n * off, NvArt.ROCHA_A.lerp(NvArt.ROCHA_B, 0.4 - i * 0.1), 50.0)
+			_snow_line(a, b)
+
+	## Bloco de terreno (DA-03, C5): topo de neve irregular, borda escura, subsolo com pedras e cantos.
+	func _block(r: Rect2) -> void:
+		draw_rect(r, NvArt.ROCHA_B)
+		var y := r.position.y + 22.0
+		var i := 0
+		while y < r.end.y:
+			draw_rect(Rect2(r.position.x, y, r.size.x, minf(60.0, r.end.y - y)), NvArt.ROCHA_B.lerp(NvArt.ROCHA_A, minf(1.0, 0.25 + i * 0.22)))
+			y += 60.0
+			i += 1
+		var rng := RandomNumberGenerator.new()
+		rng.seed = int(r.position.x * 13.0 + r.position.y)
+		var nst := int(r.size.x * minf(r.size.y, 260.0) / 5200.0)
+		for k in nst:
+			var p := Vector2(rng.randf_range(r.position.x + 8, r.end.x - 8), rng.randf_range(r.position.y + 34, minf(r.end.y - 6, r.position.y + 260)))
+			var rr := rng.randf_range(4, 11)
+			draw_colored_polygon(Art.circle(p, rr, 6), NvArt.ROCHA_C.lerp(NvArt.ROCHA_A, 0.55))
+		draw_line(Vector2(r.position.x + 1, r.position.y + 6), Vector2(r.position.x + 1, r.end.y), NvArt.ROCHA_A, 3.0)
+		draw_line(Vector2(r.end.x - 1, r.position.y + 6), Vector2(r.end.x - 1, r.end.y), NvArt.ROCHA_A, 3.0)
+		_snow_line(r.position, Vector2(r.end.x, r.position.y), true)
+
+	## Neve acumulada: montes irregulares e beiral que passa um pouco das pontas (cantos).
+	func _snow_line(a: Vector2, b: Vector2, caps := false) -> void:
+		var rng := RandomNumberGenerator.new()
+		rng.seed = int(a.x * 7.0 + a.y * 3.0)
+		var seg_len := a.distance_to(b)
+		var dir := (b - a) / seg_len
+		var up := Vector2(dir.y, -dir.x)
+		var ext := 8.0 if caps else 0.0
+		var top := PackedVector2Array()
+		var low := PackedVector2Array()
+		var steps := maxi(2, int(seg_len / 22.0))
+		for i in steps + 1:
+			var u := float(i) / steps
+			var p := a.lerp(b, u) + dir * lerpf(-ext, ext, u)
+			var bump := rng.randf_range(2.0, 7.0) + (5.0 if rng.randf() < 0.12 else 0.0)
+			top.append(p + up * bump)
+			low.append(p - up * rng.randf_range(14.0, 20.0))
+		var band := top.duplicate()
+		for i in range(low.size() - 1, -1, -1):
+			band.append(low[i])
+		draw_colored_polygon(band, NvArt.NEVE)
+		var hi := top.duplicate()
+		for i in range(top.size() - 1, -1, -1):
+			hi.append(top[i] - up * 6.0)
+		draw_colored_polygon(hi, NvArt.NEVE_TOPO)
+		draw_polyline(low, NvArt.NEVE_SOMBRA, 3.0)
+		if caps:
+			for end in [0, steps]:
+				draw_circle(low[end] + up * 6.0, 9.0, NvArt.NEVE)
 
 
 class ThinIce extends AnimatableBody2D:
@@ -383,10 +429,18 @@ class IceWall extends StaticBody2D:
 		cs.shape = b
 		cs.position = rect.get_center()
 		add_child(cs)
-		spr = NvArt.sprite("gl04_parede", rect.size.y + 6.0, "h", "base")
+		# a peça da GL04 é larga: dois blocos empilhados na largura da passagem (escala uniforme)
+		spr = NvArt.sprite("gl04_parede", rect.size.x + 16.0, "w", "base")
 		spr.position = Vector2(rect.get_center().x, rect.end.y + 2.0)
 		spr.z_index = 2
 		add_child(spr)
+		var top_spr := NvArt.sprite("gl04_parede", rect.size.x + 10.0, "w", "base")
+		top_spr.position = Vector2(rect.get_center().x, rect.end.y - spr.texture.get_height() * spr.scale.y * 0.78)
+		top_spr.flip_h = true
+		top_spr.z_index = 1
+		spr.add_child(top_spr)
+		top_spr.position = (top_spr.position - spr.position) / spr.scale.x
+		top_spr.scale = top_spr.scale / spr.scale.x
 
 	func melt(lvl) -> void:
 		if melted:
@@ -566,6 +620,9 @@ func _ready() -> void:
 	# plataformas: móvel sobre o poço do Cume e bloco flutuante que sobe até a laje
 	_mover("gl04_plataforma", Rect2(920, 610, 110, 16), Vector2(140, 0), 4.0)
 	_mover("gl04_bloco", Rect2(1260, 600, 90, 70), Vector2(0, -130), 5.0)
+	var lev := Art.glow(Color(0.45, 0.85, 1.0, 0.35), 70)     # flutua por energia: o brilho diz isso (DA-03, C5)
+	lev.position = Vector2(45, 60)
+	movers[-1][0].add_child(lev)
 	# elevador até a arena
 	elevator = AnimatableBody2D.new()
 	elevator.collision_layer = 1
@@ -617,6 +674,7 @@ func _ready() -> void:
 	guardiao.level = level
 	guardiao.nv = self
 	add_child(guardiao)
+	NvScenery.build(self)      # DA-03: estrutura, decoração, moldura, primeiro plano, luzes e partículas
 
 
 func _back(r: Rect2, c: Color) -> void:
