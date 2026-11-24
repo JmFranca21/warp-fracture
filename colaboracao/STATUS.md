@@ -77,12 +77,12 @@ Pacote completo em [VD_verdamia](entregas/VD_verdamia/) (64 assets em 67 PNGs). 
 
 ## Fase 3: Nivária (universo de gelo)
 
-Proposta e decisões D06–D08: [proposta da Fase 3](../docs/fases/nivaria/proposta_fase3.md) (19/11/2026). Pedidos do lote 1: [GL](pedidos/GL_lote1_fichas.md). Lotes 2 e 3 são pedidos depois das fichas aprovadas.
+Proposta e decisões: [proposta da Fase 3](../docs/fases/nivaria/proposta_fase3.md). D07 e D08 aprovadas pelo João (19/11/2026); D06 (lugar na campanha) em aberto. Pedidos do lote 1: [GL](pedidos/GL_lote1_fichas.md). Lote 2: [GL lote 2](pedidos/GL_lote2_producao.md).
 
 | ID | O que é | Estado | Pedido | Entrega | Revisão |
 |---|---|---|---|---|---|
-| GL00 | Prancha de referência de Nivária (paleta, materiais, cenas, valores) | ABERTO | [GL](pedidos/GL_lote1_fichas.md) | — | — |
-| GL01 | Ficha do Daymon de inverno (camada polar, cachecol) | SUSPENSO (GL00 e GL04; D07 decidida) | [GL](pedidos/GL_lote1_fichas.md) | — | — |
-| GL02 | Ficha dos inimigos: Gelinho, Drone Gélido, Morcego-de-Cristal | SUSPENSO (GL01) | [GL](pedidos/GL_lote1_fichas.md) | — | — |
-| GL03 | Ficha do Guardião Glacial e esquema da arena | SUSPENSO (D08, GL01 e GL02) | [GL](pedidos/GL_lote1_fichas.md) | — | — |
-| GL04 | Prancha de objetos, perigos e coletáveis | SUSPENSO (GL00; vai logo depois dela) | [GL](pedidos/GL_lote1_fichas.md) | — | — |
+| GL00 | Prancha de referência de Nivária (paleta, materiais, cenas, valores) | ENTREGUE | [GL](pedidos/GL_lote1_fichas.md) | [Prancha e aferição](entregas/GL00/ENTREGA.md) | — |
+| GL01 | Ficha do Daymon de inverno (camada polar, cachecol) | ENTREGUE (v2, aprovada) | [GL](pedidos/GL_lote1_fichas.md) | [Ficha e comparação](entregas/GL01/ENTREGA_v2.md) | — |
+| GL02 | Ficha dos inimigos: Gelinho, Drone Gélido, Morcego-de-Cristal | ENTREGUE (v2, aprovada) | [GL](pedidos/GL_lote1_fichas.md) | [Ficha, comparação e aferição DA-02](entregas/GL02/ENTREGA_v2.md) | — |
+| GL03 | Ficha do Guardião Glacial e esquema da arena | ENTREGUE (v2, aprovada) | [GL](pedidos/GL_lote1_fichas.md) | [Ficha, arena e comparação](entregas/GL03/ENTREGA_v2.md) | — |
+| GL04 | Prancha de objetos, perigos e coletáveis | ENTREGUE (v2, aprovada) | [GL](pedidos/GL_lote1_fichas.md) | [Prancha e comparação](entregas/GL04/ENTREGA_v2.md) | — |
