@@ -35,7 +35,6 @@ Atualizado pelos agentes. Leia `PROTOCOLO.md` e `FLUXO_AUTOMATICO.md` antes de c
 | DF205 | Terreno do Deserto de Ferrugem | ENTREGUE (retoque dos cantos ENTREGUE) | [DF](pedidos/DF_refacao_cena.md) | — | [Peças, encaixes e comparação](entregas/DF205/ENTREGA.md) |
 | DF200 | Céu do crepúsculo de tempestade | ENTREGUE | [DF](pedidos/DF_refacao_cena.md) | — | [Céu, comparação e aferição](entregas/DF200/ENTREGA.md) |
 | DF201 | Fundo intermediário das Dunas de Sucata | ENTREGUE | [DF](pedidos/DF_refacao_cena.md) | — | [Camadas, composição e aferição](entregas/DF201/ENTREGA.md) |
-| DF202 | Fundos internos da Fábrica e do Salão do Núcleo | ENTREGUE | [DF](pedidos/DF_refacao_cena.md) | — | [Fundos, emendas e aferição](entregas/DF202/ENTREGA.md) |
 | DF01 | Ficha do Robô e do Drone do deserto | ENTREGUE (aprovado pelo responsável) | [DF](pedidos/DF_deserto_ferrugem.md) | — | — |
 | DF10–DF12 | Fundos das Dunas em parallax | ENTREGUE | [DF](pedidos/DF_deserto_ferrugem.md) | — | — |
 | DF20–DF28 | Terreno, paredes, piso, esteira, trilho e cabo | ENTREGUE | [DF](pedidos/DF_deserto_ferrugem.md) | — | — |
