@@ -30,7 +30,7 @@ func _ready() -> void:
 	_build_sky(theme)
 	if theme == "verd":
 		_build_verd_bg(bounds)
-	elif theme != "deserto":
+	elif theme not in ["deserto", "nivaria"]:     # Deserto e Nivária montam o próprio parallax
 		for i in 3:
 			var b := BgLayer.new()
 			b.theme = theme
@@ -40,7 +40,7 @@ func _ready() -> void:
 			b.z_index = -60 + i * 10
 			add_child(b)
 			bg_layers.append(b)
-	if theme != "deserto":
+	if theme not in ["deserto", "nivaria"]:
 		_build_ambient(theme, bounds)
 
 	if data.has("backwall"):
@@ -65,8 +65,8 @@ func _ready() -> void:
 	terr.theme = theme
 	terr.rects = data["solids"]
 	terr.thin_art = data.get("thin_art", [])
-	if theme == "deserto":
-		terr.free()          # o Deserto desenha o próprio terreno com a arte DF (Desert)
+	if theme in ["deserto", "nivaria"]:
+		terr.free()          # Deserto (arte DF) e Nivária (paleta GL00) desenham o próprio terreno
 	else:
 		add_child(terr)
 	for r in data["solids"]:
@@ -239,6 +239,11 @@ func _ready() -> void:
 		desert = Desert.new()
 		desert.level = self
 		add_child(desert)
+		return
+	if theme == "nivaria":
+		var niv: Nivaria = load(Nivaria.SCENE_PATH).instantiate()     # layout editável em fases/nivaria.tscn
+		niv.level = self
+		add_child(niv)
 		return
 
 	var fg := FgLayer.new()
@@ -466,6 +471,9 @@ func _build_sky(theme: String) -> void:
 	elif theme == "deserto":
 		g.set_color(0, Color("e8b07a"))
 		g.set_color(1, Color("7a3d22"))
+	elif theme == "nivaria":
+		g.set_color(0, Color("0B0F1E"))
+		g.set_color(1, Color("1B2943"))
 	else:
 		g.set_color(0, Color("020a0e"))
 		g.set_color(1, Color("10383a"))

@@ -7,7 +7,7 @@ var text := ""
 
 func _setup() -> void:
 	size = Vector2(150, 120)
-	var g := Art.glow(Color(0.4, 0.9, 1.0, 0.35) if theme in ["lab", "deserto"] else Color(0.5, 1.0, 0.8, 0.35), 50)
+	var g := Art.glow(Color(0.4, 0.9, 1.0, 0.35) if theme in ["lab", "deserto", "nivaria"] else Color(0.5, 1.0, 0.8, 0.35), 50)
 	g.position = Vector2(0, -48)
 	add_child(g)
 
@@ -25,7 +25,7 @@ func _on_exit(b: Node) -> void:
 
 
 func _draw() -> void:
-	if theme in ["lab", "deserto"]:
+	if theme in ["lab", "deserto", "nivaria"]:
 		draw_line(Vector2(0, 0), Vector2(0, -36), Color("2a3442"), 4.0, true)
 		var a := 0.55 + 0.15 * sin(t * 3.0) + (0.25 if player_near else 0.0)
 		if fmod(t, 3.1) < 0.06:
