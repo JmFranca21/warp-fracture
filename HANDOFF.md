@@ -390,3 +390,31 @@ Nivária ganhou a composição pela DA-03 com peças desenhadas por código (`sc
 
 **Refação do Deserto e inventário (24/11/2026).** DA-03 aprovada pelo João. Pedido de refação da cena do Deserto em `colaboracao/pedidos/DF_refacao_cena.md` (13 prompts gerados por `tools/gen_pedidos_deserto_refacao.py`: DF00 v2, DF200–DF210 e o retoque DF03 v2; o exterior passa a um crepúsculo de tempestade de ferrugem). O inventário das quatro fases por função da DA-03 está em `docs/INVENTARIO_DE_ARTE.md`, com a ordem recomendada de envio ao ChatGPT.
 
+
+### 15.2 DF00 v2 aprovada e pedido DF205, o terreno do Deserto (24/11/2026)
+
+- **DF00 v2:** aprovada pelo João e publicada na `main` (`9aae70b`). Integrada na `dev/neve` (`af38d68`). Ela é a referência de valores e materiais da refação do Deserto.
+- **DF205:** pedido reescrito em `colaboracao/pedidos/DF_refacao_cena.md`, com as 22 peças no formato do terreno de Verdâmia (2×, linhas de apoio fixas, borda espelhada, cantos com quina). O gabarito `docs/auditoria_cena/DF205_gabarito_colisoes.png` é gerado por `tools/gen_gabarito_df205.py` a partir das constantes de `scripts/desert.gd`.
+- **Integração prevista:**
+  - generalizar `Terrain._verd_all` para receber um conjunto de peças por material (areia, chapa) e trocar em `desert.gd` os tiles DF20, DF21 e DF25 e os `ColorRect` chapados;
+  - passarelas montadas com ponta, meio e ponta, com tirantes e colunas;
+  - capturar os sete recortes do gabarito com a colisão visível e rodar `scene_metrics` nos quatro pontos.
+- **Pontos DA-03 do Deserto antes da troca** (Godot, 24/11/2026):
+
+  | Ponto | Luma | Terço de cima | Separação | Contraste |
+  |---|---|---|---|---|
+  | 0 (500, 700) | 0,566 | 0,673 | 0,889 | −0,359 |
+  | 1 (2300, 700) | 0,176 | 0,182 | 0,713 | +0,176 |
+  | 2 (5200, 770) | 0,184 | 0,170 | 0,864 | +0,241 |
+  | 3 (6500, 770) | 0,129 | 0,114 | 0,741 | +0,180 |
+
+  O ponto 0 só passa em C2 com o céu novo (DF200–DF201). Por isso, a medição da DF205 isolada é intermediária.
+- **Separação nas Dunas:** no Deserto o jogador é o Autômato (DF90–DF97), não o Daymon. Os 58,3% e 81,7% da DF00 v2 são do Daymon. Estimativa sobre a pintura das Dunas da DF00 v2, com o sprite e o halo reais do jogo:
+
+  | Sprite e luz | Separação |
+  |---|---|
+  | Autômato atual, sem o halo | 83–89% |
+  | Autômato atual, com o halo `amb` do jogador (aditivo, atrás dele) | 71–76% |
+  | Daymon do jogo, sem luz | 48–54% |
+
+  O jogo não tem `Light2D`. A "iluminação real" é esse halo, que clareia o entorno e reduz a separação. Validar no Godot quando o terreno e o céu entrarem, e de novo com a DF02 v2. Se ficar abaixo de 2/3, a primeira opção é baixar o halo no Deserto.
