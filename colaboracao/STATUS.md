@@ -119,12 +119,12 @@ Pedido: [DF refação](pedidos/DF_refacao_cena.md) (24/11/2026). Inventário de 
 | ID | O que é | Estado | Pedido | Entrega | Revisão |
 |---|---|---|---|---|---|
 | DF00 v2 | Prancha do Deserto com os valores da DA-03 | APROVADO pelo João (24/11/2026) e publicado na `main` (`9aae70b`) | [DF refação](pedidos/DF_refacao_cena.md) | [entregas/DF00](entregas/DF00/ENTREGA_v2.md) | Claude: Autômato atual sobre as Dunas pintadas, com o halo do jogo, 71–76% de separação (ver DF205) |
-| DF200 | Fundo distante: céu do crepúsculo de tempestade | prévia TESTADA no Godot em 24/11 (HANDOFF 15.4); aguarda aprovação e publicação | [DF refação](pedidos/DF_refacao_cena.md) | — | — |
-| DF201 | Fundo intermediário: dunas, carcaças e chaminés (duas camadas, 0,20 e 0,38) | ABERTO, pedido reescrito com o enquadramento sobre a DF200 (24/11) | [DF refação](pedidos/DF_refacao_cena.md) | — | — |
+| DF200 | Fundo distante: céu do crepúsculo de tempestade | APROVADO e publicado na `main` (`df38a74`); INTEGRADO na `dev/deserto` (HANDOFF 15.4) | [DF refação](pedidos/DF_refacao_cena.md) | — | — |
+| DF201 | Fundo intermediário: dunas, carcaças e chaminés (duas camadas, 0,20 e 0,38) | APROVADO e publicado na `main` (`72d048f`); EM INTEGRAÇÃO na `dev/deserto` | [DF refação](pedidos/DF_refacao_cena.md) | — | — |
 | DF202 | Fundos internos: Fábrica e Salão do Núcleo | ABERTO | [DF refação](pedidos/DF_refacao_cena.md) | — | — |
 | DF203 | Fundo da Câmara da Forja | ABERTO | [DF refação](pedidos/DF_refacao_cena.md) | — | — |
 | DF204 | Estrutura de fundo (peças grandes) | ABERTO | [DF refação](pedidos/DF_refacao_cena.md) | — | — |
-| DF205 | Terreno completo (22 peças no formato do terreno de Verdâmia; gabarito de colisões) | APROVADO pelo João (24/11/2026), publicado na `main` (`cbdd27c`); INTEGRADO na `dev/deserto` (HANDOFF 15.3); retoque dos cantos de areia: prévia TESTADA no Godot em 24/11 (HANDOFF 15.4), aguarda aprovação e publicação ([pedido](pedidos/DF205_retoque_cantos.md)) | [DF refação](pedidos/DF_refacao_cena.md) | — | — |
+| DF205 | Terreno completo (22 peças no formato do terreno de Verdâmia; gabarito de colisões) | APROVADO pelo João (24/11/2026), publicado na `main` (`cbdd27c`); INTEGRADO na `dev/deserto` (HANDOFF 15.3); retoque dos cantos de areia APROVADO e publicado na `main` (`df38a74`), integrado na `dev/deserto` ([pedido](pedidos/DF205_retoque_cantos.md)) | [DF refação](pedidos/DF_refacao_cena.md) | — | — |
 | DF206 | Decoração média e pequena | ABERTO | [DF refação](pedidos/DF_refacao_cena.md) | — | — |
 | DF207 | Moldura | ABERTO | [DF refação](pedidos/DF_refacao_cena.md) | — | — |
 | DF208 | Primeiro plano | ABERTO | [DF refação](pedidos/DF_refacao_cena.md) | — | — |

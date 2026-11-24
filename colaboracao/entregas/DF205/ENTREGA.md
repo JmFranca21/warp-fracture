@@ -89,3 +89,10 @@ O terço superior e a média da cena usam o recorte sem HUD da DA-03. Os pontos 
 - `tirante.png` — `ae639a43d97777fd056f3bde372a2a143fa1de263fe945a488137248bceb3b5b`
 - `transicao_areia_estrutura.png` — `ba007fc150bd695a2d13c7b43caa1293e1a651bf364284b94d7f1f1a9f23315f`
 - `verga_porta.png` — `7cdc766a693201c54603cb79042e0c44ca1a89d40734bb6913ffa581f465b3a2`
+
+## Retoque dos cantos de areia
+
+Aprovado por João Marcelo em 24/11/2026. Opacidade média em y 8–48: 0,00% nos dois cantos. Apoio em y 50 e pintura abaixo do apoio preservados. As remontagens usaram as emendas em x 780 e x 1.180. A validação no Godot usa o sprite inteiro no pivô original.
+
+- areia_canto_direito.png — `4f5a164759b0d93d3b35bbfe563852ff06c199a354fddcfb5b82fe8cef9d349d`
+- areia_canto_esquerdo.png — `8cdfb7c7cfddea563654acff5baa9a97386a87be6d506c4dfbb79aa3a76d3c53`
