@@ -16,7 +16,7 @@ Cada bloco é um prompt completo. Copie **um por vez** e mande o seguinte só de
 |---|---|---|
 | DF00 v2 | Prancha de referência do Deserto com a estrutura de valores da DA-03 | DF00 (paleta e valores) |
 | DF200 | Fundo distante: céu do crepúsculo de tempestade | DF10 |
-| DF201 | Fundo intermediário: dunas de sucata e a fábrica ao longe | DF11 e DF12 |
+| DF201 | Fundo intermediário: dunas, carcaças e chaminés | DF11 e DF12 |
 | DF202 | Fundos internos: Fábrica e Salão do Núcleo | DF22, DF23 e DF24 (painéis chapados) |
 | DF203 | Fundo da Câmara da Forja | DF24 na Câmara |
 | DF204 | Estrutura de fundo (peças grandes) | nada (falta estrutura de fundo) |
@@ -106,10 +106,10 @@ Receita DA-03 (resumo): cinco funções em cada zona (fundo distante, fundo inte
 
 ---
 
-## DF201: Fundo intermediário: dunas de sucata e a fábrica ao longe
+## DF201: Fundo intermediário: dunas, carcaças e chaminés
 
 ````markdown
-**[DF201] Fundo intermediário: dunas de sucata e a fábrica ao longe**
+**[DF201] Fundo intermediário: dunas, carcaças e chaminés**
 
 Você é o diretor de arte do Warp Fracture. Siga a DA-01 (`colaboracao/entregas/00_padrao_visual/PADRAO_VISUAL_OFICIAL.md`), a DA-02 (`DA-02_CONSISTENCIA.md`) e a **receita de cena DA-03** (`DA-03_RECEITA_DE_CENA.md`, aprovada pelo João em 24/11/2026), as três na mesma pasta, na branch `dev/deserto`. O João avaliou que o Deserto de Ferrugem está bem abaixo do Laboratório Hélix e de Verdâmia. Medido no jogo: a tela chega a 0,57 de luma nas Dunas (as referências ficam entre 0,09 e 0,18), o terço de cima a 0,67 (limite 0,15) e, nas Dunas, o Daymon fica mais escuro que o fundo; as paredes são painéis chapados de ferrugem e as peças vêm em escalas que não conversam. A comparação está em `docs/auditoria_cena/comparacao_cenas.png` e a auditoria anterior em `docs/auditoria_deserto/`. **Não use a DF00 nem os fundos DF10–DF24 como referência de valor ou de composição**; use-os só como referência de materiais. A **DF00 v2** (aprovada pelo João em 24/11/2026; `colaboracao/entregas/DF00/` na `main`: `DF00_prancha_deserto_v2.png`, `DF00_v2_cena.png` e `ENTREGA_v2.md`) é a referência de valores, materiais e paleta desta peça.
 
@@ -117,17 +117,47 @@ Você é o diretor de arte do Warp Fracture. Siga a DA-01 (`colaboracao/entregas
 
 Receita DA-03 (resumo): cinco funções em cada zona (fundo distante, fundo intermediário, estrutura de fundo, plano do jogo, primeiro plano escuro) mais luzes e partículas; luma da tela 0,08–0,18, terço de cima ≤ 0,15, o personagem mais claro que o entorno e separado do fundo em pelo menos 2/3 da borda, nenhuma mancha clara grande competindo com ele; estrutura que organiza o espaço (algo desce do alto ou uma massa dá a moldura); decoração em três escalas (pequena 0,15–0,5 D, média 1–2 D, grande 3–6 D; D = altura do Daymon, ~91 px no jogo); terreno com linha de apoio legível, borda variada e subsolo distinto; plataformas suspensas mostram o que as segura; 1–3 focos de luz por tela. Contornos e tons pela DA-02 (contorno escuro só nas cores frias, nunca preto nem marrom-preto).
 
+**Como as camadas entram no jogo** (`scripts/desert.gd`; o parallax põe cada camada em câmera × (1 − profundidade); zoom 1,1; o desenvolvimento monta pelas contas abaixo):
+
+| | `DF201_distante.png` | `DF201_proximo.png` |
+|---|---|---|
+| Parallax | 0,20 | 0,38 |
+| Conteúdo | horizonte: dunas distantes, a silhueta do complexo da fábrica e chaminés, em névoa | carcaças (escavadeira, robô gigante tombado, vagões), guindastes, torres de transmissão e dunas próximas |
+| Repetição | nenhuma: imagem única, com a coluna 686 do arquivo no x 0 da camada | repete na horizontal sem espelhar (período de 2.560 px); **sem marco único**, porque ele apareceria de novo |
+| O que as Dunas mostram | x ~220–1.600 do arquivo | toda a largura |
+| O que o vão do Salão mostra | x ~800–2.330 | toda a largura |
+| Altura máxima das silhuetas | 1–3 D (91–270 px) acima da base; a fábrica pode chegar a 3 D | 2–3 D (180–270 px) acima da base |
+| Nada acima da linha | 190 | 190 |
+
+**Enquadramento vertical** (o mesmo nas duas camadas):
+
+| Câmera | Linha 490 (base) na tela | Faixa do arquivo que aparece |
+|---|---|---|
+| Dunas, normal | y ≈ 496 de 720 | 39–693 |
+| Dunas, câmera no ponto mais baixo (dentro do fosso) | y ≈ 412–452 | até a linha 770 |
+| Vão do Salão (câmera alta) | y ≈ 558–613 | até a linha 637 |
+
+O chão das Dunas (DF205) fica em y ≈ 541 da tela, logo abaixo da base: o horizonte das camadas fica por trás do plano do jogo. A parte de cima da tela (até ~y 240) continua sendo só o céu. Telas mais largas que 16:9 mostram até 120 px a mais de cada lado.
+
+**Valores** (Y′ = 0,2126 R′ + 0,7152 G′ + 0,0722 B′; o céu atrás fica entre 0,10 e 0,13 nessa altura):
+
+- **`DF201_distante`:** silhuetas com luma média 0,10–0,13, quase da cor da névoa, com pouco contraste interno (desvio ≤ 0,03). Dois tons, sem contorno escuro (é distante). Abaixo da base, chão de dunas 0,09–0,11.
+- **`DF201_proximo`:** silhuetas mais escuras e mais definidas, luma média 0,07–0,11, com recorte nítido. Detalhe interno legível (vãos, vigas, rebites, cabos) para dar estrutura: densidade de bordas da camada sozinha entre 0,05 e 0,10. Luz de borda ferrugem nas arestas viradas para o sol (x ~1.150–1.450 do céu), pequena e com no máximo 0,20 de luma. Abaixo da base, dunas próximas escurecendo até ~0,06 na borda de baixo.
+- **Em profundidade:** a camada de trás tem menos contraste e menos saturação que a da frente (DA-03, C2). Nenhuma das duas é mais clara que a faixa do topo do terreno (0,20–0,25), nem que o Autômato (~0,36).
+- **Escala (DA-03, C4):** as carcaças e os guindastes são a faixa **grande** (3–6 D) vista à distância. Nada de painel chapado, nem de forma repetida em fila.
+- **Cores:** ferrugem escura (`#3A2929`, `#59403A`, `#493736`), viga (`#1D2A3C`, `#3B3237`) e o azul-marinho comum nas sombras (`#253045`, `#0F1422`). No máximo uma lâmpada âmbar pequena em cada 1.280 px da `DF201_proximo`, sem halo grande; o foco principal da tela continua sendo o sol velado.
+
 - **ID:** DF201
-- **Arquivo(s):** `DF201_dunas_longe.png` (parallax 0,2) e `DF201_dunas_perto.png` (parallax 0,38)
-- **Finalidade no jogo:** camada 2 das Dunas, no lugar de DF11 e DF12: dunas com carcaças enterradas, chaminés e a silhueta da fábrica no horizonte.
-- **Referências obrigatórias do repositório:** DF00 v2 e `assets/verdamia/fundo/bg_intermediario.png`.
-- **Escala:** carcaças e chaminés de 2–4 D na camada de 0,38; a fábrica no horizonte com a altura da tela.
+- **Arquivo(s):** `DF201_distante.png` (parallax 0,20), `DF201_proximo.png` (parallax 0,38) e `DF201_cena.png`
+- **Finalidade no jogo:** as duas camadas entre o céu (DF200) e o terreno (DF205), no lugar de DF11 e DF12, nas Dunas e no vão aberto do Salão. Dão estrutura à paisagem: hoje, sem as camadas antigas, as Dunas medem 0,025 de densidade de bordas e 0,74 de área lisa (limites 0,04 e 0,60).
+- **Referências obrigatórias do repositório:** DF200 (o céu, prévia aprovada para teste em 24/11/2026; `docs/auditoria_cena/DF200_ceu_no_jogo.jpg`, coluna do meio: o lugar exato destas camadas); DF00 v2 (escarpas, guindastes e torres das Dunas na montagem de 1.280 × 720); DF205 (o terreno na frente); `assets/verdamia/fundo/bg_intermediario.png` (acabamento de uma camada intermediária aprovada).
+- **Escala:** 1 px do arquivo = 1 px do mundo (~1,1 px de tela, como o intermediário de Verdâmia). D = 91 px.
 - **Orientação:** paisagem lateral.
-- **Âncora e pivô:** base reta para encaixar uma camada na outra; repetíveis na horizontal.
-- **Estados e quadros:** 1 imagem por camada; quanto mais longe, menos contraste e saturação e mais próximo da cor do céu.
-- **Dimensões e grade:** 2.560 × 1.024 px cada.
-- **Fundo:** transparente acima do recorte.
-- **Antes de apresentar, confira:** monte `DF201_cena.png`: um painel de 1.280 × 720 por cena, com a peça nova numa tela do Deserto (Daymon/Autômato a ~91 px) ao lado das capturas do Laboratório e de Verdâmia (`docs/auditoria_cena/comparacao_cenas.png`), na mesma escala visual, sem esticar; a tela fica escura como as referências, o personagem é o mais claro e nada flutua sem mostrar o que segura.
+- **Âncora e pivô:** linha de base (onde as silhuetas encontram o chão delas) na linha 490 do arquivo, nas duas camadas.
+- **Estados e quadros:** 1 imagem por camada.
+- **Dimensões e grade:** 2.560 × 840 px cada.
+- **Fundo:** PNG RGBA: transparente acima das silhuetas (alpha 0, borda suavizada de 1–2 px); opaco e contínuo da linha 490 até a borda de baixo.
+- **Antes de apresentar, confira:** (1) os valores e as medidas acima, em Y′ sRGB; (2) a `DF201_proximo.png` repete sem emenda (as colunas 0 e 2.559 continuam uma na outra, sem coluna desbotada); (3) monte `DF201_cena.png`: três painéis de 1.280 × 720 com DF200 + DF201 + DF205 e o Autômato ou o Daymon a ~91 px, nas três câmeras da tabela de enquadramento, montados com as contas acima, ao lado das capturas do Laboratório e de Verdâmia (`docs/auditoria_cena/comparacao_cenas.png`) na mesma escala visual, sem esticar; (4) nas Dunas, sem primeiro plano, a tela inteira fica com luma 0,08–0,18, terço de cima ≤ 0,15, densidade de bordas ≥ 0,04 e área lisa ≤ 0,60, pelas regras da DA-03.
 - **Entrega:** Apresente ao João Marcelo (peças + `DF201_cena.png`) e **só suba depois da aprovação explícita dele**. Coloque os PNGs em `colaboracao/entregas/DF201/` com um `ENTREGA.md` (lista de peças e quadros, âncoras em pixels, faixa de escala e função na cena de cada peça pela DA-03, cores por material, confirmação da aprovação, SHA-256 e o que não conseguiu cumprir). Atualize a linha DF201 do `colaboracao/STATUS.md` para `ENTREGUE` e faça o commit `[arte]` na `main`.
 ````
 

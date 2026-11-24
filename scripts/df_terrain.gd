@@ -19,11 +19,12 @@ const PAINEL := 32.0
 const JUNCAO := 16.0               # chapa de junção: Rect2(64,0,32,128) na esquerda, Rect2(0,0,32,128) na direita
 const FOSSO_DANO := 16.0           # fosso_fundo y 32
 const TRANSICAO := Vector2(1700, 690)
-const BOTTOM := 1080.0
+const BOTTOM := 1080.0             # abaixo do kill_y (1060): nada aparece vazio embaixo da tela
 const FOSSO_ESCURO := Color8(13, 17, 24)   # média das últimas linhas de fosso_fundo
-# os cantos de areia trazem um bloco escuro de 23 px acima do apoio (defeito anotado no HANDOFF, seção 15.3):
-# até o retoque, desenhamos só a partir de 4 px do jogo acima do apoio (y 42 do arquivo)
-const AREIA_CANTO_TOPO := 42.0             # abaixo do kill_y (1060): nada aparece vazio embaixo da tela
+# a primeira versão dos cantos de areia trazia um bloco escuro de 23 px acima do apoio (HANDOFF, seção 15.3):
+# com ela, desenhamos só a partir de 4 px do jogo acima do apoio (y 42 do arquivo); o retoque vem inteiro
+const AREIA_CANTO_TOPO := 42.0
+var areia_canto_topo := 0.0   # vira AREIA_CANTO_TOPO só se o canto carregado ainda tiver o bloco (versão de cbdd27c)
 
 var blocks: Array = []      # sólidos grossos (pisos, paredes, tetos)
 var thin: Array = []        # passarelas e plataformas de máquina (altura < 60)
@@ -54,6 +55,13 @@ func _ready() -> void:
 			"passarela_ponta_esquerda", "passarela_meio", "passarela_ponta_direita", "tirante", "fixacao",
 			"coluna_trelica", "fosso_fundo"]:
 		tex[n] = load(DIR + n + ".png")
+	var img: Image = tex["areia_canto_esquerdo"].get_image()
+	var a := 0.0
+	for y in range(8, 48, 4):
+		for x in range(20, 160, 10):
+			a += img.get_pixel(x, y).a
+	if a / (10.0 * 14.0) > 0.15:
+		areia_canto_topo = AREIA_CANTO_TOPO
 	queue_redraw()
 
 
@@ -129,8 +137,8 @@ func _draw() -> void:
 			continue
 		var sand := _sand(r)
 		var off := Vector2(0, 0 if sand else AREIA_APOIO - CHAPA_APOIO)
-		var cut := Rect2(0, AREIA_CANTO_TOPO, 180, 260 - AREIA_CANTO_TOPO) if sand else Rect2()
-		var dy := Vector2(0, AREIA_CANTO_TOPO / 2.0) if sand else Vector2.ZERO
+		var cut := Rect2(0, areia_canto_topo, 180, 260 - areia_canto_topo) if sand and areia_canto_topo > 0.0 else Rect2()
+		var dy := Vector2(0, areia_canto_topo / 2.0) if sand else Vector2.ZERO
 		if _corner_open(r, -1):
 			_piece("areia_canto_esquerdo" if sand else "chapa_canto_esquerdo", r.position - CANTO_ESQ + off + dy, cut)
 		if _corner_open(r, 1):

@@ -106,6 +106,37 @@ DF200_EXTRA = """**Como o céu entra no jogo** (`scripts/desert.gd` e `scripts/v
 - **Sem âmbar puro:** nada de âmbar `#EFAA55`, que fica para as luzes e a energia. O brilho do sol é ferrugem clara velada, não um disco branco."""
 
 
+DF201_EXTRA = """**Como as camadas entram no jogo** (`scripts/desert.gd`; o parallax põe cada camada em câmera × (1 − profundidade); zoom 1,1; o desenvolvimento monta pelas contas abaixo):
+
+| | `DF201_distante.png` | `DF201_proximo.png` |
+|---|---|---|
+| Parallax | 0,20 | 0,38 |
+| Conteúdo | horizonte: dunas distantes, a silhueta do complexo da fábrica e chaminés, em névoa | carcaças (escavadeira, robô gigante tombado, vagões), guindastes, torres de transmissão e dunas próximas |
+| Repetição | nenhuma: imagem única, com a coluna 686 do arquivo no x 0 da camada | repete na horizontal sem espelhar (período de 2.560 px); **sem marco único**, porque ele apareceria de novo |
+| O que as Dunas mostram | x ~220–1.600 do arquivo | toda a largura |
+| O que o vão do Salão mostra | x ~800–2.330 | toda a largura |
+| Altura máxima das silhuetas | 1–3 D (91–270 px) acima da base; a fábrica pode chegar a 3 D | 2–3 D (180–270 px) acima da base |
+| Nada acima da linha | 190 | 190 |
+
+**Enquadramento vertical** (o mesmo nas duas camadas):
+
+| Câmera | Linha 490 (base) na tela | Faixa do arquivo que aparece |
+|---|---|---|
+| Dunas, normal | y ≈ 496 de 720 | 39–693 |
+| Dunas, câmera no ponto mais baixo (dentro do fosso) | y ≈ 412–452 | até a linha 770 |
+| Vão do Salão (câmera alta) | y ≈ 558–613 | até a linha 637 |
+
+O chão das Dunas (DF205) fica em y ≈ 541 da tela, logo abaixo da base: o horizonte das camadas fica por trás do plano do jogo. A parte de cima da tela (até ~y 240) continua sendo só o céu. Telas mais largas que 16:9 mostram até 120 px a mais de cada lado.
+
+**Valores** (Y′ = 0,2126 R′ + 0,7152 G′ + 0,0722 B′; o céu atrás fica entre 0,10 e 0,13 nessa altura):
+
+- **`DF201_distante`:** silhuetas com luma média 0,10–0,13, quase da cor da névoa, com pouco contraste interno (desvio ≤ 0,03). Dois tons, sem contorno escuro (é distante). Abaixo da base, chão de dunas 0,09–0,11.
+- **`DF201_proximo`:** silhuetas mais escuras e mais definidas, luma média 0,07–0,11, com recorte nítido. Detalhe interno legível (vãos, vigas, rebites, cabos) para dar estrutura: densidade de bordas da camada sozinha entre 0,05 e 0,10. Luz de borda ferrugem nas arestas viradas para o sol (x ~1.150–1.450 do céu), pequena e com no máximo 0,20 de luma. Abaixo da base, dunas próximas escurecendo até ~0,06 na borda de baixo.
+- **Em profundidade:** a camada de trás tem menos contraste e menos saturação que a da frente (DA-03, C2). Nenhuma das duas é mais clara que a faixa do topo do terreno (0,20–0,25), nem que o Autômato (~0,36).
+- **Escala (DA-03, C4):** as carcaças e os guindastes são a faixa **grande** (3–6 D) vista à distância. Nada de painel chapado, nem de forma repetida em fila.
+- **Cores:** ferrugem escura (`#3A2929`, `#59403A`, `#493736`), viga (`#1D2A3C`, `#3B3237`) e o azul-marinho comum nas sombras (`#253045`, `#0F1422`). No máximo uma lâmpada âmbar pequena em cada 1.280 px da `DF201_proximo`, sem halo grande; o foco principal da tela continua sendo o sol velado."""
+
+
 def prompt(p: dict) -> str:
     pasta = p["id"].split(" ")[0]                    # "DF00 v2" entrega em DF00/, com sufixo _v2
     nome = p["id"].replace(" ", "_")
@@ -161,14 +192,20 @@ PECAS = [
          fundo="opaco.",
          confira=("(1) os valores da tabela acima, medidos em Y′ sRGB na faixa útil; "
                   "(2) monte `DF200_cena.png`: dois painéis de 1.280 × 720 (centro da câmera em x 1.120 e em x 1.420 do arquivo, linhas 210–1.230 reduzidas a 0,71), com o terreno da DF205 e o Autômato ou o Daymon a ~91 px na frente, ao lado das capturas do Laboratório e de Verdâmia (`docs/auditoria_cena/comparacao_cenas.png`) na mesma escala visual, sem esticar; o personagem é o mais claro da tela e o sol não compete com ele.")),
-    dict(id="DF201", titulo="Fundo intermediário: dunas de sucata e a fábrica ao longe",
-         arquivos="`DF201_dunas_longe.png` (parallax 0,2) e `DF201_dunas_perto.png` (parallax 0,38)",
-         finalidade="camada 2 das Dunas, no lugar de DF11 e DF12: dunas com carcaças enterradas, chaminés e a silhueta da fábrica no horizonte.",
-         ref="DF00 v2 e `assets/verdamia/fundo/bg_intermediario.png`.",
-         escala="carcaças e chaminés de 2–4 D na camada de 0,38; a fábrica no horizonte com a altura da tela.",
-         orientacao="paisagem lateral.", ancora="base reta para encaixar uma camada na outra; repetíveis na horizontal.",
-         estados="1 imagem por camada; quanto mais longe, menos contraste e saturação e mais próximo da cor do céu.",
-         grade="2.560 × 1.024 px cada.", fundo="transparente acima do recorte."),
+    dict(id="DF201", titulo="Fundo intermediário: dunas, carcaças e chaminés",
+         extra=DF201_EXTRA,
+         arquivos="`DF201_distante.png` (parallax 0,20), `DF201_proximo.png` (parallax 0,38) e `DF201_cena.png`",
+         finalidade="as duas camadas entre o céu (DF200) e o terreno (DF205), no lugar de DF11 e DF12, nas Dunas e no vão aberto do Salão. Dão estrutura à paisagem: hoje, sem as camadas antigas, as Dunas medem 0,025 de densidade de bordas e 0,74 de área lisa (limites 0,04 e 0,60).",
+         ref="DF200 (o céu, prévia aprovada para teste em 24/11/2026; `docs/auditoria_cena/DF200_ceu_no_jogo.jpg`, coluna do meio: o lugar exato destas camadas); DF00 v2 (escarpas, guindastes e torres das Dunas na montagem de 1.280 × 720); DF205 (o terreno na frente); `assets/verdamia/fundo/bg_intermediario.png` (acabamento de uma camada intermediária aprovada).",
+         escala="1 px do arquivo = 1 px do mundo (~1,1 px de tela, como o intermediário de Verdâmia). D = 91 px.",
+         orientacao="paisagem lateral.",
+         ancora="linha de base (onde as silhuetas encontram o chão delas) na linha 490 do arquivo, nas duas camadas.",
+         estados="1 imagem por camada.",
+         grade="2.560 × 840 px cada.",
+         fundo="PNG RGBA: transparente acima das silhuetas (alpha 0, borda suavizada de 1–2 px); opaco e contínuo da linha 490 até a borda de baixo.",
+         confira=("(1) os valores e as medidas acima, em Y′ sRGB; (2) a `DF201_proximo.png` repete sem emenda (as colunas 0 e 2.559 continuam uma na outra, sem coluna desbotada); "
+                  "(3) monte `DF201_cena.png`: três painéis de 1.280 × 720 com DF200 + DF201 + DF205 e o Autômato ou o Daymon a ~91 px, nas três câmeras da tabela de enquadramento, montados com as contas acima, ao lado das capturas do Laboratório e de Verdâmia (`docs/auditoria_cena/comparacao_cenas.png`) na mesma escala visual, sem esticar; "
+                  "(4) nas Dunas, sem primeiro plano, a tela inteira fica com luma 0,08–0,18, terço de cima ≤ 0,15, densidade de bordas ≥ 0,04 e área lisa ≤ 0,60, pelas regras da DA-03.")),
     dict(id="DF202", titulo="Fundos internos: Fábrica e Salão do Núcleo",
          arquivos="`DF202_fabrica.png` e `DF202_salao.png`",
          finalidade="substituem os painéis chapados DF22–DF24: paredes de fundo com **estrutura** (vigas, pilares, tubulações, janelas altas com luz âmbar, engrenagens grandes **escuras** atrás, passarelas ao longe). Fábrica: x 1.700–3.580, cerca de 1.000 px de altura; Salão do Núcleo: galeria alta, x 3.580–6.990, com pontes e correntes ao fundo.",

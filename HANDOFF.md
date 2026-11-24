@@ -480,3 +480,53 @@ O terço de baixo, onde fica o terreno, escureceu nos quatro pontos: 0,415 → 0
 - **DF200:** pedido reescrito com as medidas do jogo.
   - A camada entra a 0,645, sem espelhamento, com a imagem inteira centralizada no percurso da câmera. A faixa útil vai das linhas 210 a 1.230.
   - Na integração, a `VerdBg` precisa de um deslocamento em x. Hoje ela espelha as cópias e começa no x 0 da camada.
+
+### 15.4 Testes das prévias: retoque dos cantos (DF205) e céu (DF200) (24/11/2026, `dev/deserto`)
+
+As prévias chegaram por anexo e não foram para o repositório. Só o código foi para o commit. A arte final entra pela `main` depois da aprovação do João.
+
+**Cantos de areia (retoque)**
+- As linhas 0–49 estão vazias; a opacidade média entre y 8 e 48 é 0%.
+- `DFTerrain` decide o recorte sozinho: lê o canto carregado e só corta em y 42 se ainda houver o bloco antigo. Com o retoque, desenha a peça inteira nos pivôs (18, 50) e (162, 50).
+- As emendas em x 780 e 1.180 ficaram sem toco e sem degrau (`docs/auditoria_cena/DF205_retoque_cantos_no_jogo.jpg`).
+- `test_df205` passa sem falhas.
+
+**Céu (DF200)**
+- Montagem:
+  - `VerdBg.place()` monta uma cópia única a 0,645, com a coluna 1.020 e a linha 720 do arquivo no ponto (0, 30) da camada;
+  - o `desert.gd` usa a DF200 só se existir `assets/deserto/fundo/DF200_ceu.png`, e se não, a DF10;
+  - cópias espelhadas dos lados cobrem telas mais largas que 16:9 (`stretch=expand`), conferido em 2.520 × 1.080.
+- Na prévia: luma 0,099 nas linhas 210–550, 0,131 nas linhas 550–900 e 0,123 nas linhas 900–1.230; pico de 0,235 em (1.285, 754).
+- Enquadramento em 16:9 (`tools/df200_ceu.gd`), sem borda visível em nenhum ponto:
+
+  | Câmera | Colunas | Linhas |
+  |---|---|---|
+  | Início das Dunas | 172–1.976 | 215–1.230 |
+  | Fim das Dunas | 273–2.077 | 215–1.230 |
+  | Ponto mais baixo (fosso) | 215–2.019 | 234–1.249 |
+  | Vão do Salão | 477–2.359 | 189–1.204 |
+
+  A borda direita só entraria com a câmera além de x ~6.000, onde as paredes cobrem o céu.
+- Prancha: `docs/auditoria_cena/DF200_ceu_no_jogo.jpg`.
+- `tools/scene_metrics.gd` ganhou `level=`, `spots=` e `hide_bg=`.
+- `tools/df205_encaixes.gd` agora atualiza o parallax com a árvore pausada. Nas capturas anteriores, só os fundos estavam no lugar errado.
+
+**DA-03 com o céu novo** (pontos 4 e 5 são extras, nas passarelas do vão do Salão)
+
+| Ponto | Com DF11 e DF12 | Sem elas (o lugar da DF201) |
+|---|---|---|
+| 0 Dunas | luma 0,163 · topo 0,090 · separação 0,910 · contraste +0,248 · bordas 0,045 · área lisa 0,553 · **passa** | luma 0,119 · bordas **0,025** · área lisa **0,740** · fora |
+| 1 Fábrica | topo **0,182** · fora (parede DF23 → DF202) | igual |
+| 2 Salão 5200 | luma 0,146 · topo 0,130 · **passa** (antes 0,176 / 0,163) | 0,130 / 0,130 · passa |
+| 3 Salão 6500 | passa | passa |
+| 4 Passarela 1 | luma 0,153 · topo 0,100 · passa | passa (área lisa 0,592) |
+| 5 Passarela 2 | luma 0,164 · topo 0,119 · passa | passa |
+
+- **Separação nas Dunas com a iluminação real do jogo** (halo incluído): 0,910, com contraste de +0,248. Fecha a pendência das seções 15.2 e 15.3. Repetir com a DF02 v2.
+- **O que depende da DF201:** as bordas e a área lisa das Dunas. Hoje é a DF11/DF12 antiga que segura esses números, e ela é a mancha clara que mais compete na tela.
+- **O que depende da DF202:** o terço de cima da Fábrica.
+- **Integração da DF201** (pedido pronto em `DF_refacao_cena.md`):
+  - `DF201_distante`: cópia única, escala 1, coluna 686 no x 0 da camada, topo em y −260;
+  - `DF201_proximo`: repete sem espelhar (período 2.560), topo em y −165;
+  - nas duas, a base fica na linha 490 do arquivo;
+  - a `VerdBg` precisa de um modo de repetição sem espelho.

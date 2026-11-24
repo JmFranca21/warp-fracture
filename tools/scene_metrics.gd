@@ -3,10 +3,14 @@ extends SceneTree
 ## e salva capturas em quatro pontos fixos (com tudo, sem primeiro plano e sem o jogador), as três no
 ## mesmo quadro (árvore pausada), para tools/scene_metrics.py calcular valores, estrutura e contraste.
 ## Parâmetros fixos: janela 1.280 × 720, zoom 1,1, câmera no alvo normal do jogador, HUD escondido.
-## uso: godot --path . --script res://tools/scene_metrics.gd -- out=/pasta
+## uso: godot --path . --script res://tools/scene_metrics.gd -- out=/pasta [level=deserto] [spots=x,y;x,y] [hide_bg=1,2]
+##   level: mede só essa fase; spots: troca os pontos dela; hide_bg: esconde essas camadas de fundo (índices)
 
 var game
 var out := "user://"
+var only := ""
+var custom := []
+var hide_bg := []
 const SPOTS := {
 	"lab": [Vector2(700, 790), Vector2(2600, 790), Vector2(4250, 790), Vector2(6400, 680)],
 	"verdamia": [Vector2(600, 790), Vector2(1700, 790), Vector2(2800, 790), Vector2(3700, 790)],
@@ -19,6 +23,15 @@ func _initialize() -> void:
 	for a in OS.get_cmdline_user_args():
 		if a.begins_with("out="):
 			out = a.substr(4)
+		elif a.begins_with("level="):
+			only = a.substr(6)
+		elif a.begins_with("spots="):
+			for xy in a.substr(6).split(";"):
+				var v := xy.split(",")
+				custom.append(Vector2(float(v[0]), float(v[1])))
+		elif a.begins_with("hide_bg="):
+			for i in a.substr(8).split(","):
+				hide_bg.append(int(i))
 	_run.call_deferred()
 
 
@@ -81,9 +94,14 @@ func _run() -> void:
 		game.collected[id] = true        # Registros abrem um painel e pausam: fora das capturas
 	var report := []
 	for lid in SPOTS:
-		game.load_level(lid, SPOTS[lid][0], false)
+		if only != "" and lid != only:
+			continue
+		var spots: Array = custom if not custom.is_empty() else SPOTS[lid]
+		game.load_level(lid, spots[0], false)
 		await ticks(20)
 		var lv: Level = game.level
+		for i in hide_bg:
+			lv.bg_layers[i].visible = false
 		var acc := {"sprites": 0, "luzes": 0, "particulas": 0, "retangulos": 0, "camadas_fundo": 0, "primeiro_plano": 0, "parede_fundo": 0}
 		_walk(lv, acc, lv)
 		var b: Rect2 = lv.data["bounds"]
@@ -95,9 +113,9 @@ func _run() -> void:
 		for e in lv.entities.get_children():
 			if e != game.player:
 				e.process_mode = Node.PROCESS_MODE_DISABLED
-		for i in SPOTS[lid].size():
+		for i in spots.size():
 			var p: Player = game.player
-			p.global_position = SPOTS[lid][i]
+			p.global_position = spots[i]
 			p.velocity = Vector2.ZERO
 			p.inv = 99.0
 			await ticks(12)

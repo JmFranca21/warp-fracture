@@ -113,6 +113,7 @@ func _run() -> void:
 		p.global_position = shots[k].get_center() - Vector2(p.facing * 70.0, -165.0)
 		look(shots[k], 4.0 if not CROPS.has(k) else 1.0)
 		await ticks(2)
+		game.level._process(0.0)    # árvore pausada: parallax para esta câmera
 		ov.visible = false
 		await shot(k)
 		ov.visible = true

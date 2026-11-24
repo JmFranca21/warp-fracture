@@ -10,6 +10,9 @@ extends Node2D
 const FLOOR := [Rect2(-120,700,900,360), Rect2(1180,700,520,360), Rect2(1700,700,1080,360),
 	Rect2(2870,625,145,26), Rect2(3100,545,240,28), Rect2(3580,415,430,40),
 	Rect2(4410,415,450,40), Rect2(4980,770,510,320), Rect2(6030,770,2870,320)]
+const SKY := "res://assets/deserto/fundo/DF200_ceu.png"
+const SKY_SCALE := 0.645
+const SKY_ORIGIN := Vector2(1020, 720)   # px do arquivo que ficam no ponto (0, 30) da camada
 const DF53_SLAB := [385.0, 226.0]     # linha (px da textura) onde começa a laje em DF53a e DF53b
 const WALLS := [Rect2(-60,-200,60,1350), Rect2(6990,-200,60,780), Rect2(7050,-200,1440,350),
 	Rect2(8490,-200,60,780), Rect2(8550,-200,350,600), Rect2(8900,-200,60,1350)]
@@ -144,7 +147,13 @@ func _ready() -> void:
 		var bg := VerdBg.new()
 		bg.tex = texture("DF%d" % (10+i))
 		bg.depth = [0.06,0.20,0.38][i]
-		bg.fit(Vector2(1500,860),Vector2(580,8320),Vector2(248,732),[1.7,0.8,0.8][i])   # céu largo: um sol só na tela
+		if i == 0 and ResourceLoader.exists(SKY):
+			# DF200 (DA-03): imagem inteira a 0,645, sem espelhar; coluna 1.020 do arquivo no x 0 da camada e
+			# linha 720 no y 30, para o centro da câmera correr entre x 1.070 e 1.490 e a faixa útil ser 210–1.230
+			bg.tex = load(SKY)
+			bg.place(SKY_SCALE, Vector2(-SKY_ORIGIN.x * SKY_SCALE, 30.0 - SKY_ORIGIN.y * SKY_SCALE))
+		else:
+			bg.fit(Vector2(1500,860),Vector2(580,8320),Vector2(248,732),[1.7,0.8,0.8][i])   # céu largo: um sol só na tela
 		bg.z_index = -60 + i
 		level.add_child(bg)
 		level.bg_layers.append(bg)
