@@ -10,6 +10,7 @@ var top := 0.0              # y local do topo da imagem
 var span := Vector2(-1000, 3000)   # faixa local em x que precisa estar coberta
 var single := false        # place(): uma cópia só, sem repetir (espelhada só fora de 16:9)
 var left := 0.0
+var tiled := false         # place(..., true): repete sem espelhar
 
 
 func _ready() -> void:
@@ -26,16 +27,32 @@ func fit(view: Vector2, cam_x: Vector2, cam_y: Vector2, min_scale: float) -> voi
 	span = Vector2(cam_x.x * depth - view.x / 2.0 - 60.0, cam_x.y * depth + view.x / 2.0 + 60.0)
 
 
-## Uma cópia só, sem repetição: escala fixa e canto de cima à esquerda em pos (coordenadas da camada).
-func place(sc: float, pos: Vector2) -> void:
-	single = true
+## Escala fixa e canto de cima à esquerda em pos (coordenadas da camada). Sem repeat_x: uma cópia só
+## (espelhada nos lados só fora de 16:9). Com repeat_x: cópias iguais lado a lado, sem espelhar, cobrindo cover.
+func place(sc: float, pos: Vector2, repeat_x := false, cover := Vector2(-2000, 4000)) -> void:
+	single = not repeat_x
+	tiled = repeat_x
+	texture_repeat = CanvasItem.TEXTURE_REPEAT_ENABLED if repeat_x else CanvasItem.TEXTURE_REPEAT_PARENT_NODE
 	img_scale = sc
 	left = pos.x
 	top = pos.y
+	span = cover
 	queue_redraw()
 
 
 func _draw() -> void:
+	if tiled:
+		# uma chamada só, com a repetição do amostrador: cópias lado a lado deixariam um fio de 1 px na
+		# emenda em posições fracionárias da câmera (a camada de trás aparece pela fresta)
+		var tw := tex.get_width() * img_scale
+		var k0 := floorf((span.x - left) / tw)
+		var x0 := left + k0 * tw
+		var n := ceilf((span.y - x0) / tw)
+		draw_set_transform(Vector2(x0, top), 0.0, Vector2(img_scale, img_scale))
+		draw_texture_rect_region(tex, Rect2(0, 0, tex.get_width() * n, tex.get_height()),
+			Rect2(0, 0, tex.get_width() * n, tex.get_height()))
+		draw_set_transform(Vector2.ZERO, 0.0, Vector2.ONE)
+		return
 	if single:
 		var sw := tex.get_width() * img_scale
 		var sh := tex.get_height() * img_scale

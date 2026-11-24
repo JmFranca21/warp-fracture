@@ -444,7 +444,7 @@ A refação do Deserto passa a ser feita na branch `dev/deserto`, criada a parti
   - a laje da arte antiga DF53. A DF53 agora só desenha as correntes, que terminam no tabuleiro novo.
 
 **Verificação**
-- `tools/test_df205.gd`: 24 verificações, nenhuma falha.
+- `tools/test_df205.gd`: 23 verificações, nenhuma falha.
   - colisões iguais às da v0.8;
   - painéis e sobras das quatro passarelas;
   - os 4 cantos internos e as 6 quinas;
@@ -530,3 +530,57 @@ As prévias chegaram por anexo e não foram para o repositório. Só o código f
   - `DF201_proximo`: repete sem espelhar (período 2.560), topo em y −165;
   - nas duas, a base fica na linha 490 do arquivo;
   - a `VerdBg` precisa de um modo de repetição sem espelho.
+
+### 15.5 DF200, retoque dos cantos e DF201 integrados (24/11/2026, `dev/deserto`)
+
+Arte trazida da `main`: `df38a74` (DF200 e o retoque dos cantos da DF205) e `72d048f` (DF201).
+
+**Importação**
+- `tools/import_deserto_fundos.py` copia DF200 e DF201 para `assets/deserto/fundo/` e confere tamanho, alpha acima da linha 190 (zero) e alpha da linha 490 para baixo (opaco).
+- `tools/import_df205.py` traz os cantos retocados, que entram inteiros: o recorte em y 42 se desliga sozinho.
+
+**Montagem** (`scripts/desert.gd` e `VerdBg.place`)
+
+| Camada | Parallax | Escala | Repetição | Posição |
+|---|---|---|---|---|
+| DF200 (céu) | 0,06 | 0,645 | cópia única | coluna 1.020 e linha 720 em (0, 30) da camada |
+| DF201 distante | 0,20 | 1 | cópia única | coluna 686 no x 0; linha 490 em y 230 da camada (topo em −260) |
+| DF201 próxima | 0,38 | 1 | a cada 2.560 px, sem espelhar | x 0 no x 0; linha 490 em y 325 (topo em −165) |
+
+- Na DF201 próxima, a repetição é uma única chamada de desenho com `texture_repeat`.
+- Com a câmera normal das Dunas, a base das duas camadas cai em y ≈ 496 da tela.
+
+**Emenda da DF201 próxima**
+- As colunas 0 e 2.559 vieram iguais, mas a borda foi espelhada: duas colunas mais escuras de cada lado e um par ~2 níveis mais claro no centro. Isso fazia um fio vertical visível na emenda.
+- O import troca as colunas 2.556–2.559 e 0–3 pela interpolação entre a 2.555 e a 4. A entrega fica intacta.
+- Em movimento (câmera andando 16 px por quadro pelas Dunas), a diferença entre colunas na emenda caiu de 2,7–4,3 para 0,10–0,24 níveis, abaixo da variação normal da cena (0,6).
+- Arquivo: `docs/auditoria_cena/DF201_emenda_em_movimento.gif`.
+
+**Cobertura**
+- Em 16:9 e em 21:9 (2.520 × 1.080), nenhuma borda aparece nas Dunas, no fosso, no vão do Salão nem no fim do vão.
+- Em 21:9, a distante usa no máximo as colunas 75–2.494.
+- Capturas: `docs/auditoria_cena/DF201_no_jogo.jpg`.
+
+**DA-03, quatro pontos oficiais** (o número entre parênteses é o valor antes, com a DF205 só)
+
+| Ponto | Luma | Terço de cima | Separação | Contraste | Bordas | Área lisa | Resultado |
+|---|---|---|---|---|---|---|---|
+| 0 Dunas | 0,107 (0,516) | 0,090 (0,673) | 0,957 | +0,290 (−0,359) | 0,055 | 0,479 | passa |
+| 1 Fábrica | 0,167 | **0,182** | 0,709 | +0,181 | 0,102 | 0,177 | fora: parede DF23 → DF202 |
+| 2 Salão 5200 | 0,127 (0,176) | 0,129 (0,163) | 0,867 | +0,233 | 0,078 | 0,373 | passa |
+| 3 Salão 6500 | 0,124 | 0,114 | 0,738 | +0,191 | 0,049 | 0,387 | passa |
+
+**Pontos extras, jogador parado** (`float=1`)
+
+| Câmera | Com DF201 | Sem DF201 | No `ENTREGA.md` |
+|---|---|---|---|
+| Dunas, normal | 0,107 · topo 0,090 · bordas 0,054 · lisa 0,477 | bordas 0,025 · lisa 0,740 · fora | 0,111 · 0,089 · 0,091 · 0,350 |
+| Fundo do fosso | 0,101 · topo 0,113 · bordas 0,045 · lisa 0,523 | bordas 0,023 · lisa 0,673 · fora | 0,103 · 0,113 · 0,070 · 0,336 |
+| Vão do Salão, alto | 0,113 · topo 0,097 · bordas 0,082 · lisa 0,380 | lisa 0,634 · fora | 0,118 · 0,096 · 0,087 · 0,355 |
+| Passarela 1 | 0,121 · topo 0,100 · bordas 0,075 · lisa 0,389 | passa | — |
+
+- Luma e terço de cima batem com a montagem do ChatGPT.
+- Nas Dunas e no fosso, o jogo mede menos estrutura (bordas 0,045–0,055 contra 0,070–0,091; área lisa 0,48–0,52 contra 0,34) e passa com menos folga.
+- O que falta de estrutura nas Dunas fica para a decoração e o primeiro plano (DF206 e DF208).
+- Pendente só para a DF202: o terço de cima da Fábrica.
+- Com o jogador parado, a separação no Salão 6500 oscila entre 0,67 e 0,74, conforme o quadro da animação em que ele congela.

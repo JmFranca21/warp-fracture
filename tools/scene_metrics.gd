@@ -3,7 +3,7 @@ extends SceneTree
 ## e salva capturas em quatro pontos fixos (com tudo, sem primeiro plano e sem o jogador), as três no
 ## mesmo quadro (árvore pausada), para tools/scene_metrics.py calcular valores, estrutura e contraste.
 ## Parâmetros fixos: janela 1.280 × 720, zoom 1,1, câmera no alvo normal do jogador, HUD escondido.
-## uso: godot --path . --script res://tools/scene_metrics.gd -- out=/pasta [level=deserto] [spots=x,y;x,y] [hide_bg=1,2]
+## uso: godot --path . --script res://tools/scene_metrics.gd -- out=/pasta [level=deserto] [spots=x,y;x,y] [hide_bg=1,2] [float=1]
 ##   level: mede só essa fase; spots: troca os pontos dela; hide_bg: esconde essas camadas de fundo (índices)
 
 var game
@@ -11,6 +11,7 @@ var out := "user://"
 var only := ""
 var custom := []
 var hide_bg := []
+var float_player := false   # float=1: o jogador fica parado no ponto (câmera no fundo de um fosso ou no alto)
 const SPOTS := {
 	"lab": [Vector2(700, 790), Vector2(2600, 790), Vector2(4250, 790), Vector2(6400, 680)],
 	"verdamia": [Vector2(600, 790), Vector2(1700, 790), Vector2(2800, 790), Vector2(3700, 790)],
@@ -29,6 +30,8 @@ func _initialize() -> void:
 			for xy in a.substr(6).split(";"):
 				var v := xy.split(",")
 				custom.append(Vector2(float(v[0]), float(v[1])))
+		elif a == "float=1":
+			float_player = true
 		elif a.begins_with("hide_bg="):
 			for i in a.substr(8).split(","):
 				hide_bg.append(int(i))
@@ -117,6 +120,8 @@ func _run() -> void:
 			var p: Player = game.player
 			p.global_position = spots[i]
 			p.velocity = Vector2.ZERO
+			if float_player:
+				p.process_mode = Node.PROCESS_MODE_DISABLED
 			p.inv = 99.0
 			await ticks(12)
 			game.cam.position = game._cam_target()

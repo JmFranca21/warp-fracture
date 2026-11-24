@@ -12,6 +12,8 @@ const FLOOR := [Rect2(-120,700,900,360), Rect2(1180,700,520,360), Rect2(1700,700
 	Rect2(4410,415,450,40), Rect2(4980,770,510,320), Rect2(6030,770,2870,320)]
 const SKY := "res://assets/deserto/fundo/DF200_ceu.png"
 const SKY_SCALE := 0.645
+const MID := ["res://assets/deserto/fundo/DF201_distante.png", "res://assets/deserto/fundo/DF201_proximo.png"]
+const MID_BASE := [230.0, 325.0]   # y da base na camada: a base cai em y ≈ 496 da tela com a câmera normal das Dunas
 const SKY_ORIGIN := Vector2(1020, 720)   # px do arquivo que ficam no ponto (0, 30) da camada
 const DF53_SLAB := [385.0, 226.0]     # linha (px da textura) onde começa a laje em DF53a e DF53b
 const WALLS := [Rect2(-60,-200,60,1350), Rect2(6990,-200,60,780), Rect2(7050,-200,1440,350),
@@ -147,7 +149,16 @@ func _ready() -> void:
 		var bg := VerdBg.new()
 		bg.tex = texture("DF%d" % (10+i))
 		bg.depth = [0.06,0.20,0.38][i]
-		if i == 0 and ResourceLoader.exists(SKY):
+		if i > 0 and ResourceLoader.exists(MID[i - 1]):
+			# DF201 (DA-03): escala 1; linha de base 490 do arquivo em y MID_BASE da camada.
+			# 0,20: cópia única, coluna 686 no x 0; 0,38: repete a cada 2.560 px, sem espelhar
+			bg.tex = load(MID[i - 1])
+			var base: float = MID_BASE[i - 1]
+			if i == 1:
+				bg.place(1.0, Vector2(-686.0, base - 490.0))
+			else:
+				bg.place(1.0, Vector2(0.0, base - 490.0), true, Vector2(580.0 * bg.depth - 1100.0, 8320.0 * bg.depth + 1100.0))
+		elif i == 0 and ResourceLoader.exists(SKY):
 			# DF200 (DA-03): imagem inteira a 0,645, sem espelhar; coluna 1.020 do arquivo no x 0 da camada e
 			# linha 720 no y 30, para o centro da câmera correr entre x 1.070 e 1.490 e a faixa útil ser 210–1.230
 			bg.tex = load(SKY)

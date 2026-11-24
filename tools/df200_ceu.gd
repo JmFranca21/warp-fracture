@@ -1,6 +1,7 @@
 extends SceneTree
-## DF200: captura o céu no jogo, com a câmera normal (zoom 1,1) em pontos das Dunas, do vão do Salão e nos
-## extremos da câmera. Três variantes por ponto: tudo; sem as camadas antigas à frente (DF11 e DF12); só o céu.
+## DF200 e DF201: captura os fundos do exterior no jogo, com a câmera normal (zoom 1,1) em pontos das Dunas, do
+## vão do Salão e nos extremos da câmera. Três variantes por ponto: tudo; sem as camadas intermediárias (DF201,
+## ou DF11 e DF12 se a DF201 não estiver em assets); só o céu. pan=1 grava a câmera andando pela emenda da 0,38.
 ## uso: godot --path . --script res://tools/df200_ceu.gd -- out=/pasta
 
 var game
@@ -9,14 +10,17 @@ var out := "user://"
 const SPOTS := {
 	"dunas_inicio": Vector2(185, 690), "dunas_meio": Vector2(500, 700), "dunas_fim": Vector2(1600, 700),
 	"dunas_fosso_baixo": Vector2(980, 1000), "salao_passarela_1": Vector2(3795, 415),
-	"salao_passarela_2": Vector2(4635, 415), "salao_alto": Vector2(4205, 250),
+	"salao_passarela_2": Vector2(4635, 415), "salao_alto": Vector2(4205, 250), "salao_fim": Vector2(5150, 770),
 }
+var pan := false
 
 
 func _initialize() -> void:
 	for a in OS.get_cmdline_user_args():
 		if a.begins_with("out="):
 			out = a.substr(4)
+		elif a == "pan=1":
+			pan = true
 	_run.call_deferred()
 
 
@@ -53,6 +57,22 @@ func _run() -> void:
 	p.inv = 9999.0
 	var sky: VerdBg = lv.bg_layers[0]
 	var lines := []
+	if pan:       # a câmera anda 16 px por quadro pelas Dunas; a emenda da 0,38 (x 0 da camada) passa pela tela
+		for f in 60:
+			p.global_position = Vector2(185.0 + f * 16.0, 690.0)
+			p.velocity = Vector2.ZERO
+			p.facing = 1
+			await ticks(1)
+			paused = true
+			game.cam.position = game._cam_target()
+			game.cam.reset_smoothing()
+			await process_frame
+			lv._process(0.0)
+			await shot("pan_%02d" % f)
+			paused = false
+		AudioMgr.inst.shutdown()
+		quit(0)
+		return
 	for k in SPOTS:
 		p.global_position = SPOTS[k]
 		p.velocity = Vector2.ZERO
@@ -67,7 +87,7 @@ func _run() -> void:
 		await shot(k + "_a_tudo")
 		for b in lv.bg_layers.slice(1):
 			b.visible = false
-		await shot(k + "_b_sem_camadas_antigas")
+		await shot(k + "_b_sem_intermediario")
 		var hidden := []
 		for c in game.world.get_children():
 			if c != lv and c is CanvasItem and c.visible:
