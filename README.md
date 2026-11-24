@@ -2,9 +2,9 @@
 
 Metroidvania 2D em visão lateral feito em **Godot 4.3**, com visual ilustrado inspirado em Hollow Knight (sem pixel art). Daymon Sagan, cientista do Projeto Hélix, atravessa realidades fraturadas para recuperar os fragmentos da Máquina de Dobra. Em cada universo, ele assume uma forma diferente.
 
-**Versão atual:** protótipo v0.8. A v0.8 traz a **Fase 2, Deserto de Ferrugem**: o fragmento de Verdâmia abre uma fenda de volta ao Hélix, Daymon instala o fragmento no Receptáculo da Máquina, escolhe o destino no Arco de Dobra, calibra o sinal fraco do Deserto e atravessa como **Autômato** (Ímã de Fase, Rebitadeira, Pulso Magnético e Arranque). O Deserto tem três zonas, seis máquinas, três vãos de ímã e termina na **Forja-Mãe**, chefe de três fases que guarda o fragmento 2/4. Os portais ganharam a arte nova (Arco, Fenda, Receptáculo e membrana por destino) e o save passou para a versão 2. A v0.7 trouxe a **Fuga do Eco**: ao abrir a porta da Sala G, o Eco surge por uma fenda e persegue Daymon enquanto o laboratório desaba, até o portal, agora no fim da nova Galeria do Portal. A v0.6 trouxe Verdâmia com a arte oficial (Lince-Vagalume, inimigos, Rainha Micélia, cenário e efeitos). A v0.6.1 corrige o fragmento que reaparecia no altar ao continuar um save gravado depois da vitória. Laboratório Hélix e Verdâmia jogáveis, com chefe, Arpão de Fase, Bancada de Upgrades, Registros do Projeto, mapa, save e som.
+**Versão atual:** protótipo v0.9. A v0.9 traz a **Fase 3, Nivária**: o fragmento do Deserto, instalado no Receptáculo, revela um sinal frio; Daymon calibra o Arco e atravessa para uma cordilheira sob a noite polar, ainda humano, com a **camada polar** (parca e cachecol), o **Pulso Térmico** e a regra da **Geada** (golpes de frio deixam mais lento e, na terceira camada, congelam). Nivária tem quatro zonas (Cume Congelado, Caverna de Cristal, Encosta Nevada e a Arena), gelo fino, estalactites, cristais ressonantes, bolas de neve rolando morro abaixo, três inimigos novos e o **Guardião Glacial**, chefe de três fases que guarda o fragmento 3/4. A arte de Nivária ainda é provisória: recortes das fichas aprovadas GL01–GL04 v2 até as folhas do lote 2. A v0.8 trouxe a **Fase 2, Deserto de Ferrugem**: o fragmento de Verdâmia abre uma fenda de volta ao Hélix, Daymon instala o fragmento no Receptáculo da Máquina, escolhe o destino no Arco de Dobra, calibra o sinal fraco do Deserto e atravessa como **Autômato** (Ímã de Fase, Rebitadeira, Pulso Magnético e Arranque). O Deserto tem três zonas, seis máquinas, três vãos de ímã e termina na **Forja-Mãe**, chefe de três fases que guarda o fragmento 2/4. Os portais ganharam a arte nova (Arco, Fenda, Receptáculo e membrana por destino) e o save passou para a versão 2. A v0.7 trouxe a **Fuga do Eco**: ao abrir a porta da Sala G, o Eco surge por uma fenda e persegue Daymon enquanto o laboratório desaba, até o portal, agora no fim da nova Galeria do Portal. A v0.6 trouxe Verdâmia com a arte oficial (Lince-Vagalume, inimigos, Rainha Micélia, cenário e efeitos). A v0.6.1 corrige o fragmento que reaparecia no altar ao continuar um save gravado depois da vitória. Laboratório Hélix e Verdâmia jogáveis, com chefe, Arpão de Fase, Bancada de Upgrades, Registros do Projeto, mapa, save e som.
 
-## Estado do projeto (17/11/2026)
+## Estado do projeto (24/11/2026)
 
 | Frente | Situação |
 |---|---|
@@ -14,6 +14,7 @@ Metroidvania 2D em visão lateral feito em **Godot 4.3**, com visual ilustrado i
 | Passagem e portais (D02, D05) | Jogável na v0.8: fenda de retorno, Receptáculo, seletor de destino, calibração do Deserto com onda à deriva, Arco de Dobra e Fendas com a arte PT10–PT23, save versão 2 com migração |
 | Deserto de Ferrugem (Fase 2, D03) | Jogável na v0.8 como Autômato (DF87–DF99): Dunas, Fábrica e Salão do Núcleo, com Robôs, Drones, prensas, serra, esteira, válvulas e plataformas (DF10–DF86) |
 | Forja-Mãe (D04) | Jogável na v0.8 (DF100–DF112): três fases (pistão esquerdo, pistão direito com esteira e drones, núcleo central aberto pelo Pulso), fragmento 2/4 e fim da versão atual |
+| Nivária (Fase 3, D07 e D08) | Jogável na v0.9 (branch `dev/neve`): Daymon de inverno, Geada, Pulso Térmico, quatro zonas, Gelinho, Drone Gélido, Morcego-de-Cristal e o Guardião Glacial (fragmento 3/4 e fim da versão). Arte provisória recortada das fichas GL01–GL04 v2; pedidos do lote 2 em `colaboracao/pedidos/GL_lote2_producao.md` |
 | Arte nova da Fase 2 | Entregue em 13/11/2026 (pacote Revisão v2). As fichas DF02, DF03 e PT00 ainda aguardam a aprovação do João Marcelo; os lotes foram integrados como estão |
 
 O catálogo de toda a arte, com o estado de cada item, está no [documento de arte](docs/DOCUMENTO_DE_ARTE.md).
@@ -61,6 +62,7 @@ tools/fluxo/godot.sh --script res://tools/test_fuga.gd -- level=lab terminals ar
 tools/fluxo/godot.sh --script res://tools/test_passagem.gd -- save at=999
 tools/fluxo/godot.sh --script res://tools/test_deserto.gd -- save at=999
 tools/fluxo/godot.sh --script res://tools/test_forja.gd -- save at=999
+tools/fluxo/godot.sh --script res://tools/test_nivaria.gd -- out=C:/caminho/capturas
 ```
 
 `tools/shots_fase2.gd -- out=<pasta>` gera 15 capturas de conferência da Fase 2 (portais, Deserto e Forja-Mãe).
@@ -69,4 +71,4 @@ No Linux, use `GODOT=/caminho/do/godot tools/run.sh ...` com as mesmas flags.
 
 ## Próximos passos
 
-A Fase 2 (Deserto de Ferrugem e Forja-Mãe) entrou na v0.8. O plano do jogo está sendo revisto pelo João Marcelo para incluir uma **fase de neve**, que será planejada por completo (design e pedidos de arte) a partir do primeiro plano que ele enviar. Também seguem pendentes a **Etapa 8, cena de abertura**, e a aprovação das fichas DF02, DF03 e PT00. Consulte o [roteiro de implementação](ROTEIRO.md), o [quadro de arte](colaboracao/STATUS.md) e o [GDD de dez páginas](docs/Caderno_de_10_paginas_Warp_Fracture_v2.docx).
+A Fase 3 (Nivária) entrou na v0.9 com arte provisória. Próximo passo: as folhas do **lote 2 de Nivária** (`colaboracao/pedidos/GL_lote2_producao.md`) e a decisão D06 (lugar de Nivária na campanha). Também seguem pendentes a **Etapa 8, cena de abertura**, e a aprovação das fichas DF02, DF03 e PT00. Consulte o [roteiro de implementação](ROTEIRO.md), o [quadro de arte](colaboracao/STATUS.md) e o [GDD de dez páginas](docs/Caderno_de_10_paginas_Warp_Fracture_v2.docx).

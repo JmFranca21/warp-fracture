@@ -87,3 +87,17 @@ Arte da fase (DF10–DF86): `tools/import_deserto.py` → `assets/deserto/` (fol
 | Fendas e Receptáculo | PT21 borda (8, loop), PT22 base, PT23 abrindo (8), PT15 Receptáculo | base no chão |
 
 Referências (não entram no jogo): DF00, DF01, DF02, DF03, PT00.
+
+## Nivária (v0.9): placeholders recortados das fichas aprovadas
+
+`tools/import_nivaria.py` recorta 54 peças das fichas `colaboracao/entregas/GL01`–`GL04` (v2) para `assets/nivaria/` (fundo removido a partir das bordas; `--sheet <png>` monta uma prancha de conferência). São provisórias até as folhas do lote 2 (`colaboracao/pedidos/GL_lote2_producao.md`).
+
+| Uso no jogo | Ficha | Peças |
+|---|---|---|
+| Bloco de gelo do Daymon congelado | GL01 v2 | `gl01_bloco` |
+| Gelinho, Drone Gélido, Morcego-de-Cristal, esfera, gelo no chão | GL02 v2 | `gl02_*` (9) |
+| Guardião Glacial (frontal, 6 poses, 4 estados do peito) | GL03 v2 | `gl03_*` (11) |
+| Gelo fino, estalactite, cristais, névoa, espinhos, bloco, plataforma, placa de gelo, gelo liso, bolas de neve, gancho, braseiro, elevador, observatório, painel, célula, núcleo, registro, estacas | GL04 v2 | `gl04_*` (33) |
+
+O corpo do Daymon de inverno ainda é o do laboratório (o cachecol, o anel do Pulso Térmico, o céu, as cordilheiras, o terreno, o marco das dicas e o glifo de Nivária no Arco são desenhados por código com a paleta da GL00).
+

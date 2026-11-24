@@ -174,6 +174,19 @@ Os lotes 2 e 3 foram importados em meia resolução por `tools/import_fase2.py` 
 
 ---
 
+## 4b. Nivária (Fase 3)
+
+Fichas aprovadas e publicadas na `main` (commit `22828aa`): GL00 (prancha do universo), GL01 v2 (Daymon de inverno), GL02 v2 (Gelinho, Drone Gélido, Morcego-de-Cristal), GL03 v2 (Guardião Glacial e esquema da arena) e GL04 v2 (objetos, perigos e coletáveis). Régua: DA-02.
+
+| Item | Estado no jogo (v0.9) | Pedido |
+|---|---|---|
+| Daymon de inverno (corpo, braço, cachecol, geada, Pulso) | Provisório: corpo do laboratório, cachecol e anel por código, bloco recortado da GL01 | GL10–GL14 |
+| Gelinho, Drone Gélido, Morcego-de-Cristal | Provisório: recortes estáticos da GL02 | GL30–GL32 |
+| Guardião Glacial | Provisório: frontal e poses pequenas da GL03 ampliadas, peito recortado | GL100–GL102 |
+| Céu, cordilheiras, caverna, arena, terreno | Provisório: desenho por código com a paleta da GL00 | GL50–GL52 |
+| Objetos e perigos | Provisório: recortes estáticos da GL04 | GL70–GL71 |
+| Glifo de Nivária no Arco e ícone de Geada | Provisório: desenho por código | GL90 |
+
 ## 5. Interface (UI)
 
 | Item | Ficha de referência | Estado | Arquivos | Onde aparece |

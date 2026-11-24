@@ -343,3 +343,39 @@ tools/fluxo/godot.sh --script res://tools/test_forja.gd -- save at=999      # lu
 
 **Pontos para ajustar jogando.** O peito da Forja fica baixo na arte: o Pulso funciona do chão, sem precisar das âncoras do teto. Com o Pulso, os 8 rebites cabem numa abertura de 3 s. As fichas DF02, DF03 e PT00 ainda não foram aprovadas; se mudarem, os lotes 2 e 3 podem precisar de ajuste.
 
+## 15. v0.9: Fase 3, Nivária, e Guardião Glacial (24/11/2026)
+
+Branch `dev/neve` (baseada na `dev/deserto`, com a `main` mesclada até `22828aa`, as fichas GL00–GL04 v2). Implementa a proposta `docs/fases/nivaria/proposta_fase3.md` com as decisões aprovadas: D07 (Daymon humano com roupa de inverno) e D08 (Guardião Glacial). D06 (lugar na campanha) segue aberta; o código já usa a opção A recomendada (Nivária no 3º encaixe do Receptáculo, `Receptacle.ORDER`).
+
+**Passagem.** Instalar o fragmento do Deserto (`install_fragment`) libera `log_10` e o destino **Nivária** no Arco (cor rosa `#FF8FD0`, glifo desenhado por `NvArt.glyph` porque a PT13 só tem três). Nivária pede calibração (`pattern = "nivaria"`, onda 3 com deriva) e abre o diafragma com `arm("nivaria")`; o último E atravessa. O Deserto **não** encerra mais a versão: IRIS manda instalar o fragmento. A tela de fim passou para o fragmento 3/4 de Nivária.
+
+**Daymon de inverno (`player.gd`, forma `inverno`).** `is_human()` cobre `human` e `inverno`: mesmo rig, colisão 24 × 62, Estabilizador e Arpão (sem exigir o módulo). Extras de `_build_winter`:
+- Cachecol: 5 pontos em verlet a partir de `scarf_anchor()` (−3·facing, −64), com gravidade, vento e arrasto pela velocidade; desenhado em `_draw_winter` (laranja `#EF9655`, faixas `#B67A51`).
+- Geada: `add_geada(n)` (só na forma de inverno), `GEADA_MAX` 3, −15% de velocidade por camada, uma camada cai a cada 4 s (2,5 s com a melhoria `forro`). Na 3ª camada, `_freeze()`: 1,5 s preso (`_frozen_physics`), cada PULO ou ATAQUE tira 0,3 s, o Pulso liberta na hora, inimigos podem acertar. Braseiros derretem tudo (`Nivaria.near_fire`).
+- Áreas de frio: grupo `frost` com a meta `geada` (sopro, esfera, onda); `_check_hurt` aplica a geada sem tirar Integridade (`frost_cd` de 0,7 s). Inimigos com `frost_touch` deixam +1 de geada no contato. Bolas de neve têm a meta `snowball` e arrastam o jogador.
+- Pulso Térmico (`_heat_pulse`, 1/3 da energia): anel de 140 px, tira a geada e chama `Nivaria.on_heat` (placas de gelo, bolas pequenas, placas do Guardião).
+- Gelo escorregadio: `slip_t` baixa a aceleração para 380.
+- `_update_safe` ignora o gelo fino (`Nivaria.on_fragile`), para o retorno de queda não cair em gelo que quebra.
+
+**Nivária (`nivaria.gd`).** Layout em `Nivaria.layout()` (`LevelData`): 9.080 px, quatro zonas (A Cume 0–2400, B Caverna 2400–4700, C Encosta 4700–7700, D Arena 7620–9020 com o chão em y −100). Fundo (`Backdrop`: céu, aurora, lua, duas cordilheiras) e terreno (`Terrain`) desenhados por código com a paleta da GL00; a rampa da Encosta é um `CollisionPolygon2D` (sobe 400 px em 2.050). Peças:
+- `ThinIce` (gelo fino): racha em 3 estágios de 0,35 s, quebra, volta em 3 s.
+- `Stalactite`: treme 0,5 s quando o jogador passa embaixo, cai e quebra; as da arena só caem com o impacto da Investida e voltam a crescer em 6 s.
+- `CrystalGate` (cristais ressonantes, par chão/teto em x 2700): 1,4 s apagado, 0,4 s de aviso, 1,6 s ativo.
+- `IceWall` (placa de gelo do nicho do Núcleo 1), `SlipPatch`, `Snowball` (pequena 45 px, grande 109 px; a cada 2,4 s enquanto o jogador está na Encosta; esmaga Gelinhos).
+- Plataforma móvel sobre o poço de espinhos, bloco flutuante até a laje, elevador até a arena (sobe quando o jogador pisa, desce 1,5 s depois de ele sair, nunca esmaga), Braseiros (checkpoints `theme = "nivaria"`, x 2330, 4620 e 7480) e o braseiro da arena.
+- 3 Núcleos (nicho atrás da placa; reentrância acima do poço 2; cadeia de ganchos acima do platô), 3 Registros (`log_11`–`log_13`), 12 células, 12 ganchos (4 na Caverna, 6 na Encosta, 2 no platô) e 2 na arena.
+
+**Inimigos (`nv_enemy.gd`).** Gelinho (2 tiros; infla 0,5 s e sopra geada à frente, 100 px), Drone Gélido (1 tiro; mira 0,6 s, esfera lenta que vira gelo escorregadio no chão) e Morcego-de-Cristal (1 tiro; dorme no teto e dá um rasante em arco de 1,1 s). 12 no total (~1,3 por 1.000 px). Derrotados ficam registrados (`collected`), como no Deserto.
+
+**Guardião Glacial (`guardiao.gd`, D08).** 273 px (3,0 D), começa em x 8800 quando o jogador entra na arena; câmera travada em (8320, −330) com zoom 0,85, trilha `chefe`. Plano por fase (`PLAN`): 1 = estacas e investida; 2 = estacas, onda e investida; 3 = onda, estacas, onda e investida, com chão escorregadio e 2 Gelinhos. A Investida (aviso de 0,6 s batendo os pés) para na parede: impacto, estalactites caindo perto do jogador e 2 s de atordoamento. Pulso Térmico até 210 px do peito derrete uma placa: núcleo exposto por 3 s; 4 tiros destroem a placa (fase seguinte); senão, a placa congela de novo. Fora disso, os tiros só fazem "tink". Na derrota, o fragmento flutua no lugar do peito; pegar mostra "FRAGMENTO RECUPERADO · 3/4" e a tela de fim.
+
+**Arte.** Placeholders recortados das fichas v2 por `tools/import_nivaria.py` (54 peças em `assets/nivaria/`), dimensionados por `NvArt` (Daymon ≈ 91 px; sempre escala uniforme). O corpo do Daymon de inverno ainda é o do laboratório (o cachecol é desenhado). Os pedidos do lote 2 e 3 estão em `colaboracao/pedidos/GL_lote2_producao.md` (17 pedidos, gerados por `tools/gen_pedidos_nivaria_lote2.py`). A música é a do menu até a trilha própria.
+
+**Testes.**
+```bash
+tools/fluxo/godot.sh --script res://tools/test_nivaria.gd -- [out=<pasta>]   # 66 checagens, entrada pelo fluxo normal até o fim
+```
+`tools/lineup.gd` ganhou a fila de Nivária e a captura do Guardião. `test_forja.gd` foi atualizado: o fragmento do Deserto não abre mais a tela de fim.
+
+**Pontos para ajustar jogando.** As poses do Guardião são as miniaturas da GL03 ampliadas (borradas) e a frontal mostra as cruzes de âncora da ficha nos ombros; as duas coisas somem com a GL100. A cadeia de ganchos da Encosta exige pular no fim de cada puxada. A esfera do Drone do Cume pode cair no poço de espinhos.
+

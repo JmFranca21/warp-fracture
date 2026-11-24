@@ -1,4 +1,4 @@
-# Warp Fracture — Protótipo v0.8
+# Warp Fracture — Protótipo v0.9
 
 Primeiro protótipo jogável do *Warp Fracture*, feito em **Godot 4.3** a partir do Caderno de 10 páginas.
 
@@ -93,6 +93,17 @@ Para ajustar no editor: dê dois cliques em `rastejador_frames.tres`. O painel *
 
 **Para os próximos inimigos:** gere o GIF ou spritesheet com fundo transparente ou de cor sólida e diga quais quadros são de cada ação.
 
+
+## Novidades da v0.9
+
+- **Fase 3: Nivária.** Instale o fragmento do Deserto no Receptáculo: IRIS encontra um sinal frio. Escolha **Nivária** no Arco, calibre (uma das ondas deriva) e atravesse.
+- **Camada polar.** Em Nivária, Daymon continua humano, de parca e cachecol. Corre, pula, desvia, atira e usa o Arpão como no laboratório.
+- **Geada.** Golpes de frio cobrem o traje de gelo (o floco ao lado da Integridade mostra as camadas). Cada camada deixa Daymon mais lento; na terceira ele **congela**: aperte PULO ou ATAQUE várias vezes para quebrar o gelo. A geada derrete sozinha com o tempo e na hora perto de um **Braseiro**.
+- **Pulso Térmico** (clique direito ou K, com 1/3 de energia): tira a geada, liberta do gelo, derrete placas de gelo (há um Núcleo atrás de uma) e quebra bolas de neve pequenas.
+- **Quatro zonas:** Cume Congelado (plataformas, espinhos e estalactites que caem), Caverna de Cristal (poços de névoa roxa, gelo fino que quebra e cristais que descarregam em ciclo), Encosta Nevada (bolas de neve rolando: suba pelos ganchos) e a Arena do Guardião, no alto do elevador.
+- **Inimigos novos:** Gelinho (infla e sopra geada), Drone Gélido (a esfera deixa gelo escorregadio no chão) e Morcego-de-Cristal (parece uma estalactite até dar o rasante).
+- **Chefe: Guardião Glacial.** Depois de cada Investida ele bate na parede e fica atordoado: chegue perto do peito, use o Pulso Térmico para derreter uma placa e acerte o núcleo 4 vezes. Três placas, três fases.
+- A arte de Nivária ainda é provisória (recortes das fichas aprovadas); as folhas definitivas vêm no lote 2.
 
 ## Novidades da v0.8
 

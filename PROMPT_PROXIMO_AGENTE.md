@@ -2,7 +2,7 @@
 
 Use a branch `main` do repositório JmFranca21/warp-fracture. No fluxo automático, o trabalho local acontece na branch `auto/fluxo`, e o João Marcelo faz o merge e o push. As entregas publicadas e o caderno atualizado estão na árvore do projeto.
 
-Você vai continuar o desenvolvimento do jogo **Warp Fracture**, um metroidvania 2D em visão lateral feito em **Godot 4.3** (GDScript, renderizador GL Compatibility). A arte segue a DA-01: 2D cartunizado, simplificado e minimalista, sem pixel art. O projeto está na **v0.8**: Laboratório Hélix (com a Fuga do Eco), Verdâmia e o Deserto de Ferrugem jogáveis, com a passagem entre universos pelo Receptáculo e pelo Arco de Dobra, a forma Autômato e a Forja-Mãe (fragmento 2/4), além de menu, save (versão 2), mapa, Arpão de Fase, Bancada de Upgrades e Registros.
+Você vai continuar o desenvolvimento do jogo **Warp Fracture**, um metroidvania 2D em visão lateral feito em **Godot 4.3** (GDScript, renderizador GL Compatibility). A arte segue a DA-01: 2D cartunizado, simplificado e minimalista, sem pixel art. O projeto está na **v0.9** (branch `dev/neve`): Laboratório Hélix (com a Fuga do Eco), Verdâmia, o Deserto de Ferrugem e Nivária jogáveis, com a passagem entre universos pelo Receptáculo e pelo Arco de Dobra, as formas Lince e Autômato, o Daymon de inverno (Geada e Pulso Térmico), a Forja-Mãe (fragmento 2/4) e o Guardião Glacial (fragmento 3/4), além de menu, save (versão 2), mapa, Arpão de Fase, Bancada de Upgrades e Registros.
 
 **Decisões em vigor:** D01 (locomoção do Eco) e D02 a D05 (passagem Verdâmia → Hélix → Deserto com o Receptáculo, forma Autômato, chefe Forja-Mãe e portais), decididas em 12/11/2026 com as recomendações aceitas. Estão em `colaboracao/decisoes/`.
 
@@ -26,7 +26,7 @@ Antes de qualquer coisa:
      ```
 
 Regras de trabalho:
-- Siga o roteiro etapa por etapa. A Fase 2 (Deserto e Forja-Mãe) foi concluída na v0.8 (HANDOFF, seção 14). **Antes de seguir, espere o primeiro plano da fase de neve, que o João Marcelo vai enviar:** o plano do jogo mudou e essa fase será planejada por completo (design e pedidos de arte). Depois vêm a Etapa 8 (cena de abertura), as Fendas Instáveis e Hidrópolis, na ordem que o plano revisto definir.
+- Siga o roteiro etapa por etapa. A Fase 3 (Nivária) foi implementada na v0.9 com arte provisória (HANDOFF, seção 15). Próximo: integrar o lote 2 de Nivária quando o ChatGPT entregar (`colaboracao/pedidos/GL_lote2_producao.md`), e esperar a decisão D06 do João (lugar de Nivária na campanha). Depois vêm a Etapa 8 (cena de abertura) e o último universo.
 - **Sempre verifique bugs e o posicionamento dos elementos com capturas de tela.** Nenhum elemento, nem os do cenário de fundo, pode parecer flutuando sem contexto (use correntes, suportes, apoio no chão ou no teto). A fase deve ser desafiadora, sem ficar aglomerada.
 - Plataformas devem ser atravessáveis por baixo.
 - Para cada caminho novo, faça testes de alcance com o harness (`act=...`), além da regressão: menu, portal, chefe, vitória, save e continuar.

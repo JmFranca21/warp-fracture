@@ -1,6 +1,6 @@
 # Fase 3: proposta para o universo de gelo (Nivária)
 
-**Estado:** EM PRODUÇÃO (19/11/2026). D07 e D08 aprovadas pelo João em 19/11/2026 (Daymon com roupa de inverno; Guardião Glacial). D06 (lugar na campanha) ainda depende dele. Fichas GL00–GL03 entregues na `main`; GL04 em revisão.
+**Estado:** IMPLEMENTADA com arte provisória na v0.9 (24/11/2026, branch `dev/neve`; HANDOFF seção 15). D07 e D08 aprovadas pelo João em 19/11/2026. D06 (lugar na campanha) ainda depende dele; o código usa a opção A. Fichas GL00–GL04 v2 aprovadas na `main`. Pedidos de produção: [lote 2](../../../colaboracao/pedidos/GL_lote2_producao.md).
 **Autor:** Claude (design e desenvolvimento).
 **Ponto de partida:** o [esboço de level design](esboco_level_design.png) do João, com quatro zonas: Cume Congelado, Caverna de Cristal, Encosta Nevada e Arena do Chefe Final. Pedidos do João: inimigos que **congelam** o jogador, uma parte de **plataformas quebradiças de gelo** e uma encosta onde **bolas de neve** rolam e o jogador usa o **gancho** para escapar.
 **Diretrizes de arte:** [DA-01](../../../colaboracao/entregas/00_padrao_visual/PADRAO_VISUAL_OFICIAL.md) e [DA-02](../../../colaboracao/entregas/00_padrao_visual/DA-02_CONSISTENCIA.md), aprovadas.

@@ -19,10 +19,14 @@ Ordem escolhida: primeiro o que todo jogador sente (som, salvamento, orientaçã
 10. ✅ **Integração das artes de Verdâmia** (v0.6, 11/11/2026): Lince, inimigos, chefe, cenário e efeitos no jogo. Destino de cada asset em `colaboracao/revisoes/VD_verdamia.md`.
 11. **Hidrópolis** (Cefalóide, nado livre).
 12. ✅ **Fase 2: Deserto de Ferrugem e Forja-Mãe** (v0.8, 17/11/2026): passagem pelo Receptáculo e pelo Arco (D02), Autômato (D03), Forja-Mãe (D04) e portais com arte (D05). Veja a seção 14 do `HANDOFF.md`.
-13. **Fase de neve** (nova, em planejamento): o João Marcelo vai enviar o primeiro plano; a partir dele, planejar a fase por completo e gerar os pedidos de arte. A ordem das próximas etapas depende do plano revisto.
+13. ✅ **Fase 3: Nivária** (v0.9, 24/11/2026, branch `dev/neve`): Daymon de inverno (D07), Geada, Pulso Térmico, quatro zonas, três inimigos e o Guardião Glacial (D08), fragmento 3/4. Arte provisória. Veja a seção 15 do `HANDOFF.md`.
+14. **Lote 2 de Nivária**: integrar as folhas GL10–GL102 quando chegarem (`colaboracao/pedidos/GL_lote2_producao.md`), trilha e sons próprios, e a decisão D06 (lugar na campanha).
 
 ## Fase 4 — Polimento contínuo
 - Inimigos mais táticos (grupo, reforço, turreta que gira), transições entre áreas e acessibilidade (remapear teclas).
+
+## v0.9 — 24/11/2026
+- Fase 3, Nivária: passagem pelo Arco com calibração, Daymon de inverno com cachecol, Geada e Pulso Térmico, Cume, Caverna, Encosta e Arena, Gelinho, Drone Gélido, Morcego-de-Cristal, Guardião Glacial e fragmento 3/4 (fim da versão). Teste novo: `test_nivaria.gd` (66 checagens). Pedidos do lote 2 prontos.
 
 ## v0.8 — 17/11/2026
 - Fase 2 concluída: Deserto de Ferrugem jogável como Autômato, Forja-Mãe com três fases e fragmento 2/4, passagem entre universos (fenda de retorno, Receptáculo, seletor e calibração do Deserto), portais com a arte PT, save versão 2. Testes novos: `test_passagem.gd`, `test_deserto.gd` e `test_forja.gd`. Próximo passo: o plano da fase de neve.

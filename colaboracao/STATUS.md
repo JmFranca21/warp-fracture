@@ -86,3 +86,20 @@ Proposta e decisões: [proposta da Fase 3](../docs/fases/nivaria/proposta_fase3.
 | GL02 | Ficha dos inimigos: Gelinho, Drone Gélido, Morcego-de-Cristal | ENTREGUE (v2, aprovada) | [GL](pedidos/GL_lote1_fichas.md) | [Ficha, comparação e aferição DA-02](entregas/GL02/ENTREGA_v2.md) | — |
 | GL03 | Ficha do Guardião Glacial e esquema da arena | ENTREGUE (v2, aprovada) | [GL](pedidos/GL_lote1_fichas.md) | [Ficha, arena e comparação](entregas/GL03/ENTREGA_v2.md) | — |
 | GL04 | Prancha de objetos, perigos e coletáveis | ENTREGUE (v2, aprovada) | [GL](pedidos/GL_lote1_fichas.md) | [Prancha e comparação](entregas/GL04/ENTREGA_v2.md) | — |
+| GL10 | Daymon de inverno: folhas do corpo (7 animações) | ABERTO | [GL lote 2](pedidos/GL_lote2_producao.md) | — | — |
+| GL11 | Braço armado de inverno | ABERTO | [GL lote 2](pedidos/GL_lote2_producao.md) | — | — |
+| GL12 | Cachecol em peças | ABERTO | [GL lote 2](pedidos/GL_lote2_producao.md) | — | — |
+| GL13 | Geada e bloco de gelo | ABERTO | [GL lote 2](pedidos/GL_lote2_producao.md) | — | — |
+| GL14 | Pulso Térmico (efeito) | ABERTO | [GL lote 2](pedidos/GL_lote2_producao.md) | — | — |
+| GL30 | Gelinho: animação e sopro | ABERTO | [GL lote 2](pedidos/GL_lote2_producao.md) | — | — |
+| GL31 | Drone Gélido: animação, esfera e gelo no chão | ABERTO | [GL lote 2](pedidos/GL_lote2_producao.md) | — | — |
+| GL32 | Morcego-de-Cristal: animação | ABERTO | [GL lote 2](pedidos/GL_lote2_producao.md) | — | — |
+| GL50 | Fundos em parallax | ABERTO | [GL lote 2](pedidos/GL_lote2_producao.md) | — | — |
+| GL51 | Fundos da Caverna e da Arena | ABERTO | [GL lote 2](pedidos/GL_lote2_producao.md) | — | — |
+| GL52 | Terreno em tiles | ABERTO | [GL lote 2](pedidos/GL_lote2_producao.md) | — | — |
+| GL70 | Objetos animados: perigos | ABERTO | [GL lote 2](pedidos/GL_lote2_producao.md) | — | — |
+| GL71 | Objetos animados: interação e coletáveis | ABERTO | [GL lote 2](pedidos/GL_lote2_producao.md) | — | — |
+| GL90 | Glifo de Nivária e ícone de Geada | ABERTO | [GL lote 2](pedidos/GL_lote2_producao.md) | — | — |
+| GL100 | Guardião Glacial: poses (lote 3) | ABERTO | [GL lote 2](pedidos/GL_lote2_producao.md) | — | — |
+| GL101 | Guardião Glacial: placas e núcleo (lote 3) | ABERTO | [GL lote 2](pedidos/GL_lote2_producao.md) | — | — |
+| GL102 | Guardião Glacial: efeitos (lote 3) | ABERTO | [GL lote 2](pedidos/GL_lote2_producao.md) | — | — |
