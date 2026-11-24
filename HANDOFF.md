@@ -397,7 +397,7 @@ Nivária ganhou a composição pela DA-03 com peças desenhadas por código (`sc
 - **DF205:** pedido reescrito em `colaboracao/pedidos/DF_refacao_cena.md`, com as 22 peças no formato do terreno de Verdâmia (2×, linhas de apoio fixas, borda espelhada, cantos com quina). O gabarito `docs/auditoria_cena/DF205_gabarito_colisoes.png` é gerado por `tools/gen_gabarito_df205.py` a partir das constantes de `scripts/desert.gd`.
 - **Integração prevista:**
   - generalizar `Terrain._verd_all` para receber um conjunto de peças por material (areia, chapa) e trocar em `desert.gd` os tiles DF20, DF21 e DF25 e os `ColorRect` chapados;
-  - passarelas montadas com ponta, meio e ponta, com tirantes e colunas;
+  - passarelas montadas com ponta, meio e ponta, com tirantes e colunas. O meio é recortado em painéis inteiros de 32 px, sem escala, e centralizado; a sobra (até 17 px) fica sob as chapas de junção das pontas;
   - capturar os sete recortes do gabarito com a colisão visível e rodar `scene_metrics` nos quatro pontos.
 - **Pontos DA-03 do Deserto antes da troca** (Godot, 24/11/2026):
 
