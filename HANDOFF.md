@@ -474,3 +474,9 @@ A refação do Deserto passa a ser feita na branch `dev/deserto`, criada a parti
 O terço de baixo, onde fica o terreno, escureceu nos quatro pontos: 0,415 → 0,292, 0,158 → 0,135, 0,178 → 0,166 e 0,137 → 0,125. O terço de cima e o terço do meio só mudam com os fundos.
 
 **Separação nas Dunas:** a medida de 0,90 no jogo ainda é contra o céu claro antigo e não vale como validação. A validação com a iluminação real fica para quando entrarem DF200 e DF201; a estimativa da seção 15.2 é de 71–76% com o halo. Repetir com a DF02 v2.
+
+**Próximos envios ao ChatGPT (24/11/2026):**
+- **Retoque dos cantos de areia:** `colaboracao/pedidos/DF205_retoque_cantos.md`.
+- **DF200:** pedido reescrito com as medidas do jogo.
+  - A camada entra a 0,645, sem espelhamento, com a imagem inteira centralizada no percurso da câmera. A faixa útil vai das linhas 210 a 1.230.
+  - Na integração, a `VerdBg` precisa de um deslocamento em x. Hoje ela espelha as cópias e começa no x 0 da camada.

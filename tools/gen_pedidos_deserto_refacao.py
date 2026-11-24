@@ -85,10 +85,33 @@ O arquivo `docs/auditoria_cena/DF205_gabarito_colisoes.png` desenha tudo isso em
 - **Âmbar e ciano:** sem âmbar e sem ciano no terreno; âmbar é energia e luz, ciano é o gancho e o traje."""
 
 
+DF200_EXTRA = """**Como o céu entra no jogo** (`scripts/desert.gd` e `scripts/verd_bg.gd`; o desenvolvimento ajusta a camada para estas medidas):
+
+- **Parallax 0,06:** atravessando a fase inteira (8.900 px), o céu anda só ~460 px. Ele é quase um pano fixo atrás de tudo.
+- **Faixa útil vertical:** linhas 210–1.230 do arquivo. O resto é folga e só continua o céu.
+- **Terço de cima da tela:** cai nas linhas 210–550. É o trecho que mais pesa na régua da DA-03.
+- **Centro da câmera:** fica entre x 1.070 e 1.490 do arquivo. Nas Dunas a tela mostra de x ~170 a ~2.080; no vão do Salão, de ~450 a ~2.390.
+- **Na frente do céu:** o fundo intermediário (DF201: dunas, carcaças e chaminés, parallax 0,20 e 0,38) e o terreno da DF205. A linha do chão fica por volta das linhas 900–1.000 do arquivo, e o céu deve continuar, enevoado, até a borda de baixo.
+
+**Valores** (medidos no céu das Dunas da DF00 v2 aprovada; Y′ = 0,2126 R′ + 0,7152 G′ + 0,0722 B′):
+
+| Faixa do arquivo | Luma média | Na DF00 v2 |
+|---|---|---|
+| Linhas 210–550 (terço de cima da tela) | ≤ 0,11 | 0,09–0,11 |
+| Linhas 550–900 (horizonte e sol velado) | 0,12–0,15 | 0,12–0,14 |
+| Linhas 900–1.230 (atrás das dunas) | 0,11–0,14 | — |
+
+- **Sol:** baixo e velado pela poeira, com centro entre x 1.150 e 1.450 e entre as linhas 600 e 800; disco com no máximo 120 px de diâmetro. Nenhuma área acima de 0,25 de luma com mais de 0,5% da imagem; o disco pode chegar a 0,35.
+- **Poeira:** faixas de poeira e nuvens de tempestade em 2–3 tons de ferrugem escura, `#3A2929`, `#59403A` e `#493736`. O topo vai para o azul-marinho comum, `#253045` a `#0F1422`.
+- **Sem âmbar puro:** nada de âmbar `#EFAA55`, que fica para as luzes e a energia. O brilho do sol é ferrugem clara velada, não um disco branco."""
+
+
 def prompt(p: dict) -> str:
     pasta = p["id"].split(" ")[0]                    # "DF00 v2" entrega em DF00/, com sufixo _v2
     nome = p["id"].replace(" ", "_")
     intro = INTRO if p["id"] == "DF00 v2" else INTRO + " " + DF00V2
+    if p["id"] not in ("DF00 v2", "DF205"):        # enviados antes da branch do Deserto existir
+        intro = intro.replace("na branch `dev/neve`", "na branch `dev/deserto`")
     lines = [
         f"**[{p['id']}] {p['titulo']}**", "", intro, "", UNIV, "", REGUA, "",
         *([p["extra"], ""] if p.get("extra") else []),
@@ -126,14 +149,18 @@ PECAS = [
          fundo="azul-marinho escuro chapado nas áreas de amostra.",
          confira="cada faixa com luma média ≤ 0,18 e terço de cima ≤ 0,15; a silhueta do personagem se lê em todas; o âmbar só nas luzes e detalhes; nada de painel liso enorme;"),
     dict(id="DF200", titulo="Fundo distante: céu do crepúsculo de tempestade",
-         arquivos="`DF200_ceu.png`",
-         finalidade="camada 1 das Dunas (parallax 0,06), no lugar de DF10.",
-         ref="DF00 v2 aprovada; `assets/verdamia/fundo/bg_distante.png` (acabamento de um fundo distante aprovado).",
-         escala="cobre a tela inteira (1.280 × 720 com zoom 1,1) com folga vertical de 1,5 tela.",
+         extra=DF200_EXTRA,
+         arquivos="`DF200_ceu.png` e `DF200_cena.png`",
+         finalidade="camada mais distante do exterior (parallax 0,06), no lugar de DF10. Aparece nas Dunas (x 0–1.700) e no vão aberto do Salão sobre o fosso longo (x 3.580–4.980); no resto da fase as paredes cobrem.",
+         ref="DF00 v2 (o céu das Dunas na faixa e na montagem de 1.280 × 720 é a referência de valor); DF205 aprovada (`colaboracao/entregas/DF205/DF205_cena.png`, o terreno que fica na frente); `assets/verdamia/fundo/bg_distante.png` (acabamento de um fundo distante aprovado).",
+         escala="o jogo mostra a imagem a 0,645 (1 px do arquivo = 0,645 px do mundo, ~0,71 px de tela). Na tela cabem ~1.800 × 1.015 px do arquivo de uma vez (70% da largura e da altura).",
          orientacao="paisagem lateral.",
-         ancora="repetível na horizontal sem emenda.",
-         estados="1 imagem: céu ferrugem escuro, sol baixo e velado (sem disco claro grande), faixas de poeira; terço de cima escuro.",
-         grade="2.560 × 1.440 px.", fundo="opaco."),
+         ancora="sem repetição nem espelhamento: o jogo usa a imagem inteira, centralizada no percurso da câmera.",
+         estados="1 imagem: só céu e poeira (sem chão, sem dunas, sem construções: isso vem na DF201, na frente).",
+         grade="2.560 × 1.440 px.",
+         fundo="opaco.",
+         confira=("(1) os valores da tabela acima, medidos em Y′ sRGB na faixa útil; "
+                  "(2) monte `DF200_cena.png`: dois painéis de 1.280 × 720 (centro da câmera em x 1.120 e em x 1.420 do arquivo, linhas 210–1.230 reduzidas a 0,71), com o terreno da DF205 e o Autômato ou o Daymon a ~91 px na frente, ao lado das capturas do Laboratório e de Verdâmia (`docs/auditoria_cena/comparacao_cenas.png`) na mesma escala visual, sem esticar; o personagem é o mais claro da tela e o sol não compete com ele.")),
     dict(id="DF201", titulo="Fundo intermediário: dunas de sucata e a fábrica ao longe",
          arquivos="`DF201_dunas_longe.png` (parallax 0,2) e `DF201_dunas_perto.png` (parallax 0,38)",
          finalidade="camada 2 das Dunas, no lugar de DF11 e DF12: dunas com carcaças enterradas, chaminés e a silhueta da fábrica no horizonte.",
