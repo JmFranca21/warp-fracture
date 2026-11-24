@@ -124,7 +124,7 @@ Pedido: [DF refação](pedidos/DF_refacao_cena.md) (24/11/2026). Inventário de 
 | DF202 | Fundos internos: Fábrica e Salão do Núcleo | ABERTO | [DF refação](pedidos/DF_refacao_cena.md) | — | — |
 | DF203 | Fundo da Câmara da Forja | ABERTO | [DF refação](pedidos/DF_refacao_cena.md) | — | — |
 | DF204 | Estrutura de fundo (peças grandes) | ABERTO | [DF refação](pedidos/DF_refacao_cena.md) | — | — |
-| DF205 | Terreno completo (22 peças no formato do terreno de Verdâmia; gabarito de colisões) | ABERTO, prompt pronto para envio | [DF refação](pedidos/DF_refacao_cena.md) | — | — |
+| DF205 | Terreno completo (22 peças no formato do terreno de Verdâmia; gabarito de colisões) | APROVADO pelo João (24/11/2026), publicado na `main` (`cbdd27c`); EM INTEGRAÇÃO na `dev/deserto` | [DF refação](pedidos/DF_refacao_cena.md) | — | — |
 | DF206 | Decoração média e pequena | ABERTO | [DF refação](pedidos/DF_refacao_cena.md) | — | — |
 | DF207 | Moldura | ABERTO | [DF refação](pedidos/DF_refacao_cena.md) | — | — |
 | DF208 | Primeiro plano | ABERTO | [DF refação](pedidos/DF_refacao_cena.md) | — | — |
