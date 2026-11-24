@@ -31,6 +31,7 @@ Atualizado pelos agentes. Leia `PROTOCOLO.md` e `FLUXO_AUTOMATICO.md` antes de c
 | ID | O que é | Estado | Pedido | Entrega | Revisão |
 |---|---|---|---|---|---|
 | DF00 | Prancha de referência do Deserto (paleta, materiais, amostras) | ENTREGUE (aprovado pelo responsável) | [DF](pedidos/DF_deserto_ferrugem.md) | — | — |
+| DF00 v2 | Prancha de referência do Deserto pela DA-03 | ENTREGUE | [DF](pedidos/DF_deserto_ferrugem.md) | — | [Prancha, comparação e aferição](entregas/DF00/ENTREGA_v2.md) |
 | DF01 | Ficha do Robô e do Drone do deserto | ENTREGUE (aprovado pelo responsável) | [DF](pedidos/DF_deserto_ferrugem.md) | — | — |
 | DF10–DF12 | Fundos das Dunas em parallax | ENTREGUE | [DF](pedidos/DF_deserto_ferrugem.md) | — | — |
 | DF20–DF28 | Terreno, paredes, piso, esteira, trilho e cabo | ENTREGUE | [DF](pedidos/DF_deserto_ferrugem.md) | — | — |
