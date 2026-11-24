@@ -39,6 +39,8 @@ CONFIRA_CENA = ("monte `{id}_cena.png`: um painel de 1.280 × 720 por cena, com 
 
 
 def prompt(p: dict) -> str:
+    pasta = p["id"].split(" ")[0]                    # "DF00 v2" entrega em DF00/, com sufixo _v2
+    nome = p["id"].replace(" ", "_")
     lines = [
         f"**[{p['id']}] {p['titulo']}**", "", INTRO, "", UNIV, "", REGUA, "",
         f"- **ID:** {p['id']}",
@@ -51,9 +53,9 @@ def prompt(p: dict) -> str:
         f"- **Estados e quadros:** {p['estados']}",
         f"- **Dimensões e grade:** {p['grade']}",
         f"- **Fundo:** {p.get('fundo', 'transparente (PNG RGBA), sem sombra projetada e sem texto.')}",
-        f"- **Antes de apresentar, confira:** {p.get('confira', CONFIRA_CENA.format(id=p['id']))}",
-        (f"- **Entrega:** Apresente ao João Marcelo (peças + `{p['id']}_cena.png`) e **só suba depois da aprovação explícita dele**. "
-         f"Coloque os PNGs em `colaboracao/entregas/{p['id']}/` com um `ENTREGA.md` (lista de peças e quadros, âncoras em pixels, "
+        f"- **Antes de apresentar, confira:** {p.get('confira', CONFIRA_CENA.format(id=nome))}",
+        (f"- **Entrega:** Apresente ao João Marcelo (peças + `{nome}_cena.png`) e **só suba depois da aprovação explícita dele**. "
+         f"Coloque os PNGs em `colaboracao/entregas/{pasta}/` com um `ENTREGA{'_v2' if ' v2' in p['id'] else ''}.md` (lista de peças e quadros, âncoras em pixels, "
          f"faixa de escala e função na cena de cada peça pela DA-03, cores por material, confirmação da aprovação, SHA-256 e o que não "
          f"conseguiu cumprir). Atualize a linha {p['id']} do `colaboracao/STATUS.md` para `ENTREGUE` e faça o commit `[arte]` na `main`."),
     ]

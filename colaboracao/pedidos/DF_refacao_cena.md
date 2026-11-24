@@ -54,7 +54,7 @@ Receita DA-03 (resumo): cinco funções em cada zona (fundo distante, fundo inte
 - **Dimensões e grade:** PNG de 1.536 × 1.024 px, prancha com texto permitido.
 - **Fundo:** azul-marinho escuro chapado nas áreas de amostra.
 - **Antes de apresentar, confira:** cada faixa com luma média ≤ 0,18 e terço de cima ≤ 0,15; a silhueta do personagem se lê em todas; o âmbar só nas luzes e detalhes; nada de painel liso enorme;
-- **Entrega:** Apresente ao João Marcelo (peças + `DF00 v2_cena.png`) e **só suba depois da aprovação explícita dele**. Coloque os PNGs em `colaboracao/entregas/DF00 v2/` com um `ENTREGA.md` (lista de peças e quadros, âncoras em pixels, faixa de escala e função na cena de cada peça pela DA-03, cores por material, confirmação da aprovação, SHA-256 e o que não conseguiu cumprir). Atualize a linha DF00 v2 do `colaboracao/STATUS.md` para `ENTREGUE` e faça o commit `[arte]` na `main`.
+- **Entrega:** Apresente ao João Marcelo (peças + `DF00_v2_cena.png`) e **só suba depois da aprovação explícita dele**. Coloque os PNGs em `colaboracao/entregas/DF00/` com um `ENTREGA_v2.md` (lista de peças e quadros, âncoras em pixels, faixa de escala e função na cena de cada peça pela DA-03, cores por material, confirmação da aprovação, SHA-256 e o que não conseguiu cumprir). Atualize a linha DF00 v2 do `colaboracao/STATUS.md` para `ENTREGUE` e faça o commit `[arte]` na `main`.
 ````
 
 ---
@@ -380,5 +380,5 @@ Receita DA-03 (resumo): cinco funções em cada zona (fundo distante, fundo inte
 - **Dimensões e grade:** a mesma das folhas v1.
 - **Fundo:** transparente (PNG RGBA), sem sombra projetada e sem texto.
 - **Antes de apresentar, confira:** sobreponha cada folha v2 à v1: âncoras e silhueta no mesmo lugar; monte a Forja inteira sobre a DF203 com o Autômato a ~91 px;
-- **Entrega:** Apresente ao João Marcelo (peças + `DF03 v2_cena.png`) e **só suba depois da aprovação explícita dele**. Coloque os PNGs em `colaboracao/entregas/DF03 v2/` com um `ENTREGA.md` (lista de peças e quadros, âncoras em pixels, faixa de escala e função na cena de cada peça pela DA-03, cores por material, confirmação da aprovação, SHA-256 e o que não conseguiu cumprir). Atualize a linha DF03 v2 do `colaboracao/STATUS.md` para `ENTREGUE` e faça o commit `[arte]` na `main`.
+- **Entrega:** Apresente ao João Marcelo (peças + `DF03_v2_cena.png`) e **só suba depois da aprovação explícita dele**. Coloque os PNGs em `colaboracao/entregas/DF03/` com um `ENTREGA_v2.md` (lista de peças e quadros, âncoras em pixels, faixa de escala e função na cena de cada peça pela DA-03, cores por material, confirmação da aprovação, SHA-256 e o que não conseguiu cumprir). Atualize a linha DF03 v2 do `colaboracao/STATUS.md` para `ENTREGUE` e faça o commit `[arte]` na `main`.
 ````
