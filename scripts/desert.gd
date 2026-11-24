@@ -10,6 +10,9 @@ extends Node2D
 const FLOOR := [Rect2(-120,700,900,360), Rect2(1180,700,520,360), Rect2(1700,700,1080,360),
 	Rect2(2870,625,145,26), Rect2(3100,545,240,28), Rect2(3580,415,430,40),
 	Rect2(4410,415,450,40), Rect2(4980,770,510,320), Rect2(6030,770,2870,320)]
+const DF53_SLAB := [385.0, 226.0]     # linha (px da textura) onde começa a laje em DF53a e DF53b
+const WALLS := [Rect2(-60,-200,60,1350), Rect2(6990,-200,60,780), Rect2(7050,-200,1440,350),
+	Rect2(8490,-200,60,780), Rect2(8550,-200,350,600), Rect2(8900,-200,60,1350)]
 const PITS := [Rect2(780,850,400,60), Rect2(2780,900,2200,60), Rect2(5490,900,540,60)]
 const HOOKS := [Vector2(975,510), Vector2(3510,345), Vector2(4205,230)]
 const ARENA_HOOKS := [Vector2(7400,470), Vector2(8080,470)]   # âncoras fixas do teto da Câmara (D04)
@@ -50,12 +53,7 @@ static func layout() -> Dictionary:
 		hooks.append([h, ROOM.position.y])
 	return {"theme":"deserto","form":"automato","name":"DESERTO DE FERRUGEM","sub":"Ferrumgrado — Dunas de sucata",
 		"bounds":Rect2(0,-80,8900,1140),"spawn":Vector2(185,690),"kill_y":1060.0,
-		"solids":FLOOR + [Rect2(-60,-200,60,1350),
-			Rect2(6990,-200,60,780),                 # parede entre o Salão e a Câmara (porta embaixo)
-			Rect2(7050,-200,1440,350),               # teto da Câmara (base em y 150)
-			Rect2(8490,-200,60,780),                 # parede direita da Câmara (porta embaixo)
-			Rect2(8550,-200,350,600),                # teto da saída
-			Rect2(8900,-200,60,1350)],
+		"solids":FLOOR + WALLS,     # paredes: Salão|Câmara (porta embaixo), teto da Câmara (y 150), Câmara|Saída, teto da saída, fim
 		"hazards":[],"hooks":hooks,"enemies":[],
 		"checkpoints":[Vector2(1650,700),Vector2(4730,415),Vector2(6650,770)],"terminals":[],"signs":[
 			[Vector2(330,700), "AUTÔMATO: lento e pesado, não recua ao levar dano. Clique esquerdo (ou J) dispara a REBITADEIRA."],
@@ -155,35 +153,30 @@ func _ready() -> void:
 	tile("DF24",Rect2(4980,-80,2010,1150),Vector2(0.75,0.75),-14)
 	tile("DF24",Rect2(7050,150,1440,640),Vector2(0.6,0.6),-14)
 	tile("DF23",Rect2(8550,400,350,390),Vector2(0.65,0.65),-14)
+	# terreno DF205 (DA-03): só desenho; as colisões são as de layout()
+	var terrain := DFTerrain.new()
+	for r in FLOOR + WALLS:
+		if r.size.y < 60.0:
+			terrain.thin.append(r)
+		else:
+			terrain.blocks.append(r)
+	terrain.pits = PITS
+	terrain.suspended = [FLOOR[5], FLOOR[6]]
+	add_child(terrain)
 	for r in FLOOR:
-		if r.position.x < 1700:
-			tile("DF20",r,Vector2(0.75,r.size.y/256.0))
-		elif r.position.x == 1700:
+		if r.position.x == 1700:
 			belt = tile("DF26",Rect2(r.position,Vector2(r.size.x,60)),Vector2(0.62,0.625))
 		elif r.position.x == 2870 or r.position.x == 3100:
+			# DF53: só as correntes (a laje da arte antiga dá lugar ao tabuleiro da DF205); terminam no apoio
 			var large: bool = r.position.x == 3100
-			prop("DF53b" if large else "DF53a",Rect2(r.position-Vector2(0,135),Vector2(r.size.x,157)),-1)
-			tile("DF25",Rect2(r.position,Vector2(r.size.x,12)),Vector2(0.28,0.2))
-		else:
-			tile("DF25",Rect2(r.position,Vector2(r.size.x,40)),Vector2(0.625,0.625))
-			if r.size.y > 100:
-				var under := ColorRect.new()          # corpo do piso abaixo da chapa
-				under.position = r.position + Vector2(0, 40)
-				under.size = Vector2(r.size.x, r.size.y - 40)
-				under.color = Color("2a1710")
-				under.z_index = -1
-				add_child(under)
-	# paredes e teto da Câmara: chapa escura com borda de ferrugem
-	for w in [Rect2(6990,-200,60,780), Rect2(7050,-200,1440,350), Rect2(8490,-200,60,780), Rect2(8550,-200,350,600), Rect2(8900,-200,60,1350)]:
-		var c := ColorRect.new()
-		c.position = w.position
-		c.size = w.size
-		c.color = Color("24140e")
-		c.z_index = -2
-		add_child(c)
-		tile("DF25",Rect2(w.position.x, w.end.y - 16, w.size.x, 16),Vector2(0.3,0.2),-1)
+			var chains := prop("DF53b" if large else "DF53a",Rect2(r.position-Vector2(0,135),Vector2(r.size.x,157)),-1)
+			var slab: float = DF53_SLAB[1] if large else DF53_SLAB[0]
+			var full := chains.texture.get_size()
+			chains.region_enabled = true
+			chains.region_rect = Rect2(0, 0, full.x, slab)
+			chains.scale = Vector2(r.size.x / full.x, 135.0 / slab)
+			chains.position = Vector2(r.get_center().x, r.position.y - 135.0 / 2.0)
 	for pit in PITS:
-		tile("DF21",pit,Vector2(0.5,pit.size.y/128.0))
 		attack_area(pit,self,true)
 	prop("DF30_1",Rect2(135+150,624,155,76),-2)
 	prop("DF30_2",Rect2(1240,644,110,56),-2)

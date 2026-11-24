@@ -15,7 +15,7 @@
 | Fundo distante | ✅ desenho por código (BgLayer) | ✅ `bg_distante` | 🟡 DF10, claro demais → **DF200** | 🔶 céu por código → **GL50** |
 | Fundo intermediário | ✅ BgLayer | ✅ `bg_intermediario` | 🟡 DF11–DF12 → **DF201** | 🔶 cordilheiras por código → **GL51** |
 | Estrutura de fundo | ✅ BackWall (colunas, janelas, canos) | ✅ troncos e cogumelos gigantes | 🟡 painéis chapados DF22–DF24 → **DF202**; ❌ peças grandes → **DF204** | 🔶 pinheiros, ruínas e pilares por código → **GL52–GL54** |
-| Terreno | ✅ | ✅ 8 peças | 🟡 DF20, DF21, DF25 → **DF205** | 🔶 por código → **GL55** |
+| Terreno | ✅ | ✅ 8 peças | ✅ **DF205** (22 peças, integrada na `dev/deserto`; retoque nos cantos de areia) | 🔶 por código → **GL55** |
 | Decoração média e pequena | ✅ 37 peças no mapa | ✅ | ❌ → **DF206** | 🔶 tufos, pedras e rochas por código → **GL56** |
 | Moldura (o que desce do alto) | ✅ cabos | ✅ cipós e raízes | ❌ → **DF207** | 🔶 correntes por código → **GL57** |
 | Primeiro plano | ✅ entulho | ✅ `fg_vegetacao` | ❌ → **DF208** | 🔶 silhuetas por código → **GL58** |

@@ -35,7 +35,7 @@ Atualizado pelos agentes. Leia `PROTOCOLO.md` e `FLUXO_AUTOMATICO.md` antes de c
 | DF00 | Prancha de referência do Deserto (paleta, materiais, amostras) | ENTREGUE (aprovado pelo responsável) | [DF](pedidos/DF_deserto_ferrugem.md) | — | — |
 | DF01 | Ficha do Robô e do Drone do deserto | REFAZER (auditoria 17/11/2026); v2 SUSPENSA até aprovar a DF02 v2 | [DF](pedidos/DF_deserto_ferrugem.md) · [v2](pedidos/DA02_regua_e_fichas_v2.md) | — | — |
 | DF10–DF12 | Fundos das Dunas em parallax | INTEGRADO (v0.8); A REFAZER (DF200, DF201) | [DF](pedidos/DF_deserto_ferrugem.md) | — | — |
-| DF20–DF28 | Terreno, paredes, piso, esteira, trilho e cabo | INTEGRADO (v0.8); A REFAZER (DF202, DF205) | [DF](pedidos/DF_deserto_ferrugem.md) | — | — |
+| DF20–DF28 | Terreno, paredes, piso, esteira, trilho e cabo | INTEGRADO (v0.8); DF20, DF21 e DF25 substituídos pela DF205; paredes DF22–DF24 A REFAZER (DF202) | [DF](pedidos/DF_deserto_ferrugem.md) | — | — |
 | DF30–DF39 | Objetos de cenário e portas | INTEGRADO (v0.8, 17/11/2026) | [DF](pedidos/DF_deserto_ferrugem.md) | — | — |
 | DF50–DF57 | Prensas, serra, plataformas, válvulas e gancho | INTEGRADO (v0.8, 17/11/2026) | [DF](pedidos/DF_deserto_ferrugem.md) | — | — |
 | DF60–DF71 | Robôs, drones e seus projéteis | INTEGRADO (v0.8, 17/11/2026) | [DF](pedidos/DF_deserto_ferrugem.md) | — | — |
@@ -124,7 +124,7 @@ Pedido: [DF refação](pedidos/DF_refacao_cena.md) (24/11/2026). Inventário de 
 | DF202 | Fundos internos: Fábrica e Salão do Núcleo | ABERTO | [DF refação](pedidos/DF_refacao_cena.md) | — | — |
 | DF203 | Fundo da Câmara da Forja | ABERTO | [DF refação](pedidos/DF_refacao_cena.md) | — | — |
 | DF204 | Estrutura de fundo (peças grandes) | ABERTO | [DF refação](pedidos/DF_refacao_cena.md) | — | — |
-| DF205 | Terreno completo (22 peças no formato do terreno de Verdâmia; gabarito de colisões) | APROVADO pelo João (24/11/2026), publicado na `main` (`cbdd27c`); EM INTEGRAÇÃO na `dev/deserto` | [DF refação](pedidos/DF_refacao_cena.md) | — | — |
+| DF205 | Terreno completo (22 peças no formato do terreno de Verdâmia; gabarito de colisões) | APROVADO pelo João (24/11/2026), publicado na `main` (`cbdd27c`); INTEGRADO na `dev/deserto` (HANDOFF 15.3; retoque pendente nos cantos de areia) | [DF refação](pedidos/DF_refacao_cena.md) | — | — |
 | DF206 | Decoração média e pequena | ABERTO | [DF refação](pedidos/DF_refacao_cena.md) | — | — |
 | DF207 | Moldura | ABERTO | [DF refação](pedidos/DF_refacao_cena.md) | — | — |
 | DF208 | Primeiro plano | ABERTO | [DF refação](pedidos/DF_refacao_cena.md) | — | — |

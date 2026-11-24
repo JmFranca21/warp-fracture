@@ -418,3 +418,59 @@ Nivária ganhou a composição pela DA-03 com peças desenhadas por código (`sc
   | Daymon do jogo, sem luz | 48–54% |
 
   O jogo não tem `Light2D`. A "iluminação real" é esse halo, que clareia o entorno e reduz a separação. Validar no Godot quando o terreno e o céu entrarem, e de novo com a DF02 v2. Se ficar abaixo de 2/3, a primeira opção é baixar o halo no Deserto.
+
+### 15.3 DF205 integrada: terreno do Deserto (24/11/2026, branch `dev/deserto`)
+
+A refação do Deserto passa a ser feita na branch `dev/deserto`, criada a partir da `dev/neve`. A `dev/neve` fica para Nivária.
+
+**Montagem**
+- `tools/import_df205.py` copia as 22 peças da entrega (`colaboracao/entregas/DF205/`, `cbdd27c`) para `assets/deserto/terreno/`.
+- `scripts/df_terrain.gd` (classe `DFTerrain`) desenha o terreno. Usa as linhas do `ENTREGA.md`:
+  - apoio da areia em y 50 e da chapa em y 16;
+  - face das bordas em x 6;
+  - cantos em (18, 50), (162, 50), (18, 16) e (162, 16);
+  - face do teto em y 160 e cantos internos do teto em (96, 96);
+  - verga em y 96, passarela em y 8 e dano do fosso em y 32.
+- A repetição usa o próprio amostrador (`texture_repeat`), sem frestas entre as cópias.
+- **Colisões:** não mudaram. `layout()` ganhou a constante `WALLS`, com os mesmos 15 sólidos da v0.8. O teste confere isso.
+- **Passarelas:**
+  - 1, 4, 10 e 11 painéis inteiros de 32 px nas larguras 145, 240, 430 e 450;
+  - miolo sem escala e centralizado, com sobra de 8,5, 8, 7 e 1 px por lado;
+  - chapas de junção desenhadas por cima, a partir da face interna das pontas;
+  - as do Salão têm tirantes até o alto e fixação; as de máquina têm coluna treliçada até o fundo do fosso.
+- **Retirado:**
+  - DF20, DF21 e DF25 (no chão);
+  - os `ColorRect` das paredes e do corpo dos pisos;
+  - a laje da arte antiga DF53. A DF53 agora só desenha as correntes, que terminam no tabuleiro novo.
+
+**Verificação**
+- `tools/test_df205.gd`: 24 verificações, nenhuma falha.
+  - colisões iguais às da v0.8;
+  - painéis e sobras das quatro passarelas;
+  - os 4 cantos internos e as 6 quinas;
+  - o Autômato apoiado exatamente na linha em 10 superfícies.
+- `test_deserto` e `test_forja` passam com o mesmo número de verificações de antes.
+- `tools/df205_encaixes.gd` captura os sete recortes do gabarito, as quatro passarelas e 16 emendas em 1:4, com e sem a colisão. A prancha fica em `docs/auditoria_cena/DF205_encaixes_no_jogo.jpg`.
+
+**Problemas encontrados na arte e o que foi feito na integração**
+
+| Peça | Problema | O que foi feito |
+|---|---|---|
+| `areia_canto_esquerdo` e `areia_canto_direito` | Bloco escuro de topo reto, 23 px acima do apoio. No jogo parecia um toco na borda do fosso. | O canto é desenhado só a partir de y 42 do arquivo (4 px acima do apoio). Pedir retoque. |
+| `fosso_fundo` (colunas 0–1 e 1022–1023) e `coluna_trelica` (linhas 0–5 e 506–511) | Pontas da repetição desbotadas. As bordas opostas eram iguais, mas fracas, e formavam uma faixa por onde o fundo aparecia. | `import_df205.py` repete a primeira fileira íntegra nas cópias do jogo. A entrega fica intacta. |
+| `areia_borda` | A face da rocha fica em média em x 27 do arquivo, não em x 6. A rocha recua ~10 px da colisão na lateral do fosso. | Nada. Ninguém encosta nessa lateral; só vale anotar. |
+| `fosso_fundo` | A massa de sucata começa ~40 px do arquivo abaixo da linha de dano. O dano vem ~20 px antes de a sucata parecer sólida. | Nada. Fica a critério do João. |
+| Abaixo do `fosso_fundo` | A faixa termina semitransparente e o céu aparecia embaixo. | Preenchimento escuro com a cor média do fim da peça, `#0D1118`. |
+
+**DA-03 nos quatro pontos** (Godot)
+
+| Ponto | Luma | Terço de cima | Separação | Contraste | Bordas | Área lisa | O que ainda falta |
+|---|---|---|---|---|---|---|---|
+| 0 Dunas (500, 700) | 0,566 → 0,516 | 0,673 | 0,900 | −0,359 | 0,041 | 0,346 | Céu: DF200 e DF201. As bordas estão no limite (0,04): DF204, DF206 e DF208. |
+| 1 Fábrica (2300, 700) | 0,176 → 0,167 | 0,182 | 0,736 | +0,176 | 0,102 | 0,180 | Terço de cima: parede DF23 → DF202. |
+| 2 Salão (5200, 770) | 0,184 → 0,176 | 0,170 → 0,163 | 0,867 | +0,247 | 0,088 | 0,327 | Terço de cima: parede DF24 → DF202. A luma já passa. |
+| 3 Salão (6500, 770) | 0,129 → 0,124 | 0,114 | 0,745 | +0,176 | 0,049 | 0,387 | Passa. |
+
+O terço de baixo, onde fica o terreno, escureceu nos quatro pontos: 0,415 → 0,292, 0,158 → 0,135, 0,178 → 0,166 e 0,137 → 0,125. O terço de cima e o terço do meio só mudam com os fundos.
+
+**Separação nas Dunas:** a medida de 0,90 no jogo ainda é contra o céu claro antigo e não vale como validação. A validação com a iluminação real fica para quando entrarem DF200 e DF201; a estimativa da seção 15.2 é de 71–76% com o halo. Repetir com a DF02 v2.
