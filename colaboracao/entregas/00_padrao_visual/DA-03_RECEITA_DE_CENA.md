@@ -1,6 +1,6 @@
 # Warp Fracture — Receita de cena (DA-03)
 
-**Status:** VERSÃO FINAL PARA APROVAÇÃO do João Marcelo (24/11/2026). Vale junto com a [DA-01](PADRAO_VISUAL_OFICIAL.md) (estilo) e a [DA-02](DA-02_CONSISTENCIA.md) (personagens, inimigos e objetos).
+**Status:** APROVADA pelo João Marcelo em 24/11/2026. Vale junto com a [DA-01](PADRAO_VISUAL_OFICIAL.md) (estilo) e a [DA-02](DA-02_CONSISTENCIA.md) (personagens, inimigos e objetos).
 **Histórico:** proposta do Claude a partir da avaliação do João (Laboratório e Verdâmia no padrão; Deserto e Nivária abaixo). Revisada pelo ChatGPT em 24/11/2026: concordou com o diagnóstico, ajustou C1 e C4–C7, manteve os números de C2 e C3 com teste mais rigoroso, tirou C8 da aprovação de arte e acrescentou três checagens e o protocolo de medição. Consolidada pelo Claude, com os limites recalibrados ponto a ponto nas fases de referência.
 **Ordem aprovada pelo João:** fechar a receita, validar em Nivária e só então aplicar ao Deserto.
 
