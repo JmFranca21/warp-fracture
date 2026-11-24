@@ -1,6 +1,18 @@
-[gd_resource type="SpriteFrames" load_steps=16 format=3]
+[gd_resource type="SpriteFrames" format=3 uid="uid://d0bcu2adloa3m"]
 
-[ext_resource type="Texture2D" path="res://assets/inimigos/rastejador/rastejador_sheet.png" id="1_sheet"]
+[ext_resource type="Texture2D" uid="uid://fs2u6pvn3jgf" path="res://assets/inimigos/rastejador/rastejador_sheet.png" id="1_sheet"]
+
+[sub_resource type="AtlasTexture" id="q6"]
+atlas = ExtResource("1_sheet")
+region = Rect2(350, 78, 175, 78)
+
+[sub_resource type="AtlasTexture" id="q7"]
+atlas = ExtResource("1_sheet")
+region = Rect2(525, 78, 175, 78)
+
+[sub_resource type="AtlasTexture" id="q8"]
+atlas = ExtResource("1_sheet")
+region = Rect2(0, 156, 175, 78)
 
 [sub_resource type="AtlasTexture" id="q0"]
 atlas = ExtResource("1_sheet")
@@ -17,18 +29,6 @@ region = Rect2(350, 0, 175, 78)
 [sub_resource type="AtlasTexture" id="q3"]
 atlas = ExtResource("1_sheet")
 region = Rect2(525, 0, 175, 78)
-
-[sub_resource type="AtlasTexture" id="q6"]
-atlas = ExtResource("1_sheet")
-region = Rect2(350, 78, 175, 78)
-
-[sub_resource type="AtlasTexture" id="q7"]
-atlas = ExtResource("1_sheet")
-region = Rect2(525, 78, 175, 78)
-
-[sub_resource type="AtlasTexture" id="q8"]
-atlas = ExtResource("1_sheet")
-region = Rect2(0, 156, 175, 78)
 
 [sub_resource type="AtlasTexture" id="q9"]
 atlas = ExtResource("1_sheet")
@@ -62,6 +62,33 @@ region = Rect2(525, 234, 175, 78)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("q6")
+}, {
+"duration": 1.0,
+"texture": SubResource("q7")
+}],
+"loop": 0,
+"name": &"attack",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("q8")
+}],
+"loop": 0,
+"name": &"death",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("q8")
+}],
+"loop": 0,
+"name": &"hurt",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("q0")
 }, {
 "duration": 1.0,
@@ -73,7 +100,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("q3")
 }],
-"loop": true,
+"loop": 1,
 "name": &"idle",
 "speed": 6.0
 }, {
@@ -99,34 +126,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("q15")
 }],
-"loop": true,
+"loop": 1,
 "name": &"walk",
 "speed": 8.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("q6")
-}, {
-"duration": 1.0,
-"texture": SubResource("q7")
-}],
-"loop": false,
-"name": &"attack",
-"speed": 3.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("q8")
-}],
-"loop": false,
-"name": &"hurt",
-"speed": 8.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("q8")
-}],
-"loop": false,
-"name": &"death",
-"speed": 4.0
 }]
