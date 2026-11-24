@@ -1,7 +1,8 @@
 class_name Player
 extends CharacterBody2D
 ## Daymon Sagan. Forma "human" (laboratório), "lince" (Lince-Vagalume, Verdâmia) ou
-## "automato" (Autômato de Fase, Deserto de Ferrugem — D03).
+## "automato" (Autômato de Fase, Deserto de Ferrugem — D03) ou "yeti" (Nivária: pesado,
+## bola de neve mirada no ataque e chute giratório no botão direito).
 
 const GRAV := 2000.0
 const MAX_FALL := 950.0
@@ -11,6 +12,9 @@ var level
 var form := "human"
 var run_speed := 320.0
 var jump_v := 760.0
+var grav := GRAV            # o Yeti cai mais devagar (pulo lento e pesado)
+var accel_ground := 4200.0
+var accel_air := 4200.0     # o Yeti mantém o embalo no ar (inércia de bicho pesado)
 var max_air_jumps := 0
 var facing := 1
 var coyote := 0.0
@@ -52,6 +56,15 @@ var act := ""
 var act_t := 0.0
 var hurt_t := 0.0
 var held_pose := false
+# Yeti: bola de neve (throw_t), chute giratório (kick_t) e virada de frente (turn_t)
+const YETI_SCALE := 0.5
+const SNOW_SPAWN := 0.22    # throw_t em que a bola sai da mão (quadro do braço esticado)
+var throw_t := 0.0
+var throw_aim := Vector2.RIGHT
+var kick_t := 0.0
+var kick_cd := 0.0
+var turn_t := 0.0
+var vis_facing := 1
 # rig de sprites (humano: corpo + braço; lince: corpo)
 const BODY_SCALE := 0.58
 const ARM_SCALE := 0.40
@@ -94,7 +107,11 @@ func _ready() -> void:
 	collision_layer = 2
 	collision_mask = 1 | ONEWAY_LAYER
 	floor_snap_length = 6.0
-	var size := Vector2(24, 62) if form == "human" else (Vector2(30, 62) if form == "automato" else Vector2(32, 34))
+	var size := Vector2(24, 62)
+	match form:
+		"automato": size = Vector2(30, 62)
+		"lince": size = Vector2(32, 34)
+		"yeti": size = Vector2(38, 76)
 	var cs := CollisionShape2D.new()
 	var r := RectangleShape2D.new()
 	r.size = size
@@ -123,6 +140,17 @@ func _ready() -> void:
 		jump_v = 721.0             # ~130 px de pulo (90% do humano)
 		glow_a = Art.glow(Color(0.3, 0.9, 1.0, 0.6), 22)
 		_build_automato()
+	elif form == "yeti":
+		# lento e pesado, mas com o mesmo alcance de pulo do humano (a fase foi medida com ele):
+		# corre 78% e fica ~25% mais tempo no ar; a mesma altura (~139 px) para os degraus
+		run_speed = 250.0
+		max_air_jumps = 0
+		grav = 1250.0
+		jump_v = 590.0
+		accel_ground = 1700.0      # demora a embalar e a parar
+		accel_air = 760.0          # carrega o embalo do pulo e do Arpão; corrige pouco no ar
+		glow_a = Art.glow(Color(0.8, 0.92, 1.0, 0.5), 22)
+		_build_yeti()
 	else:
 		run_speed = 360.0
 		max_air_jumps = 1
@@ -134,7 +162,7 @@ func _ready() -> void:
 	glow_b.position = Vector2(0, -24)
 	add_child(glow_b)
 	# halo suave atrás do personagem; mais forte no Lince, que é escuro contra a floresta
-	var amb := Art.glow(Color(0.5, 0.7, 1.0, 0.10), 150) if form == "human" else Art.glow(Color(0.55, 0.95, 0.9, 0.20), 120)
+	var amb := Art.glow(Color(0.5, 0.7, 1.0, 0.10), 150) if form in ["human", "yeti"] else Art.glow(Color(0.55, 0.95, 0.9, 0.20), 120)
 	amb.position = Vector2(0, -30)
 	amb.z_index = -1
 	add_child(amb)
@@ -218,6 +246,34 @@ func _build_automato() -> void:
 	arm_pivot.add_child(muzzle)
 
 
+## Yeti (Nivária): folha montada por tools/import_yeti.py a partir das pranchas em assets/nivaria.
+## Uma animação por linha; células de 380×250 com os pés em (190, 240).
+func _build_yeti() -> void:
+	rig = Node2D.new()
+	add_child(rig)
+	var tex: Texture2D = load("res://assets/nivaria/yeti/yeti_sheet.png")
+	var sf := SpriteFrames.new()
+	sf.remove_animation("default")
+	var anims := {"idle": [0, 1, 1.0, true], "turn": [1, 4, 1.0, false], "run": [2, 8, 10.0, true],
+		"jump": [3, 8, 1.0, false], "throw": [4, 8, 1.0, false], "kick": [5, 8, 18.0, false]}
+	for an in anims:
+		var row: int = anims[an][0]
+		sf.add_animation(an)
+		sf.set_animation_speed(an, anims[an][2])
+		sf.set_animation_loop(an, anims[an][3])
+		for i in int(anims[an][1]):
+			var at := AtlasTexture.new()
+			at.atlas = tex
+			at.region = Rect2(i * 380, row * 250, 380, 250)
+			sf.add_frame(an, at)
+	body_spr = AnimatedSprite2D.new()
+	body_spr.sprite_frames = sf
+	body_spr.offset = Vector2(0, 125 - 240)
+	body_spr.scale = Vector2.ONE * YETI_SCALE
+	rig.add_child(body_spr)
+	body_spr.play("idle")
+
+
 ## Lince-Vagalume: 11 animações (D_lince_*) em um AnimatedSprite2D; âncora nos pés.
 func _build_lynx() -> void:
 	rig = Node2D.new()
@@ -232,12 +288,16 @@ func _build_lynx() -> void:
 
 ## ponta do cano em coordenadas globais
 func gun_tip() -> Vector2:
+	if form == "yeti":
+		return shoulder_global() + aim * 26.0
 	if arm_pivot == null:
 		return global_position + Vector2(0, -32) + aim * 28.0
 	return arm_pivot.to_global(Vector2(arm_len, -3))
 
 
 func shoulder_global() -> Vector2:
+	if form == "yeti":
+		return global_position + Vector2(vis_facing * 6.0, -72.0)
 	if arm_pivot == null:
 		return global_position + Vector2(0, -18)
 	return rig.to_global(arm_pivot.position)
@@ -276,6 +336,7 @@ func _physics_process(dt: float) -> void:
 	dash_cd -= dt
 	atk_cd -= dt
 	atk_anim -= dt
+	kick_cd -= dt
 	inv -= dt
 	flash_t -= dt
 	if warping:
@@ -285,7 +346,7 @@ func _physics_process(dt: float) -> void:
 		queue_redraw()
 		return
 	if dead:
-		velocity.y = minf(velocity.y + GRAV * dt, MAX_FALL)
+		velocity.y = minf(velocity.y + grav * dt, MAX_FALL)
 		velocity.x *= 0.9
 		move_and_slide()
 		queue_redraw()
@@ -330,22 +391,24 @@ func _physics_process(dt: float) -> void:
 		_hook_physics(dt)
 	elif dash_t > 0.0:
 		dash_t -= dt
-		velocity = Vector2(facing * (600.0 if form == "automato" else 760.0), 0.0)
+		velocity = Vector2(facing * (600.0 if form in ["automato", "yeti"] else 760.0), 0.0)
 		if int(t * 60.0) % 2 == 0:
 			_spawn_ghost()
 		if dash_t <= 0.0:
 			velocity.x = facing * run_speed
 	elif knock_t > 0.0:
 		knock_t -= dt
-		velocity.y = minf(velocity.y + GRAV * dt, MAX_FALL)
+		velocity.y = minf(velocity.y + grav * dt, MAX_FALL)
 	else:
 		var target := dir * run_speed
-		var accel := 900.0 if wall_lock > 0.0 else 4200.0
+		if kick_t > 0.0 and on_floor:
+			target *= 0.35            # o chute giratório quase planta o Yeti no chão
+		var accel := 900.0 if wall_lock > 0.0 else (accel_ground if on_floor else accel_air)
 		wall_lock -= dt
 		velocity.x = move_toward(velocity.x, target, accel * dt)
 		if dir != 0.0 and not (form != "lince" and use_mouse):
 			facing = int(signf(dir))
-		var g := GRAV
+		var g := grav
 		if velocity.y < 0.0 and (controls_locked or not Input.is_action_pressed("jump")):
 			g *= 2.8
 		velocity.y = minf(velocity.y + g * dt, MAX_FALL)
@@ -371,12 +434,12 @@ func _physics_process(dt: float) -> void:
 					act = "doublejump"      # cambalhota (a arte já traz os riscos do impulso)
 					act_t = 0.28
 				Fx.burst(level.fx, global_position, Color(0.85, 1.0, 0.5, 0.9), 8, 180, 0.35, 0.05, 200)
-		if not controls_locked and Input.is_action_just_pressed("dash") and dash_cd <= 0.0 and (on_floor or (air_dash and form != "automato")):
+		if not controls_locked and Input.is_action_just_pressed("dash") and dash_cd <= 0.0 and (on_floor or (air_dash and form not in ["automato", "yeti"])):
 			if dir != 0.0:
 				facing = int(signf(dir))
-			dash_t = 0.2 if form == "automato" else 0.16
+			dash_t = 0.2 if form in ["automato", "yeti"] else 0.16
 			dash_cd = Upgrades.dash_cd(main)
-			AudioMgr.sfx("arranque" if form == "automato" else "esquiva", Vector2.INF, -2.0)
+			AudioMgr.sfx("arranque" if form in ["automato", "yeti"] else "esquiva", Vector2.INF, -2.0)
 			if not on_floor:
 				air_dash = false
 			Fx.burst(level.fx, global_position + Vector2(-facing * 10, -24), Color(0.5, 0.9, 1.0, 0.8), 10, 200, 0.3, 0.06, 0)
@@ -395,13 +458,18 @@ func _physics_process(dt: float) -> void:
 		_update_aim()
 		if hook != null:
 			aim = (hook.global_position - shoulder_global()).normalized()
-		if Input.is_action_just_pressed("attack") and atk_cd <= 0.0:
+		if Input.is_action_just_pressed("attack") and atk_cd <= 0.0 and kick_t <= 0.0:
 			_attack()
 		if Input.is_action_just_pressed("special"):
-			_special()
+			if form == "yeti":
+				_spin_kick()
+			else:
+				_special()
 		if Input.is_action_just_pressed("interact") and main.interact_target != null and is_instance_valid(main.interact_target):
 			main.interact_target.interact()
 
+	if form == "yeti":
+		_yeti_actions(dt)
 	move_and_slide()
 	if hook != null and hook_pull_t > 0.06 and get_real_velocity().length() < HOOK_SPEED * 0.25:
 		_end_hook(0.0)
@@ -419,6 +487,10 @@ func _physics_process(dt: float) -> void:
 				Desert.effect(level.fx, "DF83", 6, position - Vector2(0, 31), Vector2(92, 74))
 			else:
 				Fx.burst(level.fx, global_position, Color(0.85, 0.6, 0.4, 0.5), 8, 120, 0.35, 0.05, 50)
+		elif form == "yeti":
+			land_t = 0.12
+			main.add_shake(3.0)       # pesado: o chão treme um pouco
+			Fx.burst(level.fx, global_position, Color(0.92, 0.96, 1.0, 0.75), 14, 170, 0.45, 0.06, 60)
 		else:
 			Fx.burst(level.fx, global_position, Color(0.75, 0.8, 0.85, 0.5), 8, 120, 0.35, 0.05, 50)
 	was_floor = now_floor
@@ -438,6 +510,10 @@ func _process(dt: float) -> void:
 		_update_rig(dt)
 		glow_a.global_position = gun_tip()
 		glow_a.modulate.a = 0.25 + (0.6 if atk_anim > 0.0 else 0.0)
+	elif form == "yeti":
+		_update_yeti(dt)
+		glow_a.global_position = gun_tip()
+		glow_a.modulate.a = 0.0 if dead else (0.5 if throw_t > 0.0 else 0.0)
 	elif form == "automato":
 		_update_automato(dt)
 		glow_a.global_position = gun_tip()
@@ -454,7 +530,7 @@ func _process(dt: float) -> void:
 		gb = flash_t / 0.4 * 0.9
 	elif atk_anim > 0.0 and form == "human":
 		gb = 0.25
-	glow_b.modulate = Color(0.6, 1.0, 0.8, gb) if form == "lince" else Color(0.4, 0.9, 1.0, gb)
+	glow_b.modulate = Color(0.6, 1.0, 0.8, gb) if form == "lince" else (Color(0.85, 0.95, 1.0, gb) if form == "yeti" else Color(0.4, 0.9, 1.0, gb))
 	if warping:
 		modulate = Color(1, 1, 1, maxf(0.0, 1.0 - warp_t * 1.2))
 		scale = Vector2.ONE * maxf(0.05, 1.0 - warp_t * 0.9)
@@ -672,6 +748,105 @@ func _update_automato(dt: float) -> void:
 		arm_spr.play("braco")
 
 
+## Yeti: tempo do arremesso (a bola sai no quadro do braço esticado) e do chute giratório.
+func _yeti_actions(dt: float) -> void:
+	if throw_t > 0.0:
+		var before := throw_t
+		throw_t -= dt
+		if before > SNOW_SPAWN and throw_t <= SNOW_SPAWN and not dead:
+			throw_aim = aim
+			var b := Snowball.new()
+			b.dir = throw_aim
+			b.player = self
+			b.position = gun_tip()
+			level.add_fx(b)
+			AudioMgr.sfx("garras", Vector2.INF, -6.0, 0.15)
+	if kick_t > 0.0:
+		kick_t -= dt
+
+
+## Chute giratório (botão direito): golpe em volta do corpo, sem custo de energia, com recarga curta.
+func _spin_kick() -> void:
+	if kick_t > 0.0 or kick_cd > 0.0 or dead:
+		return
+	kick_t = 0.46
+	kick_cd = 0.75
+	throw_t = 0.0
+	var k := SpinKick.new()
+	k.player = self
+	add_child(k)
+	AudioMgr.sfx("garras", Vector2.INF, -2.0, 0.05)
+
+
+## Escolhe a animação do Yeti pelo estado real; vira de frente (turnaround) ao trocar de lado no chão.
+func _update_yeti(dt: float) -> void:
+	land_t -= dt
+	hurt_t -= dt
+	var on_floor := is_on_floor()
+	if facing != vis_facing:
+		if on_floor and kick_t <= 0.0 and throw_t <= 0.0 and dash_t <= 0.0 and not dead:
+			turn_t = 0.21
+		vis_facing = facing
+	turn_t -= dt
+	var an := "idle"
+	var pose := -1
+	if dead:
+		an = "jump"
+		pose = 6
+	elif hurt_t > 0.0:
+		an = "jump"
+		pose = 1
+	elif kick_t > 0.0:
+		an = "kick"
+	elif throw_t > 0.0:
+		# 4 = braço para trás, 5 = arremesso, 6–7 = acompanhamento
+		an = "throw"
+		pose = 4 if throw_t > SNOW_SPAWN + 0.04 else (5 if throw_t > SNOW_SPAWN - 0.06 else (6 if throw_t > 0.08 else 7))
+	elif dash_t > 0.0:
+		an = "run"
+		pose = 3
+	elif hook != null:
+		an = "jump"
+		pose = 4
+	elif not on_floor:
+		an = "jump"
+		if velocity.y < -200.0:
+			pose = 3
+		elif velocity.y < 250.0:
+			pose = 4
+		else:
+			pose = 5
+	elif land_t > 0.0:
+		an = "jump"
+		pose = 6
+	elif turn_t > 0.0:
+		# 3/4 do lado antigo → de frente → 3/4 do lado novo
+		an = "turn"
+		pose = 1 if turn_t > 0.14 or turn_t < 0.07 else 0
+	elif absf(velocity.x) > 30.0:
+		an = "run"
+	if body_spr.animation != an or (pose < 0 and held_pose):
+		body_spr.play(an)
+	held_pose = pose >= 0
+	if held_pose:
+		body_spr.pause()
+		body_spr.frame = pose
+	body_spr.speed_scale = clampf(absf(velocity.x) / run_speed, 0.6, 1.1) if an == "run" else 1.0
+	var vf := float(vis_facing)
+	if turn_t > 0.14:
+		vf = -vf                  # primeira parte da virada ainda olha para o lado antigo
+	var sx := 1.0 + squash * 0.07
+	var sy := 1.0 - squash * 0.06
+	if an == "idle":
+		sy += sin(t * 2.2) * 0.012   # respiração
+	rig.scale = Vector2(sx * vf, sy)
+	var a := 1.0
+	if inv > 0.0 and inv < 50.0 and not dead and int(t * 20.0) % 2 == 0:
+		a = 0.35
+	rig.modulate = Color(1, 1, 1, a)
+	rig.rotation = lerp_angle(rig.rotation, -vf * 1.2 if dead and on_floor else 0.0, minf(1.0, dt * 6.0))
+
+
 ## Feixe do ímã sem âncora ao alcance: puxa o drone mais próximo até o chão à frente (D03).
 func _magnet_drone() -> bool:
 	var from := shoulder_global()
@@ -807,6 +982,13 @@ func _update_aim() -> void:
 
 
 func _attack() -> void:
+	if form == "yeti":
+		# Bola de neve: mira livre como o Estabilizador; sai da mão no quadro do arremesso
+		atk_cd = 0.42
+		throw_t = 0.32
+		throw_aim = aim
+		AudioMgr.sfx("esquiva", Vector2.INF, -8.0, 0.1)
+		return
 	if form == "automato":
 		atk_cd = Upgrades.fire_cd(main) * 1.25      # cadência 20% menor que o Estabilizador
 		atk_anim = 0.12
@@ -976,6 +1158,10 @@ func hurt(from: Vector2, dmg: int = 1, hazard: bool = false) -> void:
 		if sx == 0.0:
 			sx = -facing
 		velocity = Vector2(sx * 340.0, -360.0)
+		if form == "yeti":
+			velocity *= 0.6           # pesado: recua menos
+	throw_t = 0.0
+	kick_t = 0.0
 	main.on_player_hurt()
 	Fx.burst(level.fx, global_position + Vector2(0, -25), Color(1, 1, 1), 18, 300, 0.4, 0.07)
 	if hp <= 0:
