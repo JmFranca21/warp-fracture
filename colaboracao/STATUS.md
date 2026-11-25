@@ -37,6 +37,7 @@ Atualizado pelos agentes. Leia `PROTOCOLO.md` e `FLUXO_AUTOMATICO.md` antes de c
 | DF200 | Céu do crepúsculo de tempestade | ENTREGUE | [DF](pedidos/DF_refacao_cena.md) | — | [Céu, comparação e aferição](entregas/DF200/ENTREGA.md) |
 | DF200 diurno | Céu aprovado das Dunas | APROVADO (Pacote 3) | [DF](pedidos/DF_refacao_cena.md) | [Céu diurno](entregas/DF200/DF200_ceu_diurno.png) | — |
 | DF202 | Fundos da Fábrica e do Salão | APROVADO (Pacote 4, 25/11/2026) | — | [Entrega](entregas/DF202/ENTREGA.md) | — |
+| DF206 | Decoração das Dunas e da Fábrica (24 peças) | APROVADO (Pacote 6, 25/11/2026) | — | [Pranchas e cenas](entregas/DF206/ENTREGA_v2.md) | — |
 | DF204 | Estruturas de fundo do Deserto (10 peças) | APROVADO (Pacote 5, 25/11/2026) | — | [Atlas e cenas](entregas/DF204/ENTREGA_v2.md) | — |
 | DF203 | Fundo da Câmara da Forja | APROVADO (Pacote 4, 25/11/2026) | — | [Entrega](entregas/DF203/ENTREGA.md) | — |
 | DF201 | Dunas de Sucata · fundo intermediário diurno | APROVADO (Pacote 3, 25/11/2026) | [DF](pedidos/DF_refacao_cena.md) | [Camadas e parallax](entregas/DF201/ENTREGA_v2.md) | — |
