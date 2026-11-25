@@ -33,9 +33,10 @@ Atualizado pelos agentes. Leia `PROTOCOLO.md` e `FLUXO_AUTOMATICO.md` antes de c
 |---|---|---|---|---|---|
 | DF00 | Prancha de referência do Deserto (paleta, materiais, amostras) | ENTREGUE (aprovado pelo responsável) | [DF](pedidos/DF_deserto_ferrugem.md) | — | — |
 | DF00 v2 | Prancha de referência do Deserto pela DA-03 | ENTREGUE | [DF](pedidos/DF_deserto_ferrugem.md) | — | [Prancha, comparação e aferição](entregas/DF00/ENTREGA_v2.md) |
-| DF205 | Terreno do Deserto de Ferrugem | ENTREGUE (retoque dos cantos ENTREGUE) | [DF](pedidos/DF_refacao_cena.md) | — | [Peças, encaixes e comparação](entregas/DF205/ENTREGA.md) |
+| DF205 | Terreno do Deserto de Ferrugem · 22 peças | APROVADO (Pacote 3, 25/11/2026) | [DF](pedidos/DF_refacao_cena.md) | [Peças e encaixes](entregas/DF205/ENTREGA_v2.md) | — |
 | DF200 | Céu do crepúsculo de tempestade | ENTREGUE | [DF](pedidos/DF_refacao_cena.md) | — | [Céu, comparação e aferição](entregas/DF200/ENTREGA.md) |
-| DF201 | Fundo intermediário das Dunas de Sucata | ENTREGUE | [DF](pedidos/DF_refacao_cena.md) | — | [Camadas, composição e aferição](entregas/DF201/ENTREGA.md) |
+| DF200 diurno | Céu aprovado das Dunas | APROVADO (Pacote 3) | [DF](pedidos/DF_refacao_cena.md) | [Céu diurno](entregas/DF200/DF200_ceu_diurno.png) | — |
+| DF201 | Dunas de Sucata · fundo intermediário diurno | APROVADO (Pacote 3, 25/11/2026) | [DF](pedidos/DF_refacao_cena.md) | [Camadas e parallax](entregas/DF201/ENTREGA_v2.md) | — |
 | DF01 | Ficha do Robô e do Drone do deserto | ENTREGUE (v2) · APROVADO | [DF](pedidos/DF_deserto_ferrugem.md) | [ficha e conferências](entregas/DF01/ENTREGA_v2.md) | João Marcelo, 25/11/2026 |
 | DF10–DF12 | Fundos das Dunas em parallax | ENTREGUE | [DF](pedidos/DF_deserto_ferrugem.md) | — | — |
 | DF20–DF28 | Terreno, paredes, piso, esteira, trilho e cabo | ENTREGUE | [DF](pedidos/DF_deserto_ferrugem.md) | — | — |
