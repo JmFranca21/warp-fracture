@@ -584,3 +584,17 @@ Arte trazida da `main`: `df38a74` (DF200 e o retoque dos cantos da DF205) e `72d
 - O que falta de estrutura nas Dunas fica para a decoração e o primeiro plano (DF206 e DF208).
 - Pendente só para a DF202: o terço de cima da Fábrica.
 - Com o jogador parado, a separação no Salão 6500 oscila entre 0,67 e 0,74, conforme o quadro da animação em que ele congela.
+
+### 15.6 Estilo: DA-04 proposta e produção do Deserto suspensa (24/11/2026)
+
+Com DF200, DF201 e DF205 integradas, o João avaliou que o estilo ainda não parece do mesmo jogo: tudo deve parecer feito por um único artista.
+
+**Diagnóstico** (`docs/auditoria_cena/estilo_referencia_e_desvios.jpg`): os valores já passam na DA-03; a diferença é de linguagem gráfica.
+- **Laboratório e Verdâmia:** formas chapadas em 2–3 tons, sem traço no cenário, detalhe crescendo para a frente, cor-assinatura na borda de apoio e nas luzes.
+- **Deserto:** a DF201 é ilustração com traço e hachura, o terreno não tem cor-assinatura e a arte v0.8 é cartum claro de outra mão.
+
+**Proposta e próximos passos**
+- DA-04 em `colaboracao/entregas/00_padrao_visual/DA-04_ASSINATURA_DE_ESTILO.md`; pedido em `colaboracao/pedidos/DA04_assinatura_de_estilo.md` (revisão das regras e quadro-chave de 1.280 × 720 do Deserto).
+- Os pedidos de arte a partir da DF202 ficam suspensos até o quadro-chave ser aprovado.
+- Depois dele: refazer a DF201 com as mesmas medidas (o código não muda) e retocar a borda de apoio da DF205.
+- O código e as medições da 15.5 continuam valendo.
