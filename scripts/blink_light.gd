@@ -2,7 +2,7 @@ class_name BlinkLight
 extends Node2D
 ## Luz de alerta que pisca. Em alarme, pisca rápido e mais forte.
 
-var color := Color(1, 0.2, 0.1, 0.8)
+@export var color := Color(1, 0.2, 0.1, 0.8)
 var g: Sprite2D
 var t := 0.0
 var alarm := false

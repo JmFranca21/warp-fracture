@@ -1,14 +1,15 @@
+@tool
 class_name BackWall
 extends Node2D
 ## Parede de fundo do laboratório: painéis, colunas, rodapé, tubulações e brechas.
 ## Serve de "apoio" para a decoração (janelas, válvulas, tanques), para nada parecer flutuando.
 
-var spans: Array = []      # [x0, x1, y_topo, y_base]
-var columns: Array = []    # x das colunas
-var breaches: Array = []   # [x, y, raio]  (rombos na parede com vista para fora)
-var pipes: Array = []      # [x0, x1, y]   (cano horizontal preso na parede)
-var drops: Array = []      # [x, y0, y1]   (cano vertical: do tanque até o cano da parede)
-var rails: Array = []      # [a, b]        (trilho de plataforma móvel)
+@export var spans: Array = []      # [x0, x1, y_topo, y_base]
+@export var columns: Array = []    # x das colunas
+@export var breaches: Array = []   # [x, y, raio]  (rombos na parede com vista para fora)
+@export var pipes: Array = []      # [x0, x1, y]   (cano horizontal preso na parede)
+@export var drops: Array = []      # [x, y0, y1]   (cano vertical: do tanque até o cano da parede)
+@export var rails: Array = []      # [a, b]        (trilho de plataforma móvel)
 var t := 0.0
 
 const PANEL := Color("0e1622")
@@ -26,6 +27,8 @@ func _ready() -> void:
 
 
 func _process(dt: float) -> void:
+	if Engine.is_editor_hint():     # no editor: só o desenho parado
+		return
 	t += dt
 	if int(t * 10.0) != int((t - dt) * 10.0):
 		queue_redraw()

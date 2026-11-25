@@ -1,14 +1,44 @@
+@tool
 class_name TerrainDraw
 extends Node2D
 ## Desenha o terreno sólido (chão, paredes, plataformas).
 
-var theme := "lab"
-var rects: Array = []
-var thin_art: Array = []    # Verdâmia: arte de cada plataforma fina, na ordem em que aparecem em rects
+@export var theme := "lab"
+@export var rects: Array = []
+@export var thin_art: Array = []    # Verdâmia: arte de cada plataforma fina, na ordem em que aparecem em rects
+@export var solidos_da_cena := false   # fases em cena: rects vêm dos nós Solido_ (StaticBody2D) irmãos
+var _espera := 0.0
+
+
+## Retângulos das colisões dos StaticBody2D sem script que são filhos de parent, na ordem da árvore.
+static func solidos(parent: Node) -> Array:
+	var out := []
+	for c in parent.get_children():
+		if c is StaticBody2D and c.get_script() == null and c.get_child_count() > 0 and c.get_child(0) is CollisionShape2D:
+			var cs: CollisionShape2D = c.get_child(0)
+			if cs.shape is RectangleShape2D:
+				var sz: Vector2 = (cs.shape as RectangleShape2D).size
+				out.append(Rect2(c.position + cs.position - sz / 2.0, sz))
+	return out
 
 
 func _ready() -> void:
+	if solidos_da_cena:
+		rects = solidos(get_parent())
+	set_process(Engine.is_editor_hint() and solidos_da_cena)
 	queue_redraw()
+
+
+func _process(dt: float) -> void:
+	# só no editor: acompanha os Solido_ enquanto eles são movidos ou redimensionados
+	_espera -= dt
+	if _espera > 0.0:
+		return
+	_espera = 0.3
+	var r := solidos(get_parent())
+	if r != rects:
+		rects = r
+		queue_redraw()
 
 
 func _draw() -> void:

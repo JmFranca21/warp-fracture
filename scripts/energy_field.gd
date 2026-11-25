@@ -2,8 +2,8 @@ class_name EnergyField
 extends StaticBody2D
 ## Campo de força (sprite animado fx_campo) bloqueando uma passagem vertical.
 
-var sid := ""
-var rect := Rect2()
+@export var sid := ""
+@export var rect := Rect2()
 var spr: AnimatedSprite2D
 var cs: CollisionShape2D
 var glow: Sprite2D

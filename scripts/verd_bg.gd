@@ -1,16 +1,18 @@
+@tool
 class_name VerdBg
 extends Node2D
 ## Camada de parallax de Verdâmia feita com a arte entregue (VD_bg_distante / VD_bg_intermediario).
 ## A imagem se repete na horizontal espelhando as cópias vizinhas, para as bordas sempre emendarem.
 
-var depth := 0.1
-var tex: Texture2D
-var img_scale := 1.0
-var top := 0.0              # y local do topo da imagem
-var span := Vector2(-1000, 3000)   # faixa local em x que precisa estar coberta
-var single := false        # place(): uma cópia só, sem repetir (espelhada só fora de 16:9)
-var left := 0.0
-var tiled := false         # place(..., true): repete sem espelhar
+@export var depth := 0.1
+@export var tex: Texture2D
+@export var img_scale := 1.0
+@export var top := 0.0              # y local do topo da imagem
+@export var span := Vector2(-1000, 3000)   # faixa local em x que precisa estar coberta
+@export var single := false        # place(): uma cópia só, sem repetir (espelhada só fora de 16:9)
+@export var left := 0.0
+@export var tiled := false         # place(..., true): repete sem espelhar
+@export var escala_min := 0.0      # Verdâmia: escala mínima do fit(); o Level refaz o fit a partir dos limites da fase
 
 
 func _ready() -> void:

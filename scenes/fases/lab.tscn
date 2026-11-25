@@ -1,0 +1,1240 @@
+[gd_scene load_steps=72 format=3]
+
+[ext_resource type="Script" path="res://scripts/level.gd" id="1_xsoa6"]
+[ext_resource type="Script" path="res://scripts/bg_layer.gd" id="2_rti7a"]
+[ext_resource type="Script" path="res://scripts/back_wall.gd" id="3_8c5lq"]
+[ext_resource type="Script" path="res://scripts/terrain.gd" id="4_i1xy1"]
+[ext_resource type="Texture2D" path="res://assets/laboratorio/janela.png" id="5_ck5vx"]
+[ext_resource type="Texture2D" path="res://assets/laboratorio/tanque.png" id="6_cngc2"]
+[ext_resource type="Texture2D" path="res://assets/laboratorio/tubulacao.png" id="7_6t1xd"]
+[ext_resource type="Texture2D" path="res://assets/laboratorio/bandeira.png" id="8_gmhcw"]
+[ext_resource type="Texture2D" path="res://assets/laboratorio/cabos.png" id="9_w5iak"]
+[ext_resource type="Texture2D" path="res://assets/laboratorio/camera_corpo.png" id="10_1qovb"]
+[ext_resource type="Texture2D" path="res://assets/laboratorio/alerta.png" id="11_2yosl"]
+[ext_resource type="Script" path="res://scripts/blink_light.gd" id="12_ds3cu"]
+[ext_resource type="Texture2D" path="res://assets/laboratorio/entulho_2.png" id="13_twmcb"]
+[ext_resource type="Texture2D" path="res://assets/laboratorio/entulho_1.png" id="14_ahg1l"]
+[ext_resource type="Texture2D" path="res://assets/laboratorio/entulho_3.png" id="15_3k7h6"]
+[ext_resource type="Script" path="res://scripts/hazard.gd" id="16_hcemw"]
+[ext_resource type="Script" path="res://scripts/sign.gd" id="17_kked3"]
+[ext_resource type="Script" path="res://scripts/checkpoint.gd" id="18_njjvn"]
+[ext_resource type="Script" path="res://scripts/terminal.gd" id="19_kagm8"]
+[ext_resource type="Script" path="res://scripts/door.gd" id="20_7ps2y"]
+[ext_resource type="Script" path="res://scripts/portal.gd" id="21_4ma8w"]
+[ext_resource type="Script" path="res://scripts/receptacle.gd" id="22_787oq"]
+[ext_resource type="Script" path="res://scripts/pickup.gd" id="23_ymrg8"]
+[ext_resource type="Script" path="res://scripts/laser_gate.gd" id="24_e00pe"]
+[ext_resource type="Script" path="res://scripts/switches.gd" id="25_q4jfi"]
+[ext_resource type="Script" path="res://scripts/energy_field.gd" id="26_moqg0"]
+[ext_resource type="Script" path="res://scripts/energy_lock.gd" id="27_0i5ar"]
+[ext_resource type="Script" path="res://scripts/bench.gd" id="28_g55p4"]
+[ext_resource type="Script" path="res://scripts/grapple_hook.gd" id="29_7rf1n"]
+[ext_resource type="Script" path="res://scripts/security_cam.gd" id="30_dqn1c"]
+[ext_resource type="Script" path="res://scripts/platforms.gd" id="31_h8xtr"]
+[ext_resource type="Script" path="res://scripts/crate.gd" id="32_g0gvl"]
+[ext_resource type="Script" path="res://scripts/crawler.gd" id="33_ygjfp"]
+[ext_resource type="Script" path="res://scripts/drone.gd" id="34_tl5hn"]
+[ext_resource type="Script" path="res://scripts/turret.gd" id="35_iabqm"]
+[ext_resource type="Script" path="res://scripts/fuga.gd" id="36_rg81k"]
+[ext_resource type="Script" path="res://scripts/fg_layer.gd" id="37_44hge"]
+[ext_resource type="Script" path="res://scripts/previa_editor.gd" id="38_tmvov"]
+
+[sub_resource type="Gradient" id="Gradient_d1rjo"]
+colors = PackedColorArray(0.0156863, 0.027451, 0.0509804, 1, 0.0901961, 0.14902, 0.227451, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_us0aa"]
+gradient = SubResource("Gradient_d1rjo")
+width = 4
+height = 256
+fill_to = Vector2(0, 1)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_qno26"]
+blend_mode = 1
+
+[sub_resource type="Gradient" id="Gradient_8nj38"]
+offsets = PackedFloat32Array(0, 0.22, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0.42, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_5xuwj"]
+gradient = SubResource("Gradient_8nj38")
+width = 128
+height = 128
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+
+[sub_resource type="Gradient" id="Gradient_84hdi"]
+offsets = PackedFloat32Array(0, 0.2, 0.75, 1)
+colors = PackedColorArray(0.62, 0.45, 1, 0, 0.62, 0.45, 1, 0.8, 0.62, 0.45, 1, 0.8, 0.62, 0.45, 1, 0)
+
+[sub_resource type="Gradient" id="Gradient_0trvx"]
+offsets = PackedFloat32Array(0, 0.2, 0.75, 1)
+colors = PackedColorArray(0.35, 0.85, 1, 0, 0.35, 0.85, 1, 0.6, 0.35, 0.85, 1, 0.6, 0.35, 0.85, 1, 0)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v4yro"]
+size = Vector2(60, 1700)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d3em0"]
+size = Vector2(2240, 520)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lhf3q"]
+size = Vector2(1260, 600)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ubw1o"]
+size = Vector2(320, 360)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x5lk4"]
+size = Vector2(3200, 600)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ng2yd"]
+size = Vector2(740, 60)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aw526"]
+size = Vector2(40, 920)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dw0jd"]
+size = Vector2(40, 680)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rrvtc"]
+size = Vector2(170, 22)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vfrsn"]
+size = Vector2(120, 22)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_da7y8"]
+size = Vector2(4040, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_76uwh"]
+size = Vector2(300, 300)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f1pfo"]
+size = Vector2(460, 120)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rdwbc"]
+size = Vector2(150, 300)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3f564"]
+size = Vector2(130, 300)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h1ip2"]
+size = Vector2(2940, 480)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hslaw"]
+size = Vector2(40, 380)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nvnnh"]
+size = Vector2(130, 22)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p2voe"]
+size = Vector2(110, 380)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pqjir"]
+size = Vector2(960, 710)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vidbo"]
+size = Vector2(200, 360)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d64gg"]
+size = Vector2(260, 710)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j5idn"]
+size = Vector2(90, 930)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7p2s0"]
+size = Vector2(300, 360)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nw2l0"]
+size = Vector2(370, 710)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6aw01"]
+size = Vector2(60, 1700)
+
+[node name="Laboratorio" type="Node2D"]
+script = ExtResource("1_xsoa6")
+montada = true
+nome = "LABORATÓRIO HÉLIX"
+subtitulo = "Setor de Pesquisa Dimensional — 2100"
+tema = "lab"
+forma = "human"
+limites = Rect2(-200, -300, 6900, 1450)
+kill_y = 1300.0
+salas = [["A", Rect2(-200, 220, 1200, 580), "Despertar"], ["B", Rect2(1000, 220, 320, 820), "Fosso"], ["C", Rect2(1320, 220, 660, 580), "Turreta"], ["D", Rect2(1980, -260, 740, 1060), "Sala Alta"], ["E", Rect2(2720, 220, 1020, 580), "Lasers"], ["F", Rect2(3740, 220, 400, 580), "Campo"], ["G", Rect2(4140, 220, 910, 580), "Saída"], ["H", Rect2(5050, 220, 1650, 820), "Galeria do Portal"], ["S", Rect2(2720, -260, 1100, 200), "Ala Secreta"]]
+porta_requer = ["A", "B"]
+chefe = {}
+
+[node name="Ceu" type="CanvasLayer" parent="."]
+layer = -20
+
+[node name="Gradiente" type="TextureRect" parent="Ceu"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = SubResource("GradientTexture2D_us0aa")
+expand_mode = 1
+
+[node name="Fundo_01" type="Node2D" parent="."]
+z_index = -60
+script = ExtResource("2_rti7a")
+theme = "lab"
+depth = 0.12
+layer_index = 0
+span = Vector2(-1600, 8300)
+
+[node name="Fundo_02" type="Node2D" parent="."]
+z_index = -50
+script = ExtResource("2_rti7a")
+theme = "lab"
+depth = 0.3
+layer_index = 1
+span = Vector2(-1600, 8300)
+
+[node name="Fundo_03" type="Node2D" parent="."]
+z_index = -40
+script = ExtResource("2_rti7a")
+theme = "lab"
+depth = 0.55
+layer_index = 2
+span = Vector2(-1600, 8300)
+
+[node name="Particulas_01" type="CPUParticles2D" parent="."]
+z_index = 3
+material = SubResource("CanvasItemMaterial_qno26")
+position = Vector2(3250, 425)
+amount = 70
+lifetime = 9.0
+preprocess = 9.0
+texture = SubResource("GradientTexture2D_5xuwj")
+emission_shape = 3
+emission_rect_extents = Vector2(3450, 725)
+direction = Vector2(0, -1)
+spread = 180.0
+gravity = Vector2(0, -5)
+initial_velocity_min = 4.0
+initial_velocity_max = 22.0
+scale_amount_min = 0.03
+scale_amount_max = 0.1
+color_ramp = SubResource("Gradient_84hdi")
+
+[node name="Particulas_02" type="CPUParticles2D" parent="."]
+z_index = 3
+material = SubResource("CanvasItemMaterial_qno26")
+position = Vector2(3250, 425)
+amount = 60
+lifetime = 9.0
+preprocess = 9.0
+texture = SubResource("GradientTexture2D_5xuwj")
+emission_shape = 3
+emission_rect_extents = Vector2(3450, 725)
+direction = Vector2(0, -1)
+spread = 180.0
+gravity = Vector2(0, -5)
+initial_velocity_min = 4.0
+initial_velocity_max = 22.0
+scale_amount_min = 0.03
+scale_amount_max = 0.1
+color_ramp = SubResource("Gradient_0trvx")
+
+[node name="ParedeDeFundo" type="Node2D" parent="."]
+script = ExtResource("3_8c5lq")
+spans = [[-200, 2020, 220, 800], [1000, 1320, 800, 1040], [1980, 2720, -260, 800], [2680, 6700, 220, 800], [5480, 5680, 690, 1040], [6030, 6330, 690, 1040], [2720, 3820, -260, -80], [3020, 3480, -80, 100], [3630, 3690, -80, 220]]
+columns = [120, 560, 990, 1330, 1760, 2350, 2900, 3330, 3940, 4400, 4800, 3000, 3500, 5300, 5810]
+breaches = [[775, 520, 70], [3500, 560, 75]]
+pipes = [[120, 560, 330], [1330, 1980, 320], [2900, 3330, 300], [4400, 4800, 330], [5300, 5810, 320]]
+drops = [[200, 684, 330], [1860, 684, 320], [4470, 684, 330]]
+rails = [[Vector2(1075, 740), Vector2(1275, 740)], [Vector2(2475, 512), Vector2(2475, 94)]]
+
+[node name="Terreno" type="Node2D" parent="."]
+script = ExtResource("4_i1xy1")
+theme = "lab"
+rects = []
+thin_art = []
+solidos_da_cena = true
+
+[node name="Solido_01" type="StaticBody2D" parent="."]
+collision_mask = 0
+
+[node name="Colisao" type="CollisionShape2D" parent="Solido_01"]
+position = Vector2(-230, 550)
+shape = SubResource("RectangleShape2D_v4yro")
+debug_color = Color(0.3, 0.85, 1, 0.12)
+
+[node name="Solido_02" type="StaticBody2D" parent="."]
+collision_mask = 0
+
+[node name="Colisao" type="CollisionShape2D" parent="Solido_02"]
+position = Vector2(860, -40)
+shape = SubResource("RectangleShape2D_d3em0")
+debug_color = Color(0.3, 0.85, 1, 0.12)
+
+[node name="Solido_03" type="StaticBody2D" parent="."]
+collision_mask = 0
+
+[node name="Colisao" type="CollisionShape2D" parent="Solido_03"]
+position = Vector2(370, 1100)
+shape = SubResource("RectangleShape2D_lhf3q")
+debug_color = Color(0.3, 0.85, 1, 0.12)
+
+[node name="Solido_04" type="StaticBody2D" parent="."]
+collision_mask = 0
+
+[node name="Colisao" type="CollisionShape2D" parent="Solido_04"]
+position = Vector2(1160, 1220)
+shape = SubResource("RectangleShape2D_ubw1o")
+debug_color = Color(0.3, 0.85, 1, 0.12)
+
+[node name="Solido_05" type="StaticBody2D" parent="."]
+collision_mask = 0
+
+[node name="Colisao" type="CollisionShape2D" parent="Solido_05"]
+position = Vector2(2920, 1100)
+shape = SubResource("RectangleShape2D_x5lk4")
+debug_color = Color(0.3, 0.85, 1, 0.12)
+
+[node name="Solido_06" type="StaticBody2D" parent="."]
+collision_mask = 0
+
+[node name="Colisao" type="CollisionShape2D" parent="Solido_06"]
+position = Vector2(2350, -290)
+shape = SubResource("RectangleShape2D_ng2yd")
+debug_color = Color(0.3, 0.85, 1, 0.12)
+
+[node name="Solido_07" type="StaticBody2D" parent="."]
+collision_mask = 0
+
+[node name="Colisao" type="CollisionShape2D" parent="Solido_07"]
+position = Vector2(2000, 140)
+shape = SubResource("RectangleShape2D_aw526")
+debug_color = Color(0.3, 0.85, 1, 0.12)
+
+[node name="Solido_08" type="StaticBody2D" parent="."]
+collision_mask = 0
+
+[node name="Colisao" type="CollisionShape2D" parent="Solido_08"]
+position = Vector2(2700, 260)
+shape = SubResource("RectangleShape2D_dw0jd")
+debug_color = Color(0.3, 0.85, 1, 0.12)
+
+[node name="Solido_09" type="StaticBody2D" parent="."]
+collision_mask = 0
+
+[node name="Colisao" type="CollisionShape2D" parent="Solido_09"]
+position = Vector2(2105, 481)
+shape = SubResource("RectangleShape2D_rrvtc")
+debug_color = Color(0.3, 0.85, 1, 0.12)
+
+[node name="Solido_10" type="StaticBody2D" parent="."]
+collision_mask = 0
+
+[node name="Colisao" type="CollisionShape2D" parent="Solido_10"]
+position = Vector2(2620, 131)
+shape = SubResource("RectangleShape2D_vfrsn")
+debug_color = Color(0.3, 0.85, 1, 0.12)
+
+[node name="Solido_11" type="StaticBody2D" parent="."]
+collision_mask = 0
+
+[node name="Colisao" type="CollisionShape2D" parent="Solido_11"]
+position = Vector2(4740, -280)
+shape = SubResource("RectangleShape2D_da7y8")
+debug_color = Color(0.3, 0.85, 1, 0.12)
+
+[node name="Solido_12" type="StaticBody2D" parent="."]
+collision_mask = 0
+
+[node name="Colisao" type="CollisionShape2D" parent="Solido_12"]
+position = Vector2(2870, 70)
+shape = SubResource("RectangleShape2D_76uwh")
+debug_color = Color(0.3, 0.85, 1, 0.12)
+
+[node name="Solido_13" type="StaticBody2D" parent="."]
+collision_mask = 0
+
+[node name="Colisao" type="CollisionShape2D" parent="Solido_13"]
+position = Vector2(3250, 160)
+shape = SubResource("RectangleShape2D_f1pfo")
+debug_color = Color(0.3, 0.85, 1, 0.12)
+
+[node name="Solido_14" type="StaticBody2D" parent="."]
+collision_mask = 0
+
+[node name="Colisao" type="CollisionShape2D" parent="Solido_14"]
+position = Vector2(3555, 70)
+shape = SubResource("RectangleShape2D_rdwbc")
+debug_color = Color(0.3, 0.85, 1, 0.12)
+
+[node name="Solido_15" type="StaticBody2D" parent="."]
+collision_mask = 0
+
+[node name="Colisao" type="CollisionShape2D" parent="Solido_15"]
+position = Vector2(3755, 70)
+shape = SubResource("RectangleShape2D_3f564")
+debug_color = Color(0.3, 0.85, 1, 0.12)
+
+[node name="Solido_16" type="StaticBody2D" parent="."]
+collision_mask = 0
+
+[node name="Colisao" type="CollisionShape2D" parent="Solido_16"]
+position = Vector2(5290, -20)
+shape = SubResource("RectangleShape2D_h1ip2")
+debug_color = Color(0.3, 0.85, 1, 0.12)
+
+[node name="Solido_17" type="StaticBody2D" parent="."]
+collision_mask = 0
+
+[node name="Colisao" type="CollisionShape2D" parent="Solido_17"]
+position = Vector2(3720, 410)
+shape = SubResource("RectangleShape2D_hslaw")
+debug_color = Color(0.3, 0.85, 1, 0.12)
+
+[node name="Solido_18" type="StaticBody2D" parent="."]
+collision_mask = 0
+
+[node name="Colisao" type="CollisionShape2D" parent="Solido_18"]
+position = Vector2(4075, 591)
+shape = SubResource("RectangleShape2D_nvnnh")
+debug_color = Color(0.3, 0.85, 1, 0.12)
+
+[node name="Solido_19" type="StaticBody2D" parent="."]
+collision_mask = 0
+
+[node name="Colisao" type="CollisionShape2D" parent="Solido_19"]
+position = Vector2(4195, 410)
+shape = SubResource("RectangleShape2D_p2voe")
+debug_color = Color(0.3, 0.85, 1, 0.12)
+
+[node name="Solido_20" type="StaticBody2D" parent="."]
+collision_mask = 0
+
+[node name="Colisao" type="CollisionShape2D" parent="Solido_20"]
+position = Vector2(5000, 1045)
+shape = SubResource("RectangleShape2D_pqjir")
+debug_color = Color(0.3, 0.85, 1, 0.12)
+
+[node name="Solido_21" type="StaticBody2D" parent="."]
+collision_mask = 0
+
+[node name="Colisao" type="CollisionShape2D" parent="Solido_21"]
+position = Vector2(5580, 1220)
+shape = SubResource("RectangleShape2D_vidbo")
+debug_color = Color(0.3, 0.85, 1, 0.12)
+
+[node name="Solido_22" type="StaticBody2D" parent="."]
+collision_mask = 0
+
+[node name="Colisao" type="CollisionShape2D" parent="Solido_22"]
+position = Vector2(5810, 1045)
+shape = SubResource("RectangleShape2D_d64gg")
+debug_color = Color(0.3, 0.85, 1, 0.12)
+
+[node name="Solido_23" type="StaticBody2D" parent="."]
+collision_mask = 0
+
+[node name="Colisao" type="CollisionShape2D" parent="Solido_23"]
+position = Vector2(5985, 935)
+shape = SubResource("RectangleShape2D_j5idn")
+debug_color = Color(0.3, 0.85, 1, 0.12)
+
+[node name="Solido_24" type="StaticBody2D" parent="."]
+collision_mask = 0
+
+[node name="Colisao" type="CollisionShape2D" parent="Solido_24"]
+position = Vector2(6180, 1220)
+shape = SubResource("RectangleShape2D_7p2s0")
+debug_color = Color(0.3, 0.85, 1, 0.12)
+
+[node name="Solido_25" type="StaticBody2D" parent="."]
+collision_mask = 0
+
+[node name="Colisao" type="CollisionShape2D" parent="Solido_25"]
+position = Vector2(6515, 1045)
+shape = SubResource("RectangleShape2D_nw2l0")
+debug_color = Color(0.3, 0.85, 1, 0.12)
+
+[node name="Solido_26" type="StaticBody2D" parent="."]
+collision_mask = 0
+
+[node name="Colisao" type="CollisionShape2D" parent="Solido_26"]
+position = Vector2(6730, 550)
+shape = SubResource("RectangleShape2D_6aw01")
+debug_color = Color(0.3, 0.85, 1, 0.12)
+
+[node name="Decoracao" type="Node2D" parent="."]
+z_index = -5
+
+[node name="Deco_janela_01" type="Sprite2D" parent="Decoracao"]
+modulate = Color(0.8, 0.8, 0.84, 1)
+position = Vector2(340, 480)
+texture = ExtResource("5_ck5vx")
+
+[node name="Deco_janela_02" type="Sprite2D" parent="Decoracao"]
+modulate = Color(0.8, 0.8, 0.84, 1)
+position = Vector2(1545, 470)
+scale = Vector2(-1, 1)
+texture = ExtResource("5_ck5vx")
+
+[node name="Deco_janela_03" type="Sprite2D" parent="Decoracao"]
+modulate = Color(0.8, 0.8, 0.84, 1)
+position = Vector2(2185, 40)
+texture = ExtResource("5_ck5vx")
+
+[node name="Deco_janela_04" type="Sprite2D" parent="Decoracao"]
+modulate = Color(0.8, 0.8, 0.84, 1)
+position = Vector2(3115, 470)
+texture = ExtResource("5_ck5vx")
+
+[node name="Deco_janela_05" type="Sprite2D" parent="Decoracao"]
+modulate = Color(0.8, 0.8, 0.84, 1)
+position = Vector2(4040, 400)
+scale = Vector2(-0.9, 0.9)
+texture = ExtResource("5_ck5vx")
+
+[node name="Deco_janela_06" type="Sprite2D" parent="Decoracao"]
+modulate = Color(0.8, 0.8, 0.84, 1)
+position = Vector2(4600, 440)
+texture = ExtResource("5_ck5vx")
+
+[node name="Deco_tanque_01" type="Sprite2D" parent="Decoracao"]
+modulate = Color(0.72, 0.72, 0.756, 1)
+position = Vector2(200, 800)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("6_cngc2")
+offset = Vector2(0, -72.5)
+
+[node name="Brilho_01" type="Sprite2D" parent="Decoracao"]
+modulate = Color(0.3, 0.85, 1, 0.3)
+material = SubResource("CanvasItemMaterial_qno26")
+position = Vector2(200, 744)
+scale = Vector2(0.875, 0.875)
+texture = SubResource("GradientTexture2D_5xuwj")
+
+[node name="Deco_tanque_02" type="Sprite2D" parent="Decoracao"]
+modulate = Color(0.72, 0.72, 0.756, 1)
+position = Vector2(1860, 800)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("6_cngc2")
+offset = Vector2(0, -72.5)
+
+[node name="Brilho_02" type="Sprite2D" parent="Decoracao"]
+modulate = Color(0.3, 0.85, 1, 0.3)
+material = SubResource("CanvasItemMaterial_qno26")
+position = Vector2(1860, 744)
+scale = Vector2(0.875, 0.875)
+texture = SubResource("GradientTexture2D_5xuwj")
+
+[node name="Deco_tanque_03" type="Sprite2D" parent="Decoracao"]
+modulate = Color(0.72, 0.72, 0.756, 1)
+position = Vector2(4470, 800)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("6_cngc2")
+offset = Vector2(0, -72.5)
+
+[node name="Brilho_03" type="Sprite2D" parent="Decoracao"]
+modulate = Color(0.3, 0.85, 1, 0.3)
+material = SubResource("CanvasItemMaterial_qno26")
+position = Vector2(4470, 744)
+scale = Vector2(0.875, 0.875)
+texture = SubResource("GradientTexture2D_5xuwj")
+
+[node name="Deco_tubulacao_01" type="Sprite2D" parent="Decoracao"]
+modulate = Color(0.85, 0.85, 0.8925, 1)
+position = Vector2(185, 330)
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("7_6t1xd")
+
+[node name="Deco_tubulacao_02" type="Sprite2D" parent="Decoracao"]
+modulate = Color(0.85, 0.85, 0.8925, 1)
+position = Vector2(1395, 320)
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("7_6t1xd")
+
+[node name="Deco_tubulacao_03" type="Sprite2D" parent="Decoracao"]
+modulate = Color(0.85, 0.85, 0.8925, 1)
+position = Vector2(3265, 300)
+scale = Vector2(-0.9, 0.9)
+texture = ExtResource("7_6t1xd")
+
+[node name="Deco_tubulacao_04" type="Sprite2D" parent="Decoracao"]
+modulate = Color(0.85, 0.85, 0.8925, 1)
+position = Vector2(4735, 330)
+scale = Vector2(-0.9, 0.9)
+texture = ExtResource("7_6t1xd")
+
+[node name="Deco_bandeira_01" type="Sprite2D" parent="Decoracao"]
+modulate = Color(0.72, 0.72, 0.756, 1)
+position = Vector2(650, 220)
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("8_gmhcw")
+offset = Vector2(0, 69)
+
+[node name="Deco_bandeira_02" type="Sprite2D" parent="Decoracao"]
+modulate = Color(0.72, 0.72, 0.756, 1)
+position = Vector2(2520, -260)
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("8_gmhcw")
+offset = Vector2(0, 69)
+
+[node name="Deco_bandeira_03" type="Sprite2D" parent="Decoracao"]
+modulate = Color(0.72, 0.72, 0.756, 1)
+position = Vector2(4330, 220)
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("8_gmhcw")
+offset = Vector2(0, 69)
+
+[node name="Deco_cabos_01" type="Sprite2D" parent="Decoracao"]
+modulate = Color(0.72, 0.72, 0.756, 1)
+position = Vector2(1100, 220)
+texture = ExtResource("9_w5iak")
+offset = Vector2(0, 67.5)
+
+[node name="Deco_cabos_02" type="Sprite2D" parent="Decoracao"]
+modulate = Color(0.72, 0.72, 0.756, 1)
+position = Vector2(1880, 220)
+scale = Vector2(-1, 1)
+texture = ExtResource("9_w5iak")
+offset = Vector2(0, 67.5)
+
+[node name="Deco_cabos_03" type="Sprite2D" parent="Decoracao"]
+modulate = Color(0.72, 0.72, 0.756, 1)
+position = Vector2(2790, 220)
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("9_w5iak")
+offset = Vector2(0, 67.5)
+
+[node name="Deco_cabos_04" type="Sprite2D" parent="Decoracao"]
+modulate = Color(0.72, 0.72, 0.756, 1)
+position = Vector2(3600, 220)
+scale = Vector2(-1, 1)
+texture = ExtResource("9_w5iak")
+offset = Vector2(0, 67.5)
+
+[node name="Deco_cabos_05" type="Sprite2D" parent="Decoracao"]
+modulate = Color(0.72, 0.72, 0.756, 1)
+position = Vector2(4920, 220)
+texture = ExtResource("9_w5iak")
+offset = Vector2(0, 67.5)
+
+[node name="Deco_cabos_06" type="Sprite2D" parent="Decoracao"]
+modulate = Color(0.72, 0.72, 0.756, 1)
+position = Vector2(2860, -260)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("9_w5iak")
+offset = Vector2(0, 67.5)
+
+[node name="Deco_bandeira_04" type="Sprite2D" parent="Decoracao"]
+modulate = Color(0.72, 0.72, 0.756, 1)
+position = Vector2(3740, -260)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("8_gmhcw")
+offset = Vector2(0, 69)
+
+[node name="Deco_tanque_04" type="Sprite2D" parent="Decoracao"]
+modulate = Color(0.72, 0.72, 0.756, 1)
+position = Vector2(3780, -80)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("6_cngc2")
+offset = Vector2(0, -72.5)
+
+[node name="Brilho_04" type="Sprite2D" parent="Decoracao"]
+modulate = Color(0.3, 0.85, 1, 0.3)
+material = SubResource("CanvasItemMaterial_qno26")
+position = Vector2(3780, -122)
+scale = Vector2(0.65625, 0.65625)
+texture = SubResource("GradientTexture2D_5xuwj")
+
+[node name="Deco_camera_corpo_01" type="Sprite2D" parent="Decoracao"]
+modulate = Color(0.8, 0.8, 0.84, 1)
+position = Vector2(4650, 220)
+scale = Vector2(-0.7, 0.7)
+texture = ExtResource("10_1qovb")
+offset = Vector2(0, 37.5)
+
+[node name="Deco_alerta_01" type="Sprite2D" parent="Decoracao"]
+modulate = Color(0.9, 0.9, 0.945, 1)
+position = Vector2(4115, 800)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("11_2yosl")
+offset = Vector2(0, -48)
+
+[node name="LuzDeAlerta_01" type="Node2D" parent="Decoracao"]
+position = Vector2(4115, 744)
+script = ExtResource("12_ds3cu")
+color = Color(1, 0.15, 0.1, 0.8)
+
+[node name="Deco_alerta_02" type="Sprite2D" parent="Decoracao"]
+modulate = Color(0.9, 0.9, 0.945, 1)
+position = Vector2(4275, 800)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("11_2yosl")
+offset = Vector2(0, -48)
+
+[node name="LuzDeAlerta_02" type="Node2D" parent="Decoracao"]
+position = Vector2(4275, 744)
+script = ExtResource("12_ds3cu")
+color = Color(1, 0.15, 0.1, 0.8)
+
+[node name="Deco_alerta_03" type="Sprite2D" parent="Decoracao"]
+modulate = Color(0.9, 0.9, 0.945, 1)
+position = Vector2(3765, 800)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("11_2yosl")
+offset = Vector2(0, -48)
+
+[node name="LuzDeAlerta_03" type="Node2D" parent="Decoracao"]
+position = Vector2(3765, 744)
+script = ExtResource("12_ds3cu")
+color = Color(1, 0.15, 0.1, 0.8)
+
+[node name="Deco_janela_07" type="Sprite2D" parent="Decoracao"]
+modulate = Color(0.8, 0.8, 0.84, 1)
+position = Vector2(5300, 450)
+scale = Vector2(-1, 1)
+texture = ExtResource("5_ck5vx")
+
+[node name="Deco_janela_08" type="Sprite2D" parent="Decoracao"]
+modulate = Color(0.8, 0.8, 0.84, 1)
+position = Vector2(6450, 450)
+texture = ExtResource("5_ck5vx")
+
+[node name="Deco_cabos_07" type="Sprite2D" parent="Decoracao"]
+modulate = Color(0.72, 0.72, 0.756, 1)
+position = Vector2(5600, 220)
+texture = ExtResource("9_w5iak")
+offset = Vector2(0, 67.5)
+
+[node name="Deco_cabos_08" type="Sprite2D" parent="Decoracao"]
+modulate = Color(0.72, 0.72, 0.756, 1)
+position = Vector2(6250, 220)
+scale = Vector2(-0.9, 0.9)
+texture = ExtResource("9_w5iak")
+offset = Vector2(0, 67.5)
+
+[node name="Deco_bandeira_05" type="Sprite2D" parent="Decoracao"]
+modulate = Color(0.72, 0.72, 0.756, 1)
+position = Vector2(5980, 220)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("8_gmhcw")
+offset = Vector2(0, 69)
+
+[node name="Deco_entulho_2_01" type="Sprite2D" parent="Decoracao"]
+modulate = Color(0.8, 0.8, 0.84, 1)
+position = Vector2(5965, 470)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("13_twmcb")
+offset = Vector2(0, -128)
+
+[node name="Deco_entulho_1_01" type="Sprite2D" parent="Decoracao"]
+modulate = Color(0.75, 0.75, 0.7875, 1)
+position = Vector2(6010, 470)
+scale = Vector2(-0.26, 0.26)
+texture = ExtResource("14_ahg1l")
+offset = Vector2(0, -128)
+
+[node name="Deco_entulho_3_01" type="Sprite2D" parent="Decoracao"]
+modulate = Color(0.75, 0.75, 0.7875, 1)
+position = Vector2(5910, 690)
+scale = Vector2(0.24, 0.24)
+texture = ExtResource("15_3k7h6")
+offset = Vector2(0, -128)
+
+[node name="Deco_alerta_04" type="Sprite2D" parent="Decoracao"]
+modulate = Color(0.9, 0.9, 0.945, 1)
+position = Vector2(5440, 690)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("11_2yosl")
+offset = Vector2(0, -48)
+
+[node name="LuzDeAlerta_04" type="Node2D" parent="Decoracao"]
+position = Vector2(5440, 634)
+script = ExtResource("12_ds3cu")
+color = Color(1, 0.15, 0.1, 0.8)
+
+[node name="Perigo_01" type="Area2D" parent="."]
+script = ExtResource("16_hcemw")
+theme = "lab"
+rect = Rect2(1000, 1008, 320, 32)
+
+[node name="Perigo_02" type="Area2D" parent="."]
+script = ExtResource("16_hcemw")
+theme = "lab"
+rect = Rect2(3020, 70, 460, 30)
+
+[node name="Perigo_03" type="Area2D" parent="."]
+script = ExtResource("16_hcemw")
+theme = "lab"
+rect = Rect2(5480, 1008, 200, 32)
+
+[node name="Perigo_04" type="Area2D" parent="."]
+script = ExtResource("16_hcemw")
+theme = "lab"
+rect = Rect2(6030, 1008, 300, 32)
+
+[node name="Objetos" type="Node2D" parent="."]
+z_index = 2
+
+[node name="Placa_01" type="Area2D" parent="Objetos"]
+position = Vector2(230, 800)
+script = ExtResource("17_kked3")
+text = "A / D para mover  ·  ESPAÇO para pular (segure para ir mais alto)  ·  SHIFT para esquivar"
+theme = "lab"
+
+[node name="Placa_02" type="Area2D" parent="Objetos"]
+position = Vector2(520, 800)
+script = ExtResource("17_kked3")
+text = "Clique esquerdo (ou J) dispara o Estabilizador de Fase — a arma mira no cursor do mouse. Caixas quebram; barris EXPLODEM."
+theme = "lab"
+
+[node name="Placa_03" type="Area2D" parent="Objetos"]
+position = Vector2(1410, 800)
+script = ExtResource("17_kked3")
+text = "Acertar inimigos carrega a ENERGIA DE FASE (clique direito = tiro carregado). Plataformas podem ser atravessadas por baixo; S + ESPAÇO desce delas."
+theme = "lab"
+
+[node name="Placa_04" type="Area2D" parent="Objetos"]
+position = Vector2(2080, 800)
+script = ExtResource("17_kked3")
+text = "IRIS: \"O Terminal A está no alto desta sala. A alavanca no beiral religa o elevador.\""
+theme = "lab"
+
+[node name="Placa_05" type="Area2D" parent="Objetos"]
+position = Vector2(2830, 800)
+script = ExtResource("17_kked3")
+text = "IRIS: \"Lasers alternados e uma câmera de segurança. Se ela te enxergar, o alarme solta Rastejadores.\""
+theme = "lab"
+
+[node name="Placa_06" type="Area2D" parent="Objetos"]
+position = Vector2(3545, 800)
+script = ExtResource("17_kked3")
+text = "IRIS: \"Um campo de força protege o Terminal B. A trava precisa de 1/3 da sua Energia de Fase.\""
+theme = "lab"
+
+[node name="Placa_07" type="Area2D" parent="Objetos"]
+position = Vector2(5790, 690)
+script = ExtResource("17_kked3")
+text = "IRIS: \"O portal está instável... calibre-o no painel.\""
+theme = "lab"
+
+[node name="Checkpoint_01" type="Area2D" parent="Objetos"]
+position = Vector2(1450, 800)
+script = ExtResource("18_njjvn")
+theme = "lab"
+
+[node name="Checkpoint_02" type="Area2D" parent="Objetos"]
+position = Vector2(2790, 800)
+script = ExtResource("18_njjvn")
+theme = "lab"
+
+[node name="Checkpoint_03" type="Area2D" parent="Objetos"]
+position = Vector2(4300, 800)
+script = ExtResource("18_njjvn")
+theme = "lab"
+
+[node name="Terminal_A" type="Area2D" parent="Objetos"]
+position = Vector2(2625, 120)
+script = ExtResource("19_kagm8")
+tid = "A"
+theme = "lab"
+
+[node name="Terminal_B" type="Area2D" parent="Objetos"]
+position = Vector2(4075, 580)
+script = ExtResource("19_kagm8")
+tid = "B"
+theme = "lab"
+
+[node name="Porta" type="StaticBody2D" parent="Objetos"]
+script = ExtResource("20_7ps2y")
+rect = Rect2(4140, 600, 110, 200)
+
+[node name="Portal" type="Area2D" parent="Objetos"]
+position = Vector2(6560, 690)
+script = ExtResource("21_4ma8w")
+target = "verdamia"
+theme = "lab"
+
+[node name="Receptaculo" type="Area2D" parent="Objetos"]
+position = Vector2(6395, 690)
+script = ExtResource("22_787oq")
+portal_x = 6560.0
+theme = "lab"
+
+[node name="Item_lab_c1" type="Area2D" parent="Objetos"]
+position = Vector2(1160, 640)
+script = ExtResource("23_ymrg8")
+kind = "cell"
+pid = "lab_c1"
+respawn = 0.0
+
+[node name="Item_lab_e1" type="Area2D" parent="Objetos"]
+position = Vector2(1250, 630)
+script = ExtResource("23_ymrg8")
+kind = "energy"
+pid = "lab_e1"
+respawn = 0.0
+
+[node name="Item_lab_c2" type="Area2D" parent="Objetos"]
+position = Vector2(1690, 640)
+script = ExtResource("23_ymrg8")
+kind = "cell"
+pid = "lab_c2"
+respawn = 0.0
+
+[node name="Item_lab_h1" type="Area2D" parent="Objetos"]
+position = Vector2(1810, 770)
+script = ExtResource("23_ymrg8")
+kind = "heal"
+pid = "lab_h1"
+respawn = 0.0
+
+[node name="Item_lab_c3" type="Area2D" parent="Objetos"]
+position = Vector2(2180, 650)
+script = ExtResource("23_ymrg8")
+kind = "cell"
+pid = "lab_c3"
+respawn = 0.0
+
+[node name="Item_lab_c4" type="Area2D" parent="Objetos"]
+position = Vector2(2410, 540)
+script = ExtResource("23_ymrg8")
+kind = "cell"
+pid = "lab_c4"
+respawn = 0.0
+
+[node name="Item_lab_e2" type="Area2D" parent="Objetos"]
+position = Vector2(2140, 215)
+script = ExtResource("23_ymrg8")
+kind = "energy"
+pid = "lab_e2"
+respawn = 0.0
+
+[node name="Item_log_03" type="Area2D" parent="Objetos"]
+position = Vector2(2075, 212)
+script = ExtResource("23_ymrg8")
+kind = "registro"
+pid = "log_03"
+respawn = 0.0
+
+[node name="Item_log_01" type="Area2D" parent="Objetos"]
+position = Vector2(455, 776)
+script = ExtResource("23_ymrg8")
+kind = "registro"
+pid = "log_01"
+respawn = 0.0
+
+[node name="Item_log_02" type="Area2D" parent="Objetos"]
+position = Vector2(1755, 646)
+script = ExtResource("23_ymrg8")
+kind = "registro"
+pid = "log_02"
+respawn = 0.0
+
+[node name="Item_log_04" type="Area2D" parent="Objetos"]
+position = Vector2(3720, -100)
+script = ExtResource("23_ymrg8")
+kind = "registro"
+pid = "log_04"
+respawn = 0.0
+
+[node name="Item_log_05" type="Area2D" parent="Objetos"]
+position = Vector2(4070, 776)
+script = ExtResource("23_ymrg8")
+kind = "registro"
+pid = "log_05"
+respawn = 0.0
+
+[node name="Item_lab_arpao" type="Area2D" parent="Objetos"]
+position = Vector2(2598, 92)
+script = ExtResource("23_ymrg8")
+kind = "modulo"
+pid = "lab_arpao"
+respawn = 0.0
+
+[node name="Item_lab_s1" type="Area2D" parent="Objetos"]
+position = Vector2(2800, -110)
+script = ExtResource("23_ymrg8")
+kind = "cell"
+pid = "lab_s1"
+respawn = 0.0
+
+[node name="Item_lab_s2" type="Area2D" parent="Objetos"]
+position = Vector2(3275, -200)
+script = ExtResource("23_ymrg8")
+kind = "cell"
+pid = "lab_s2"
+respawn = 0.0
+
+[node name="Item_lab_nucleo1" type="Area2D" parent="Objetos"]
+position = Vector2(3555, -115)
+script = ExtResource("23_ymrg8")
+kind = "nucleo"
+pid = "lab_nucleo1"
+respawn = 0.0
+
+[node name="Item_lab_s3" type="Area2D" parent="Objetos"]
+position = Vector2(3760, -110)
+script = ExtResource("23_ymrg8")
+kind = "cell"
+pid = "lab_s3"
+respawn = 0.0
+
+[node name="Item_lab_c6" type="Area2D" parent="Objetos"]
+position = Vector2(3085, 760)
+script = ExtResource("23_ymrg8")
+kind = "cell"
+pid = "lab_c6"
+respawn = 0.0
+
+[node name="Item_01" type="Area2D" parent="Objetos"]
+position = Vector2(3610, 760)
+script = ExtResource("23_ymrg8")
+kind = "energy"
+pid = ""
+respawn = 8.0
+
+[node name="Item_lab_c7" type="Area2D" parent="Objetos"]
+position = Vector2(3910, 650)
+script = ExtResource("23_ymrg8")
+kind = "cell"
+pid = "lab_c7"
+respawn = 0.0
+
+[node name="Item_lab_c8" type="Area2D" parent="Objetos"]
+position = Vector2(4630, 520)
+script = ExtResource("23_ymrg8")
+kind = "cell"
+pid = "lab_c8"
+respawn = 0.0
+
+[node name="Laser_01" type="Node2D" parent="Objetos"]
+position = Vector2(2960, 0)
+script = ExtResource("24_e00pe")
+phase = 0.0
+
+[node name="Laser_02" type="Node2D" parent="Objetos"]
+position = Vector2(3210, 0)
+script = ExtResource("24_e00pe")
+phase = 1.4
+
+[node name="Alavanca_01" type="Area2D" parent="Objetos"]
+position = Vector2(2100, 470)
+script = ExtResource("25_q4jfi")
+target = "elevador"
+hint = "O elevador foi ligado!"
+theme = "lab"
+
+[node name="CampoDeForca_01" type="StaticBody2D" parent="Objetos"]
+script = ExtResource("26_moqg0")
+sid = "campo"
+rect = Rect2(3700, 600, 40, 200)
+
+[node name="Trava_01" type="Area2D" parent="Objetos"]
+position = Vector2(3665, 800)
+script = ExtResource("27_0i5ar")
+target = "campo"
+theme = "lab"
+
+[node name="Banco_01" type="Area2D" parent="Objetos"]
+position = Vector2(645, 800)
+script = ExtResource("28_g55p4")
+theme = "lab"
+
+[node name="Gancho_01" type="Node2D" parent="Objetos"]
+position = Vector2(2700, -200)
+script = ExtResource("29_7rf1n")
+ceil_y = -260.0
+
+[node name="Gancho_02" type="Node2D" parent="Objetos"]
+position = Vector2(3150, -215)
+script = ExtResource("29_7rf1n")
+ceil_y = -260.0
+
+[node name="Gancho_03" type="Node2D" parent="Objetos"]
+position = Vector2(3400, -215)
+script = ExtResource("29_7rf1n")
+ceil_y = -260.0
+
+[node name="Gancho_04" type="Node2D" parent="Objetos"]
+position = Vector2(6180, 330)
+script = ExtResource("29_7rf1n")
+ceil_y = 220.0
+
+[node name="CameraDeSeguranca_01" type="Node2D" parent="Objetos"]
+position = Vector2(2880, 220)
+script = ExtResource("30_dqn1c")
+side = 1
+spawns = [Vector2(3430, 790), Vector2(3470, 790)]
+
+[node name="Plataforma_01" type="AnimatableBody2D" parent="."]
+script = ExtResource("31_h8xtr")
+kind = "movel"
+rect = Rect2(1030, 700, 150, 24)
+travel = Vector2(140, 0)
+period = 4.0
+hang_y = nan
+sid = ""
+
+[node name="Plataforma_02" type="AnimatableBody2D" parent="."]
+script = ExtResource("31_h8xtr")
+kind = "suspensa"
+rect = Rect2(1600, 680, 180, 24)
+travel = Vector2(0, 0)
+period = 4.0
+hang_y = 220.0
+sid = ""
+
+[node name="Plataforma_03" type="AnimatableBody2D" parent="."]
+script = ExtResource("31_h8xtr")
+kind = "suspensa"
+rect = Rect2(2100, 690, 160, 24)
+travel = Vector2(0, 0)
+period = 4.0
+hang_y = -260.0
+sid = ""
+
+[node name="Plataforma_04" type="AnimatableBody2D" parent="."]
+script = ExtResource("31_h8xtr")
+kind = "suspensa"
+rect = Rect2(2330, 580, 160, 24)
+travel = Vector2(0, 0)
+period = 4.0
+hang_y = -260.0
+sid = ""
+
+[node name="Plataforma_05" type="AnimatableBody2D" parent="."]
+script = ExtResource("31_h8xtr")
+kind = "movel"
+rect = Rect2(2400, 470, 150, 24)
+travel = Vector2(0, -358)
+period = 5.0
+hang_y = nan
+sid = "elevador"
+
+[node name="Plataforma_06" type="AnimatableBody2D" parent="."]
+script = ExtResource("31_h8xtr")
+kind = "suspensa"
+rect = Rect2(2050, 250, 130, 24)
+travel = Vector2(0, 0)
+period = 4.0
+hang_y = -260.0
+sid = ""
+
+[node name="Plataforma_07" type="AnimatableBody2D" parent="."]
+script = ExtResource("31_h8xtr")
+kind = "quebravel"
+rect = Rect2(3840, 690, 140, 24)
+travel = Vector2(0, 0)
+period = 4.0
+hang_y = 220.0
+sid = ""
+
+[node name="Plataforma_08" type="AnimatableBody2D" parent="."]
+script = ExtResource("31_h8xtr")
+kind = "suspensa"
+rect = Rect2(4560, 560, 140, 24)
+travel = Vector2(0, 0)
+period = 4.0
+hang_y = 220.0
+sid = ""
+
+[node name="Plataforma_09" type="AnimatableBody2D" parent="."]
+script = ExtResource("31_h8xtr")
+kind = "suspensa"
+rect = Rect2(5735, 585, 135, 24)
+travel = Vector2(0, 0)
+period = 4.0
+hang_y = 220.0
+sid = ""
+
+[node name="Entidades" type="Node2D" parent="."]
+z_index = 5
+
+[node name="Caixa_01" type="StaticBody2D" parent="Entidades"]
+position = Vector2(380, 800)
+script = ExtResource("32_g0gvl")
+kind = "caixa"
+drop = ""
+
+[node name="Caixa_02" type="StaticBody2D" parent="Entidades"]
+position = Vector2(760, 800)
+script = ExtResource("32_g0gvl")
+kind = "barril"
+drop = ""
+
+[node name="Caixa_03" type="StaticBody2D" parent="Entidades"]
+position = Vector2(3530, 800)
+script = ExtResource("32_g0gvl")
+kind = "barril"
+drop = ""
+
+[node name="Caixa_04" type="StaticBody2D" parent="Entidades"]
+position = Vector2(3960, 800)
+script = ExtResource("32_g0gvl")
+kind = "caixa_pesada"
+drop = "heal"
+
+[node name="Rastejador_01" type="CharacterBody2D" parent="Entidades"]
+position = Vector2(840, 790)
+script = ExtResource("33_ygjfp")
+
+[node name="Drone_01" type="CharacterBody2D" parent="Entidades"]
+position = Vector2(1560, 560)
+script = ExtResource("34_tl5hn")
+
+[node name="Rastejador_02" type="CharacterBody2D" parent="Entidades"]
+position = Vector2(1700, 790)
+script = ExtResource("33_ygjfp")
+
+[node name="Torreta_01" type="CharacterBody2D" parent="Entidades"]
+position = Vector2(1935, 800)
+script = ExtResource("35_iabqm")
+dir = -1
+
+[node name="Rastejador_03" type="CharacterBody2D" parent="Entidades"]
+position = Vector2(2450, 790)
+script = ExtResource("33_ygjfp")
+
+[node name="Drone_02" type="CharacterBody2D" parent="Entidades"]
+position = Vector2(2330, 160)
+script = ExtResource("34_tl5hn")
+
+[node name="Rastejador_04" type="CharacterBody2D" parent="Entidades"]
+position = Vector2(3900, 790)
+script = ExtResource("33_ygjfp")
+
+[node name="Rastejador_05" type="CharacterBody2D" parent="Entidades"]
+position = Vector2(2880, -90)
+script = ExtResource("33_ygjfp")
+
+[node name="Efeitos" type="Node2D" parent="."]
+z_index = 8
+
+[node name="FugaDoEco" type="Node2D" parent="."]
+script = ExtResource("36_rg81k")
+cfg = {
+"debris": [[4600, 690], [4960, 690], [5300, 690], [5780, 690], [6420, 690]],
+"eco_spawn": Vector2(3960, 740),
+"portal_safe": 300.0,
+"slab": Rect2(5480, 690, 200, 40),
+"slab_trigger_x": 5220.0,
+"start": Vector2(4300, 800),
+"trigger_x": 4330.0
+}
+
+[node name="PrimeiroPlano" type="Node2D" parent="."]
+z_index = 30
+script = ExtResource("37_44hge")
+theme = "lab"
+depth = 1.0
+span = Vector2(-600, 7600)
+ground_rects = []
+base_y = 1190.0
+clear = [[6340, 6700]]
+solidos_da_cena = true
+
+[node name="Marcadores" type="Node2D" parent="."]
+
+[node name="Inicio" type="Marker2D" parent="Marcadores"]
+position = Vector2(60, 790)
+
+[node name="PreviaEditor" type="Node2D" parent="Marcadores"]
+script = ExtResource("38_tmvov")
+mostrar = true
+mostrar_salas = true

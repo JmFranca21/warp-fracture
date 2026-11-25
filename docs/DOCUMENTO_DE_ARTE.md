@@ -44,7 +44,7 @@ Ficha de referência de todos: `00_Referencias_oficiais/Prancha de Elementos do 
 
 | Item | Estado | Arquivo no jogo | Onde aparece |
 |---|---|---|---|
-| Caixa, caixa pesada, barril explosivo | integrado | `caixa.png`, `caixa_pesada.png`, `barril.png` | `crate.gd`, `level_data.gd` (`crates`) |
+| Caixa, caixa pesada, barril explosivo | integrado | `caixa.png`, `caixa_pesada.png`, `barril.png` | `crate.gd`, `scenes/fases/lab.tscn` (`Entidades`) |
 | Alavanca | integrado | `alavanca.png` | `switches.gd` |
 | Terminal | integrado | `terminal.png` | `terminal.gd` |
 | Porta de emergência | integrado | `porta.png` | `door.gd` |
@@ -53,7 +53,7 @@ Ficha de referência de todos: `00_Referencias_oficiais/Prancha de Elementos do 
 | Plataformas suspensa, móvel e quebradiça | integrado | `plat_suspensa.png`, `plat_movel.png`, `plat_quebravel.png` | `platforms.gd` |
 | Estação de Recarga (suporte de célula) | integrado | `celula_suporte.png` | `checkpoint.gd` (Laboratório) |
 | Célula de energia, kit de reparo | integrado | `celula_energia.png`, `kit_reparo.png` | `pickup.gd` |
-| Janela, tanque, tubulação, bandeira, cabos, alerta | integrado | `janela.png`, `tanque.png`, `tubulacao.png`, `bandeira.png`, `cabos.png`, `alerta.png` | `level_data.gd` (`decor`), `level.gd` |
+| Janela, tanque, tubulação, bandeira, cabos, alerta | integrado | `janela.png`, `tanque.png`, `tubulacao.png`, `bandeira.png`, `cabos.png`, `alerta.png` | `scenes/fases/lab.tscn` (`Decoracao`), `level.gd` |
 | Plataforma sólida, campo de energia (estáticos) | sem registro de uso | `plat_solida.png`, `campo_energia.png` | Nenhuma referência no código em 12/11/2026 (o campo usa a animação `fx_campo`) |
 | Bancada de Upgrades, Portal do Hélix, parede de fundo, terreno | sem registro (desenhados por código) | — | `bench.gd`, `portal.gd`, `back_wall.gd`, `terrain.gd` |
 
@@ -115,8 +115,8 @@ Pacote `colaboracao/entregas/VD_verdamia/` (64 assets em 67 PNGs), importado por
 
 | Item | Ficha | Estado | Arquivos (`assets/verdamia/`) | Onde aparece |
 |---|---|---|---|---|
-| Cogumelo gigante, grama, raiz pendurada, pedra com musgo, arco do templo, altar | VD00_ambiente | integrado | `objetos/cogumelo_gigante, grama, raiz_pendurada, pedra_musgo, arco_templo, altar.png` | `level_data.gd` (`decor`) |
-| Tronco-plataforma, plataforma de raízes | VD00_ambiente | integrado | `terreno/tronco_plataforma.png`, `plataforma_raizes.png` | `level_data.gd`, `platforms.gd` |
+| Cogumelo gigante, grama, raiz pendurada, pedra com musgo, arco do templo, altar | VD00_ambiente | integrado | `objetos/cogumelo_gigante, grama, raiz_pendurada, pedra_musgo, arco_templo, altar.png` | `scenes/fases/verdamia.tscn` (`Decoracao`) |
+| Tronco-plataforma, plataforma de raízes | VD00_ambiente | integrado | `terreno/tronco_plataforma.png`, `plataforma_raizes.png` | `scenes/fases/verdamia.tscn` (`Terreno.thin_art`), `platforms.gd` |
 | Chão de musgo, subsolo, borda de parede, quinas, espinhos | VD00_ambiente | integrado | `terreno/chao_musgo, subsolo, parede_borda, canto_esquerdo, canto_direito, espinhos.png` | `terrain.gd` (`_verd_all`), `hazard.gd` |
 | Parallax distante, intermediário e primeiro plano | VD00_ambiente | integrado | `fundo/bg_distante, bg_intermediario, fg_vegetacao.png` | `verd_bg.gd`, `fg_layer.gd` |
 | Santuário (checkpoint) | VD00_ambiente | integrado | `objetos/checkpoint.png` | `checkpoint.gd` (x 2570) |

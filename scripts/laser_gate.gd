@@ -6,7 +6,7 @@ var top_y := 220.0
 var bottom_y := 800.0
 var on_time := 1.6
 var off_time := 1.4
-var phase := 0.0
+@export var phase := 0.0
 var t := 0.0
 var on := false
 var level

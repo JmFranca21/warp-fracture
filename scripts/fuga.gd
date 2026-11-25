@@ -9,7 +9,7 @@ extends Node2D
 
 var level
 var main
-var cfg: Dictionary
+@export var cfg: Dictionary
 var active := false
 var done := false
 var eco: Eco
@@ -24,7 +24,8 @@ func _ready() -> void:
 	debris_left = cfg["debris"].duplicate()
 	slab = CollapseSlab.new()
 	slab.rect = cfg["slab"]
-	level.add_child(slab)
+	if not level.montada:     # fase em cena: o Level põe a laje no lugar dela quando os filhos ficam prontos
+		level.add_child(slab)
 
 
 func _physics_process(dt: float) -> void:

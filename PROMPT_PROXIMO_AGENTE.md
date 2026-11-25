@@ -9,7 +9,7 @@ Você vai continuar o desenvolvimento do jogo **Warp Fracture**, um metroidvania
 **Fluxo automático:** desde 12/11/2026, arte, desenvolvimento e revisão trabalham em ciclos, com papéis e permissões definidos em [colaboracao/FLUXO_AUTOMATICO.md](colaboracao/FLUXO_AUTOMATICO.md). Leia esse arquivo antes de alterar qualquer coisa: cada papel só escreve nas pastas dele, e só o gerente edita `colaboracao/STATUS.md`.
 
 Antes de qualquer coisa:
-1. Leia **`HANDOFF.md`** inteiro, e também `arte_original/USADAS_NO_JOGO.md` e `docs/DOCUMENTO_DE_ARTE.md`. O HANDOFF explica a arquitetura, onde ficam os dados das fases (`scripts/level_data.gd`), o harness de testes por linha de comando, como exportar e as decisões já tomadas.
+1. Leia **`HANDOFF.md`** inteiro, e também `arte_original/USADAS_NO_JOGO.md` e `docs/DOCUMENTO_DE_ARTE.md`. O HANDOFF explica a arquitetura, onde ficam as fases (o Laboratório e Verdâmia em cena, `scenes/fases/`, guia em `docs/CENAS_DAS_FASES.md`; o Deserto e Nivária em `desert.gd` e `nivaria.gd`), o harness de testes por linha de comando, como exportar e as decisões já tomadas.
 2. Leia `ROTEIRO.md`, `colaboracao/STATUS.md` e `docs/Caderno_de_10_paginas_Warp_Fracture_v2.docx`. O caderno é a fonte de verdade do design.
 3. Prepare o ambiente:
    - **Windows (máquina do fluxo automático):** Godot 4.3 em `C:/Users/joao.marcelo/AreaJM/Ferramentas/godot-4.3/`, com os export templates. Rode pelo Git Bash com `tools/fluxo/godot.sh` (mesmas flags do HANDOFF, seção 5). Há Python 3.13 com Pillow e numpy; o ffmpeg não está instalado.

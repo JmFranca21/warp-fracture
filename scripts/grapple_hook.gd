@@ -4,7 +4,7 @@ extends Node2D
 ## O jogador com o módulo "arpao" se puxa até ele (tecla F / botão do meio / RB).
 
 var level
-var ceil_y := NAN       # altura do teto onde o suporte está preso
+@export var ceil_y := NAN       # altura do teto onde o suporte está preso
 var t := 0.0
 var lit := 0.0          # brilho quando está ao alcance
 var glow: Sprite2D

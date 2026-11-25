@@ -420,10 +420,13 @@ func _clear_world() -> void:
 func load_level(id: String, pos: Vector2, show_title: bool) -> void:
 	_clear_world()
 	var d: Dictionary = LevelData.get_level(id)
-	level = Level.new()
+	var cena := LevelData.scene_path(id)
+	level = load(cena).instantiate() if cena != "" else Level.new()   # Laboratório e Verdâmia: cenas prontas
 	level.main = self
 	level.id = id
 	level.data = d
+	if level.montada:
+		level.preparar()      # referências e estado salvo, antes de os nós da cena ficarem prontos
 	world.add_child(level)
 	player = Player.new()
 	player.main = self

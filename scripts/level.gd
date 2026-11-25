@@ -1,6 +1,20 @@
 class_name Level
 extends Node2D
-## Constrói uma fase a partir de LevelData.
+## Uma fase. O Laboratório e Verdâmia vêm prontos em cena (scenes/fases/*.tscn, com montada = true): os nós já
+## estão lá, e preparar() aplica o estado do jogo antes de a cena entrar na árvore. O Deserto e Nivária são
+## montados pelo código (_build), a partir de LevelData.
+
+# dados da fase guardados na cena (LevelData.get_level lê daqui, por descrever())
+@export var montada := false               # true nas cenas: o _ready não monta nada pelo código
+@export var nome := ""
+@export var subtitulo := ""
+@export var tema := ""
+@export var forma := "human"
+@export var limites := Rect2()
+@export var kill_y := 1300.0
+@export var salas: Array = []              # [id, retângulo, nome] das salas do mapa
+@export var porta_requer: Array = []       # terminais que destravam a porta
+@export var chefe: Dictionary = {}         # trigger_x, gate e fragment da luta (a Rainha é o nó RainhaMicelia)
 
 var main
 var id := ""
@@ -26,6 +40,14 @@ var nivaria: Nivaria = null
 
 
 func _ready() -> void:
+	if montada:
+		_ready_cena()
+		return
+	_build()
+
+
+## Monta a fase pelo código, a partir de data (Deserto e Nivária; também gera as cenas, em tools/gerar_cenas_fases.gd).
+func _build() -> void:
 	var theme: String = data["theme"]
 	var bounds: Rect2 = data["bounds"]
 	_build_sky(theme)
@@ -285,6 +307,11 @@ func add_player(p: Player) -> void:
 	player = p
 	entities.add_child(p)
 	p.z_index = 1
+	if montada:      # como na montagem pelo código: o jogador entra antes dos inimigos (que chegam adiados)
+		for c in entities.get_children():
+			if c is Enemy and not c is Queen:
+				entities.move_child(p, c.get_index())
+				break
 
 
 func spawn_enemy(kind: String, pos: Vector2) -> Enemy:
@@ -391,19 +418,25 @@ func _process(_dt: float) -> void:
 
 ## Parallax de Verdâmia com a arte entregue: floresta distante (opaca) e fungos intermediários.
 func _build_verd_bg(bounds: Rect2) -> void:
-	var view := Vector2(1280, 720) / 1.1 + Vector2(240, 40)   # folga para telas mais largas (aspect expand)
-	var cam_x := Vector2(bounds.position.x + 580.0, bounds.end.x - 580.0)
-	var cam_y := Vector2(bounds.position.y + 327.0, bounds.end.y - 327.0)
 	var defs := [["bg_distante.png", 0.06, 0.9, Color(1, 1, 1)], ["bg_intermediario.png", 0.26, 0.8, Color(0.46, 0.54, 0.58)]]
 	for i in defs.size():
 		var b := VerdBg.new()
 		b.tex = load(SpriteMetaVerd.FUNDO_DIR + String(defs[i][0]))
 		b.depth = defs[i][1]
-		b.fit(view, cam_x, cam_y, defs[i][2])
+		b.escala_min = defs[i][2]
+		_verd_fit(b, bounds)
 		b.modulate = defs[i][3]
 		b.z_index = -60 + i * 10
 		add_child(b)
 		bg_layers.append(b)
+
+
+## Enquadra um fundo de Verdâmia para cobrir a tela em qualquer ponto da fase (também nas cenas, em preparar()).
+func _verd_fit(b: VerdBg, bounds: Rect2) -> void:
+	var view := Vector2(1280, 720) / 1.1 + Vector2(240, 40)   # folga para telas mais largas (aspect expand)
+	var cam_x := Vector2(bounds.position.x + 580.0, bounds.end.x - 580.0)
+	var cam_y := Vector2(bounds.position.y + 327.0, bounds.end.y - 327.0)
+	b.fit(view, cam_x, cam_y, b.escala_min)
 
 
 func _build_decor(list: Array) -> void:
@@ -516,3 +549,166 @@ func _build_ambient(theme: String, b: Rect2) -> void:
 		p.color_ramp = g
 		p.z_index = 3
 		add_child(p)
+
+
+# --- Fases em cena -------------------------------------------------------------------------------------------------
+
+## Antes de a cena entrar na árvore: liga as referências (main e level) de cada nó, encontra os nós que o resto do
+## jogo usa e aplica o estado salvo (itens já pegos, Rainha vencida, Fuga já feita), como a montagem pelo código fazia.
+func preparar() -> void:
+	var marc := get_node_or_null("Marcadores")    # só para o editor e para descrever(); não fazem parte da fase
+	if marc != null:
+		remove_child(marc)
+		marc.free()
+	objects = $Objetos
+	entities = $Entidades
+	fx = $Efeitos
+	for n in _descendentes(self):
+		if "main" in n and n.get("main") == null:
+			n.set("main", main)
+		if "level" in n and n.get("level") == null:
+			n.set("level", self)
+	for c in get_children():
+		if c is VerdBg and c.escala_min > 0.0:
+			_verd_fit(c, data["bounds"])     # a cena guarda a escala e a posição com menos casas; refaz a conta
+		if c is BgLayer or c is VerdBg:
+			bg_layers.append(c)
+		elif c is FgLayer:
+			fg_layers.append(c)
+		elif c is Fuga:
+			fuga = c
+	for c in objects.get_children():
+		if c is Door:
+			door = c
+		elif c is Portal:
+			portal = c
+		elif c is Receptacle:
+			receptacle = c
+		elif c is Rift:
+			arrival_rift = c
+		elif c is Pickup and c.pid != "" and main.collected.has(c.pid):
+			objects.remove_child(c)
+			c.free()
+	for c in entities.get_children():
+		if c is Queen:
+			boss = c
+	if boss != null and main.boss_done.has(id):
+		entities.remove_child(boss)
+		boss.free()
+		boss = null
+		if not main.frags.has(id):   # Rainha vencida, mas o fragmento ainda não foi pego
+			spawn_fragment()
+	if fuga != null and main.events.has("fuga_" + id):
+		remove_child(fuga)
+		fuga.free()
+		fuga = null
+
+
+## Depois que os nós da cena ficaram prontos: o que a montagem fazia com eles já na árvore.
+func _ready_cena() -> void:
+	if door != null and _door_ready():
+		door.open(true)
+	if data.has("return_rift") and main.frags.has(id):
+		open_return_rift(false)
+		# na montagem pelo código, a fenda entrava antes dos itens e dos objetos que vêm depois deles
+		for c in objects.get_children():
+			if c is Pickup or c is LaserGate or c is Lever or c is EnergyField or c is EnergyLock \
+					or c is Bench or c is GrappleHook or c is SecurityCam:
+				objects.move_child(return_rift, c.get_index())
+				break
+	if fuga != null and fuga.slab != null:
+		add_child(fuga.slab)
+		move_child(fuga.slab, fuga.get_index() + 1)    # a laje que desaba vinha logo depois da Fuga
+
+
+func _descendentes(n: Node) -> Array:
+	var out := []
+	for c in n.get_children():
+		out.append(c)
+		out.append_array(_descendentes(c))
+	return out
+
+
+## Os dados da fase no formato de LevelData, lidos dos nós da cena (o minimapa, o salvamento e o resto do jogo
+## continuam lendo o dicionário). Chamado numa instância da cena que não entrou na árvore.
+func descrever() -> Dictionary:
+	var marc := get_node("Marcadores")
+	var d := {"name": nome, "sub": subtitulo, "theme": tema, "form": forma, "bounds": limites, "kill_y": kill_y,
+		"rooms": salas.duplicate(true), "spawn": (marc.get_node("Inicio") as Node2D).position}
+	if marc.has_node("FendaDeRetorno"):
+		d["return_rift"] = (marc.get_node("FendaDeRetorno") as Node2D).position
+	var solids := []
+	var platforms := []
+	var hazards := []
+	solids = TerrainDraw.solidos(self)
+	for c in get_children():
+		if c is SpritePlatform:
+			var opts := {}
+			if not is_nan(c.hang_y):
+				opts["hang"] = c.hang_y
+			if c.sid != "":
+				opts["sid"] = c.sid
+			if c.period != 4.0:
+				opts["period"] = c.period
+			platforms.append([c.kind, c.rect, c.travel, opts] if c.travel != Vector2.ZERO else [c.kind, c.rect, opts])
+		elif c is Hazard:
+			hazards.append(c.rect)
+		elif c is TerrainDraw and not c.thin_art.is_empty():
+			d["thin_art"] = c.thin_art.duplicate()
+		elif c is Fuga:
+			d["fuga"] = c.cfg.duplicate(true)
+	d["solids"] = solids
+	d["platforms"] = platforms
+	d["hazards"] = hazards
+	var keys := ["signs", "checkpoints", "benches", "terminals", "pickups", "hooks", "lasers", "cameras", "levers",
+		"fields", "locks", "enemies", "crates"]
+	for k in keys:
+		d[k] = []
+	for c in get_node("Objetos").get_children():
+		if c is Sign:
+			d["signs"].append([c.position, c.text])
+		elif c is Checkpoint:
+			d["checkpoints"].append(c.position)
+		elif c is Bench:
+			d["benches"].append(c.position)
+		elif c is Terminal:
+			d["terminals"].append([c.tid, c.position])
+		elif c is Door:
+			d["door"] = {"rect": c.rect, "needs": porta_requer.duplicate()}
+		elif c is Portal:
+			d["portal"] = {"pos": c.position, "target": c.target}
+		elif c is Receptacle:
+			d["receptacle"] = c.position
+		elif c is Rift:
+			d["arrival_rift"] = c.position
+		elif c is Pickup:
+			d["pickups"].append([c.kind, c.position, c.pid] if c.respawn <= 0.0 else [c.kind, c.position, c.pid, c.respawn])
+		elif c is GrappleHook:
+			d["hooks"].append([c.position, c.ceil_y])
+		elif c is LaserGate:
+			d["lasers"].append([c.position.x, c.phase])
+		elif c is SecurityCam:
+			d["cameras"].append([c.position, c.side, c.spawns.duplicate()])
+		elif c is Lever:
+			d["levers"].append([c.position, c.target, c.hint])
+		elif c is EnergyField:
+			d["fields"].append([c.sid, c.rect])
+		elif c is EnergyLock:
+			d["locks"].append([c.position, c.target])
+	for c in get_node("Entidades").get_children():
+		if c is Queen:
+			d["boss"] = chefe.duplicate(true)
+			d["boss"]["pos"] = c.position
+		elif c is Crate:
+			d["crates"].append([c.kind, c.position] if c.drop == "" else [c.kind, c.position, c.drop])
+		elif c is Turret:
+			d["enemies"].append(["turret_l" if c.dir < 0 else "turret_r", c.position])
+		elif c is Crawler:
+			d["enemies"].append(["crawler", c.position])
+		elif c is Drone:
+			d["enemies"].append(["drone", c.position])
+		elif c is Moth:
+			d["enemies"].append(["moth", c.position])
+		elif c is SporePlant:
+			d["enemies"].append(["spore", c.position])
+	return d

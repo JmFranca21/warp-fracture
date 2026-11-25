@@ -1,17 +1,34 @@
+@tool
 class_name FgLayer
 extends Node2D
 ## Primeiro plano escuro (tufos, entulho) na frente dos personagens, para dar profundidade.
 
-var theme := "lab"
-var depth := 1.0
-var span := Vector2(-600, 6000)
-var ground_rects: Array = []
-var base_y := 1190.0        # Verdâmia: y da base da faixa de vegetação
-var clear: Array = []       # faixas [x0, x1] sem entulho na frente (Receptáculo e Arco)
+@export var theme := "lab"
+@export var depth := 1.0
+@export var span := Vector2(-600, 6000)
+@export var ground_rects: Array = []
+@export var base_y := 1190.0        # Verdâmia: y da base da faixa de vegetação
+@export var clear: Array = []       # faixas [x0, x1] sem entulho na frente (Receptáculo e Arco)
+@export var solidos_da_cena := false   # fases em cena: ground_rects vêm dos nós Solido_ irmãos
+var _espera := 0.0
 
 
 func _ready() -> void:
+	if solidos_da_cena:
+		ground_rects = TerrainDraw.solidos(get_parent())
+	set_process(Engine.is_editor_hint() and solidos_da_cena)
 	queue_redraw()
+
+
+func _process(dt: float) -> void:
+	_espera -= dt      # só no editor (ver _ready)
+	if _espera > 0.0:
+		return
+	_espera = 0.3
+	var r := TerrainDraw.solidos(get_parent())
+	if r != ground_rects:
+		ground_rects = r
+		queue_redraw()
 
 
 func _draw() -> void:

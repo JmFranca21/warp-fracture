@@ -210,7 +210,7 @@ O inventário de sprites importados está em [USADAS_NO_JOGO.md](arte_original/U
 | Arquivo | Função |
 |---|---|
 | `main.gd` | Menu, troca de fases, câmera, checkpoints, pausa |
-| `level_data.gd` | **Layout das fases** (plataformas, inimigos, itens). É o arquivo para editar ao criar fases. |
+| `level_data.gd` | **Onde estão as fases.** O Laboratório e Verdâmia são cenas em `scenes/fases/`, editadas no Godot ([guia](docs/CENAS_DAS_FASES.md)); o Deserto e Nivária vêm de `desert.gd` e `nivaria.gd`. |
 | `level.gd` | Monta a fase a partir dos dados |
 | `player.gd` | Daymon: movimento, formas, ataques, dano |
 | `crawler.gd`, `drone.gd`, `moth.gd`, `spore_plant.gd`, `queen.gd` | Inimigos e chefe |

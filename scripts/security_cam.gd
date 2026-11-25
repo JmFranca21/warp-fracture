@@ -4,8 +4,8 @@ extends Node2D
 ## dispara o alarme e libera Rastejadores pelas fendas (uma vez).
 
 var level
-var side := 1                 # 1 = olha para a direita, -1 = esquerda
-var spawns: Array = []        # pontos de onde saem os Rastejadores
+@export var side := 1                 # 1 = olha para a direita, -1 = esquerda
+@export var spawns: Array = []        # pontos de onde saem os Rastejadores
 var range_px := 700.0
 var floor_y := 800.0
 var half := deg_to_rad(15.0)

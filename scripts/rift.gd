@@ -7,7 +7,7 @@ extends Interactable
 
 signal opened
 
-var target := "lab"
+@export var target := "lab"
 var state := "dormente"
 var label := "[E] Voltar ao Laboratório Hélix"
 var base: Sprite2D

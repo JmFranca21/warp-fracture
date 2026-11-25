@@ -598,3 +598,37 @@ Com DF200, DF201 e DF205 integradas, o João avaliou que o estilo ainda não par
 - Os pedidos de arte a partir da DF202 ficam suspensos até o quadro-chave ser aprovado.
 - Depois dele: refazer a DF201 com as mesmas medidas (o código não muda) e retocar a borda de apoio da DF205.
 - O código e as medições da 15.5 continuam valendo.
+
+## 16. Laboratório e Verdâmia em cena (24/11/2026, branch `dev/cenas`)
+
+O João pediu que as duas fases deixassem de existir só no código e virassem cenas do Godot, sem mudar nada nelas. Guia de edição: `docs/CENAS_DAS_FASES.md`.
+
+**Como ficou**
+- As cenas `scenes/fases/lab.tscn` (188 nós) e `scenes/fases/verdamia.tscn` (88 nós) foram geradas por `tools/gerar_cenas_fases.gd`. Ele roda a própria montagem do `Level` (`_build`) fora da árvore, a partir da descrição da v0.9 em `tools/referencia_fases_v09.gd`, então o que cada nó cria no próprio `_ready` não entra na cena. Os nós têm nomes legíveis.
+- **`Level`:**
+  - `@export` com os dados da fase: `nome`, `subtitulo`, `tema`, `forma`, `limites`, `kill_y`, `salas`, `porta_requer` e `chefe`;
+  - `montada = true` nas cenas;
+  - `preparar()`, chamado pelo `main` antes de adicionar a fase, que liga `main`/`level` em cada nó, acha porta, portal, Rainha e Fuga e aplica o save;
+  - `_ready_cena()`, que abre a porta e a fenda de retorno e recoloca a laje da Fuga no lugar original;
+  - `descrever()`, que gera o dicionário da fase a partir dos nós;
+  - o jogador entra antes dos inimigos, como antes.
+- **`LevelData`:** lê `lab` e `verdamia` das cenas (`CENAS`, com cache). O minimapa, o salvamento e os testes seguem lendo o dicionário.
+- **Scripts:**
+  - receberam `@export` nas variáveis que a montagem preenche (25 scripts);
+  - `TerrainDraw`, `BackWall`, `BgLayer`, `VerdBg` e `FgLayer` passaram a `@tool`, então a fase aparece no editor; a animação fica parada lá;
+  - o `Terreno` e o `PrimeiroPlano` das cenas leem os `Solido_…` (`solidos_da_cena`), também no editor;
+  - `VerdBg.escala_min`: o `Level` refaz o enquadramento dos fundos de Verdâmia a partir dos limites, porque a cena guarda os números com menos casas;
+  - `Fuga`: na fase em cena, a laje é posta pelo `Level`, já que o nível ainda está preparando os filhos durante o `_ready` dela.
+- **`PreviaEditor`** (em `Marcadores`, removido no jogo): no editor, mostra itens, inimigos, plataformas, perigos, objetos, salas, a Fuga e a luta, com o nome de cada nó.
+- **Deserto e Nivária:** continuam montados pelo código.
+
+**Prova de que as fases não mudaram**
+- **Árvore de nós:** `tools/dump_fase.gd` tira o retrato da fase carregada. Código da v0.9 contra a cena deu **0 linha diferente** em cinco estados: Laboratório em jogo novo e avançado; Verdâmia em jogo novo, avançado e com a Rainha vencida.
+- **Dados:** `tools/test_cenas_fases.gd` compara campo por campo com a v0.9 e não teve falhas.
+- **Pixels:** em quatro pontos de cada fase, a diferença entre o código antigo (cópia da `dev/deserto`) e a cena ficou entre 0,3% e 1,3% dos pixels, a mesma faixa de duas rodadas do próprio código antigo. São partículas, brilhos que pulsam, luzes de alerta e animações, que dependem do tempo real.
+- **Testes de jogo:** Verdâmia (31), Fuga (22), Passagem (37), Fragmento (17), Portal, Deserto (36), Forja, DF205 (23) e Nivária passam, como antes.
+- **Editor:** as duas cenas abriram no Godot 4.3 sem erro.
+
+**Única mudança fora do jogo:** a cor de depuração das colisões dos sólidos ficou transparente, para a arte aparecer no editor. Ela só aparece com Depurar > Formas de colisão.
+
+**Atenção:** daqui para frente, as cenas são a fonte das duas fases. Não rode `gerar_cenas_fases.gd` de novo, porque ele apaga as edições feitas no Godot.

@@ -35,7 +35,7 @@ Para gerar os executáveis, use **Projeto → Exportar** (presets "Windows Deskt
 
 | Caminho | Conteúdo |
 |---|---|
-| `scripts/` | Todo o código em GDScript. Os dados das fases ficam em `level_data.gd` |
+| `scripts/` | Todo o código em GDScript. O Laboratório e Verdâmia são cenas em `scenes/fases/` ([guia](docs/CENAS_DAS_FASES.md)); o Deserto e Nivária, em `desert.gd` e `nivaria.gd` |
 | `assets/` | Sprites, efeitos e áudio já importados no jogo |
 | `tools/` | Scripts Python para recortar as spritesheets e gerar áudio, mais o `run.sh` de testes |
 | `arte_original/` | Pranchas originais e referências oficiais de arte (veja `USADAS_NO_JOGO.md`) |

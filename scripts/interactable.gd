@@ -3,7 +3,7 @@ extends Area2D
 ## Base para objetos com que o jogador interage (E).
 
 var main
-var theme := "lab"
+@export var theme := "lab"
 var prompt := ""
 var size := Vector2(90, 110)
 var t := 0.0

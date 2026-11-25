@@ -2,8 +2,8 @@ class_name Hazard
 extends Area2D
 ## Perigo sem inteligência (piso eletrificado no lab, espinhos em Verdâmia).
 
-var theme := "lab"
-var rect := Rect2()
+@export var theme := "lab"
+@export var rect := Rect2()
 var t := 0.0
 var bolts: Array = []
 var bolt_t := 0.0

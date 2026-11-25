@@ -2,7 +2,7 @@ class_name Sign
 extends Interactable
 ## Placa/holograma com dica. Mostra o texto quando o jogador se aproxima.
 
-var text := ""
+@export var text := ""
 
 
 func _setup() -> void:

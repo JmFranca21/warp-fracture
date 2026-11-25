@@ -1,11 +1,12 @@
+@tool
 class_name BgLayer
 extends Node2D
 ## Camada de fundo com parallax, desenhada proceduralmente (silhuetas em camadas).
 
-var theme := "lab"
-var depth := 0.3
-var layer_index := 0
-var span := Vector2(-1500, 6000)
+@export var theme := "lab"
+@export var depth := 0.3
+@export var layer_index := 0
+@export var span := Vector2(-1500, 6000)
 var items: Array = []
 var lights: Array = []
 var t := 0.0
@@ -32,6 +33,8 @@ func _ready() -> void:
 
 
 func _process(dt: float) -> void:
+	if Engine.is_editor_hint():     # no editor: só o desenho parado
+		return
 	t += dt
 	for l in lights:
 		var s: Sprite2D = l[0]

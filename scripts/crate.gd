@@ -4,8 +4,8 @@ extends StaticBody2D
 ## e Barril explosivo (explode e fere tudo ao redor, inclusive o jogador).
 
 var level
-var kind := "caixa"
-var drop := ""   # item extra ao quebrar ("heal" / "energy")
+@export var kind := "caixa"
+@export var drop := ""   # item extra ao quebrar ("heal" / "energy")
 var hp := 2
 var min_dmg := 1
 var broken := false

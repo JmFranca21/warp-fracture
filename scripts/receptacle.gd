@@ -7,7 +7,7 @@ extends Interactable
 const SOCKETS := [Vector2(515, 585), Vector2(430, 655), Vector2(590, 650), Vector2(510, 725)]   # losango (original, medido)
 const ORDER := ["verdamia", "deserto", "nivaria", "umbra"]     # Nivária no 3º encaixe (D06, opção A recomendada)
 
-var portal_x := 0.0
+@export var portal_x := 0.0
 var spr: Sprite2D
 var gems: Array = []
 var glow: Sprite2D

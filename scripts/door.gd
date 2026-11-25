@@ -2,7 +2,7 @@ class_name Door
 extends StaticBody2D
 ## Porta de emergência do laboratório (arte: porta.png). Recolhe para cima quando destravada.
 
-var rect := Rect2()
+@export var rect := Rect2()
 var opened := false
 var amt := 0.0
 var cs: CollisionShape2D

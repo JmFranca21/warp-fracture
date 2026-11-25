@@ -3,10 +3,10 @@ extends Interactable
 ## Alavanca: aciona um mecanismo (ex.: elevador) uma única vez.
 
 var level
-var target := ""
+@export var target := ""
 var pulled := false
 var spr: Sprite2D
-var hint := ""
+@export var hint := ""
 
 
 func _setup() -> void:

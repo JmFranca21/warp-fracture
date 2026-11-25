@@ -2,7 +2,7 @@ class_name Terminal
 extends Interactable
 ## Terminal que destrava as portas de emergência (arte: terminal.png).
 
-var tid := "A"
+@export var tid := "A"
 var level
 var active := false
 var screen: Sprite2D

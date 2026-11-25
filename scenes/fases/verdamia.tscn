@@ -1,0 +1,612 @@
+[gd_scene load_steps=42 format=3]
+
+[ext_resource type="Script" path="res://scripts/level.gd" id="1_wgmvx"]
+[ext_resource type="Script" path="res://scripts/verd_bg.gd" id="2_npp00"]
+[ext_resource type="Texture2D" path="res://assets/verdamia/fundo/bg_distante.png" id="3_cwj7n"]
+[ext_resource type="Texture2D" path="res://assets/verdamia/fundo/bg_intermediario.png" id="4_qjh5o"]
+[ext_resource type="Script" path="res://scripts/terrain.gd" id="5_sqjiy"]
+[ext_resource type="Texture2D" path="res://assets/verdamia/objetos/cogumelo_gigante.png" id="6_53e0h"]
+[ext_resource type="Texture2D" path="res://assets/verdamia/objetos/grama.png" id="7_rsetc"]
+[ext_resource type="Texture2D" path="res://assets/verdamia/objetos/pedra_musgo.png" id="8_jfwmq"]
+[ext_resource type="Texture2D" path="res://assets/verdamia/objetos/raiz_pendurada.png" id="9_5yspk"]
+[ext_resource type="Texture2D" path="res://assets/verdamia/objetos/arco_templo.png" id="10_g2van"]
+[ext_resource type="Texture2D" path="res://assets/verdamia/objetos/altar.png" id="11_8nacn"]
+[ext_resource type="Script" path="res://scripts/hazard.gd" id="12_u4iyk"]
+[ext_resource type="Script" path="res://scripts/sign.gd" id="13_xs4n8"]
+[ext_resource type="Script" path="res://scripts/checkpoint.gd" id="14_o54hs"]
+[ext_resource type="Script" path="res://scripts/rift.gd" id="15_jjwlj"]
+[ext_resource type="Script" path="res://scripts/pickup.gd" id="16_6jcp6"]
+[ext_resource type="Script" path="res://scripts/queen.gd" id="17_8e5u8"]
+[ext_resource type="Script" path="res://scripts/moth.gd" id="18_xagnk"]
+[ext_resource type="Script" path="res://scripts/spore_plant.gd" id="19_vs2ad"]
+[ext_resource type="Script" path="res://scripts/fg_layer.gd" id="20_xo37e"]
+[ext_resource type="Script" path="res://scripts/previa_editor.gd" id="21_jtvn0"]
+
+[sub_resource type="Gradient" id="Gradient_07dt1"]
+colors = PackedColorArray(0.00784314, 0.0392157, 0.054902, 1, 0.0627451, 0.219608, 0.227451, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_4prnd"]
+gradient = SubResource("Gradient_07dt1")
+width = 4
+height = 256
+fill_to = Vector2(0, 1)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_qno26"]
+blend_mode = 1
+
+[sub_resource type="Gradient" id="Gradient_8nj38"]
+offsets = PackedFloat32Array(0, 0.22, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0.42, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_5xuwj"]
+gradient = SubResource("Gradient_8nj38")
+width = 128
+height = 128
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+
+[sub_resource type="Gradient" id="Gradient_dsl18"]
+offsets = PackedFloat32Array(0, 0.2, 0.75, 1)
+colors = PackedColorArray(0.85, 1, 0.45, 0, 0.85, 1, 0.45, 1, 0.85, 1, 0.45, 1, 0.85, 1, 0.45, 0)
+
+[sub_resource type="Gradient" id="Gradient_y348j"]
+offsets = PackedFloat32Array(0, 0.2, 0.75, 1)
+colors = PackedColorArray(0.4, 1, 0.85, 0, 0.4, 1, 0.85, 0.7, 0.4, 1, 0.85, 0.7, 0.4, 1, 0.85, 0)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3bwq2"]
+size = Vector2(60, 2000)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h4km5"]
+size = Vector2(1060, 600)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_75faa"]
+size = Vector2(300, 360)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wdwcg"]
+size = Vector2(620, 600)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4sh1x"]
+size = Vector2(50, 430)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4gvgi"]
+size = Vector2(140, 1100)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g0idm"]
+size = Vector2(600, 600)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cn430"]
+size = Vector2(180, 24)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yvd0m"]
+size = Vector2(160, 24)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u372d"]
+size = Vector2(2460, 600)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_716kv"]
+size = Vector2(150, 24)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yglms"]
+size = Vector2(150, 24)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kirw5"]
+size = Vector2(60, 2000)
+
+[node name="Verdamia" type="Node2D"]
+script = ExtResource("1_wgmvx")
+montada = true
+nome = "VERDÂMIA"
+subtitulo = "Universo 1 — A Floresta Bioluminescente"
+tema = "verd"
+forma = "lince"
+limites = Rect2(-200, -100, 5120, 1250)
+kill_y = 1300.0
+salas = [["A", Rect2(-200, 100, 1000, 700), "Clareira"], ["B", Rect2(800, 100, 300, 940), "Espinhos"], ["C", Rect2(1100, 100, 620, 700), "Bosque"], ["E", Rect2(1720, 100, 740, 700), "Paredão e Vale"], ["F", Rect2(2460, 100, 1376, 700), "Trilha"], ["G", Rect2(3836, 100, 1084, 700), "Templo"]]
+porta_requer = []
+chefe = {
+"fragment": Vector2(4330, 768),
+"gate": Rect2(3836, 300, 50, 500),
+"trigger_x": 3960.0
+}
+
+[node name="Ceu" type="CanvasLayer" parent="."]
+layer = -20
+
+[node name="Gradiente" type="TextureRect" parent="Ceu"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = SubResource("GradientTexture2D_4prnd")
+expand_mode = 1
+
+[node name="Fundo_01" type="Node2D" parent="."]
+z_index = -60
+script = ExtResource("2_npp00")
+depth = 0.06
+tex = ExtResource("3_cwj7n")
+img_scale = 0.9
+top = -429.3
+span = Vector2(-739.018, 1022.22)
+single = false
+left = 0.0
+tiled = false
+escala_min = 0.9
+
+[node name="Fundo_02" type="Node2D" parent="."]
+modulate = Color(0.46, 0.54, 0.58, 1)
+z_index = -50
+script = ExtResource("2_npp00")
+depth = 0.26
+tex = ExtResource("4_qjh5o")
+img_scale = 0.868658
+top = -308.253
+span = Vector2(-663.018, 1890.22)
+single = false
+left = 0.0
+tiled = false
+escala_min = 0.8
+
+[node name="Particulas_01" type="CPUParticles2D" parent="."]
+z_index = 3
+material = SubResource("CanvasItemMaterial_qno26")
+position = Vector2(2360, 525)
+amount = 140
+lifetime = 9.0
+preprocess = 9.0
+texture = SubResource("GradientTexture2D_5xuwj")
+emission_shape = 3
+emission_rect_extents = Vector2(2560, 625)
+direction = Vector2(0, -1)
+spread = 180.0
+gravity = Vector2(0, -5)
+initial_velocity_min = 4.0
+initial_velocity_max = 22.0
+scale_amount_min = 0.03
+scale_amount_max = 0.1
+color_ramp = SubResource("Gradient_dsl18")
+
+[node name="Particulas_02" type="CPUParticles2D" parent="."]
+z_index = 3
+material = SubResource("CanvasItemMaterial_qno26")
+position = Vector2(2360, 525)
+amount = 80
+lifetime = 9.0
+preprocess = 9.0
+texture = SubResource("GradientTexture2D_5xuwj")
+emission_shape = 3
+emission_rect_extents = Vector2(2560, 625)
+direction = Vector2(0, -1)
+spread = 180.0
+gravity = Vector2(0, -5)
+initial_velocity_min = 4.0
+initial_velocity_max = 22.0
+scale_amount_min = 0.03
+scale_amount_max = 0.1
+color_ramp = SubResource("Gradient_y348j")
+
+[node name="Terreno" type="Node2D" parent="."]
+script = ExtResource("5_sqjiy")
+theme = "verd"
+rects = []
+thin_art = ["plataforma_raizes", "plataforma_raizes", "tronco_plataforma", "tronco_plataforma"]
+solidos_da_cena = true
+
+[node name="Solido_01" type="StaticBody2D" parent="."]
+collision_mask = 0
+
+[node name="Colisao" type="CollisionShape2D" parent="Solido_01"]
+position = Vector2(-230, 400)
+shape = SubResource("RectangleShape2D_3bwq2")
+debug_color = Color(0.3, 0.85, 1, 0.12)
+
+[node name="Solido_02" type="StaticBody2D" parent="."]
+collision_mask = 0
+
+[node name="Colisao" type="CollisionShape2D" parent="Solido_02"]
+position = Vector2(270, 1100)
+shape = SubResource("RectangleShape2D_h4km5")
+debug_color = Color(0.3, 0.85, 1, 0.12)
+
+[node name="Solido_03" type="StaticBody2D" parent="."]
+collision_mask = 0
+
+[node name="Colisao" type="CollisionShape2D" parent="Solido_03"]
+position = Vector2(950, 1220)
+shape = SubResource("RectangleShape2D_75faa")
+debug_color = Color(0.3, 0.85, 1, 0.12)
+
+[node name="Solido_04" type="StaticBody2D" parent="."]
+collision_mask = 0
+
+[node name="Colisao" type="CollisionShape2D" parent="Solido_04"]
+position = Vector2(1410, 1100)
+shape = SubResource("RectangleShape2D_wdwcg")
+debug_color = Color(0.3, 0.85, 1, 0.12)
+
+[node name="Solido_05" type="StaticBody2D" parent="."]
+collision_mask = 0
+
+[node name="Colisao" type="CollisionShape2D" parent="Solido_05"]
+position = Vector2(1585, 465)
+shape = SubResource("RectangleShape2D_4sh1x")
+debug_color = Color(0.3, 0.85, 1, 0.12)
+
+[node name="Solido_06" type="StaticBody2D" parent="."]
+collision_mask = 0
+
+[node name="Colisao" type="CollisionShape2D" parent="Solido_06"]
+position = Vector2(1790, 850)
+shape = SubResource("RectangleShape2D_4gvgi")
+debug_color = Color(0.3, 0.85, 1, 0.12)
+
+[node name="Solido_07" type="StaticBody2D" parent="."]
+collision_mask = 0
+
+[node name="Colisao" type="CollisionShape2D" parent="Solido_07"]
+position = Vector2(2160, 1100)
+shape = SubResource("RectangleShape2D_g0idm")
+debug_color = Color(0.3, 0.85, 1, 0.12)
+
+[node name="Solido_08" type="StaticBody2D" parent="."]
+collision_mask = 0
+
+[node name="Colisao" type="CollisionShape2D" parent="Solido_08"]
+position = Vector2(2050, 372)
+shape = SubResource("RectangleShape2D_cn430")
+debug_color = Color(0.3, 0.85, 1, 0.12)
+
+[node name="Solido_09" type="StaticBody2D" parent="."]
+collision_mask = 0
+
+[node name="Colisao" type="CollisionShape2D" parent="Solido_09"]
+position = Vector2(2310, 432)
+shape = SubResource("RectangleShape2D_yvd0m")
+debug_color = Color(0.3, 0.85, 1, 0.12)
+
+[node name="Solido_10" type="StaticBody2D" parent="."]
+collision_mask = 0
+
+[node name="Colisao" type="CollisionShape2D" parent="Solido_10"]
+position = Vector2(3690, 1100)
+shape = SubResource("RectangleShape2D_u372d")
+debug_color = Color(0.3, 0.85, 1, 0.12)
+
+[node name="Solido_11" type="StaticBody2D" parent="."]
+collision_mask = 0
+
+[node name="Colisao" type="CollisionShape2D" parent="Solido_11"]
+position = Vector2(4075, 652)
+shape = SubResource("RectangleShape2D_716kv")
+debug_color = Color(0.3, 0.85, 1, 0.12)
+
+[node name="Solido_12" type="StaticBody2D" parent="."]
+collision_mask = 0
+
+[node name="Colisao" type="CollisionShape2D" parent="Solido_12"]
+position = Vector2(4335, 572)
+shape = SubResource("RectangleShape2D_yglms")
+debug_color = Color(0.3, 0.85, 1, 0.12)
+
+[node name="Solido_13" type="StaticBody2D" parent="."]
+collision_mask = 0
+
+[node name="Colisao" type="CollisionShape2D" parent="Solido_13"]
+position = Vector2(4950, 400)
+shape = SubResource("RectangleShape2D_kirw5")
+debug_color = Color(0.3, 0.85, 1, 0.12)
+
+[node name="Decoracao" type="Node2D" parent="."]
+z_index = -5
+
+[node name="Deco_cogumelo_gigante_01" type="Sprite2D" parent="Decoracao"]
+modulate = Color(0.8, 0.8, 0.84, 1)
+position = Vector2(330, 806)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("6_53e0h")
+offset = Vector2(0, -333.5)
+
+[node name="Deco_grama_01" type="Sprite2D" parent="Decoracao"]
+modulate = Color(0.9, 0.9, 0.945, 1)
+position = Vector2(20, 804)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("7_rsetc")
+offset = Vector2(0, -59.5)
+
+[node name="Deco_grama_02" type="Sprite2D" parent="Decoracao"]
+modulate = Color(0.9, 0.9, 0.945, 1)
+position = Vector2(615, 804)
+scale = Vector2(-0.42, 0.42)
+texture = ExtResource("7_rsetc")
+offset = Vector2(0, -59.5)
+
+[node name="Deco_pedra_musgo_01" type="Sprite2D" parent="Decoracao"]
+modulate = Color(0.85, 0.85, 0.8925, 1)
+position = Vector2(705, 806)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("8_jfwmq")
+offset = Vector2(0, -80)
+
+[node name="Deco_cogumelo_gigante_02" type="Sprite2D" parent="Decoracao"]
+modulate = Color(0.72, 0.72, 0.756, 1)
+position = Vector2(1345, 806)
+scale = Vector2(-0.4, 0.4)
+texture = ExtResource("6_53e0h")
+offset = Vector2(0, -333.5)
+
+[node name="Deco_grama_03" type="Sprite2D" parent="Decoracao"]
+modulate = Color(0.9, 0.9, 0.945, 1)
+position = Vector2(1150, 804)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("7_rsetc")
+offset = Vector2(0, -59.5)
+
+[node name="Deco_grama_04" type="Sprite2D" parent="Decoracao"]
+modulate = Color(0.9, 0.9, 0.945, 1)
+position = Vector2(1500, 804)
+scale = Vector2(-0.4, 0.4)
+texture = ExtResource("7_rsetc")
+offset = Vector2(0, -59.5)
+
+[node name="Deco_grama_05" type="Sprite2D" parent="Decoracao"]
+modulate = Color(0.9, 0.9, 0.945, 1)
+position = Vector2(1795, 304)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("7_rsetc")
+offset = Vector2(0, -59.5)
+
+[node name="Deco_raiz_pendurada_01" type="Sprite2D" parent="Decoracao"]
+modulate = Color(0.8, 0.8, 0.84, 1)
+position = Vector2(2050, 364)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("9_5yspk")
+offset = Vector2(0, 192)
+
+[node name="Deco_raiz_pendurada_02" type="Sprite2D" parent="Decoracao"]
+modulate = Color(0.8, 0.8, 0.84, 1)
+position = Vector2(2310, 424)
+scale = Vector2(-0.44, 0.44)
+texture = ExtResource("9_5yspk")
+offset = Vector2(0, 192)
+
+[node name="Deco_pedra_musgo_02" type="Sprite2D" parent="Decoracao"]
+modulate = Color(0.85, 0.85, 0.8925, 1)
+position = Vector2(2495, 806)
+scale = Vector2(-0.42, 0.42)
+texture = ExtResource("8_jfwmq")
+offset = Vector2(0, -80)
+
+[node name="Deco_grama_06" type="Sprite2D" parent="Decoracao"]
+modulate = Color(0.9, 0.9, 0.945, 1)
+position = Vector2(2890, 804)
+scale = Vector2(-0.5, 0.5)
+texture = ExtResource("7_rsetc")
+offset = Vector2(0, -59.5)
+
+[node name="Deco_cogumelo_gigante_03" type="Sprite2D" parent="Decoracao"]
+modulate = Color(0.8, 0.8, 0.84, 1)
+position = Vector2(3130, 806)
+scale = Vector2(-0.5, 0.5)
+texture = ExtResource("6_53e0h")
+offset = Vector2(0, -333.5)
+
+[node name="Deco_pedra_musgo_03" type="Sprite2D" parent="Decoracao"]
+modulate = Color(0.85, 0.85, 0.8925, 1)
+position = Vector2(3330, 806)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("8_jfwmq")
+offset = Vector2(0, -80)
+
+[node name="Deco_grama_07" type="Sprite2D" parent="Decoracao"]
+modulate = Color(0.9, 0.9, 0.945, 1)
+position = Vector2(3545, 804)
+scale = Vector2(0.45, 0.45)
+texture = ExtResource("7_rsetc")
+offset = Vector2(0, -59.5)
+
+[node name="Deco_arco_templo_01" type="Sprite2D" parent="Decoracao"]
+modulate = Color(0.85, 0.85, 0.8925, 1)
+position = Vector2(3760, 806)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("10_g2van")
+offset = Vector2(0, -361)
+
+[node name="Deco_grama_08" type="Sprite2D" parent="Decoracao"]
+modulate = Color(0.9, 0.9, 0.945, 1)
+position = Vector2(4110, 804)
+scale = Vector2(-0.42, 0.42)
+texture = ExtResource("7_rsetc")
+offset = Vector2(0, -59.5)
+
+[node name="Deco_altar_01" type="Sprite2D" parent="Decoracao"]
+modulate = Color(0.72, 0.72, 0.756, 1)
+position = Vector2(4330, 804)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("11_8nacn")
+offset = Vector2(0, -119)
+
+[node name="Deco_arco_templo_02" type="Sprite2D" parent="Decoracao"]
+modulate = Color(0.6, 0.6, 0.63, 1)
+position = Vector2(4740, 808)
+scale = Vector2(-0.66, 0.66)
+texture = ExtResource("10_g2van")
+offset = Vector2(0, -361)
+
+[node name="Deco_grama_09" type="Sprite2D" parent="Decoracao"]
+modulate = Color(0.9, 0.9, 0.945, 1)
+position = Vector2(4555, 804)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("7_rsetc")
+offset = Vector2(0, -59.5)
+
+[node name="Perigo_01" type="Area2D" parent="."]
+script = ExtResource("12_u4iyk")
+theme = "verd"
+rect = Rect2(800, 1004, 300, 36)
+
+[node name="Perigo_02" type="Area2D" parent="."]
+script = ExtResource("12_u4iyk")
+theme = "verd"
+rect = Rect2(1860, 768, 600, 32)
+
+[node name="Objetos" type="Node2D" parent="."]
+z_index = 2
+
+[node name="Placa_01" type="Area2D" parent="Objetos"]
+position = Vector2(200, 800)
+script = ExtResource("13_xs4n8")
+text = "NOVA FORMA — LINCE-VAGALUME.  Aperte ESPAÇO de novo no ar para dar um PULO DUPLO."
+theme = "verd"
+
+[node name="Placa_02" type="Area2D" parent="Objetos"]
+position = Vector2(520, 800)
+script = ExtResource("13_xs4n8")
+text = "Clique esquerdo (ou J): garras.  No ar, segure S + ataque para golpear para baixo e QUICAR em inimigos e espinhos."
+theme = "verd"
+
+[node name="Placa_03" type="Area2D" parent="Objetos"]
+position = Vector2(1230, 800)
+script = ExtResource("13_xs4n8")
+text = "Segure na direção da parede para deslizar. ESPAÇO encostado na parede = SALTO DE PAREDE. Suba pelo poço!"
+theme = "verd"
+
+[node name="Placa_04" type="Area2D" parent="Objetos"]
+position = Vector2(2700, 800)
+script = ExtResource("13_xs4n8")
+text = "Clique direito (ou K) com 1/3 de energia: CLARÃO — fere e atordoa tudo ao redor."
+theme = "verd"
+
+[node name="Placa_05" type="Area2D" parent="Objetos"]
+position = Vector2(3700, 800)
+script = ExtResource("13_xs4n8")
+text = "IRIS: \"O sinal do Fragmento está logo à frente... e algo enorme está enraizado em volta dele.\""
+theme = "verd"
+
+[node name="Checkpoint_01" type="Area2D" parent="Objetos"]
+position = Vector2(2570, 800)
+script = ExtResource("14_o54hs")
+theme = "verd"
+
+[node name="FendaDeChegada" type="Area2D" parent="Objetos"]
+position = Vector2(30, 800)
+script = ExtResource("15_jjwlj")
+target = "lab"
+theme = "lab"
+
+[node name="Item_v_c1" type="Area2D" parent="Objetos"]
+position = Vector2(950, 690)
+script = ExtResource("16_6jcp6")
+kind = "cell"
+pid = "v_c1"
+respawn = 0.0
+
+[node name="Item_v_c2" type="Area2D" parent="Objetos"]
+position = Vector2(1665, 420)
+script = ExtResource("16_6jcp6")
+kind = "cell"
+pid = "v_c2"
+respawn = 0.0
+
+[node name="Item_v_c3" type="Area2D" parent="Objetos"]
+position = Vector2(2050, 300)
+script = ExtResource("16_6jcp6")
+kind = "cell"
+pid = "v_c3"
+respawn = 0.0
+
+[node name="Item_v_h1" type="Area2D" parent="Objetos"]
+position = Vector2(2310, 370)
+script = ExtResource("16_6jcp6")
+kind = "heal"
+pid = "v_h1"
+respawn = 0.0
+
+[node name="Item_v_h2" type="Area2D" parent="Objetos"]
+position = Vector2(3760, 760)
+script = ExtResource("16_6jcp6")
+kind = "heal"
+pid = "v_h2"
+respawn = 0.0
+
+[node name="Item_log_06" type="Area2D" parent="Objetos"]
+position = Vector2(420, 776)
+script = ExtResource("16_6jcp6")
+kind = "registro"
+pid = "log_06"
+respawn = 0.0
+
+[node name="Item_log_07" type="Area2D" parent="Objetos"]
+position = Vector2(2800, 776)
+script = ExtResource("16_6jcp6")
+kind = "registro"
+pid = "log_07"
+respawn = 0.0
+
+[node name="Item_log_08" type="Area2D" parent="Objetos"]
+position = Vector2(3600, 776)
+script = ExtResource("16_6jcp6")
+kind = "registro"
+pid = "log_08"
+respawn = 0.0
+
+[node name="Entidades" type="Node2D" parent="."]
+z_index = 5
+
+[node name="RainhaMicelia" type="CharacterBody2D" parent="Entidades"]
+position = Vector2(4730, 800)
+script = ExtResource("17_8e5u8")
+
+[node name="Mariposa_01" type="CharacterBody2D" parent="Entidades"]
+position = Vector2(1300, 600)
+script = ExtResource("18_xagnk")
+
+[node name="PlantaDeEsporos_01" type="CharacterBody2D" parent="Entidades"]
+position = Vector2(1430, 800)
+script = ExtResource("19_vs2ad")
+
+[node name="Mariposa_02" type="CharacterBody2D" parent="Entidades"]
+position = Vector2(2060, 240)
+script = ExtResource("18_xagnk")
+
+[node name="Mariposa_03" type="CharacterBody2D" parent="Entidades"]
+position = Vector2(2750, 600)
+script = ExtResource("18_xagnk")
+
+[node name="PlantaDeEsporos_02" type="CharacterBody2D" parent="Entidades"]
+position = Vector2(2950, 800)
+script = ExtResource("19_vs2ad")
+
+[node name="Mariposa_04" type="CharacterBody2D" parent="Entidades"]
+position = Vector2(3250, 560)
+script = ExtResource("18_xagnk")
+
+[node name="PlantaDeEsporos_03" type="CharacterBody2D" parent="Entidades"]
+position = Vector2(3480, 800)
+script = ExtResource("19_vs2ad")
+
+[node name="Efeitos" type="Node2D" parent="."]
+z_index = 8
+
+[node name="PrimeiroPlano" type="Node2D" parent="."]
+z_index = 30
+script = ExtResource("20_xo37e")
+theme = "verd"
+depth = 1.2
+span = Vector2(-400, 6804)
+ground_rects = []
+base_y = 1190.0
+clear = []
+solidos_da_cena = true
+
+[node name="Marcadores" type="Node2D" parent="."]
+
+[node name="Inicio" type="Marker2D" parent="Marcadores"]
+position = Vector2(80, 790)
+
+[node name="FendaDeRetorno" type="Marker2D" parent="Marcadores"]
+position = Vector2(4560, 800)
+
+[node name="PreviaEditor" type="Node2D" parent="Marcadores"]
+script = ExtResource("21_jtvn0")
+mostrar = true
+mostrar_salas = true

@@ -15,7 +15,7 @@ const DESTS := {
 }
 const OPEN_C := Vector2(0, -344)       # centro da abertura (original) em relação ao centro da base
 
-var target := "verdamia"
+@export var target := "verdamia"
 var active := false
 var state := "sinal"
 var open_k := 0.0                      # 0 = diafragma fechado, 1 = recolhido

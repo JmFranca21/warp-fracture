@@ -3,8 +3,8 @@ extends Area2D
 ## Coletáveis: Célula de Fase (moeda) e Célula de Energia (cura 1).
 
 var main
-var kind := "cell"
-var pid := ""
+@export var kind := "cell"
+@export var pid := ""
 var vel := Vector2.ZERO
 var dropped := false
 var t := 0.0
@@ -12,7 +12,7 @@ var base_y := 0.0
 var taken := false
 var g: Sprite2D
 var art: Sprite2D = null
-var respawn := 0.0   # >0: reaparece depois desse tempo (ex.: Célula de Energia ao lado da trava)
+@export var respawn := 0.0   # >0: reaparece depois desse tempo (ex.: Célula de Energia ao lado da trava)
 
 
 func _ready() -> void:

@@ -4,7 +4,7 @@ extends Enemy
 ## O jogador escapa pulando por cima do feixe.
 
 const SPR_SCALE := 0.44
-var dir := -1
+@export var dir := -1
 var state := "idle"
 var st := 1.2
 var beam_len := 0.0

@@ -4,7 +4,7 @@ extends Interactable
 
 const COST := 33.0
 var level
-var target := ""
+@export var target := ""
 var open := false
 var spr: Sprite2D
 var ring: Sprite2D

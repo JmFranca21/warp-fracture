@@ -5,12 +5,12 @@ extends AnimatableBody2D
 ##  "movel"     – flutuante, vai e volta sobre um trilho; com sid fica parada até ser ativada
 ##  "quebravel" – presa por correntes; desmorona ~0,5 s após pisada e volta depois
 
-var kind := "suspensa"
-var rect := Rect2()
-var travel := Vector2.ZERO
-var period := 4.0
-var hang_y := NAN
-var sid := ""
+@export var kind := "suspensa"
+@export var rect := Rect2()
+@export var travel := Vector2.ZERO
+@export var period := 4.0
+@export var hang_y := NAN
+@export var sid := ""
 var active := true
 var level
 var spr: Sprite2D
