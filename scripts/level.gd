@@ -265,9 +265,10 @@ func _build() -> void:
 		add_child(desert)
 		return
 	if theme == "nivaria":
-		nivaria = Nivaria.new()
-		nivaria.level = self
-		add_child(nivaria)
+		var niv: Nivaria = load(Nivaria.SCENE_PATH).instantiate()     # layout editável em fases/nivaria.tscn
+		niv.level = self
+		nivaria = niv
+		add_child(niv)
 		return
 
 	var fg := FgLayer.new()
@@ -506,6 +507,9 @@ func _build_sky(theme: String) -> void:
 	elif theme == "deserto":
 		g.set_color(0, Color("e8b07a"))
 		g.set_color(1, Color("7a3d22"))
+	elif theme == "nivaria":
+		g.set_color(0, Color("0B0F1E"))
+		g.set_color(1, Color("1B2943"))
 	else:
 		g.set_color(0, Color("020a0e"))
 		g.set_color(1, Color("10383a"))

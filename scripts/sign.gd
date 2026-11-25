@@ -7,7 +7,7 @@ extends Interactable
 
 func _setup() -> void:
 	size = Vector2(150, 120)
-	var g := Art.glow(Color(0.4, 0.9, 1.0, 0.35) if theme in ["lab", "deserto"] else Color(0.5, 1.0, 0.8, 0.35), 50)
+	var g := Art.glow(Color(0.4, 0.9, 1.0, 0.35) if theme in ["lab", "deserto", "nivaria"] else Color(0.5, 1.0, 0.8, 0.35), 50)
 	g.position = Vector2(0, -48)
 	add_child(g)
 
@@ -25,16 +25,7 @@ func _on_exit(b: Node) -> void:
 
 
 func _draw() -> void:
-	if theme == "nivaria":
-		# marco de madeira das estações de observação (paleta GL00), com neve no topo
-		draw_rect(Rect2(-3, -44, 6, 44), Color("3a3440"))
-		draw_rect(Rect2(-18, -58, 36, 18), Color("61505a"))
-		draw_rect(Rect2(-18, -58, 36, 18), Color("3a3440"), false, 2.0)
-		draw_rect(Rect2(-19, -61, 38, 4), Color("e6eef7"))
-		var a2 := 0.5 + (0.4 if player_near else 0.0)
-		draw_line(Vector2(-11, -49), Vector2(11, -49), Color(1.0, 0.56, 0.82, a2), 2.0)
-		return
-	if theme in ["lab", "deserto"]:
+	if theme in ["lab", "deserto", "nivaria"]:
 		draw_line(Vector2(0, 0), Vector2(0, -36), Color("2a3442"), 4.0, true)
 		var a := 0.55 + 0.15 * sin(t * 3.0) + (0.25 if player_near else 0.0)
 		if fmod(t, 3.1) < 0.06:

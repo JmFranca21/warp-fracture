@@ -4,25 +4,14 @@ extends Interactable
 
 var glow: Sprite2D
 var used_t := 0.0
-var fire: Sprite2D          # Braseiro de Nivária (GL04): apagado até o jogador descansar
 
 
 func _setup() -> void:
 	prompt = "[E] Descansar na Estação de Recarga"
-	if theme == "nivaria":
-		prompt = "[E] Acender o Braseiro"
-		glow = Art.glow(Color(1.0, 0.62, 0.3, 0.0), 130)
-		glow.position = Vector2(0, -40)
-		add_child(glow)
-		fire = NvArt.sprite("gl04_braseiro_off", 52.0, "h", "base")
-		add_child(fire)
-		if main.events.has(_key()):
-			_light()
-		return
-	glow = Art.glow(Color(0.4, 0.95, 1.0, 0.4) if theme in ["lab", "deserto"] else Color(0.6, 1.0, 0.7, 0.4), 110)
+	glow = Art.glow(Color(0.4, 0.95, 1.0, 0.4) if theme in ["lab", "deserto", "nivaria"] else Color(0.6, 1.0, 0.7, 0.4), 110)
 	glow.position = Vector2(0, -50)
 	add_child(glow)
-	if theme in ["lab", "deserto"]:
+	if theme in ["lab", "deserto", "nivaria"]:
 		var spr := Props.sprite("celula_suporte", 0.55)
 		add_child(spr)
 		glow.position = Vector2(0, -42)
@@ -35,25 +24,7 @@ func _setup() -> void:
 		glow.scale *= 0.7
 
 
-func _key() -> String:
-	return "brasa_%d" % int(position.x)
-
-
-func _light() -> void:
-	fire.texture = NvArt.tex("gl04_braseiro_on")
-	fire.scale = Vector2.ONE * NvArt.fit("gl04_braseiro_on", 70.0)
-	fire.offset = Vector2(0, -fire.texture.get_height() / 2.0)
-	prompt = "[E] Descansar no Braseiro"
-
-
 func interact() -> void:
-	if fire != null:
-		if not main.events.has(_key()):
-			main.events[_key()] = true
-			_light()
-			main.hud.set_prompt(prompt)
-		if is_instance_valid(main.player) and main.player.form == "inverno":
-			main.player._thaw()
 	main.set_checkpoint(global_position)
 	used_t = 1.0
 	Fx.burst(main.level.fx, global_position + Vector2(0, -40), Color(0.5, 1.0, 0.9), 30, 260, 0.8, 0.08, -100)
@@ -63,17 +34,11 @@ func interact() -> void:
 func _process(dt: float) -> void:
 	super._process(dt)
 	used_t = maxf(0.0, used_t - dt)
-	if fire != null:
-		var lit: bool = main.events.has(_key())
-		glow.modulate.a = (0.4 + 0.12 * sin(t * 7.0) + used_t * 0.4) if lit else 0.0
-		return
 	glow.modulate.a = 0.35 + 0.1 * sin(t * 2.0) + used_t * 0.5
 
 
 func _draw() -> void:
-	if theme == "nivaria":
-		return
-	if theme in ["lab", "deserto"]:
+	if theme in ["lab", "deserto", "nivaria"]:
 		var k := 0.35 + 0.15 * sin(t * 2.0) + used_t * 0.5
 		draw_arc(Vector2(0, -2), 46.0, 0.0, TAU, 40, Color(0.35, 0.9, 1.0, k * 0.6), 2.0, true)
 		for i in 3:

@@ -752,6 +752,11 @@ func _form_banner() -> void:
 			events["forma_automato"] = true
 			hud.show_banner("NOVA FORMA: AUTÔMATO" if first else "FORMA: AUTÔMATO",
 				"Ímã de Fase (F)  ·  Rebitadeira  ·  Pulso Magnético  ·  Arranque")
+		"yeti":
+			var first := not events.has("forma_yeti")
+			events["forma_yeti"] = true
+			hud.show_banner("NOVA FORMA: YETI" if first else "FORMA: YETI",
+				"Bola de neve (clique esquerdo, mira)  ·  Chute giratório (clique direito)  ·  Pesado")
 		_:
 			hud.show_banner("FORMA HUMANA", "Estabilizador de Fase  ·  Arpão de Fase")
 
@@ -876,6 +881,9 @@ func _parse_args() -> void:
 			auto[kv[0]] = kv[1]
 		else:
 			auto[a] = "1"
+	if Nivaria.direct_play and auto.is_empty():
+		# F6 em fases/nivaria.tscn: entra direto na fase, com o Arpão, sem salvar e sem fechar sozinho
+		auto = {"level": "nivaria", "arpao": "1", "at": "1e12"}
 
 
 func _auto_process(delta: float) -> void:

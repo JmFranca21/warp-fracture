@@ -9,7 +9,6 @@ const ROWS := {
 	"lab": {"pos": Vector2(300, 790), "floor": 800.0, "items": ["player", "crawler", "drone", "turret_r"]},
 	"verdamia": {"pos": Vector2(300, 790), "floor": 800.0, "items": ["player", "human", "moth", "spore"]},
 	"deserto": {"pos": Vector2(300, 690), "floor": 700.0, "items": ["player", "human", "robo", "drone_df"]},
-	"nivaria": {"pos": Vector2(200, 690), "floor": 700.0, "items": ["player", "human", "gelinho", "drone_nv", "morcego"]},
 }
 
 
@@ -90,16 +89,6 @@ func _run() -> void:
 					node = game.player
 				"human":
 					node = _human(lv)
-				"gelinho", "drone_nv", "morcego":
-					var n := NvEnemy.new()
-					n.level = lv
-					n.kind = {"gelinho": "gelinho", "drone_nv": "drone", "morcego": "morcego"}[it]
-					n.patrol = Vector2(x, x)
-					node = n
-					if it == "drone_nv":
-						y -= 90.0
-					elif it == "morcego":
-						y -= 160.0
 				"robo", "drone_df":
 					var d := DesertEnemy.new()
 					d.level = lv
@@ -142,17 +131,5 @@ func _run() -> void:
 	game.player.process_mode = Node.PROCESS_MODE_DISABLED
 	await ticks(4)
 	await shot("chefe_forja")
-	game.load_level("nivaria", Vector2(8350, -110), false)
-	await ticks(10)
-	game.level.nivaria.guardiao.process_mode = Node.PROCESS_MODE_DISABLED
-	for e in game.level.entities.get_children():
-		if e != game.player:
-			e.process_mode = Node.PROCESS_MODE_DISABLED
-	await ticks(40)
-	game.player.process_mode = Node.PROCESS_MODE_DISABLED
-	game.cam.position = Vector2(8450, -330)
-	game.cam.reset_smoothing()
-	await ticks(4)
-	await shot("chefe_guardiao")
 	AudioMgr.inst.shutdown()
 	quit(0)

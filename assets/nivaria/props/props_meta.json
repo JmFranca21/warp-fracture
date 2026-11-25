@@ -1,0 +1,30 @@
+{
+ "plat_gelo": {
+  "size": [
+   2103,
+   224
+  ]
+ },
+ "plat_quebra": {
+  "frame": [
+   813,
+   199
+  ],
+  "frames": 6
+ },
+ "alpinista": {
+  "cell": [
+   300,
+   300
+  ],
+  "anchor": [
+   150,
+   292
+  ],
+  "rows": {
+   "gelo": 0,
+   "corre": 1
+  },
+  "frames": 8
+ }
+}

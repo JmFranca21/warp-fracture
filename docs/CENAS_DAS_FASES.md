@@ -7,7 +7,7 @@
 | Laboratório Hélix | `scenes/fases/lab.tscn` |
 | Verdâmia | `scenes/fases/verdamia.tscn` |
 
-O Deserto de Ferrugem e Nivária continuam montados pelo código (`scripts/desert.gd`, `scripts/nivaria.gd`).
+O Deserto de Ferrugem continua montado pelo código (`scripts/desert.gd`). Nivária é a versão do Caio (branch `dev/neve-fase`), em cena própria: `fases/nivaria.tscn` com `scripts/nivaria.gd` e `scripts/nivaria_cena/`.
 
 ## Como a cena está organizada
 

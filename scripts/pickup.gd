@@ -36,12 +36,7 @@ func _ready() -> void:
 	if kind in ["modulo", "nucleo"]:
 		g.modulate = Color(0.35, 0.92, 1.0, 0.8) if kind == "modulo" else Color(1.0, 0.85, 0.45, 0.8)
 		g.scale = Vector2.ONE * 70.0 * 2.0 / 128.0
-	if main.level != null and main.level.data.get("theme", "") == "nivaria" and kind in ["cell", "nucleo", "registro"]:
-		# Célula de Fase, Núcleo de Integridade e Registro de Nivária (GL04)
-		art = NvArt.sprite({"cell": "gl04_celula", "nucleo": "gl04_nucleo", "registro": "gl04_registro"}[kind],
-			{"cell": 24.0, "nucleo": 34.0, "registro": 34.0}[kind], "h", "centro")
-		add_child(art)
-	elif main.level != null and main.level.data.get("theme", "") in ["lab", "deserto"] and kind in ["heal", "energy"]:
+	elif main.level != null and main.level.data.get("theme", "") in ["lab", "deserto", "nivaria"] and kind in ["heal", "energy"]:
 		art = Props.centered("kit_reparo" if kind == "heal" else "celula_energia", 0.42 if kind == "heal" else 0.4)
 		add_child(art)
 	z_index = 2

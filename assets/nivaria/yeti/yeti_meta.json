@@ -1,0 +1,37 @@
+{
+ "cell": [
+  380,
+  250
+ ],
+ "anchor": [
+  190,
+  240
+ ],
+ "stand_h": 190,
+ "anims": {
+  "idle": {
+   "row": 0,
+   "frames": 1
+  },
+  "turn": {
+   "row": 1,
+   "frames": 4
+  },
+  "run": {
+   "row": 2,
+   "frames": 8
+  },
+  "jump": {
+   "row": 3,
+   "frames": 8
+  },
+  "throw": {
+   "row": 4,
+   "frames": 8
+  },
+  "kick": {
+   "row": 5,
+   "frames": 8
+  }
+ }
+}
