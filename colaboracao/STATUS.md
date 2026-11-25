@@ -113,6 +113,22 @@ Proposta e decisões: [proposta da Fase 3](../docs/fases/nivaria/proposta_fase3.
 | GL101 | Guardião Glacial: placas e núcleo (lote 3) | ABERTO | [GL lote 2](pedidos/GL_lote2_producao.md) | — | — |
 | GL102 | Guardião Glacial: efeitos (lote 3) | ABERTO | [GL lote 2](pedidos/GL_lote2_producao.md) | — | — |
 
+## Deserto de Ferrugem: pacote completo v2 (uma só mão, DA-04)
+
+Pedido: [DF pacote completo v2](pedidos/DF_pacote_completo_v2.md) (25/11/2026). Refaz **todos** os assets do Deserto na linguagem comum do Laboratório e de Verdâmia: bíblia [DF-BASE], quadro-chave, fichas DF02 v2, DF01 v2 e DF03 v2, cenário (DF201 v2, DF205 v2, DF202–DF209), máquinas e objetos (DF220–DF225, DF210), Autômato (DF87–DF99 v2), inimigos (DF60–DF71 v2, DF64b, DF69c), efeitos (DF80–DF85 v2), Forja-Mãe (DF100–DF112 v2) e a prancha DF-UNIDADE. Os pedidos ainda abertos da tabela abaixo (DF202–DF210, DF03 v2) passam a seguir este pacote.
+
+| Etapa | Estado |
+|---|---|
+| 0. DF-BASE e quadro-chave (DA-04) | ABERTO |
+| 1. Fichas DF02 v2, DF01 v2, DF03 v2 | ABERTO (em ordem) |
+| 2. Cenário DF201 v2, DF205 v2, DF202–DF209 | ABERTO (depois do quadro-chave) |
+| 3. Máquinas e objetos DF220–DF225, DF210 | ABERTO (depois do quadro-chave) |
+| 4. Autômato DF87–DF99 v2 | SUSPENSO até aprovar a DF02 v2 |
+| 5. Inimigos DF60–DF71 v2, DF64b, DF69c | SUSPENSO até aprovar a DF01 v2 |
+| 6. Efeitos DF80–DF85 v2 | ABERTO (depois do quadro-chave) |
+| 7. Forja-Mãe DF100–DF112 v2 | SUSPENSO até aprovar a DF03 v2 e a DF203 |
+| 8. DF-UNIDADE | SUSPENSO até o fim do pacote |
+
 ## Deserto de Ferrugem: refação da cena (DA-03)
 
 Pedido: [DF refação](pedidos/DF_refacao_cena.md) (24/11/2026). Inventário de arte das quatro fases: [docs/INVENTARIO_DE_ARTE.md](../docs/INVENTARIO_DE_ARTE.md).
