@@ -36,7 +36,7 @@ Atualizado pelos agentes. Leia `PROTOCOLO.md` e `FLUXO_AUTOMATICO.md` antes de c
 | DF205 | Terreno do Deserto de Ferrugem | ENTREGUE (retoque dos cantos ENTREGUE) | [DF](pedidos/DF_refacao_cena.md) | — | [Peças, encaixes e comparação](entregas/DF205/ENTREGA.md) |
 | DF200 | Céu do crepúsculo de tempestade | ENTREGUE | [DF](pedidos/DF_refacao_cena.md) | — | [Céu, comparação e aferição](entregas/DF200/ENTREGA.md) |
 | DF201 | Fundo intermediário das Dunas de Sucata | ENTREGUE | [DF](pedidos/DF_refacao_cena.md) | — | [Camadas, composição e aferição](entregas/DF201/ENTREGA.md) |
-| DF01 | Ficha do Robô e do Drone do deserto | ENTREGUE (aprovado pelo responsável) | [DF](pedidos/DF_deserto_ferrugem.md) | — | — |
+| DF01 | Ficha do Robô e do Drone do deserto | ENTREGUE (v2) · APROVADO | [DF](pedidos/DF_deserto_ferrugem.md) | [ficha e conferências](entregas/DF01/ENTREGA_v2.md) | João Marcelo, 25/11/2026 |
 | DF10–DF12 | Fundos das Dunas em parallax | ENTREGUE | [DF](pedidos/DF_deserto_ferrugem.md) | — | — |
 | DF20–DF28 | Terreno, paredes, piso, esteira, trilho e cabo | ENTREGUE | [DF](pedidos/DF_deserto_ferrugem.md) | — | — |
 | DF30–DF39 | Objetos de cenário e portas | ENTREGUE | [DF](pedidos/DF_deserto_ferrugem.md) | — | — |
@@ -59,8 +59,8 @@ Visão geral, divergências e plano: [proposta da Fase 2](../docs/fases/deserto_
 
 | ID | O que é | Estado | Pedido | Entrega | Revisão |
 |---|---|---|---|---|---|
-| DF02 | Ficha do Autômato (lote 1) | ENTREGUE (AGUARDA JOÃO; pacote Revisão v2 de 13/11/2026) | [pedido](pedidos/DF02_ficha_automato.md) | [entrega](entregas/DF02/) | — |
-| DF03 | Ficha da Forja-Mãe e esquema da arena (lote 1) | ENTREGUE (AGUARDA JOÃO; pacote Revisão v2 de 13/11/2026) | [pedido](pedidos/DF03_ficha_forja_mae.md) | [entrega](entregas/DF03/) | — |
+| DF02 | Ficha do Autômato (lote 1) | ENTREGUE (v2) · APROVADO | [pedido](pedidos/DF02_ficha_automato.md) | [ficha e conferências](entregas/DF02/ENTREGA_v2.md) | João Marcelo, 25/11/2026 |
+| DF03 | Ficha da Forja-Mãe e esquema da arena (lote 1) | ENTREGUE (v2) · APROVADO | [pedido](pedidos/DF03_ficha_forja_mae.md) | [ficha e conferências](entregas/DF03/ENTREGA_v2.md) | João Marcelo, 25/11/2026 |
 | PT00 | Ficha dos portais e do Receptáculo (lote 1) | ENTREGUE (AGUARDA JOÃO; pacote Revisão v2 de 13/11/2026) | [pedido](pedidos/PT00_ficha_portais.md) | [entrega](entregas/PT00/) | — |
 | DF87–DF99 | Autômato: 7 folhas do corpo, braço, rebite, disparo, feixe e pulso (lote 2) | ENTREGUE (AGUARDA JOÃO; pacote Revisão v2 de 13/11/2026); produzido antes da aprovação da DF02 | [pedido](pedidos/DF87-DF99_automato.md) | entregas DF87, DF88, DF90–DF99 | — |
 | PT10–PT23 | Arco de Dobra, glifos, Receptáculo, membrana e Fenda (lote 2) | ENTREGUE (AGUARDA JOÃO; pacote Revisão v2 de 13/11/2026); produzido antes da aprovação da PT00 | [pedido](pedidos/PT10-PT23_portais.md) | entregas PT10–PT13, PT15, PT20–PT23 | — |
