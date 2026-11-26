@@ -38,6 +38,7 @@ Atualizado pelos agentes. Leia `PROTOCOLO.md` e `FLUXO_AUTOMATICO.md` antes de c
 | DF200 diurno | Céu aprovado das Dunas | APROVADO (Pacote 3) | [DF](pedidos/DF_refacao_cena.md) | [Céu diurno](entregas/DF200/DF200_ceu_diurno.png) | — |
 | DF202 | Fundos da Fábrica e do Salão | APROVADO (Pacote 4, 25/11/2026) | — | [Entrega](entregas/DF202/ENTREGA.md) | — |
 | DF207 | Peças suspensas | APROVADO (Pacote 7, 25/11/2026) | — | [Entrega](entregas/DF207/ENTREGA_v2.md) | — |
+| DF220 | Marcos do cenário (6 peças) | APROVADO (Pacote 9) | — | [Peças e cenas](entregas/DF220/ENTREGA_v2.md) | — |
 | DF209 | Efeitos de ambiente | APROVADO (Pacote 8 refeito) | — | [Folhas e animações](entregas/DF209/ENTREGA_v2.md) | — |
 | DF208 | Primeiro plano exterior e interior | APROVADO (Pacote 7, 25/11/2026) | — | [Entrega](entregas/DF208/ENTREGA_v2.md) | — |
 | DF206 | Decoração das Dunas e da Fábrica (24 peças) | APROVADO (Pacote 6, 25/11/2026) | — | [Pranchas e cenas](entregas/DF206/ENTREGA_v2.md) | — |
