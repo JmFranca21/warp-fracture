@@ -39,6 +39,7 @@ Atualizado pelos agentes. Leia `PROTOCOLO.md` e `FLUXO_AUTOMATICO.md` antes de c
 | DF202 | Fundos da Fábrica e do Salão | APROVADO (Pacote 4, 25/11/2026) | — | [Entrega](entregas/DF202/ENTREGA.md) | — |
 | DF207 | Peças suspensas | APROVADO (Pacote 7, 25/11/2026) | — | [Entrega](entregas/DF207/ENTREGA_v2.md) | — |
 | DF225 | Comportas da Câmara e da Saída | APROVADO (Pacote 14) | — | [Entrega](entregas/DF225/ENTREGA_v2.md) | — |
+| DF210 | Estação, placa e coletáveis | ENTREGUE (Pacote 15) | — | [Entrega](entregas/DF210/ENTREGA_v2.md) | — |
 | DF224 | Plataformas móveis, válvula e gancho | APROVADO (Pacote 13) | — | [Entrega](entregas/DF224/ENTREGA_v2.md) | — |
 | DF223 | Prensas e serra | APROVADO (Pacote 12) | — | [Entrega](entregas/DF223/ENTREGA_v2.md) | — |
 | DF222 | Esteira e trilhos | APROVADO (Pacote 11) | — | [Entrega](entregas/DF222/ENTREGA_v2.md) | — |
