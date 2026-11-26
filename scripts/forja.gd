@@ -14,7 +14,9 @@ const PIVOT_Y := 360.0             # pivô do braço: 280 px do original abaixo 
 const SEG := 171.0                 # segmento: 800 px do original entre as juntas
 const HOVER_Y := 560.0             # junta do martelo em repouso
 const SLAM_Y := 698.0              # junta do martelo batido (face do martelo no chão)
-const HAMMER_TOP := 35.0           # chapa do martelo começa 35 px abaixo da junta
+const HAMMER_TOP := 22.0           # topo do bloco do martelo: (198 − 96) × K abaixo da junta (DF105 v3; era 35, 13 px dentro da arte)
+const HAMMER_ANCHOR := 11.6        # placa de ancoragem ciano (512, 150) da DF105 v3: (150 − 96) × K abaixo da junta
+const CHEST_SC := 400.0 / 358.0    # DF102 v3: desenho de 358 px ampliado para a medida nominal de 400 × 340
 const ROOM_X := Vector2(7050, 8490)
 const BELT := Vector2(7470, 8070)
 # encaixes do corpo DF100 v2 (pedido v2): base (1024, 2008) em BASE; jogo = BASE + (px − base) × K
@@ -131,21 +133,26 @@ class Arm extends Node2D:
 		DFArt.add_anim(cf, "st", "DF106", range(3), 1.0, false)
 		core_spr = AnimatedSprite2D.new()
 		core_spr.sprite_frames = cf
-		core_spr.scale = Vector2.ONE * DFArt.NODE * 0.8
+		core_spr.scale = Vector2.ONE * DFArt.NODE
 		core_spr.animation = "st"
 		add_child(core_spr)
-		# DF103 v2 chegou com as rodas embaixo; virado na vertical, as rodas ficam no trilho e o pivô (512, 400)
-		# no fundo do carrinho, como no pedido
+		# DF103 v3: rodas em cima, no trilho (512, 120), e pivô do braço em (512, 400), como no pedido
+		# (a v2 veio de cabeça para baixo e o jogo usava flip_v; não precisa mais)
 		cart = DFArt.sprite("DF103", Vector2(512, 120))
-		cart.flip_v = true
 		add_child(cart)
 		core = Core.new()
 		core.forja = forja
 		core.kind = "arm%d" % idx
-		core.setup(0.0, Vector2(110, 40))     # junta exposta: de pé na chapa, o rebite acerta à queima-roupa
+		# junta exposta: o núcleo DF106 fica no encaixe (h + 4, gaiola de ±17 px) e a área vai de h − 36 a h + 24,
+		# para o rebite de quem está de pé no bloco (cano a ~h − 28) acertar à queima-roupa (v3: o topo do bloco
+		# subiu de h + 35 para h + 22, a altura real da arte)
+		core.setup(0.0, Vector2(110, 60))
 		add_child(core)
 		hook = GrappleHook.new()
 		hook.level = forja.level
+		# o puxão termina com os pés na junta, 22 px acima do bloco (como antes), e o Autômato pousa na chapa;
+		# terminar rente ao topo fazia o corpo chegar de lado e passar por cima do martelo sem pousar
+		hook.drop = -HAMMER_ANCHOR
 		add_child(hook)
 		hook.remove_from_group("hooks")
 		hook.visible = false
@@ -188,9 +195,9 @@ class Arm extends Node2D:
 		_place(seg_a, p, elbow)
 		_place(seg_b, elbow, p + d.normalized() * L)
 		hammer.position = h
-		core_spr.position = h + Vector2(0, 14)
-		core.position = h + Vector2(0, 10)
-		hook.position = h + Vector2(0, -46)
+		core_spr.position = h + Vector2(0, 4)
+		core.position = h + Vector2(0, -6)
+		hook.position = h + Vector2(0, HAMMER_ANCHOR)     # na placa de ancoragem ciano da arte
 		plat.position = h + Vector2(0, HAMMER_TOP + 7.0)
 
 	func _place(s: Sprite2D, a: Vector2, b: Vector2) -> void:
@@ -220,7 +227,7 @@ func _ready() -> void:
 	chest = Sprite2D.new()
 	chest.texture = DFArt.cell("DF102", 0)
 	chest.position = CHEST
-	chest.scale = Vector2.ONE * DFArt.NODE
+	chest.scale = Vector2.ONE * DFArt.NODE * CHEST_SC
 	chest.z_index = -8
 	add_child(chest)
 	for hp_ in HATCH:
@@ -568,7 +575,9 @@ func _update_drones(dt: float) -> void:
 	if drones_t <= 1.0 and drones_t + dt > 1.0 and drones.size() < 2:
 		for h in hatches:
 			h.texture = DFArt.cell("DF107", 1)
-			h.modulate = Color(1.0, 0.45, 0.35)     # a DF107 v2 veio sem a luz vermelha do aviso (q2 = q1)
+			# paliativo mantido: a luz vermelha do aviso existe na DF107 v3, mas mede ~4 px no jogo (q2 ≈ q1,
+			# diferença média 0,08 nível); a tinta deixa o aviso legível. Pedido REV-03.
+			h.modulate = Color(1.0, 0.45, 0.35)
 		AudioMgr.sfx("alarme", HATCH[0], -8.0, 0.0)
 	if drones_t <= 0.0:
 		drones_t = 10.0
@@ -578,7 +587,9 @@ func _update_drones(dt: float) -> void:
 				h.modulate = Color.WHITE
 			return
 		for i in 2:
-			hatches[i].texture = DFArt.cell("DF107", 3)
+			hatches[i].texture = DFArt.cell("DF107", 2)     # v3: quadro "abrindo" antes do "aberta"
+			var hs0: Sprite2D = hatches[i]
+			get_tree().create_timer(0.12, false).timeout.connect(func(): if hs0.texture.region == DFArt.cell("DF107", 2).region: hs0.texture = DFArt.cell("DF107", 3))
 			hatches[i].modulate = Color.WHITE
 			var d := DesertEnemy.new()
 			d.level = level
@@ -682,8 +693,8 @@ func on_pulse(c: Vector2) -> void:
 	for i in 3:
 		var pl := Sprite2D.new()
 		pl.texture = DFArt.cell("DF102", 3 + i)
-		pl.position = CHEST + Vector2((i - 1) * 26.0, 0)
-		pl.scale = Vector2.ONE * DFArt.NODE
+		pl.position = CHEST            # DF102 v3: as células das placas já trazem o afastamento lateral
+		pl.scale = Vector2.ONE * DFArt.NODE * CHEST_SC
 		pl.z_index = 4
 		add_child(pl)
 		var tw := pl.create_tween()

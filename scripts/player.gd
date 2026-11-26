@@ -510,7 +510,7 @@ func _physics_process(dt: float) -> void:
 	move_and_slide()
 	if hook != null and hook_pull_t > 0.06 and get_real_velocity().length() < HOOK_SPEED * 0.25:
 		# preso numa quina ou parede: perto do ponto de chegada, sai como se tivesse chegado; longe, solta
-		if is_instance_valid(hook) and global_position.distance_to(hook.global_position + Vector2(0, HOOK_DROP)) < 90.0:
+		if is_instance_valid(hook) and global_position.distance_to(hook.global_position + Vector2(0, _hook_drop(hook))) < 90.0:
 			_hook_launch(hook_jump)
 		else:
 			_end_hook(0.0)
@@ -592,7 +592,9 @@ func hook_candidate() -> Node2D:
 	for h in get_tree().get_nodes_in_group("hooks"):
 		var d: Vector2 = h.global_position - from
 		var L := d.length()
-		if L > HOOK_RANGE or L < 30.0:
+		# perto demais: mede do corpo até o ponto de chegada (não do ombro até o gancho), para valer também
+		# para a âncora do martelo da Forja, que fica rente ao chão com a chegada acima dela
+		if L > HOOK_RANGE or (h.global_position + Vector2(0, _hook_drop(h)) - global_position).length() < 20.0:
 			continue
 		if h == hook or (h == last_hook and last_hook_t > 0.0):
 			continue
@@ -617,6 +619,11 @@ func hook_candidate() -> Node2D:
 	return best
 
 
+func _hook_drop(h: Node2D) -> float:
+	var d = h.get("drop")
+	return HOOK_DROP if d == null else float(d)
+
+
 func _start_hook(h: Node2D) -> void:
 	hook = h
 	hook_shoot = HOOK_SHOOT
@@ -624,7 +631,7 @@ func _start_hook(h: Node2D) -> void:
 	hook_pull_t = 0.0
 	hook_carry = 0.0
 	hook_jump = false
-	hook_dir = (h.global_position + Vector2(0, HOOK_DROP) - global_position).normalized()
+	hook_dir = (h.global_position + Vector2(0, _hook_drop(h)) - global_position).normalized()
 	dash_t = 0.0
 	knock_t = 0.0
 	AudioMgr.sfx("arpao", Vector2.INF, -2.0, 0.05)
@@ -673,7 +680,7 @@ func _hook_physics(dt: float) -> void:
 			_end_hook(0.3)
 		hook = null
 		return
-	var target: Vector2 = hook.global_position + Vector2(0, HOOK_DROP)
+	var target: Vector2 = hook.global_position + Vector2(0, _hook_drop(hook))
 	var to := target - global_position
 	# pular durante o puxão (de propósito ou sem querer) fica guardado para a chegada
 	if Input.is_action_just_pressed("jump") and not controls_locked:

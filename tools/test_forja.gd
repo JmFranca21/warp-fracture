@@ -69,7 +69,7 @@ func ride_and_shoot(arm_i: int, limit := 70.0) -> bool:
 		if a.state == "stuck" and a.st > 0.5 and p.hook == null:
 			var h = p.hook_candidate()
 			if OS.has_environment("DBG"):
-				print("  stuck: cand=", h, " hook=", a.hook.global_position, " p=", p.global_position.round(), " hp=", f.hp, " dist=", a.hook.global_position.distance_to(p.shoulder_global()))
+				print("  stuck: arm.x=", a.x, " cand=", h, " hook=", a.hook.global_position, " p=", p.global_position.round(), " hp=", f.hp, " dist=", a.hook.global_position.distance_to(p.shoulder_global()))
 			if h == a.hook:
 				await tap("hook")
 				for i in 40:
@@ -93,6 +93,8 @@ func ride_and_shoot(arm_i: int, limit := 70.0) -> bool:
 					if OS.has_environment("DBG"):
 						print("  shot: p=", p.global_position.round(), " aim=", p.aim, " hp=", f.hp)
 		elif a.state in ["idle", "track", "warn", "recover"] and p.is_on_floor():
+			if OS.has_environment("DBG") and int(t * 60) % 30 == 0:
+				print("  move: arm ", a.state, " x=", a.x, " p=", p.global_position.round())
 			# fica perto do braço: o martelo vem até o jogador
 			var dx := a.x - p.global_position.x
 			if absf(dx) > 140.0:

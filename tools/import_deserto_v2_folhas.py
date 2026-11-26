@@ -9,6 +9,9 @@ uso: python tools/import_deserto_v2_folhas.py
 - Peças das máquinas (DF222–DF225): cópia byte a byte para assets/deserto/v2/ (2×, escala 0,5 no jogo).
 - O SHA-256 é conferido contra o ENTREGA_v2 quando ele traz o valor; sem valor, o script avisa.
 - Sempre o arquivo _v2 quando existe; DF64b e DF69c só chegaram com o nome sem sufixo.
+- Forja-Mãe (DF100–DF108, DF110–DF112): a v3 (main ef2d879, 26/11/2026), com o nome completo `_v3.png`
+  (o import_fase2.py antigo pega o primeiro PNG com o prefixo e não serve para a Forja). A redução a 50 %
+  dá o mesmo resultado que os *_jogo_v3.webp da entrega (conferido por tools/auditar_forja_v3.py).
 """
 import hashlib
 import re
@@ -35,11 +38,11 @@ FOLHAS = {
     "DF94": "DF94_automato_arranque_v2.png", "DF95": "DF95_automato_dano_v2.png",
     "DF96": "DF96_automato_derrota_v2.png", "DF97": "DF97_automato_braco_v2.png", "DF98": "DF98_feixe_ima_v2.png",
     "DF99": "DF99_pulso_magnetico_v2.png",
-    "DF100": "DF100_forja_corpo_v2.png", "DF101": "DF101_forja_lente_v2.png", "DF102": "DF102_forja_peito_v2.png",
-    "DF103": "DF103_forja_carrinho_v2.png", "DF104": "DF104_forja_segmento_v2.png",
-    "DF105": "DF105_forja_martelo_v2.png", "DF106": "DF106_forja_nucleo_pistao_v2.png",
-    "DF107": "DF107_forja_escotilha_v2.png", "DF108": "DF108_forja_grade_v2.png", "DF110": "DF110_forja_feixe_v2.png",
-    "DF111": "DF111_forja_carga_lente_v2.png", "DF112": "DF112_forja_explosao_nucleo_v2.png",
+    "DF100": "DF100_forja_corpo_v3.png", "DF101": "DF101_forja_lente_v3.png", "DF102": "DF102_forja_peito_v3.png",
+    "DF103": "DF103_forja_carrinho_v3.png", "DF104": "DF104_forja_segmento_v3.png",
+    "DF105": "DF105_forja_martelo_v3.png", "DF106": "DF106_forja_nucleo_pistao_v3.png",
+    "DF107": "DF107_forja_escotilha_v3.png", "DF108": "DF108_forja_grade_v3.png", "DF110": "DF110_forja_feixe_v3.png",
+    "DF111": "DF111_forja_carga_lente_v3.png", "DF112": "DF112_forja_explosao_nucleo_v3.png",
 }
 OBJETOS = {"DF210_objetos": ("DF210", "DF210_objetos.png"), "DF210_coletaveis": ("DF210", "DF210_coletaveis.png"),
            # a ponta da DF98 v2 é um ímã pequeno, não a garra de luz: o jogo usa a ponta da v1 até a correção

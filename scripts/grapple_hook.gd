@@ -5,6 +5,9 @@ extends Node2D
 
 var level
 @export var ceil_y := NAN       # altura do teto onde o suporte está preso
+## Quanto abaixo do gancho o corpo (pés) para no fim do puxão. 46 nos ganchos de teto; a âncora do
+## martelo da Forja usa menos, para o Autômato parar em cima da chapa e não dentro dela.
+var drop := 46.0
 var t := 0.0
 var lit := 0.0          # brilho quando está ao alcance
 var glow: Sprite2D
