@@ -89,10 +89,18 @@ var last_hook: Node2D = null
 var last_hook_t := 0.0
 # posição do ombro (pés = origem, olhando para a direita) por animação
 # Autômato (DF90–DF97): ombro do braço-ímã por animação, medido nas entregas (pés = origem)
-const SHOULDER_AUT := {
-	"idle": Vector2(-1.5, -42), "walk": Vector2(-1.5, -41), "jump": Vector2(-1.5, -36),
-	"fall": Vector2(-1.5, -31), "dash": Vector2(-1.5, -30), "hurt": Vector2(-1.5, -37), "death": Vector2(-1.5, -30),
+# v2: ombro por quadro (DF97_ancoras.json, px da célula 384 × 512, pés em (192, 472)); o jogo usa (ombro − pés) × K
+const SHOULDER_AUT_PX := {
+	"idle": [Vector2(178, 279), Vector2(178, 278), Vector2(178, 277), Vector2(178, 278), Vector2(178, 278), Vector2(178, 278)],
+	"walk": [Vector2(171, 293), Vector2(171, 291), Vector2(185, 289), Vector2(178, 278), Vector2(166, 295),
+		Vector2(165, 294), Vector2(185, 289), Vector2(178, 278)],
+	"jump": [Vector2(159, 313), Vector2(178, 264), Vector2(179, 306), Vector2(180, 307)],
+	"fall": [Vector2(180, 306), Vector2(177, 272), Vector2(177, 270)],
+	"dash": [Vector2(159, 314), Vector2(189, 334), Vector2(189, 334), Vector2(178, 278)],
+	"hurt": [Vector2(133, 262), Vector2(178, 278)],
+	"death": [Vector2(134, 266), Vector2(135, 272), Vector2(133, 381), Vector2(133, 381), Vector2(210, 369), Vector2(210, 369)],
 }
+const ARM_TIP_AUT := [280.0, 270.0, 276.0, 280.0]     # ponta nominal do braço por quadro de DF97 (pivô em x 60)
 const PULSE_R := 150.0
 var beam_t := 0.0           # feixe do ímã visível (puxando um drone)
 var beam_to := Vector2.ZERO
@@ -221,7 +229,7 @@ func _build_automato() -> void:
 	rig.add_child(body_spr)
 	body_spr.play("idle")
 	arm_pivot = Node2D.new()
-	arm_pivot.position = SHOULDER_AUT["idle"]
+	arm_pivot.position = shoulder_aut("idle", 0)
 	rig.add_child(arm_pivot)
 	var af := SpriteFrames.new()
 	DFArt.add_anim(af, "braco", "DF97", [0], 1.0, false)
@@ -233,7 +241,7 @@ func _build_automato() -> void:
 	arm_spr.scale = Vector2.ONE * DFArt.NODE
 	arm_spr.play("braco")
 	arm_pivot.add_child(arm_spr)
-	arm_len = (289.0 - 60.0) * DFArt.K
+	arm_len = (ARM_TIP_AUT[0] - 60.0) * DFArt.K
 	var mf := SpriteFrames.new()
 	DFArt.add_anim(mf, "fire", "DF88", range(3), 20.0, false)
 	muzzle = AnimatedSprite2D.new()
@@ -244,6 +252,12 @@ func _build_automato() -> void:
 	muzzle.visible = false
 	muzzle.animation_finished.connect(func(): muzzle.visible = false)
 	arm_pivot.add_child(muzzle)
+
+
+## Ombro do braço-ímã no quadro i da animação (pés = origem, olhando para a direita).
+func shoulder_aut(an: String, i: int) -> Vector2:
+	var l: Array = SHOULDER_AUT_PX.get(an, SHOULDER_AUT_PX["idle"])
+	return (l[clampi(i, 0, l.size() - 1)] - Vector2(192, 472)) * DFArt.K
 
 
 ## Yeti (Nivária): folha montada por tools/import_yeti.py a partir das pranchas em assets/nivaria.
@@ -484,7 +498,7 @@ func _physics_process(dt: float) -> void:
 		elif form == "automato":
 			land_t = 0.08
 			if level.id == "deserto" and position.x < 1700:
-				Desert.effect(level.fx, "DF83", 6, position - Vector2(0, 31), Vector2(92, 74))
+				Desert.effect(level.fx, "DF83", 6, position, 1.3)
 			else:
 				Fx.burst(level.fx, global_position, Color(0.85, 0.6, 0.4, 0.5), 8, 120, 0.35, 0.05, 50)
 		elif form == "yeti":
@@ -735,12 +749,13 @@ func _update_automato(dt: float) -> void:
 	if inv > 0.0 and inv < 50.0 and not dead and int(t * 20.0) % 2 == 0:
 		a = 0.35
 	rig.modulate = Color(1, 1, 1, a)
-	arm_pivot.visible = an in ["idle", "walk", "jump", "fall"]
-	arm_pivot.position = SHOULDER_AUT[an]
+	# as folhas v2 do corpo não têm o braço-ímã: ele aparece em todas as poses, no ombro do quadro atual
+	arm_pivot.visible = true
+	arm_pivot.position = shoulder_aut(an, body_spr.frame)
 	var la := Vector2(aim.x * facing, aim.y)
 	if la.x < -0.2:
 		la.x = -0.2
-	arm_pivot.rotation = la.angle()
+	arm_pivot.rotation = 1.1 if an == "death" else la.angle()     # na derrota o braço pende; nas outras, mira
 	if hook != null or beam_t > 0.0:
 		if arm_spr.animation != "beam":
 			arm_spr.play("beam")
@@ -1218,13 +1233,16 @@ func _draw_beam(a: Vector2, b: Vector2, k: float) -> void:
 		return
 	var fr := int(t * 16.0) % 4
 	var seg := DFArt.strip("DF98", 0, fr)
-	var tip := DFArt.strip("DF98", 1, fr)
+	var tip := DFArt.strip("DF98_v1", 1, fr)
 	var h := 256.0 * DFArt.K          # 48 px de espessura no original ≈ 10 px no jogo
+	# DF98 v2: cada célula da faixa traz um ímã na ponta (x ≥ 145); só o trecho de feixe puro (0–140) se repete
+	var sw := 140.0 * DFArt.K
+	var src := Vector2(140.0 * DFArt.IMPORT, seg.region.size.y)
 	draw_set_transform(a, d.angle(), Vector2.ONE)
 	var x := 0.0
 	while x < L - h * 0.6:
-		var w := minf(h, L - x)
-		draw_texture_rect_region(seg.atlas, Rect2(x, -h / 2.0, w, h), Rect2(seg.region.position, Vector2(seg.region.size.x * w / h, seg.region.size.y)))
-		x += h
-	draw_texture_rect(tip, Rect2(L - h * 200.0 / 256.0, -h / 2.0, h, h), false)
+		var w := minf(sw, L - x)
+		draw_texture_rect_region(seg.atlas, Rect2(x, -h / 2.0, w, h), Rect2(seg.region.position, Vector2(src.x * w / sw, src.y)))
+		x += sw
+	draw_texture_rect(tip, Rect2(L - h * 200.0 / 256.0, -h / 2.0, h, h), false)     # garra de luz da v1
 	draw_set_transform(Vector2.ZERO, 0.0, Vector2.ONE)

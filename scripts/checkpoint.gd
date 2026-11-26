@@ -4,6 +4,7 @@ extends Interactable
 
 var glow: Sprite2D
 var used_t := 0.0
+var estacao: Array = []     # Deserto: [apagada, ativa]
 
 
 func _setup() -> void:
@@ -11,7 +12,17 @@ func _setup() -> void:
 	glow = Art.glow(Color(0.4, 0.95, 1.0, 0.4) if theme in ["lab", "deserto", "nivaria"] else Color(0.6, 1.0, 0.7, 0.4), 110)
 	glow.position = Vector2(0, -50)
 	add_child(glow)
-	if theme in ["lab", "deserto", "nivaria"]:
+	if theme == "deserto":
+		# DF210: estação apagada (0) e ativa (1), base (256, 472) no chão, escala do jogo
+		for i in 2:
+			var st := Sprite2D.new()
+			st.texture = DFArt.cell("DF210_objetos", i, 4, 2)
+			st.offset = DFArt.offset(Vector2(512, 512), Vector2(256, 472))
+			st.scale = Vector2.ONE * DFArt.NODE
+			add_child(st)
+			estacao.append(st)
+		glow.position = Vector2(0, -48)
+	elif theme in ["lab", "nivaria"]:
 		var spr := Props.sprite("celula_suporte", 0.55)
 		add_child(spr)
 		glow.position = Vector2(0, -42)
@@ -35,6 +46,10 @@ func _process(dt: float) -> void:
 	super._process(dt)
 	used_t = maxf(0.0, used_t - dt)
 	glow.modulate.a = 0.35 + 0.1 * sin(t * 2.0) + used_t * 0.5
+	if not estacao.is_empty():
+		var ativa: bool = main.checkpoint_level == main.level.id and main.checkpoint_pos.distance_to(global_position) < 20.0
+		estacao[0].visible = not ativa
+		estacao[1].visible = ativa
 
 
 func _draw() -> void:

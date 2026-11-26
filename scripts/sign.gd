@@ -10,6 +10,14 @@ func _setup() -> void:
 	var g := Art.glow(Color(0.4, 0.9, 1.0, 0.35) if theme in ["lab", "deserto", "nivaria"] else Color(0.5, 1.0, 0.8, 0.35), 50)
 	g.position = Vector2(0, -48)
 	add_child(g)
+	if theme == "deserto":
+		# DF210: placa (célula 2), base (256, 472) no chão
+		var placa := Sprite2D.new()
+		placa.texture = DFArt.cell("DF210_objetos", 2, 4, 2)
+		placa.offset = DFArt.offset(Vector2(512, 512), Vector2(256, 472))
+		placa.scale = Vector2.ONE * DFArt.NODE
+		add_child(placa)
+		g.position = Vector2(0, -30)
 
 
 func _on_enter(b: Node) -> void:
@@ -25,6 +33,8 @@ func _on_exit(b: Node) -> void:
 
 
 func _draw() -> void:
+	if theme == "deserto":
+		return
 	if theme in ["lab", "deserto", "nivaria"]:
 		draw_line(Vector2(0, 0), Vector2(0, -36), Color("2a3442"), 4.0, true)
 		var a := 0.55 + 0.15 * sin(t * 3.0) + (0.25 if player_near else 0.0)

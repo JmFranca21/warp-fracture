@@ -1,6 +1,6 @@
 # Deserto de Ferrugem: integração da arte v2 (25/11/2026)
 
-Branch `dev/deserto`. A fase agora é a cena `scenes/fases/deserto.tscn` (veja `docs/CENAS_DAS_FASES.md`), com a arte aprovada dos pacotes 3 a 10. Capturas reais do Godot (1280 × 720, câmera do jogo, entrada pelo fluxo normal `main.tscn` → `load_level`): `docs/integracao_deserto_v2/`.
+Branch `dev/deserto`. A fase agora é a cena `scenes/fases/deserto.tscn` (veja `docs/CENAS_DAS_FASES.md`), com a arte dos pacotes 3 a 20. Capturas reais do Godot (1280 × 720, câmera do jogo, entrada pelo fluxo normal `main.tscn` → `load_level`): `docs/integracao_deserto_v2/`.
 
 ## O que entrou
 
@@ -21,9 +21,24 @@ Todos os PNGs vêm de `colaboracao/entregas/` sem alteração (SHA-256 conferido
 | DF220 | `DF31`–`DF36_*_v2.png` | mastro, chaminé, porta da Fábrica, engrenagem (gira no centro 320, 320), abertura, torre | DF31–DF36 | olhal do mastro em (975, 480): o gancho DF57 pende dali e o Ímã puxa para ele (`test_deserto`); cabos da torre em (4820, 72) |
 | DF221 | `DF37`, `DF37b`, `DF39`, `DF39b`, `DF28_*_v2.png` | 7 lâmpadas (acesa e apagada no mesmo lugar, 38 × 69, fio no centro de cima), painel 65 × 90, canos 240 × 120, cabos da torre e fios | DF37, DF37b, DF39, DF39b, DF28 | troca da lâmpada que pisca em x 6410 com o halo junto |
 
-**Fichas** DF01, DF02 e DF03 v2: só referência; as folhas de animação novas ainda não existem.
+### Pacotes 11 a 20 (DF222–DF225, DF210, DF60–DF112)
 
-**Encaixe no cenário (pedido do João: peças "jogadas" e flutuando):** tudo que pende agora mostra de onde pende. Tirantes da DF205 sobem até o alto nas prensas, nas correntes das plataformas da Fábrica e nos ganchos do Salão (o da abertura pende da verga) e da Câmara (do teto). As estruturas grandes recuaram para um plano de parallax, com névoa no exterior, e saíram do plano do jogo. A decoração saiu da esteira, da fenda de retorno e dos perigos.
+Folhas importadas em meia resolução por `tools/import_deserto_v2_folhas.py` (mesmo nome do jogo, SHA conferido), escala uniforme K = 0,214 (nó a 0,428). Peças de máquina copiadas byte a byte para `assets/deserto/v2/`, a 0,5. Auditoria completa: `auditoria_pacotes_11_20.md`.
+
+| ID | Arquivo usado | Onde | Substitui | Teste |
+|---|---|---|---|---|
+| DF222 | `DF26_esteira_v2`, `DF26b/c_*_v2`, `DF27_*_v2`, `DF55b_*_v2` | esteira da Fábrica (1700–2780) e da Câmara, pontas imóveis no pivô (60, 60), trilho vertical do elevador, trilho horizontal do carrinho e da Forja | DF26, DF26b, DF26c, DF27, DF55b | esteira anda a 65 px/s, a mesma velocidade que empurra (`test_deserto`); capturas |
+| DF223 | `DF50a/b/c_*_v2`, `DF51a/b/c_*_v2`, `DF52_*_v2`, `DF52b_*_v2` | 3 prensas (haste repetida no eixo Y), serra com o eixo (70, 70) no encaixe (80, 0) da base, base apoiada no piso | DF50–DF52 | `test_deserto`; captura da Fábrica |
+| DF224 | `DF54_*_v2`, `DF55_*_v2`, `DF56_*_v2`, `DF57_*_v2` | elevador, carrinho (rodas no trilho, piso na colisão), válvulas da Fábrica e da Câmara, 5 ganchos pela argola (38, 73) na âncora lógica, tirante até o topo da peça | DF54–DF57 | Ímã puxa para as 5 âncoras (`test_deserto`, `test_forja`) |
+| DF225 | `DF38_porta_fechada_v2`, `DF38_porta_aberta_v2` | portas da Câmara e da Saída, 150 × 190, colisão de 60 px no meio | DF38 | portas abrem e fecham (`test_forja`) |
+| DF210 | `DF210_objetos`, `DF210_coletaveis` | estação (apagada; ativa quando é o ponto de retorno), placa, 12 células, núcleo e registro no tema do Deserto | estação, placa e célula do Laboratório | capturas (Dunas, Salão) |
+| DF60–DF71 | `*_v2` + DF64b, DF69c | Robô (pés em (192, 472)) e Drone (centro (192, 256)); robô paralisado pelo Pulso usa DF64b; drone no chão usa DF69c com a base no piso; hitbox do desenho novo (48 × 64 e 54 × 34) | folhas v1 esticadas (0,56 × 0,50) | `test_deserto` (3 rebites derrubam o robô, Ímã e Pulso no drone) |
+| DF80–DF85 | `*_v2` | efeitos com a âncora do ENTREGA e escala uniforme; multiplicador igual nos dois eixos onde o jogo precisa: jato da válvula ×1,5 (cobre a área de dano), fumaça ×1,3, faíscas da prensa ×1,5, martelo da Forja ×1,7 a ×2 | tamanhos não uniformes da v0.8 | capturas; `test_forja` |
+| DF87–DF99 | `*_v2` | Autômato: ombro do braço por quadro (`DF97_ancoras.json`), braço visível em todas as poses (as folhas novas não têm o braço), ponta em x 280 | v1 | `test_deserto` |
+| DF98 | `DF98_feixe_ima_v2` (só x 0–140) + ponta da v1 | feixe do Ímã | — | defeito da entrega, ver auditoria |
+| DF100–DF112 | `*_v2` | Forja-Mãe nos encaixes do pedido v2 (lente (1024, 900), peito (1024, 1330), escotilhas (640, 820) e (1408, 820), grade (1024, 1820) ampliada para 700 × 240); carrinho DF103 virado na vertical | v1 | `test_forja`; captura da Câmara confere com `DF100_montagem.png` |
+
+**Fichas** DF01, DF02 e DF03 v2: só referência.
 
 ## DF200 diurno: arquivo corrompido na main
 
@@ -31,26 +46,21 @@ Todos os PNGs vêm de `colaboracao/entregas/` sem alteração (SHA-256 conferido
 
 ## Ainda depende de arte (o jogo usa a v0.8)
 
-- Fachada da Fábrica (DF22).
-- Esteira e pontas (DF26, DF26b, DF26c).
-- Trilhos (DF27, DF55b) e correntes das plataformas (DF53).
-- Prensas e serra (DF50–DF52).
-- Plataformas móveis, válvulas e gancho (DF54–DF57). Os ganchos ciano v1 são os mais destoantes.
-- Portas da Câmara (DF38).
-- Robô e Drone (DF60–DF71), efeitos (DF80–DF85), Autômato (DF87–DF99) e Forja-Mãe (DF100–DF112): só as fichas v2 existem.
-- Placas, estação e coletáveis do Deserto (DF210): hoje usam os do Laboratório.
+- Fachada da Fábrica (DF22) e correntes das plataformas (DF53): não estavam nos pacotes 11–20.
+- Partículas de vento DF86: substituídas pela poeira DF209.
+- Para refazer: DF98 (feixe e ponta), DF103, DF104, DF105 (encaixe), DF91 e DF96 (pixels soltos), DF87 e DF210 (quadros iguais) e DF200 (arquivo corrompido). Ver `auditoria_pacotes_11_20.md`.
 
 ## Testes
 
 | Teste | Resultado |
 |---|---|
-| `test_deserto -- save at=999` | ok 38, falhas 0 |
-| `test_forja -- save at=999` | ok 36, falhas 0 |
+| `test_deserto -- save at=999` | PASS (inclui 3 rebites no robô novo, Ímã e Pulso no drone, esteira, prensas, ganchos) |
+| `test_forja -- save at=999` | PASS |
 | `test_df205` | 0 falhas |
 | `test_cenas_fases` | 0 falhas (Laboratório e Verdâmia inalterados) |
-| `test_verdamia`, `test_passagem`, `test_fragmento`, `test_nivaria` | PASS |
+| `test_verdamia`, `test_passagem`, `test_fragmento`, `test_nivaria -- level=nivaria arpao at=999` | PASS |
 | `test_portal -- level=lab terminals pos=6500,690 at=999` | PASS |
-| `test_fuga -- level=lab terminals arpao pos=4250,790 save at=999` | PASS sozinho (falha às vezes quando roda junto com outro Godot: é sensível ao tempo) |
-| `dump_fase -- level=deserto` cena × `codigo=1`, estados zero, avançado e chefe | 0 diferenças |
+| `test_fuga -- level=lab terminals arpao pos=4250,790 save at=999` | PASS sozinho, 2 de 2 (falha às vezes quando roda junto com outro Godot: é sensível ao tempo) |
+| `dump_fase -- level=deserto` cena × `codigo=1`, estados zero, avançado e chefe | mesmos nós e valores; só a ordem das correntes DF207 dentro do pai e o arredondamento do comprimento de um cabo (2323,570 × 2323,574) mudam |
 
 Não testado: jogar com o teclado de ponta a ponta numa máquina com tela (os testes usam input simulado e captura em xvfb). Nos testes, a câmera foi conferida parada em 14 pontos e andando em 2 trechos de 60 quadros.

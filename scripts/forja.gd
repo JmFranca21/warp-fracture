@@ -17,10 +17,11 @@ const SLAM_Y := 698.0              # junta do martelo batido (face do martelo no
 const HAMMER_TOP := 35.0           # chapa do martelo começa 35 px abaixo da junta
 const ROOM_X := Vector2(7050, 8490)
 const BELT := Vector2(7470, 8070)
-const CHEST := Vector2(7771, 634)
-const LENS := Vector2(7770, 540)
-const GRATE := Vector2(7770, 730)
-const HATCH := [Vector2(7691.5, 556), Vector2(7848.5, 556)]
+# encaixes do corpo DF100 v2 (pedido v2): base (1024, 2008) em BASE; jogo = BASE + (px − base) × K
+const CHEST := Vector2(7770, 625)       # peito 420 × 360, centro (1024, 1330)
+const LENS := Vector2(7770, 533)        # lente Ø 360, centro (1024, 900)
+const GRATE := Vector2(7770, 730)       # grade 700 × 240, centro (1024, 1820)
+const HATCH := [Vector2(7688, 516), Vector2(7852, 516)]    # escotilhas 240 × 160, centros (640, 820) e (1408, 820)
 const CORE_HP := [6, 6, 8]
 
 var level: Level
@@ -133,7 +134,10 @@ class Arm extends Node2D:
 		core_spr.scale = Vector2.ONE * DFArt.NODE * 0.8
 		core_spr.animation = "st"
 		add_child(core_spr)
+		# DF103 v2 chegou com as rodas embaixo; virado na vertical, as rodas ficam no trilho e o pivô (512, 400)
+		# no fundo do carrinho, como no pedido
 		cart = DFArt.sprite("DF103", Vector2(512, 120))
+		cart.flip_v = true
 		add_child(cart)
 		core = Core.new()
 		core.forja = forja
@@ -198,9 +202,8 @@ class Arm extends Node2D:
 func _ready() -> void:
 	z_index = 1
 	# interior escuro da fornalha, só atrás das aberturas do corpo (lente, escotilhas, peito e grade)
-	for r in [Rect2(LENS - Vector2(26, 38), Vector2(52, 76)), Rect2(HATCH[0] - Vector2(22, 19), Vector2(44, 38)),
-			Rect2(HATCH[1] - Vector2(22, 19), Vector2(44, 38)), Rect2(CHEST - Vector2(43, 42), Vector2(86, 84)),
-			Rect2(GRATE - Vector2(58, 27), Vector2(116, 54))]:
+	for r in [Rect2(HATCH[0] - Vector2(25, 17), Vector2(50, 34)), Rect2(HATCH[1] - Vector2(25, 17), Vector2(50, 34)),
+			Rect2(CHEST - Vector2(45, 39), Vector2(90, 78)), Rect2(GRATE - Vector2(75, 26), Vector2(150, 52))]:
 		var back := ColorRect.new()
 		back.position = r.position
 		back.size = r.size
@@ -216,14 +219,14 @@ func _ready() -> void:
 	chest = Sprite2D.new()
 	chest.texture = DFArt.cell("DF102", 0)
 	chest.position = CHEST
-	chest.scale = Vector2.ONE * DFArt.NODE * 1.05
+	chest.scale = Vector2.ONE * DFArt.NODE
 	chest.z_index = -8
 	add_child(chest)
 	for hp_ in HATCH:
 		var hs := Sprite2D.new()
 		hs.texture = DFArt.cell("DF107", 0)
 		hs.position = hp_
-		hs.scale = Vector2.ONE * DFArt.NODE * 0.95
+		hs.scale = Vector2.ONE * DFArt.NODE
 		hs.z_index = -8
 		add_child(hs)
 		hatches.append(hs)
@@ -234,7 +237,7 @@ func _ready() -> void:
 	grate = AnimatedSprite2D.new()
 	grate.sprite_frames = gf
 	grate.position = GRATE
-	grate.scale = Vector2.ONE * DFArt.NODE * 1.55
+	grate.scale = Vector2.ONE * DFArt.NODE * 700.0 / 340.0     # grade 340 × 120 ampliada para o encaixe 700 × 240
 	grate.z_index = -8
 	add_child(grate)
 	grate.play("fogo")
@@ -242,33 +245,12 @@ func _ready() -> void:
 	body.position = BASE
 	body.z_index = -7
 	add_child(body)
-	var rail := Sprite2D.new()
-	rail.texture = Desert.texture("DF55b")
-	rail.centered = false
-	rail.texture_repeat = CanvasItem.TEXTURE_REPEAT_ENABLED
-	rail.region_enabled = true
-	rail.region_rect = Rect2(0, 0, 1400 / 0.3, 16 / 0.25)
-	rail.scale = Vector2(0.3, 0.25)
-	rail.position = Vector2(7070, RAIL_Y - 8)
-	rail.z_index = 2
-	add_child(rail)
-	for hx in [7110.0, 7560.0, 7980.0, 8430.0]:     # tirantes do trilho até o teto
-		var rod := ColorRect.new()
-		rod.position = Vector2(hx - 3, 150)
-		rod.size = Vector2(6, RAIL_Y - 158)
-		rod.color = Color("3a2418")
-		rod.z_index = 1
-		add_child(rod)
-	belt_spr = Sprite2D.new()
-	belt_spr.texture = Desert.texture("DF26")
-	belt_spr.centered = false
-	belt_spr.texture_repeat = CanvasItem.TEXTURE_REPEAT_ENABLED
-	belt_spr.region_enabled = true
-	belt_spr.region_rect = Rect2(0, 0, (BELT.y - BELT.x) / 0.62, 60 / 0.625)
-	belt_spr.scale = Vector2(0.62, 0.625)
-	belt_spr.position = Vector2(BELT.x, FLOOR_Y)
-	belt_spr.z_index = 1
-	add_child(belt_spr)
+	desert.tile_v2("DF55b_trilho_horizontal_v2", Rect2(7070, RAIL_Y - 8, 1400, 16), 2, self)     # DF222
+	for hx in [7110.0, 7560.0, 7980.0, 8430.0]:     # tirantes DF205 do trilho até o teto
+		desert.rod(hx, 150.0, RAIL_Y - 6.0, 1, self)
+	belt_spr = desert.tile_v2("DF26_esteira_v2", Rect2(BELT.x, FLOOR_Y, BELT.y - BELT.x, 60), 1, self)
+	for e in [[BELT.x, "DF26b_esteira_ponta_esq_v2"], [BELT.y, "DF26c_esteira_ponta_dir_v2"]]:
+		desert.peca_v2(e[1], Vector2(60, 60), Vector2(e[0], FLOOR_Y + 30), 2, self)
 	for i in 2:
 		var a := Arm.new()
 		a.forja = self
@@ -295,9 +277,9 @@ func _ready() -> void:
 	add_child(grate_area)
 	for x in [7110.0, 8430.0]:
 		var r := Rect2(x - 36, FLOOR_Y - 11, 72, 12)
-		desert.prop("DF56_inativa", r)
-		var lamp: Sprite2D = desert.prop("DF56_aviso", r, 1)
-		var jet := Desert.effect(self, "DF81", 8, Vector2(x, FLOOR_Y - 77), Vector2(85, 150), true)
+		desert.prop_v2("DF56_valvula_inativa_v2", r)
+		var lamp: Sprite2D = desert.prop_v2("DF56_valvula_aviso_v2", r, 1)
+		var jet := Desert.effect(self, "DF81", 8, Vector2(x, FLOOR_Y - 6), 1.5, true)
 		vents.append([lamp, jet, x])
 		lamp.visible = false
 		jet.visible = false
@@ -422,7 +404,7 @@ func _update_arms(dt: float, p: Player) -> void:
 				a.tx = clampf(p.global_position.x, ROOM_X.x + 80.0, ROOM_X.y - 80.0)
 				a.x = move_toward(a.x, a.tx, 900.0 * dt)
 				if randf() < 0.4:
-					Desert.effect(level.fx, "DF82", 6, Vector2(a.x, RAIL_Y + 6), Vector2(40, 30))
+					Desert.effect(level.fx, "DF82", 6, Vector2(a.x, RAIL_Y + 18), 0.6)
 				if a.st <= 0.0:
 					a.state = "warn"
 					a.st = float(a.get_meta("warn"))
@@ -447,7 +429,7 @@ func _update_arms(dt: float, p: Player) -> void:
 					a.plat_cs.set_deferred("disabled", false)
 					level.main.add_shake(12.0)
 					AudioMgr.sfx("martelo", Vector2(a.x, FLOOR_Y), 0.0, 0.05)
-					Desert.effect(level.fx, "DF82", 6, Vector2(a.x, FLOOR_Y - 31), Vector2(150, 90))
+					Desert.effect(level.fx, "DF82", 6, Vector2(a.x, FLOOR_Y), 2.0)
 					# onda no chão: 40 px de cada lado
 					if p.is_on_floor() and absf(p.global_position.x - a.x) < 60.0 + 40.0 and p.dash_t <= 0.0:
 						p.hurt(Vector2(a.x, FLOOR_Y), 1)
@@ -516,7 +498,7 @@ func _update_belt(dt: float, p: Player) -> void:
 			belt_on = 4.5
 	if belt_on > 0.0:
 		belt_on -= dt
-		belt_spr.region_rect.position.x -= dt * 140.0 * belt_dir * (-1.0 if p.global_position.x < BASE.x else 1.0)
+		belt_spr.region_rect.position.x -= dt * 174.0 * belt_dir * (-1.0 if p.global_position.x < BASE.x else 1.0)
 		var x := p.global_position.x
 		if p.is_on_floor() and x > BELT.x and x < BELT.y and absf(p.global_position.y - FLOOR_Y) < 6.0:
 			p.move_and_collide(Vector2(signf(BASE.x - x) * 120.0 * dt, 0))
@@ -741,7 +723,7 @@ func _set_defeated(animated: bool) -> void:
 	AudioMgr.music("deserto")
 	level.main.hud.notice("A lente da Forja-Mãe se apaga...")
 	for a: Arm in arms:
-		Desert.effect(level.fx, "DF84", 8, Vector2(a.x, SLAM_Y), Vector2(130, 135))
+		Desert.effect(level.fx, "DF84", 8, Vector2(a.x, SLAM_Y), 1.7)
 	await get_tree().create_timer(1.3, false).timeout
 	_spawn_fragment()
 

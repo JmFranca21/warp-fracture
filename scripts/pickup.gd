@@ -11,7 +11,7 @@ var t := 0.0
 var base_y := 0.0
 var taken := false
 var g: Sprite2D
-var art: Sprite2D = null
+var art: Node2D = null
 @export var respawn := 0.0   # >0: reaparece depois desse tempo (ex.: Célula de Energia ao lado da trava)
 
 
@@ -33,10 +33,26 @@ func _ready() -> void:
 	add_child(g)
 	if kind == "registro":
 		g.modulate = Color(0.45, 0.9, 1.0, 0.45)
-	if kind in ["modulo", "nucleo"]:
+	var tema: String = main.level.data.get("theme", "") if main.level != null else ""
+	if tema == "deserto" and kind in ["cell", "nucleo", "registro"]:
+		# DF210: célula (6 quadros) e núcleo (6) dos coletáveis, registro (4) dos objetos; centro (256, 256)
+		var an := AnimatedSprite2D.new()
+		an.sprite_frames = SpriteFrames.new()
+		if kind == "registro":
+			DFArt.add_anim(an.sprite_frames, "default", "DF210_objetos", [4, 5, 6, 7], 6.0, true, 4, 2)
+		else:
+			DFArt.add_anim(an.sprite_frames, "default", "DF210_coletaveis", range(6) if kind == "cell" else range(6, 12),
+				10.0, true, 4, 3)
+		an.scale = Vector2.ONE * DFArt.NODE
+		an.play()
+		add_child(an)
+		art = an
+		if kind == "nucleo":
+			g.modulate = Color(1.0, 0.85, 0.45, 0.8)
+	elif kind in ["modulo", "nucleo"]:
 		g.modulate = Color(0.35, 0.92, 1.0, 0.8) if kind == "modulo" else Color(1.0, 0.85, 0.45, 0.8)
 		g.scale = Vector2.ONE * 70.0 * 2.0 / 128.0
-	elif main.level != null and main.level.data.get("theme", "") in ["lab", "deserto", "nivaria"] and kind in ["heal", "energy"]:
+	elif tema in ["lab", "deserto", "nivaria"] and kind in ["heal", "energy"]:
 		art = Props.centered("kit_reparo" if kind == "heal" else "celula_energia", 0.42 if kind == "heal" else 0.4)
 		add_child(art)
 	z_index = 2

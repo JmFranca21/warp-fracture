@@ -110,29 +110,30 @@ static func texture(id: String) -> Texture2D:
 	return load("res://assets/deserto/" + id + ".webp")
 
 
-## Folhas antigas do Deserto (DF60–DF86), importadas em 512 × 384 (células de 128 × 192).
-static func animation(id: String, count: int, fps: float, looped: bool) -> AnimatedSprite2D:
+## Âncora de cada efeito v2 (pixels da célula 384 × 512 do original, como no ENTREGA_v2).
+const FX_ANCORA := {"DF80": Vector2(192, 500), "DF81": Vector2(192, 500), "DF82": Vector2(192, 472),
+	"DF83": Vector2(192, 472), "DF84": Vector2(192, 256), "DF85": Vector2(192, 256),
+	"DF70": Vector2(192, 256), "DF71": Vector2(192, 256)}
+
+
+## Folhas v2 do Deserto (DF60–DF85; grade 4 × 2 de 384 × 512, importadas em meia resolução por
+## tools/import_deserto_v2_folhas.py): escala uniforme DFArt.NODE × sc, âncora do ENTREGA na origem do nó.
+static func animation(id: String, count: int, fps: float, looped: bool, sc := 1.0) -> AnimatedSprite2D:
 	var frames := SpriteFrames.new()
-	frames.set_animation_speed("default",fps)
-	frames.set_animation_loop("default",looped)
-	var sheet := texture(id)
-	var cell := sheet.get_size() / Vector2(4,2)
-	for i in count:
-		var tile := AtlasTexture.new()
-		tile.atlas = sheet
-		tile.region = Rect2(Vector2(i % 4, floori(i / 4.0)) * cell, cell)
-		frames.add_frame("default",tile)
+	DFArt.add_anim(frames, "default", id, range(count), fps, looped)
 	var sprite := AnimatedSprite2D.new()
 	sprite.sprite_frames = frames
+	sprite.offset = DFArt.offset(Vector2(384, 512), FX_ANCORA.get(id, Vector2(192, 256)))
+	sprite.scale = Vector2.ONE * DFArt.NODE * sc
 	sprite.autoplay = "default"     # a cena guarda o autoplay; play() não é salvo
 	sprite.play()
 	return sprite
 
 
-static func effect(parent: Node, id: String, count: int, pos: Vector2, size: Vector2, looped := false) -> AnimatedSprite2D:
-	var sprite := animation(id,count,12.0,looped)
+## Efeito com a âncora (FX_ANCORA) em pos; sc multiplica a escala do jogo por igual nos dois eixos.
+static func effect(parent: Node, id: String, count: int, pos: Vector2, sc := 1.0, looped := false) -> AnimatedSprite2D:
+	var sprite := animation(id,count,12.0,looped,sc)
 	sprite.position = pos
-	sprite.scale = size / Vector2(128,192)
 	parent.add_child(sprite)
 	if not looped:
 		sprite.animation_finished.connect(sprite.queue_free)
@@ -185,6 +186,34 @@ func prop_v2(id: String, rect: Rect2, depth := 0, parent: Node = self) -> Sprite
 	var sprite := Sprite2D.new()
 	sprite.texture = load(V2 + id + ".png")
 	sprite.position = rect.get_center()
+	sprite.scale = Vector2(0.5, 0.5)
+	sprite.z_index = depth
+	parent.add_child(sprite)
+	return sprite
+
+
+## Módulo v2 repetível (2×) cobrindo rect a 0,5: a trama começa no canto de cima à esquerda.
+func tile_v2(id: String, rect: Rect2, depth := 0, parent: Node = self) -> Sprite2D:
+	var sprite := Sprite2D.new()
+	sprite.centered = false
+	sprite.texture = load(V2 + id + ".png")
+	sprite.texture_repeat = CanvasItem.TEXTURE_REPEAT_ENABLED
+	sprite.region_enabled = true
+	sprite.region_rect = Rect2(Vector2.ZERO, rect.size * 2.0)
+	sprite.position = rect.position
+	sprite.scale = Vector2(0.5, 0.5)
+	sprite.z_index = depth
+	parent.add_child(sprite)
+	return sprite
+
+
+## Peça v2 (2×) com o ponto anchor (pixels do PNG) em pos, escala 0,5.
+func peca_v2(id: String, anchor: Vector2, pos: Vector2, depth := 0, parent: Node = self) -> Sprite2D:
+	var sprite := Sprite2D.new()
+	sprite.texture = load(V2 + id + ".png")
+	sprite.centered = false
+	sprite.offset = -anchor
+	sprite.position = pos
 	sprite.scale = Vector2(0.5, 0.5)
 	sprite.z_index = depth
 	parent.add_child(sprite)
@@ -321,7 +350,7 @@ func _nevoa(amount: float) -> ShaderMaterial:
 
 
 ## Tirante DF205 (16 px de jogo, repetível na vertical) de y0 a y1 em x: o que pende do alto mostra de onde pende.
-func rod(x: float, y0: float, y1: float, depth := -5) -> Sprite2D:
+func rod(x: float, y0: float, y1: float, depth := -5, parent: Node = self) -> Sprite2D:
 	var t: Texture2D = load("res://assets/deserto/terreno/tirante.png")
 	var sprite := Sprite2D.new()
 	sprite.texture = t
@@ -332,7 +361,7 @@ func rod(x: float, y0: float, y1: float, depth := -5) -> Sprite2D:
 	sprite.position = Vector2(roundf(x - t.get_width() / 4.0), y0)
 	sprite.scale = Vector2(0.5, 0.5)
 	sprite.z_index = depth
-	add_child(sprite)
+	parent.add_child(sprite)
 	return sprite
 
 
@@ -461,7 +490,7 @@ func _montar() -> void:
 	add_child(terrain)
 	for r in FLOOR:
 		if r.position.x == 1700:
-			belt = tile("DF26",Rect2(r.position,Vector2(r.size.x,60)),Vector2(0.62,0.625))
+			belt = tile_v2("DF26_esteira_v2",Rect2(r.position,Vector2(r.size.x,60)))     # DF222: apoio na linha 0
 		elif r.position.x == 2870 or r.position.x == 3100:
 			# DF53: só as correntes (a laje da arte antiga dá lugar ao tabuleiro da DF205); terminam no apoio
 			var large: bool = r.position.x == 3100
@@ -482,7 +511,7 @@ func _montar() -> void:
 	# DF220 (2×): mesmos retângulos de jogo da v0.8, agora com escala uniforme 0,5
 	prop_v2("DF31_mastro_viga_v2",Rect2(686,463,310,237),-2)     # olhal em (578, 34) → (975, 480): o DF57 pende dali
 	prop_v2("DF32_chamine_v2",Rect2(1530,44,72,128),-2)
-	effect(self,"DF80",6,Vector2(1566,-12),Vector2(105,116),true)
+	effect(self,"DF80",6,Vector2(1566,50),1.3,true)    # base da fumaça na boca da chaminé
 	prop_v2("DF33_porta_fabrica_v2",Rect2(1550,525,140,175),-2)
 	wheel = prop_v2("DF34_engrenagem_fundo_v2",Rect2(2220,250,320,320),-8)   # pivô (320, 320) = centro
 	prop_v2("DF35_abertura_parede_v2",Rect2(3460,226,140,190),-6)
@@ -502,30 +531,33 @@ func _montar() -> void:
 			flickering_lamp = on
 	prop_v2("DF39_painel_v2",Rect2(5100,630,65,90),-4)
 	prop_v2("DF39b_canos_v2",Rect2(5960,333,240,120),-5)
-	prop("DF26b",Rect2(1700,700,60,60),1)
-	prop("DF26c",Rect2(2720,700,60,60),1)
+	# DF222: pontas imóveis, pivô (60, 60) no centro do rolo
+	peca_v2("DF26b_esteira_ponta_esq_v2",Vector2(60,60),Vector2(1730,730),1)
+	peca_v2("DF26c_esteira_ponta_dir_v2",Vector2(60,60),Vector2(2750,730),1)
+	# DF224: o gancho entra pela argola (38, 73 do PNG) na âncora lógica; o topo fica 36,5 px acima
 	for hook in HOOKS + ARENA_HOOKS:
-		prop("DF57",Rect2(hook-Vector2(19,30),Vector2(38,48)),3)
+		peca_v2("DF57_ponto_gancho_v2",Vector2(38,73),hook,3)
 		# a do mastro pende do olhal da DF31; a da abertura da Fábrica, da verga da DF35; as outras, do teto
 		if hook == HOOKS[1]:
-			rod(hook.x, 238.0, hook.y - 28.0, 2)
+			rod(hook.x, 238.0, hook.y - 35.0, 2)
 		elif hook != HOOKS[0]:
-			rod(hook.x, ROOM.position.y if hook.x > ROOM.position.x else TOPO, hook.y - 28.0, 2)
+			rod(hook.x, ROOM.position.y if hook.x > ROOM.position.x else TOPO, hook.y - 35.0, 2)
 	make_press(1950,700,false,0.0)
 	make_press(2540,700,false,1.25)
 	make_press(4500,415,true,0.8)
-	prop("DF52b",Rect2(2210,675,80,32))
-	saw = prop("DF52",Rect2(2215,633,70,70),1)
+	# DF223: base apoiada no piso (700); o eixo da serra (70, 70) no encaixe da base (80, 0)
+	peca_v2("DF52b_serra_base_v2",Vector2(80,0),Vector2(2250,668))
+	saw = peca_v2("DF52_serra_v2",Vector2(70,70),Vector2(2250,668),1)
 	attack_area(Rect2(2225,642,50,55),self)
-	tile("DF27",Rect2(4875,415,74,365),Vector2(0.57,0.55),-3)
+	tile_v2("DF27_trilho_vertical_v2",Rect2(4875,415,74,365),-3)
 	make_cart(Vector2(4860,415),Vector2(0,355),true)
-	tile("DF55b",Rect2(5480,650,560,16),Vector2(0.3,0.25),-2)
+	tile_v2("DF55b_trilho_horizontal_v2",Rect2(5480,650,560,16),-2)
 	make_cart(Vector2(5490,770),Vector2(430,0),false)
 	for x in [6290,6520]:
 		var r := Rect2(x-36,759,72,12)
-		prop("DF56_inativa",r)
-		var lamp := prop("DF56_aviso",r,1)
-		var jet := effect(self,"DF81",8,Vector2(x,693),Vector2(85,150),true)
+		prop_v2("DF56_valvula_inativa_v2",r)
+		var lamp := prop_v2("DF56_valvula_aviso_v2",r,1)
+		var jet := effect(self,"DF81",8,Vector2(x,764),1.5,true)     # sai da válvula e cobre a área de dano
 		var hit := attack_area(Rect2(x-22,634,44,136),self)
 		vents.append([lamp,jet,hit])
 	_make_door("in", DOOR_IN)
@@ -582,8 +614,8 @@ func _make_door(key: String, r: Rect2) -> void:
 	body.add_child(cs)
 	add_child(body)
 	var art := Rect2(r.get_center().x - 75, r.position.y, 150, r.size.y)
-	var closed := prop("DF38_fechada", art, 1)
-	var open := prop("DF38_aberta", art, -3)
+	var closed := prop_v2("DF38_porta_fechada_v2", art, 1)     # DF225: 300 × 380 a 2×, base no chão
+	var open := prop_v2("DF38_porta_aberta_v2", art, -3)
 	doors[key] = [cs, closed, open]
 
 
@@ -618,20 +650,20 @@ func make_cart(start: Vector2, travel: Vector2, vertical: bool) -> void:
 	body.add_child(shape)
 	add_child(body)
 	var r := Rect2(0,0,w,24) if vertical else Rect2(0,-112,w,132)
-	prop("DF54" if vertical else "DF55",r,1,body)
+	prop_v2("DF54_elevador_v2" if vertical else "DF55_carrinho_v2",r,1,body)     # DF224: rodas no trilho, piso em 0
 	carts.append([body,start,travel])
 
 
 func make_press(x: int, ground: int, small: bool, phase: float) -> void:
-	var id := "DF51" if small else "DF50"
+	var id := "DF51%s_prensa_pequena_%s_v2" if small else "DF50%s_prensa_%s_v2"     # DF223
 	var width := 70 if small else 106
-	prop(id+"c",Rect2(x-width/2.0,ground-219,width,35),2)
+	prop_v2(id % ["c", "suporte"],Rect2(x-width/2.0,ground-219,width,35),2)
 	for dx in [-width * 0.3, width * 0.3]:      # o suporte pende de dois tirantes até o alto
 		rod(x + dx, TOPO, ground - 216.0, 1)
-	var rod := tile(id+"b",Rect2(x-10,ground-190,20,175),Vector2(0.16,0.35))
+	var rod := tile_v2(id % ["b", "haste"],Rect2(x-10,ground-190,20,175))
 	var root := Node2D.new()
 	add_child(root)
-	prop(id+"a",Rect2(-width/2.0,-30,width,30),2,root)
+	prop_v2(id % ["a", "cabeca"],Rect2(-width/2.0,-30,width,30),2,root)
 	attack_area(Rect2(-width/2.0,-26,width,26),root)
 	presses.append([root,rod,x,ground,phase,false])
 
@@ -653,7 +685,7 @@ func _physics_process(dt: float) -> void:
 	_ambient(dt)
 	wheel.rotation = clock * 0.13
 	saw.rotation = clock * 5.5
-	belt.region_rect.position.x = -clock * 85
+	belt.region_rect.position.x = -clock * 130     # 65 px/s no jogo, a mesma velocidade que empurra
 	var p := level.player
 	if not is_instance_valid(p):
 		return
@@ -666,7 +698,7 @@ func _physics_process(dt: float) -> void:
 		press[0].position = Vector2(press[2],y)
 		press[1].region_rect.size.y = maxf(1,y-22-press[1].position.y)/press[1].scale.y
 		if down > 0.99 and not press[5]:
-			effect(self,"DF82",6,Vector2(press[2],press[3]-31),Vector2(110,74))
+			effect(self,"DF82",6,Vector2(press[2],press[3]),1.5)
 		press[5] = down > 0.99
 	for cart in carts:
 		cart[0].position = cart[1] + cart[2] * (0.5-0.5*cos(clock*TAU/5.5))
