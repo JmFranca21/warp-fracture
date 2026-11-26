@@ -1,0 +1,331 @@
+fase,borda_esq,borda_dir,gancho_x,gancho_y,sentido,fps,variante,chegou,obrigatorio,detalhe
+lab,3014,3486,3150,-215,1,30,parado,true,true,1.07 s
+lab,3014,3486,3150,-215,1,30,correndo,true,true,1.47 s
+lab,3014,3486,3150,-215,1,30,no_ar,true,true,1.47 s
+lab,3014,3486,3150,-215,1,30,pulo_meio,true,true,1.07 s
+lab,3014,3486,3150,-215,1,30,pulo_cedo,true,true,1.07 s
+lab,3014,3486,3150,-215,1,60,parado,true,true,0.98 s
+lab,3014,3486,3150,-215,1,60,correndo,true,true,1.40 s
+lab,3014,3486,3150,-215,1,60,no_ar,true,true,1.25 s
+lab,3014,3486,3150,-215,1,60,pulo_meio,true,true,0.97 s
+lab,3014,3486,3150,-215,1,60,pulo_cedo,true,true,0.98 s
+lab,3014,3486,3150,-215,1,144,parado,true,true,0.94 s
+lab,3014,3486,3150,-215,1,144,correndo,true,true,1.36 s
+lab,3014,3486,3150,-215,1,144,no_ar,true,true,1.19 s
+lab,3014,3486,3150,-215,1,144,pulo_meio,true,true,0.92 s
+lab,3014,3486,3150,-215,1,144,pulo_cedo,true,true,0.94 s
+lab,3014,3486,3150,-215,-1,30,parado,true,true,1.33 s
+lab,3014,3486,3150,-215,-1,30,correndo,true,true,1.73 s
+lab,3014,3486,3150,-215,-1,30,no_ar,false,true,caiu no vão (y 94)
+lab,3014,3486,3150,-215,-1,30,pulo_meio,false,true,caiu no vão (y 93)
+lab,3014,3486,3150,-215,-1,30,pulo_cedo,false,true,caiu no vão (y 93)
+lab,3014,3486,3150,-215,-1,60,parado,false,true,caiu no vão (y 87)
+lab,3014,3486,3150,-215,-1,60,correndo,false,true,caiu no vão (y 93)
+lab,3014,3486,3150,-215,-1,60,no_ar,false,true,caiu no vão (y 81)
+lab,3014,3486,3150,-215,-1,60,pulo_meio,false,true,voltou ao ponto seguro (caiu no vão)
+lab,3014,3486,3150,-215,-1,60,pulo_cedo,true,true,1.17 s
+lab,3014,3486,3150,-215,-1,144,parado,false,true,caiu no vão (y 82)
+lab,3014,3486,3150,-215,-1,144,correndo,false,true,caiu no vão (y 83)
+lab,3014,3486,3150,-215,-1,144,no_ar,true,true,1.40 s
+lab,3014,3486,3150,-215,-1,144,pulo_meio,false,true,caiu no vão (y 82)
+lab,3014,3486,3150,-215,-1,144,pulo_cedo,false,true,caiu no vão (y 82)
+lab,3016,3480,3400,-215,1,30,parado,true,true,1.07 s
+lab,3016,3480,3400,-215,1,30,correndo,true,true,1.47 s
+lab,3016,3480,3400,-215,1,30,no_ar,true,true,1.37 s
+lab,3016,3480,3400,-215,1,30,pulo_meio,true,true,1.07 s
+lab,3016,3480,3400,-215,1,30,pulo_cedo,true,true,1.07 s
+lab,3016,3480,3400,-215,1,60,parado,true,true,0.98 s
+lab,3016,3480,3400,-215,1,60,correndo,true,true,1.40 s
+lab,3016,3480,3400,-215,1,60,no_ar,true,true,1.25 s
+lab,3016,3480,3400,-215,1,60,pulo_meio,true,true,0.97 s
+lab,3016,3480,3400,-215,1,60,pulo_cedo,true,true,0.98 s
+lab,3016,3480,3400,-215,1,144,parado,true,true,0.92 s
+lab,3016,3480,3400,-215,1,144,correndo,true,true,1.35 s
+lab,3016,3480,3400,-215,1,144,no_ar,true,true,1.18 s
+lab,3016,3480,3400,-215,1,144,pulo_meio,true,true,0.91 s
+lab,3016,3480,3400,-215,1,144,pulo_cedo,true,true,0.92 s
+lab,3016,3480,3400,-215,-1,30,parado,true,true,1.33 s
+lab,3016,3480,3400,-215,-1,30,correndo,true,true,1.83 s
+lab,3016,3480,3400,-215,-1,30,no_ar,false,true,caiu no vão (y 97)
+lab,3016,3480,3400,-215,-1,30,pulo_meio,false,true,caiu no vão (y 95)
+lab,3016,3480,3400,-215,-1,30,pulo_cedo,false,true,caiu no vão (y 95)
+lab,3016,3480,3400,-215,-1,60,parado,false,true,voltou ao ponto seguro (caiu no vão)
+lab,3016,3480,3400,-215,-1,60,correndo,false,true,caiu no vão (y 92)
+lab,3016,3480,3400,-215,-1,60,no_ar,false,true,caiu no vão (y 81)
+lab,3016,3480,3400,-215,-1,60,pulo_meio,false,true,voltou ao ponto seguro (caiu no vão)
+lab,3016,3480,3400,-215,-1,60,pulo_cedo,false,true,caiu no vão (y 80)
+lab,3016,3480,3400,-215,-1,144,parado,false,true,caiu no vão (y 85)
+lab,3016,3480,3400,-215,-1,144,correndo,false,true,caiu no vão (y 86)
+lab,3016,3480,3400,-215,-1,144,no_ar,false,true,caiu no vão (y 82)
+lab,3016,3480,3400,-215,-1,144,pulo_meio,false,true,caiu no vão (y 83)
+lab,3016,3480,3400,-215,-1,144,pulo_cedo,false,true,caiu no vão (y 83)
+lab,6028,6332,6180,330,1,30,parado,true,true,1.03 s
+lab,6028,6332,6180,330,1,30,correndo,true,true,1.23 s
+lab,6028,6332,6180,330,1,30,no_ar,true,true,1.37 s
+lab,6028,6332,6180,330,1,30,pulo_meio,true,true,1.17 s
+lab,6028,6332,6180,330,1,30,pulo_cedo,true,true,1.03 s
+lab,6028,6332,6180,330,1,60,parado,true,true,0.95 s
+lab,6028,6332,6180,330,1,60,correndo,true,true,1.20 s
+lab,6028,6332,6180,330,1,60,no_ar,true,true,1.27 s
+lab,6028,6332,6180,330,1,60,pulo_meio,true,true,0.93 s
+lab,6028,6332,6180,330,1,60,pulo_cedo,true,true,0.95 s
+lab,6028,6332,6180,330,1,144,parado,true,true,0.92 s
+lab,6028,6332,6180,330,1,144,correndo,true,true,1.19 s
+lab,6028,6332,6180,330,1,144,no_ar,true,true,1.19 s
+lab,6028,6332,6180,330,1,144,pulo_meio,false,true,caiu no vão (y 853)
+lab,6028,6332,6180,330,1,144,pulo_cedo,true,true,0.92 s
+lab,6028,6332,6180,330,-1,30,parado,false,false,caiu no vão (y 865)
+lab,6028,6332,6180,330,-1,30,correndo,false,false,caiu no vão (y 858)
+lab,6028,6332,6180,330,-1,30,no_ar,false,false,caiu no vão (y 872)
+lab,6028,6332,6180,330,-1,30,pulo_meio,false,false,caiu no vão (y 864)
+lab,6028,6332,6180,330,-1,30,pulo_cedo,false,false,caiu no vão (y 865)
+lab,6028,6332,6180,330,-1,60,parado,false,false,caiu no vão (y 866)
+lab,6028,6332,6180,330,-1,60,correndo,false,false,caiu no vão (y 862)
+lab,6028,6332,6180,330,-1,60,no_ar,false,false,caiu no vão (y 860)
+lab,6028,6332,6180,330,-1,60,pulo_meio,false,false,caiu no vão (y 852)
+lab,6028,6332,6180,330,-1,60,pulo_cedo,false,false,caiu no vão (y 866)
+lab,6028,6332,6180,330,-1,144,parado,false,false,caiu no vão (y 854)
+lab,6028,6332,6180,330,-1,144,correndo,false,false,caiu no vão (y 856)
+lab,6028,6332,6180,330,-1,144,no_ar,false,false,caiu no vão (y 854)
+lab,6028,6332,6180,330,-1,144,pulo_meio,false,false,caiu no vão (y 853)
+lab,6028,6332,6180,330,-1,144,pulo_cedo,false,false,caiu no vão (y 854)
+deserto,775,1183,975,510,1,30,parado,false,true,caiu no vão (y 869)
+deserto,775,1183,975,510,1,30,correndo,false,true,caiu no vão (y 887)
+deserto,775,1183,975,510,1,30,no_ar,false,true,caiu no vão (y 877)
+deserto,775,1183,975,510,1,30,pulo_meio,false,true,caiu no vão (y 873)
+deserto,775,1183,975,510,1,30,pulo_cedo,false,true,caiu no vão (y 873)
+deserto,775,1183,975,510,1,60,parado,false,true,caiu no vão (y 867)
+deserto,775,1183,975,510,1,60,correndo,false,true,caiu no vão (y 868)
+deserto,775,1183,975,510,1,60,no_ar,false,true,caiu no vão (y 871)
+deserto,775,1183,975,510,1,60,pulo_meio,false,true,caiu no vão (y 867)
+deserto,775,1183,975,510,1,60,pulo_cedo,false,true,voltou ao ponto seguro (caiu no vão)
+deserto,775,1183,975,510,1,144,parado,false,true,caiu no vão (y 865)
+deserto,775,1183,975,510,1,144,correndo,false,true,caiu no vão (y 863)
+deserto,775,1183,975,510,1,144,no_ar,false,true,caiu no vão (y 864)
+deserto,775,1183,975,510,1,144,pulo_meio,false,true,caiu no vão (y 865)
+deserto,775,1183,975,510,1,144,pulo_cedo,false,true,caiu no vão (y 865)
+deserto,775,1183,975,510,-1,30,parado,true,true,0.10 s
+deserto,775,1183,975,510,-1,30,correndo,false,true,caiu no vão (y 875)
+deserto,775,1183,975,510,-1,30,no_ar,false,true,caiu no vão (y 886)
+deserto,775,1183,975,510,-1,30,pulo_meio,false,true,caiu no vão (y 873)
+deserto,775,1183,975,510,-1,30,pulo_cedo,false,true,caiu no vão (y 873)
+deserto,775,1183,975,510,-1,60,parado,false,true,caiu no vão (y 867)
+deserto,775,1183,975,510,-1,60,correndo,false,true,caiu no vão (y 860)
+deserto,775,1183,975,510,-1,60,no_ar,false,true,caiu no vão (y 863)
+deserto,775,1183,975,510,-1,60,pulo_meio,false,true,voltou ao ponto seguro (caiu no vão)
+deserto,775,1183,975,510,-1,60,pulo_cedo,false,true,caiu no vão (y 875)
+deserto,775,1183,975,510,-1,144,parado,false,true,caiu no vão (y 865)
+deserto,775,1183,975,510,-1,144,correndo,false,true,caiu no vão (y 861)
+deserto,775,1183,975,510,-1,144,no_ar,false,true,caiu no vão (y 865)
+deserto,775,1183,975,510,-1,144,pulo_meio,false,true,caiu no vão (y 865)
+deserto,775,1183,975,510,-1,144,pulo_cedo,false,true,caiu no vão (y 865)
+deserto,3334,3582,3510,345,1,30,parado,false,true,não chegou em 5 s (x 2638, y 700, gancho false)
+deserto,3334,3582,3510,345,1,30,correndo,true,true,1.20 s
+deserto,3334,3582,3510,345,1,30,no_ar,true,true,1.23 s
+deserto,3334,3582,3510,345,1,30,pulo_meio,false,true,caiu no vão (y 710)
+deserto,3334,3582,3510,345,1,30,pulo_cedo,false,true,caiu no vão (y 726)
+deserto,3334,3582,3510,345,1,60,parado,false,true,caiu no vão (y 716)
+deserto,3334,3582,3510,345,1,60,correndo,false,true,caiu no vão (y 712)
+deserto,3334,3582,3510,345,1,60,no_ar,true,true,1.03 s
+deserto,3334,3582,3510,345,1,60,pulo_meio,false,true,caiu no vão (y 714)
+deserto,3334,3582,3510,345,1,60,pulo_cedo,false,true,caiu no vão (y 716)
+deserto,3334,3582,3510,345,1,144,parado,false,true,caiu no vão (y 709)
+deserto,3334,3582,3510,345,1,144,correndo,false,true,caiu no vão (y 710)
+deserto,3334,3582,3510,345,1,144,no_ar,true,true,0.97 s
+deserto,3334,3582,3510,345,1,144,pulo_meio,false,true,caiu no vão (y 709)
+deserto,3334,3582,3510,345,1,144,pulo_cedo,false,true,caiu no vão (y 709)
+deserto,3334,3582,3510,345,-1,30,parado,false,false,caiu no vão (y 708)
+deserto,3334,3582,3510,345,-1,30,correndo,false,false,caiu no vão (y 706)
+deserto,3334,3582,3510,345,-1,30,no_ar,false,false,caiu no vão (y 729)
+deserto,3334,3582,3510,345,-1,30,pulo_meio,false,false,caiu no vão (y 708)
+deserto,3334,3582,3510,345,-1,30,pulo_cedo,false,false,caiu no vão (y 708)
+deserto,3334,3582,3510,345,-1,60,parado,false,false,caiu no vão (y 714)
+deserto,3334,3582,3510,345,-1,60,correndo,false,false,caiu no vão (y 706)
+deserto,3334,3582,3510,345,-1,60,no_ar,false,false,caiu no vão (y 709)
+deserto,3334,3582,3510,345,-1,60,pulo_meio,false,false,caiu no vão (y 714)
+deserto,3334,3582,3510,345,-1,60,pulo_cedo,false,false,caiu no vão (y 714)
+deserto,3334,3582,3510,345,-1,144,parado,false,false,caiu no vão (y 707)
+deserto,3334,3582,3510,345,-1,144,correndo,false,false,caiu no vão (y 706)
+deserto,3334,3582,3510,345,-1,144,no_ar,false,false,caiu no vão (y 710)
+deserto,3334,3582,3510,345,-1,144,pulo_meio,false,false,caiu no vão (y 707)
+deserto,3334,3582,3510,345,-1,144,pulo_cedo,false,false,caiu no vão (y 707)
+deserto,4005,4413,4205,230,1,30,parado,false,true,caiu no vão (y 600)
+deserto,4005,4413,4205,230,1,30,correndo,false,true,caiu no vão (y 577)
+deserto,4005,4413,4205,230,1,30,no_ar,false,true,caiu no vão (y 590)
+deserto,4005,4413,4205,230,1,30,pulo_meio,false,true,caiu no vão (y 592)
+deserto,4005,4413,4205,230,1,30,pulo_cedo,false,true,caiu no vão (y 600)
+deserto,4005,4413,4205,230,1,60,parado,false,true,caiu no vão (y 589)
+deserto,4005,4413,4205,230,1,60,correndo,false,true,caiu no vão (y 589)
+deserto,4005,4413,4205,230,1,60,no_ar,false,true,caiu no vão (y 587)
+deserto,4005,4413,4205,230,1,60,pulo_meio,false,true,caiu no vão (y 577)
+deserto,4005,4413,4205,230,1,60,pulo_cedo,false,true,caiu no vão (y 589)
+deserto,4005,4413,4205,230,1,144,parado,false,true,caiu no vão (y 581)
+deserto,4005,4413,4205,230,1,144,correndo,false,true,caiu no vão (y 576)
+deserto,4005,4413,4205,230,1,144,no_ar,false,true,caiu no vão (y 577)
+deserto,4005,4413,4205,230,1,144,pulo_meio,false,true,caiu no vão (y 580)
+deserto,4005,4413,4205,230,1,144,pulo_cedo,false,true,caiu no vão (y 581)
+deserto,4005,4413,4205,230,-1,30,parado,false,true,caiu no vão (y 578)
+deserto,4005,4413,4205,230,-1,30,correndo,false,true,caiu no vão (y 597)
+deserto,4005,4413,4205,230,-1,30,no_ar,false,true,caiu no vão (y 603)
+deserto,4005,4413,4205,230,-1,30,pulo_meio,false,true,caiu no vão (y 595)
+deserto,4005,4413,4205,230,-1,30,pulo_cedo,false,true,caiu no vão (y 578)
+deserto,4005,4413,4205,230,-1,60,parado,false,true,caiu no vão (y 581)
+deserto,4005,4413,4205,230,-1,60,correndo,false,true,caiu no vão (y 582)
+deserto,4005,4413,4205,230,-1,60,no_ar,false,true,caiu no vão (y 579)
+deserto,4005,4413,4205,230,-1,60,pulo_meio,false,true,caiu no vão (y 578)
+deserto,4005,4413,4205,230,-1,60,pulo_cedo,false,true,caiu no vão (y 581)
+deserto,4005,4413,4205,230,-1,144,parado,false,true,caiu no vão (y 578)
+deserto,4005,4413,4205,230,-1,144,correndo,false,true,caiu no vão (y 580)
+deserto,4005,4413,4205,230,-1,144,no_ar,false,true,caiu no vão (y 576)
+deserto,4005,4413,4205,230,-1,144,pulo_meio,false,true,caiu no vão (y 581)
+deserto,4005,4413,4205,230,-1,144,pulo_cedo,false,true,caiu no vão (y 578)
+nivaria,2900,3220,3060,520,1,30,parado,true,true,1.30 s
+nivaria,2900,3220,3060,520,1,30,correndo,true,true,1.83 s
+nivaria,2900,3220,3060,520,1,30,no_ar,true,true,1.77 s
+nivaria,2900,3220,3060,520,1,30,pulo_meio,false,true,caiu no vão (y 968)
+nivaria,2900,3220,3060,520,1,30,pulo_cedo,true,true,1.30 s
+nivaria,2900,3220,3060,520,1,60,parado,true,true,1.22 s
+nivaria,2900,3220,3060,520,1,60,correndo,true,true,1.80 s
+nivaria,2900,3220,3060,520,1,60,no_ar,true,true,1.63 s
+nivaria,2900,3220,3060,520,1,60,pulo_meio,false,true,caiu no vão (y 961)
+nivaria,2900,3220,3060,520,1,60,pulo_cedo,true,true,1.22 s
+nivaria,2900,3220,3060,520,1,144,parado,true,true,1.15 s
+nivaria,2900,3220,3060,520,1,144,correndo,true,true,1.76 s
+nivaria,2900,3220,3060,520,1,144,no_ar,true,true,1.56 s
+nivaria,2900,3220,3060,520,1,144,pulo_meio,false,true,caiu no vão (y 961)
+nivaria,2900,3220,3060,520,1,144,pulo_cedo,true,true,1.15 s
+nivaria,2900,3220,3060,520,-1,30,parado,true,true,1.30 s
+nivaria,2900,3220,3060,520,-1,30,correndo,true,true,1.83 s
+nivaria,2900,3220,3060,520,-1,30,no_ar,true,true,1.77 s
+nivaria,2900,3220,3060,520,-1,30,pulo_meio,false,true,caiu no vão (y 968)
+nivaria,2900,3220,3060,520,-1,30,pulo_cedo,true,true,1.30 s
+nivaria,2900,3220,3060,520,-1,60,parado,true,true,1.22 s
+nivaria,2900,3220,3060,520,-1,60,correndo,true,true,1.80 s
+nivaria,2900,3220,3060,520,-1,60,no_ar,true,true,1.63 s
+nivaria,2900,3220,3060,520,-1,60,pulo_meio,false,true,caiu no vão (y 961)
+nivaria,2900,3220,3060,520,-1,60,pulo_cedo,true,true,1.22 s
+nivaria,2900,3220,3060,520,-1,144,parado,true,true,1.15 s
+nivaria,2900,3220,3060,520,-1,144,correndo,true,true,1.76 s
+nivaria,2900,3220,3060,520,-1,144,no_ar,true,true,1.56 s
+nivaria,2900,3220,3060,520,-1,144,pulo_meio,false,true,caiu no vão (y 961)
+nivaria,2900,3220,3060,520,-1,144,pulo_cedo,true,true,1.15 s
+nivaria,3518,3974,3766,563,1,30,parado,false,true,caiu no vão (y 985)
+nivaria,3518,3974,3766,563,1,30,correndo,false,true,caiu no vão (y 963)
+nivaria,3518,3974,3766,563,1,30,no_ar,true,true,1.77 s
+nivaria,3518,3974,3766,563,1,30,pulo_meio,false,true,caiu no vão (y 986)
+nivaria,3518,3974,3766,563,1,30,pulo_cedo,false,true,caiu no vão (y 985)
+nivaria,3518,3974,3766,563,1,60,parado,false,true,caiu no vão (y 962)
+nivaria,3518,3974,3766,563,1,60,correndo,false,true,caiu no vão (y 970)
+nivaria,3518,3974,3766,563,1,60,no_ar,false,true,caiu no vão (y 965)
+nivaria,3518,3974,3766,563,1,60,pulo_meio,false,true,caiu no vão (y 964)
+nivaria,3518,3974,3766,563,1,60,pulo_cedo,false,true,caiu no vão (y 967)
+nivaria,3518,3974,3766,563,1,144,parado,false,true,caiu no vão (y 962)
+nivaria,3518,3974,3766,563,1,144,correndo,false,true,caiu no vão (y 964)
+nivaria,3518,3974,3766,563,1,144,no_ar,false,true,caiu no vão (y 965)
+nivaria,3518,3974,3766,563,1,144,pulo_meio,false,true,caiu no vão (y 962)
+nivaria,3518,3974,3766,563,1,144,pulo_cedo,false,true,caiu no vão (y 962)
+nivaria,3518,3974,3766,563,-1,30,parado,false,true,caiu no vão (y 982)
+nivaria,3518,3974,3766,563,-1,30,correndo,false,true,caiu no vão (y 967)
+nivaria,3518,3974,3766,563,-1,30,no_ar,false,true,caiu no vão (y 984)
+nivaria,3518,3974,3766,563,-1,30,pulo_meio,false,true,caiu no vão (y 972)
+nivaria,3518,3974,3766,563,-1,30,pulo_cedo,false,true,caiu no vão (y 981)
+nivaria,3518,3974,3766,563,-1,60,parado,false,true,caiu no vão (y 965)
+nivaria,3518,3974,3766,563,-1,60,correndo,false,true,caiu no vão (y 974)
+nivaria,3518,3974,3766,563,-1,60,no_ar,false,true,caiu no vão (y 974)
+nivaria,3518,3974,3766,563,-1,60,pulo_meio,false,true,caiu no vão (y 966)
+nivaria,3518,3974,3766,563,-1,60,pulo_cedo,false,true,caiu no vão (y 974)
+nivaria,3518,3974,3766,563,-1,144,parado,false,true,caiu no vão (y 963)
+nivaria,3518,3974,3766,563,-1,144,correndo,false,true,caiu no vão (y 962)
+nivaria,3518,3974,3766,563,-1,144,no_ar,false,true,caiu no vão (y 963)
+nivaria,3518,3974,3766,563,-1,144,pulo_meio,false,true,caiu no vão (y 962)
+nivaria,3518,3974,3766,563,-1,144,pulo_cedo,false,true,caiu no vão (y 963)
+nivaria,4327,4703,4535,521,1,30,parado,false,true,caiu no vão (y 982)
+nivaria,4327,4703,4535,521,1,30,correndo,true,true,1.83 s
+nivaria,4327,4703,4535,521,1,30,no_ar,true,true,1.77 s
+nivaria,4327,4703,4535,521,1,30,pulo_meio,false,true,caiu no vão (y 966)
+nivaria,4327,4703,4535,521,1,30,pulo_cedo,true,true,1.30 s
+nivaria,4327,4703,4535,521,1,60,parado,true,true,1.20 s
+nivaria,4327,4703,4535,521,1,60,correndo,true,true,1.80 s
+nivaria,4327,4703,4535,521,1,60,no_ar,true,true,1.65 s
+nivaria,4327,4703,4535,521,1,60,pulo_meio,false,true,caiu no vão (y 966)
+nivaria,4327,4703,4535,521,1,60,pulo_cedo,true,true,1.20 s
+nivaria,4327,4703,4535,521,1,144,parado,true,true,1.17 s
+nivaria,4327,4703,4535,521,1,144,correndo,true,true,1.76 s
+nivaria,4327,4703,4535,521,1,144,no_ar,true,true,1.57 s
+nivaria,4327,4703,4535,521,1,144,pulo_meio,false,true,caiu no vão (y 961)
+nivaria,4327,4703,4535,521,1,144,pulo_cedo,true,true,1.17 s
+nivaria,4327,4703,4535,521,-1,30,parado,false,true,caiu no vão (y 976)
+nivaria,4327,4703,4535,521,-1,30,correndo,false,true,caiu no vão (y 965)
+nivaria,4327,4703,4535,521,-1,30,no_ar,false,true,caiu no vão (y 981)
+nivaria,4327,4703,4535,521,-1,30,pulo_meio,false,true,caiu no vão (y 977)
+nivaria,4327,4703,4535,521,-1,30,pulo_cedo,false,true,caiu no vão (y 976)
+nivaria,4327,4703,4535,521,-1,60,parado,false,true,caiu no vão (y 961)
+nivaria,4327,4703,4535,521,-1,60,correndo,true,true,1.90 s
+nivaria,4327,4703,4535,521,-1,60,no_ar,false,true,caiu no vão (y 975)
+nivaria,4327,4703,4535,521,-1,60,pulo_meio,false,true,caiu no vão (y 969)
+nivaria,4327,4703,4535,521,-1,60,pulo_cedo,false,true,caiu no vão (y 973)
+nivaria,4327,4703,4535,521,-1,144,parado,false,true,caiu no vão (y 966)
+nivaria,4327,4703,4535,521,-1,144,correndo,false,true,caiu no vão (y 966)
+nivaria,4327,4703,4535,521,-1,144,no_ar,false,true,caiu no vão (y 961)
+nivaria,4327,4703,4535,521,-1,144,pulo_meio,false,true,caiu no vão (y 964)
+nivaria,4327,4703,4535,521,-1,144,pulo_cedo,false,true,caiu no vão (y 966)
+nivaria,4994,5626,5154,524,1,30,parado,false,true,caiu no vão (y 968)
+nivaria,4994,5626,5154,524,1,30,correndo,true,true,2.07 s
+nivaria,4994,5626,5154,524,1,30,no_ar,true,true,2.00 s
+nivaria,4994,5626,5154,524,1,30,pulo_meio,true,true,1.57 s
+nivaria,4994,5626,5154,524,1,30,pulo_cedo,true,true,1.53 s
+nivaria,4994,5626,5154,524,1,60,parado,true,true,1.43 s
+nivaria,4994,5626,5154,524,1,60,correndo,true,true,2.03 s
+nivaria,4994,5626,5154,524,1,60,no_ar,true,true,1.87 s
+nivaria,4994,5626,5154,524,1,60,pulo_meio,true,true,1.53 s
+nivaria,4994,5626,5154,524,1,60,pulo_cedo,true,true,1.43 s
+nivaria,4994,5626,5154,524,1,144,parado,true,true,1.38 s
+nivaria,4994,5626,5154,524,1,144,correndo,true,true,1.99 s
+nivaria,4994,5626,5154,524,1,144,no_ar,true,true,1.78 s
+nivaria,4994,5626,5154,524,1,144,pulo_meio,true,true,1.49 s
+nivaria,4994,5626,5154,524,1,144,pulo_cedo,true,true,1.38 s
+nivaria,4994,5626,5154,524,-1,30,parado,true,true,1.57 s
+nivaria,4994,5626,5154,524,-1,30,correndo,true,true,2.10 s
+nivaria,4994,5626,5154,524,-1,30,no_ar,true,true,2.00 s
+nivaria,4994,5626,5154,524,-1,30,pulo_meio,true,true,1.57 s
+nivaria,4994,5626,5154,524,-1,30,pulo_cedo,true,true,1.57 s
+nivaria,4994,5626,5154,524,-1,60,parado,true,true,1.47 s
+nivaria,4994,5626,5154,524,-1,60,correndo,true,true,2.03 s
+nivaria,4994,5626,5154,524,-1,60,no_ar,true,true,1.87 s
+nivaria,4994,5626,5154,524,-1,60,pulo_meio,true,true,1.57 s
+nivaria,4994,5626,5154,524,-1,60,pulo_cedo,true,true,1.47 s
+nivaria,4994,5626,5154,524,-1,144,parado,true,true,1.40 s
+nivaria,4994,5626,5154,524,-1,144,correndo,true,true,2.00 s
+nivaria,4994,5626,5154,524,-1,144,no_ar,true,true,1.80 s
+nivaria,4994,5626,5154,524,-1,144,pulo_meio,true,true,1.55 s
+nivaria,4994,5626,5154,524,-1,144,pulo_cedo,true,true,1.40 s
+nivaria,4997,5621,5453,528,1,30,parado,true,true,1.53 s
+nivaria,4997,5621,5453,528,1,30,correndo,true,true,2.07 s
+nivaria,4997,5621,5453,528,1,30,no_ar,true,true,2.00 s
+nivaria,4997,5621,5453,528,1,30,pulo_meio,true,true,1.57 s
+nivaria,4997,5621,5453,528,1,30,pulo_cedo,true,true,1.53 s
+nivaria,4997,5621,5453,528,1,60,parado,true,true,1.43 s
+nivaria,4997,5621,5453,528,1,60,correndo,true,true,2.02 s
+nivaria,4997,5621,5453,528,1,60,no_ar,true,true,1.85 s
+nivaria,4997,5621,5453,528,1,60,pulo_meio,true,true,1.53 s
+nivaria,4997,5621,5453,528,1,60,pulo_cedo,true,true,1.43 s
+nivaria,4997,5621,5453,528,1,144,parado,true,true,1.38 s
+nivaria,4997,5621,5453,528,1,144,correndo,true,true,1.99 s
+nivaria,4997,5621,5453,528,1,144,no_ar,true,true,1.76 s
+nivaria,4997,5621,5453,528,1,144,pulo_meio,true,true,1.49 s
+nivaria,4997,5621,5453,528,1,144,pulo_cedo,true,true,1.38 s
+nivaria,4997,5621,5453,528,-1,30,parado,true,true,1.57 s
+nivaria,4997,5621,5453,528,-1,30,correndo,true,true,2.10 s
+nivaria,4997,5621,5453,528,-1,30,no_ar,true,true,1.97 s
+nivaria,4997,5621,5453,528,-1,30,pulo_meio,true,true,1.57 s
+nivaria,4997,5621,5453,528,-1,30,pulo_cedo,true,true,1.57 s
+nivaria,4997,5621,5453,528,-1,60,parado,true,true,1.45 s
+nivaria,4997,5621,5453,528,-1,60,correndo,true,true,2.03 s
+nivaria,4997,5621,5453,528,-1,60,no_ar,true,true,1.85 s
+nivaria,4997,5621,5453,528,-1,60,pulo_meio,true,true,1.57 s
+nivaria,4997,5621,5453,528,-1,60,pulo_cedo,true,true,1.45 s
+nivaria,4997,5621,5453,528,-1,144,parado,true,true,1.40 s
+nivaria,4997,5621,5453,528,-1,144,correndo,true,true,1.99 s
+nivaria,4997,5621,5453,528,-1,144,no_ar,true,true,1.78 s
+nivaria,4997,5621,5453,528,-1,144,pulo_meio,true,true,1.52 s
+nivaria,4997,5621,5453,528,-1,144,pulo_cedo,true,true,1.40 s

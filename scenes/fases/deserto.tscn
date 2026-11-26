@@ -982,7 +982,7 @@ theme = "deserto"
 [node name="Placa_02" type="Area2D" parent="Objetos"]
 position = Vector2(700, 700)
 script = ExtResource("2_wfaud")
-text = "F perto de uma argola ciano: o ÍMÃ DE FASE puxa você até ela. Pule no fim da puxada para ganhar impulso."
+text = "F perto de uma argola ciano: o ÍMÃ DE FASE puxa você até ela. Segure a direção do outro lado: você atravessa o vão sozinho."
 theme = "deserto"
 
 [node name="Placa_03" type="Area2D" parent="Objetos"]

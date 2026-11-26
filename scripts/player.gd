@@ -81,7 +81,21 @@ var land_t := 0.0
 # Arpão de Fase
 const HOOK_RANGE := 380.0
 const HOOK_SPEED := 980.0
+const HOOK_DROP := 46.0       # o corpo para logo abaixo do gancho
+const HOOK_SHOOT := 0.09      # tempo da corda esticando
+# Saída do gancho (revisão geral, 26/11/2026): ao chegar, o puxão vira travessia. Segurando a direção,
+# o corpo sai com HOOK_EXIT_X × corrida para a frente e HOOK_EXIT_UP × pulo para cima, sem o corte de
+# gravidade do pulo variável, e mantém o embalo por HOOK_CARRY s. Pular durante o puxão não solta
+# mais o gancho no meio do vão: o pulo fica guardado e vira um impulso maior na chegada (HOOK_JUMP_UP).
+# Sem direção, a saída é a antiga (55 % do puxão, na reta).
+const HOOK_EXIT_X := 1.4
+const HOOK_EXIT_UP := 0.72
+const HOOK_JUMP_UP := 0.85
+const HOOK_CARRY := 0.45
 var hook: Node2D = null
+var hook_dir := Vector2.ZERO  # direção do puxão no último quadro
+var hook_carry := 0.0         # embalo da saída do gancho
+var hook_jump := false        # pulo apertado durante o puxão: vira o impulso da chegada
 var hook_shoot := 0.0       # tempo da "corda" se esticando até o gancho
 var hook_len := 0.0
 var hook_pull_t := 0.0
@@ -419,11 +433,18 @@ func _physics_process(dt: float) -> void:
 			target *= 0.35            # o chute giratório quase planta o Yeti no chão
 		var accel := 900.0 if wall_lock > 0.0 else (accel_ground if on_floor else accel_air)
 		wall_lock -= dt
+		if hook_carry > 0.0:
+			# embalo da saída do gancho: segurando a mesma direção, não freia até a velocidade de corrida
+			hook_carry -= dt
+			if on_floor or dir == 0.0 or signf(dir) != signf(velocity.x):
+				hook_carry = 0.0
+			else:
+				target = dir * maxf(run_speed, absf(velocity.x))
 		velocity.x = move_toward(velocity.x, target, accel * dt)
 		if dir != 0.0 and not (form != "lince" and use_mouse):
 			facing = int(signf(dir))
 		var g := grav
-		if velocity.y < 0.0 and (controls_locked or not Input.is_action_pressed("jump")):
+		if velocity.y < 0.0 and hook_carry <= 0.0 and (controls_locked or not Input.is_action_pressed("jump")):
 			g *= 2.8
 		velocity.y = minf(velocity.y + g * dt, MAX_FALL)
 		if wall_dir != 0 and velocity.y > 0.0 and int(signf(dir)) == wall_dir:
@@ -486,7 +507,11 @@ func _physics_process(dt: float) -> void:
 		_yeti_actions(dt)
 	move_and_slide()
 	if hook != null and hook_pull_t > 0.06 and get_real_velocity().length() < HOOK_SPEED * 0.25:
-		_end_hook(0.0)
+		# preso numa quina ou parede: perto do ponto de chegada, sai como se tivesse chegado; longe, solta
+		if is_instance_valid(hook) and global_position.distance_to(hook.global_position + Vector2(0, HOOK_DROP)) < 90.0:
+			_hook_launch(hook_jump)
+		else:
+			_end_hook(0.0)
 
 	var now_floor := is_on_floor()
 	if now_floor and not was_floor:
@@ -569,11 +594,20 @@ func hook_candidate() -> Node2D:
 			continue
 		if h == hook or (h == last_hook and last_hook_t > 0.0):
 			continue
-		var q := PhysicsRayQueryParameters2D.create(from, h.global_position, 1)
+		# linha de visão: paredes (camada 1) sempre; plataformas de mão única só bloqueiam um gancho abaixo
+		# do ombro (subindo, o corpo atravessa a plataforma; descendo, ele pararia em cima dela)
+		var mask := 1 | (ONEWAY_LAYER if d.y > 8.0 else 0)
+		var q := PhysicsRayQueryParameters2D.create(from, h.global_position, mask)
 		if not get_world_2d().direct_space_state.intersect_ray(q).is_empty():
 			continue
-		# prefere ganchos na direção da mira/do movimento
-		var pref := 1.0 - 0.4 * maxf(0.0, d.normalized().dot(aim))
+		# prefere ganchos na direção da mira/do movimento; um gancho atrás (contra a mira) ou abaixo
+		# do ombro só ganha se for o único ao alcance
+		var dn := d.normalized()
+		var pref := 1.0 - 0.4 * maxf(0.0, dn.dot(aim))
+		if dn.dot(aim) < -0.3:
+			pref *= 2.5
+		if d.y > 40.0:
+			pref *= 1.5
 		var score := L * pref
 		if score < best_score:
 			best_score = score
@@ -583,9 +617,12 @@ func hook_candidate() -> Node2D:
 
 func _start_hook(h: Node2D) -> void:
 	hook = h
-	hook_shoot = 0.09
+	hook_shoot = HOOK_SHOOT
 	hook_len = 0.0
 	hook_pull_t = 0.0
+	hook_carry = 0.0
+	hook_jump = false
+	hook_dir = (h.global_position + Vector2(0, HOOK_DROP) - global_position).normalized()
 	dash_t = 0.0
 	knock_t = 0.0
 	AudioMgr.sfx("arpao", Vector2.INF, -2.0, 0.05)
@@ -601,30 +638,56 @@ func _end_hook(keep: float) -> void:
 	coyote = 0.08
 
 
+## Saída do gancho (chegada, quina ou pulo durante o puxão): vira travessia na direção segurada.
+func _hook_launch(jumped: bool) -> void:
+	var dir := 0.0 if controls_locked else Input.get_axis("left", "right")
+	var pull := hook_dir * HOOK_SPEED
+	_end_hook(0.0)
+	if dir == 0.0 and not jumped:
+		velocity = pull * 0.55                       # sem direção: como antes, 55 % do puxão
+		return
+	var hx := pull.x * 0.55
+	if dir != 0.0:
+		var keep := absf(pull.x) * 0.55 if signf(pull.x) == signf(dir) else 0.0
+		hx = dir * maxf(run_speed * HOOK_EXIT_X, keep)
+		facing = int(signf(dir))
+	var up := jump_v * (HOOK_JUMP_UP if jumped else HOOK_EXIT_UP)
+	velocity = Vector2(hx, minf(pull.y * 0.55, -up))
+	hook_carry = HOOK_CARRY
+	jbuf = 0.0
+	if jumped:
+		coyote = 0.0
+		squash = -0.5
+		AudioMgr.sfx("pulo", Vector2.INF, -5.0, 0.05)
+
+
 func _hook_physics(dt: float) -> void:
-	if not is_instance_valid(hook):
+	# o gancho sumiu ou deixou de ser gancho (martelo da Forja que se soltou do chão): solta sem impulso
+	if not is_instance_valid(hook) or not hook.is_in_group("hooks") or not hook.is_visible_in_tree():
+		if is_instance_valid(hook):
+			_end_hook(0.3)
 		hook = null
 		return
-	var target: Vector2 = hook.global_position + Vector2(0, 46)   # o corpo para logo abaixo do gancho
+	var target: Vector2 = hook.global_position + Vector2(0, HOOK_DROP)
 	var to := target - global_position
+	# pular durante o puxão (de propósito ou sem querer) fica guardado para a chegada
+	if Input.is_action_just_pressed("jump") and not controls_locked:
+		hook_jump = true
 	if hook_shoot > 0.0:
 		hook_shoot -= dt
-		hook_len = clampf(1.0 - hook_shoot / 0.09, 0.0, 1.0)
-		velocity *= 0.85
+		hook_len = clampf(1.0 - hook_shoot / HOOK_SHOOT, 0.0, 1.0)
+		velocity *= pow(0.85, dt * 60.0)             # mesmo freio a 30, 60 ou 144 FPS
 		if hook_shoot <= 0.0:
 			AudioMgr.sfx("arpao_prende", hook.global_position, -2.0, 0.05)
 		return
 	hook_len = 1.0
 	hook_pull_t += dt
 	if to.length() < 22.0:
-		_end_hook(0.55)
+		_hook_launch(hook_jump)
 		return
-	velocity = to.normalized() * HOOK_SPEED
-	# pular cancela o arpão com um impulso
-	if Input.is_action_just_pressed("jump"):
-		_end_hook(0.6)
-		velocity.y = minf(velocity.y, -jump_v * 0.7)
-		jbuf = 0.0
+	hook_dir = to.normalized()
+	# último trecho: chega exatamente no ponto (sem passar dele), em qualquer FPS
+	velocity = hook_dir * minf(HOOK_SPEED, to.length() / dt)
 
 
 func _on_oneway() -> bool:
@@ -1147,6 +1210,8 @@ func hurt(from: Vector2, dmg: int = 1, hazard: bool = false) -> void:
 	if dead or main.transitioning or warping:
 		return
 	if hazard:
+		hook = null                 # o retorno ao ponto seguro não pode continuar puxando do gancho
+		hook_carry = 0.0
 		if inv <= 0.0:
 			hp -= dmg
 			main.on_player_hurt()

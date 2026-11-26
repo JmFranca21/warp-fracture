@@ -96,7 +96,7 @@ static func layout() -> Dictionary:
 		"hazards":[],"hooks":hooks,"enemies":[],
 		"checkpoints":[Vector2(1650,700),Vector2(4730,415),Vector2(6650,770)],"terminals":[],"signs":[
 			[Vector2(330,700), "AUTÔMATO: lento e pesado, não recua ao levar dano. Clique esquerdo (ou J) dispara a REBITADEIRA."],
-			[Vector2(700,700), "F perto de uma argola ciano: o ÍMÃ DE FASE puxa você até ela. Pule no fim da puxada para ganhar impulso."],
+			[Vector2(700,700), "F perto de uma argola ciano: o ÍMÃ DE FASE puxa você até ela. Segure a direção do outro lado: você atravessa o vão sozinho."],
 			[Vector2(1320,700), "Sem âncora ao alcance, F puxa um drone até o chão. Clique direito (ou K) com 1/3 de energia: PULSO MAGNÉTICO."],
 			[Vector2(6560,770), "IRIS: \"A energia do fragmento vem de trás desta porta. É o núcleo da fábrica.\""]],
 		"pickups":pickups,
