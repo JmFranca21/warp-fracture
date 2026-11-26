@@ -4,6 +4,8 @@ As 22 peças são copiadas sem alteração, com uma exceção: nas peças repet�
 ponta veio com transparência menor que a vizinha, a cópia do jogo repete a vizinha na ponta. Sem isso,
 as duas pontas desbotadas formam, na repetição, uma faixa de 2 px por onde o fundo aparece
 (fosso_fundo, nas colunas, e coluna_trelica, nas linhas). A entrega original fica como está.
+Desde 25/11/2026 usa a versão v2 aprovada (`<peça>_v2.png`) quando ela existe; o jogo continua lendo o
+nome sem sufixo em assets/deserto/terreno/.
 uso: python tools/import_df205.py
 """
 from pathlib import Path
@@ -49,14 +51,17 @@ def _fix(a: np.ndarray, axis: int) -> list:
 def main() -> None:
     DST.mkdir(parents=True, exist_ok=True)
     for n in PECAS:
-        a = np.asarray(Image.open(SRC / f"{n}.png").convert("RGBA")).copy()
+        src = SRC / f"{n}_v2.png"
+        if not src.exists():
+            src = SRC / f"{n}.png"
+        a = np.asarray(Image.open(src).convert("RGBA")).copy()
         fixes = []
         if n in REPETE_H:
             fixes += [f"colunas {c}" for c in _fix(a, axis=1)]
         if n in REPETE_V:
             fixes += [f"linhas {c}" for c in _fix(a, axis=0)]
         Image.fromarray(a).save(DST / f"{n}.png")
-        print(f"{n:28s} {'ponta refeita: ' + ', '.join(fixes) if fixes else 'cópia fiel'}")
+        print(f"{src.name:34s} {'ponta refeita: ' + ', '.join(fixes) if fixes else 'cópia fiel'}")
 
 
 if __name__ == "__main__":

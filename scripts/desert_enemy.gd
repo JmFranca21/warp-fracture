@@ -6,9 +6,9 @@ extends Enemy
 ## - feixe do Ímã de Fase sem âncora ao alcance: puxa o drone até o chão, atordoado por 1,5 s;
 ## - drone derrubado cai; se cair no fosso ou no jato de uma válvula, explode.
 
-var drone := false
-var patrol := Vector2.ZERO
-var pid := ""
+@export var drone := false
+@export var patrol := Vector2.ZERO
+@export var pid := ""
 var direction := 1
 var altitude := 0.0
 var cooldown := 1.5

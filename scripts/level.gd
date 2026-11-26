@@ -1,8 +1,8 @@
 class_name Level
 extends Node2D
-## Uma fase. O Laboratório e Verdâmia vêm prontos em cena (scenes/fases/*.tscn, com montada = true): os nós já
-## estão lá, e preparar() aplica o estado do jogo antes de a cena entrar na árvore. O Deserto e Nivária são
-## montados pelo código (_build), a partir de LevelData.
+## Uma fase. O Laboratório, Verdâmia e o Deserto vêm prontos em cena (scenes/fases/*.tscn, com montada = true): os
+## nós já estão lá, e preparar() aplica o estado do jogo antes de a cena entrar na árvore. Nivária tem a cena própria
+## (fases/nivaria.tscn, do Caio) e é montada pelo _build a partir de LevelData.
 
 # dados da fase guardados na cena (LevelData.get_level lê daqui, por descrever())
 @export var montada := false               # true nas cenas: o _ready não monta nada pelo código
@@ -575,12 +575,14 @@ func preparar() -> void:
 	for c in get_children():
 		if c is VerdBg and c.escala_min > 0.0:
 			_verd_fit(c, data["bounds"])     # a cena guarda a escala e a posição com menos casas; refaz a conta
-		if c is BgLayer or c is VerdBg:
+		if c is BgLayer or c is VerdBg or c is DFCamada:
 			bg_layers.append(c)
 		elif c is FgLayer:
 			fg_layers.append(c)
 		elif c is Fuga:
 			fuga = c
+		elif c is Desert:
+			desert = c
 	for c in objects.get_children():
 		if c is Door:
 			door = c
@@ -593,9 +595,16 @@ func preparar() -> void:
 		elif c is Pickup and c.pid != "" and main.collected.has(c.pid):
 			objects.remove_child(c)
 			c.free()
+	if desert != null:
+		for n in _descendentes(desert):
+			if "desert" in n and n.get("desert") == null:
+				n.set("desert", desert)          # Forja
 	for c in entities.get_children():
 		if c is Queen:
 			boss = c
+		elif c is DesertEnemy and main.collected.has(c.pid):    # máquina já destruída
+			entities.remove_child(c)
+			c.free()
 	if boss != null and main.boss_done.has(id):
 		entities.remove_child(boss)
 		boss.free()

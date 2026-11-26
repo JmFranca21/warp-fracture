@@ -632,3 +632,10 @@ O João pediu que as duas fases deixassem de existir só no código e virassem c
 **Única mudança fora do jogo:** a cor de depuração das colisões dos sólidos ficou transparente, para a arte aparecer no editor. Ela só aparece com Depurar > Formas de colisão.
 
 **Atenção:** daqui para frente, as cenas são a fonte das duas fases. Não rode `gerar_cenas_fases.gd` de novo, porque ele apaga as edições feitas no Godot.
+
+## 17. Deserto em cena e arte v2 integrada (25/11/2026, branch `dev/deserto`)
+
+- **Cena:** `scenes/fases/deserto.tscn`, gerada por `tools/gerar_cena_deserto.gd` (não rodar de novo depois de editar no Godot). `Desert` ganhou `montada`: na cena, `_ligar()` refaz as listas de prensas, plataformas, válvulas, lâmpadas, faíscas e portas a partir dos metadados de cada nó; a Forja-Mãe é criada no `_ready`, como antes. `Level.preparar()` acha o `Desert`, liga a Forja e tira as máquinas já destruídas (`pid` no save). `LevelData.CENAS` inclui o Deserto; `LevelData.sem_cena` força a montagem pelo código (`dump_fase -- codigo=1`), que continua igual nó a nó (0 diferenças em três estados do save).
+- **Arte:** `tools/import_deserto_v2.py` (DF200 diurno, DF201 v2, DF202–DF209, DF220, DF221) e `tools/import_df205.py` (agora prefere `_v2`). Tabela, testes e pendências em `docs/fases/deserto_ferrugem/integracao_arte_v2.md`; capturas em `docs/integracao_deserto_v2/`; `tools/captura_deserto.gd` refaz as capturas (`pan=1` anda com a câmera; `done=1` abre a Saída).
+- **Encaixe:** tirantes (`Desert.rod`) até o alto em prensas, correntes e ganchos; DF204 num plano de parallax próprio (`DFCamada`, 0,85) com névoa no exterior; decoração fora da esteira, dos perigos e da fenda.
+- **DF200 diurno corrompido na main:** o jogo usa uma recomposição (ver o documento de integração). Pedir nova subida ao GPT.

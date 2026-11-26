@@ -1,3 +1,4 @@
+@tool
 class_name DFTerrain
 extends Node2D
 ## Terreno do Deserto (DF205, DA-03): areia de ferrugem nas Dunas e chapa sobre estrutura no resto.
@@ -20,17 +21,18 @@ const JUNCAO := 16.0               # chapa de junção: Rect2(64,0,32,128) na es
 const FOSSO_DANO := 16.0           # fosso_fundo y 32
 const TRANSICAO := Vector2(1700, 690)
 const BOTTOM := 1080.0             # abaixo do kill_y (1060): nada aparece vazio embaixo da tela
-const FOSSO_ESCURO := Color8(13, 17, 24)   # média das últimas linhas de fosso_fundo
+const FOSSO_ESCURO := Color8(13, 17, 24)   # média das últimas linhas de fosso_fundo (v1); a v2 é medida no _ready
+var fosso_escuro := FOSSO_ESCURO
 # a primeira versão dos cantos de areia trazia um bloco escuro de 23 px acima do apoio (HANDOFF, seção 15.3):
 # com ela, desenhamos só a partir de 4 px do jogo acima do apoio (y 42 do arquivo); o retoque vem inteiro
 const AREIA_CANTO_TOPO := 42.0
 var areia_canto_topo := 0.0   # vira AREIA_CANTO_TOPO só se o canto carregado ainda tiver o bloco (versão de cbdd27c)
 
-var blocks: Array = []      # sólidos grossos (pisos, paredes, tetos)
-var thin: Array = []        # passarelas e plataformas de máquina (altura < 60)
-var pits: Array = []
-var belt := Rect2(1700, 700, 1080, 360)
-var suspended: Array = []   # passarelas penduradas por tirantes (as de máquina ficam sobre colunas)
+@export var blocks: Array = []      # sólidos grossos (pisos, paredes, tetos)
+@export var thin: Array = []        # passarelas e plataformas de máquina (altura < 60)
+@export var pits: Array = []
+@export var belt := Rect2(1700, 700, 1080, 360)
+@export var suspended: Array = []   # passarelas penduradas por tirantes (as de máquina ficam sobre colunas)
 var tex := {}
 
 
@@ -62,6 +64,18 @@ func _ready() -> void:
 			a += img.get_pixel(x, y).a
 	if a / (10.0 * 14.0) > 0.15:
 		areia_canto_topo = AREIA_CANTO_TOPO
+	# cor do enchimento abaixo do fosso: média das linhas opacas logo acima do fim da peça (v2: y 168–184)
+	var fi: Image = tex["fosso_fundo"].get_image()
+	var soma := Color(0, 0, 0, 0)
+	var n := 0
+	for y in range(168, 185, 4):
+		for x in range(0, fi.get_width(), 16):
+			var c := fi.get_pixel(x, y)
+			if c.a > 0.9:
+				soma += c
+				n += 1
+	if n > 0:
+		fosso_escuro = Color(soma.r / n, soma.g / n, soma.b / n)
 	queue_redraw()
 
 
@@ -82,7 +96,7 @@ func _draw() -> void:
 		var t: Texture2D = tex["fosso_fundo"]
 		var top := p.position.y - FOSSO_DANO
 		# abaixo da faixa (que termina semitransparente) não pode aparecer o céu: escuro do fim da peça
-		draw_rect(Rect2(p.position.x, top + 84.0, p.size.x, BOTTOM - top - 84.0), FOSSO_ESCURO)
+		draw_rect(Rect2(p.position.x, top + 84.0, p.size.x, BOTTOM - top - 84.0), fosso_escuro)
 		_tile(t, Rect2(p.position.x, top, p.size.x, t.get_height() / 2.0), Vector2(0, top))
 	# 2) corpo: areia nas Dunas; estrutura nos pisos de chapa, embaixo da esteira e dentro de paredes e tetos
 	for r: Rect2 in blocks:

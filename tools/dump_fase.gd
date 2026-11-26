@@ -2,6 +2,7 @@ extends SceneTree
 ## Retrato da fase carregada: cada nó do nível (ordem, classe, posição, camadas, configuração), para comparar o
 ## nível montado pelo código com o carregado da cena. Não inclui contadores de tempo nem nós criados depois.
 ## uso: godot --headless --audio-driver Dummy --path . --script res://tools/dump_fase.gd -- level=lab estado=zero out=arq.txt
+##   codigo=1: Deserto montado pelo código (para comparar com scenes/fases/deserto.tscn)
 ##   estado: zero (jogo novo) | avancado (itens, terminais e eventos feitos) | chefe (Rainha vencida, fragmento pego)
 
 var game
@@ -115,6 +116,8 @@ func _run() -> void:
 			estado = a.substr(7)
 		elif a.begins_with("out="):
 			out_path = a.substr(4)
+		elif a == "codigo=1":
+			LevelData.sem_cena = true      # Deserto: a montagem antiga pelo código, para comparar com a cena
 	game = load("res://main.tscn").instantiate()
 	root.add_child(game)
 	game.auto.clear()
@@ -128,9 +131,13 @@ func _run() -> void:
 		game.terminals["B"] = true
 		game.events["fuga_lab"] = true
 		game.modules["arpao"] = true
+		for id in ["df_c0", "df_c5", "df_h1", "df_enemy0", "df_enemy3"]:
+			game.collected[id] = true
 	elif estado == "chefe":
 		game.boss_done["verdamia"] = true
 		game.frags["verdamia"] = true
+		game.boss_done["deserto"] = true
+		game.frags["deserto"] = true
 	var spawn: Vector2 = LevelData.get_level(lid)["spawn"]
 	game.load_level(lid, spawn, false)
 	paused = true            # nada se move: o retrato é do nível recém-montado

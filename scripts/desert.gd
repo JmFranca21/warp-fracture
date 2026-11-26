@@ -10,12 +10,41 @@ extends Node2D
 const FLOOR := [Rect2(-120,700,900,360), Rect2(1180,700,520,360), Rect2(1700,700,1080,360),
 	Rect2(2870,625,145,26), Rect2(3100,545,240,28), Rect2(3580,415,430,40),
 	Rect2(4410,415,450,40), Rect2(4980,770,510,320), Rect2(6030,770,2870,320)]
-const SKY := "res://assets/deserto/fundo/DF200_ceu.png"
+const SKY := "res://assets/deserto/fundo/DF200_ceu_diurno.png"   # Dunas diurnas (DA-04 aprovada em 25/11/2026)
 const SKY_SCALE := 0.645
-const MID := ["res://assets/deserto/fundo/DF201_distante.png", "res://assets/deserto/fundo/DF201_proximo.png"]
+const MID := ["res://assets/deserto/fundo/DF201_distante_v2.png", "res://assets/deserto/fundo/DF201_proximo_v2.png"]
 const MID_BASE := [230.0, 325.0]   # y da base na camada: a base cai em y ≈ 496 da tela com a câmera normal das Dunas
 const SKY_ORIGIN := Vector2(1020, 720)   # px do arquivo que ficam no ponto (0, 30) da camada
 const DF53_SLAB := [385.0, 226.0]     # linha (px da textura) onde começa a laje em DF53a e DF53b
+const V2 := "res://assets/deserto/v2/"
+const FUNDO := "res://assets/deserto/fundo/"
+# DF204 (atlas 5 × 2, células 1024 × 1536, âncora na base (512, 1536), 2,5 px por px do jogo), num plano de
+# parallax 0,85 (DFCamada), com a base 30 px abaixo do apoio, escondida pelo terreno, e fora dos vãos dos fossos.
+# [coluna, linha, x onde aparece com a câmera diante dele, y do piso, câmera de referência (x, y), névoa]
+const ESTRUTURAS := [
+	[1, 1, 110, 700, Vector2(640, 535), 0.22], [2, 2, 470, 700, Vector2(640, 535), 0.22],   # Dunas: guindaste, Autômato tombado
+	[2, 1, 1835, 700, Vector2(1835, 535), 0.0], [5, 1, 2380, 700, Vector2(2380, 535), 0.0],  # Fábrica: pórtico, tanque
+	[3, 2, 2735, 700, Vector2(2735, 535), 0.0],                                              # Fábrica: coluna treliçada
+	[4, 2, 5255, 770, Vector2(5255, 605), 0.0], [3, 1, 6200, 770, Vector2(6200, 605), 0.0]]  # Salão: galpão, chaminé alta
+const ESTRUTURA_DEPTH := 0.85
+const NEVOA := Color(0.93, 0.71, 0.53)   # cor do céu diurno na altura do horizonte
+# DF206 (2×; médias: células 512 × 512, base em (256, 512); pequenas: 256 × 256, base em (128, 256)):
+# [folha, coluna, linha, x da base, y da base]
+const DECORACAO := [
+	["media", 3, 2, 640, 700], ["media", 4, 2, 1430, 700],                         # Dunas: roda de trem, poste quebrado
+	["pequena", 7, 2, 240, 700], ["pequena", 6, 2, 450, 700], ["pequena", 5, 2, 515, 700],
+	["pequena", 4, 2, 752, 700], ["pequena", 6, 1, 1228, 700], ["pequena", 7, 2, 1475, 700],
+	["media", 3, 1, 5060, 770], ["media", 5, 1, 5405, 770],                         # Salão (nada sobre a esteira)
+	["media", 5, 2, 6110, 770], ["media", 1, 2, 6800, 770], ["media", 4, 2, 6935, 770],
+	["pequena", 3, 1, 5130, 770], ["pequena", 3, 2, 5205, 770], ["pequena", 7, 1, 5300, 770],
+	["pequena", 4, 1, 6185, 770], ["pequena", 2, 2, 6410, 770],
+	["pequena", 4, 1, 8595, 770], ["pequena", 2, 1, 8850, 770]]                     # Saída (livre na fenda de retorno)
+# DF207 (2×; células 512 × 768, fixação no topo (256, 0)): [coluna, linha, x, y da fixação]. A corrente (1, 1) é
+# repetida acima da peça até o topo da fase, para nada ficar solto no ar.
+const SUSPENSAS := [
+	[3, 2, 2050, 150], [4, 1, 2700, 150], [2, 2, 3230, 90],                         # Fábrica: polia, mangueira, caçamba
+	[1, 1, 3990, 30], [2, 1, 4540, -10], [3, 1, 5310, 220], [4, 2, 5700, 230], [1, 2, 6230, 290]]   # Salão
+const TOPO := -80.0
 const WALLS := [Rect2(-60,-200,60,1350), Rect2(6990,-200,60,780), Rect2(7050,-200,1440,350),
 	Rect2(8490,-200,60,780), Rect2(8550,-200,350,600), Rect2(8900,-200,60,1350)]
 const PITS := [Rect2(780,850,400,60), Rect2(2780,900,2200,60), Rect2(5490,900,540,60)]
@@ -29,6 +58,9 @@ const ROOM := Rect2(7050, 150, 1440, 620)      # interior: x 7050–8490, teto e
 const DOOR_IN := Rect2(6990, 580, 60, 190)
 const DOOR_OUT := Rect2(8490, 580, 60, 190)
 
+## Desde 25/11/2026 o Deserto também é cena (scenes/fases/deserto.tscn, gerada por tools/gerar_cena_deserto.gd):
+## com montada = true os nós já estão lá e _ligar() refaz as listas de máquinas pelos metadados de cada nó.
+@export var montada := false
 var level: Level
 var clock := 0.0
 var presses: Array = []
@@ -38,6 +70,8 @@ var wheel: Sprite2D
 var saw: Sprite2D
 var belt: Sprite2D
 var flickering_lamp: Sprite2D
+var lamps: Array = []        # [acesa, apagada, halo]
+var ambient: Array = []      # [AnimatedSprite2D, período, fase] (faíscas DF209)
 var dust_clock := 0.0
 var doors := {}          # "in"/"out" → [corpo, fechada, aberta]
 var forja: Forja = null
@@ -90,6 +124,7 @@ static func animation(id: String, count: int, fps: float, looped: bool) -> Anima
 		frames.add_frame("default",tile)
 	var sprite := AnimatedSprite2D.new()
 	sprite.sprite_frames = frames
+	sprite.autoplay = "default"     # a cena guarda o autoplay; play() não é salvo
 	sprite.play()
 	return sprite
 
@@ -128,12 +163,198 @@ func tile(id: String, rect: Rect2, factor: Vector2, depth := 0) -> Sprite2D:
 	return sprite
 
 
+## --- Arte v2 (pacotes 3–10, aprovados em 25/11/2026). Tudo em escala uniforme: 2× → 0,5; DF204 → 0,4. ---
+
+## Parede de fundo repetível (DF202, DF203) guardada em 2×: cobre rect, com a grade da textura presa a origin.
+func wall_tile(path: String, rect: Rect2, origin: Vector2, depth := -14) -> Sprite2D:
+	var sprite := Sprite2D.new()
+	sprite.centered = false
+	sprite.texture = load(path)
+	sprite.texture_repeat = CanvasItem.TEXTURE_REPEAT_ENABLED
+	sprite.region_enabled = true
+	sprite.region_rect = Rect2((rect.position - origin) * 2.0, rect.size * 2.0)
+	sprite.position = rect.position
+	sprite.scale = Vector2(0.5, 0.5)
+	sprite.z_index = depth
+	add_child(sprite)
+	return sprite
+
+
+## Peça v2 de um quadro, guardada em 2×, no retângulo de jogo da v0.8 (o PNG mede exatamente 2× o retângulo).
+func prop_v2(id: String, rect: Rect2, depth := 0, parent: Node = self) -> Sprite2D:
+	var sprite := Sprite2D.new()
+	sprite.texture = load(V2 + id + ".png")
+	sprite.position = rect.get_center()
+	sprite.scale = Vector2(0.5, 0.5)
+	sprite.z_index = depth
+	parent.add_child(sprite)
+	return sprite
+
+
+## Uma célula de atlas (grade fixa, sem cortar rente ao desenho) com o ponto anchor da célula em pos.
+func atlas(path: String, grid: Vector2i, i: int, anchor: Vector2, pos: Vector2, depth := 0, sc := 0.5, parent: Node = self) -> Sprite2D:
+	var t: Texture2D = load(path)
+	var cell := t.get_size() / Vector2(grid)
+	var a := AtlasTexture.new()
+	a.atlas = t
+	a.region = Rect2(Vector2(i % grid.x, i / grid.x) * cell, cell)
+	var sprite := Sprite2D.new()
+	sprite.texture = a
+	sprite.centered = false
+	sprite.offset = -anchor
+	sprite.position = pos
+	sprite.scale = Vector2(sc, sc)
+	sprite.z_index = depth
+	parent.add_child(sprite)
+	return sprite
+
+
+## Cabo DF28 v2 entre dois pontos: a trama (512 × 32, 2×) se repete ao longo do eixo, com a espessura da escala.
+func cable_v2(a: Vector2, b: Vector2, sc: float, depth := -4) -> Sprite2D:
+	var t: Texture2D = load(V2 + "DF28_cabo_v2.png")
+	var sprite := Sprite2D.new()
+	sprite.texture = t
+	sprite.texture_repeat = CanvasItem.TEXTURE_REPEAT_ENABLED
+	sprite.region_enabled = true
+	sprite.region_rect = Rect2(0, 0, a.distance_to(b) / sc, t.get_height())
+	sprite.centered = false
+	sprite.offset = Vector2(0, -t.get_height() / 2.0)     # eixo do cabo na linha entre os pontos
+	sprite.position = a
+	sprite.rotation = (b - a).angle()
+	sprite.scale = Vector2(sc, sc)
+	sprite.z_index = depth
+	add_child(sprite)
+	return sprite
+
+
+## Halo DF209 (um quadro, centro na célula, aditivo) no bulbo de uma lâmpada.
+func halo_v2(pos: Vector2) -> Sprite2D:
+	var h := atlas(V2 + "DF209_brilho_lampada.png", Vector2i(4, 1), 0, Vector2(128, 128), pos, -2)
+	var m := CanvasItemMaterial.new()
+	m.blend_mode = CanvasItemMaterial.BLEND_MODE_ADD
+	h.material = m
+	return h
+
+
+## Animação de uma folha DF209 (células 256 × 256 em 4 colunas, âncora no centro), escala 0,5.
+func anim_v2(path: String, rows: int, n: int, fps: float, looped: bool, pos: Vector2, depth := 0) -> AnimatedSprite2D:
+	var t: Texture2D = load(path)
+	var sf := SpriteFrames.new()
+	sf.set_animation_speed("default", fps)
+	sf.set_animation_loop("default", looped)
+	for i in n:
+		var a := AtlasTexture.new()
+		a.atlas = t
+		a.region = Rect2(Vector2(i % 4, i / 4) * 256.0, Vector2(256, 256))
+		sf.add_frame("default", a)
+	var s := AnimatedSprite2D.new()
+	s.sprite_frames = sf
+	s.position = pos
+	s.scale = Vector2(0.5, 0.5)
+	s.z_index = depth
+	s.autoplay = "default"
+	add_child(s)
+	s.play()
+	return s
+
+
+func _build_v2_scenery() -> void:
+	var camada := DFCamada.new()
+	camada.depth = ESTRUTURA_DEPTH
+	camada.z_index = -13
+	level.add_child(camada)
+	level.bg_layers.append(camada)
+	for e in ESTRUTURAS:
+		var cam: Vector2 = e[4]
+		var pos := Vector2(float(e[2]) - cam.x * (1.0 - ESTRUTURA_DEPTH), float(e[3]) + 30.0 - cam.y * (1.0 - ESTRUTURA_DEPTH))
+		var sp := atlas(V2 + "DF204_estrutura.png", Vector2i(5, 2), (e[1] - 1) * 5 + e[0] - 1, Vector2(512, 1536),
+			pos, 0, 0.4, camada)
+		if e[5] > 0.0:
+			sp.material = _nevoa(e[5])
+	for d in DECORACAO:
+		var media: bool = d[0] == "media"
+		atlas(V2 + "DF206_%s.png" % d[0], Vector2i(5, 2) if media else Vector2i(7, 2),
+			(d[2] - 1) * (5 if media else 7) + d[1] - 1, Vector2(256, 512) if media else Vector2(128, 256),
+			Vector2(d[3], d[4]), -2)
+	for h in SUSPENSAS:
+		var x: float = h[2]
+		var y: float = h[3]
+		atlas(V2 + "DF207_moldura.png", Vector2i(4, 2), (h[1] - 1) * 4 + h[0] - 1, Vector2(256, 0), Vector2(x, y), -9)
+		# corrente (célula 1, 1: 251 px de jogo) por cima até o topo da fase
+		var cy := y
+		while cy > TOPO:
+			cy -= 250.0
+			atlas(V2 + "DF207_moldura.png", Vector2i(4, 2), 0, Vector2(256, 0), Vector2(x, cy), -9)
+	# DF208: primeiro plano escuro só na frente dos pisos largos (nunca sobre fossos, Câmara ou Saída)
+	for seg in [[-120.0, 780.0, 700.0, false], [1180.0, 1495.0, 700.0, false], [1760.0, 2720.0, 700.0, true],
+			[4980.0, 5490.0, 770.0, true], [6030.0, 6990.0, 770.0, true]]:
+		var t: Texture2D = load(V2 + ("DF208_primeiro_plano_interior.png" if seg[3] else "DF208_primeiro_plano.png"))
+		var fg := Sprite2D.new()
+		fg.texture = t
+		fg.centered = false
+		fg.texture_repeat = CanvasItem.TEXTURE_REPEAT_ENABLED
+		fg.region_enabled = true
+		fg.region_rect = Rect2(seg[0] * 2.0, 0, (seg[1] - seg[0]) * 2.0, t.get_height())
+		fg.position = Vector2(seg[0], seg[2] + 190.0 - t.get_height() * 0.5)   # base 190 px abaixo do piso
+		fg.scale = Vector2(0.5, 0.5)
+		fg.z_index = 30
+		add_child(fg)
+	# DF209: vapor ambiente nas frestas (8 quadros em ciclo) e faíscas de solda (6 quadros, em intervalos)
+	for v in [Vector2(2395, 548), Vector2(6150, 352)]:
+		anim_v2(V2 + "DF209_vapor.png", 2, 8, 6.25, true, v, -3)
+	for f in [[Vector2(6790, 650), 2.6, 0.0], [Vector2(5132, 655), 3.4, 1.1]]:
+		var sp := anim_v2(V2 + "DF209_faiscas.png", 2, 6, 12.5, false, f[0], 2)
+		sp.visible = false
+		ambient.append([sp, f[1], f[2]])
+
+
+## Névoa do exterior: aproxima a peça da cor do horizonte, para ela recuar atrás do plano do jogo.
+func _nevoa(amount: float) -> ShaderMaterial:
+	var sh := Shader.new()
+	sh.code = "shader_type canvas_item;\nuniform vec4 nevoa : source_color;\nuniform float quanto;\n" + \
+		"void fragment() { COLOR.rgb = mix(COLOR.rgb, nevoa.rgb, quanto); }"
+	var m := ShaderMaterial.new()
+	m.shader = sh
+	m.set_shader_parameter("nevoa", NEVOA)
+	m.set_shader_parameter("quanto", amount)
+	return m
+
+
+## Tirante DF205 (16 px de jogo, repetível na vertical) de y0 a y1 em x: o que pende do alto mostra de onde pende.
+func rod(x: float, y0: float, y1: float, depth := -5) -> Sprite2D:
+	var t: Texture2D = load("res://assets/deserto/terreno/tirante.png")
+	var sprite := Sprite2D.new()
+	sprite.texture = t
+	sprite.centered = false
+	sprite.texture_repeat = CanvasItem.TEXTURE_REPEAT_ENABLED
+	sprite.region_enabled = true
+	sprite.region_rect = Rect2(0, 0, t.get_width(), (y1 - y0) * 2.0)
+	sprite.position = Vector2(roundf(x - t.get_width() / 4.0), y0)
+	sprite.scale = Vector2(0.5, 0.5)
+	sprite.z_index = depth
+	add_child(sprite)
+	return sprite
+
+
+func _ambient(_dt: float) -> void:
+	for a in ambient:
+		var sp: AnimatedSprite2D = a[0]
+		var ph := fmod(clock + float(a[2]), float(a[1]))
+		if ph < _dt * 1.01 + 0.0001 or (not sp.visible and ph < 0.05):
+			if not sp.visible or not sp.is_playing():
+				sp.visible = true
+				sp.frame = 0
+				sp.play()
+		if sp.visible and not sp.is_playing():
+			sp.visible = false
+
+
 func attack_area(rect: Rect2, parent: Node, pit := false) -> Area2D:
 	var area := Area2D.new()
 	area.collision_layer = 32 if pit else 16
 	area.collision_mask = 0
 	area.monitoring = false
-	area.add_to_group("hazard" if pit else "enemy_attack")
+	area.add_to_group("hazard" if pit else "enemy_attack", true)    # persistente: vai junto na cena
 	var shape := CollisionShape2D.new()
 	var box := RectangleShape2D.new()
 	box.size = rect.size
@@ -145,6 +366,58 @@ func attack_area(rect: Rect2, parent: Node, pit := false) -> Area2D:
 
 
 func _ready() -> void:
+	if montada:
+		_ligar()
+	else:
+		_montar()
+	var done: bool = level.main.boss_done.has("deserto")
+	set_door("in", true)
+	set_door("out", done and level.main.frags.has("deserto"))
+
+
+## Cena: refaz as listas que _physics_process usa a partir dos metadados gravados por _montar().
+func _ligar() -> void:
+	var vlist := []
+	for c in get_children():
+		if c.has_meta("prensa"):
+			var m: Array = c.get_meta("prensa")
+			presses.append([c, get_node(m[0]), m[1], m[2], m[3], false])
+		if c.has_meta("carrinho"):
+			var m: Array = c.get_meta("carrinho")
+			carts.append([c, m[0], m[1]])
+		if c.has_meta("valvula"):
+			var m: Array = c.get_meta("valvula")
+			vlist.append([m[0], [c, get_node(m[1]), get_node(m[2])]])
+		if c.has_meta("lampada"):
+			var m: Array = c.get_meta("lampada")
+			lamps.append([c, get_node(m[0]), get_node(m[1])])
+		if c.has_meta("faisca"):
+			var m: Array = c.get_meta("faisca")
+			ambient.append([c, m[0], m[1]])
+		if c.has_meta("porta"):
+			var m: Array = c.get_meta("porta")
+			doors[m[0]] = [get_node(m[1]), get_node(m[2]), get_node(m[3])]
+		if c.has_meta("engrenagem"):
+			wheel = c
+		if c.has_meta("serra"):
+			saw = c
+		if c.has_meta("esteira"):
+			belt = c
+		if c.has_meta("piscante"):
+			flickering_lamp = c
+	vlist.sort_custom(func(a, b): return a[0] < b[0])
+	for v in vlist:
+		vents.append(v[1])
+	# a Forja-Mãe monta as próprias peças (e as válvulas da Câmara no Deserto): entra como no código, por último
+	forja = Forja.new()
+	forja.name = "ForjaMae"
+	forja.level = level
+	forja.desert = self
+	add_child(forja)
+
+
+## Código: monta o cenário, as máquinas e a Forja (também usado para gerar a cena).
+func _montar() -> void:
 	for i in 3:
 		var bg := VerdBg.new()
 		bg.tex = texture("DF%d" % (10+i))
@@ -168,11 +441,14 @@ func _ready() -> void:
 		bg.z_index = -60 + i
 		level.add_child(bg)
 		level.bg_layers.append(bg)
-	tile("DF22",Rect2(1495,170,205,530),Vector2(0.55,0.55),-14)
-	tile("DF23",Rect2(1700,-80,1880,1090),Vector2(0.65,0.65),-14)
-	tile("DF24",Rect2(4980,-80,2010,1150),Vector2(0.75,0.75),-14)
-	tile("DF24",Rect2(7050,150,1440,640),Vector2(0.6,0.6),-14)
-	tile("DF23",Rect2(8550,400,350,390),Vector2(0.65,0.65),-14)
+	tile("DF22",Rect2(1495,170,205,530),Vector2(0.55,0.55),-14)     # fachada da Fábrica: ainda a da v0.8
+	# DF202 e DF203 (2×, repetíveis): Fábrica a partir de (1700, −80), Salão a partir de (3580, −80) e na Saída,
+	# Câmara inteira em (7050, 150)
+	wall_tile(FUNDO + "DF202_fabrica.png", Rect2(1700,-80,1880,1090), Vector2(1700,-80))
+	wall_tile(FUNDO + "DF202_salao.png", Rect2(3580,-80,3410,1150), Vector2(3580,-80))
+	wall_tile(FUNDO + "DF203_camara.png", Rect2(7050,150,1440,620), Vector2(7050,150))
+	wall_tile(FUNDO + "DF202_salao.png", Rect2(8550,400,350,390), Vector2(3580,-80))
+	_build_v2_scenery()
 	# terreno DF205 (DA-03): só desenho; as colisões são as de layout()
 	var terrain := DFTerrain.new()
 	for r in FLOOR + WALLS:
@@ -196,36 +472,45 @@ func _ready() -> void:
 			chains.region_rect = Rect2(0, 0, full.x, slab)
 			chains.scale = Vector2(r.size.x / full.x, 135.0 / slab)
 			chains.position = Vector2(r.get_center().x, r.position.y - 135.0 / 2.0)
+			for f in ([0.167, 0.83] if large else [0.13, 0.865]):    # as correntes continuam em tirantes até o alto
+				rod(r.position.x + r.size.x * f, TOPO, r.position.y - 133.0, -2)
 	for pit in PITS:
 		attack_area(pit,self,true)
-	prop("DF30_1",Rect2(135+150,624,155,76),-2)
-	prop("DF30_2",Rect2(1240,644,110,56),-2)
-	prop("DF31",Rect2(686,463,310,237),-2)
-	prop("DF32",Rect2(1530,44,72,128),-2)
+	# DF206: as duas sucatas médias substituem DF30_1 e DF30_2 no mesmo lugar e tamanho (155 × 76 e 110 × 56)
+	atlas(V2 + "DF206_media.png", Vector2i(5, 2), 0, Vector2(256, 512), Vector2(362, 700), -2)
+	atlas(V2 + "DF206_media.png", Vector2i(5, 2), 1, Vector2(256, 512), Vector2(1295, 700), -2)
+	# DF220 (2×): mesmos retângulos de jogo da v0.8, agora com escala uniforme 0,5
+	prop_v2("DF31_mastro_viga_v2",Rect2(686,463,310,237),-2)     # olhal em (578, 34) → (975, 480): o DF57 pende dali
+	prop_v2("DF32_chamine_v2",Rect2(1530,44,72,128),-2)
 	effect(self,"DF80",6,Vector2(1566,-12),Vector2(105,116),true)
-	prop("DF33",Rect2(1550,525,140,175),-2)
-	wheel = prop("DF34",Rect2(2220,250,320,320),-8)
-	prop("DF35",Rect2(3460,226,140,190),-6)
-	prop("DF36",Rect2(4700,-15,298,785),-10)
+	prop_v2("DF33_porta_fabrica_v2",Rect2(1550,525,140,175),-2)
+	wheel = prop_v2("DF34_engrenagem_fundo_v2",Rect2(2220,250,320,320),-8)   # pivô (320, 320) = centro
+	prop_v2("DF35_abertura_parede_v2",Rect2(3460,226,140,190),-6)
+	prop_v2("DF36_torre_nucleo_v2",Rect2(4700,-15,298,785),-10)   # cabos presos em (240, 174) → (4820, 72)
 	for x in [3710,4580]:
-		var cable := tile("DF28",Rect2(x,415,Vector2(x,415).distance_to(Vector2(4820,72)),8),Vector2(0.3,0.25),-4)
-		cable.rotation = Vector2(4820-x,-343).angle()
+		cable_v2(Vector2(x,415), Vector2(4820,72), 0.5, -4)
+	# DF221: lâmpada 38 × 69 com o fio no centro de cima; acesa e apagada no mesmo lugar; halo DF209 junto
 	for x in [1870,2640,5180,5830,6410,7075,8455]:
 		var top := -80.0 if x < 7050 else 150.0
 		var lamp_rect := Rect2(x,top+232,38,69)
-		var wire := tile("DF28",Rect2(x+21,top,232,4),Vector2(0.24,0.125),-5)
-		wire.rotation = PI/2.0
+		cable_v2(Vector2(x+19,top), Vector2(x+19,top+233), 0.25, -5)
+		var off := prop_v2("DF37b_lampada_apagada_v2",lamp_rect,-4)
+		var on := prop_v2("DF37_lampada_v2",lamp_rect,-3)
+		var halo := halo_v2(Vector2(x+19,top+232+60))
+		lamps.append([on, off, halo])
 		if x == 6410:
-			prop("DF37b",lamp_rect,-4)
-			flickering_lamp = prop("DF37",lamp_rect,-3)
-		else:
-			prop("DF37",lamp_rect,-4)
-	prop("DF39",Rect2(5100,630,65,90),-4)
-	prop("DF39b",Rect2(5960,333,240,120),-5)
+			flickering_lamp = on
+	prop_v2("DF39_painel_v2",Rect2(5100,630,65,90),-4)
+	prop_v2("DF39b_canos_v2",Rect2(5960,333,240,120),-5)
 	prop("DF26b",Rect2(1700,700,60,60),1)
 	prop("DF26c",Rect2(2720,700,60,60),1)
 	for hook in HOOKS + ARENA_HOOKS:
 		prop("DF57",Rect2(hook-Vector2(19,30),Vector2(38,48)),3)
+		# a do mastro pende do olhal da DF31; a da abertura da Fábrica, da verga da DF35; as outras, do teto
+		if hook == HOOKS[1]:
+			rod(hook.x, 238.0, hook.y - 28.0, 2)
+		elif hook != HOOKS[0]:
+			rod(hook.x, ROOM.position.y if hook.x > ROOM.position.x else TOPO, hook.y - 28.0, 2)
 	make_press(1950,700,false,0.0)
 	make_press(2540,700,false,1.25)
 	make_press(4500,415,true,0.8)
@@ -259,9 +544,29 @@ func _ready() -> void:
 	forja.level = level
 	forja.desert = self
 	add_child(forja)
-	var done: bool = level.main.boss_done.has("deserto")
-	set_door("in", true)
-	set_door("out", done and level.main.frags.has("deserto"))
+	gravar_metas()
+
+
+## Metadados que _ligar() lê na cena: o papel de cada nó animado e os caminhos dos nós ligados a ele.
+## O gerador da cena chama de novo depois de dar nome aos nós (os caminhos dependem dos nomes).
+func gravar_metas() -> void:
+	wheel.set_meta("engrenagem", true)
+	saw.set_meta("serra", true)
+	belt.set_meta("esteira", true)
+	flickering_lamp.set_meta("piscante", true)
+	for pr in presses:
+		pr[0].set_meta("prensa", [get_path_to(pr[1]), pr[2], pr[3], pr[4]])
+	for ct in carts:
+		ct[0].set_meta("carrinho", [ct[1], ct[2]])
+	for i in vents.size():
+		vents[i][0].set_meta("valvula", [i, get_path_to(vents[i][1]), get_path_to(vents[i][2])])
+	for l in lamps:
+		l[0].set_meta("lampada", [get_path_to(l[1]), get_path_to(l[2])])
+	for a in ambient:
+		a[0].set_meta("faisca", [a[1], a[2]])
+	for k in doors:
+		var d: Array = doors[k]
+		d[0].get_parent().set_meta("porta", [k, get_path_to(d[0]), get_path_to(d[1]), get_path_to(d[2])])
 
 
 ## Porta DF38 com colisão: aberta, o jogador passa; fechada, bloqueia.
@@ -321,6 +626,8 @@ func make_press(x: int, ground: int, small: bool, phase: float) -> void:
 	var id := "DF51" if small else "DF50"
 	var width := 70 if small else 106
 	prop(id+"c",Rect2(x-width/2.0,ground-219,width,35),2)
+	for dx in [-width * 0.3, width * 0.3]:      # o suporte pende de dois tirantes até o alto
+		rod(x + dx, TOPO, ground - 216.0, 1)
 	var rod := tile(id+"b",Rect2(x-10,ground-190,20,175),Vector2(0.16,0.35))
 	var root := Node2D.new()
 	add_child(root)
@@ -341,6 +648,9 @@ func vent_hits(pos: Vector2) -> bool:
 func _physics_process(dt: float) -> void:
 	clock += dt
 	flickering_lamp.visible = fmod(clock,3.4) > 0.11
+	for l in lamps:
+		l[2].visible = l[0].visible       # halo só com a lâmpada acesa
+	_ambient(dt)
 	wheel.rotation = clock * 0.13
 	saw.rotation = clock * 5.5
 	belt.region_rect.position.x = -clock * 85
@@ -371,9 +681,9 @@ func _physics_process(dt: float) -> void:
 	dust_clock -= dt
 	if dust_clock < 0 and p.position.x < 1500:
 		dust_clock = 0.38
-		var dust := effect(self,"DF86",8,p.position+Vector2(randf_range(-450,450),randf_range(-270,-25)),Vector2(40,40),true)
-		dust.pause()
-		dust.frame = randi_range(0,7)
+		# DF209: um grão por célula (8 variantes), escala 0,5, em rajadas
+		var dust := atlas(V2 + "DF209_poeira.png", Vector2i(4, 2), randi_range(0, 7), Vector2(128, 128),
+			p.position+Vector2(randf_range(-450,450),randf_range(-270,-25)), 6)
 		var drift := create_tween()
 		drift.tween_property(dust,"position:x",dust.position.x+125,1.1)
 		drift.tween_callback(dust.queue_free)

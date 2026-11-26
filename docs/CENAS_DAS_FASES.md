@@ -1,13 +1,27 @@
-# Fases em cena: Laboratório Hélix e Verdâmia
+# Fases em cena: Laboratório Hélix, Verdâmia e Deserto de Ferrugem
 
-**Desde 24/11/2026** (branch `dev/cenas`), o Laboratório e Verdâmia são cenas do Godot. Para mudá-las, abra a cena no editor e mexa nos nós; não há mais nada a mudar no código.
+**Desde 24/11/2026** (branch `dev/cenas`), o Laboratório e Verdâmia são cenas do Godot; **desde 25/11/2026** (branch `dev/deserto`), o Deserto também. Para mudá-las, abra a cena no editor e mexa nos nós.
 
 | Fase | Cena |
 |---|---|
 | Laboratório Hélix | `scenes/fases/lab.tscn` |
 | Verdâmia | `scenes/fases/verdamia.tscn` |
+| Deserto de Ferrugem | `scenes/fases/deserto.tscn` |
 
-O Deserto de Ferrugem continua montado pelo código (`scripts/desert.gd`). Nivária é a versão do Caio (branch `dev/neve-fase`), em cena própria: `fases/nivaria.tscn` com `scripts/nivaria.gd` e `scripts/nivaria_cena/`.
+Nivária é a versão do Caio (branch `dev/neve-fase`), em cena própria: `fases/nivaria.tscn` com `scripts/nivaria.gd` e `scripts/nivaria_cena/`.
+
+## O Deserto em cena
+
+A raiz (`Deserto`, script `level.gd`) tem a mesma organização das outras fases (`Ceu`, `Solido_…`, `Objetos`, `Entidades`, `Efeitos`, `Marcadores`), mais:
+
+- **`Deserto`** (script `desert.gd`, `montada` ligado): todo o cenário e as máquinas, com nomes pela arte (`DF31_mastro_viga_v2_01`, `DF206_media_…`, `Prensa_01`, `Plataforma_01`, `Porta_in`, `Fosso_01`…). As peças de um quadro (marcos, lâmpadas, decoração, peças suspensas) podem ser movidas à vontade. O `Terreno` desenha o chão a partir das listas `blocks`, `thin`, `pits` e `suspended` do inspetor (as colisões continuam nos `Solido_` da raiz).
+- **`EstruturasDeFundo`**: as dez estruturas grandes (DF204) num plano de parallax (`depth` 0,85). A posição de cada peça é a "de camada"; no jogo ela aparece no lugar do desenho com a câmera parada diante dela.
+- **`Fundo_01…03`**: céu diurno, fundo distante e próximo (parallax).
+- **Máquinas:** prensas, plataformas, válvulas, lâmpadas, faíscas e portas guardam o papel nos metadados do nó (aba **Metadados** do inspetor: `prensa`, `carrinho`, `valvula`, `lampada`, `faisca`, `porta`). Mova o nó inteiro; se mudar um metadado, mude junto o nó ligado a ele.
+- **Forja-Mãe:** não aparece no editor; é montada quando o jogo roda, na Câmara.
+- **`Entidades`:** os robôs e drones (`Robo_enemy1`, `Drone_enemy0`…), com `drone`, `patrol` (x inicial e final da ronda) e `pid` no inspetor.
+
+`tools/gerar_cena_deserto.gd` gerou a cena a partir de `Desert.layout()` e da montagem em código. **Não rode de novo** depois de editar no Godot: ele sobrescreve a cena. Para comparar com a montagem antiga, `tools/dump_fase.gd -- level=deserto codigo=1`.
 
 ## Como a cena está organizada
 

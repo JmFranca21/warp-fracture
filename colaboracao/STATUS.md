@@ -43,19 +43,19 @@ Atualizado pelos agentes. Leia `PROTOCOLO.md` e `FLUXO_AUTOMATICO.md` antes de c
 | DF60–DF71 | Robôs, drones e seus projéteis | INTEGRADO (v0.8, 17/11/2026) | [DF](pedidos/DF_deserto_ferrugem.md) | — | — |
 | DF80–DF86 | Efeitos de máquinas, areia, impacto e vento | INTEGRADO (v0.8, 17/11/2026) | [DF](pedidos/DF_deserto_ferrugem.md) | — | — |
 | DF00 v2 | Prancha de referência do Deserto pela DA-03 | ENTREGUE | [DF](pedidos/DF_deserto_ferrugem.md) | — | [Prancha, comparação e aferição](entregas/DF00/ENTREGA_v2.md) |
-| DF205 | Terreno do Deserto de Ferrugem · 22 peças | APROVADO (Pacote 3, 25/11/2026) | [DF](pedidos/DF_refacao_cena.md) | [Peças e encaixes](entregas/DF205/ENTREGA_v2.md) | — |
+| DF205 | Terreno do Deserto de Ferrugem · 22 peças | APROVADO (Pacote 3, 25/11/2026) · INTEGRADO (dev/deserto, 25/11/2026) | [DF](pedidos/DF_refacao_cena.md) | [Peças e encaixes](entregas/DF205/ENTREGA_v2.md) | — |
 | DF200 | Céu do crepúsculo de tempestade | ENTREGUE | [DF](pedidos/DF_refacao_cena.md) | — | [Céu, comparação e aferição](entregas/DF200/ENTREGA.md) |
-| DF200 diurno | Céu aprovado das Dunas | APROVADO (Pacote 3) | [DF](pedidos/DF_refacao_cena.md) | [Céu diurno](entregas/DF200/DF200_ceu_diurno.png) | — |
-| DF202 | Fundos da Fábrica e do Salão | APROVADO (Pacote 4, 25/11/2026) | — | [Entrega](entregas/DF202/ENTREGA.md) | — |
-| DF207 | Peças suspensas | APROVADO (Pacote 7, 25/11/2026) | — | [Entrega](entregas/DF207/ENTREGA_v2.md) | — |
-| DF221 | Iluminação e enfeites de parede (5 peças) | APROVADO (Pacote 10) | — | [Peças e cenas](entregas/DF221/ENTREGA_v2.md) | — |
-| DF220 | Marcos do cenário (6 peças) | APROVADO (Pacote 9) | — | [Peças e cenas](entregas/DF220/ENTREGA_v2.md) | — |
-| DF209 | Efeitos de ambiente | APROVADO (Pacote 8 refeito) | — | [Folhas e animações](entregas/DF209/ENTREGA_v2.md) | — |
-| DF208 | Primeiro plano exterior e interior | APROVADO (Pacote 7, 25/11/2026) | — | [Entrega](entregas/DF208/ENTREGA_v2.md) | — |
-| DF206 | Decoração das Dunas e da Fábrica (24 peças) | APROVADO (Pacote 6, 25/11/2026) | — | [Pranchas e cenas](entregas/DF206/ENTREGA_v2.md) | — |
-| DF204 | Estruturas de fundo do Deserto (10 peças) | APROVADO (Pacote 5, 25/11/2026) | — | [Atlas e cenas](entregas/DF204/ENTREGA_v2.md) | — |
-| DF203 | Fundo da Câmara da Forja | APROVADO (Pacote 4, 25/11/2026) | — | [Entrega](entregas/DF203/ENTREGA.md) | — |
-| DF201 | Dunas de Sucata · fundo intermediário diurno | APROVADO (Pacote 3, 25/11/2026) | [DF](pedidos/DF_refacao_cena.md) | [Camadas e parallax](entregas/DF201/ENTREGA_v2.md) | — |
+| DF200 diurno | Céu aprovado das Dunas | APROVADO (Pacote 3) · INTEGRADO (dev/deserto, 25/11/2026) | [DF](pedidos/DF_refacao_cena.md) | [Céu diurno](entregas/DF200/DF200_ceu_diurno.png) | — |
+| DF202 | Fundos da Fábrica e do Salão | APROVADO (Pacote 4, 25/11/2026) · INTEGRADO (dev/deserto, 25/11/2026) | — | [Entrega](entregas/DF202/ENTREGA.md) | — |
+| DF207 | Peças suspensas | APROVADO (Pacote 7, 25/11/2026) · INTEGRADO (dev/deserto, 25/11/2026) | — | [Entrega](entregas/DF207/ENTREGA_v2.md) | — |
+| DF221 | Iluminação e enfeites de parede (5 peças) | APROVADO (Pacote 10) · INTEGRADO (dev/deserto, 25/11/2026) | — | [Peças e cenas](entregas/DF221/ENTREGA_v2.md) | — |
+| DF220 | Marcos do cenário (6 peças) | APROVADO (Pacote 9) · INTEGRADO (dev/deserto, 25/11/2026) | — | [Peças e cenas](entregas/DF220/ENTREGA_v2.md) | — |
+| DF209 | Efeitos de ambiente | APROVADO (Pacote 8 refeito) · INTEGRADO (dev/deserto, 25/11/2026) | — | [Folhas e animações](entregas/DF209/ENTREGA_v2.md) | — |
+| DF208 | Primeiro plano exterior e interior | APROVADO (Pacote 7, 25/11/2026) · INTEGRADO (dev/deserto, 25/11/2026) | — | [Entrega](entregas/DF208/ENTREGA_v2.md) | — |
+| DF206 | Decoração das Dunas e da Fábrica (24 peças) | APROVADO (Pacote 6, 25/11/2026) · INTEGRADO (dev/deserto, 25/11/2026) | — | [Pranchas e cenas](entregas/DF206/ENTREGA_v2.md) | — |
+| DF204 | Estruturas de fundo do Deserto (10 peças) | APROVADO (Pacote 5, 25/11/2026) · INTEGRADO (dev/deserto, 25/11/2026) | — | [Atlas e cenas](entregas/DF204/ENTREGA_v2.md) | — |
+| DF203 | Fundo da Câmara da Forja | APROVADO (Pacote 4, 25/11/2026) · INTEGRADO (dev/deserto, 25/11/2026) | — | [Entrega](entregas/DF203/ENTREGA.md) | — |
+| DF201 | Dunas de Sucata · fundo intermediário diurno | APROVADO (Pacote 3, 25/11/2026) · INTEGRADO (dev/deserto, 25/11/2026) | [DF](pedidos/DF_refacao_cena.md) | [Camadas e parallax](entregas/DF201/ENTREGA_v2.md) | — |
 | DF01 | Ficha do Robô e do Drone do deserto | ENTREGUE (v2) · APROVADO | [DF](pedidos/DF_deserto_ferrugem.md) | [ficha e conferências](entregas/DF01/ENTREGA_v2.md) | João Marcelo, 25/11/2026 |
 | DF10–DF12 | Fundos das Dunas em parallax | ENTREGUE | [DF](pedidos/DF_deserto_ferrugem.md) | — | — |
 | DF20–DF28 | Terreno, paredes, piso, esteira, trilho e cabo | ENTREGUE | [DF](pedidos/DF_deserto_ferrugem.md) | — | — |
@@ -161,11 +161,11 @@ Pedido: [DF refação](pedidos/DF_refacao_cena.md) (24/11/2026). Inventário de 
 |---|---|---|---|---|---|
 | DF00 v2 | Prancha do Deserto com os valores da DA-03 | APROVADO pelo João (24/11/2026) e publicado na `main` (`9aae70b`) | [DF refação](pedidos/DF_refacao_cena.md) | [entregas/DF00](entregas/DF00/ENTREGA_v2.md) | Claude: Autômato atual sobre as Dunas pintadas, com o halo do jogo, 71–76% de separação (ver DF205) |
 | DF200 | Fundo distante: céu do crepúsculo de tempestade | APROVADO e publicado na `main` (`df38a74`); INTEGRADO na `dev/deserto` (HANDOFF 15.4 e 15.5) | [DF refação](pedidos/DF_refacao_cena.md) | — | — |
-| DF201 | Fundo intermediário: dunas, carcaças e chaminés (duas camadas, 0,20 e 0,38) | APROVADO e publicado na `main` (`72d048f`); INTEGRADO na `dev/deserto` (HANDOFF 15.5; emenda da 0,38 corrigida no import) | [DF refação](pedidos/DF_refacao_cena.md) | — | — |
+| DF201 | Fundo intermediário: dunas, carcaças e chaminés (duas camadas, 0,20 e 0,38) | APROVADO e publicado na `main` (`72d048f`); INTEGRADO na `dev/deserto` (HANDOFF 15.5; emenda da 0,38 corrigida no import) · INTEGRADO (dev/deserto, 25/11/2026) | [DF refação](pedidos/DF_refacao_cena.md) | — | — |
 | DF202 | Fundos internos: Fábrica e Salão do Núcleo | ABERTO | [DF refação](pedidos/DF_refacao_cena.md) | — | — |
 | DF203 | Fundo da Câmara da Forja | ABERTO | [DF refação](pedidos/DF_refacao_cena.md) | — | — |
 | DF204 | Estrutura de fundo (peças grandes) | ABERTO | [DF refação](pedidos/DF_refacao_cena.md) | — | — |
-| DF205 | Terreno completo (22 peças no formato do terreno de Verdâmia; gabarito de colisões) | APROVADO pelo João (24/11/2026), publicado na `main` (`cbdd27c`); INTEGRADO na `dev/deserto` (HANDOFF 15.3); retoque dos cantos de areia APROVADO e publicado na `main` (`df38a74`), integrado na `dev/deserto` ([pedido](pedidos/DF205_retoque_cantos.md)) | [DF refação](pedidos/DF_refacao_cena.md) | — | — |
+| DF205 | Terreno completo (22 peças no formato do terreno de Verdâmia; gabarito de colisões) | APROVADO pelo João (24/11/2026), publicado na `main` (`cbdd27c`); INTEGRADO na `dev/deserto` (HANDOFF 15.3); retoque dos cantos de areia APROVADO e publicado na `main` (`df38a74`), integrado na `dev/deserto` ([pedido](pedidos/DF205_retoque_cantos.md)) · INTEGRADO (dev/deserto, 25/11/2026) | [DF refação](pedidos/DF_refacao_cena.md) | — | — |
 | DF206 | Decoração média e pequena | ABERTO | [DF refação](pedidos/DF_refacao_cena.md) | — | — |
 | DF207 | Moldura | ABERTO | [DF refação](pedidos/DF_refacao_cena.md) | — | — |
 | DF208 | Primeiro plano | ABERTO | [DF refação](pedidos/DF_refacao_cena.md) | — | — |

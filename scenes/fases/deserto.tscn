@@ -1,0 +1,2595 @@
+[gd_scene load_steps=218 format=3]
+
+[ext_resource type="Script" path="res://scripts/level.gd" id="1_lua2m"]
+[ext_resource type="Script" path="res://scripts/sign.gd" id="2_5bbmg"]
+[ext_resource type="Script" path="res://scripts/checkpoint.gd" id="3_44y6p"]
+[ext_resource type="Script" path="res://scripts/rift.gd" id="4_y3dmn"]
+[ext_resource type="Script" path="res://scripts/pickup.gd" id="5_qfh6y"]
+[ext_resource type="Script" path="res://scripts/grapple_hook.gd" id="6_rfaid"]
+[ext_resource type="Script" path="res://scripts/desert_enemy.gd" id="7_te84a"]
+[ext_resource type="Script" path="res://scripts/desert.gd" id="8_m7yj7"]
+[ext_resource type="Texture2D" path="res://assets/deserto/DF22.webp" id="9_divas"]
+[ext_resource type="Texture2D" path="res://assets/deserto/fundo/DF202_fabrica.png" id="10_srnc8"]
+[ext_resource type="Texture2D" path="res://assets/deserto/fundo/DF202_salao.png" id="11_tdoox"]
+[ext_resource type="Texture2D" path="res://assets/deserto/fundo/DF203_camara.png" id="12_8s0ur"]
+[ext_resource type="Texture2D" path="res://assets/deserto/v2/DF206_media.png" id="13_j8ykl"]
+[ext_resource type="Texture2D" path="res://assets/deserto/v2/DF206_pequena.png" id="14_wq18m"]
+[ext_resource type="Texture2D" path="res://assets/deserto/v2/DF207_moldura.png" id="15_nt0uv"]
+[ext_resource type="Texture2D" path="res://assets/deserto/v2/DF208_primeiro_plano.png" id="16_og3yb"]
+[ext_resource type="Texture2D" path="res://assets/deserto/v2/DF208_primeiro_plano_interior.png" id="17_tgxgn"]
+[ext_resource type="Texture2D" path="res://assets/deserto/v2/DF209_vapor.png" id="18_tgqna"]
+[ext_resource type="Texture2D" path="res://assets/deserto/v2/DF209_faiscas.png" id="19_juiig"]
+[ext_resource type="Script" path="res://scripts/df_terrain.gd" id="20_64frs"]
+[ext_resource type="Texture2D" path="res://assets/deserto/DF26.webp" id="21_ttrwg"]
+[ext_resource type="Texture2D" path="res://assets/deserto/DF53a.webp" id="22_k0xpu"]
+[ext_resource type="Texture2D" path="res://assets/deserto/terreno/tirante.png" id="23_kpnlo"]
+[ext_resource type="Texture2D" path="res://assets/deserto/DF53b.webp" id="24_fdgwv"]
+[ext_resource type="Texture2D" path="res://assets/deserto/v2/DF31_mastro_viga_v2.png" id="25_llfwr"]
+[ext_resource type="Texture2D" path="res://assets/deserto/v2/DF32_chamine_v2.png" id="26_0i7sp"]
+[ext_resource type="Texture2D" path="res://assets/deserto/DF80.webp" id="27_kpakl"]
+[ext_resource type="Texture2D" path="res://assets/deserto/v2/DF33_porta_fabrica_v2.png" id="28_3qjbt"]
+[ext_resource type="Texture2D" path="res://assets/deserto/v2/DF34_engrenagem_fundo_v2.png" id="29_tb7ui"]
+[ext_resource type="Texture2D" path="res://assets/deserto/v2/DF35_abertura_parede_v2.png" id="30_d1qkc"]
+[ext_resource type="Texture2D" path="res://assets/deserto/v2/DF36_torre_nucleo_v2.png" id="31_sp3ig"]
+[ext_resource type="Texture2D" path="res://assets/deserto/v2/DF28_cabo_v2.png" id="32_e41ik"]
+[ext_resource type="Texture2D" path="res://assets/deserto/v2/DF37b_lampada_apagada_v2.png" id="33_5qkgq"]
+[ext_resource type="Texture2D" path="res://assets/deserto/v2/DF37_lampada_v2.png" id="34_rh25g"]
+[ext_resource type="Texture2D" path="res://assets/deserto/v2/DF209_brilho_lampada.png" id="35_y2epw"]
+[ext_resource type="Texture2D" path="res://assets/deserto/v2/DF39_painel_v2.png" id="36_3gphl"]
+[ext_resource type="Texture2D" path="res://assets/deserto/v2/DF39b_canos_v2.png" id="37_qjvv0"]
+[ext_resource type="Texture2D" path="res://assets/deserto/DF26b.webp" id="38_474gt"]
+[ext_resource type="Texture2D" path="res://assets/deserto/DF26c.webp" id="39_04626"]
+[ext_resource type="Texture2D" path="res://assets/deserto/DF57.webp" id="40_8d28y"]
+[ext_resource type="Texture2D" path="res://assets/deserto/DF50c.webp" id="41_p01tp"]
+[ext_resource type="Texture2D" path="res://assets/deserto/DF50b.webp" id="42_5uekk"]
+[ext_resource type="Texture2D" path="res://assets/deserto/DF50a.webp" id="43_et0wh"]
+[ext_resource type="Texture2D" path="res://assets/deserto/DF51c.webp" id="44_fq7y7"]
+[ext_resource type="Texture2D" path="res://assets/deserto/DF51b.webp" id="45_15kjt"]
+[ext_resource type="Texture2D" path="res://assets/deserto/DF51a.webp" id="46_ivkci"]
+[ext_resource type="Texture2D" path="res://assets/deserto/DF52b.webp" id="47_dr2qr"]
+[ext_resource type="Texture2D" path="res://assets/deserto/DF52.webp" id="48_vdvie"]
+[ext_resource type="Texture2D" path="res://assets/deserto/DF27.webp" id="49_f4h7d"]
+[ext_resource type="Texture2D" path="res://assets/deserto/DF54.webp" id="50_w5wqa"]
+[ext_resource type="Texture2D" path="res://assets/deserto/DF55b.webp" id="51_6882c"]
+[ext_resource type="Texture2D" path="res://assets/deserto/DF55.webp" id="52_ovehb"]
+[ext_resource type="Texture2D" path="res://assets/deserto/DF56_inativa.webp" id="53_qxapy"]
+[ext_resource type="Texture2D" path="res://assets/deserto/DF56_aviso.webp" id="54_looyo"]
+[ext_resource type="Texture2D" path="res://assets/deserto/DF81.webp" id="55_n4jc7"]
+[ext_resource type="Texture2D" path="res://assets/deserto/DF38_fechada.webp" id="56_gtmkt"]
+[ext_resource type="Texture2D" path="res://assets/deserto/DF38_aberta.webp" id="57_jg820"]
+[ext_resource type="Script" path="res://scripts/verd_bg.gd" id="58_ikbrj"]
+[ext_resource type="Texture2D" path="res://assets/deserto/fundo/DF200_ceu_diurno.png" id="59_efloj"]
+[ext_resource type="Texture2D" path="res://assets/deserto/fundo/DF201_distante_v2.png" id="60_cd4jh"]
+[ext_resource type="Texture2D" path="res://assets/deserto/fundo/DF201_proximo_v2.png" id="61_xlteu"]
+[ext_resource type="Script" path="res://scripts/df_camada.gd" id="62_24g3u"]
+[ext_resource type="Texture2D" path="res://assets/deserto/v2/DF204_estrutura.png" id="63_e6835"]
+[ext_resource type="Script" path="res://scripts/previa_editor.gd" id="64_ri6ng"]
+
+[sub_resource type="Gradient" id="Gradient_qkjy8"]
+colors = PackedColorArray(0.909804, 0.690196, 0.478431, 1, 0.478431, 0.239216, 0.133333, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_qld7f"]
+gradient = SubResource("Gradient_qkjy8")
+width = 4
+height = 256
+fill_to = Vector2(0, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5uw08"]
+size = Vector2(900, 360)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vlc47"]
+size = Vector2(520, 360)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ixwgo"]
+size = Vector2(1080, 360)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ptklq"]
+size = Vector2(145, 26)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h60br"]
+size = Vector2(240, 28)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rpwhf"]
+size = Vector2(430, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fnx1y"]
+size = Vector2(450, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k6mqi"]
+size = Vector2(510, 320)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rjt8o"]
+size = Vector2(2870, 320)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8yufg"]
+size = Vector2(60, 1350)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w33ip"]
+size = Vector2(60, 780)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kjokj"]
+size = Vector2(1440, 350)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ma3mf"]
+size = Vector2(60, 780)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_asm70"]
+size = Vector2(350, 600)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sr6y4"]
+size = Vector2(60, 1350)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c5yfl"]
+atlas = ExtResource("13_j8ykl")
+region = Rect2(1024, 512, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kn0v4"]
+atlas = ExtResource("13_j8ykl")
+region = Rect2(1536, 512, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_anq28"]
+atlas = ExtResource("14_wq18m")
+region = Rect2(1536, 256, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_flnke"]
+atlas = ExtResource("14_wq18m")
+region = Rect2(1280, 256, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x38gu"]
+atlas = ExtResource("14_wq18m")
+region = Rect2(1024, 256, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gvxpp"]
+atlas = ExtResource("14_wq18m")
+region = Rect2(768, 256, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4qbvo"]
+atlas = ExtResource("14_wq18m")
+region = Rect2(1280, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k5vp8"]
+atlas = ExtResource("14_wq18m")
+region = Rect2(1536, 256, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_73v3h"]
+atlas = ExtResource("13_j8ykl")
+region = Rect2(1024, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vyyry"]
+atlas = ExtResource("13_j8ykl")
+region = Rect2(2048, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8pdyp"]
+atlas = ExtResource("13_j8ykl")
+region = Rect2(2048, 512, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ra71f"]
+atlas = ExtResource("13_j8ykl")
+region = Rect2(0, 512, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ts0or"]
+atlas = ExtResource("13_j8ykl")
+region = Rect2(1536, 512, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wao4i"]
+atlas = ExtResource("14_wq18m")
+region = Rect2(512, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vajdd"]
+atlas = ExtResource("14_wq18m")
+region = Rect2(512, 256, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k57f7"]
+atlas = ExtResource("14_wq18m")
+region = Rect2(1536, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yrl7q"]
+atlas = ExtResource("14_wq18m")
+region = Rect2(768, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bx5aa"]
+atlas = ExtResource("14_wq18m")
+region = Rect2(256, 256, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3xenf"]
+atlas = ExtResource("14_wq18m")
+region = Rect2(768, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_unxae"]
+atlas = ExtResource("14_wq18m")
+region = Rect2(256, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bmftw"]
+atlas = ExtResource("15_nt0uv")
+region = Rect2(1024, 768, 512, 768)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_073w7"]
+atlas = ExtResource("15_nt0uv")
+region = Rect2(0, 0, 512, 768)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3hyye"]
+atlas = ExtResource("15_nt0uv")
+region = Rect2(1536, 0, 512, 768)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u6d5m"]
+atlas = ExtResource("15_nt0uv")
+region = Rect2(0, 0, 512, 768)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0mjbm"]
+atlas = ExtResource("15_nt0uv")
+region = Rect2(512, 768, 512, 768)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w24fb"]
+atlas = ExtResource("15_nt0uv")
+region = Rect2(0, 0, 512, 768)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aricf"]
+atlas = ExtResource("15_nt0uv")
+region = Rect2(0, 0, 512, 768)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2bg58"]
+atlas = ExtResource("15_nt0uv")
+region = Rect2(0, 0, 512, 768)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_11i8v"]
+atlas = ExtResource("15_nt0uv")
+region = Rect2(512, 0, 512, 768)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_55414"]
+atlas = ExtResource("15_nt0uv")
+region = Rect2(0, 0, 512, 768)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u2trn"]
+atlas = ExtResource("15_nt0uv")
+region = Rect2(1024, 0, 512, 768)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j2npc"]
+atlas = ExtResource("15_nt0uv")
+region = Rect2(0, 0, 512, 768)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3ofkx"]
+atlas = ExtResource("15_nt0uv")
+region = Rect2(0, 0, 512, 768)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mu3en"]
+atlas = ExtResource("15_nt0uv")
+region = Rect2(1536, 768, 512, 768)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_34226"]
+atlas = ExtResource("15_nt0uv")
+region = Rect2(0, 0, 512, 768)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s1cqv"]
+atlas = ExtResource("15_nt0uv")
+region = Rect2(0, 0, 512, 768)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dbmk5"]
+atlas = ExtResource("15_nt0uv")
+region = Rect2(0, 768, 512, 768)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yflv3"]
+atlas = ExtResource("15_nt0uv")
+region = Rect2(0, 0, 512, 768)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rxjsf"]
+atlas = ExtResource("15_nt0uv")
+region = Rect2(0, 0, 512, 768)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hae3d"]
+atlas = ExtResource("18_tgqna")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n3cy7"]
+atlas = ExtResource("18_tgqna")
+region = Rect2(256, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2olow"]
+atlas = ExtResource("18_tgqna")
+region = Rect2(512, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a601r"]
+atlas = ExtResource("18_tgqna")
+region = Rect2(768, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q5e1p"]
+atlas = ExtResource("18_tgqna")
+region = Rect2(0, 256, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vwqi2"]
+atlas = ExtResource("18_tgqna")
+region = Rect2(256, 256, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l8s5u"]
+atlas = ExtResource("18_tgqna")
+region = Rect2(512, 256, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rw0j7"]
+atlas = ExtResource("18_tgqna")
+region = Rect2(768, 256, 256, 256)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4y0tw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hae3d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n3cy7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2olow")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a601r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q5e1p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vwqi2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l8s5u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rw0j7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.25
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m2xxo"]
+atlas = ExtResource("18_tgqna")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_spnbe"]
+atlas = ExtResource("18_tgqna")
+region = Rect2(256, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tfptl"]
+atlas = ExtResource("18_tgqna")
+region = Rect2(512, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f7anf"]
+atlas = ExtResource("18_tgqna")
+region = Rect2(768, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qapb0"]
+atlas = ExtResource("18_tgqna")
+region = Rect2(0, 256, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_agqjb"]
+atlas = ExtResource("18_tgqna")
+region = Rect2(256, 256, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d7h86"]
+atlas = ExtResource("18_tgqna")
+region = Rect2(512, 256, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ck0nw"]
+atlas = ExtResource("18_tgqna")
+region = Rect2(768, 256, 256, 256)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lwaom"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m2xxo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_spnbe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tfptl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f7anf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qapb0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_agqjb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d7h86")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ck0nw")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.25
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fyfii"]
+atlas = ExtResource("19_juiig")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xm0at"]
+atlas = ExtResource("19_juiig")
+region = Rect2(256, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nimvn"]
+atlas = ExtResource("19_juiig")
+region = Rect2(512, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jt1oh"]
+atlas = ExtResource("19_juiig")
+region = Rect2(768, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_chocc"]
+atlas = ExtResource("19_juiig")
+region = Rect2(0, 256, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qmbfy"]
+atlas = ExtResource("19_juiig")
+region = Rect2(256, 256, 256, 256)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xopg5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fyfii")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xm0at")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nimvn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jt1oh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_chocc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qmbfy")
+}],
+"loop": false,
+"name": &"default",
+"speed": 12.5
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qq48n"]
+atlas = ExtResource("19_juiig")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_floyd"]
+atlas = ExtResource("19_juiig")
+region = Rect2(256, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_twjy8"]
+atlas = ExtResource("19_juiig")
+region = Rect2(512, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8pid7"]
+atlas = ExtResource("19_juiig")
+region = Rect2(768, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i6ec2"]
+atlas = ExtResource("19_juiig")
+region = Rect2(0, 256, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_45qv2"]
+atlas = ExtResource("19_juiig")
+region = Rect2(256, 256, 256, 256)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ndb0d"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qq48n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_floyd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_twjy8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8pid7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i6ec2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_45qv2")
+}],
+"loop": false,
+"name": &"default",
+"speed": 12.5
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_75q4j"]
+size = Vector2(400, 60)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pjb8f"]
+size = Vector2(2200, 60)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1rfel"]
+size = Vector2(540, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qapwn"]
+atlas = ExtResource("13_j8ykl")
+region = Rect2(0, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ek5iw"]
+atlas = ExtResource("13_j8ykl")
+region = Rect2(512, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wrp2v"]
+atlas = ExtResource("27_kpakl")
+region = Rect2(0, 0, 128, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yl2ar"]
+atlas = ExtResource("27_kpakl")
+region = Rect2(128, 0, 128, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3gjlf"]
+atlas = ExtResource("27_kpakl")
+region = Rect2(256, 0, 128, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bbcur"]
+atlas = ExtResource("27_kpakl")
+region = Rect2(384, 0, 128, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c3e8b"]
+atlas = ExtResource("27_kpakl")
+region = Rect2(0, 192, 128, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ksdke"]
+atlas = ExtResource("27_kpakl")
+region = Rect2(128, 192, 128, 192)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_opnm5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wrp2v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yl2ar")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3gjlf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bbcur")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c3e8b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ksdke")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_cj74w"]
+blend_mode = 1
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mdwjb"]
+atlas = ExtResource("35_y2epw")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_al33s"]
+blend_mode = 1
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gpahp"]
+atlas = ExtResource("35_y2epw")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_usm51"]
+blend_mode = 1
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tsjp2"]
+atlas = ExtResource("35_y2epw")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_7oddr"]
+blend_mode = 1
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_07cli"]
+atlas = ExtResource("35_y2epw")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_hefji"]
+blend_mode = 1
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fk10e"]
+atlas = ExtResource("35_y2epw")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_3vb3l"]
+blend_mode = 1
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gicbx"]
+atlas = ExtResource("35_y2epw")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ridnq"]
+blend_mode = 1
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4mkoo"]
+atlas = ExtResource("35_y2epw")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iukiu"]
+size = Vector2(106, 26)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_70dmk"]
+size = Vector2(106, 26)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_awqvp"]
+size = Vector2(70, 26)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b7hf4"]
+size = Vector2(50, 55)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wkr0o"]
+size = Vector2(120, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_edqu1"]
+size = Vector2(120, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jl4xq"]
+atlas = ExtResource("55_n4jc7")
+region = Rect2(0, 0, 128, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cu76a"]
+atlas = ExtResource("55_n4jc7")
+region = Rect2(128, 0, 128, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ccqi"]
+atlas = ExtResource("55_n4jc7")
+region = Rect2(256, 0, 128, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oimxh"]
+atlas = ExtResource("55_n4jc7")
+region = Rect2(384, 0, 128, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ql85x"]
+atlas = ExtResource("55_n4jc7")
+region = Rect2(0, 192, 128, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p8t8g"]
+atlas = ExtResource("55_n4jc7")
+region = Rect2(128, 192, 128, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_da8yh"]
+atlas = ExtResource("55_n4jc7")
+region = Rect2(256, 192, 128, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qpplf"]
+atlas = ExtResource("55_n4jc7")
+region = Rect2(384, 192, 128, 192)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_a5vlt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jl4xq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cu76a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ccqi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oimxh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ql85x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p8t8g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_da8yh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qpplf")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_smu8h"]
+size = Vector2(44, 136)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bew8b"]
+atlas = ExtResource("55_n4jc7")
+region = Rect2(0, 0, 128, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sjo5n"]
+atlas = ExtResource("55_n4jc7")
+region = Rect2(128, 0, 128, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_itw08"]
+atlas = ExtResource("55_n4jc7")
+region = Rect2(256, 0, 128, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4mrso"]
+atlas = ExtResource("55_n4jc7")
+region = Rect2(384, 0, 128, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3xkt3"]
+atlas = ExtResource("55_n4jc7")
+region = Rect2(0, 192, 128, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2517j"]
+atlas = ExtResource("55_n4jc7")
+region = Rect2(128, 192, 128, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kpy1v"]
+atlas = ExtResource("55_n4jc7")
+region = Rect2(256, 192, 128, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qebbj"]
+atlas = ExtResource("55_n4jc7")
+region = Rect2(384, 192, 128, 192)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_q064f"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bew8b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sjo5n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_itw08")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4mrso")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3xkt3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2517j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kpy1v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qebbj")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_crw0g"]
+size = Vector2(44, 136)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b3170"]
+size = Vector2(60, 190)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nayqk"]
+size = Vector2(60, 190)
+
+[sub_resource type="Shader" id="Shader_ny81d"]
+code = "shader_type canvas_item;
+uniform vec4 nevoa : source_color;
+uniform float quanto;
+void fragment() { COLOR.rgb = mix(COLOR.rgb, nevoa.rgb, quanto); }"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rg7qc"]
+shader = SubResource("Shader_ny81d")
+shader_parameter/nevoa = Color(0.93, 0.71, 0.53, 1)
+shader_parameter/quanto = 0.22
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nt8ct"]
+atlas = ExtResource("63_e6835")
+region = Rect2(0, 0, 1024, 1536)
+
+[sub_resource type="Shader" id="Shader_ww6y0"]
+code = "shader_type canvas_item;
+uniform vec4 nevoa : source_color;
+uniform float quanto;
+void fragment() { COLOR.rgb = mix(COLOR.rgb, nevoa.rgb, quanto); }"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_v78yb"]
+shader = SubResource("Shader_ww6y0")
+shader_parameter/nevoa = Color(0.93, 0.71, 0.53, 1)
+shader_parameter/quanto = 0.22
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5louw"]
+atlas = ExtResource("63_e6835")
+region = Rect2(1024, 1536, 1024, 1536)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gh51d"]
+atlas = ExtResource("63_e6835")
+region = Rect2(1024, 0, 1024, 1536)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iav61"]
+atlas = ExtResource("63_e6835")
+region = Rect2(4096, 0, 1024, 1536)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_46j6y"]
+atlas = ExtResource("63_e6835")
+region = Rect2(2048, 1536, 1024, 1536)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_41gfd"]
+atlas = ExtResource("63_e6835")
+region = Rect2(3072, 1536, 1024, 1536)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1iy8p"]
+atlas = ExtResource("63_e6835")
+region = Rect2(2048, 0, 1024, 1536)
+
+[node name="Deserto" type="Node2D"]
+script = ExtResource("1_lua2m")
+montada = true
+nome = "DESERTO DE FERRUGEM"
+subtitulo = "Ferrumgrado — Dunas de sucata"
+tema = "deserto"
+forma = "automato"
+limites = Rect2(0, -80, 8900, 1140)
+kill_y = 1060.0
+salas = [["A", Rect2(0, -80, 1700, 1140), "Dunas de sucata"], ["B", Rect2(1700, -80, 1880, 1140), "Fábrica autônoma"], ["C", Rect2(3580, -80, 3410, 1140), "Salão do Núcleo"], ["D", Rect2(6990, 150, 1560, 620), "Câmara da Forja"], ["E", Rect2(8550, 400, 350, 370), "Saída"]]
+porta_requer = []
+chefe = {}
+
+[node name="Ceu" type="CanvasLayer" parent="."]
+layer = -20
+
+[node name="Gradiente" type="TextureRect" parent="Ceu"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = SubResource("GradientTexture2D_qld7f")
+expand_mode = 1
+
+[node name="Solido_01" type="StaticBody2D" parent="."]
+collision_mask = 0
+
+[node name="Colisao" type="CollisionShape2D" parent="Solido_01"]
+position = Vector2(330, 880)
+shape = SubResource("RectangleShape2D_5uw08")
+debug_color = Color(0.3, 0.85, 1, 0.12)
+
+[node name="Solido_02" type="StaticBody2D" parent="."]
+collision_mask = 0
+
+[node name="Colisao" type="CollisionShape2D" parent="Solido_02"]
+position = Vector2(1440, 880)
+shape = SubResource("RectangleShape2D_vlc47")
+debug_color = Color(0.3, 0.85, 1, 0.12)
+
+[node name="Solido_03" type="StaticBody2D" parent="."]
+collision_mask = 0
+
+[node name="Colisao" type="CollisionShape2D" parent="Solido_03"]
+position = Vector2(2240, 880)
+shape = SubResource("RectangleShape2D_ixwgo")
+debug_color = Color(0.3, 0.85, 1, 0.12)
+
+[node name="Solido_04" type="StaticBody2D" parent="."]
+collision_mask = 0
+
+[node name="Colisao" type="CollisionShape2D" parent="Solido_04"]
+position = Vector2(2942.5, 638)
+shape = SubResource("RectangleShape2D_ptklq")
+debug_color = Color(0.3, 0.85, 1, 0.12)
+
+[node name="Solido_05" type="StaticBody2D" parent="."]
+collision_mask = 0
+
+[node name="Colisao" type="CollisionShape2D" parent="Solido_05"]
+position = Vector2(3220, 559)
+shape = SubResource("RectangleShape2D_h60br")
+debug_color = Color(0.3, 0.85, 1, 0.12)
+
+[node name="Solido_06" type="StaticBody2D" parent="."]
+collision_mask = 0
+
+[node name="Colisao" type="CollisionShape2D" parent="Solido_06"]
+position = Vector2(3795, 435)
+shape = SubResource("RectangleShape2D_rpwhf")
+debug_color = Color(0.3, 0.85, 1, 0.12)
+
+[node name="Solido_07" type="StaticBody2D" parent="."]
+collision_mask = 0
+
+[node name="Colisao" type="CollisionShape2D" parent="Solido_07"]
+position = Vector2(4635, 435)
+shape = SubResource("RectangleShape2D_fnx1y")
+debug_color = Color(0.3, 0.85, 1, 0.12)
+
+[node name="Solido_08" type="StaticBody2D" parent="."]
+collision_mask = 0
+
+[node name="Colisao" type="CollisionShape2D" parent="Solido_08"]
+position = Vector2(5235, 930)
+shape = SubResource("RectangleShape2D_k6mqi")
+debug_color = Color(0.3, 0.85, 1, 0.12)
+
+[node name="Solido_09" type="StaticBody2D" parent="."]
+collision_mask = 0
+
+[node name="Colisao" type="CollisionShape2D" parent="Solido_09"]
+position = Vector2(7465, 930)
+shape = SubResource("RectangleShape2D_rjt8o")
+debug_color = Color(0.3, 0.85, 1, 0.12)
+
+[node name="Solido_10" type="StaticBody2D" parent="."]
+collision_mask = 0
+
+[node name="Colisao" type="CollisionShape2D" parent="Solido_10"]
+position = Vector2(-30, 475)
+shape = SubResource("RectangleShape2D_8yufg")
+debug_color = Color(0.3, 0.85, 1, 0.12)
+
+[node name="Solido_11" type="StaticBody2D" parent="."]
+collision_mask = 0
+
+[node name="Colisao" type="CollisionShape2D" parent="Solido_11"]
+position = Vector2(7020, 190)
+shape = SubResource("RectangleShape2D_w33ip")
+debug_color = Color(0.3, 0.85, 1, 0.12)
+
+[node name="Solido_12" type="StaticBody2D" parent="."]
+collision_mask = 0
+
+[node name="Colisao" type="CollisionShape2D" parent="Solido_12"]
+position = Vector2(7770, -25)
+shape = SubResource("RectangleShape2D_kjokj")
+debug_color = Color(0.3, 0.85, 1, 0.12)
+
+[node name="Solido_13" type="StaticBody2D" parent="."]
+collision_mask = 0
+
+[node name="Colisao" type="CollisionShape2D" parent="Solido_13"]
+position = Vector2(8520, 190)
+shape = SubResource("RectangleShape2D_ma3mf")
+debug_color = Color(0.3, 0.85, 1, 0.12)
+
+[node name="Solido_14" type="StaticBody2D" parent="."]
+collision_mask = 0
+
+[node name="Colisao" type="CollisionShape2D" parent="Solido_14"]
+position = Vector2(8725, 100)
+shape = SubResource("RectangleShape2D_asm70")
+debug_color = Color(0.3, 0.85, 1, 0.12)
+
+[node name="Solido_15" type="StaticBody2D" parent="."]
+collision_mask = 0
+
+[node name="Colisao" type="CollisionShape2D" parent="Solido_15"]
+position = Vector2(8930, 475)
+shape = SubResource("RectangleShape2D_sr6y4")
+debug_color = Color(0.3, 0.85, 1, 0.12)
+
+[node name="Objetos" type="Node2D" parent="."]
+z_index = 2
+
+[node name="Placa_01" type="Area2D" parent="Objetos"]
+position = Vector2(330, 700)
+script = ExtResource("2_5bbmg")
+text = "AUTÔMATO: lento e pesado, não recua ao levar dano. Clique esquerdo (ou J) dispara a REBITADEIRA."
+theme = "deserto"
+
+[node name="Placa_02" type="Area2D" parent="Objetos"]
+position = Vector2(700, 700)
+script = ExtResource("2_5bbmg")
+text = "F perto de uma argola ciano: o ÍMÃ DE FASE puxa você até ela. Pule no fim da puxada para ganhar impulso."
+theme = "deserto"
+
+[node name="Placa_03" type="Area2D" parent="Objetos"]
+position = Vector2(1320, 700)
+script = ExtResource("2_5bbmg")
+text = "Sem âncora ao alcance, F puxa um drone até o chão. Clique direito (ou K) com 1/3 de energia: PULSO MAGNÉTICO."
+theme = "deserto"
+
+[node name="Placa_04" type="Area2D" parent="Objetos"]
+position = Vector2(6560, 770)
+script = ExtResource("2_5bbmg")
+text = "IRIS: \"A energia do fragmento vem de trás desta porta. É o núcleo da fábrica.\""
+theme = "deserto"
+
+[node name="Checkpoint_01" type="Area2D" parent="Objetos"]
+position = Vector2(1650, 700)
+script = ExtResource("3_44y6p")
+theme = "deserto"
+
+[node name="Checkpoint_02" type="Area2D" parent="Objetos"]
+position = Vector2(4730, 415)
+script = ExtResource("3_44y6p")
+theme = "deserto"
+
+[node name="Checkpoint_03" type="Area2D" parent="Objetos"]
+position = Vector2(6650, 770)
+script = ExtResource("3_44y6p")
+theme = "deserto"
+
+[node name="FendaDeChegada_01" type="Area2D" parent="Objetos"]
+position = Vector2(105, 700)
+script = ExtResource("4_y3dmn")
+target = "lab"
+theme = "lab"
+
+[node name="Item_df_c0" type="Area2D" parent="Objetos"]
+position = Vector2(855, 598)
+script = ExtResource("5_qfh6y")
+kind = "cell"
+pid = "df_c0"
+respawn = 0.0
+
+[node name="Item_df_c1" type="Area2D" parent="Objetos"]
+position = Vector2(975, 510)
+script = ExtResource("5_qfh6y")
+kind = "cell"
+pid = "df_c1"
+respawn = 0.0
+
+[node name="Item_df_c2" type="Area2D" parent="Objetos"]
+position = Vector2(1100, 589)
+script = ExtResource("5_qfh6y")
+kind = "cell"
+pid = "df_c2"
+respawn = 0.0
+
+[node name="Item_df_c3" type="Area2D" parent="Objetos"]
+position = Vector2(1775, 658)
+script = ExtResource("5_qfh6y")
+kind = "cell"
+pid = "df_c3"
+respawn = 0.0
+
+[node name="Item_df_c4" type="Area2D" parent="Objetos"]
+position = Vector2(2250, 563)
+script = ExtResource("5_qfh6y")
+kind = "cell"
+pid = "df_c4"
+respawn = 0.0
+
+[node name="Item_df_c5" type="Area2D" parent="Objetos"]
+position = Vector2(2940, 572)
+script = ExtResource("5_qfh6y")
+kind = "cell"
+pid = "df_c5"
+respawn = 0.0
+
+[node name="Item_df_c6" type="Area2D" parent="Objetos"]
+position = Vector2(3220, 490)
+script = ExtResource("5_qfh6y")
+kind = "cell"
+pid = "df_c6"
+respawn = 0.0
+
+[node name="Item_df_c7" type="Area2D" parent="Objetos"]
+position = Vector2(4100, 326)
+script = ExtResource("5_qfh6y")
+kind = "cell"
+pid = "df_c7"
+respawn = 0.0
+
+[node name="Item_df_c8" type="Area2D" parent="Objetos"]
+position = Vector2(4290, 316)
+script = ExtResource("5_qfh6y")
+kind = "cell"
+pid = "df_c8"
+respawn = 0.0
+
+[node name="Item_df_c9" type="Area2D" parent="Objetos"]
+position = Vector2(4790, 365)
+script = ExtResource("5_qfh6y")
+kind = "cell"
+pid = "df_c9"
+respawn = 0.0
+
+[node name="Item_df_c10" type="Area2D" parent="Objetos"]
+position = Vector2(5760, 708)
+script = ExtResource("5_qfh6y")
+kind = "cell"
+pid = "df_c10"
+respawn = 0.0
+
+[node name="Item_df_c11" type="Area2D" parent="Objetos"]
+position = Vector2(6410, 718)
+script = ExtResource("5_qfh6y")
+kind = "cell"
+pid = "df_c11"
+respawn = 0.0
+
+[node name="Item_df_h1" type="Area2D" parent="Objetos"]
+position = Vector2(6560, 740)
+script = ExtResource("5_qfh6y")
+kind = "heal"
+pid = "df_h1"
+respawn = 0.0
+
+[node name="Item_01" type="Area2D" parent="Objetos"]
+position = Vector2(7120, 735)
+script = ExtResource("5_qfh6y")
+kind = "energy"
+pid = ""
+respawn = 9.0
+
+[node name="Item_02" type="Area2D" parent="Objetos"]
+position = Vector2(8420, 735)
+script = ExtResource("5_qfh6y")
+kind = "energy"
+pid = ""
+respawn = 9.0
+
+[node name="Gancho_01" type="Node2D" parent="Objetos"]
+position = Vector2(975, 510)
+script = ExtResource("6_rfaid")
+ceil_y = nan
+
+[node name="Gancho_02" type="Node2D" parent="Objetos"]
+position = Vector2(3510, 345)
+script = ExtResource("6_rfaid")
+ceil_y = nan
+
+[node name="Gancho_03" type="Node2D" parent="Objetos"]
+position = Vector2(4205, 230)
+script = ExtResource("6_rfaid")
+ceil_y = 125.0
+
+[node name="Gancho_04" type="Node2D" parent="Objetos"]
+position = Vector2(7400, 470)
+script = ExtResource("6_rfaid")
+ceil_y = 150.0
+
+[node name="Gancho_05" type="Node2D" parent="Objetos"]
+position = Vector2(8080, 470)
+script = ExtResource("6_rfaid")
+ceil_y = 150.0
+
+[node name="Entidades" type="Node2D" parent="."]
+z_index = 5
+
+[node name="Drone_enemy0" type="CharacterBody2D" parent="Entidades"]
+position = Vector2(780, 563)
+script = ExtResource("7_te84a")
+drone = true
+patrol = Vector2(780, 1180)
+pid = "df_enemy0"
+
+[node name="Robo_enemy1" type="CharacterBody2D" parent="Entidades"]
+position = Vector2(1205, 700)
+script = ExtResource("7_te84a")
+drone = false
+patrol = Vector2(1205, 1620)
+pid = "df_enemy1"
+
+[node name="Robo_enemy2" type="CharacterBody2D" parent="Entidades"]
+position = Vector2(3125, 545)
+script = ExtResource("7_te84a")
+drone = false
+patrol = Vector2(3125, 3315)
+pid = "df_enemy2"
+
+[node name="Robo_enemy3" type="CharacterBody2D" parent="Entidades"]
+position = Vector2(3605, 415)
+script = ExtResource("7_te84a")
+drone = false
+patrol = Vector2(3605, 3980)
+pid = "df_enemy3"
+
+[node name="Robo_enemy4" type="CharacterBody2D" parent="Entidades"]
+position = Vector2(5010, 770)
+script = ExtResource("7_te84a")
+drone = false
+patrol = Vector2(5010, 5450)
+pid = "df_enemy4"
+
+[node name="Drone_enemy5" type="CharacterBody2D" parent="Entidades"]
+position = Vector2(6220, 635)
+script = ExtResource("7_te84a")
+drone = true
+patrol = Vector2(6220, 6540)
+pid = "df_enemy5"
+
+[node name="Efeitos" type="Node2D" parent="."]
+z_index = 8
+
+[node name="Deserto" type="Node2D" parent="."]
+script = ExtResource("8_m7yj7")
+montada = true
+
+[node name="DF22_01" type="Sprite2D" parent="Deserto"]
+z_index = -14
+texture_repeat = 2
+position = Vector2(1495, 170)
+scale = Vector2(0.55, 0.55)
+texture = ExtResource("9_divas")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 372.727, 963.636)
+
+[node name="DF202_fabrica_01" type="Sprite2D" parent="Deserto"]
+z_index = -14
+texture_repeat = 2
+position = Vector2(1700, -80)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("10_srnc8")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 3760, 2180)
+
+[node name="DF202_salao_01" type="Sprite2D" parent="Deserto"]
+z_index = -14
+texture_repeat = 2
+position = Vector2(3580, -80)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("11_tdoox")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 6820, 2300)
+
+[node name="DF203_camara_01" type="Sprite2D" parent="Deserto"]
+z_index = -14
+texture_repeat = 2
+position = Vector2(7050, 150)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("12_8s0ur")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 2880, 1240)
+
+[node name="DF202_salao_02" type="Sprite2D" parent="Deserto"]
+z_index = -14
+texture_repeat = 2
+position = Vector2(8550, 400)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("11_tdoox")
+centered = false
+region_enabled = true
+region_rect = Rect2(9940, 960, 700, 780)
+
+[node name="DF206_media_1024_512_01" type="Sprite2D" parent="Deserto"]
+z_index = -2
+position = Vector2(640, 700)
+scale = Vector2(0.5, 0.5)
+texture = SubResource("AtlasTexture_c5yfl")
+centered = false
+offset = Vector2(-256, -512)
+
+[node name="DF206_media_1536_512_01" type="Sprite2D" parent="Deserto"]
+z_index = -2
+position = Vector2(1430, 700)
+scale = Vector2(0.5, 0.5)
+texture = SubResource("AtlasTexture_kn0v4")
+centered = false
+offset = Vector2(-256, -512)
+
+[node name="DF206_pequena_1536_256_01" type="Sprite2D" parent="Deserto"]
+z_index = -2
+position = Vector2(240, 700)
+scale = Vector2(0.5, 0.5)
+texture = SubResource("AtlasTexture_anq28")
+centered = false
+offset = Vector2(-128, -256)
+
+[node name="DF206_pequena_1280_256_01" type="Sprite2D" parent="Deserto"]
+z_index = -2
+position = Vector2(450, 700)
+scale = Vector2(0.5, 0.5)
+texture = SubResource("AtlasTexture_flnke")
+centered = false
+offset = Vector2(-128, -256)
+
+[node name="DF206_pequena_1024_256_01" type="Sprite2D" parent="Deserto"]
+z_index = -2
+position = Vector2(515, 700)
+scale = Vector2(0.5, 0.5)
+texture = SubResource("AtlasTexture_x38gu")
+centered = false
+offset = Vector2(-128, -256)
+
+[node name="DF206_pequena_768_256_01" type="Sprite2D" parent="Deserto"]
+z_index = -2
+position = Vector2(752, 700)
+scale = Vector2(0.5, 0.5)
+texture = SubResource("AtlasTexture_gvxpp")
+centered = false
+offset = Vector2(-128, -256)
+
+[node name="DF206_pequena_1280_0_01" type="Sprite2D" parent="Deserto"]
+z_index = -2
+position = Vector2(1228, 700)
+scale = Vector2(0.5, 0.5)
+texture = SubResource("AtlasTexture_4qbvo")
+centered = false
+offset = Vector2(-128, -256)
+
+[node name="DF206_pequena_1536_256_02" type="Sprite2D" parent="Deserto"]
+z_index = -2
+position = Vector2(1475, 700)
+scale = Vector2(0.5, 0.5)
+texture = SubResource("AtlasTexture_k5vp8")
+centered = false
+offset = Vector2(-128, -256)
+
+[node name="DF206_media_1024_0_01" type="Sprite2D" parent="Deserto"]
+z_index = -2
+position = Vector2(5060, 770)
+scale = Vector2(0.5, 0.5)
+texture = SubResource("AtlasTexture_73v3h")
+centered = false
+offset = Vector2(-256, -512)
+
+[node name="DF206_media_2048_0_01" type="Sprite2D" parent="Deserto"]
+z_index = -2
+position = Vector2(5405, 770)
+scale = Vector2(0.5, 0.5)
+texture = SubResource("AtlasTexture_vyyry")
+centered = false
+offset = Vector2(-256, -512)
+
+[node name="DF206_media_2048_512_01" type="Sprite2D" parent="Deserto"]
+z_index = -2
+position = Vector2(6110, 770)
+scale = Vector2(0.5, 0.5)
+texture = SubResource("AtlasTexture_8pdyp")
+centered = false
+offset = Vector2(-256, -512)
+
+[node name="DF206_media_0_512_01" type="Sprite2D" parent="Deserto"]
+z_index = -2
+position = Vector2(6800, 770)
+scale = Vector2(0.5, 0.5)
+texture = SubResource("AtlasTexture_ra71f")
+centered = false
+offset = Vector2(-256, -512)
+
+[node name="DF206_media_1536_512_02" type="Sprite2D" parent="Deserto"]
+z_index = -2
+position = Vector2(6935, 770)
+scale = Vector2(0.5, 0.5)
+texture = SubResource("AtlasTexture_ts0or")
+centered = false
+offset = Vector2(-256, -512)
+
+[node name="DF206_pequena_512_0_01" type="Sprite2D" parent="Deserto"]
+z_index = -2
+position = Vector2(5130, 770)
+scale = Vector2(0.5, 0.5)
+texture = SubResource("AtlasTexture_wao4i")
+centered = false
+offset = Vector2(-128, -256)
+
+[node name="DF206_pequena_512_256_01" type="Sprite2D" parent="Deserto"]
+z_index = -2
+position = Vector2(5205, 770)
+scale = Vector2(0.5, 0.5)
+texture = SubResource("AtlasTexture_vajdd")
+centered = false
+offset = Vector2(-128, -256)
+
+[node name="DF206_pequena_1536_0_01" type="Sprite2D" parent="Deserto"]
+z_index = -2
+position = Vector2(5300, 770)
+scale = Vector2(0.5, 0.5)
+texture = SubResource("AtlasTexture_k57f7")
+centered = false
+offset = Vector2(-128, -256)
+
+[node name="DF206_pequena_768_0_01" type="Sprite2D" parent="Deserto"]
+z_index = -2
+position = Vector2(6185, 770)
+scale = Vector2(0.5, 0.5)
+texture = SubResource("AtlasTexture_yrl7q")
+centered = false
+offset = Vector2(-128, -256)
+
+[node name="DF206_pequena_256_256_01" type="Sprite2D" parent="Deserto"]
+z_index = -2
+position = Vector2(6410, 770)
+scale = Vector2(0.5, 0.5)
+texture = SubResource("AtlasTexture_bx5aa")
+centered = false
+offset = Vector2(-128, -256)
+
+[node name="DF206_pequena_768_0_02" type="Sprite2D" parent="Deserto"]
+z_index = -2
+position = Vector2(8595, 770)
+scale = Vector2(0.5, 0.5)
+texture = SubResource("AtlasTexture_3xenf")
+centered = false
+offset = Vector2(-128, -256)
+
+[node name="DF206_pequena_256_0_01" type="Sprite2D" parent="Deserto"]
+z_index = -2
+position = Vector2(8850, 770)
+scale = Vector2(0.5, 0.5)
+texture = SubResource("AtlasTexture_unxae")
+centered = false
+offset = Vector2(-128, -256)
+
+[node name="DF207_moldura_1024_768_01" type="Sprite2D" parent="Deserto"]
+z_index = -9
+position = Vector2(2050, 150)
+scale = Vector2(0.5, 0.5)
+texture = SubResource("AtlasTexture_bmftw")
+centered = false
+offset = Vector2(-256, 0)
+
+[node name="DF207_moldura_0_0_01" type="Sprite2D" parent="Deserto"]
+z_index = -9
+position = Vector2(2050, -100)
+scale = Vector2(0.5, 0.5)
+texture = SubResource("AtlasTexture_073w7")
+centered = false
+offset = Vector2(-256, 0)
+
+[node name="DF207_moldura_1536_0_01" type="Sprite2D" parent="Deserto"]
+z_index = -9
+position = Vector2(2700, 150)
+scale = Vector2(0.5, 0.5)
+texture = SubResource("AtlasTexture_3hyye")
+centered = false
+offset = Vector2(-256, 0)
+
+[node name="DF207_moldura_0_0_02" type="Sprite2D" parent="Deserto"]
+z_index = -9
+position = Vector2(2700, -100)
+scale = Vector2(0.5, 0.5)
+texture = SubResource("AtlasTexture_u6d5m")
+centered = false
+offset = Vector2(-256, 0)
+
+[node name="DF207_moldura_512_768_01" type="Sprite2D" parent="Deserto"]
+z_index = -9
+position = Vector2(3230, 90)
+scale = Vector2(0.5, 0.5)
+texture = SubResource("AtlasTexture_0mjbm")
+centered = false
+offset = Vector2(-256, 0)
+
+[node name="DF207_moldura_0_0_03" type="Sprite2D" parent="Deserto"]
+z_index = -9
+position = Vector2(3230, -160)
+scale = Vector2(0.5, 0.5)
+texture = SubResource("AtlasTexture_w24fb")
+centered = false
+offset = Vector2(-256, 0)
+
+[node name="DF207_moldura_0_0_04" type="Sprite2D" parent="Deserto"]
+z_index = -9
+position = Vector2(3990, 30)
+scale = Vector2(0.5, 0.5)
+texture = SubResource("AtlasTexture_aricf")
+centered = false
+offset = Vector2(-256, 0)
+
+[node name="DF207_moldura_0_0_05" type="Sprite2D" parent="Deserto"]
+z_index = -9
+position = Vector2(3990, -220)
+scale = Vector2(0.5, 0.5)
+texture = SubResource("AtlasTexture_2bg58")
+centered = false
+offset = Vector2(-256, 0)
+
+[node name="DF207_moldura_512_0_01" type="Sprite2D" parent="Deserto"]
+z_index = -9
+position = Vector2(4540, -10)
+scale = Vector2(0.5, 0.5)
+texture = SubResource("AtlasTexture_11i8v")
+centered = false
+offset = Vector2(-256, 0)
+
+[node name="DF207_moldura_0_0_06" type="Sprite2D" parent="Deserto"]
+z_index = -9
+position = Vector2(4540, -260)
+scale = Vector2(0.5, 0.5)
+texture = SubResource("AtlasTexture_55414")
+centered = false
+offset = Vector2(-256, 0)
+
+[node name="DF207_moldura_1024_0_01" type="Sprite2D" parent="Deserto"]
+z_index = -9
+position = Vector2(5310, 220)
+scale = Vector2(0.5, 0.5)
+texture = SubResource("AtlasTexture_u2trn")
+centered = false
+offset = Vector2(-256, 0)
+
+[node name="DF207_moldura_0_0_07" type="Sprite2D" parent="Deserto"]
+z_index = -9
+position = Vector2(5310, -30)
+scale = Vector2(0.5, 0.5)
+texture = SubResource("AtlasTexture_j2npc")
+centered = false
+offset = Vector2(-256, 0)
+
+[node name="DF207_moldura_0_0_08" type="Sprite2D" parent="Deserto"]
+z_index = -9
+position = Vector2(5310, -280)
+scale = Vector2(0.5, 0.5)
+texture = SubResource("AtlasTexture_3ofkx")
+centered = false
+offset = Vector2(-256, 0)
+
+[node name="DF207_moldura_1536_768_01" type="Sprite2D" parent="Deserto"]
+z_index = -9
+position = Vector2(5700, 230)
+scale = Vector2(0.5, 0.5)
+texture = SubResource("AtlasTexture_mu3en")
+centered = false
+offset = Vector2(-256, 0)
+
+[node name="DF207_moldura_0_0_09" type="Sprite2D" parent="Deserto"]
+z_index = -9
+position = Vector2(5700, -20)
+scale = Vector2(0.5, 0.5)
+texture = SubResource("AtlasTexture_34226")
+centered = false
+offset = Vector2(-256, 0)
+
+[node name="DF207_moldura_0_0_10" type="Sprite2D" parent="Deserto"]
+z_index = -9
+position = Vector2(5700, -270)
+scale = Vector2(0.5, 0.5)
+texture = SubResource("AtlasTexture_s1cqv")
+centered = false
+offset = Vector2(-256, 0)
+
+[node name="DF207_moldura_0_768_01" type="Sprite2D" parent="Deserto"]
+z_index = -9
+position = Vector2(6230, 290)
+scale = Vector2(0.5, 0.5)
+texture = SubResource("AtlasTexture_dbmk5")
+centered = false
+offset = Vector2(-256, 0)
+
+[node name="DF207_moldura_0_0_11" type="Sprite2D" parent="Deserto"]
+z_index = -9
+position = Vector2(6230, 40)
+scale = Vector2(0.5, 0.5)
+texture = SubResource("AtlasTexture_yflv3")
+centered = false
+offset = Vector2(-256, 0)
+
+[node name="DF207_moldura_0_0_12" type="Sprite2D" parent="Deserto"]
+z_index = -9
+position = Vector2(6230, -210)
+scale = Vector2(0.5, 0.5)
+texture = SubResource("AtlasTexture_rxjsf")
+centered = false
+offset = Vector2(-256, 0)
+
+[node name="DF208_primeiro_plano_01" type="Sprite2D" parent="Deserto"]
+z_index = 30
+texture_repeat = 2
+position = Vector2(-120, 634)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("16_og3yb")
+centered = false
+region_enabled = true
+region_rect = Rect2(-240, 0, 1800, 512)
+
+[node name="DF208_primeiro_plano_02" type="Sprite2D" parent="Deserto"]
+z_index = 30
+texture_repeat = 2
+position = Vector2(1180, 634)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("16_og3yb")
+centered = false
+region_enabled = true
+region_rect = Rect2(2360, 0, 630, 512)
+
+[node name="DF208_primeiro_plano_interior_01" type="Sprite2D" parent="Deserto"]
+z_index = 30
+texture_repeat = 2
+position = Vector2(1760, 634)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("17_tgxgn")
+centered = false
+region_enabled = true
+region_rect = Rect2(3520, 0, 1920, 512)
+
+[node name="DF208_primeiro_plano_interior_02" type="Sprite2D" parent="Deserto"]
+z_index = 30
+texture_repeat = 2
+position = Vector2(4980, 704)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("17_tgxgn")
+centered = false
+region_enabled = true
+region_rect = Rect2(9960, 0, 1020, 512)
+
+[node name="DF208_primeiro_plano_interior_03" type="Sprite2D" parent="Deserto"]
+z_index = 30
+texture_repeat = 2
+position = Vector2(6030, 704)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("17_tgxgn")
+centered = false
+region_enabled = true
+region_rect = Rect2(12060, 0, 1920, 512)
+
+[node name="Anim_DF209_vapor_01" type="AnimatedSprite2D" parent="Deserto"]
+z_index = -3
+position = Vector2(2395, 548)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_4y0tw")
+autoplay = "default"
+
+[node name="Anim_DF209_vapor_02" type="AnimatedSprite2D" parent="Deserto"]
+z_index = -3
+position = Vector2(6150, 352)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_lwaom")
+autoplay = "default"
+
+[node name="Anim_DF209_faiscas_01" type="AnimatedSprite2D" parent="Deserto"]
+visible = false
+z_index = 2
+position = Vector2(6790, 650)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_xopg5")
+autoplay = "default"
+metadata/faisca = [2.6, 0.0]
+
+[node name="Anim_DF209_faiscas_02" type="AnimatedSprite2D" parent="Deserto"]
+visible = false
+z_index = 2
+position = Vector2(5132, 655)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_ndb0d")
+autoplay = "default"
+metadata/faisca = [3.4, 1.1]
+
+[node name="Terreno" type="Node2D" parent="Deserto"]
+script = ExtResource("20_64frs")
+blocks = [Rect2(-120, 700, 900, 360), Rect2(1180, 700, 520, 360), Rect2(1700, 700, 1080, 360), Rect2(4980, 770, 510, 320), Rect2(6030, 770, 2870, 320), Rect2(-60, -200, 60, 1350), Rect2(6990, -200, 60, 780), Rect2(7050, -200, 1440, 350), Rect2(8490, -200, 60, 780), Rect2(8550, -200, 350, 600), Rect2(8900, -200, 60, 1350)]
+thin = [Rect2(2870, 625, 145, 26), Rect2(3100, 545, 240, 28), Rect2(3580, 415, 430, 40), Rect2(4410, 415, 450, 40)]
+pits = [Rect2(780, 850, 400, 60), Rect2(2780, 900, 2200, 60), Rect2(5490, 900, 540, 60)]
+belt = Rect2(1700, 700, 1080, 360)
+suspended = [Rect2(3580, 415, 430, 40), Rect2(4410, 415, 450, 40)]
+
+[node name="DF26_01" type="Sprite2D" parent="Deserto"]
+texture_repeat = 2
+position = Vector2(1700, 700)
+scale = Vector2(0.62, 0.625)
+texture = ExtResource("21_ttrwg")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 1741.94, 96)
+metadata/esteira = true
+
+[node name="DF53a_01" type="Sprite2D" parent="Deserto"]
+z_index = -1
+position = Vector2(2942.5, 557.5)
+scale = Vector2(0.302083, 0.350649)
+texture = ExtResource("22_k0xpu")
+region_enabled = true
+region_rect = Rect2(0, 0, 480, 385)
+
+[node name="tirante_01" type="Sprite2D" parent="Deserto"]
+z_index = -2
+texture_repeat = 2
+position = Vector2(2881, -80)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("23_kpnlo")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 32, 1144)
+
+[node name="tirante_02" type="Sprite2D" parent="Deserto"]
+z_index = -2
+texture_repeat = 2
+position = Vector2(2987, -80)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("23_kpnlo")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 32, 1144)
+
+[node name="DF53b_01" type="Sprite2D" parent="Deserto"]
+z_index = -1
+position = Vector2(3220, 477.5)
+scale = Vector2(0.5, 0.597345)
+texture = ExtResource("24_fdgwv")
+region_enabled = true
+region_rect = Rect2(0, 0, 480, 226)
+
+[node name="tirante_03" type="Sprite2D" parent="Deserto"]
+z_index = -2
+texture_repeat = 2
+position = Vector2(3132, -80)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("23_kpnlo")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 32, 984)
+
+[node name="tirante_04" type="Sprite2D" parent="Deserto"]
+z_index = -2
+texture_repeat = 2
+position = Vector2(3291, -80)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("23_kpnlo")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 32, 984)
+
+[node name="Fosso_01" type="Area2D" parent="Deserto" groups=["hazard"]]
+position = Vector2(980, 880)
+collision_layer = 32
+collision_mask = 0
+monitoring = false
+
+[node name="Forma" type="CollisionShape2D" parent="Deserto/Fosso_01"]
+shape = SubResource("RectangleShape2D_75q4j")
+
+[node name="Fosso_02" type="Area2D" parent="Deserto" groups=["hazard"]]
+position = Vector2(3880, 930)
+collision_layer = 32
+collision_mask = 0
+monitoring = false
+
+[node name="Forma" type="CollisionShape2D" parent="Deserto/Fosso_02"]
+shape = SubResource("RectangleShape2D_pjb8f")
+
+[node name="Fosso_03" type="Area2D" parent="Deserto" groups=["hazard"]]
+position = Vector2(5760, 930)
+collision_layer = 32
+collision_mask = 0
+monitoring = false
+
+[node name="Forma" type="CollisionShape2D" parent="Deserto/Fosso_03"]
+shape = SubResource("RectangleShape2D_1rfel")
+
+[node name="DF206_media_0_0_01" type="Sprite2D" parent="Deserto"]
+z_index = -2
+position = Vector2(362, 700)
+scale = Vector2(0.5, 0.5)
+texture = SubResource("AtlasTexture_qapwn")
+centered = false
+offset = Vector2(-256, -512)
+
+[node name="DF206_media_512_0_01" type="Sprite2D" parent="Deserto"]
+z_index = -2
+position = Vector2(1295, 700)
+scale = Vector2(0.5, 0.5)
+texture = SubResource("AtlasTexture_ek5iw")
+centered = false
+offset = Vector2(-256, -512)
+
+[node name="DF31_mastro_viga_v2_01" type="Sprite2D" parent="Deserto"]
+z_index = -2
+position = Vector2(841, 581.5)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("25_llfwr")
+
+[node name="DF32_chamine_v2_01" type="Sprite2D" parent="Deserto"]
+z_index = -2
+position = Vector2(1566, 108)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("26_0i7sp")
+
+[node name="Anim_DF80_01" type="AnimatedSprite2D" parent="Deserto"]
+position = Vector2(1566, -12)
+scale = Vector2(0.820312, 0.604167)
+sprite_frames = SubResource("SpriteFrames_opnm5")
+autoplay = "default"
+
+[node name="DF33_porta_fabrica_v2_01" type="Sprite2D" parent="Deserto"]
+z_index = -2
+position = Vector2(1620, 612.5)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("28_3qjbt")
+
+[node name="DF34_engrenagem_fundo_v2_01" type="Sprite2D" parent="Deserto"]
+z_index = -8
+position = Vector2(2380, 410)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("29_tb7ui")
+metadata/engrenagem = true
+
+[node name="DF35_abertura_parede_v2_01" type="Sprite2D" parent="Deserto"]
+z_index = -6
+position = Vector2(3530, 321)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("30_d1qkc")
+
+[node name="DF36_torre_nucleo_v2_01" type="Sprite2D" parent="Deserto"]
+z_index = -10
+position = Vector2(4849, 377.5)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("31_sp3ig")
+
+[node name="DF28_cabo_v2_01" type="Sprite2D" parent="Deserto"]
+z_index = -4
+texture_repeat = 2
+position = Vector2(3710, 415)
+rotation = -0.299701
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("32_e41ik")
+centered = false
+offset = Vector2(0, -16)
+region_enabled = true
+region_rect = Rect2(0, 0, 2323.57, 32)
+
+[node name="DF28_cabo_v2_02" type="Sprite2D" parent="Deserto"]
+z_index = -4
+texture_repeat = 2
+position = Vector2(4580, 415)
+rotation = -0.960266
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("32_e41ik")
+centered = false
+offset = Vector2(0, -16)
+region_enabled = true
+region_rect = Rect2(0, 0, 837.255, 32)
+
+[node name="DF28_cabo_v2_03" type="Sprite2D" parent="Deserto"]
+z_index = -5
+texture_repeat = 2
+position = Vector2(1889, -80)
+rotation = 1.5708
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("32_e41ik")
+centered = false
+offset = Vector2(0, -16)
+region_enabled = true
+region_rect = Rect2(0, 0, 932, 32)
+
+[node name="DF37b_lampada_apagada_v2_01" type="Sprite2D" parent="Deserto"]
+z_index = -4
+position = Vector2(1889, 186.5)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("33_5qkgq")
+
+[node name="DF37_lampada_v2_01" type="Sprite2D" parent="Deserto"]
+z_index = -3
+position = Vector2(1889, 186.5)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("34_rh25g")
+metadata/lampada = [NodePath("DF37b_lampada_apagada_v2_01"), NodePath("DF209_brilho_lampada_0_0_01")]
+
+[node name="DF209_brilho_lampada_0_0_01" type="Sprite2D" parent="Deserto"]
+z_index = -2
+material = SubResource("CanvasItemMaterial_cj74w")
+position = Vector2(1889, 212)
+scale = Vector2(0.5, 0.5)
+texture = SubResource("AtlasTexture_mdwjb")
+centered = false
+offset = Vector2(-128, -128)
+
+[node name="DF28_cabo_v2_04" type="Sprite2D" parent="Deserto"]
+z_index = -5
+texture_repeat = 2
+position = Vector2(2659, -80)
+rotation = 1.5708
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("32_e41ik")
+centered = false
+offset = Vector2(0, -16)
+region_enabled = true
+region_rect = Rect2(0, 0, 932, 32)
+
+[node name="DF37b_lampada_apagada_v2_02" type="Sprite2D" parent="Deserto"]
+z_index = -4
+position = Vector2(2659, 186.5)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("33_5qkgq")
+
+[node name="DF37_lampada_v2_02" type="Sprite2D" parent="Deserto"]
+z_index = -3
+position = Vector2(2659, 186.5)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("34_rh25g")
+metadata/lampada = [NodePath("DF37b_lampada_apagada_v2_02"), NodePath("DF209_brilho_lampada_0_0_02")]
+
+[node name="DF209_brilho_lampada_0_0_02" type="Sprite2D" parent="Deserto"]
+z_index = -2
+material = SubResource("CanvasItemMaterial_al33s")
+position = Vector2(2659, 212)
+scale = Vector2(0.5, 0.5)
+texture = SubResource("AtlasTexture_gpahp")
+centered = false
+offset = Vector2(-128, -128)
+
+[node name="DF28_cabo_v2_05" type="Sprite2D" parent="Deserto"]
+z_index = -5
+texture_repeat = 2
+position = Vector2(5199, -80)
+rotation = 1.5708
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("32_e41ik")
+centered = false
+offset = Vector2(0, -16)
+region_enabled = true
+region_rect = Rect2(0, 0, 932, 32)
+
+[node name="DF37b_lampada_apagada_v2_03" type="Sprite2D" parent="Deserto"]
+z_index = -4
+position = Vector2(5199, 186.5)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("33_5qkgq")
+
+[node name="DF37_lampada_v2_03" type="Sprite2D" parent="Deserto"]
+z_index = -3
+position = Vector2(5199, 186.5)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("34_rh25g")
+metadata/lampada = [NodePath("DF37b_lampada_apagada_v2_03"), NodePath("DF209_brilho_lampada_0_0_03")]
+
+[node name="DF209_brilho_lampada_0_0_03" type="Sprite2D" parent="Deserto"]
+z_index = -2
+material = SubResource("CanvasItemMaterial_usm51")
+position = Vector2(5199, 212)
+scale = Vector2(0.5, 0.5)
+texture = SubResource("AtlasTexture_tsjp2")
+centered = false
+offset = Vector2(-128, -128)
+
+[node name="DF28_cabo_v2_06" type="Sprite2D" parent="Deserto"]
+z_index = -5
+texture_repeat = 2
+position = Vector2(5849, -80)
+rotation = 1.5708
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("32_e41ik")
+centered = false
+offset = Vector2(0, -16)
+region_enabled = true
+region_rect = Rect2(0, 0, 932, 32)
+
+[node name="DF37b_lampada_apagada_v2_04" type="Sprite2D" parent="Deserto"]
+z_index = -4
+position = Vector2(5849, 186.5)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("33_5qkgq")
+
+[node name="DF37_lampada_v2_04" type="Sprite2D" parent="Deserto"]
+z_index = -3
+position = Vector2(5849, 186.5)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("34_rh25g")
+metadata/lampada = [NodePath("DF37b_lampada_apagada_v2_04"), NodePath("DF209_brilho_lampada_0_0_04")]
+
+[node name="DF209_brilho_lampada_0_0_04" type="Sprite2D" parent="Deserto"]
+z_index = -2
+material = SubResource("CanvasItemMaterial_7oddr")
+position = Vector2(5849, 212)
+scale = Vector2(0.5, 0.5)
+texture = SubResource("AtlasTexture_07cli")
+centered = false
+offset = Vector2(-128, -128)
+
+[node name="DF28_cabo_v2_07" type="Sprite2D" parent="Deserto"]
+z_index = -5
+texture_repeat = 2
+position = Vector2(6429, -80)
+rotation = 1.5708
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("32_e41ik")
+centered = false
+offset = Vector2(0, -16)
+region_enabled = true
+region_rect = Rect2(0, 0, 932, 32)
+
+[node name="DF37b_lampada_apagada_v2_05" type="Sprite2D" parent="Deserto"]
+z_index = -4
+position = Vector2(6429, 186.5)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("33_5qkgq")
+
+[node name="DF37_lampada_v2_05" type="Sprite2D" parent="Deserto"]
+z_index = -3
+position = Vector2(6429, 186.5)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("34_rh25g")
+metadata/piscante = true
+metadata/lampada = [NodePath("DF37b_lampada_apagada_v2_05"), NodePath("DF209_brilho_lampada_0_0_05")]
+
+[node name="DF209_brilho_lampada_0_0_05" type="Sprite2D" parent="Deserto"]
+z_index = -2
+material = SubResource("CanvasItemMaterial_hefji")
+position = Vector2(6429, 212)
+scale = Vector2(0.5, 0.5)
+texture = SubResource("AtlasTexture_fk10e")
+centered = false
+offset = Vector2(-128, -128)
+
+[node name="DF28_cabo_v2_08" type="Sprite2D" parent="Deserto"]
+z_index = -5
+texture_repeat = 2
+position = Vector2(7094, 150)
+rotation = 1.5708
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("32_e41ik")
+centered = false
+offset = Vector2(0, -16)
+region_enabled = true
+region_rect = Rect2(0, 0, 932, 32)
+
+[node name="DF37b_lampada_apagada_v2_06" type="Sprite2D" parent="Deserto"]
+z_index = -4
+position = Vector2(7094, 416.5)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("33_5qkgq")
+
+[node name="DF37_lampada_v2_06" type="Sprite2D" parent="Deserto"]
+z_index = -3
+position = Vector2(7094, 416.5)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("34_rh25g")
+metadata/lampada = [NodePath("DF37b_lampada_apagada_v2_06"), NodePath("DF209_brilho_lampada_0_0_06")]
+
+[node name="DF209_brilho_lampada_0_0_06" type="Sprite2D" parent="Deserto"]
+z_index = -2
+material = SubResource("CanvasItemMaterial_3vb3l")
+position = Vector2(7094, 442)
+scale = Vector2(0.5, 0.5)
+texture = SubResource("AtlasTexture_gicbx")
+centered = false
+offset = Vector2(-128, -128)
+
+[node name="DF28_cabo_v2_09" type="Sprite2D" parent="Deserto"]
+z_index = -5
+texture_repeat = 2
+position = Vector2(8474, 150)
+rotation = 1.5708
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("32_e41ik")
+centered = false
+offset = Vector2(0, -16)
+region_enabled = true
+region_rect = Rect2(0, 0, 932, 32)
+
+[node name="DF37b_lampada_apagada_v2_07" type="Sprite2D" parent="Deserto"]
+z_index = -4
+position = Vector2(8474, 416.5)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("33_5qkgq")
+
+[node name="DF37_lampada_v2_07" type="Sprite2D" parent="Deserto"]
+z_index = -3
+position = Vector2(8474, 416.5)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("34_rh25g")
+metadata/lampada = [NodePath("DF37b_lampada_apagada_v2_07"), NodePath("DF209_brilho_lampada_0_0_07")]
+
+[node name="DF209_brilho_lampada_0_0_07" type="Sprite2D" parent="Deserto"]
+z_index = -2
+material = SubResource("CanvasItemMaterial_ridnq")
+position = Vector2(8474, 442)
+scale = Vector2(0.5, 0.5)
+texture = SubResource("AtlasTexture_4mkoo")
+centered = false
+offset = Vector2(-128, -128)
+
+[node name="DF39_painel_v2_01" type="Sprite2D" parent="Deserto"]
+z_index = -4
+position = Vector2(5132.5, 675)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("36_3gphl")
+
+[node name="DF39b_canos_v2_01" type="Sprite2D" parent="Deserto"]
+z_index = -5
+position = Vector2(6080, 393)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("37_qjvv0")
+
+[node name="DF26b_01" type="Sprite2D" parent="Deserto"]
+z_index = 1
+position = Vector2(1730, 730)
+scale = Vector2(0.234375, 0.234375)
+texture = ExtResource("38_474gt")
+
+[node name="DF26c_01" type="Sprite2D" parent="Deserto"]
+z_index = 1
+position = Vector2(2750, 730)
+scale = Vector2(0.234375, 0.234375)
+texture = ExtResource("39_04626")
+
+[node name="DF57_01" type="Sprite2D" parent="Deserto"]
+z_index = 3
+position = Vector2(975, 504)
+scale = Vector2(0.413043, 0.342857)
+texture = ExtResource("40_8d28y")
+
+[node name="DF57_02" type="Sprite2D" parent="Deserto"]
+z_index = 3
+position = Vector2(3510, 339)
+scale = Vector2(0.413043, 0.342857)
+texture = ExtResource("40_8d28y")
+
+[node name="tirante_05" type="Sprite2D" parent="Deserto"]
+z_index = 2
+texture_repeat = 2
+position = Vector2(3502, 238)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("23_kpnlo")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 32, 158)
+
+[node name="DF57_03" type="Sprite2D" parent="Deserto"]
+z_index = 3
+position = Vector2(4205, 224)
+scale = Vector2(0.413043, 0.342857)
+texture = ExtResource("40_8d28y")
+
+[node name="tirante_06" type="Sprite2D" parent="Deserto"]
+z_index = 2
+texture_repeat = 2
+position = Vector2(4197, -80)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("23_kpnlo")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 32, 564)
+
+[node name="DF57_04" type="Sprite2D" parent="Deserto"]
+z_index = 3
+position = Vector2(7400, 464)
+scale = Vector2(0.413043, 0.342857)
+texture = ExtResource("40_8d28y")
+
+[node name="tirante_07" type="Sprite2D" parent="Deserto"]
+z_index = 2
+texture_repeat = 2
+position = Vector2(7392, 150)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("23_kpnlo")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 32, 584)
+
+[node name="DF57_05" type="Sprite2D" parent="Deserto"]
+z_index = 3
+position = Vector2(8080, 464)
+scale = Vector2(0.413043, 0.342857)
+texture = ExtResource("40_8d28y")
+
+[node name="tirante_08" type="Sprite2D" parent="Deserto"]
+z_index = 2
+texture_repeat = 2
+position = Vector2(8072, 150)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("23_kpnlo")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 32, 584)
+
+[node name="DF50c_01" type="Sprite2D" parent="Deserto"]
+z_index = 2
+position = Vector2(1950, 498.5)
+scale = Vector2(0.220833, 0.364583)
+texture = ExtResource("41_p01tp")
+
+[node name="tirante_09" type="Sprite2D" parent="Deserto"]
+z_index = 1
+texture_repeat = 2
+position = Vector2(1910, -80)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("23_kpnlo")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 32, 1128)
+
+[node name="tirante_10" type="Sprite2D" parent="Deserto"]
+z_index = 1
+texture_repeat = 2
+position = Vector2(1974, -80)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("23_kpnlo")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 32, 1128)
+
+[node name="DF50b_01" type="Sprite2D" parent="Deserto"]
+texture_repeat = 2
+position = Vector2(1940, 510)
+scale = Vector2(0.16, 0.35)
+texture = ExtResource("42_5uekk")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 125, 500)
+
+[node name="Prensa_01" type="Node2D" parent="Deserto"]
+metadata/prensa = [NodePath("DF50b_01"), 1950, 700, 0.0]
+
+[node name="Prensa_Cabeca_01" type="Sprite2D" parent="Deserto/Prensa_01"]
+z_index = 2
+position = Vector2(0, -15)
+scale = Vector2(0.220833, 0.2)
+texture = ExtResource("43_et0wh")
+
+[node name="Prensa_Ataque_01" type="Area2D" parent="Deserto/Prensa_01" groups=["enemy_attack"]]
+position = Vector2(0, -13)
+collision_layer = 16
+collision_mask = 0
+monitoring = false
+
+[node name="@CollisionShape2D@203" type="CollisionShape2D" parent="Deserto/Prensa_01/Prensa_Ataque_01"]
+shape = SubResource("RectangleShape2D_iukiu")
+
+[node name="DF50c_02" type="Sprite2D" parent="Deserto"]
+z_index = 2
+position = Vector2(2540, 498.5)
+scale = Vector2(0.220833, 0.364583)
+texture = ExtResource("41_p01tp")
+
+[node name="tirante_11" type="Sprite2D" parent="Deserto"]
+z_index = 1
+texture_repeat = 2
+position = Vector2(2500, -80)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("23_kpnlo")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 32, 1128)
+
+[node name="tirante_12" type="Sprite2D" parent="Deserto"]
+z_index = 1
+texture_repeat = 2
+position = Vector2(2564, -80)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("23_kpnlo")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 32, 1128)
+
+[node name="DF50b_02" type="Sprite2D" parent="Deserto"]
+texture_repeat = 2
+position = Vector2(2530, 510)
+scale = Vector2(0.16, 0.35)
+texture = ExtResource("42_5uekk")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 125, 500)
+
+[node name="Prensa_02" type="Node2D" parent="Deserto"]
+metadata/prensa = [NodePath("DF50b_02"), 2540, 700, 1.25]
+
+[node name="Prensa_Cabeca_02" type="Sprite2D" parent="Deserto/Prensa_02"]
+z_index = 2
+position = Vector2(0, -15)
+scale = Vector2(0.220833, 0.2)
+texture = ExtResource("43_et0wh")
+
+[node name="Prensa_Ataque_02" type="Area2D" parent="Deserto/Prensa_02" groups=["enemy_attack"]]
+position = Vector2(0, -13)
+collision_layer = 16
+collision_mask = 0
+monitoring = false
+
+[node name="@CollisionShape2D@211" type="CollisionShape2D" parent="Deserto/Prensa_02/Prensa_Ataque_02"]
+shape = SubResource("RectangleShape2D_70dmk")
+
+[node name="DF51c_01" type="Sprite2D" parent="Deserto"]
+z_index = 2
+position = Vector2(4500, 213.5)
+scale = Vector2(0.210843, 0.14)
+texture = ExtResource("44_fq7y7")
+
+[node name="tirante_13" type="Sprite2D" parent="Deserto"]
+z_index = 1
+texture_repeat = 2
+position = Vector2(4471, -80)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("23_kpnlo")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 32, 558)
+
+[node name="tirante_14" type="Sprite2D" parent="Deserto"]
+z_index = 1
+texture_repeat = 2
+position = Vector2(4513, -80)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("23_kpnlo")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 32, 558)
+
+[node name="DF51b_01" type="Sprite2D" parent="Deserto"]
+texture_repeat = 2
+position = Vector2(4490, 225)
+scale = Vector2(0.16, 0.35)
+texture = ExtResource("45_15kjt")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 125, 500)
+
+[node name="Prensa_03" type="Node2D" parent="Deserto"]
+metadata/prensa = [NodePath("DF51b_01"), 4500, 415, 0.8]
+
+[node name="Prensa_Cabeca_03" type="Sprite2D" parent="Deserto/Prensa_03"]
+z_index = 2
+position = Vector2(0, -15)
+scale = Vector2(0.209581, 0.0882353)
+texture = ExtResource("46_ivkci")
+
+[node name="Prensa_Ataque_03" type="Area2D" parent="Deserto/Prensa_03" groups=["enemy_attack"]]
+position = Vector2(0, -13)
+collision_layer = 16
+collision_mask = 0
+monitoring = false
+
+[node name="@CollisionShape2D@219" type="CollisionShape2D" parent="Deserto/Prensa_03/Prensa_Ataque_03"]
+shape = SubResource("RectangleShape2D_awqvp")
+
+[node name="DF52b_01" type="Sprite2D" parent="Deserto"]
+position = Vector2(2250, 691)
+scale = Vector2(0.229885, 0.145455)
+texture = ExtResource("47_dr2qr")
+
+[node name="DF52_01" type="Sprite2D" parent="Deserto"]
+z_index = 1
+position = Vector2(2250, 668)
+scale = Vector2(0.21875, 0.21875)
+texture = ExtResource("48_vdvie")
+metadata/serra = true
+
+[node name="Ataque_01" type="Area2D" parent="Deserto" groups=["enemy_attack"]]
+position = Vector2(2250, 669.5)
+collision_layer = 16
+collision_mask = 0
+monitoring = false
+
+[node name="Forma" type="CollisionShape2D" parent="Deserto/Ataque_01"]
+shape = SubResource("RectangleShape2D_b7hf4")
+
+[node name="DF27_01" type="Sprite2D" parent="Deserto"]
+z_index = -3
+texture_repeat = 2
+position = Vector2(4875, 415)
+scale = Vector2(0.57, 0.55)
+texture = ExtResource("49_f4h7d")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 129.825, 663.636)
+
+[node name="Plataforma_01" type="AnimatableBody2D" parent="Deserto"]
+position = Vector2(4860, 415)
+collision_mask = 0
+metadata/carrinho = [Vector2(4860, 415), Vector2(0, 355)]
+
+[node name="Colisao" type="CollisionShape2D" parent="Deserto/Plataforma_01"]
+position = Vector2(60, 8)
+shape = SubResource("RectangleShape2D_wkr0o")
+
+[node name="Arte" type="Sprite2D" parent="Deserto/Plataforma_01"]
+z_index = 1
+position = Vector2(60, 12)
+scale = Vector2(0.25, 0.109091)
+texture = ExtResource("50_w5wqa")
+
+[node name="DF55b_01" type="Sprite2D" parent="Deserto"]
+z_index = -2
+texture_repeat = 2
+position = Vector2(5480, 650)
+scale = Vector2(0.3, 0.25)
+texture = ExtResource("51_6882c")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 1866.67, 64)
+
+[node name="Plataforma_02" type="AnimatableBody2D" parent="Deserto"]
+position = Vector2(5490, 770)
+collision_mask = 0
+metadata/carrinho = [Vector2(5490, 770), Vector2(430, 0)]
+
+[node name="Colisao" type="CollisionShape2D" parent="Deserto/Plataforma_02"]
+position = Vector2(60, 8)
+shape = SubResource("RectangleShape2D_edqu1")
+
+[node name="Arte" type="Sprite2D" parent="Deserto/Plataforma_02"]
+z_index = 1
+position = Vector2(60, -46)
+scale = Vector2(0.25, 0.275)
+texture = ExtResource("52_ovehb")
+
+[node name="DF56_inativa_01" type="Sprite2D" parent="Deserto"]
+position = Vector2(6290, 765)
+scale = Vector2(0.18, 0.0810811)
+texture = ExtResource("53_qxapy")
+
+[node name="DF56_aviso_01" type="Sprite2D" parent="Deserto"]
+z_index = 1
+position = Vector2(6290, 765)
+scale = Vector2(0.18, 0.0810811)
+texture = ExtResource("54_looyo")
+metadata/valvula = [0, NodePath("Anim_DF81_01"), NodePath("Ataque_02")]
+
+[node name="Anim_DF81_01" type="AnimatedSprite2D" parent="Deserto"]
+position = Vector2(6290, 693)
+scale = Vector2(0.664062, 0.78125)
+sprite_frames = SubResource("SpriteFrames_a5vlt")
+autoplay = "default"
+
+[node name="Ataque_02" type="Area2D" parent="Deserto" groups=["enemy_attack"]]
+position = Vector2(6290, 702)
+collision_layer = 16
+collision_mask = 0
+monitoring = false
+
+[node name="Forma" type="CollisionShape2D" parent="Deserto/Ataque_02"]
+shape = SubResource("RectangleShape2D_smu8h")
+
+[node name="DF56_inativa_02" type="Sprite2D" parent="Deserto"]
+position = Vector2(6520, 765)
+scale = Vector2(0.18, 0.0810811)
+texture = ExtResource("53_qxapy")
+
+[node name="DF56_aviso_02" type="Sprite2D" parent="Deserto"]
+z_index = 1
+position = Vector2(6520, 765)
+scale = Vector2(0.18, 0.0810811)
+texture = ExtResource("54_looyo")
+metadata/valvula = [1, NodePath("Anim_DF81_02"), NodePath("Ataque_03")]
+
+[node name="Anim_DF81_02" type="AnimatedSprite2D" parent="Deserto"]
+position = Vector2(6520, 693)
+scale = Vector2(0.664062, 0.78125)
+sprite_frames = SubResource("SpriteFrames_q064f")
+autoplay = "default"
+
+[node name="Ataque_03" type="Area2D" parent="Deserto" groups=["enemy_attack"]]
+position = Vector2(6520, 702)
+collision_layer = 16
+collision_mask = 0
+monitoring = false
+
+[node name="Forma" type="CollisionShape2D" parent="Deserto/Ataque_03"]
+shape = SubResource("RectangleShape2D_crw0g")
+
+[node name="Porta_in" type="StaticBody2D" parent="Deserto"]
+collision_mask = 0
+metadata/porta = ["in", NodePath("Porta_in/Colisao"), NodePath("DF38_fechada_01"), NodePath("DF38_aberta_01")]
+
+[node name="Colisao" type="CollisionShape2D" parent="Deserto/Porta_in"]
+position = Vector2(7020, 675)
+shape = SubResource("RectangleShape2D_b3170")
+
+[node name="DF38_fechada_01" type="Sprite2D" parent="Deserto"]
+z_index = 1
+position = Vector2(7020, 675)
+scale = Vector2(0.3125, 0.664336)
+texture = ExtResource("56_gtmkt")
+
+[node name="DF38_aberta_01" type="Sprite2D" parent="Deserto"]
+z_index = -3
+position = Vector2(7020, 675)
+scale = Vector2(0.3125, 0.664336)
+texture = ExtResource("57_jg820")
+
+[node name="Porta_out" type="StaticBody2D" parent="Deserto"]
+collision_mask = 0
+metadata/porta = ["out", NodePath("Porta_out/Colisao"), NodePath("DF38_fechada_02"), NodePath("DF38_aberta_02")]
+
+[node name="Colisao" type="CollisionShape2D" parent="Deserto/Porta_out"]
+position = Vector2(8520, 675)
+shape = SubResource("RectangleShape2D_nayqk")
+
+[node name="DF38_fechada_02" type="Sprite2D" parent="Deserto"]
+z_index = 1
+position = Vector2(8520, 675)
+scale = Vector2(0.3125, 0.664336)
+texture = ExtResource("56_gtmkt")
+
+[node name="DF38_aberta_02" type="Sprite2D" parent="Deserto"]
+z_index = -3
+position = Vector2(8520, 675)
+scale = Vector2(0.3125, 0.664336)
+texture = ExtResource("57_jg820")
+
+[node name="Fundo_01" type="Node2D" parent="."]
+z_index = -60
+script = ExtResource("58_ikbrj")
+depth = 0.06
+tex = ExtResource("59_efloj")
+img_scale = 0.645
+top = -434.4
+span = Vector2(-2000, 4000)
+single = true
+left = -657.9
+tiled = false
+escala_min = 0.0
+
+[node name="Fundo_02" type="Node2D" parent="."]
+z_index = -59
+script = ExtResource("58_ikbrj")
+depth = 0.2
+tex = ExtResource("60_cd4jh")
+img_scale = 1.0
+top = -260.0
+span = Vector2(-2000, 4000)
+single = true
+left = -686.0
+tiled = false
+escala_min = 0.0
+
+[node name="Fundo_03" type="Node2D" parent="."]
+z_index = -58
+texture_repeat = 2
+script = ExtResource("58_ikbrj")
+depth = 0.38
+tex = ExtResource("61_xlteu")
+img_scale = 1.0
+top = -165.0
+span = Vector2(-879.6, 4261.6)
+single = false
+left = 0.0
+tiled = true
+escala_min = 0.0
+
+[node name="EstruturasDeFundo" type="Node2D" parent="."]
+z_index = -13
+script = ExtResource("62_24g3u")
+depth = 0.85
+
+[node name="DF204_estrutura_0_0_01" type="Sprite2D" parent="EstruturasDeFundo"]
+material = SubResource("ShaderMaterial_rg7qc")
+position = Vector2(14, 649.75)
+scale = Vector2(0.4, 0.4)
+texture = SubResource("AtlasTexture_nt8ct")
+centered = false
+offset = Vector2(-512, -1536)
+
+[node name="DF204_estrutura_1024_1536_01" type="Sprite2D" parent="EstruturasDeFundo"]
+material = SubResource("ShaderMaterial_v78yb")
+position = Vector2(374, 649.75)
+scale = Vector2(0.4, 0.4)
+texture = SubResource("AtlasTexture_5louw")
+centered = false
+offset = Vector2(-512, -1536)
+
+[node name="DF204_estrutura_1024_0_01" type="Sprite2D" parent="EstruturasDeFundo"]
+position = Vector2(1559.75, 649.75)
+scale = Vector2(0.4, 0.4)
+texture = SubResource("AtlasTexture_gh51d")
+centered = false
+offset = Vector2(-512, -1536)
+
+[node name="DF204_estrutura_4096_0_01" type="Sprite2D" parent="EstruturasDeFundo"]
+position = Vector2(2023, 649.75)
+scale = Vector2(0.4, 0.4)
+texture = SubResource("AtlasTexture_iav61")
+centered = false
+offset = Vector2(-512, -1536)
+
+[node name="DF204_estrutura_2048_1536_01" type="Sprite2D" parent="EstruturasDeFundo"]
+position = Vector2(2324.75, 649.75)
+scale = Vector2(0.4, 0.4)
+texture = SubResource("AtlasTexture_46j6y")
+centered = false
+offset = Vector2(-512, -1536)
+
+[node name="DF204_estrutura_3072_1536_01" type="Sprite2D" parent="EstruturasDeFundo"]
+position = Vector2(4466.75, 709.25)
+scale = Vector2(0.4, 0.4)
+texture = SubResource("AtlasTexture_41gfd")
+centered = false
+offset = Vector2(-512, -1536)
+
+[node name="DF204_estrutura_2048_0_01" type="Sprite2D" parent="EstruturasDeFundo"]
+position = Vector2(5270, 709.25)
+scale = Vector2(0.4, 0.4)
+texture = SubResource("AtlasTexture_1iy8p")
+centered = false
+offset = Vector2(-512, -1536)
+
+[node name="Marcadores" type="Node2D" parent="."]
+
+[node name="Inicio" type="Marker2D" parent="Marcadores"]
+position = Vector2(185, 690)
+
+[node name="FendaDeRetorno" type="Marker2D" parent="Marcadores"]
+position = Vector2(8720, 770)
+
+[node name="PreviaEditor" type="Node2D" parent="Marcadores"]
+script = ExtResource("64_ri6ng")
+mostrar = true
+mostrar_salas = true
