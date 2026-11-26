@@ -29,6 +29,33 @@ Também conferem a âncora de cada folha (pés em y 472, centro em (192, 256), e
 
 **Corpo da Forja (DF100):** segue as medidas do pedido v2 (lente no recorte de cima, escotilhas, peito e grade), mas o acabamento é mais chapado que o resto da fase. Montado no jogo, bate com o `DF100_montagem.png` do GPT.
 
+
+## Forja-Mãe (DF100–DF112 v2): segunda verificação (26/11/2026)
+
+Medidas tiradas dos PNGs (pixels do original) e comparadas com o pedido v2 (etapa 7). Cada quadro também foi conferido a olho.
+
+| ID | Pedido | Entregue | Situação |
+|---|---|---|---|
+| DF100 | corpo 1.400 × 1.200, base em y 2008; vãos: lente Ø 360 em (1024, 900), peito 420 × 360 em (1024, 1330), escotilhas 240 × 160 em (640, 820) e (1408, 820), grade 700 × 240 em (1024, 1820) | corpo 1.400 × 1.276, base em y 2007; peito e grade exatos; a lente fica num recorte em U aberto para cima (y 720–1080); as escotilhas são molduras de 240 de largura acima do corpo | **ok**, mas o acabamento é mais chapado que o do resto da fase |
+| DF101 | Ø 340 no centro, 4 estados (repouso âmbar, aviso, mira vermelha, apagada) | Ø 340 exato, 4 estados distintos | **ok** |
+| DF102 | câmara 400 × 340; fechada, aberta, danificada e 3 placas soltas | 360 × 326, estados distintos, placas na posição de encaixe | **ok** |
+| DF103 | carrinho de 360, rodas no trilho em y 120, pivô do braço em (512, 400) | 360 de largura, mas carroceria em cima (y 111–280) e rodas embaixo (até y 414): é um carrinho de chão | **errado**; no jogo vai virado na vertical |
+| DF104 | viga de 140 px com pistão ao lado e articulações redondas, pivôs (112, 256) e (912, 256) | barra fina (≈ 30 px) com dois truques de roda pendurados; o 140 px da caixa conta as rodas. Não tem pistão nem articulação | **errado**; é o motivo dos braços parecerem um trilho |
+| DF105 | bloco 560 × 240, encaixe no braço em (512, 96), face em y 432; 3 "preso" com âncora **ciano** acesa | bloco 560 × 239 e face em y 430 certos; não há peça de encaixe acima do bloco (começa em y 192). No quadro 3 não há ciano, só o núcleo laranja | **parcial**: vão de 20 px entre a junta e o martelo; o "preso" não mostra a âncora (o jogo mostra o ponto de gancho por cima) |
+| DF106 | Ø 160; íntegro, danificado, destruído | Ø 160; o 1 e o 2 são quase iguais (diferença 0,6); o 3 apagado | **parcial**: dano não aparece |
+| DF107 | 240 × 160; 2 = aviso com luz **vermelha** | 240 × 160; o 2 é idêntico ao 1 (diferença 0,0), sem luz nenhuma | **errado**: o jogo usa esse quadro para avisar que vêm drones. Paliativo no código: a escotilha fica vermelha durante o aviso |
+| DF108 | 340 × 120; 1–6 fogo pulsando | 340 × 120; 1–6 quase iguais (diferença < 1) | **parcial**: o fogo quase não pulsa |
+| DF110 | feixe vermelho de 60 px no eixo y 128, impacto com contato em (128, 480) | 60 px em y 98–157, impacto até y 479 | **ok** |
+| DF111, DF112 | centro (192, 256), 6 e 8 quadros | centrados, crescendo quadro a quadro | **ok** |
+
+**Pedir ao GPT para refazer:**
+- DF103: rodas em cima, no trilho, e pivô embaixo.
+- DF104: viga grossa com pistão e articulações redondas.
+- DF105: peça de encaixe em (512, 96) e âncora ciano no quadro 3.
+- DF106: dano visível no quadro 2.
+- DF107: luz vermelha no quadro 2.
+- DF108: pulsação do fogo nos quadros 1–6.
+
 ## Tabelas da verificação automática
 
 | ID | arquivo | medidas | SHA | quadros (esperado) | âncora | encosta na borda | pixels soltos | quadros iguais | dif. média p/ v1 |

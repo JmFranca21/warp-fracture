@@ -567,15 +567,18 @@ func _update_drones(dt: float) -> void:
 	if drones_t <= 1.0 and drones_t + dt > 1.0 and drones.size() < 2:
 		for h in hatches:
 			h.texture = DFArt.cell("DF107", 1)
+			h.modulate = Color(1.0, 0.45, 0.35)     # a DF107 v2 veio sem a luz vermelha do aviso (q2 = q1)
 		AudioMgr.sfx("alarme", HATCH[0], -8.0, 0.0)
 	if drones_t <= 0.0:
 		drones_t = 10.0
 		if drones.size() >= 2:
 			for h in hatches:
 				h.texture = DFArt.cell("DF107", 0)
+				h.modulate = Color.WHITE
 			return
 		for i in 2:
 			hatches[i].texture = DFArt.cell("DF107", 3)
+			hatches[i].modulate = Color.WHITE
 			var d := DesertEnemy.new()
 			d.level = level
 			d.drone = true
