@@ -56,6 +56,27 @@ Atualizado pelos agentes. Leia `PROTOCOLO.md` e `FLUXO_AUTOMATICO.md` antes de c
 | DF204 | Estruturas de fundo do Deserto (10 peças) | APROVADO (Pacote 5, 25/11/2026) · INTEGRADO (dev/deserto, 25/11/2026) | — | [Atlas e cenas](entregas/DF204/ENTREGA_v2.md) | — |
 | DF203 | Fundo da Câmara da Forja | APROVADO (Pacote 4, 25/11/2026) · INTEGRADO (dev/deserto, 25/11/2026) | — | [Entrega](entregas/DF203/ENTREGA.md) | — |
 | DF201 | Dunas de Sucata · fundo intermediário diurno | APROVADO (Pacote 3, 25/11/2026) · INTEGRADO (dev/deserto, 25/11/2026) | [DF](pedidos/DF_refacao_cena.md) | [Camadas e parallax](entregas/DF201/ENTREGA_v2.md) | — |
+| DF200 diurno | Céu aprovado das Dunas | APROVADO (Pacote 3) | [DF](pedidos/DF_refacao_cena.md) | [Céu diurno](entregas/DF200/DF200_ceu_diurno.png) | — |
+| DF202 | Fundos da Fábrica e do Salão | APROVADO (Pacote 4, 25/11/2026) | — | [Entrega](entregas/DF202/ENTREGA.md) | — |
+| DF207 | Peças suspensas | APROVADO (Pacote 7, 25/11/2026) | — | [Entrega](entregas/DF207/ENTREGA_v2.md) | — |
+| DF225 | Comportas da Câmara e da Saída | APROVADO (Pacote 14) | — | [Entrega](entregas/DF225/ENTREGA_v2.md) | — |
+| DF210 | Estação, placa e coletáveis | ENTREGUE (Pacote 15) | — | [Entrega](entregas/DF210/ENTREGA_v2.md) | — |
+| DF87–DF99 v2 | Autômato, braço-ímã e habilidades | ENTREGUE (Pacote 16) | — | [Corpo](entregas/DF90/ENTREGA_v2.md) · [Braço](entregas/DF97/ENTREGA_v2.md) · [Pulso](entregas/DF99/ENTREGA_v2.md) | — |
+| DF60–DF71 v2 | Sentinela, drone e projéteis | ENTREGUE (Pacote 17) | — | [Sentinela](entregas/DF60/ENTREGA_v2.md) · [Drone](entregas/DF66/ENTREGA_v2.md) | — |
+| DF80–DF85 v2 | Efeitos de cenário e combate | ENTREGUE (Pacote 18) | — | [Entrega](entregas/DF80/ENTREGA_v2.md) | — |
+| DF100–DF112 v2 | Forja-Mãe modular e efeitos | ENTREGUE (Pacote 19) | — | [Entrega](entregas/DF100/ENTREGA_v2.md) | — |
+| DF_UNIDADE | Conferência visual do Deserto | ENTREGUE (Pacote 20) | — | [Pranchas e encaixe da mira](entregas/DF_UNIDADE/ENTREGA.md) | — |
+| DF224 | Plataformas móveis, válvula e gancho | APROVADO (Pacote 13) | — | [Entrega](entregas/DF224/ENTREGA_v2.md) | — |
+| DF223 | Prensas e serra | APROVADO (Pacote 12) | — | [Entrega](entregas/DF223/ENTREGA_v2.md) | — |
+| DF222 | Esteira e trilhos | APROVADO (Pacote 11) | — | [Entrega](entregas/DF222/ENTREGA_v2.md) | — |
+| DF221 | Iluminação e enfeites de parede (5 peças) | APROVADO (Pacote 10) | — | [Peças e cenas](entregas/DF221/ENTREGA_v2.md) | — |
+| DF220 | Marcos do cenário (6 peças) | APROVADO (Pacote 9) | — | [Peças e cenas](entregas/DF220/ENTREGA_v2.md) | — |
+| DF209 | Efeitos de ambiente | APROVADO (Pacote 8 refeito) | — | [Folhas e animações](entregas/DF209/ENTREGA_v2.md) | — |
+| DF208 | Primeiro plano exterior e interior | APROVADO (Pacote 7, 25/11/2026) | — | [Entrega](entregas/DF208/ENTREGA_v2.md) | — |
+| DF206 | Decoração das Dunas e da Fábrica (24 peças) | APROVADO (Pacote 6, 25/11/2026) | — | [Pranchas e cenas](entregas/DF206/ENTREGA_v2.md) | — |
+| DF204 | Estruturas de fundo do Deserto (10 peças) | APROVADO (Pacote 5, 25/11/2026) | — | [Atlas e cenas](entregas/DF204/ENTREGA_v2.md) | — |
+| DF203 | Fundo da Câmara da Forja | APROVADO (Pacote 4, 25/11/2026) | — | [Entrega](entregas/DF203/ENTREGA.md) | — |
+| DF201 | Dunas de Sucata · fundo intermediário diurno | APROVADO (Pacote 3, 25/11/2026) | [DF](pedidos/DF_refacao_cena.md) | [Camadas e parallax](entregas/DF201/ENTREGA_v2.md) | — |
 | DF01 | Ficha do Robô e do Drone do deserto | ENTREGUE (v2) · APROVADO | [DF](pedidos/DF_deserto_ferrugem.md) | [ficha e conferências](entregas/DF01/ENTREGA_v2.md) | João Marcelo, 25/11/2026 |
 | DF10–DF12 | Fundos das Dunas em parallax | ENTREGUE | [DF](pedidos/DF_deserto_ferrugem.md) | — | — |
 | DF20–DF28 | Terreno, paredes, piso, esteira, trilho e cabo | ENTREGUE | [DF](pedidos/DF_deserto_ferrugem.md) | — | — |

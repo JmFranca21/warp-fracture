@@ -1,0 +1,182 @@
+{
+  "unidade": "px da célula, origem no canto superior esquerdo",
+  "celula": {
+    "largura": 384,
+    "altura": 512
+  },
+  "colunas": 4,
+  "linha_apoio_corpo": 472,
+  "corpo_ombro_por_quadro": {
+    "DF90_automato_parado_v2": [
+      {
+        "x": 178,
+        "y": 279
+      },
+      {
+        "x": 178,
+        "y": 278
+      },
+      {
+        "x": 178,
+        "y": 277
+      },
+      {
+        "x": 178,
+        "y": 278
+      },
+      {
+        "x": 178,
+        "y": 278
+      },
+      {
+        "x": 178,
+        "y": 278
+      }
+    ],
+    "DF91_automato_andar_v2": [
+      {
+        "x": 171,
+        "y": 293
+      },
+      {
+        "x": 171,
+        "y": 291
+      },
+      {
+        "x": 185,
+        "y": 289
+      },
+      {
+        "x": 178,
+        "y": 278
+      },
+      {
+        "x": 166,
+        "y": 295
+      },
+      {
+        "x": 165,
+        "y": 294
+      },
+      {
+        "x": 185,
+        "y": 289
+      },
+      {
+        "x": 178,
+        "y": 278
+      }
+    ],
+    "DF92_automato_pulo_v2": [
+      {
+        "x": 159,
+        "y": 313
+      },
+      {
+        "x": 178,
+        "y": 264
+      },
+      {
+        "x": 179,
+        "y": 306
+      },
+      {
+        "x": 180,
+        "y": 307
+      }
+    ],
+    "DF93_automato_queda_v2": [
+      {
+        "x": 180,
+        "y": 306
+      },
+      {
+        "x": 177,
+        "y": 272
+      },
+      {
+        "x": 177,
+        "y": 270
+      }
+    ],
+    "DF94_automato_arranque_v2": [
+      {
+        "x": 159,
+        "y": 314
+      },
+      {
+        "x": 189,
+        "y": 334
+      },
+      {
+        "x": 189,
+        "y": 334
+      },
+      {
+        "x": 178,
+        "y": 278
+      }
+    ],
+    "DF95_automato_dano_v2": [
+      {
+        "x": 133,
+        "y": 262
+      },
+      {
+        "x": 178,
+        "y": 278
+      }
+    ],
+    "DF96_automato_derrota_v2": [
+      {
+        "x": 134,
+        "y": 266
+      },
+      {
+        "x": 135,
+        "y": 272
+      },
+      {
+        "x": 133,
+        "y": 381
+      },
+      {
+        "x": 133,
+        "y": 381
+      },
+      {
+        "x": 210,
+        "y": 369
+      },
+      {
+        "x": 210,
+        "y": 369
+      }
+    ]
+  },
+  "braco": {
+    "pivo": {
+      "x": 60,
+      "y": 256
+    },
+    "ponta_nominal_por_quadro": [
+      {
+        "x": 280,
+        "y": 256
+      },
+      {
+        "x": 270,
+        "y": 256
+      },
+      {
+        "x": 276,
+        "y": 256
+      },
+      {
+        "x": 280,
+        "y": 256
+      }
+    ]
+  },
+  "observacao": "Posições do ombro estimadas visualmente nas poses entregues. Validar a junção e o ponto de saída no Godot."
+}
