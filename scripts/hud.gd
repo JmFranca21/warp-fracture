@@ -209,12 +209,7 @@ func _draw_stats(p: Player) -> void:
 			var sh := Art.shard(c, 1.0)
 			sh.append(sh[0])
 			draw_polyline(sh, Color(0.5, 0.6, 0.7, 0.6), 1.5, true)
-	if main.modules.has("arpao"):
-		var mc := Vector2(62, 118)
-		draw_arc(mc, 11.0, 0, TAU, 24, Color(0.35, 0.92, 1.0, 0.85), 2.0, true)
-		draw_line(mc + Vector2(-5, 5), mc + Vector2(4, -4), Color(1, 1, 1), 2.0, true)
-		draw_arc(mc + Vector2(4, -1), 4.0, -PI * 0.9, PI * 0.4, 10, Color(1, 1, 1), 2.0, true)
-		Art.text(self, mc + Vector2(16, 5), "F", 13, Color(0.75, 0.85, 0.95))
+	_draw_abilities(p)
 	if p.form == "inverno":
 		_draw_geada(p, Vector2(222, 88))
 	var cc := Vector2(126, 90)
@@ -231,6 +226,57 @@ func _draw_stats(p: Player) -> void:
 		else:
 			pts2.append(pts2[0])
 			draw_polyline(pts2, Color(0.5, 0.6, 0.7, 0.6), 1.5, true)
+
+
+## Habilidades da forma atual, abaixo do orbe de energia: tecla, ícone e nome (revisão geral).
+## O especial que custa energia acende quando há 1/3 do orbe; apagado, fica cinza.
+func _draw_abilities(p: Player) -> void:
+	var rows := []          # [tecla, nome, ícone, pronto]
+	var ready := energy_disp >= 32.5
+	match p.form:
+		"automato":
+			rows = [["F", "ÍMÃ: argola ou drone", "ima", true], ["K", "PULSO MAGNÉTICO", "pulso", ready]]
+		"lince":
+			rows = [["K", "CLARÃO", "pulso", ready]]
+		"yeti":
+			if main.modules.has("arpao"):
+				rows.append(["F", "ARPÃO", "arpao", true])
+			rows.append(["K", "CHUTE GIRATÓRIO", "chute", true])
+		_:
+			if main.modules.has("arpao"):
+				rows.append(["F", "ARPÃO", "arpao", true])
+			rows.append(["K", "TIRO CARREGADO", "carga", ready])
+	var y := 118.0
+	for r in rows:
+		var mc := Vector2(62, y)
+		var on: bool = r[3]
+		var col := Color(0.35, 0.92, 1.0, 0.9) if on else Color(0.5, 0.58, 0.66, 0.6)
+		var white := Color(1, 1, 1, 0.95) if on else Color(0.7, 0.75, 0.8, 0.6)
+		draw_circle(mc, 13.0, Color(0.02, 0.03, 0.05, 0.75))
+		match r[2]:
+			"arpao":
+				draw_arc(mc, 11.0, 0, TAU, 24, col, 2.0, true)
+				draw_line(mc + Vector2(-5, 5), mc + Vector2(4, -4), white, 2.0, true)
+				draw_arc(mc + Vector2(4, -1), 4.0, -PI * 0.9, PI * 0.4, 10, white, 2.0, true)
+			"ima":
+				draw_arc(mc + Vector2(0, -1), 6.0, PI, TAU, 12, col, 4.0, true)
+				draw_line(mc + Vector2(-6, -1), mc + Vector2(-6, 6), col, 4.0)
+				draw_line(mc + Vector2(6, -1), mc + Vector2(6, 6), col, 4.0)
+				draw_line(mc + Vector2(-8, 6), mc + Vector2(-4, 6), white, 3.0)
+				draw_line(mc + Vector2(4, 6), mc + Vector2(8, 6), white, 3.0)
+			"pulso":
+				var k := 0.5 + 0.5 * sin(t * 5.0) if on else 0.0
+				draw_circle(mc, 3.0, white)
+				draw_arc(mc, 6.5 + k * 1.5, 0, TAU, 20, col, 2.0, true)
+				draw_arc(mc, 10.5, 0, TAU, 24, Color(col, col.a * (0.4 + 0.4 * k)), 1.5, true)
+			"carga":
+				draw_circle(mc, 5.0 + (1.0 if on else 0.0), col)
+				draw_line(mc + Vector2(-10, 0), mc + Vector2(-6, 0), white, 2.0)
+			"chute":
+				draw_arc(mc, 8.0, 0.4, TAU - 0.4, 18, col, 2.5, true)
+				draw_colored_polygon(PackedVector2Array([mc + Vector2(8, -6), mc + Vector2(12, 1), mc + Vector2(4, 0)]), col)
+		Art.text(self, mc + Vector2(18, 5), "%s  %s" % [r[0], r[1]], 13, Color(0.8, 0.9, 1.0, 0.95) if on else Color(0.6, 0.66, 0.72, 0.7))
+		y += 30.0
 
 
 ## Geada de Nivária: floco com três pontas que se enchem; pisca quando o traje congela.

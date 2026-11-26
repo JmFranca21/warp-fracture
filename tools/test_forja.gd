@@ -128,7 +128,16 @@ func _run() -> void:
 
 	# --- estação e entrada
 	_check(game.level.objects.get_children().any(func(n): return n is Checkpoint and absf(n.position.x - 6650) < 1.0), "estação antes da porta da Câmara")
-	_check(desert.door_open("in") and not desert.door_open("out"), "porta de entrada aberta; saída trancada")
+	# revisão geral: a entrada fica presa por placas imantadas até o Pulso Magnético (antes: já aberta)
+	_check(not desert.door_open("in") and desert.mag_lock != null and not desert.door_open("out"), "porta de entrada imantada; saída trancada")
+	p.global_position = Vector2(6930, 760)
+	p.energy = 40.0
+	await ticks(4)
+	await tap("special")
+	await ticks(6)
+	_check(desert.door_open("in") and game.events.has("porta_imantada"), "o Pulso perto das placas abre a entrada da Câmara")
+	p.global_position = Vector2(6650, 760)
+	await ticks(4)
 	Input.action_press("right")
 	var started := false
 	for i in 300:

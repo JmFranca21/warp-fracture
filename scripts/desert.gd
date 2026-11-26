@@ -75,6 +75,9 @@ var ambient: Array = []      # [AnimatedSprite2D, período, fase] (faíscas DF20
 var dust_clock := 0.0
 var doors := {}          # "in"/"out" → [corpo, fechada, aberta]
 var forja: Forja = null
+var mag_lock: MagLock = null    # porta imantada da Câmara (revisão geral): só o Pulso Magnético abre
+var lock_hint := false
+const MAG_LOCK := Vector2(7020, 676)     # centro das placas na porta "in" (DOOR_IN, 60 × 190 a partir de y 580)
 
 
 static func layout() -> Dictionary:
@@ -85,6 +88,7 @@ static func layout() -> Dictionary:
 	for i in points.size():
 		pickups.append(["cell",points[i],"df_c%d" % i])
 	pickups.append(["heal", Vector2(6560, 740), "df_h1"])
+	pickups.append(["energy", Vector2(6800, 735), "", 9.0])     # antes da porta imantada: garante o 1º Pulso
 	pickups.append(["energy", Vector2(7120, 735), "", 9.0])     # Câmara: energia que reaparece (Pulso da fase 3)
 	pickups.append(["energy", Vector2(8420, 735), "", 9.0])
 	var hooks := [[HOOKS[0]],[HOOKS[1]],[HOOKS[2],125.0]]
@@ -97,8 +101,10 @@ static func layout() -> Dictionary:
 		"checkpoints":[Vector2(1650,700),Vector2(4730,415),Vector2(6650,770)],"terminals":[],"signs":[
 			[Vector2(330,700), "AUTÔMATO: lento e pesado, não recua ao levar dano. Clique esquerdo (ou J) dispara a REBITADEIRA."],
 			[Vector2(700,700), "F perto de uma argola ciano: o ÍMÃ DE FASE puxa você até ela. Segure a direção do outro lado: você atravessa o vão sozinho."],
-			[Vector2(1320,700), "Sem âncora ao alcance, F puxa um drone até o chão. Clique direito (ou K) com 1/3 de energia: PULSO MAGNÉTICO."],
-			[Vector2(6560,770), "IRIS: \"A energia do fragmento vem de trás desta porta. É o núcleo da fábrica.\""]],
+			[Vector2(1320,700), "ÍMÃ (F) sem argola ao alcance: puxa o DRONE marcado até o chão. Lá embaixo ele fica atordoado; no fosso ou num jato, explode."],
+			[Vector2(1520,700), "PULSO MAGNÉTICO (K ou clique direito, 1/3 de energia): onda curta em volta do corpo. Drones caem, robôs travam por 2 s, tiros estouram. O anel tracejado mostra o alcance."],
+			[Vector2(6560,770), "IRIS: \"A energia do fragmento vem de trás desta porta. É o núcleo da fábrica.\""],
+			[Vector2(6900,770), "PORTA IMANTADA: placas magnéticas travam a Câmara. Use o PULSO MAGNÉTICO perto delas."]],
 		"pickups":pickups,
 		"return_rift":Vector2(8720,770), "arrival_rift":Vector2(105,700),
 		"rooms":[["A",Rect2(0,-80,1700,1140),"Dunas de sucata"],["B",Rect2(1700,-80,1880,1140),"Fábrica autônoma"],
@@ -402,6 +408,78 @@ func _ready() -> void:
 	var done: bool = level.main.boss_done.has("deserto")
 	set_door("in", true)
 	set_door("out", done and level.main.frags.has("deserto"))
+	# Porta imantada (revisão geral): antes da luta, a entrada da Câmara fica presa por placas
+	# magnéticas e só o Pulso Magnético solta. É a mesma regra do peito da Forja na fase 3, ensinada
+	# antes do chefe, e a primeira situação em que o jogo exige o Pulso.
+	if not done and not level.main.events.has("porta_imantada"):
+		set_door("in", false)
+		mag_lock = MagLock.new()
+		mag_lock.position = MAG_LOCK
+		add_child(mag_lock)
+
+
+## Pulso Magnético perto da porta imantada: as placas voam e a porta abre (fica aberta no save).
+func on_pulse(c: Vector2) -> void:
+	if mag_lock == null or not mag_lock.pulse_active():
+		return
+	if c.distance_to(MAG_LOCK) > mag_lock.pulse_radius():
+		return
+	mag_lock.release()
+	mag_lock = null
+	set_door("in", true)
+	level.main.events["porta_imantada"] = true
+	AudioMgr.sfx("placas", MAG_LOCK, 0.0, 0.0)
+	AudioMgr.sfx("porta", MAG_LOCK, -2.0, 0.0)
+	level.main.hud.say(["IRIS: \"Placas soltas. O núcleo da Forja usa a mesma trava: guarde energia para o Pulso.\""])
+
+
+## Placas magnéticas da porta da Câmara: as três placas do peito da Forja (DF102, quadros 4–6) com o
+## halo ciano do que reage ao magnetismo. Voam como as do peito quando o Pulso acerta.
+class MagLock extends Node2D:
+	var t := 0.0
+	var plates: Array = []
+	var glow: Sprite2D
+
+	func _ready() -> void:
+		add_to_group("pulse_target")
+		z_index = 3
+		glow = Art.glow(Color(0.35, 0.92, 1.0, 0.35), 70)
+		add_child(glow)
+		for i in 3:
+			var pl := Sprite2D.new()
+			pl.texture = DFArt.cell("DF102", 3 + i)
+			pl.scale = Vector2.ONE * DFArt.NODE
+			add_child(pl)
+			plates.append(pl)
+
+	func _process(dt: float) -> void:
+		t += dt
+		glow.modulate.a = 0.55 + 0.25 * sin(t * 3.0)
+
+	func pulse_active() -> bool:
+		return is_inside_tree()
+
+	func pulse_point() -> Vector2:
+		return global_position
+
+	func pulse_radius() -> float:
+		return 150.0 + 30.0
+
+	func release() -> void:
+		remove_from_group("pulse_target")
+		var floor_y := 770.0 - position.y
+		for i in plates.size():
+			var pl: Sprite2D = plates[i]
+			var tw := pl.create_tween()
+			tw.set_parallel(true)
+			tw.tween_property(pl, "position", Vector2(-60.0 - i * 30.0, -120.0 + i * 25.0), 0.45).set_ease(Tween.EASE_OUT)
+			tw.tween_property(pl, "rotation", -2.0 + i * 1.6, 0.45)
+			tw.chain().tween_property(pl, "position:y", floor_y - 8.0, 0.4).set_ease(Tween.EASE_IN)
+			tw.chain().tween_interval(1.6)
+			tw.chain().tween_property(pl, "modulate:a", 0.0, 0.5)
+		var tg := glow.create_tween()
+		tg.tween_property(glow, "modulate:a", 0.0, 0.3)
+		get_tree().create_timer(3.4, false).timeout.connect(queue_free)
 
 
 ## Cena: refaz as listas que _physics_process usa a partir dos metadados gravados por _montar().
@@ -687,6 +765,13 @@ func _physics_process(dt: float) -> void:
 	saw.rotation = clock * 5.5
 	belt.region_rect.position.x = -clock * 130     # 65 px/s no jogo, a mesma velocidade que empurra
 	var p := level.player
+	if mag_lock != null and not lock_hint and is_instance_valid(p) and absf(p.global_position.x - MAG_LOCK.x) < 360.0 and p.global_position.y > MAG_LOCK.y - 200.0:
+		lock_hint = true
+		var lines := ["IRIS: \"A entrada da Câmara está travada por placas imantadas.\"",
+			"IRIS: \"Chegue perto e use o PULSO MAGNÉTICO (K ou clique direito, 1/3 de energia).\""]
+		if p.energy < Player.PULSE_COST:
+			lines.append("IRIS: \"Sem energia: acerte máquinas com a Rebitadeira ou pegue a célula de energia ao lado da estação.\"")
+		level.main.hud.say(lines)
 	if not is_instance_valid(p):
 		return
 	if p.is_on_floor() and p.position.x > 1700 and p.position.x < 2780 and absf(p.position.y-700)<5:

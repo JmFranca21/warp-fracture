@@ -90,7 +90,7 @@ const HOOK_SHOOT := 0.09      # tempo da corda esticando
 # Sem direção, a saída é a antiga (55 % do puxão, na reta).
 const HOOK_EXIT_X := 1.4
 const HOOK_EXIT_UP := 0.72
-const HOOK_JUMP_UP := 0.85
+const HOOK_JUMP_UP := 0.8
 const HOOK_CARRY := 0.45
 var hook: Node2D = null
 var hook_dir := Vector2.ZERO  # direção do puxão no último quadro
@@ -116,6 +116,8 @@ const SHOULDER_AUT_PX := {
 }
 const ARM_TIP_AUT := [280.0, 270.0, 276.0, 280.0]     # ponta nominal do braço por quadro de DF97 (pivô em x 60)
 const PULSE_R := 150.0
+const PULSE_COST := 33.0
+const PULSE_SHOW := 90.0      # anel de alcance aparece quando um alvo do Pulso está a até PULSE_R + isto
 var beam_t := 0.0           # feixe do ímã visível (puxando um drone)
 var beam_to := Vector2.ZERO
 var pulse_cd := 0.0
@@ -648,8 +650,11 @@ func _hook_launch(jumped: bool) -> void:
 		return
 	var hx := pull.x * 0.55
 	if dir != 0.0:
-		var keep := absf(pull.x) * 0.55 if signf(pull.x) == signf(dir) else 0.0
-		hx = dir * maxf(run_speed * HOOK_EXIT_X, keep)
+		# velocidade de saída fixa por forma (não herda o puxão: num puxão quase horizontal, 55 % de 980 px/s
+		# jogava o corpo por cima de pilares curtos); formas que ficam mais tempo no ar (Yeti: gravidade
+		# 1250) saem mais devagar, para cobrir a mesma distância
+		var air := (jump_v / grav) / 0.37
+		hx = dir * run_speed * clampf(HOOK_EXIT_X / air, 1.0, HOOK_EXIT_X)
 		facing = int(signf(dir))
 	var up := jump_v * (HOOK_JUMP_UP if jumped else HOOK_EXIT_UP)
 	velocity = Vector2(hx, minf(pull.y * 0.55, -up))
@@ -928,17 +933,7 @@ func _update_yeti(dt: float) -> void:
 ## Feixe do ímã sem âncora ao alcance: puxa o drone mais próximo até o chão à frente (D03).
 func _magnet_drone() -> bool:
 	var from := shoulder_global()
-	var best = null
-	var bd := HOOK_RANGE
-	for e in get_tree().get_nodes_in_group("enemies"):
-		if not (e is DesertEnemy) or e.dead or not e.drone or e.falling or e.downed > 0.0:
-			continue
-		var d: float = e.global_position.distance_to(from)
-		if d < bd:
-			var q := PhysicsRayQueryParameters2D.create(from, e.global_position, 1)
-			if get_world_2d().direct_space_state.intersect_ray(q).is_empty():
-				bd = d
-				best = e
+	var best = drone_candidate()
 	if best == null:
 		return false
 	var dx := signf(best.global_position.x - global_position.x)
@@ -952,13 +947,71 @@ func _magnet_drone() -> bool:
 	return true
 
 
+## Drone que o Ímã puxaria agora (sem âncora ao alcance): o mais próximo, com linha de visão.
+func drone_candidate():
+	var from := shoulder_global()
+	var best = null
+	var bd := HOOK_RANGE
+	for e in get_tree().get_nodes_in_group("enemies"):
+		if not (e is DesertEnemy) or e.dead or not e.drone or e.falling or e.downed > 0.0:
+			continue
+		var d: float = e.global_position.distance_to(from)
+		if d < bd:
+			var q := PhysicsRayQueryParameters2D.create(from, e.global_position, 1)
+			if get_world_2d().direct_space_state.intersect_ray(q).is_empty():
+				bd = d
+				best = e
+	return best
+
+
+## Centro do Pulso Magnético (peito do Autômato).
+func pulse_center() -> Vector2:
+	return global_position + Vector2(0, -32)
+
+
+## Alvos que reagem ao Pulso: [posição, dentro do alcance]. Máquinas do Deserto, tiros inimigos e
+## nós do grupo "pulse_target" (porta imantada, peito da Forja na fase 3) com pulse_active().
+func pulse_targets(extra := 0.0) -> Array:
+	var c := pulse_center()
+	var out := []
+	for e in get_tree().get_nodes_in_group("enemies"):
+		if is_instance_valid(e) and not e.dead and e is DesertEnemy:
+			var pe: Vector2 = e.global_position + (Vector2.ZERO if e.drone else Vector2(0, -34))
+			var d := pe.distance_to(c)
+			if d <= PULSE_R + 20.0 + extra:
+				out.append([pe, d <= PULSE_R + 20.0])
+	for b in get_tree().get_nodes_in_group("enemy_attack"):
+		if b is EnemyBullet and is_instance_valid(b):
+			var d2: float = b.global_position.distance_to(c)
+			if d2 <= PULSE_R + extra:
+				out.append([b.global_position, d2 <= PULSE_R])
+	for n in get_tree().get_nodes_in_group("pulse_target"):
+		if is_instance_valid(n) and n.pulse_active():
+			var pp: Vector2 = n.pulse_point()
+			var r: float = n.pulse_radius()
+			var d3 := pp.distance_to(c)
+			if d3 <= r + extra:
+				out.append([pp, d3 <= r])
+	return out
+
+
 ## Pulso Magnético (D03): onda de 150 px. Derruba drones, para robôs por 2 s, desvia projéteis
 ## inimigos e abre as placas imantadas do peito da Forja-Mãe (D04).
 func _magnet_pulse() -> void:
-	var c := global_position + Vector2(0, -32)
+	var c := pulse_center()
+	var hits := 0
+	for tg in pulse_targets():
+		if tg[1]:
+			hits += 1
+			Fx.burst(level.fx, tg[0], Color(0.45, 0.95, 1.0, 0.95), 10, 220, 0.3, 0.05, 0)
 	DFArt.fx(level.fx, "DF99", 6, c, 18.0, false, 0.9)
+	# borda exata do alcance: mostra até onde a onda vai (mais forte quando acerta algo)
+	Fx.ring(level.fx, c, Color(0.5, 0.95, 1.0, 0.9 if hits > 0 else 0.45), PULSE_R, 0.32, 5.0 if hits > 0 else 3.0)
 	AudioMgr.sfx("pulso", Vector2.INF, -1.0, 0.03)
-	main.add_shake(7.0)
+	if hits > 0:
+		AudioMgr.sfx("placas", Vector2.INF, -6.0, 0.05)
+		main.hitstop(0.05)
+	main.add_shake(9.0 if hits > 0 else 5.0)
 	for e in get_tree().get_nodes_in_group("enemies"):
 		if not is_instance_valid(e) or e.dead or e.global_position.distance_to(c) > PULSE_R + 20.0:
 			continue
@@ -969,8 +1022,10 @@ func _magnet_pulse() -> void:
 	for b in get_tree().get_nodes_in_group("enemy_attack"):
 		if b is EnemyBullet and is_instance_valid(b) and b.global_position.distance_to(c) < PULSE_R:
 			b.pop()
-	if level.desert != null and level.desert.forja != null:
-		level.desert.forja.on_pulse(c)
+	if level.desert != null:
+		level.desert.on_pulse(c)
+		if level.desert.forja != null:
+			level.desert.forja.on_pulse(c)
 
 
 func _update_rig(dt: float) -> void:
@@ -1113,10 +1168,10 @@ func _attack() -> void:
 
 
 func _special() -> void:
-	if energy < 33.0:
+	if energy < PULSE_COST:
 		main.hud.energy_denied()
 		return
-	energy -= 33.0
+	energy -= PULSE_COST
 	if form == "automato":
 		_magnet_pulse()
 		return
@@ -1280,6 +1335,8 @@ func _draw() -> void:
 			tgt = beam_to
 		if tgt != Vector2.INF:
 			_draw_beam(to_local(gun_tip()), to_local(tgt), k)
+		if not dead and not controls_locked:
+			_draw_magnet_hints()
 		return
 	if hook != null and is_instance_valid(hook):
 		var a := to_local(gun_tip())
@@ -1287,6 +1344,37 @@ func _draw() -> void:
 		var e := a.lerp(b, hook_len)
 		draw_line(a, e, Color(0.35, 0.92, 1.0, 0.35), 6.0, true)
 		draw_line(a, e, Color(0.8, 1.0, 1.0, 0.95), 2.0, true)
+
+
+## Leitura do Autômato (revisão geral): com energia para o Pulso e um alvo perto, desenha o anel
+## tracejado do alcance (150 px) e marca os alvos (cheios dentro, vazados fora). Sem âncora ao alcance,
+## marca o drone que o Ímã puxaria. Paliativo desenhado por código até haver arte de interface.
+func _draw_magnet_hints() -> void:
+	var cyan := Color(0.45, 0.95, 1.0)
+	if energy >= PULSE_COST:
+		var tgs := pulse_targets(PULSE_SHOW)
+		if not tgs.is_empty():
+			var c := to_local(pulse_center())
+			var a := 0.30 + 0.12 * sin(t * 5.0)
+			var n := 40
+			for i in n:
+				if i % 2 == 0:
+					var a0 := TAU * i / n + t * 0.4
+					draw_arc(c, PULSE_R, a0, a0 + TAU / n, 4, Color(cyan, a), 2.0, true)
+			for tg in tgs:
+				var q := to_local(tg[0])
+				var col := Color(cyan, 0.95) if tg[1] else Color(cyan, 0.4)
+				for sx in [-1.0, 1.0]:
+					for sy in [-1.0, 1.0]:
+						var corner := q + Vector2(sx * 13.0, sy * 13.0)
+						draw_line(corner, corner - Vector2(sx * 6.0, 0), col, 2.0, true)
+						draw_line(corner, corner - Vector2(0, sy * 6.0), col, 2.0, true)
+	if hook == null and beam_t <= 0.0 and hook_candidate() == null:
+		var dr = drone_candidate()
+		if dr != null:
+			var q2 := to_local(dr.global_position) + Vector2(0, -30)
+			var bob := 2.0 * sin(t * 6.0)
+			draw_colored_polygon(PackedVector2Array([q2 + Vector2(-6, -8 + bob), q2 + Vector2(6, -8 + bob), q2 + Vector2(0, bob)]), Color(cyan, 0.85))
 
 
 ## Feixe do Ímã de Fase (DF98): segmento repetível em loop + garra de luz na ponta.

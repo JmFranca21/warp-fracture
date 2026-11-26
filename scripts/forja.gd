@@ -201,6 +201,7 @@ class Arm extends Node2D:
 
 func _ready() -> void:
 	z_index = 1
+	add_to_group("pulse_target")      # o peito fechado da fase 3 aparece marcado no alcance do Pulso
 	# interior escuro da fornalha, só atrás das aberturas do corpo (lente, escotilhas, peito e grade)
 	for r in [Rect2(HATCH[0] - Vector2(25, 17), Vector2(50, 34)), Rect2(HATCH[1] - Vector2(25, 17), Vector2(50, 34)),
 			Rect2(CHEST - Vector2(45, 39), Vector2(90, 78)), Rect2(GRATE - Vector2(75, 26), Vector2(150, 52))]:
@@ -658,6 +659,19 @@ func _core_destroyed() -> void:
 
 
 ## Pulso Magnético perto do peito (fase 3): as placas voam por 3 s e o fragmento fica exposto.
+## Alvo do Pulso (leitura do Autômato): o peito fechado na fase 3.
+func pulse_active() -> bool:
+	return phase == 3 and not dead and chest_open <= 0.0
+
+
+func pulse_point() -> Vector2:
+	return CHEST
+
+
+func pulse_radius() -> float:
+	return 150.0 + 10.0
+
+
 func on_pulse(c: Vector2) -> void:
 	if phase != 3 or dead or chest_open > 0.0:
 		return

@@ -988,13 +988,25 @@ theme = "deserto"
 [node name="Placa_03" type="Area2D" parent="Objetos"]
 position = Vector2(1320, 700)
 script = ExtResource("2_wfaud")
-text = "Sem âncora ao alcance, F puxa um drone até o chão. Clique direito (ou K) com 1/3 de energia: PULSO MAGNÉTICO."
+text = "ÍMÃ (F) sem argola ao alcance: puxa o DRONE marcado até o chão. Lá embaixo ele fica atordoado; no fosso ou num jato, explode."
+theme = "deserto"
+
+[node name="Placa_05" type="Area2D" parent="Objetos"]
+position = Vector2(1520, 700)
+script = ExtResource("2_wfaud")
+text = "PULSO MAGNÉTICO (K ou clique direito, 1/3 de energia): onda curta em volta do corpo. Drones caem, robôs travam por 2 s, tiros estouram. O anel tracejado mostra o alcance."
 theme = "deserto"
 
 [node name="Placa_04" type="Area2D" parent="Objetos"]
 position = Vector2(6560, 770)
 script = ExtResource("2_wfaud")
 text = "IRIS: \"A energia do fragmento vem de trás desta porta. É o núcleo da fábrica.\""
+theme = "deserto"
+
+[node name="Placa_06" type="Area2D" parent="Objetos"]
+position = Vector2(6900, 770)
+script = ExtResource("2_wfaud")
+text = "PORTA IMANTADA: placas magnéticas travam a Câmara. Use o PULSO MAGNÉTICO perto delas."
 theme = "deserto"
 
 [node name="Checkpoint_01" type="Area2D" parent="Objetos"]
@@ -1108,6 +1120,13 @@ script = ExtResource("5_3kf77")
 kind = "heal"
 pid = "df_h1"
 respawn = 0.0
+
+[node name="Item_energia_porta" type="Area2D" parent="Objetos"]
+position = Vector2(6800, 735)
+script = ExtResource("5_3kf77")
+kind = "energy"
+pid = ""
+respawn = 9.0
 
 [node name="Item_01" type="Area2D" parent="Objetos"]
 position = Vector2(7120, 735)

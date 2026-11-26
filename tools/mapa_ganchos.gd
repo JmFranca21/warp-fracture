@@ -53,7 +53,7 @@ func _run() -> void:
 			only = a.substr(6)
 	game = load("res://main.tscn").instantiate()
 	root.add_child(game)
-	game.auto.clear()
+	game.auto = {"at": "1e12"}     # harness ligado sem "save": o teste nunca grava o save do jogador
 	await ticks(4)
 	game._reset_progress()
 	game.modules["arpao"] = true
