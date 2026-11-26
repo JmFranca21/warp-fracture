@@ -8,6 +8,7 @@ Atualizado pelos agentes. Leia `PROTOCOLO.md` e `FLUXO_AUTOMATICO.md` antes de c
 | DA-02 | Régua numérica de consistência visual (complementa a DA-01; saída da auditoria do Deserto) | APROVADO (diretriz, 17/11/2026; revisada pelo ChatGPT) | [pedido](pedidos/DA02_regua_e_fichas_v2.md) | [DA-02 proposta](entregas/00_padrao_visual/DA-02_CONSISTENCIA.md) | — |
 | DA-03 | Receita de cena (camadas, valores, estrutura, escala da decoração, terreno, luz) medida no Laboratório e em Verdâmia | APROVADO (diretriz, 24/11/2026; revisada pelo ChatGPT) | [pedido](pedidos/DA03_receita_de_cena.md) | [DA-03 proposta](entregas/00_padrao_visual/DA-03_RECEITA_DE_CENA.md) | — |
 | DA-04 | Assinatura de estilo (linguagem gráfica comum do Laboratório e de Verdâmia) e quadro-chave do Deserto | ABERTO (24/11/2026); pedidos de arte do Deserto a partir da DF202 SUSPENSOS até o quadro-chave ser aprovado | [pedido](pedidos/DA04_assinatura_de_estilo.md) | [DA-04 proposta](entregas/00_padrao_visual/DA-04_ASSINATURA_DE_ESTILO.md) | — |
+| DA-04 / DF-KEY | Quadros-chave do Deserto diurno e da Fábrica | ENTREGUE (v2) · APROVADO | — | [quadros e medidas](entregas/00_padrao_visual/DA04/ENTREGA.md) | João Marcelo, 25/11/2026 |
 | A0_ficha_eco | Ficha de personagem do Eco (referência para A1–A5 e A9) | APROVADO (referência oficial) | [pedido](pedidos/A0_ficha_eco.md) | [entrega](entregas/A0_ficha_eco/) | [revisão](revisoes/A0_ficha_eco.md) |
 | A1_eco_appear | Materialização do Eco, 8 quadros | INTEGRADO (v0.7, Fuga do Eco) | [pedido](pedidos/A1_eco_appear.md) | [entrega](entregas/A1_eco_appear/) | [revisão](revisoes/A1_eco_appear.md) |
 | A2_eco_float | Eco pairando (loop), 6 quadros | INTEGRADO (v0.7, Fuga do Eco) | [pedido](pedidos/A2_eco_float.md) | [entrega](entregas/A2_eco_float/) | [revisão](revisoes/A2_eco_float.md) |
@@ -41,6 +42,26 @@ Atualizado pelos agentes. Leia `PROTOCOLO.md` e `FLUXO_AUTOMATICO.md` antes de c
 | DF50–DF57 | Prensas, serra, plataformas, válvulas e gancho | INTEGRADO (v0.8, 17/11/2026) | [DF](pedidos/DF_deserto_ferrugem.md) | — | — |
 | DF60–DF71 | Robôs, drones e seus projéteis | INTEGRADO (v0.8, 17/11/2026) | [DF](pedidos/DF_deserto_ferrugem.md) | — | — |
 | DF80–DF86 | Efeitos de máquinas, areia, impacto e vento | INTEGRADO (v0.8, 17/11/2026) | [DF](pedidos/DF_deserto_ferrugem.md) | — | — |
+| DF00 v2 | Prancha de referência do Deserto pela DA-03 | ENTREGUE | [DF](pedidos/DF_deserto_ferrugem.md) | — | [Prancha, comparação e aferição](entregas/DF00/ENTREGA_v2.md) |
+| DF205 | Terreno do Deserto de Ferrugem · 22 peças | APROVADO (Pacote 3, 25/11/2026) | [DF](pedidos/DF_refacao_cena.md) | [Peças e encaixes](entregas/DF205/ENTREGA_v2.md) | — |
+| DF200 | Céu do crepúsculo de tempestade | ENTREGUE | [DF](pedidos/DF_refacao_cena.md) | — | [Céu, comparação e aferição](entregas/DF200/ENTREGA.md) |
+| DF200 diurno | Céu aprovado das Dunas | APROVADO (Pacote 3) | [DF](pedidos/DF_refacao_cena.md) | [Céu diurno](entregas/DF200/DF200_ceu_diurno.png) | — |
+| DF202 | Fundos da Fábrica e do Salão | APROVADO (Pacote 4, 25/11/2026) | — | [Entrega](entregas/DF202/ENTREGA.md) | — |
+| DF207 | Peças suspensas | APROVADO (Pacote 7, 25/11/2026) | — | [Entrega](entregas/DF207/ENTREGA_v2.md) | — |
+| DF220 | Marcos do cenário (6 peças) | APROVADO (Pacote 9) | — | [Peças e cenas](entregas/DF220/ENTREGA_v2.md) | — |
+| DF209 | Efeitos de ambiente | APROVADO (Pacote 8 refeito) | — | [Folhas e animações](entregas/DF209/ENTREGA_v2.md) | — |
+| DF208 | Primeiro plano exterior e interior | APROVADO (Pacote 7, 25/11/2026) | — | [Entrega](entregas/DF208/ENTREGA_v2.md) | — |
+| DF206 | Decoração das Dunas e da Fábrica (24 peças) | APROVADO (Pacote 6, 25/11/2026) | — | [Pranchas e cenas](entregas/DF206/ENTREGA_v2.md) | — |
+| DF204 | Estruturas de fundo do Deserto (10 peças) | APROVADO (Pacote 5, 25/11/2026) | — | [Atlas e cenas](entregas/DF204/ENTREGA_v2.md) | — |
+| DF203 | Fundo da Câmara da Forja | APROVADO (Pacote 4, 25/11/2026) | — | [Entrega](entregas/DF203/ENTREGA.md) | — |
+| DF201 | Dunas de Sucata · fundo intermediário diurno | APROVADO (Pacote 3, 25/11/2026) | [DF](pedidos/DF_refacao_cena.md) | [Camadas e parallax](entregas/DF201/ENTREGA_v2.md) | — |
+| DF01 | Ficha do Robô e do Drone do deserto | ENTREGUE (v2) · APROVADO | [DF](pedidos/DF_deserto_ferrugem.md) | [ficha e conferências](entregas/DF01/ENTREGA_v2.md) | João Marcelo, 25/11/2026 |
+| DF10–DF12 | Fundos das Dunas em parallax | ENTREGUE | [DF](pedidos/DF_deserto_ferrugem.md) | — | — |
+| DF20–DF28 | Terreno, paredes, piso, esteira, trilho e cabo | ENTREGUE | [DF](pedidos/DF_deserto_ferrugem.md) | — | — |
+| DF30–DF39 | Objetos de cenário e portas | ENTREGUE | [DF](pedidos/DF_deserto_ferrugem.md) | — | — |
+| DF50–DF57 | Prensas, serra, plataformas, válvulas e gancho | ENTREGUE | [DF](pedidos/DF_deserto_ferrugem.md) | — | — |
+| DF60–DF71 | Robôs, drones e seus projéteis | ENTREGUE | [DF](pedidos/DF_deserto_ferrugem.md) | — | — |
+| DF80–DF86 | Efeitos de máquinas, areia, impacto e vento | ENTREGUE | [DF](pedidos/DF_deserto_ferrugem.md) | — | — |
 
 Todos os assets do pedido DF foram **integrados na campanha principal na v0.8** (17/11/2026), em `assets/deserto/`, pelo `tools/import_deserto.py` (layout e máquinas vindos da branch do protótipo, reescritos na `main`). Nenhum asset do DF ficou sem uso. As entregas DF ainda não têm revisão cruzada registrada em `revisoes/`.
 
@@ -59,6 +80,8 @@ Visão geral, divergências e plano: [proposta da Fase 2](../docs/fases/deserto_
 |---|---|---|---|---|---|
 | DF02 | Ficha do Autômato (lote 1) | REFAZER (auditoria 17/11/2026); v2 ABERTA (prompt 2) | [pedido](pedidos/DF02_ficha_automato.md) · [v2](pedidos/DA02_regua_e_fichas_v2.md) | [entrega](entregas/DF02/) | — |
 | DF03 | Ficha da Forja-Mãe e esquema da arena (lote 1) | ENTREGUE (AGUARDA JOÃO; pacote Revisão v2 de 13/11/2026) | [pedido](pedidos/DF03_ficha_forja_mae.md) | [entrega](entregas/DF03/) | — |
+| DF02 | Ficha do Autômato (lote 1) | ENTREGUE (v2) · APROVADO | [pedido](pedidos/DF02_ficha_automato.md) | [ficha e conferências](entregas/DF02/ENTREGA_v2.md) | João Marcelo, 25/11/2026 |
+| DF03 | Ficha da Forja-Mãe e esquema da arena (lote 1) | ENTREGUE (v2) · APROVADO | [pedido](pedidos/DF03_ficha_forja_mae.md) | [ficha e conferências](entregas/DF03/ENTREGA_v2.md) | João Marcelo, 25/11/2026 |
 | PT00 | Ficha dos portais e do Receptáculo (lote 1) | ENTREGUE (AGUARDA JOÃO; pacote Revisão v2 de 13/11/2026) | [pedido](pedidos/PT00_ficha_portais.md) | [entrega](entregas/PT00/) | — |
 | DF87–DF99 | Autômato: 7 folhas do corpo, braço, rebite, disparo, feixe e pulso (lote 2) | INTEGRADO (v0.8, 17/11/2026; a ficha DF02 ainda aguarda o João) | [pedido](pedidos/DF87-DF99_automato.md) | entregas DF87, DF88, DF90–DF99 | — |
 | PT10–PT23 | Arco de Dobra, glifos, Receptáculo, membrana e Fenda (lote 2) | INTEGRADO (v0.8, 17/11/2026; a ficha PT00 ainda aguarda o João) | [pedido](pedidos/PT10-PT23_portais.md) | entregas PT10–PT13, PT15, PT20–PT23 | — |
