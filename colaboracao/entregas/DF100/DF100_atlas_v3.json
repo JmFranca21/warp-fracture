@@ -1,0 +1,742 @@
+{
+  "data": "2026-11-26",
+  "jogo": "Warp Fracture",
+  "chefe": "Forja-Mãe",
+  "origem_coordenadas": "canto superior esquerdo, pixels dos PNGs originais",
+  "coordenadas_ancoras": {
+    "DF100": {
+      "base": [
+        1024,
+        2008
+      ],
+      "lente": [
+        1024,
+        900
+      ],
+      "peito": [
+        1024,
+        1330
+      ],
+      "escotilha_esquerda": [
+        640,
+        820
+      ],
+      "escotilha_direita": [
+        1408,
+        820
+      ],
+      "grade": [
+        1024,
+        1820
+      ]
+    },
+    "centro_das_celulas_384x512": [
+      192,
+      256
+    ],
+    "DF103": {
+      "trilho": [
+        512,
+        120
+      ],
+      "pivo": [
+        512,
+        400
+      ]
+    },
+    "DF104": {
+      "entrada": [
+        112,
+        256
+      ],
+      "saida": [
+        912,
+        256
+      ]
+    },
+    "DF105": {
+      "encaixe": [
+        512,
+        96
+      ],
+      "placa": [
+        512,
+        150
+      ],
+      "face_y": 432
+    },
+    "DF110": {
+      "eixo_y": 128,
+      "contato_impacto_local": [
+        128,
+        224
+      ]
+    }
+  },
+  "ativos": {
+    "100": {
+      "id": "DF100",
+      "arquivo": "DF100_forja_corpo_v3.png",
+      "sha256": "357a8eeeac8bc01cf32bc3eeabb77957453493e922e10c3ed6ced9f90144112e",
+      "dimensoes": [
+        2048,
+        2048
+      ],
+      "grade": [
+        1,
+        1
+      ],
+      "celula": [
+        2048,
+        2048
+      ],
+      "quadros": [
+        "Corpo com cinco encaixes"
+      ],
+      "celulas_vazias": [],
+      "limites_rgba": [
+        [
+          324,
+          662,
+          1724,
+          2008
+        ]
+      ]
+    },
+    "101": {
+      "id": "DF101",
+      "arquivo": "DF101_forja_lente_v3.png",
+      "sha256": "fe16d41ffeb8ffd3ac3bf4e637d61efaca383b4444f2b91376d380dc18d0e0b7",
+      "dimensoes": [
+        1536,
+        1024
+      ],
+      "grade": [
+        4,
+        2
+      ],
+      "celula": [
+        384,
+        512
+      ],
+      "quadros": [
+        "Repouso",
+        "Aviso",
+        "Mira vermelha",
+        "Apagada"
+      ],
+      "celulas_vazias": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "limites_rgba": [
+        [
+          13,
+          72,
+          372,
+          439
+        ],
+        [
+          13,
+          72,
+          372,
+          439
+        ],
+        [
+          13,
+          72,
+          372,
+          439
+        ],
+        [
+          13,
+          72,
+          372,
+          439
+        ]
+      ]
+    },
+    "102": {
+      "id": "DF102",
+      "arquivo": "DF102_forja_peito_v3.png",
+      "sha256": "247dc00cb8a5150c9481bcc1f5ddaa20819a64092744e30163ac82f95f6d12cb",
+      "dimensoes": [
+        1536,
+        1024
+      ],
+      "grade": [
+        4,
+        2
+      ],
+      "celula": [
+        384,
+        512
+      ],
+      "quadros": [
+        "Fechado",
+        "Aberto",
+        "Danificado",
+        "Placa esquerda",
+        "Placa central",
+        "Placa direita"
+      ],
+      "celulas_vazias": [
+        7,
+        8
+      ],
+      "limites_rgba": [
+        [
+          13,
+          103,
+          371,
+          409
+        ],
+        [
+          13,
+          103,
+          371,
+          409
+        ],
+        [
+          13,
+          103,
+          371,
+          409
+        ],
+        [
+          86,
+          146,
+          152,
+          365
+        ],
+        [
+          159,
+          146,
+          225,
+          365
+        ],
+        [
+          232,
+          146,
+          298,
+          365
+        ]
+      ]
+    },
+    "103": {
+      "id": "DF103",
+      "arquivo": "DF103_forja_carrinho_v3.png",
+      "sha256": "13bbd0fe273f6eb15aeec721507c851f894d0e4ab29a8f41fe75536cdbd596dc",
+      "dimensoes": [
+        1024,
+        512
+      ],
+      "grade": [
+        1,
+        1
+      ],
+      "celula": [
+        1024,
+        512
+      ],
+      "quadros": [
+        "Carrinho no trilho"
+      ],
+      "celulas_vazias": [],
+      "limites_rgba": [
+        [
+          329,
+          19,
+          694,
+          432
+        ]
+      ]
+    },
+    "104": {
+      "id": "DF104",
+      "arquivo": "DF104_forja_segmento_v3.png",
+      "sha256": "89f94a4ef3d113c231a66fb6d9dabcd4be4b1588ac2f76aeb9668ae4eb037820",
+      "dimensoes": [
+        1024,
+        512
+      ],
+      "grade": [
+        1,
+        1
+      ],
+      "celula": [
+        1024,
+        512
+      ],
+      "quadros": [
+        "Segmento articulado"
+      ],
+      "celulas_vazias": [],
+      "limites_rgba": [
+        [
+          48,
+          186,
+          976,
+          326
+        ]
+      ]
+    },
+    "105": {
+      "id": "DF105",
+      "arquivo": "DF105_forja_martelo_v3.png",
+      "sha256": "0bfe4e233c7e5273dd1f0b3d8bc268901f165f496256356a516d9c70556cf9c2",
+      "dimensoes": [
+        2048,
+        1024
+      ],
+      "grade": [
+        2,
+        2
+      ],
+      "celula": [
+        1024,
+        512
+      ],
+      "quadros": [
+        "Normal",
+        "Aviso",
+        "Preso",
+        "Quebrado"
+      ],
+      "celulas_vazias": [],
+      "limites_rgba": [
+        [
+          225,
+          63,
+          796,
+          438
+        ],
+        [
+          225,
+          63,
+          796,
+          439
+        ],
+        [
+          217,
+          61,
+          798,
+          444
+        ],
+        [
+          221,
+          61,
+          807,
+          444
+        ]
+      ]
+    },
+    "106": {
+      "id": "DF106",
+      "arquivo": "DF106_forja_nucleo_pistao_v3.png",
+      "sha256": "d0b33bdcb947d8c0c9e36a20c7c25f5d2421132dfcd404aad10d835c802fe56d",
+      "dimensoes": [
+        1536,
+        1024
+      ],
+      "grade": [
+        4,
+        2
+      ],
+      "celula": [
+        384,
+        512
+      ],
+      "quadros": [
+        "Íntegro",
+        "Danificado",
+        "Destruído"
+      ],
+      "celulas_vazias": [
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "limites_rgba": [
+        [
+          110,
+          174,
+          274,
+          339
+        ],
+        [
+          110,
+          174,
+          274,
+          339
+        ],
+        [
+          109,
+          174,
+          275,
+          339
+        ]
+      ]
+    },
+    "107": {
+      "id": "DF107",
+      "arquivo": "DF107_forja_escotilha_v3.png",
+      "sha256": "c19b5663fa7dce07bd71b7dbef73ec88ad5cf4072448b35f69895234bdb1db28",
+      "dimensoes": [
+        1536,
+        1024
+      ],
+      "grade": [
+        4,
+        2
+      ],
+      "celula": [
+        384,
+        512
+      ],
+      "quadros": [
+        "Fechada",
+        "Aviso",
+        "Abrindo",
+        "Aberta"
+      ],
+      "celulas_vazias": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "limites_rgba": [
+        [
+          72,
+          176,
+          312,
+          335
+        ],
+        [
+          72,
+          176,
+          312,
+          335
+        ],
+        [
+          72,
+          176,
+          312,
+          335
+        ],
+        [
+          72,
+          176,
+          312,
+          335
+        ]
+      ]
+    },
+    "108": {
+      "id": "DF108",
+      "arquivo": "DF108_forja_grade_v3.png",
+      "sha256": "69f2da8dc0d9313f9015b1f91b707b8ebd7f1d8ec82416cc18f02d2b26c94db7",
+      "dimensoes": [
+        1536,
+        1024
+      ],
+      "grade": [
+        4,
+        2
+      ],
+      "celula": [
+        384,
+        512
+      ],
+      "quadros": [
+        "Pulso 1",
+        "Pulso 2",
+        "Pulso 3",
+        "Pulso 4",
+        "Pulso 5",
+        "Pulso 6",
+        "Aberta",
+        "Fria"
+      ],
+      "celulas_vazias": [],
+      "limites_rgba": [
+        [
+          22,
+          196,
+          362,
+          315
+        ],
+        [
+          22,
+          196,
+          362,
+          315
+        ],
+        [
+          22,
+          196,
+          362,
+          315
+        ],
+        [
+          22,
+          196,
+          362,
+          315
+        ],
+        [
+          22,
+          196,
+          362,
+          315
+        ],
+        [
+          22,
+          196,
+          362,
+          315
+        ],
+        [
+          22,
+          196,
+          362,
+          315
+        ],
+        [
+          22,
+          196,
+          362,
+          315
+        ]
+      ]
+    },
+    "110": {
+      "id": "DF110",
+      "arquivo": "DF110_forja_feixe_v3.png",
+      "sha256": "5a143e97df80f6b678989c93ffca6adbd8894aebde919c683896238a573d8547",
+      "dimensoes": [
+        1024,
+        512
+      ],
+      "grade": [
+        4,
+        2
+      ],
+      "celula": [
+        256,
+        256
+      ],
+      "quadros": [
+        "Feixe 1",
+        "Feixe 2",
+        "Feixe 3",
+        "Feixe 4",
+        "Impacto 1",
+        "Impacto 2",
+        "Impacto 3",
+        "Impacto 4"
+      ],
+      "celulas_vazias": [],
+      "limites_rgba": [
+        [
+          0,
+          91,
+          256,
+          156
+        ],
+        [
+          0,
+          91,
+          256,
+          163
+        ],
+        [
+          0,
+          91,
+          256,
+          163
+        ],
+        [
+          0,
+          91,
+          256,
+          163
+        ],
+        [
+          48,
+          139,
+          213,
+          228
+        ],
+        [
+          86,
+          138,
+          249,
+          228
+        ],
+        [
+          44,
+          130,
+          215,
+          228
+        ],
+        [
+          64,
+          132,
+          234,
+          228
+        ]
+      ]
+    },
+    "111": {
+      "id": "DF111",
+      "arquivo": "DF111_forja_carga_lente_v3.png",
+      "sha256": "7dfe841280f2b2df1fc64baed4109a087f896f6eeffc0ebc140bc1e311325c48",
+      "dimensoes": [
+        1536,
+        1024
+      ],
+      "grade": [
+        4,
+        2
+      ],
+      "celula": [
+        384,
+        512
+      ],
+      "quadros": [
+        "Carga 1",
+        "Carga 2",
+        "Carga 3",
+        "Carga 4",
+        "Carga 5",
+        "Disparo"
+      ],
+      "celulas_vazias": [
+        7,
+        8
+      ],
+      "limites_rgba": [
+        [
+          47,
+          99,
+          363,
+          435
+        ],
+        [
+          24,
+          99,
+          371,
+          438
+        ],
+        [
+          21,
+          87,
+          368,
+          429
+        ],
+        [
+          43,
+          95,
+          365,
+          442
+        ],
+        [
+          21,
+          92,
+          368,
+          422
+        ],
+        [
+          26,
+          123,
+          341,
+          385
+        ]
+      ]
+    },
+    "112": {
+      "id": "DF112",
+      "arquivo": "DF112_forja_explosao_nucleo_v3.png",
+      "sha256": "7b34fc1d47c37636c841baff98e176079526f7e7fda2361a1e6e8b7832887c43",
+      "dimensoes": [
+        1536,
+        1024
+      ],
+      "grade": [
+        4,
+        2
+      ],
+      "celula": [
+        384,
+        512
+      ],
+      "quadros": [
+        "Clarão",
+        "Onda 1",
+        "Onda 2",
+        "Onda 3",
+        "Fumaça 1",
+        "Fumaça 2",
+        "Fumaça 3",
+        "Fumaça 4"
+      ],
+      "celulas_vazias": [],
+      "limites_rgba": [
+        [
+          117,
+          184,
+          267,
+          325
+        ],
+        [
+          80,
+          163,
+          297,
+          346
+        ],
+        [
+          52,
+          127,
+          318,
+          377
+        ],
+        [
+          36,
+          110,
+          356,
+          396
+        ],
+        [
+          65,
+          126,
+          325,
+          381
+        ],
+        [
+          68,
+          141,
+          320,
+          369
+        ],
+        [
+          79,
+          155,
+          310,
+          356
+        ],
+        [
+          71,
+          181,
+          246,
+          334
+        ]
+      ]
+    }
+  }
+}
