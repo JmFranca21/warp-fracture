@@ -42,6 +42,7 @@ Atualizado pelos agentes. Leia `PROTOCOLO.md` e `FLUXO_AUTOMATICO.md` antes de c
 | DF210 | Estação, placa e coletáveis | ENTREGUE (Pacote 15) | — | [Entrega](entregas/DF210/ENTREGA_v2.md) | — |
 | DF87–DF99 v2 | Autômato, braço-ímã e habilidades | ENTREGUE (Pacote 16) | — | [Corpo](entregas/DF90/ENTREGA_v2.md) · [Braço](entregas/DF97/ENTREGA_v2.md) · [Pulso](entregas/DF99/ENTREGA_v2.md) | — |
 | DF60–DF71 v2 | Sentinela, drone e projéteis | ENTREGUE (Pacote 17) | — | [Sentinela](entregas/DF60/ENTREGA_v2.md) · [Drone](entregas/DF66/ENTREGA_v2.md) | — |
+| DF80–DF85 v2 | Efeitos de cenário e combate | ENTREGUE (Pacote 18) | — | [Entrega](entregas/DF80/ENTREGA_v2.md) | — |
 | DF224 | Plataformas móveis, válvula e gancho | APROVADO (Pacote 13) | — | [Entrega](entregas/DF224/ENTREGA_v2.md) | — |
 | DF223 | Prensas e serra | APROVADO (Pacote 12) | — | [Entrega](entregas/DF223/ENTREGA_v2.md) | — |
 | DF222 | Esteira e trilhos | APROVADO (Pacote 11) | — | [Entrega](entregas/DF222/ENTREGA_v2.md) | — |
