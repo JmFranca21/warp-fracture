@@ -1,18 +1,18 @@
 [gd_scene format=3 uid="uid://dyknqnuouilpm"]
 
-[ext_resource type="Script" uid="uid://bj8xdaokl6ocg" path="res://scripts/nivaria.gd" id="1_hp1kv"]
+[ext_resource type="Script" path="res://scripts/nivaria.gd" id="1_hp1kv"]
 
-[ext_resource type="Script" uid="uid://nyyld47koiwo" path="res://scripts/nivaria_cena/niv_bloco.gd" id="2_wu5dl"]
+[ext_resource type="Script" path="res://scripts/nivaria_cena/niv_bloco.gd" id="2_wu5dl"]
 
-[ext_resource type="Script" uid="uid://mn0h5uuct7jq" path="res://scripts/nivaria_cena/niv_area.gd" id="3_8lub4"]
+[ext_resource type="Script" path="res://scripts/nivaria_cena/niv_area.gd" id="3_8lub4"]
 
-[ext_resource type="Script" uid="uid://cdvo8qytcksvm" path="res://scripts/niv_platform.gd" id="4_okd31"]
+[ext_resource type="Script" path="res://scripts/niv_platform.gd" id="4_okd31"]
 
-[ext_resource type="Script" uid="uid://bjrrx6hehb0ms" path="res://scripts/nivaria_cena/niv_gancho.gd" id="5_cerr2"]
+[ext_resource type="Script" path="res://scripts/nivaria_cena/niv_gancho.gd" id="5_cerr2"]
 
-[ext_resource type="Script" uid="uid://io62t6wqljoj" path="res://scripts/nivaria_cena/niv_mastro.gd" id="6_emde3"]
+[ext_resource type="Script" path="res://scripts/nivaria_cena/niv_mastro.gd" id="6_emde3"]
 
-[ext_resource type="Script" uid="uid://cb73e4lif2irx" path="res://scripts/nivaria_cena/niv_ponto.gd" id="7_adkxn"]
+[ext_resource type="Script" path="res://scripts/nivaria_cena/niv_ponto.gd" id="7_adkxn"]
 [ext_resource type="Script" path="res://scripts/nivaria_cena/niv_preso.gd" id="8_preso"]
 
 [node name="Nivaria" type="Node2D" unique_id=1921737191]
