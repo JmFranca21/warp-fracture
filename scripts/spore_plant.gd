@@ -20,7 +20,9 @@ func _ready() -> void:
 	main_color = Color(0.4, 1.0, 0.8)
 	collision_layer = 0
 	collision_mask = 0
-	setup_hurt(Vector2(40, 60), Vector2(0, -32))
+	# bulbo da arte vai até ~75 px do chão e tem ~44 de largura (medido na captura de hitbox, revisão geral);
+	# antes 40 × 60 (até 62 px): a parte de cima do bulbo não levava tiro
+	setup_hurt(Vector2(44, 74), Vector2(0, -38))
 	glow = Art.glow(Color(0.6, 1.0, 0.5, 0.35), 44)
 	add_child(glow)
 	spr = make_sprite(SpriteMetaVerd.ESPORANGIO_FRAMES, SpriteMetaVerd.ESPORANGIO_OFFSET, SpriteMetaVerd.ESPORANGIO_SCALE, "idle")

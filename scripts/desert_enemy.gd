@@ -168,6 +168,19 @@ func _downed_physics(dt: float) -> void:
 			_play("fly")
 
 
+## Onde o tiro nasce, relativo à origem (robô: pés; drone: centro da carcaça), medido nas folhas v2:
+## ponta do cano do robô em (192 + 112, 472 − 238) px de DF60/DF63 → (+24, −51) no jogo (K = 0,214);
+## lente do drone em (192 + 48, 256 + 59) px de DF67/DF68 → (+10, +13). Antes: (±30, −27), na barriga
+## do robô, 24 px abaixo do cano; e (0, +18) no drone, 5 px abaixo e fora da lente.
+const MUZZLE_ROBO := Vector2(24, -51)
+const MUZZLE_DRONE := Vector2(10, 13)
+
+
+func shot_origin() -> Vector2:
+	var m := MUZZLE_DRONE if drone else MUZZLE_ROBO
+	return Vector2(m.x * direction, m.y)
+
+
 func fire() -> void:
 	_play("fire")
 	recoil = 0.3
@@ -176,7 +189,7 @@ func fire() -> void:
 	var shot := DesertShot.new()
 	shot.drone = drone
 	shot.vel = Vector2.DOWN*255 if drone else Vector2(direction*270,0)
-	shot.position = position + (Vector2(0,18) if drone else Vector2(direction*30,-27))
+	shot.position = position + shot_origin()
 	level.fx.add_child(shot)
 
 
