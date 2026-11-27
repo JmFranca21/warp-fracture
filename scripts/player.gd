@@ -1369,11 +1369,14 @@ func _draw_magnet_hints() -> void:
 		var tgs := pulse_targets(PULSE_SHOW)
 		if not tgs.is_empty():
 			var c := to_local(pulse_center())
-			var a := 0.30 + 0.12 * sin(t * 5.0)
+			# traço ciano com um contorno escuro por baixo: o ciano claro sozinho sumia contra a areia das
+			# Dunas (captura em docs/revisao_geral/capturas/pulso)
+			var a := 0.55 + 0.15 * sin(t * 5.0)
 			var n := 40
 			for i in n:
 				if i % 2 == 0:
 					var a0 := TAU * i / n + t * 0.4
+					draw_arc(c, PULSE_R, a0, a0 + TAU / n, 4, Color(0.04, 0.08, 0.12, a * 0.6), 4.5, true)
 					draw_arc(c, PULSE_R, a0, a0 + TAU / n, 4, Color(cyan, a), 2.0, true)
 			for tg in tgs:
 				var q := to_local(tg[0])
