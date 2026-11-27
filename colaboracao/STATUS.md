@@ -65,6 +65,7 @@ Atualizado pelos agentes. Leia `PROTOCOLO.md` e `FLUXO_AUTOMATICO.md` antes de c
 | DF60–DF71 v2 | Sentinela, drone e projéteis | ENTREGUE (Pacote 17) · INTEGRADO (dev/deserto, 25/11/2026; defeitos em docs/fases/deserto_ferrugem/auditoria_pacotes_11_20.md) | — | [Sentinela](entregas/DF60/ENTREGA_v2.md) · [Drone](entregas/DF66/ENTREGA_v2.md) | — |
 | DF80–DF85 v2 | Efeitos de cenário e combate | ENTREGUE (Pacote 18) · INTEGRADO (dev/deserto, 25/11/2026; defeitos em docs/fases/deserto_ferrugem/auditoria_pacotes_11_20.md) | — | [Entrega](entregas/DF80/ENTREGA_v2.md) | — |
 | DF100–DF112 v2 | Forja-Mãe modular e efeitos | ENTREGUE (Pacote 19) · INTEGRADO (dev/deserto, 25/11/2026; defeitos em docs/fases/deserto_ferrugem/auditoria_pacotes_11_20.md) | — | [Entrega](entregas/DF100/ENTREGA_v2.md) | — |
+| DF100–DF112 v3 | Forja-Mãe recriada em 12 peças modulares | ENTREGUE (`ef2d879`, main) · VERIFICADO e INTEGRADO (dev/revisao-geral, 27/11/2026; DF107 e DF108 com ressalva: pedidos REV-03 e REV-08) | — | [Atlas](entregas/DF100/DF100_atlas_v3.json) · [Entrega](entregas/DF100/ENTREGA_v3.md) | [Auditoria v3](../docs/revisao_geral/auditoria_forja_v3.md) |
 | DF_UNIDADE | Conferência visual do Deserto | ENTREGUE (Pacote 20) | — | [Pranchas e encaixe da mira](entregas/DF_UNIDADE/ENTREGA.md) | — |
 | DF224 | Plataformas móveis, válvula e gancho | APROVADO (Pacote 13) · INTEGRADO (dev/deserto, 25/11/2026; defeitos em docs/fases/deserto_ferrugem/auditoria_pacotes_11_20.md) | — | [Entrega](entregas/DF224/ENTREGA_v2.md) | — |
 | DF223 | Prensas e serra | APROVADO (Pacote 12) · INTEGRADO (dev/deserto, 25/11/2026; defeitos em docs/fases/deserto_ferrugem/auditoria_pacotes_11_20.md) | — | [Entrega](entregas/DF223/ENTREGA_v2.md) | — |
@@ -193,3 +194,19 @@ Pedido: [DF refação](pedidos/DF_refacao_cena.md) (24/11/2026). Inventário de 
 | DF209 | Efeitos de ambiente | ABERTO | [DF refação](pedidos/DF_refacao_cena.md) | — | — |
 | DF210 | Placa, estação, célula, núcleo e registro do Deserto | ABERTO | [DF refação](pedidos/DF_refacao_cena.md) | — | — |
 | DF03 v2 | Retoque da Forja-Mãe (DF03, DF100–DF108) | ABERTO | [DF refação](pedidos/DF_refacao_cena.md) | — | — |
+
+## Revisão geral: pedidos de arte abertos (27/11/2026)
+
+Pedido: [REV_pedidos_de_arte.md](pedidos/REV_pedidos_de_arte.md). Saíram da revisão geral (`docs/revisao_geral/RELATORIO.md`). Cada um diz o paliativo que sai do jogo quando a peça chegar.
+
+| ID | O que é | Estado | Pedido | Entrega | Revisão |
+|---|---|---|---|---|---|
+| REV-01 | DF98 v3: feixe do Ímã (segmento repetível sem ímã e garra de luz na ponta) | ABERTO | [REV](pedidos/REV_pedidos_de_arte.md) | — | — |
+| REV-02 | DF66 v3 e DF68 v3: lente do drone inteira | ABERTO | [REV](pedidos/REV_pedidos_de_arte.md) | — | — |
+| REV-03 | DF107 v4: aviso da escotilha legível na escala do jogo | ABERTO | [REV](pedidos/REV_pedidos_de_arte.md) | — | — |
+| REV-04 | DF87 v3: rebite girando em 4 quadros | ABERTO | [REV](pedidos/REV_pedidos_de_arte.md) | — | — |
+| REV-05 | DF210 v3: coletáveis animados | ABERTO | [REV](pedidos/REV_pedidos_de_arte.md) | — | — |
+| REV-06 | DF200: céu diurno reexportado (arquivo íntegro) | ABERTO | [REV](pedidos/REV_pedidos_de_arte.md) | — | — |
+| REV-07 | DF22 v2 e DF53 v2: fachada da Fábrica e plataformas com correntes | ABERTO | [REV](pedidos/REV_pedidos_de_arte.md) | — | — |
+| REV-08 | DF108 v4: fogo da grade que pulsa | ABERTO | [REV](pedidos/REV_pedidos_de_arte.md) | — | — |
+| REV-09 | Nivária: módulos de terreno e apoio do bloco suspenso (combinar com o Caio) | ABERTO | [REV](pedidos/REV_pedidos_de_arte.md) | — | — |

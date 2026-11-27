@@ -640,3 +640,17 @@ O João pediu que as duas fases deixassem de existir só no código e virassem c
 - **Encaixe:** tirantes (`Desert.rod`) até o alto em prensas, correntes e ganchos; DF204 num plano de parallax próprio (`DFCamada`, 0,85) com névoa no exterior; decoração fora da esteira, dos perigos e da fenda.
 - **DF200 diurno corrompido na main:** o jogo usa uma recomposição (ver o documento de integração). Pedir nova subida ao GPT.
 - **Pacotes 11–20 (DF222–DF225, DF210, DF60–DF112 v2):** `tools/import_deserto_v2_folhas.py` (meia resolução com os nomes do jogo; peças de máquina em `assets/deserto/v2/`). `Desert.effect(parent, id, n, âncora, sc)` agora usa a âncora do ENTREGA e escala uniforme (`Desert.FX_ANCORA`); `DesertEnemy` usa DFArt (paralisado DF64b, derrubado DF69c); o Autômato lê o ombro por quadro (`Player.SHOULDER_AUT_PX`, de `DF97_ancoras.json`); a Forja usa os encaixes do pedido v2. Estação, placa, célula, núcleo e registro têm arte própria no tema `deserto`. Defeitos das entregas: `docs/fases/deserto_ferrugem/auditoria_pacotes_11_20.md` (`tools/auditar_entregas_deserto.py`).
+
+## 18. Revisão geral (26 e 27/11/2026, branch `dev/revisao-geral`)
+
+Relatório completo, com tabela de achados, decisões e testes: `docs/revisao_geral/RELATORIO.md`. Pedidos de arte abertos: `colaboracao/pedidos/REV_pedidos_de_arte.md` (REV-01 a REV-09).
+
+- **Gancho:** modelo "atravessar com o momento". Segurando uma direção, a chegada sai com `HOOK_EXIT_X` (1,4 × corrida, fixo por forma) e `HOOK_EXIT_UP` (0,72 × pulo), sem freio nem corte de gravidade por `HOOK_CARRY` (0,45 s). O pulo durante o puxão fica guardado (`HOOK_JUMP_UP`, 0,8). Tudo com `dt`. `tools/test_gancho.gd` passa todos os vãos de Lab, Deserto e Nivária a 30, 60 e 144 FPS; rode um FPS por vez (`fps=30`), porque os três juntos passam de 10 min.
+- **Autômato:** linha de habilidades no HUD (`hud.gd`); anel de 150 px e marcação de alvos em `Player._draw_magnet_hints()`; porta imantada da Câmara (evento `porta_imantada` no save). `tools/test_pulso.gd`.
+- **Ponto seguro:** `Player._update_safe()` ignora `AnimatableBody2D` e `CollapseSlab`. Qualquer chão novo que se mova ou desabe precisa ser de um desses tipos, ou ficar na camada 256, para não virar ponto seguro (`tools/test_ponto_seguro.gd`).
+- **Tiros:** `DesertEnemy.shot_origin()` lê `MUZZLE_ROBO` e `MUZZLE_DRONE`. Ao trocar a arte de um inimigo, meça de novo com `tools/medir_hitboxes.gd` e `tools/captura_hitboxes.gd`.
+- **Forja-Mãe v3** integrada (`tools/import_deserto_v2_folhas.py` lê os `_v3.png`; verificação em `docs/revisao_geral/auditoria_forja_v3.md`). Fica um paliativo: a tinta vermelha das escotilhas, até a REV-03.
+- **Arte tratada sem desenho:** `tools/tratar_arte_revisao.py` (DF91 e DF96). É chamado pelo import, que regrava `assets/deserto/`; os originais não mudam.
+- **Varreduras:** `tools/varrer_escalas.gd` (sprite esticado), `tools/varrer_apoio.gd` (decoração flutuando), `tools/exportar_quadros.gd` + `tools/auditar_animacoes.py` (animações). Rode depois de mexer em arte ou cena.
+- **Bateria:** `tools/rodar_testes.sh [pasta]` roda tudo, um por vez, e resume (código de saída = número de testes com falha).
+- **Godot:** o projeto é 4.3, mas o Caio e o artista usam o 4.7. Cena salva no 4.4+ grava `uid=` nos `ext_resource`, e o 4.3 avisa no console. Veja a seção 8 do relatório: a versão é decisão do João.
