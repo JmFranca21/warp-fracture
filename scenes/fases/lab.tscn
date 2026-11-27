@@ -720,21 +720,21 @@ modulate = Color(0.8, 0.8, 0.84, 1)
 position = Vector2(5965, 470)
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("13_twmcb")
-offset = Vector2(0, -128)
+offset = Vector2(0, -50)
 
 [node name="Deco_entulho_1_01" type="Sprite2D" parent="Decoracao"]
 modulate = Color(0.75, 0.75, 0.7875, 1)
 position = Vector2(6010, 470)
 scale = Vector2(-0.26, 0.26)
 texture = ExtResource("14_ahg1l")
-offset = Vector2(0, -128)
+offset = Vector2(0, -61)
 
 [node name="Deco_entulho_3_01" type="Sprite2D" parent="Decoracao"]
 modulate = Color(0.75, 0.75, 0.7875, 1)
 position = Vector2(5910, 690)
 scale = Vector2(0.24, 0.24)
 texture = ExtResource("15_3k7h6")
-offset = Vector2(0, -128)
+offset = Vector2(0, -59)
 
 [node name="Deco_alerta_04" type="Sprite2D" parent="Decoracao"]
 modulate = Color(0.9, 0.9, 0.945, 1)
