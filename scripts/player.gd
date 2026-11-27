@@ -106,8 +106,9 @@ var last_hook_t := 0.0
 # v2: ombro por quadro (DF97_ancoras.json, px da célula 384 × 512, pés em (192, 472)); o jogo usa (ombro − pés) × K
 const SHOULDER_AUT_PX := {
 	"idle": [Vector2(178, 279), Vector2(178, 278), Vector2(178, 277), Vector2(178, 278), Vector2(178, 278), Vector2(178, 278)],
-	"walk": [Vector2(171, 293), Vector2(171, 291), Vector2(185, 289), Vector2(178, 278), Vector2(166, 295),
-		Vector2(165, 294), Vector2(185, 289), Vector2(178, 278)],
+	# walk: quadros 1, 2, 3 e 7 descidos 36/36/35/35 px por tools/tratar_arte_revisao.py (pés na linha 470)
+	"walk": [Vector2(171, 329), Vector2(171, 327), Vector2(185, 324), Vector2(178, 278), Vector2(166, 295),
+		Vector2(165, 294), Vector2(185, 324), Vector2(178, 278)],
 	"jump": [Vector2(159, 313), Vector2(178, 264), Vector2(179, 306), Vector2(180, 307)],
 	"fall": [Vector2(180, 306), Vector2(177, 272), Vector2(177, 270)],
 	"dash": [Vector2(159, 314), Vector2(189, 334), Vector2(189, 334), Vector2(178, 278)],

@@ -20,6 +20,10 @@ from pathlib import Path
 
 from PIL import Image
 
+import sys
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from tratar_arte_revisao import tratar
+
 ROOT = Path(__file__).resolve().parents[1]
 SRC = ROOT / "colaboracao/entregas"
 OUT = ROOT / "assets/deserto"
@@ -81,15 +85,15 @@ def confere(pasta: str, nome: str) -> Path:
     return p
 
 
-def meia(p: Path, destino: Path) -> None:
-    img = Image.open(p).convert("RGBA")
+def meia(p: Path, destino: Path, code: str = "") -> None:
+    img = tratar(code, Image.open(p).convert("RGBA"))     # tratamentos sem desenho (tools/tratar_arte_revisao.py)
     img = img.resize((img.width // 2, img.height // 2), Image.Resampling.LANCZOS)
     img.save(destino, lossless=True, method=5)
     print(destino.relative_to(ROOT), img.size)
 
 
 for code, nome in FOLHAS.items():
-    meia(confere(code, nome), OUT / f"{code}.webp")
+    meia(confere(code, nome), OUT / f"{code}.webp", code)
 for dest, (pasta, nome) in OBJETOS.items():
     meia(confere(pasta, nome), OUT / f"{dest}.webp")
 V2.mkdir(exist_ok=True)
