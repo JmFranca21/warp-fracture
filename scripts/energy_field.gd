@@ -4,10 +4,32 @@ extends StaticBody2D
 
 @export var sid := ""
 @export var rect := Rect2()
-var spr: AnimatedSprite2D
+var spr: Node2D
 var cs: CollisionShape2D
 var glow: Sprite2D
 var off := false
+# colunas do quadro da fx_campo onde o poste de cima termina e o de baixo começa (antes de girar)
+const CORTES := [0, 31, 183, 213]
+static var _cache: Array = []
+
+
+## três SpriteFrames (poste, miolo, poste) com as mesmas regiões de cada quadro da fx_campo, recortadas
+static func _partes() -> Array:
+	if not _cache.is_empty():
+		return _cache
+	var base: SpriteFrames = load(SpriteMeta.FX_CAMPO_FRAMES)
+	for k in 3:
+		var sf := SpriteFrames.new()
+		sf.set_animation_speed("default", base.get_animation_speed("loop"))
+		sf.set_animation_loop("default", true)
+		for i in base.get_frame_count("loop"):
+			var src: AtlasTexture = base.get_frame_texture("loop", i)
+			var at := AtlasTexture.new()
+			at.atlas = src.atlas
+			at.region = Rect2(src.region.position + Vector2(CORTES[k], 0), Vector2(CORTES[k + 1] - CORTES[k], src.region.size.y))
+			sf.add_frame("default", at, base.get_frame_duration("loop", i))
+		_cache.append(sf)
+	return _cache
 
 
 func _ready() -> void:
@@ -21,15 +43,35 @@ func _ready() -> void:
 	cs.shape = r
 	cs.position = rect.get_center()
 	add_child(cs)
-	spr = AnimatedSprite2D.new()
-	spr.sprite_frames = load(SpriteMeta.FX_CAMPO_FRAMES)
-	spr.offset = SpriteMeta.FX_CAMPO_OFFSET
+	# A arte (quadros de 213 × 156) é horizontal: poste | campo | poste. Girada 90°, o comprimento vira a
+	# altura. Antes era uma cópia esticada (0,98 × 0,43 num campo de 200 px). Agora, com escala uniforme:
+	# o poste de cima, o miolo do campo repetido n vezes e o poste de baixo, recortados do próprio quadro
+	# (os raios sempre chegam aos postes nas mesmas alturas, então as cópias do miolo se emendam).
+	# Largura perto dos 64 px de antes. Revisão geral: nenhum sprite com escala não uniforme.
+	var partes := _partes()
+	var w: Array = [CORTES[1] - CORTES[0], CORTES[2] - CORTES[1], CORTES[3] - CORTES[2]]
+	var postes: float = w[0] + w[2]
+	var n := maxi(1, roundi((rect.size.y * 148.0 / 64.0 - postes) / w[1]))
+	var sc: float = rect.size.y / (postes + w[1] * n)
+	spr = Node2D.new()      # nó que agrupa as peças (o desligar esmaece este nó)
 	spr.position = rect.get_center()
-	spr.rotation = PI / 2.0
-	# a imagem é horizontal (≈205x148 na textura): girada, o comprimento vira a altura
-	spr.scale = Vector2(rect.size.y / 205.0, 64.0 / 148.0)
 	add_child(spr)
-	spr.play("loop")
+	var y := -rect.size.y / 2.0
+	var ordem := [0]
+	for i in n:
+		ordem.append(1)
+	ordem.append(2)
+	for i in ordem.size():
+		var k: int = ordem[i]
+		var c := AnimatedSprite2D.new()
+		c.sprite_frames = partes[k]
+		c.rotation = PI / 2.0
+		c.scale = Vector2.ONE * sc
+		c.position = Vector2(0, y + w[k] * sc / 2.0)
+		y += w[k] * sc
+		spr.add_child(c)
+		c.play("default")
+		c.frame = 0 if k != 1 else (i * 2) % c.sprite_frames.get_frame_count("default")
 	glow = Art.glow(Color(0.6, 0.35, 1.0, 0.4), rect.size.y * 0.6)
 	glow.position = rect.get_center()
 	add_child(glow)

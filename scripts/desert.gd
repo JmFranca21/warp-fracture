@@ -577,10 +577,14 @@ func _montar() -> void:
 			var full := chains.texture.get_size()
 			chains.region_enabled = true
 			chains.region_rect = Rect2(0, 0, full.x, slab)
-			chains.scale = Vector2(r.size.x / full.x, 135.0 / slab)
-			chains.position = Vector2(r.get_center().x, r.position.y - 135.0 / 2.0)
+			# escala uniforme pela largura (as correntes caem nas pontas da laje); antes a altura era forçada
+			# a 135 px (0,30 × 0,35 e 0,50 × 0,60). O tirante desce até onde a corrente começa.
+			var sc: float = r.size.x / full.x
+			var hh: float = slab * sc
+			chains.scale = Vector2.ONE * sc
+			chains.position = Vector2(r.get_center().x, r.position.y - hh / 2.0)
 			for f in ([0.167, 0.83] if large else [0.13, 0.865]):    # as correntes continuam em tirantes até o alto
-				rod(r.position.x + r.size.x * f, TOPO, r.position.y - 133.0, -2)
+				rod(r.position.x + r.size.x * f, TOPO, r.position.y - hh + 2.0, -2)
 	for pit in PITS:
 		attack_area(pit,self,true)
 	# DF206: as duas sucatas médias substituem DF30_1 e DF30_2 no mesmo lugar e tamanho (155 × 76 e 110 × 56)

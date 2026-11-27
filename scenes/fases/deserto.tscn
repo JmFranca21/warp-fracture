@@ -1683,8 +1683,8 @@ metadata/esteira = true
 
 [node name="DF53a_01" type="Sprite2D" parent="Deserto"]
 z_index = -1
-position = Vector2(2942.5, 557.5)
-scale = Vector2(0.302083, 0.350649)
+position = Vector2(2942.5, 566.849)
+scale = Vector2(0.302083, 0.302083)
 texture = ExtResource("22_pqmpf")
 region_enabled = true
 region_rect = Rect2(0, 0, 480, 385)
@@ -1697,7 +1697,7 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("23_n2g05")
 centered = false
 region_enabled = true
-region_rect = Rect2(0, 0, 32, 1144)
+region_rect = Rect2(0, 0, 32, 1181.4)
 
 [node name="tirante_02" type="Sprite2D" parent="Deserto"]
 z_index = -2
@@ -1707,12 +1707,12 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("23_n2g05")
 centered = false
 region_enabled = true
-region_rect = Rect2(0, 0, 32, 1144)
+region_rect = Rect2(0, 0, 32, 1181.4)
 
 [node name="DF53b_01" type="Sprite2D" parent="Deserto"]
 z_index = -1
-position = Vector2(3220, 477.5)
-scale = Vector2(0.5, 0.597345)
+position = Vector2(3220, 488.5)
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("24_8irk6")
 region_enabled = true
 region_rect = Rect2(0, 0, 480, 226)
@@ -1725,7 +1725,7 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("23_n2g05")
 centered = false
 region_enabled = true
-region_rect = Rect2(0, 0, 32, 984)
+region_rect = Rect2(0, 0, 32, 1028)
 
 [node name="tirante_04" type="Sprite2D" parent="Deserto"]
 z_index = -2
@@ -1735,7 +1735,7 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("23_n2g05")
 centered = false
 region_enabled = true
-region_rect = Rect2(0, 0, 32, 984)
+region_rect = Rect2(0, 0, 32, 1028)
 
 [node name="Fosso_01" type="Area2D" parent="Deserto" groups=["hazard"]]
 position = Vector2(980, 880)
