@@ -116,11 +116,13 @@ func _run() -> void:
 			if not is_instance_valid(e) or e.dead:
 				continue
 			var k := _kind(e)
-			if seen.has(k) or k in ["queen", "moth", "turret"]:      # Mariposa só investe; Turreta é feixe (olho medido à parte)
+			if seen.has(k):
 				continue
 			seen[k] = true
 			var res := {}
-			for side in [1, -1]:
+			# Rainha (espinhos do chão), Mariposa (só investe) e Turreta (feixe, olho medido à parte): só a foto
+			var so_foto: bool = k in ["queen", "moth", "turret"]
+			for side in ([] if so_foto else [1, -1]):
 				var p: Player = game.player
 				var ep: Vector2 = e.global_position
 				var feet_y: float = ep.y
@@ -146,7 +148,7 @@ func _run() -> void:
 				ov.marks.append([e.global_position + Vector2(absf(res[side].x) * side * (1 if res[side].x * side >= 0 else -1), res[side].y), side > 0])
 			game.level.add_child(ov)
 			game.cam.position = e.global_position + Vector2(0, -30)
-			game.cam.zoom = Vector2(2.5, 2.5)
+			game.cam.zoom = Vector2(1.2, 1.2) if k == "queen" else Vector2(2.5, 2.5)
 			game.cam.reset_smoothing()
 			for c in game.level.fx.get_children():
 				if c is EnemyBullet:

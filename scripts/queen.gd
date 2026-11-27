@@ -25,7 +25,10 @@ func _ready() -> void:
 	main_color = Color(0.7, 0.5, 1.0)
 	collision_layer = 0
 	collision_mask = 0
-	setup_hurt(Vector2(150, 220), Vector2(0, -110))
+	# revisão geral: a caixa era 150 × 220 centrada no tronco; o chapéu (topo a −261 no idle, aba de −120 a +92)
+	# e o rosto ficavam de fora, justamente onde o jogador mira. Agora cobre chapéu, rosto e tronco; ficam de
+	# fora só o braço fino (até −135) e as raízes da saia, que não devem receber dano.
+	setup_hurt(Vector2(180, 250), Vector2(-10, -125))
 	var big := Art.glow(Color(0.55, 0.4, 1.0, 0.22), 230)
 	big.position = Vector2(0, -170)
 	add_child(big)
