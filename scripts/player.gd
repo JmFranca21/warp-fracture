@@ -1238,7 +1238,13 @@ func _update_safe(dt: float, floor_now: bool) -> void:
 	var space := get_world_2d().direct_space_state
 	for ox in [-20.0, 20.0]:
 		var q := PhysicsRayQueryParameters2D.create(global_position + Vector2(ox, -4), global_position + Vector2(ox, 14), 1)
-		if space.intersect_ray(q).is_empty():
+		var hit := space.intersect_ray(q)
+		if hit.is_empty():
+			return
+		# chão que se move (elevador e carrinhos do Deserto, AnimatableBody2D) ou desaba (laje da Fuga) não
+		# vira ponto seguro: quando a máquina anda, o retorno de um fosso caía no ar e o jogador caía de novo
+		# (revisão geral, tools/test_ponto_seguro.gd)
+		if hit.collider is AnimatableBody2D or hit.collider is CollapseSlab:
 			return
 	for a in hurtbox.get_overlapping_areas():
 		if a.is_in_group("hazard"):
